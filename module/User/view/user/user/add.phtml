@@ -1,0 +1,112 @@
+<?php
+$this->headLink()->appendStylesheet('/css/admin.css'); 
+
+$this->headTitle($this->title);
+
+$form->setAttributes(['class'=>'cms']);
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+    ]);
+
+$form->get('title')->setAttributes([
+    'class'=>'form-control dropdown'
+    ]);
+
+$form->get('first_name')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('last_name')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control dropdown'
+    ]);
+
+$form->get('password')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('confirm_password')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('roles')->setAttributes([
+    'class'=>'form-control'
+    ]);
+ 
+
+$form->prepare();
+        
+        
+ ?>
+<section class="admin">
+    <div class="header">
+	<div class="header-title reverse"><i class="fa fa-user-plus" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    
+    <div class='admin-box'>
+        
+        <div class='form-wrapper'>
+            <span>
+                Please fill out the following form and click the <i>Add New User</i> button.
+            </span>
+        </div>
+
+        <div class='form-wrapper'>
+            <?= $this->form()->openTag($form); ?>
+
+                <?= $this->formLabel($form->get('email')); ?>
+                <?= $this->formElement($form->get('email')); ?>
+                <?= $this->formElementErrors($form->get('email')); ?>   
+
+                <?= $this->formLabel($form->get('title')); ?>
+                <?= $this->formElement($form->get('title')); ?>
+                <?= $this->formElementErrors($form->get('title')); ?>
+            
+                <?= $this->formLabel($form->get('first_name')); ?>
+                <?= $this->formElement($form->get('first_name')); ?>
+                <?= $this->formElementErrors($form->get('first_name')); ?>
+            
+                <?= $this->formLabel($form->get('last_name')); ?>
+                <?= $this->formElement($form->get('last_name')); ?>
+                <?= $this->formElementErrors($form->get('last_name')); ?>
+
+                <?= $this->formLabel($form->get('password')); ?>
+                <?= $this->formElement($form->get('password')); ?>
+                <?= $this->formElementErrors($form->get('password')); ?>
+
+                <?= $this->formLabel($form->get('confirm_password')); ?>
+                <?= $this->formElement($form->get('confirm_password')); ?>
+                <?= $this->formElementErrors($form->get('confirm_password')); ?>
+
+                <?= $this->formLabel($form->get('status')); ?>
+                <?= $this->formElement($form->get('status')); ?>
+                <?= $this->formElementErrors($form->get('status')); ?>
+            
+                <?= $this->formLabel($form->get('roles')); ?>
+                <?= $this->formElement($form->get('roles')); ?>
+                <?= $this->formElementErrors($form->get('roles')); ?> 
+
+                
+                <button type="submit" class="btn-about-us btn-burgundy" data-text="Add New User">
+                    <span><i class="fa fa-user-plus" aria-hidden="true"></i> Add New User</span>
+                </button>
+
+            <?= $this->form()->closeTag(); ?>
+   
+        </div>
+        
+    </div>
+
+</section>

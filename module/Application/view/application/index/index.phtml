@@ -1,0 +1,1227 @@
+<?php
+
+/*
+ *  Main - index
+ */
+$current_season = $this->layout()->currenSeason->getSeasonName();
+
+?>
+<!-- SECTION SLIDER -->
+<section class="banner">
+    <!-- SLIDER -->
+    <div class="slider">
+	<div><img src="img/slider/banner-1.jpg"></div>
+	<div><img src="img/slider/banner-2.jpg"></div>
+	<div><img src="img/slider/banner-3.jpg"></div>
+	<div><img src="img/slider/banner-5.jpg"></div>
+	<div><img src="img/slider/banner-6.jpg"></div>
+    </div>
+    <!-- WELCOME TEXT -->
+    <div class="welcome-msg">
+        <?php if ($this->access('welcomemsg.edit')) {
+            echo '<div class="cms-option">'
+                .'<a href="#" class="bs modal-trigger-welcome-msg-edit" data-modal="edit-welcome-msg-modal" data-id="'.$welcomeMsg->getId().'">'
+                    .'<img src="img/icons/icon-edit.png">'
+                    .'<span>Edit</span>'
+                .'</a>';
+            echo '</div>';
+        } ?>
+        
+	<div class="welcome-title">Welcome temp <?= $current_season ?></div>	
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube2 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+	</div>
+	<div class="text">
+            <?= $welcomeMsg->getContent() ?>
+	</div>
+	<div class="about-box">
+            <button type="button" class="modal-trigger btn-about-us btn-burgundy" data-modal="about-us" data-text="About us">
+		<span><i class="fa fa-graduation-cap faa-tada animated"></i> About us</span>
+            </button>
+	</div>
+    </div>
+</section>
+
+<!-- SCHOOL BOX -->
+<section class="school-news">
+
+    <?php
+        // module/Album/view/album/album/index.phtml:
+        $left_right_adjust = 2;
+    ?>
+    
+    <!-- NEWS BOX -->
+    <div class="main-col-left"> 
+        <div class="news-box">
+            <?php if ($this->access('news.add')) {
+                echo '<div class="cms-option news">'
+                        . '<a href="#" class="bs modal-trigger-add-news" data-modal="add-news-modal" data-authorID="'.$this->currentUser()->getId().'">'
+                            . '<img src="img/icons/icon-add.png"><span>Add news</span>'
+                        . '</a>'
+                    . '</div>';
+            } ?>
+
+            <div class="title blue">School news</div>
+            <?php foreach ($this->paginator  as $news) : ?>
+                <div class="school-news">
+                    <?php if($this->escapeHtml($news->getPhotoName()) !==null){
+                        if($left_right_adjust % 2){
+                            echo '<img class="left" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+                        }else{
+                            echo '<img class="right" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+                        }
+                        $left_right_adjust++;
+                    }  
+                    ?>
+                    <div class="news-title"><?= $this->escapeHtml($news->getTitle()) ?></div>
+                    <hr class="blue">
+                    <?= $this->escapeHtml($news->getAuthor()->getFullName()) ?>
+                    <div class="news-date"><img src="img/icons/icon-calendar.png"><?= date('d F Y',strtotime($news->getDatePublished())) ?></div>
+                    <p><?= $this->escapeHtml($news->getContent()) ?></p>
+                    <?php if($news->getDocName() != null) {
+                        echo '<div class="news-doc"> ';
+                        echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
+                            echo '<img src="img/icons/icon-download.png">'.$news->getDocName().'</br>';
+                        echo '</a>';
+                        echo '</div>';
+                    }
+                    ?>
+                    <div class='news-admin'>
+                        <?php if ($this->access('news.edit')) {
+                            echo '<a href="#" class="tooltip modal-trigger-edit-news" data-modal="edit-news-modal" data-id="'. $this->escapeHtml($news->getId()).'">'
+                                .'<button class="btn-admin">'
+                                    .'<img src="img/icons/icon-edit-blue.png" >'
+                                .'</button>'
+                                .'<span class="tooltiptext bottom edit">Edit</span>';
+                            echo '</a>';
+                        } ?>
+
+                        <?php if ($this->access('news.delete')) {
+                            echo '<a href="#" class="tooltip modal-trigger-delete-news" data-modal="delete-news-modal" data-id="'.$this->escapeHtml($news->getId()).'" data-title="'.$this->escapeHtml($news->getTitle()).'">'
+                                    .'<button class="btn-admin">'
+                                        .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                    .'</button>'
+                                .'<span class="tooltiptext bottom remove">Remove</span>';
+                            echo '</a>';
+                        } ?>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+
+            <?= $this->paginationControl(
+                // The paginator object:
+                $this->paginator,
+                // The scrolling style:
+                'sliding',
+                // The partial to use to render the control:
+                'partial/paginator',
+                // The route to link to when a user clicks a control link:
+                ['route' => 'application', 'action' => 'index']
+            ) ?>
+
+        </div>
+    </div>
+    
+    
+    <!-- end NEWS BOX -->
+    <div class="main-col-right">
+        <!-- EVENT-BOX -->
+        <div class="event-box">
+            <?php if ($this->access('event.add')) {
+                echo '<div class="cms-option events">'
+                    .'<a href="#" class="bs modal-trigger-add-event" data-modal="add-event-modal" data-authorID="'.$this->currentUser()->getId().'">'
+                        .'<img src="img/icons/icon-add.png">'
+                        .'<span>Add event</span>'
+                    .'</a>';
+                echo '</div>';
+            } ?>
+
+            <div class="title orange">Events</div>
+
+            <div id="calendar_div">
+
+                <div id="calendar-page" >
+                    <div id='current_date' class="current_date"></div>
+                    <hr class="orange">
+                    <div id="event_list"></div>
+                </div>          
+                <div id="calender_section">
+
+                </div>
+            </div>
+
+            <div class="event-footer">
+                <a href="#" class="bs orange modal-trigger" data-modal="events-list">
+                    <img src="img/icons/icon-event2.png">
+                    <span class="see-all">see all events</span>
+                </a>
+            </div>
+        </div>
+        <!-- end EVENT-BOX -->
+        <!-- NEWSLETTER-BOX -->
+        <div class="newsletter-box">
+            <?php if ($this->access('newsletter.add')) {
+                echo '<div class="cms-option newsletter">'
+                    .'<a href="#" class="bs modal-trigger-add-newsletter" data-modal="add-newsletter-modal">'
+                        .'<img src="img/icons/icon-add.png">'
+                        .'<span>Add newsletter</span>'
+                    .'</a>';
+                echo '</div>';
+            } ?>
+
+            <div class="title purpure"><span>Newsletter</span></div>
+            <div class="newsletters-list">
+                <div class="title-sm">Latest newsletters</div>
+                <hr class="purpure">
+
+                <ul class="file-list">
+                    <?php 
+                    $count_elements = 0;
+                    foreach ($this->newsletters  as $newsletter) :
+
+                        echo '<li>'
+                                . '<div class="list-element">'
+                                    . '<img class="icon-list" src="img/icons/icon-download.png">'
+                                    . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
+                                        . '<span class="">'.$newsletter->getTitle().'</span>'
+                                        //. '<span class="">Newsletter</span>'
+                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
+                                    . '</a>'
+                                . '</div>'
+                                . '';
+                                if ($this->access('newsletter.delete')) {
+                                    echo '<div class="admin-option">'
+                                        . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">  '
+                                            . '<button class="btn-admin">'
+                                                . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                            . '</button>'
+                                            . '<span class="tooltiptext remove">Remove</span>'
+                                        . '</a>'
+                                    . '</div>';
+                                }
+                        echo '</li>';
+
+                        $count_elements++;
+                        if($count_elements >= 4){
+                            break;
+                        }
+
+                    endforeach;?>
+
+                </ul>
+                <div class="more-newsletter">								
+                    <a href="#" class="bs purpure modal-trigger" data-modal="older-newsletter"> 
+                        <img src="img/icons/icon-archive.png"> 
+                        <span class="older">see older</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="subscribe">
+                <div class="sub-start">
+                    <div class="sub-logo">
+                        <img src="img/icons/icon-envelope-purpure.png">
+                    </div>
+                    <h2 class="sub-heading">signup with your email to get latest updates</h2>
+
+                    <form id="subscribeForm">
+                        <input id="sub-email" name='email' placeholder="enter your email" >
+                        <button id="subscribe-btn" type="submit" class="btn-subscribe btn-purpure" data-text="subscribe">
+                            <span><i class="fa fa-bell faa-tada animated"></i> subscribe</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="sub-end">
+                    <h3></h3>
+                    <div class="close-subscribing"></div>
+                </div>
+            </div>					
+        </div>
+        <!-- end NEWSLETTER-BOX -->
+
+        <!-- OUR AWARDS -->
+        <div class="our-awards-box">
+            <?php if ($this->access('award.add')) {
+                echo '<div class="cms-option our-awards">'
+                    .'<a href="#" class="bs modal-trigger-add-our-awards" data-modal="add-our-awards-modal">'
+                        .'<img src="img/icons/icon-add.png">'
+                        .'<span>Add award</span>'
+                    .'</a>';
+                echo '</div>';
+            } ?>
+            <div class="title red">Our Awards</div>
+            <hr class="red">
+            <?php 
+
+            foreach ($this->ourAwards  as $award) :
+
+                echo '<div class="award-wrapper">';
+                        if ($this->access('award.delete')) {
+                            echo '<label class="delete-img-label" id="deleteOurAward"><a href="#" class="modal-trigger-delete-our-awards" data-modal="delete-our-awards-modal" data-id="'.$award->getId().'" data-title="'.$award->getTitle().'">X</a></label>';
+                        }
+                        echo '<span class="helper"></span>'
+                        . '<img src="upload/awards/'.$award->getPhotoName().'" alt="'.$award->getTitle().'">'
+                    . '</div>';
+
+
+
+            endforeach;?>
+
+        </div>
+    
+    </div>
+    
+    <!-- end OUR AWARDS -->
+</section>
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+<!-- Add News Modal-->
+<div class="modal" id="add-news-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news" src="img/icons/icon-news.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>News - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addNewsForm" class="cms" enctype="multipart/form-data"> 
+                    <div class="width-60-left">
+                        <label for="addNewsTitle">News title:</label>
+                        <input type="text" id="addNewsTitle" name="addNewsTitle" required>
+                    </div>
+                    
+                    <div class="width-35-right">
+                        <label for="addNewsDoc">Add document:</label>
+                        <input type="file" id="addNewsDoc" name="addNewsDoc">
+                    </div>
+                    
+                    <div class='width-60-left'>
+                        <label for="addNewsContent">News text:</label>
+                        <textarea id="addNewsContent" name="addNewsContent" rows="10"></textarea>
+                    </div>
+                    
+                    <div class='width-35-right'>                       
+                        <div class="width-100">
+                            <label for="addNewsPhoto">Add news photo:</label>
+
+                            <label class='preview-img-label add-news' id='preview-img-add-news-label' for="preview-img-add-news"><a href='#'>X</a></label>
+                            <img class='preview-img add-news' id='preview-img-add-news'>
+
+                            <input type="file" id="addNewsPhoto" name="addNewsPhoto">
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" id="addNewsAuthorID" name="addNewsAuthorID" required>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add news"><span>Add news</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add News Modal-->
+
+<!-- Edit News Modal-->
+<div class="modal" id="edit-news-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>News - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editNewsForm" class="cms" enctype="multipart/form-data">
+                    <input id="editNewsID" name='editNewsID' type="hidden">
+                    
+                    <div class="width-60-left">
+                        <label for="editNewsTitle">News title</label>
+                        <input type="text" id="editNewsTitle" name="editNewsTitle" required>
+                    </div>
+                    
+                    <div class='width-35-right'>
+                        <label id='editNewsDocLabel_current'>Current document:</label>
+                        <label id='editNewsDocLabel'>Add document:</label>
+                        <table id='editNewsDoc_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="img/icons/icon-document.png"></td>
+                                <td class="text" id='editNewsDocTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-doc-edit-news-label">
+                                        <a href="#" class="remove_field_doc">X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <input type="file" id="editNewsDoc" name="editNewsDoc">
+                        <input type="checkbox" class='to_remove' id='edit-news-remove-doc'>
+                    </div>
+                    
+                    <div class='width-60-left'>
+                        <label for="editNewsContent">News text:</label>
+                        <textarea id="editNewsContent" name="editNewsContent" rows="10"></textarea>
+                    </div>
+                    
+                    
+                    <div class='width-35-right'>
+                        <label id='editNewsPhotoLabel_current'>Current photo:</label>
+                        <label id='editNewsPhotoLabel'>Add news photo:</label>
+                        <label class='preview-img-label edit-news' id='preview-photo-edit-news-label'><a href='#'>X</a></label>
+                        <img class='preview-img edit-news' id='editNewsPhoto_current' />
+                        
+                        
+                        <input type="file" id="editNewsPhoto" name="editNewsPhoto">
+                        <input type="checkbox" class='to_remove' id='edit-news-remove-photo'>
+                    </div>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit news"><span>Edit news</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit News Modal-->
+
+<!-- Delete News Modal -->
+<div class="modal" id="delete-news-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove News</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-news'>You really want to delete the news: <span></span></div>
+                <form id="deleteNewsForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteNewsID" name="deleteNewsID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete news Modal -->
+
+<!-- Edit Welcome message Modal-->
+<div class="modal" id="edit-welcome-msg-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img src="img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Welcome message - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <form id="editWelcomeMsgForm" class="cms">
+                    <input id="editWelcomeMsgID" name='editWelcomeMsgID' type="hidden">
+                    
+                    <label for="editWelcomeMsgContent">Welcome message (text):</label>
+                    <textarea id="editWelcomeMsgContent" name="editWelcomeMsgContent" rows="10"></textarea>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Save changes"><span>Save changes</span></button>
+                        <button type="button" class="modal-btn btn-red small close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Welcome message Modal-->
+
+<!-- About-us Modal -->
+<div class="modal" id="about-us">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+            <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img src="img/logo_burgundy.png" alt="school" /></div>
+      	
+      	<!-- original version -->
+      	<!-- <div class="modal-title">
+      		<span>About us</span>
+      	</div> -->
+      	
+      	<!-- img version -->
+    	<img class="bg-img" src="img/about-us/about-us.jpg"/>
+      	<div class="cut-box">	
+            <div class="modal-title">
+      		<span>About us</span>
+            </div>
+            <div class="modal-title-cut"></div>
+    	</div>
+    	<!-- end img version -->	
+    </div>
+ 
+    <div class="modal-body">
+        <?php if ($this->access('aboutus.edit')) {
+            echo '<div class="cms-option">'
+                .'<a href="#" class="bs modal-trigger-about-us-edit" data-modal="about-us-edit-modal" data-id="'.$aboutUs->getId().'">'
+                    .'<img src="img/icons/icon-edit.png">'
+                    .'<span>Edit</span>'
+                .'</a>';
+            echo '</div>';
+        } ?>
+	<div class="modal-text">
+            <h1><span id="title"><?= $aboutUs->getTitle() ?></span></h1>
+            <hr class="burgundy">
+            <span id="content"><?= $aboutUs->getContent() ?></span>
+            <h3><b>Le gach dea-ghu&iacute;,</b></h3>
+            <h3><i><span id="principal_name"><?= $aboutUs->getPrincipalName() ?></span></i></h3>
+			
+	</div>
+	<div class="btn-modal-box">
+            <button type="button" class="modal-btn btn-burgundy small close-btn" data-text="Close"><span>Close</span></button>
+	</div>
+    </div> 
+        
+  </div>
+</div>
+<!-- end About-us Modal -->
+
+
+<!-- About-us Edit Modal -->
+<div class="modal" id="about-us-edit-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img src="img/logo_burgundy.png" alt="school" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>About us - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editAboutUsForm" class="cms"> 
+                    <input id="editAboutUsID" name='editAboutUsID' type="hidden">
+                    <label for="editAboutUsTitle">Title:</label>
+                    <input id="editAboutUsTitle" name="editAboutUsTitle" type="text">
+                    
+                    <label for="editAboutUsContent">About us (text):</label>
+                    <textarea id="editAboutUsContent" name="editAboutUsContent" rows="10"></textarea>
+                    
+                    <label for="editAboutUsPrincipalName">Principal name:</label>
+                    <input id="editAboutUsPrincipalName" name="editAboutUsPrincipalName" type="text">
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Save changes"><span>Save changes</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+                    
+		</form>
+              
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end About-us Edit Modal -->
+
+<!-- Older Newsletters Modal -->
+<div class="modal" id="older-newsletter">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box sm purpure">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-archive-purpure.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Older Newsletters</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            <hr class="purpure" />
+            
+            <?php 
+                $count_nl = 0; 
+                echo '<ul class="file-list">';
+                foreach ($this->newsletters  as $newsletter) :
+                    if($count_nl > 3){
+                    
+                        echo '<li>'
+                                . '<div class="list-element">'
+                                    . '<img class="icon-list" src="img/icons/icon-pdf-file.png">'
+                                    . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
+                                        . '<span class="">'.$newsletter->getTitle().'</span>'
+                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
+                                    . '</a>'
+                                . '</div>'
+                                . '';
+                                if ($this->access('newsletter.delete')) {
+                                    echo '<div class="admin-option">'
+                                        . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">'
+                                            . '<button class="btn-admin">'
+                                                . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                            . '</button>'
+                                            . '<span class="tooltiptext remove">Remove</span>'
+                                        . '</a>'
+                                    . '</div>';
+                                }
+                        echo '</li>';
+                 
+                    }
+                    $count_nl++;
+                endforeach;
+                echo '</ul>';
+            ?>
+                
+            <div class="btn-modal-box">
+                <button type="button" class="modal-btn btn-purpure small close-btn" data-text="Close"><span>Close</span></button>
+            </div> 
+	</div>
+	
+    </div> 
+  </div>
+</div>
+<!-- end Older Newsletters Modal -->
+
+<!-- Add Newsletters Modal -->
+<div class="modal" id="add-newsletter-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-envelope-burgundy.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Add Newsletters</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <form id="addNewsletterForm" class="cms" enctype="multipart/form-data">
+                    
+                    <div class='width-100'>
+                        <label id="newsletterTitle-label" for="addNewsletterTitle">Newsletter title</label>
+                        <input type="text" id="addNewsletterTitle" name="addNewsletterTitle" required>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label id="newsletterFile-label" for="addNewsletterFile">Choose file to upload</label>
+                        <input type="file" id="addNewsletterFile" name="addNewsletterFile" required>
+                    </div>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue medium left" data-text="Add newsletter"><span>Add newsletter</span></button>
+                        <button type="button" class="modal-btn btn-red medium close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end older-newsletters Modal -->
+
+<!-- Delete Newsletters Modal -->
+<div class="modal" id="delete-newsletter-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Newsletters</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-newsletter'>You really want to delete the newsletter: <span></span></div>
+                <form id="deleteNewsletterForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteNewsletterID" name="deleteNewsletterID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete newsletters Modal -->
+
+<!-- Event (detail) Modal -->
+<div class="modal" id="show-event-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg orange">
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+	    </div>
+      	</div>
+      	
+        <div class="circle-img-wrapper"><img class="events" src="img/icons/icon-event-orange.png" alt="" /></div>
+      	
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Event details</span>
+      	</div>
+      	
+    	
+    </div>
+ 
+    <div class="modal-body">
+        
+	<div  class="modal-text">
+            <div class="loader"></div>
+            <label class='response-msg'></label>
+            <table id='eventBox' class="event-list">
+		<tr>
+                    <td id="color-box" class="date">
+			<div class="day"></div>
+			<div class="month_year_wrapper">
+                            <div class="month"></div>
+                            <div class="year"></div>
+			</div>
+                    </td>
+                    <td id='event-details' class="content">
+			<div class="title"></div>
+                        
+                        <?php if ($this->access('event.edit')) { ?>
+                        <div class="admin-option">
+                            <a href="#" class="tooltip modal-trigger-edit-event-details" data-modal="edit-event-modal" data-id="" data-title="" data-eventDate="" data-location="" data-content="">
+                                <button class="btn-admin">
+                                    <img class="icon-list" src="img/icons/icon-edit-blue.png" >
+                                </button>
+                                <span class="tooltiptext edit">Edit</span>
+                            </a>
+                            <a href="#" class="tooltip modal-trigger-delete-event-details" data-modal="delete-event-modal" data-id="" data-title="">
+                                <button class="btn-admin">
+                                    <img class="icon-list" src="img/icons/icon-bin-red.png" >
+                                </button>
+                                <span class="tooltiptext remove">Remove</span>
+                            </a>
+                        </div>
+                        <?php } ?>
+                        
+                        
+                        <div class="location">Location: <span></span></div>
+			<div class="text"></div>
+                    </td>
+                    
+		</tr>
+            </table>
+        </div>
+        
+	<div class="btn-modal-box">
+            <button type="button" class="modal-btn btn-orange small close-btn" data-text="Close"><span>Close</span></button>
+	</div> 
+    </div> 
+  </div>
+</div>
+<!-- end Events-detail Modal -->
+
+<!-- Events-List Modal -->
+<div class="modal" id="events-list">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg orange"> 
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="events" src="img/icons/icon-event-orange.png" alt="" /></div>
+      	
+            <!-- original version -->
+            <!-- <div class="modal-title">
+                    <span>About us</span>
+            </div> -->
+      	
+            <!-- img version -->
+            <img class="bg-img" src="img/events/events-list.jpg"/>
+            <div class="cut-box">	
+                <div class="modal-title">
+                    <span>Events list</span>
+                </div>
+                <div class="modal-title-cut"></div>
+            </div>
+            <!-- end img version -->	
+        </div>
+ 
+    
+        <div class="modal-body">
+    
+            <div class="modal-text">
+		<table class="event-list">
+                
+                <?php 
+                     
+                    $colorBoxList = array("red-box","purpure-box","blue-box","orange-box","green-box", "yellow-box", "brown-box");
+                    $countColorList = 0;
+                    
+                    foreach ($this->schoolEvents  as $event) :
+                        $dateEvent = date_parse($event->getDateEvent());
+                        $monthEvent = date("M", mktime(0, 0, 0, $dateEvent['month'], 10));
+
+                        echo '<tr>';
+                        
+                            echo '<td id="'.$colorBoxList[$countColorList].'" class="date">'
+                                . '<div class="day">'.($dateEvent['day']<10?("0".$dateEvent['day']):$dateEvent['day']).'</div>'
+                                . '<div class="month_year_wrapper">'
+                                    . '<div class="month">'.$monthEvent.'</div>'
+                                    . '<div class="year">'.$dateEvent['year'].'</div>'
+                                . '</div>'
+                                . '</td>'
+                                . ' <td class="content">'
+                                    . '<div class="title">'.$event->getTitle().' - author: '.$event->getAuthor()->getFullName().'</div>';
+                                    
+                                    echo '<div class="admin-option">';
+                                        if ($this->access('event.edit')) { 
+                                        echo '<a href="#" class="tooltip modal-trigger-edit-event" data-modal="edit-event-modal" data-eventID="'.$event->getId().'" data-eventTitle="'.$event->getTitle().'" data-eventDate="'.$event->getDateEvent().'" data-eventLocation="'.$event->getLocation().'" data-eventContent="'.$event->getContent().'" >'
+                                                . '<button class="btn-admin">'
+                                                    . '<img class="icon-list" src="img/icons/icon-edit-blue.png" >'
+                                                . '</button>'
+                                                . '<span class="tooltiptext edit">Edit</span>'
+                                            . '</a>';
+                                        }
+                                        if ($this->access('event.delete')) {
+                                        echo '<a href="#" class="tooltip modal-trigger-delete-event" data-modal="delete-event-modal" data-id="'.$event->getId().'" data-title="'.$event->getTitle().'">'
+                                                . '<button class="btn-admin">'
+                                                    . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                . '</button>'
+                                                . '<span class="tooltiptext remove">Remove</span>'
+                                            . '</a>';
+                                        }
+                                        
+                                    echo '</div>';
+                                    
+                                    if($event->getLocation() !== null){
+                                        echo '<div class="location">Location: <span>'.$event->getLocation().'</span></div>';
+                                    }
+                                    echo '<div class="text">'.$event->getContent().'</div>'
+                                . '</td>';
+                            
+                        echo '</tr>';
+                        $countColorList ++;
+                        if($countColorList > 6){
+                            $countColorList = 0;
+                        }
+                        
+                    endforeach;
+                    
+                ?>
+	
+		</table>
+            </div>
+            <div class="btn-modal-box">
+                <button type="button" class="modal-btn btn-orange small close-btn" data-text="Close"><span>Close</span></button>
+            </div> 
+        </div> 
+    </div>
+</div>
+<!-- end Events-List Modal -->
+
+<!-- Add Event Modal-->
+<div class="modal" id="add-event-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="events" src="img/icons/icon-event2.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Event - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addEventForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class='width-100'>
+                        <label for="addEventTitle">Event title:</label>
+                        <input type="text" id="addEventTitle" name="addEventTitle" required>
+                    </div>
+                    
+                    <div class='width-30-left'>
+                        <label for="addEventDate">Event date:</label>
+                        <input type="text" name="addEventDate" id="addEventDate" autocomplete="off">
+                    </div>
+                    
+                    <div class='width-60-right'>
+                        <label for="addEventLocation">Event location:</label>
+                        <input type="text" id="addEventLocation" name="addEventLocation">
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label for="addEventContent">About event:</label>
+                        <textarea id="addEventContent" name="addEventContent" rows="10"></textarea>
+                    </div>
+                    
+                    <input type="hidden" id="addEventAuthorID" name="addEventAuthorID" required>
+                    
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add event"><span>Add event</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Event Modal-->
+
+<!-- Edit Event Modal-->
+<div class="modal" id="edit-event-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Event - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editEventForm" class="cms" enctype="multipart/form-data">
+                         
+                    <input id="editEventID" name='editEventID' type="hidden">
+                    
+                    <div class='width-100'>
+                        <label for="editEventTitle">Event title</label>
+                        <input type="text" id="editEventTitle" name="editEventTitle" required>
+                    </div>
+                    
+                    <div class='width-30-left'>
+                        <label for="editEventDate">Event date:</label>
+                        <input type="text" name="editEventDate" id="editEventDate" autocomplete="off">
+                    </div>
+                    
+                    <div class='width-60-right'>
+                        <label for="editEventLocation">Event location:</label>
+                        <input type="text" id="editEventLocation" name="editEventLocation">
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label for="editEventContent">About event:</label>
+                        <textarea id="editEventContent" name="editEventContent" rows="10"></textarea>
+                    </div>
+                   
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit event"><span>Edit event</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Event Modal-->
+
+<!-- Delete Event Modal -->
+<div class="modal" id="delete-event-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Event</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-event'>You really want to delete the event: <span></span></div>
+                <form id="deleteEventForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteEventID" name="deleteEventID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete Event Modal -->
+
+<!-- Add Our Awards Modal -->
+<div class="modal" id="add-our-awards-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-award.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Add New Award</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <form id="addOurAwardForm" class="cms" enctype="multipart/form-data">
+                    
+                    <label id="ourAwardTitle-label" for="addOurAwardTitle">Award title</label>
+                    <input type="text" id="addOurAwardTitle" name="addOurAwardTitle" required>
+                    
+                    <label id="ourAwardFile-label" for="addOurAwardFile">Choose file to upload</label>
+                    <input type="file" id="addOurAwardFile" name="addOurAwardFile" required>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue medium left" data-text="Add award"><span>Add award</span></button>
+                        <button type="button" class="modal-btn btn-red medium close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end oAdd Our Awards Modal -->
+
+<!-- Delete Our Award Modal -->
+<div class="modal" id="delete-our-awards-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Award</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-our-award'>You really want to delete the aword: <span></span></div>
+                <form id="deleteOurAwardForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="ourAwardID" name="ourAwardID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete Our Award Modal -->
+
+<!-- Scripts -->
+    <!-- slider -->
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="js/slider.js" type="text/javaScript"></script>
+    <!-- subscribe -->
+    <script src="js/subscribe.js" type="text/javaScript"></script>   
+    <script src="js/welcome-msg-edit.js" type="text/javaScript"></script>
+    <script src="js/about-us-edit.js" type="text/javaScript"></script>
+    <script src="js/news-add.js" type="text/javaScript"></script>
+    <script src="js/news-edit.js" type="text/javaScript"></script>
+    <script src="js/news-delete.js" type="text/javaScript"></script>
+    <script src="js/event-add.js" type="text/javaScript"></script>
+    <script src="js/event-edit.js" type="text/javaScript"></script>
+    <script src="js/event-delete.js" type="text/javaScript"></script>
+    <script src="js/date-picker.js" type="text/javaScript"></script>
+    
+    <script src="js/calendar.js" type="text/javaScript"></script>
+    <script src="js/newsletter-add.js" type="text/javaScript"></script>
+    <script src="js/newsletter-delete.js" type="text/javaScript"></script>
+    <script src="js/our-awards-add.js" type="text/javaScript"></script>
+    <script src="js/our-awards-delete.js" type="text/javaScript"></script>
+    
+
+    
+
+   

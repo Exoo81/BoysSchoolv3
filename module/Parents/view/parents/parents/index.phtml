@@ -1,0 +1,1521 @@
+<?php
+
+/*
+ *  Parents - index
+ */
+$current_season = $this->layout()->currenSeason->getSeasonName();
+$this->headTitle($this->headTitle.' '.$current_season);
+
+?>
+
+<section class="parents">
+    <div class="header">
+	<div class="baner"><img src="/img/parents/banner.png" /></div>
+	<div class="header-title"><?= $this->headTitle ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube2 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+				
+    <div class="parents-box">
+        
+         <div class='main-col-left'>
+            
+            <div class="parents-info-box">
+                
+                
+                
+                <div class="title orange">Information for parents</div>
+                <?php 
+                if ($this->access('parentsInformation.add')) {
+                    echo '<div class="cms-option parents-information left">';
+                        echo '<a href="#" class="bs modal-trigger-add-parents-information" data-modal="add-parents-information-modal" data-authorID="'.$this->currentUser()->getId().'">';
+                            echo '<img src="img/icons/icon-add.png"><span>Add information for parents</span>';
+                        echo '</a>';
+                    echo '</div>';
+                } ?>
+                <?php 
+                if(!empty($this->parentsInformation)){
+                    if ($this->access('parentsInformation.manage')) {
+                        echo '<div class="cms-option parents-information right">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="show-all-parents-information-modal">';
+                                echo '<img src="img/icons/icon-settings.png"><span>Manage information for parents</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    } 
+                }
+                ?>
+                <div class="title-sm">Below is information about your child's learning in primary school.</div>
+                <hr class="orange">
+                <ul>
+                    <?php
+                        if(!empty($this->parentsInformation)){
+                            foreach($this->parentsInformation as $parentsInformation){
+                                if($parentsInformation->getDocName() != null){
+                                    echo '<li><img src="/img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                }
+                                if($parentsInformation->getUrl() != null){
+                                    echo '<li><img src="/img/icons/icon-link.png"><a target="_blank" href="http://'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                }
+                            }
+                        }else{
+                            echo '<div class="no-content parents-left">';
+                                echo '<div class="info-wrapper">';
+                                    echo '<img src="/../img/icons/icon-update-soon.png"/>';
+                                    echo '<span>will come soon ...</span>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+             
+             
+             
+            <div class="book-list-box">
+                <div class="title blue">Booklist <?=$current_season ?></div>
+                <?php 
+                    if ($this->access('bookList.add')) {
+                        echo '<div class="cms-option book-list left">';
+                            echo '<a href="#" class="bs modal-trigger-add-book-list" data-modal="add-book-list-modal" data-authorID="'.$this->currentUser()->getId().'">';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new list of books</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+
+                ?>
+                <ul>
+                    <?php
+                    if(!empty($this->booksList)){
+                        foreach($this->booksList as $bookList){
+                            /*
+                             * checking only if access to this bookList 
+                             * after verification normal access is implemented in modal show-book-list-modal 
+                             */
+                            $access = 0;
+                            $teacher = null;
+                            if ($this->access('bookList.manage') || 
+                                $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
+                                 $access  = 1; 
+                                 $teacher = $bookList->getTeacher()->getId();
+                            }
+                            echo '<li>';
+                                echo '<img src="img/icons/icon-list.png">';
+                                echo '<a href="#" class="bs blue modal-trigger-show-book-list" data-modal="show-book-list-modal" data-bookListID="'.$bookList->getId().'" data-authorID="'.$teacher.'" data-access="'.$access.'">';
+                                    echo '<span>'.$bookList->getLevelAsString().' Booklist - '.$bookList->getTeacher()->getTitleLastName().'</span>';
+                                echo '</a>';
+                            echo '</li>';
+                        }
+                    }else{
+                        echo '<div class="no-content parents-left">';
+                            echo '<div class="info-wrapper">';
+                                echo '<img src="/../img/icons/icon-trumpet.png"/>';
+                                echo '<span>will come soon ...</span>';
+                            echo '</div>';
+                        echo '</div>';    
+                    }
+                    ?>
+                </ul>
+            </div>
+
+             
+        </div>
+    
+        <div class='main-col-right'>
+            
+            <div class="parents-association-box">
+                <div class="title purpure">Parents association</div>
+                <?php if ($this->access('parentsAssoc.manage')) {
+                    echo '<div class="cms-option parents-assoc left">';
+                        echo '<a href="#" class="bs modal-trigger" data-modal="parents-assoc-manage-modal" data-authorID="'.$this->currentUser()->getId().'">';
+                            echo '<img src="img/icons/icon-settings.png"><span>Manage Parents association</span>';
+                        echo '</a>';
+                    echo '</div>';
+                } ?>
+               
+                <ul>
+                    <?php 
+                        foreach($this->parentsAssoc->getParentsAssocTeam() as $parentsAssocMember){                     
+                            echo '<li><img src="/img/icons/icon-arrow-right-fat.png">'.$parentsAssocMember->getFullNameShort().' - '.$parentsAssocMember->getRoleAsString().'</li>';       
+                        }
+                    ?>
+
+                </ul>
+		<div class="title-sm">Upcoming Meeting</div>
+		<hr class="purpure">
+		<div id="parents_association_meeting_date">
+                    <?php 
+                        echo '<img class="pin" src="img/parents/icon-paper-pin.png">';
+                        if($this->parentsAssoc->getDateStatusAsString() === "AUTO"){
+                            echo '<div class="month">'.date("F", strtotime($this->parentsAssoc->getMeetingStatement())).'</div>';
+                            echo '<div class="day">'.date("d", strtotime($this->parentsAssoc->getMeetingStatement())).'</div>';
+                            echo '<div class="time"><img src="img/icons/icon-clock.png"><span class="hour">'.date("h:i A", strtotime($this->parentsAssoc->getMeetingTime())).'</span></div>';
+                        }
+                        if($this->parentsAssoc->getDateStatusAsString() === "MANUAL"){
+                            echo '<div class="month">'.date("F", strtotime($this->parentsAssoc->getDateNextMeeting())).'</div>';
+                            echo '<div class="day">'.date("d", strtotime($this->parentsAssoc->getDateNextMeeting())).'</div>';
+                            echo '<div class="time"><img src="img/icons/icon-clock.png"><span class="hour">'.date("h:i A", strtotime($this->parentsAssoc->getMeetingTime())).'</span></div>';
+                        }
+                    ?> 
+
+		</div>
+		<div class="meeting-location">
+                    <img src="img/icons/icon-info.png">
+                    <span>All Parents Association Meetings will be held in the <b><u><?= $this->parentsAssoc->getLocation() ?></u></b></span>
+		</div>
+            </div>
+            
+            <div class="enrolment-box">
+                <div class="title red">School enrolment</div>
+                <ul>
+                    <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="policies-box">
+                <div class="title burgundy">Policies</div>
+                 <?php 
+                    if ($this->access('policies.manage')) {
+                        echo '<div class="cms-option policies left">';
+                            echo '<a href="#" class="bs modal-trigger-add-policy" data-modal="add-policy-modal">';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new policy</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+
+                ?>
+                <ul>
+                    <?php
+                        if(!empty($this->currentPolicies())){
+                            
+                            foreach($this->currentPolicies() as $policy){
+                                /*
+                                * checking only if access to this policies 
+                                * after verification normal access is implemented in modal show-policy-modal 
+                                */
+                                $access = 0;
+                                if ($this->access('policies.manage')){
+                                     $access  = 1; 
+                                }
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                    echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                        echo '<span>'.$policy->getTitle().'</span>';
+                                    echo '</a>';
+                                echo  '</li>';
+                                
+                            }
+                        }else{
+                            echo '<div class="no-content parents-left">';
+                                echo '<div class="info-wrapper">';
+                                    echo '<img src="/../img/icons/icon-update-soon.png"/>';
+                                    echo '<span>will come soon ...</span>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                    ?>
+<!--                    <li><img src="img/icons/icon-arrow-right.png"><a href="#" class="bs modal-trigger" data-modal="anti-bullying-policy"><span>Anti-Bullying Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/RSE-Policy-update2.pdf" class="bs"><span>RSE Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/Child-Protection-PolicyMay-2012.pdf" class="bs"><span>Child Protection Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/Reconstition_of_Classes-1.pdf" class="bs"><span>Reconstitution of Classes Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/Policy-on-Split-Classes-in-Scoil-Iósaif-Naofa.pdf" class="bs"><span>Splitting Classes Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/enrolment-policy-May-9th2014.pdf" class="bs"><span>Enrollment Policy</span></a></li>
+                    <li><img src="img/icons/icon-arrow-right.png"><a href="resources/pdf/Scoil-Iosaif-Naofa-School-Policy-on-Dyslexia.pdf" class="bs"><span>Dyslexia Policy</span></a></li>-->
+                </ul>
+            </div>
+        
+        </div>				
+
+    </div>
+</section>
+
+
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+<!-- Add Parents Information Modal-->
+<div class="modal" id="add-parents-information-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="parents-information" src="/../img/icons/icon-info.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Parents Information - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addParentsInformationForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class='width-100'>
+                        <label id="addParentsInformationTitleLabel">Information title:</label>
+                        <input type="text" id="addParentsInformationTitle" name="addParentsInformationTitle"/>
+                    </div>
+                    
+                    <div class="width-100">
+                        <label id="addParentsInformationSelectLabel">Select type of information:</label>
+                        <select id="addParentsInformationSelect" name="addParentsInformationSelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">Document (file)</option>
+                            <option value="2">Link to another page</option>
+                        </select>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label id="addParentsInformationDocLabel">Add document:</label>
+                        <input type="file" id="addParentsInformationDoc" name="addParentsInformationDoc">
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label id="addParentsInformationURLLabel">Add link:</label>
+                        <input type="text" id="addParentsInformationURL" name="addParentsInformationURL">
+                    </div>
+
+                    <input type="hidden" id="addParentsInformation_authorID" name="addParentsInformation_authorID" required/>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add new information"><span>Add new information</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Parents Information Modal-->
+
+<!-- Show All Parents Information Modal -->
+<div class="modal" id="show-all-parents-information-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box sm">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Information for parents - list</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            <hr class="burgundy" />
+            
+            
+            <div class="parents-information-table">
+            <?php 
+                foreach($this->parentsInformation as $parentsInformation){
+                            
+                    echo '<div class="parents-information-table-row">';
+                        echo '<div class="parents-information-table-cell icon">';
+                            if($parentsInformation->getDocName() !=null){
+                                echo '<img src="/img/icons/icon-download.png" />';  
+                            }
+                            if($parentsInformation->getUrl() !=null){
+                                echo '<img src="/img/icons/icon-link.png" />';
+                            }
+                        echo '</div>';
+                        echo '<div class="parents-information-table-cell pi-title">';
+                            if($parentsInformation->getDocName() !=null){
+                                echo '<a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange">';                  
+                                    echo '<span>'.$parentsInformation->getTitle().'</span>';
+                                echo '</a>'; 
+                            }
+                            if($parentsInformation->getUrl() !=null){
+                                echo '<a target="_blank" href="http://'.$parentsInformation->getUrl().'" class="bs orange">';
+                                     echo '<span>'.$parentsInformation->getTitle().'</span>';
+                                echo '</a>';
+                            }
+                        echo '</div>';
+                        echo '<div class="parents-information-table-cell edit">';
+                            if ($this->access('parentsInformation.manage')) {
+                                echo '<a href="#" class="tooltip modal-trigger-edit-parents-information" data-modal="edit-parents-information-modal" data-parentsInformationID="'.$parentsInformation->getId().'" data-authorID="'.$this->currentUser()->getId().'" >';
+                                    echo '<button class="btn-admin">';
+                                        echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
+                                    echo '</button>';
+                                    echo '<span class="tooltiptext edit">Edit</span>';
+                                echo '</a>';
+                            }
+                                   
+                        echo '</div>';
+                        echo '<div class="parents-information-table-cell remove">';
+                            if ($this->access('parentsInformation.manage')) {
+                                echo '<a href="#" class="tooltip modal-trigger-delete-parents-information" data-modal="delete-parents-information-modal" data-parentsInformationID="'.$parentsInformation->getId().'" data-parentsInformationTitle="'.$parentsInformation->getTitle().'" >';
+                                    echo '<button class="btn-admin">';
+                                        echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                    echo '</button>';
+                                    echo '<span class="tooltiptext remove">Remove</span>';
+                                echo '</a>';
+                            }
+                                    
+                        echo '</div>';
+                        
+                    echo '</div>';
+         
+                }
+            ?>
+           </div>
+                
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Show All Parents Information Modal -->
+
+<!-- Edit Parents Information Modal-->
+<div class="modal" id="edit-parents-information-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-settings.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Information for parents - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editParentsInformationForm" class="cms" enctype="multipart/form-data">
+                    <input id="editParentsInformationID" name='editParentsInformationID' type="hidden" required>
+                    <input id="editParentsInformationAuthorID" name='editParentsInformationAuthorID' type="hidden" required>
+
+                    <div class='width-100'>
+                        <label id="editParentsInformationTitleLabel">Information title:</label>
+                        <input type="text" id="editParentsInformationTitle" name="editParentsInformationTitle"/>
+                    </div>
+                    
+                    <div class="width-100-block">
+                        <label id="editParentsInformationSelectLabel">Select type of information:</label>
+                        <select id="editParentsInformationSelect" name="editParentsInformationSelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">Document (file)</option>
+                            <option value="2">Link to another page</option>
+                        </select>
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsInformationDocLabel">Add document:</label>
+                        <input type="file" id="editParentsInformationDoc" name="editParentsInformationDoc">
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id='editParentsInformationDocLabel_current'>Current document:</label>
+                        <table id='editParentsInformationDoc_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="/../../img/icons/icon-document.png"></td>
+                                <td class="text" id='editParentsInformationDocTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-doc-edit-parents-information-label">
+                                        <a href="#" class="remove_field_doc" id='remove_field_doc'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <input type="checkbox" class='to_remove' id='edit_parents-information_remove_doc'>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsInformationURLLabel">Add link:</label>
+                        <input type="text" id="editParentsInformationURL" name="editParentsInformationURL">
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id='editParentsInformationUrlLabel_current'>Current link:</label>
+                        <table id='editParentsInformationUrl_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="/../../img/icons/icon-link.png"></td>
+                                <td class="text" id='editParentsInformationUrlTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-textInput-edit-parents-information-label">
+                                        <a href="#" class="remove_field_doc" id='remove_field_textInput'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <input type="checkbox" class='to_remove' id='edit_parents-information_remove_textInput'>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit information"><span>Edit information</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+                   
+        </div>
+    </div>
+</div>
+<!-- end Edit Parents Information Modal-->
+
+<!-- Delete Parents Information Modal -->
+<div class="modal" id="delete-parents-information-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove information for parents</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-pi'>You really want to delete information for parents: <span></span></div>
+                <form id="deleteParentsInformationForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteParentsInformationID" name="deleteParentsInformationID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete Parents Information Modal -->
+
+
+
+<!-- Parents Assoc Manage Modal -->
+<div class="modal" id="parents-assoc-manage-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Parents association - manage</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            
+            <div class='parents-assoc-team'>
+                <div class='header'>Manage members of the Parents Association</div>
+                <hr class="burgundy" />
+                
+                <?php 
+                    if ($this->access('parentsAssoc.manage')) {
+                        echo '<a href="#" class="modal-trigger-add-parents-assoc-member" data-modal="add-parents-assoc-member-modal" data-parentsAssocID="'.$this->parentsAssoc->getId().'">';
+                            echo '<button type="button" class="btn-add-user small btn-green reversed" data-text="Add memeber">';
+                                echo '<span><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Add memeber</span>';
+                            echo '</button>';
+                        echo '</a>';
+                    }
+                ?>
+                
+                <div class="parents-assoc-table">
+                    <?php 
+                    foreach($this->parentsAssoc->getParentsAssocTeam() as $assocMemeber){
+
+                        echo '<div class="parents-assoc-table-row">';
+
+                            echo '<div class="parents-assoc-table-cell icon">';
+                                echo '<img src="/img/icons/icon-arrow-right-fat.png" />';
+                            echo '</div>';
+
+                            echo '<div class="parents-assoc-table-cell pa-title">';
+
+                                         echo '<span>'.$assocMemeber->getFullNameShort().'</span>';
+
+
+                            echo '</div>';
+                            
+                            echo '<div class="parents-assoc-table-cell remove">';
+                                if ($this->access('parentsAssoc.manage')) {
+                                    echo '<a href="#" class="tooltip modal-trigger-delete-parents-assoc-member" data-modal="delete-parents-assoc-member-modal" data-memberID="'.$assocMemeber->getId().'" data-memberName="'.$assocMemeber->getFullNameShort().'" >';
+                                        echo '<button class="btn-admin">';
+                                            echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                        echo '</button>';
+                                        echo '<span class="tooltiptext remove">Remove</span>';
+                                    echo '</a>';
+                                }
+
+                            echo '</div>';
+
+                        echo '</div>';
+
+                    }
+                    ?>
+
+                </div>
+            </div>
+            
+            <div class='parents-assoc-meeting'>
+                <div class='header'>Upcoming Meeting</div>
+                <hr class="burgundy" />
+                
+<!--                <a href="#">
+                    <button type="button" class="btn-add-user small btn-green reversed" data-text="Change meeting details">
+                        <span><i class="fa fa-exchange fa-lg" aria-hidden="true"></i> Change meeting details</span>
+                    </button>
+                </a>-->
+                <?php 
+                    if ($this->access('parentsAssoc.manage')) {
+                        echo '<a href="#" class="modal-trigger-edit-parents-assoc-meeting" data-modal="edit-parents-assoc-meeting-modal" data-parentsAssocID="'.$this->parentsAssoc->getId().'">';
+                            echo '<button type="button" class="btn-add-user small btn-blue reversed" data-text="Change meeting details">';
+                                echo '<span><i class="fa fa-exchange fa-lg" aria-hidden="true"></i> Change meeting details</span>';
+                            echo '</button>';
+                        echo '</a>';
+                    }
+                ?>
+                
+                <div class="parents-assoc-table">
+                    
+                    <div class="parents-assoc-table-row">
+                        <div class="parents-assoc-table-cell icon">
+                            <span>MODE: </span>
+                        </div>
+                        <div class="parents-assoc-table-cell pa-title">
+                            <span>
+                                <?php 
+                                    if($this->parentsAssoc->getDateStatusAsString() === "AUTO"){
+                                        echo '<span>AUTO</span>';
+                                    }else{
+                                        echo '<span>MANUAL</span>';
+                                    }
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="parents-assoc-table-row">
+                        <div class="parents-assoc-table-cell icon">
+                            <img src="/img/icons/icon-calendar.png" />
+                        </div>
+                        <div class="parents-assoc-table-cell pa-title">
+                            <span>
+                                <?php 
+                                    if($this->parentsAssoc->getDateStatusAsString() === "AUTO"){
+                                        echo '<span>'.$this->parentsAssoc->getMeetingStatement().'</span>';
+                                    }else{
+                                        $current_date = date("d M Y");
+                                        $convert_meeting_date = date("d M Y", strtotime($this->parentsAssoc->getDateNextMeeting()));
+                                        if($current_date>= $convert_meeting_date){
+                                            
+                                            echo '<span class="out-off-date">'.$convert_meeting_date.' (needs updating)</span>';
+                                        }else{
+                                            echo '<span>'.$convert_meeting_date.'</span>';
+                                        }
+                                    }
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="parents-assoc-table-row">
+                        <div class="parents-assoc-table-cell icon">
+                            <img src="/img/icons/icon-clock.png" />
+                        </div>
+                        <div class="parents-assoc-table-cell pa-title">
+                            <span>
+                                <?php 
+                                    $convert_time = date("g:i a", strtotime($this->parentsAssoc->getMeetingTime()));
+                                        echo '<span>'.$convert_time.'</span>';
+                                    
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="parents-assoc-table-row">
+                        <div class="parents-assoc-table-cell icon">
+                            <img src="/img/icons/icon-map-location.png" />
+                        </div>
+                        <div class="parents-assoc-table-cell pa-title">
+                            <span>
+                                <?php 
+                                    echo '<span>'.$this->parentsAssoc->getLocation().'</span>';
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+                
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Parents Assoc Manage Modal -->
+
+
+
+<!-- Add Parents Assoc Member Modal-->
+<div class="modal" id="add-parents-assoc-member-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="add-pa-member" src="/../img/icons/icon-add-user.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Add member of Parents association</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addParentsAssocNewMemeberForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class='width-30-left'>
+                        <label id="addParentsAssocNewMemeberTitleLabel">Title:</label>
+                        <select id="addParentsAssocNewMemeberTitleSelect" name="addParentsAssocNewMemeberTitleSelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">Mr.</option>
+                            <option value="2">Mrs.</option>
+                            <option value="3">Ms.</option>
+                        </select>
+                    </div>
+                    
+                    <div class='width-60-right'>
+                        <label id="addParentsAssocNewMemeberRoleLabel">Role in the parents association:</label>
+                        <select id="addParentsAssocNewMemeberRoleSelect" name="addParentsAssocNewMemeberRoleSelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">Chairperson</option>
+                            <option value="2">Vice Chairperson</option>
+                            <option value="3">Secretary</option>
+                            <option value="4">Treasurer</option>
+                        </select>
+                    </div>
+                    
+                    <div class='width-100'></div>
+                    
+                    <div class='width-50-left'>
+                        <label id="addParentsAssocNewMemeberFnameLabel">First name:</label>
+                        <input type="text" id="addParentsAssocNewMemeberFname" name="addParentsAssocNewMemeberFname">
+                    </div>
+                    
+                     <div class='width-50-right'>
+                        <label id="addParentsAssocNewMemeberLnameLabel">Last name:</label>
+                        <input type="text" id="addParentsAssocNewMemeberLname" name="addParentsAssocNewMemeberLname">
+                    </div>
+                    
+                    <input type="hidden" id="addParentsAssocNewMemeber_parentsAssocID" name="addParentsAssocNewMemeber_parentsAssocID" required/>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add memeber"><span>Add memeber</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Parents Assoc Member Modal-->
+
+
+<!-- Delete Parents Assoc Member Modal -->
+<div class="modal" id="delete-parents-assoc-member-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove member</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-pa'>You really want to delete member: <span></span></div>
+                <form id="deleteParentsAssocMemeberForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteParentsAssocMemeberID" name="deleteParentsAssocMemeberID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete Parents Assoc Member Modal -->
+
+
+<!-- Edit Parents Assoc Meeting  Modal-->
+<div class="modal" id="edit-parents-assoc-meeting-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-settings.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Upcoming Meeting - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editParentsAssocMeetingForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="editParentsAssocMeeting_paID" name="editParentsAssocMeeting_paID" required>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsAssocMeetingStatusLabel">Change mode:</label>
+                        <select id="editParentsAssocMeetingStatusSelect" name="editParentsAssocMeetingStatusSelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">AUTO</option>
+                            <option value="2">MANUAL</option>
+                        </select>
+                    </div>
+                    
+                    
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsAssocMeetingStmtSelectLabel">Choose statement for cycle meeting:</label>
+                        <select id="editParentsAssocMeetingStmtSelect" name="editParentsAssocMeetingStmtSelect" class="dropdown"></select>
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsAssocMeetingStmtLabel_current">Cycle meeting (statement):</label>
+                        <table id='editParentsAssocMeetingStmt_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="img/icons/icon-calendar.png"></td>
+                                <td class="text" id='editParentsAssocMeetingStmtTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-textInput-edit-parents-assoc-meeting-stmt-label">
+                                        <a href="#" class="remove_field_doc" id='remove_field_textInput_stmt'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsAssocMeetingDateLabel">Choose next meeting date:</label>
+                        <input type="text" id="editParentsAssocMeetingDate" name="editParentsAssocMeetingDate"  autocomplete="off">
+                    </div>
+                    
+                    <div class='width-100-block'>
+                        <label id="editParentsAssocMeetingDateLabel_current">Next meeting date:</label>
+                        <table id='editParentsAssocMeetingDate_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="img/icons/icon-calendar.png"></td>
+                                <td class="text" id='editParentsAssocMeetingDateTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-textInput-edit-parents-assoc-meeting-date-label">
+                                        <a href="#" class="remove_field_doc" id='remove_field_textInput_date'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class='width-30-left'>
+                        <label id="editParentsAssocMeetingTimeLabel">Meeting time:</label>
+                        <input type="text" id="editParentsAssocMeetingTime" name="editParentsAssocMeetingTime"  autocomplete="off">
+                    </div>
+                    
+                    <div class='width-65-right'>
+                        <label id="editParentsAssocMeetingLocationLabel">Location:</label>
+                        <input type="text" id="editParentsAssocMeetingLocation" name="editParentsAssocMeetingLocation">
+                    </div>
+                    
+                    
+                    
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit information"><span>Edit information</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+                   
+        </div>
+    </div>
+</div>
+<!-- end Edit Parents Assoc Meeting Modal-->
+
+
+
+<!-- Show Book List Information Modal -->
+<div class="modal" id="show-book-list-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="bookList" src="img/icons/icon-list.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Booklist</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body book-list">
+        
+        <label class='response-msg'></label>
+        <div class="loader"></div>
+        
+        <div class="admin-option" id='bookList-delete'>
+            <a href="#" class="tooltip modal-trigger-edit-book-list" data-modal="edit-book-list-modal">
+                <button class="btn-admin"><img src="/../../img/icons/icon-edit-blue.png"></button>
+                <span class="tooltiptext bottom edit">Edit</span>
+            </a>
+            <a href="#" class="tooltip modal-trigger-delete-book-list" data-modal="delete-book-list-modal">
+                <button class="btn-admin"><img class="icon-list" src="/../../img/icons/icon-bin-red.png"></button>
+                <span class="tooltiptext bottom remove">Remove</span>
+            </a>
+        </div>
+        
+        
+        <div class="print-option-top">
+            <a href="#" class="bs option-trigger-printMe-bookList"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+        
+    
+        <div class="modal-text" id='bookListContent'>
+  
+            <div class='title centered' id='showBookListTitle'></div>
+            <div class='book-list-season centered' id='bookListSeason'></div>
+            <hr class="burgundy" />
+            
+            <div class='list-of-books' id="listOfBooks">
+            
+            </div>
+            
+            <div class='list-of-stationary' id="listOfStationary">
+            
+            </div>
+            
+            <div class='additional-monies-info' id="additionalMoniesInfo">
+            
+            </div>
+            
+            <div class='uniform-info' id="uniformInfo">
+            
+            </div>
+            
+            <div class='other-info' id="otherInfo">
+            
+            </div>
+
+        </div> 
+        <div class="print-option-bottom">
+            <a href="#" class="bs option-trigger-printMe-bookList"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Show Book List Information Modal -->
+
+
+
+
+
+<!-- Add Book List Modal-->
+<div class="modal" id="add-book-list-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="parents-information" src="img/icons/icon-list.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Booklist - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addBookListForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <input type="hidden" id="addBookList_authorID" name="addBookList_authorID" required/>
+                    
+                    <div class='width-35-left'>
+                        <label id="addBookListLevelLabel">Choose class level:</label>
+                        <select id="addBookListLevel" name="addBookListLevel" class="dropdown"></select>
+                    </div>
+ 
+                    <div class='width-100'>     
+                        <label class='centered' id='input_fields_wrap_book_label'>List of books</label>
+                        
+                        <div class='input_fields_wrap book-list' id='input_fields_wrap_book' data-last-index='1'>
+                            <table id='books'>
+                                <tr class="book" id='1'>
+                                    <td class="subject">
+                                        <label>Subject:</label>
+                                        <input type="text" id='subject-1' name="addBookSubject" required>
+                                    </td>
+                                    <td class="book-title">
+                                        <label>Title:</label>
+                                        <input type="text" id="title-1" name="addBookTitle" autocomplete="off" required>
+                                    </td>
+                                    <td class="publisher">
+                                        <label>Publisher:</label>
+                                        <input type="text" id="publisher-1" name="addBookPublisher" required>
+                                    </td>
+                                    <td class="option book">
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <div class="btn-modal-box">
+                                <button type='button' id='add_book_button' class="btn-max btn-green reversed" data-text="Add another book">
+                                    <span><i class="fa fa-plus"></i>Add another book</span>
+                                </button>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    
+                    <div class='width-100'>
+                        
+                        <label class='centered' id='input_fields_wrap_stationary_label'>List of stationary</label>
+                        
+                        <div class='input_fields_wrap book-list' id='input_fields_wrap_stationary' data-last-index='1'>
+                            <table id='stationary'>
+                                <tr class="item" id='1'>
+                                    <td class="item-name">
+                                        <label>Item name:</label>
+                                        <input type="text" id='item-name-1' name="addStationaryItemName" required>
+                                    </td>
+                                    <td class="qty">
+                                        <label>Quantity:</label>
+                                        <input type="text" id="qty-1" name="addStationaryQty" autocomplete="off" required>
+                                    </td>
+                                    
+                                    <td class="option stationary">
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <div class="btn-modal-box">
+                                <button type='button' id='add_stationary_button' class="btn-max btn-blue reversed" data-text="Add another item">
+                                    <span><i class="fa fa-plus"></i>Add another item</span>
+                                </button>
+                            </div>
+                        
+                        </div>
+
+                    </div>             
+                
+                    
+                    <label class='centered' id="addAdditionalMoniesLabel">Additional monies</label>
+                    <textarea class='book-list' id="addAdditionalMonies" name="addAdditionalMonies"></textarea>
+                    
+
+                    <label class='centered' id="addUniformLabel">Uniform</label>
+                    <textarea class='book-list' id="addUniform" name="addUniform"></textarea>
+                    
+
+                    <label class='centered' id="addOtherInformationLabel">Other information</label>
+                    <textarea class='book-list' id="addOtherInformation" name="addOtherInformation"></textarea>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add booklist"><span>Add booklist</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Book List Modal-->
+
+
+<!-- Edit Book List Modal-->
+<div class="modal" id="edit-book-list-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="parents-information" src="img/icons/icon-edit.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Booklist - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editBookListForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <input type="hidden" id="editBookList_authorID" name="editBookList_authorID" required/>
+                    <input type="hidden" id="editBookListID" name="editBookListID" required/>
+                    
+                    
+                    <div class='title centered' id='editBookListTitle'></div>
+                    <div class='book-list-season centered' id='editBookListSeason'></div>
+                    <hr class="burgundy" />
+                    
+                    <div class='input_fields_wrap book-list' id="editListOfBooks">
+                        
+                    </div>
+                    <ul class='book_to_remove' id='edit-book-to-remove'></ul>
+                    
+                    <div class='input_fields_wrap book-list' id="editListOfStationary">
+                        
+                    </div>
+                    <ul class='stationary_to_remove' id='edit-stationary-to-remove'></ul>
+                    
+                    <div class='width-100'>
+                        <label class='centered' id="editAdditionalMoniesLabel">Additional monies</label>
+                        <textarea class='book-list' id="editAdditionalMonies" name="editAdditionalMonies"></textarea>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label class='centered' id="editUniformLabel">Uniform</label>
+                        <textarea class='book-list' id="editUniform" name="editUniform"></textarea>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label class='centered' id="editOtherInformationLabel">Other information</label>
+                        <textarea class='book-list' id="editOtherInformation" name="editOtherInformation"></textarea>
+                    </div>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit Booklist"><span>Edit Booklist</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Book List Modal-->
+
+
+
+
+<!-- Delete Book List -->
+<div class="modal" id="delete-book-list-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Booklist</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-book-list'>You really want to delete <span></span></div>
+                <form id="deleteBookListForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteBookListID" name="deleteBookListID" required>
+                    <input type="hidden" id="deleteTeacherID" name="deleteTeacherID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Book List Modal -->
+
+
+<!-- Show Show Policy Modal -->
+<div class="modal" id="show-policy-modal-origin">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="bookList" src="img/logo_burgundy.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Scoil Iósaif Naofa Policy</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body policies">
+        
+        <label class='response-msg'></label>
+        <div class="loader"></div>
+        
+        
+        <div class="admin-option">
+            <a href="#" class="tooltip modal-trigger-edit-policy" data-modal="edit-policy-modal">
+                <button class="btn-admin"><img src="/../../img/icons/icon-edit-blue.png"></button>
+                <span class="tooltiptext bottom edit">Edit</span>
+            </a>
+            <a href="#" class="tooltip modal-trigger-delete-policy" data-modal="delete-policy-modal">
+                <button class="btn-admin"><img class="icon-list" src="/../../img/icons/icon-bin-red.png"></button>
+                <span class="tooltiptext bottom remove">Remove</span>
+            </a>
+        </div>
+        
+        
+        <div class="print-option-top">
+            <a href="#" class="bs option-trigger-printMe-policyOrgin"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+        
+    
+        <div class="modal-text" id='policyContentOrigin'>
+  
+            <div class='title centered' id='showPolicyTitleOrigin'></div>
+            
+            <hr class="burgundy" />
+            
+            <div class='modal-text' id="showPolicyContentOrigin"></div>
+            
+            <hr class="burgundy" />
+
+        </div>
+
+        <div class="print-option-bottom">
+            <a href="#" class="bs option-trigger-printMe-policyOrgin"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Show Policy Modal -->
+
+
+
+<!-- Add Policies Modal -->
+<div class="modal" id="add-policy-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img src="img/logo_burgundy.png" alt="school" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Policy - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addPolicyForm" class="cms"> 
+
+                    <label for="addPolicyTitle">Title:</label>
+                    <input type="text" id="addPolicyTitle" name="addPolicyTitle">
+                    
+                    <label for="addPolicyContent">Policy (text):</label>
+                    <textarea id="addPolicyContent" name="addPolicyContent" rows="20"></textarea>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add policy"><span>Add policy</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+                    
+		</form>
+              
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end ADD Policies Modal -->
+
+<!-- Edit Policy Modal-->
+<div class="modal" id="edit-policy-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="parents-information" src="img/icons/icon-edit.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Policy - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editPolicyForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <input type="hidden" id="editPolicyID" name="editPolicyID" required/>
+                    
+                    <label for="editPolicyTitle">Edit policy title:</label>
+                    <input type="text" id="editPolicyTitle" name="editPolicyTitle"  autocomplete="off">
+                    
+                    <label for="editPolicyContent">Edit policy (text):</label>
+                    <textarea id="editPolicyContent" name="editPolicyContent" rows="20"></textarea>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit policy"><span>Edit policy</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Policy Modal-->
+
+
+<!-- Delete Policy -->
+<div class="modal" id="delete-policy-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Policy</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-policy'>You really want to delete <span></span></div>
+                <form id="deletePolicyForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deletePolicyID" name="deletePolicyID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Policy Modal -->
+
+
+<script type="text/javascript" src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+
+<script src="/js/summernote/summernote-options.js" type="text/javaScript"></script>
+
+<script src="/js/parentsInformation-add.js" type="text/javaScript"></script>
+<script src="/js/parentsInformation-edit.js" type="text/javaScript"></script>
+<script src="/js/parentsInformation-delete.js" type="text/javaScript"></script>
+<script src="/js/parentsAssoc-add-member.js" type="text/javaScript"></script>
+<script src="/js/parentsAssoc-delete-member.js" type="text/javaScript"></script>
+<script src="/js/parentsAssoc-edit-meeting.js" type="text/javaScript"></script>
+<script src="js/date-picker.js" type="text/javaScript"></script>
+<script src="/js/book-list-show-info.js" type="text/javaScript"></script>
+<script src="/js/bookList-add.js" type="text/javaScript"></script>
+<script src="/js/bookList-edit.js" type="text/javaScript"></script>
+<script src="/js/bookList-delete.js" type="text/javaScript"></script>
+<script src="/js/policy-add.js" type="text/javaScript"></script>
+<script src="/js/policy-edit.js" type="text/javaScript"></script>
+<script src="/js/policy-delete.js" type="text/javaScript"></script>
+
+
+
+
+
+
+
+

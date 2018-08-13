@@ -1,0 +1,719 @@
+<?php
+
+$this->headTitle($this->headTitle);
+
+?>
+
+<section class="class-blog">
+    <div class="header header-blog" id="<?= $this->color ?>">
+        <div class="banner">
+            <?php
+                
+                if($this->blog->getPhotoName() === null){
+                    echo '<img id="grey" src="/img/classes/dummy-class-photo.png"/>';    
+                    echo '<img class="icon" src="/img/icons/icon-image-lg.png">';       
+                }else{
+                    echo '<img src="/upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getPhotoName().'" />';
+                }
+            ?>
+	</div>
+	<div class="title reverse">
+            <span id="welcome">Welcome to</span>				
+            <span id="teacher"><?= $this->blog->getTeacher()->getTitleLastName()?></span>
+            <span id="ourClass"><?= $this->blog->getLevelAsString() ?></span>
+            <div class="color-cubes">
+		<div class="single-cube2 wow fadeInRightBig delay-01s"></div>
+		<div class="single-cube4 wow fadeInRightBig delay-02s"></div>
+		<div class="single-cube1 wow fadeInRightBig delay-03s"></div>
+		<div class="single-cube5 wow fadeInRightBig delay-04s"></div>
+		<div class="single-cube6 wow fadeInRightBig delay-05s"></div>
+								
+            </div>  
+            <span id="blog">BloG</span>
+	</div>
+    </div>
+	
+        <?php 
+            if(empty($this->postsList)){
+                echo '<div class="class-blog-box">';
+                    echo '<div class="no-content">'
+                            .'<div class="info-wrapper">'
+                                .'<img src="/../img/icons/icon-robot.png"/>'
+                                .'<span>There are no published posts yet.</span>'
+                            .'</div>';
+
+                    echo '</div>';
+                    if($blog->getLearningSupport() !== null){
+                        if ($this->access('post.add') || 
+                                $this->access('post.own.add', ['user'=>$blog->getTeacher()]) ||
+                                $this->access('post.own.add', ['user'=>$blog->getLearningSupport()])) {
+                            echo '<div class="cms-option post">'
+                                . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'" data-authorID="'.$this->currentUser()->getId().'">'
+                                    . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                . '</a>'
+                            . '</div>';
+                        }
+                    }else{
+                        $learningSupportID = null;
+                        if ($this->access('post.add') || 
+                                $this->access('post.own.add', ['user'=>$blog->getTeacher()])) {
+                            echo '<div class="cms-option post">'
+                                . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'" data-authorID="'.$this->currentUser()->getId().'">'
+                                    . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                . '</a>'
+                            . '</div>';
+                        }
+                    }
+                echo '</div>';
+            }else{
+                
+                echo '<div class="class-blog-box">';
+                    if($blog->getLearningSupport() !== null){
+                        if ($this->access('post.add') || 
+                                $this->access('post.own.add', ['user'=>$blog->getTeacher()]) ||
+                                $this->access('post.own.add', ['user'=>$blog->getLearningSupport()])) {
+                            echo '<div class="cms-option post">'
+                                . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'" data-authorID="'.$this->currentUser()->getId().'">'
+                                    . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                . '</a>'
+                            . '</div>';
+                        }
+                    }else{
+                        $learningSupportID = null;
+                        if ($this->access('post.add') || 
+                                $this->access('post.own.add', ['user'=>$blog->getTeacher()])) {
+                            echo '<div class="cms-option post">'
+                                . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'" data-authorID="'.$this->currentUser()->getId().'">'
+                                    . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                . '</a>'
+                            . '</div>';
+                        }
+                    }
+                    
+                
+                    echo '<div class="table-row">'
+                            .'<div class="col-left first"></div>'
+                            .'<div class="col-right first">'
+                                .'<img class="start-tl" src="/img/icons/icon-circle.png">'
+                                .'<span>Our posts</span>'
+                            .'</div>';
+                    echo '</div>';
+                    echo '<img class="end-tl" src="/img/icons/icon-circle.png">';
+                    echo '<div class="timeline"></div>';
+                
+                $isLeft = false;
+      
+                
+                $countPost = 1;
+                $numberPostOnPage = $this->postsList->getCurrentItemCount();
+                $rowsNumber = null;
+                if($numberPostOnPage % 2 == 0){
+                    $rowsNumber = $numberPostOnPage/2;
+                }else{
+                    $rowsNumber = ($numberPostOnPage+1)/2;
+                }
+//                echo 'Number of rows: '.$rowsNumber.'<br>';
+//                echo 'Number of posts on page: '.$numberPostOnPage;
+                
+                for($row=0; $row<$rowsNumber; $row++ ){
+                    echo '<div class="table-row">';
+                        /*
+                         * LEFT COLUMN
+                         */
+                        echo '<div class="col-left">';
+                            echo '<div class="blog-content">';
+                                $post = $this->postsList->getItem($countPost);
+                                $postGallery = $post->getPostGallery();
+                                if (sizeof($postGallery) > 0) {
+                                    echo '<div class="gallery">';
+                                        for($i = 0; $i < sizeof($postGallery); $i++){
+                                            if($i == 0){
+                                                echo '<div class="first-photo">';
+                                                    echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '</a>';
+                                                echo '</div>';
+                                            }else{
+                                                echo '<div class="hidden">';
+                                                    echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '</a>';
+                                                echo '</div>';
+                                            }
+                                        }     
+                                    echo '</div>';
+                                    
+                                    if($post->getVideoName() !== null){
+                                        echo '<div class="blog-link">';                                          
+                                            echo '<img class="icon-list" src="/../../img/icons/icon-video.png">';
+                                            $video_link = '../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                            echo '<a class="bs '.$this->color.' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                echo '<span class="">see also video</span>';
+                                            echo '</a>';     
+                                        echo '</div>';
+                                    }
+                                }else{
+                                    if($post->getVideoName() !== null){
+                                        echo '<video controls>';
+                                            echo '<source src="../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                        echo '</video>';
+                                    }
+                                }
+                                echo '<div class="blog-title">'.$post->getTitle().'</div>';
+                                echo '<hr class="burgundy">';
+                                echo '<div class="blog-text">'
+                                        .'<p>'.$post->getContent().'</p>';
+                                echo '</div>';
+                                if($post->getDocName() !== null){
+                                    echo '<div class="blog-link">';
+                                        echo '<img class="icon-list" src="/../../img/icons/icon-download.png">';
+                                        echo '<a target="_blank" class="bs '.$this->color.'" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                            echo '<span class="">see attached file</span>';
+                                        echo '</a>';    
+                                    echo '</div>';
+                                }
+                                echo '<div class="blog-date">';
+                                    echo '<img src="/../img/icons/icon-calendar.png">';
+                                    echo '<span>'.date('d F Y',strtotime($post->getDatePublished())).'</span>';
+                                    echo '<img class="blog-poiter" src="/../img/icons/icon-arrow-right.png">';
+                                echo '</div>';
+                                
+                                /*
+                                 * ADMIN OPTIONS (left col)
+                                 */
+                                echo '<div class="admin-option">';
+                                  /*
+                                   * EDIT POST (left col)
+                                   */
+                                    if($blog->getLearningSupport() !== null){
+                                        if ($this->access('post.edit') ||
+                                            $this->access('post.own.edit', ['user'=>$blog->getTeacher()]) ||
+                                            $this->access('post.own.edit', ['user'=>$blog->getLearningSupport()])) {
+
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                    .'<button class="btn-admin">'
+                                                        .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                    .'</button>'
+                                                    .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                . '</a>';
+
+                                        }
+                                    }else{
+                                        //no learning support
+                                        $learningSupportID = null;
+                                        if ($this->access('post.edit') ||
+                                            $this->access('post.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                    .'<button class="btn-admin">'
+                                                        .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                    .'</button>'
+                                                    .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                . '</a>';
+                                                
+                                        }
+                                    }
+                                    /*
+                                    * DELETE POST (left col)
+                                    */
+                                    if($blog->getLearningSupport() !== null){
+                                        if ($this->access('post.delete') ||
+                                                $this->access('post.own.delete', ['user'=>$blog->getTeacher()]) ||
+                                                $this->access('post.own.delete', ['user'=>$blog->getLearningSupport()])) {
+
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                    .'<button class="btn-admin">'
+                                                        .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                    .'</button>'
+                                                    .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                . '</a>';      
+                                        }
+                                    }else{
+                                        //no learning support
+                                        $learningSupportID = null;
+                                        if ($this->access('post.delete') ||
+                                                $this->access('post.own.delete', ['user'=>$blog->getTeacher()])) {
+                                            
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                    .'<button class="btn-admin">'
+                                                        .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                    .'</button>'
+                                                    .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                . '</a>';
+                                            
+                                        }
+                                    }
+                                echo '</div>';
+                                /*
+                                 * end ADMIN OPTIONS (left col)
+                                 */
+                              
+                                $countPost ++;
+                            echo '</div>';
+                        echo '</div>';
+                        /*
+                         * LEFT COLUMN end
+                         */
+                        
+                        
+                        
+                        if($countPost<=$numberPostOnPage){                      
+                            /*
+                             * RIGHT COLUMN
+                             */
+                            echo '<div class="col-right">';
+                                echo '<div class="blog-content">';
+                                    $post = $this->postsList->getItem($countPost);
+                                    $postGallery = $post->getPostGallery();
+                                    if (sizeof($postGallery) > 0) {
+                                        echo '<div class="gallery">';
+                                            for($i = 0; $i < sizeof($postGallery); $i++){
+                                                if($i == 0){
+                                                    echo '<div class="first-photo">';
+                                                        echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+							echo '</a>';
+                                                     echo '</div>';
+                                                }else{
+                                                    echo '<div class="hidden">';
+                                                        echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+							echo '</a>';
+                                                     echo '</div>';
+                                                }
+                                            } 
+                                        echo '</div>';
+                                        
+                                        if($post->getVideoName() !== null){
+                                            echo '<div class="blog-link">';                                          
+                                                echo '<img class="icon-list" src="/../../img/icons/icon-video.png">';
+                                                $video_link = '../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                echo '<a class="bs '.$this->color.' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                    echo '<span class="">see also video</span>';
+                                                echo '</a>';     
+                                            echo '</div>';
+                                        }
+                                        
+                                    }else{
+                                        if($post->getVideoName() !== null){
+                                            echo '<video controls>';
+                                                echo '<source src="../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                            echo '</video>';
+                                        }
+                                    }
+                                    echo '<div class="blog-title">'.$post->getTitle().'</div>';
+                                    echo '<hr class="burgundy">';
+                                    echo '<div class="blog-text">'
+                                            .'<p>'.$post->getContent().'</p>';
+                                    echo '</div>';
+                                    if($post->getDocName() !== null){
+                                        echo '<div class="blog-link">';
+                                            echo '<img class="icon-list" src="/../../img/icons/icon-download.png">';
+                                            echo '<a target="_blank" class="bs '.$this->color.'" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                                echo '<span class="">see attached file</span>';
+                                            echo '</a>';    
+                                        echo '</div>';
+                                    }
+                                    echo '<div class="blog-date">';
+					echo '<img src="/../img/icons/icon-calendar.png">';
+					echo '<span>'.date('d F Y',strtotime($post->getDatePublished())).'</span>';
+					echo '<img class="blog-poiter" src="/../img/icons/icon-arrow-right.png">';
+                                    echo '</div>';
+                                    
+                                    /*
+                                     * ADMIN OPTIONS (right col)
+                                     */
+                                    echo '<div class="admin-option">';
+                                        /*
+                                         * EDIT POST (right col)
+                                         */
+                                        if($blog->getLearningSupport() !== null){
+                                            if ($this->access('post.edit') ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getTeacher()]) ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getLearningSupport()])) {
+
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                    . '</a>';
+
+                                            }
+                                        }else{
+                                            if ($this->access('post.edit') ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                //no learning support
+                                                $learningSupportID = null;
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                    . '</a>';
+                                            }
+                                        }
+                                        
+                                        /*
+                                         * DELETE POST (right col)
+                                         */
+                                        if($blog->getLearningSupport() !== null){
+                                            if ($this->access('post.delete') ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getTeacher()]) ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getLearningSupport()])) {
+
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';      
+                                            }
+                                        }else{
+                                            //no learning support
+                                            $learningSupportID = null;
+                                            if ($this->access('post.delete') ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getTeacher()])) {
+
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';
+
+                                            }
+                                        }
+                                    echo '</div>';
+                                    /*
+                                     * end ADMIN OPTIONS (right col)
+                                     */
+                                    
+                                    $countPost ++;
+                                echo '</div>';
+                            echo '</div>';
+                            /*
+                             * RIGHT COLUMN end
+                             */
+   
+                        }else{
+                            echo '<div class="col-right">';
+//                              blank cell if odd number of posts
+                            echo '</div>';
+                        }
+                    echo '</div>';
+                }				
+                echo '</div>'; // end class-blog-box -->    
+            }        
+        ?>
+    <?php if($this->postsList != null){ ?>
+        <?= 
+             $this->paginationControl(
+                    // The paginator object:
+                    $this->postsList,
+                    // The scrolling style:
+                    'sliding',
+                    // The partial to use to render the control:
+                    'classes/partial/paginator',
+                    // The route to link to when a user clicks a control link:
+                    ['route' => 'classblog', 'id'=> $this->blog->getId(), 'color' => $this->color]);
+         ?>
+    <?php } ?>
+	
+					
+<!--TODO    <div class="archive">
+	<hr class="burgundy">
+	<div class="title"><img src="resources/img/icons/icon-archive.png"/>Archive</div>
+							
+	<div class="seasons-btn-box">
+            <button type="button" class="btn-archive btn-burgundy" data-text="2016/2017"><span>2016/2017</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2015/2016"><span>2015/2016</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2014/2015"><span>2014/2015</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2013/2014"><span>2013/2014</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2012/2013"><span>2012/2013</span></button>
+	</div>
+    </div>-->
+</section>
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+<!-- Add Post Modal-->
+<div class="modal" id="add-post-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news" src="/../img/icons/icon-news.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Post - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addPostForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class='width-100'>
+                        <label for="addPostTitle">Post title:</label>
+                        <input type="text" id="addPostTitle" name="addPostTitle" required />
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label for="addPostContent">Post (text):</label>
+                        <textarea id="addPostContent" name="addPostContent" rows="10"></textarea>
+                    </div>
+                    
+                    <div class='width-50-left'>
+                        <label for="addPostDoc">Add document:</label>
+                        <input type="file" id="addPostDoc" name="addPostDoc">
+                    </div>
+                    
+                    <div class='width-50-right'>
+                        <label for="addPostVideo">Add video:</label>
+                        <input type="file" id="addPostVideo" name="addPostVideo">
+                    </div>
+                    
+                    <div class='width-100'>
+                        <div class="btn-modal-box">
+                            <button type='button' id='add_file_button' class="btn-add-user btn-green reversed" data-text="Add photo(s)"><span>Add photo(s)</span></button>
+                        </div>
+                        <label id='input_fields_wrap_label' for="input_fields_wrap">Selected photo(s):</label>
+                        <div class="input_fields_wrap" id="input_fields_wrap" data-last-index='0'>
+                            
+    <!--                        GALLERY-->
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="addPost_blogID" name="addPost_blogID" required />
+                    <input type="hidden" id="addPost_teacherID" name="addPost_teacherID" required />
+                    <input type="hidden" id="addPost_learningSupportID" name="addPost_learningSupportID"/>
+                    <input type="hidden" id="addPost_authorID" name="addPost_authorID" required/>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add post"><span>Add post</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Post Modal-->
+
+<!-- Edit Post Modal-->
+<div class="modal" id="edit-post-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="/../img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Post - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editPostForm" class="cms" enctype="multipart/form-data">
+                    <input id="editPostID" name='editPostID' type="hidden" required>
+                    <input type="hidden" id="editPost_teacherID" name="editPost_teacherID" required />
+                    <input type="hidden" id="editPost_learningSupportID" name="editPost_learningSupportID"/>
+                    <input type="hidden" id="editPost_authorID" name="editPost_authorID" required/>
+                    
+                    <label for="editPostTitle">Post title</label>
+                    <input type="text" id="editPostTitle" name="editPostTitle" required>
+                    
+                    <label for="editPostContent">Post (text):</label>
+                    <textarea id="editPostContent" name="editPostContent" rows="10"></textarea>
+
+                    
+                    
+                    
+                    <div class='width-50-left'>
+                        <label id='editPostDocLabel'>Add document:</label>
+                        <input type="file" id="editPostDoc" name="editPostDoc">
+                    </div>
+                    <div class='width-50-left'>
+                        <label id='editPostDocLabel_current'>Current document:</label>
+                        <table id='editPostDoc_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="/../../img/icons/icon-document.png"></td>
+                                <td class="text" id='editPostDocTitle'></td>
+                                <td class="option">
+                                    <label class="preview-doc-label" id="preview-doc-edit-post-label">
+                                        <a href="#" class="remove_field_doc" id='remove_field_doc'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                   <input type="checkbox" class='to_remove' id='edit_post_remove_doc'>
+                    
+                    
+                    
+                    <div class='width-50-right'>
+                        <label id='editPostVideoLabel'>Add video:</label>
+                        <input type="file" id="editPostVideo" name="editPostVideo">
+                    </div>
+                    <div class='width-50-right'>
+                        <label id='editPostVideoLabel_current'>Current video:</label>
+                        <table id='editPostVideo_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="/../../img/icons/icon-video.png"></td>
+                                <td class="text" id='editPostVideoTitle'></td>
+                                <td class="option">
+                                    <label class="preview-video-label" id="preview-video-edit-post-label">
+                                        <a href="#" class="remove_field_video" id='remove_field_video'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                   <input type="checkbox" class='to_remove' id='edit_post_remove_video'>
+                    
+                    
+                    
+                    
+                    
+                    <div class='width-100'>
+                        <label for="current_gallery_wrap" id="current_gallery_wrap_label">Current gallery:</label>
+                        <div class="current_gallery_wrap" id="current_gallery_wrap">
+    <!--                       CURRENT GALLERY-->                       
+                        </div>
+
+                        <ul class="to_remove" id="picture_to_remove_from_post">
+    <!--                       list of current picture removed-->
+                        </ul>
+
+                        <div class="btn-modal-box">
+                            <button id='add-photo-gallery-button-edit' class="btn-add-user btn-burgundy reversed" data-text="Add some photo(s)"><span>Add some photo(s)</span></button>
+                        </div>
+                        
+                        <label id="input_fields_wrap_edit_label">Selected photos:</label>
+                        <div class="input_fields_wrap" id="input_fields_wrap_edit">
+                            
+    <!--                        ADDED PHOTO GALLERY-->
+                        </div>
+                    </div>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit news"><span>Edit news</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+                   
+        </div>
+    </div>
+</div>
+<!-- end Edit Post Modal-->
+
+<!-- Delete Post Modal -->
+<div class="modal" id="delete-post-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Post</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-post'>You really want to delete post: <span></span></div>
+                <form id="deletePostForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deletePostID" name="deletePostID" required>
+                    <input type="hidden" id="deleteTeacherID" name="deleteTeacherID" required>
+                    <input type="hidden" id="deleteLearningSupportID" name="deleteLearningSupportID">
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete post Modal -->
+
+<!-- Show Video Modal-->
+<div class="modal" id="show-video-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg video">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
+            <div class="modal-title">
+                    <span></span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <video controls id='post-video'></video>        
+        </div>
+    </div>
+</div>
+<!-- end Show Video Modal-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    
+    baguetteBox.run('.blog-content .gallery');
+
+</script>
+
+
+<script src="/js/post-add.js" type="text/javaScript"></script>
+<script src="/js/post-edit.js" type="text/javaScript"></script>
+<script src="/js/post-delete.js" type="text/javaScript"></script>
+<script src="/js/show-video.js" type="text/javaScript"></script>

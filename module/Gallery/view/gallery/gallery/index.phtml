@@ -1,0 +1,595 @@
+<?php
+
+/*
+ *  Gallery - index
+ */
+
+$current_season = $this->layout()->currenSeason->getSeasonName();
+$this->headTitle($this->headTitle.' '.$current_season);
+
+?>
+
+<section class="gallery">
+    
+    <div class="header">
+	<div class="baner"><img src="/img/gallery/banner.svg" /></div>
+        <div class="header-title"><?= $this->headTitle ?> <span><?=$current_season ?></span></div>
+        <div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube2 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    
+    <div class="gallery-box">
+            
+            <?php
+
+                if(empty(($this->galleryList))){
+                    echo '<div class="no-content">';
+                        echo '<div class="info-wrapper">';
+                            echo '<img src="img/icons/icon-photo-camera.png"/>';
+                            echo '<span>There is no gallery yet.</span>';
+                        echo '</div>';
+                        
+                        if($this->access('gallery.add')){
+                            echo '<div class="cms-option gallery_add">';
+                                echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
+                                    echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                                echo '</a>';
+                            echo '</div>';
+                        }
+                        
+                    echo '</div>';   
+                    
+                    
+                }else{
+                    $countPost = 1;
+                    $numberPostOnPage = $this->galleryList->getCurrentItemCount();
+                    $rowsNumber = null;
+                    if($numberPostOnPage % 2 == 0){
+                        $rowsNumber = $numberPostOnPage/2;
+                    }else{
+                        $rowsNumber = ($numberPostOnPage+1)/2;
+                    }
+                    for($row=0; $row<$rowsNumber; $row++ ){
+                        if($row===0){
+                            echo '<div class="table-row first">';
+                                if($this->access('gallery.add')){
+                                    echo '<div class="cms-option gallery_add">';
+                                        echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
+                                            echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                                        echo '</a>';
+                                    echo '</div>';
+                                }
+                               
+                            echo '</div>';
+                        }
+                        echo '<div class="table-row">';
+                            /*
+                             * LEFT COLUMN
+                             */
+                            if($countPost<$numberPostOnPage){
+                            echo '<div class="col-left">';
+                                echo '<div class="gallery-left">';
+                                    $post = $this->galleryList->getItem($countPost+1);
+                                    $postGallery = $post->getPostGallery();
+                                    $type = null;
+                                        $reflect = new ReflectionClass($post);
+                                        if($reflect->getShortName() === 'GalleryPost'){
+                                            $type = 'gallery';
+                                        }
+                                        if($reflect->getShortName() === 'ClassPost'){
+                                            $type = 'classes';
+                                        }
+
+                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'/'.($countPost+1).'</div>';
+                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
+                                    
+                                    
+                                    echo '<div class="gallery">';
+                                        if(sizeof($postGallery) > 0){
+                                            $countPhoto = 1;                // first photo from post gallery
+                                            
+                                            foreach($postGallery as $photo){
+                                                if($countPhoto === 1){
+                                                    echo '<div class="first-photo">';
+                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '</a>';
+                                                    echo '</div>';  
+                                                }else{
+                                                    echo '<div class="hidden">';
+                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '</a>';
+                                                    echo '</div>';
+                                                }
+                                                $countPhoto ++;
+                                            }
+                                            if($post->getVideoName() !== null){
+                                                echo '<div class="blog-link">';                                          
+                                                    echo '<img class="icon-list" src="/../../img/icons/icon-video.png">';
+                                                    $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                    echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                        echo '<span class="">see also video</span>';
+                                                    echo '</a>';     
+                                                 echo '</div>';
+                                            }
+                                            echo '<div class="gallery-content">'.$post->getContent().'</div>';
+                        
+                                        }else{
+                                            echo '<video controls>';
+                                                echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                            echo '</video>';
+                                            echo '<div class="gallery-content">'.$post->getContent().'</div>';
+                                        }                    
+                                        /*
+                                        * ADMIN OPTIONS (left col)
+                                        */
+                                        if($type === 'gallery'){
+                                            echo '<div class="admin-option">';
+                                                /*
+                                                * EDIT GALLERY (left col)
+                                                */
+                                                if ($this->access('gallery.edit')) {
+
+                                                    echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom edit">Edit</span>';
+                                                    echo '</a>';
+                                                }
+                                                /*
+                                                * DELETE GALLERY (left col)
+                                                */
+                                                if ($this->access('gallery.delete')) {
+                                                    echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom remove">Remove</span>';
+                                                    echo '</a>';      
+                                                }
+                                            echo '</div>';
+                                        }
+                                        if($type === 'classes'){
+                                            if ($this->access('gallery.edit')) {
+                                                echo '<a href="/classblog/index/'.$post->getBlog()->getId().'/orange/">edit/delete possible in the place where post was created</a>';
+                                            }
+                                        }
+                                        //add schoollife
+                                        /*
+                                        * end ADMIN OPTIONS (left col)
+                                        */          
+                                    echo '</div>';
+                                    
+                                    $countPost ++;
+                                echo '</div>';
+                            echo '</div>';
+                            }else{
+                                echo '<div class="col-right">';
+                                  //blank cell if odd number of posts
+                                $countPost ++;
+                                echo '</div>';
+                            }
+
+                                
+                            /*
+                             * RIGHT COLUMN
+                             */
+                            echo '<div class="col-right">';
+                                echo '<div class="gallery-right">';
+                                    $post = $this->galleryList->getItem($countPost-1);
+                                    $postGallery = $post->getPostGallery();
+                                    $type = null;
+                                        $reflect = new ReflectionClass($post);
+                                        if($reflect->getShortName() === 'GalleryPost'){
+                                            $type = 'gallery';
+                                        }
+                                        if($reflect->getShortName() === 'ClassPost'){
+                                            $type = 'classes';
+                                        }
+                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'/'.($countPost-1).'</div>';
+                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';                              
+                                    
+                                    echo '<div class="gallery">';
+                                        if(sizeof($postGallery) > 0){
+                                            $countPhoto = 1;                // first photo from post gallery
+                                            foreach($postGallery as $photo){
+                                                if($countPhoto === 1){
+                                                    echo '<div class="first-photo">';
+                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '</a>';
+                                                    echo '</div>';  
+                                                }else{    
+                                                    echo '<div class="hidden">';
+                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '</a>';
+                                                    echo '</div>';
+                                                }
+                                                $countPhoto ++;
+                                            }
+                                            
+                                            if($post->getVideoName() !== null){
+                                                echo '<div class="blog-link">';                                          
+                                                    echo '<img class="icon-list" src="/../../img/icons/icon-video.png">';
+                                                    $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                    echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                        echo '<span class="">see also video</span>';
+                                                    echo '</a>';     
+                                                 echo '</div>';
+                                            }
+                                            
+                                            echo '<div class="gallery-content">'.$post->getContent().'</div>';
+     
+                                        }else{
+                                            echo '<video controls>';
+                                                echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                            echo '</video>';
+                                            echo '<div class="gallery-content">'.$post->getContent().'</div>';
+                                        }
+                                        /*
+                                        * ADMIN OPTIONS (left col)
+                                        */
+                                        if($type === 'gallery'){
+                                            echo '<div class="admin-option">';
+                                                /*
+                                                * EDIT GALLERY (left col)
+                                                */
+                                                if ($this->access('gallery.edit')) {
+
+                                                    echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom edit">Edit</span>';
+                                                    echo '</a>';
+                                                }
+                                                /*
+                                                * DELETE GALLERY (left col)
+                                                */
+                                                if ($this->access('gallery.delete')) {
+                                                    echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom remove">Remove</span>';
+                                                    echo '</a>';      
+                                                }
+                                            echo '</div>';
+                                        }
+                                        if($type === 'classes'){
+                                            if ($this->access('gallery.edit')) {
+                                                echo '<a href="/classblog/index/'.$post->getBlog()->getId().'/orange/">edit/delete possible in the place where post was created</a>';
+                                            }
+                                        }
+                                        //add schoollife
+                                        /*
+                                        * end ADMIN OPTIONS (left col)
+                                        */ 
+                                        
+                                    echo '</div>';
+                                    
+                                    
+                                    $countPost ++;
+                                echo '</div>';
+                            echo '</div>';
+                            
+                        echo '</div>';
+                    }
+                    
+
+                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                   
+                    
+                    
+                    
+                    
+                    
+                }
+                
+            ?>
+            
+        </div>
+    
+        <?php if($this->galleryList != null){ ?>
+            <?= 
+                 $this->paginationControl(
+                        // The paginator object:
+                        $this->galleryList,
+                        // The scrolling style:
+                        'sliding',
+                        // The partial to use to render the control:
+                        'gallery/partial/paginator',
+                        // The route to link to when a user clicks a control link:
+                        ['route' => 'gallery', 'id'=> $this->blog->getId()]);
+             ?>
+        <?php } ?>
+    
+<!--TODO    <div class="archive">
+	<hr class="burgundy">
+	<div class="title"><img src="resources/img/icons/icon-archive.png"/>Archive</div>
+							
+	<div class="seasons-btn-box">
+            <button type="button" class="btn-archive btn-burgundy" data-text="2016/2017"><span>2016/2017</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2015/2016"><span>2015/2016</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2014/2015"><span>2014/2015</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2013/2014"><span>2013/2014</span></button>
+            <button type="button" class="btn-archive btn-burgundy" data-text="2012/2013"><span>2012/2013</span></button>
+	</div>
+    </div>-->
+    
+</section>
+
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+<!-- Add Gallery Modal-->
+<div class="modal" id="add-gallery-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="gallery" src="/../img/icons/icon-photo-camera.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Gallery - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addGalleryForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class='width-60-left'>
+                        <label for="addGalleryTitle">Gallery title:</label>
+                        <input type="text" id="addGalleryTitle" name="addGalleryTitle" required />
+                    </div>
+                    
+                    <div class='width-30-right'>
+                        <label for="addGalleryVideo">Add video:</label>
+                        <input type="file" id="addGalleryVideo" name="addGalleryVideo">
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label for="addGalleryContent">Gallery description (text):</label>
+                        <textarea id="addGalleryContent" name="addGalleryContent" rows="10"></textarea>
+                    </div>
+                    
+                    
+                    
+                    <div class='width-100'>
+                        <div class="btn-modal-box">
+                            <button type='button' id='add_file_button' class="btn-add-user btn-green reversed" data-text="Add photo(s)"><span>Add photo(s)</span></button>
+                        </div>
+                        <label id='input_fields_wrap_label' for="input_fields_wrap">Selected photo(s):</label>
+                        <div class="input_fields_wrap" id="input_fields_wrap" data-last-index='0'>
+                            
+    <!--                        GALLERY-->
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="addGallery_blogID" name="addGalleryPost_blogID" required />
+                    <input type="hidden" id="addGallery_authorID" name="addGalleryPost_authorID" required/>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add gallery"><span>Add gallery</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Gallery Modal-->
+
+<!-- Edit Gallery Modal-->
+<div class="modal" id="edit-gallery-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="/../img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Gallery - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editGalleryForm" class="cms" enctype="multipart/form-data">
+                    <input id="editGalleryID" name='editGalleryID' type="hidden" required>
+                    <input id="editGalleryAuthorID" name='editGalleryAuthorID' type="hidden" required>
+
+                    <div class='width-60-left'>
+                        <label for="editGalleryTitle">Gallery title</label>
+                        <input type="text" id="editGalleryTitle" name="editGalleryTitle" required>
+                    </div>
+                    
+                    <div class='width-35-right'>
+                        <label id='editGalleryVideoLabel'>Add video:</label>
+                        <input type="file" id="editGalleryVideo" name="editGalleryVideo">
+                    </div>
+                    <div class='width-35-right'>
+                        <label id='editGalleryVideoLabel_current'>Current video:</label>
+                        <table id='editGalleryVideo_current'>
+                            <tr>
+                                <td class="icon"><img class="icon" src="/../../img/icons/icon-video.png"></td>
+                                <td class="text" id='editGalleryVideoTitle'></td>
+                                <td class="option">
+                                    <label class="preview-video-label" id="preview-video-edit-gallery-label">
+                                        <a href="#" class="remove_field_video" id='remove_field_video'>X</a>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <input type="checkbox" class='to_remove' id='edit_gallery_remove_video'>
+                    
+                    <div class='width-100'>
+                        <label for="editGalleryContent">Gallery description (text):</label>
+                        <textarea id="editGalleryContent" name="editGalleryContent" rows="10"></textarea>
+                    </div>
+
+
+                    <div class='width-100'>
+                        <label for="current_gallery_wrap" id="current_gallery_wrap_label">Current gallery:</label>
+                        <div class="current_gallery_wrap" id="current_gallery_wrap">
+    <!--                       CURRENT GALLERY-->                       
+                        </div>
+
+                        <ul class="to_remove" id="picture_to_remove_from_gallery">
+    <!--                       list of current picture removed-->
+                        </ul>
+
+                        <div class="btn-modal-box">
+                            <button id='add-photo-gallery-button-edit' class="btn-add-user btn-burgundy reversed" data-text="Add some photo(s)"><span>Add some photo(s)</span></button>
+                        </div>
+                        
+                        <label id="input_fields_wrap_edit_label">Selected photos:</label>
+                        <div class="input_fields_wrap" id="input_fields_wrap_edit">
+                            
+    <!--                        ADDED PHOTO GALLERY-->
+                        </div>
+                    </div>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit gallery"><span>Edit gallery</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+                   
+        </div>
+    </div>
+</div>
+<!-- end Edit Gallery Modal-->
+
+<!-- Delete galleryPost Modal -->
+<div class="modal" id="delete-gallery-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove gallery</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-gallery'>You really want to delete gallery: <span></span></div>
+                <form id="deleteGalleryForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteGalleryID" name="deletePostID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete galleryPost Modal -->
+
+<!-- Show Video Modal-->
+<div class="modal" id="show-video-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg video">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
+            <div class="modal-title">
+                    <span></span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <video controls id='post-video'></video>        
+        </div>
+    </div>
+</div>
+<!-- end Show Video Modal-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    
+    baguetteBox.run('.gallery-left .gallery');
+    baguetteBox.run('.gallery-right .gallery');
+
+</script>
+
+<script src="/js/gallery-add.js" type="text/javaScript"></script>
+<script src="/js/gallery-edit.js" type="text/javaScript"></script>
+<script src="/js/gallery-delete.js" type="text/javaScript"></script>
+<script src="/js/show-video.js" type="text/javaScript"></script>
+

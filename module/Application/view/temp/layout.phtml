@@ -1,0 +1,152 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('ZEND Scoil Iósaif Naofa - ORANMORE BOYS NS')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans|Reenie+Beanie|Roboto" rel="stylesheet">
+        
+        <!-- Le styles -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/logo.png'])
+            ->prependStylesheet($this->basePath('css/boy_school3.css'))
+            ->prependStylesheet($this->basePath('css/animate.css'))
+        ?>
+
+        <!-- Scripts -->
+        <script src="https://use.fontawesome.com/0473802ec1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+        
+    </head>
+    <body>
+        
+        <!-- NAVIGATION -->
+	<div id="navigation">
+            <nav>
+                <!-- close button -->
+		<div class="close-nav"></div>
+		<a href="<?= $this->url('home') ?>"><button type="button" class="btn-menu btn-red active" data-text="Home"><span>Home</span></button></a>
+		<a href="classes.php"><button class="btn-menu btn-purpure" data-text="Classes"><span>Classes</span></button></a>
+		<button class="btn-menu btn-blue" data-text="School Life"><span>School Life</span></button>
+		<a href="gallery.php"><button class="btn-menu btn-orange" data-text="Gallery"><span>Gallery</span></button></a>
+		<a href="#"><button class="btn-menu btn-green" data-text="Our Team"><span>Our Team</span></button></a> 
+		<a href="parents.php"><button class="btn-menu btn-yellow" data-text="Parents"><span>Parents</span></button></a> 
+		<a href="contact.php"><button type="button" class="btn-menu btn-brown" data-text="Contact"><span>Contact</span></button></a>
+            </nav>
+	</div>
+        
+        <div id="main-content">
+            <div id="content-front">	
+                <!-- side menu button -->	
+                <div class="hamburger">
+                    <span class="lines"></span>
+                </div>  		
+                <div id="container">
+                    <!-- SECTION HEADER -->
+                    <section class="welcome">
+    			<div class="header">
+                            <img class="main-logo" src="/../img/logo_burgundy.png">     					
+                            <div class="school-name">
+    				<div class="lg-name">Scoil Iósaif Naofa</div>
+    				<div class="sm-name">Oranmore Boys NS</div>
+                            </div>
+<!--                            temp possition-->
+                                <p>
+                                    <a href="<?= $this->url('user', ['action' => 'users']) ?>">Users</a> ||
+                                
+<!--                                    <a href="<?= $this->url('user', ['action' => 'resetPassword']) ?>">Reset pass</a>-->
+                                    <a href="/reset-password">Reset pass</a> ||
+                                
+                                    <a href="/login">Login</a> ||
+                               
+                                    <a href="/logout">Logout</a>
+                                </p>
+                                
+    			</div>
+    			<div class="contact">
+                            <div class="address">
+    				<i class="fa fa-home space-5" aria-hidden="true"></i>&nbsp;
+    				Scoil Iósaif Naofa, Maree Rd, Oranmore
+                            </div>
+                            <div class="mail">
+                                <i class="fa fa-envelope-o space-5" aria-hidden="true"></i>&nbsp;
+                                info@oranmoreboysns.ie
+                            </div>
+                            <div class="phone">
+    				<i class="fa fa-phone space-5" aria-hidden="true"></i>&nbsp;
+    				091-790312
+                            </div>
+                            <div class="social-media">
+    				<button type="button" class="btn-facebook-joinUs btn-fcb-blue" data-text="Join us">
+                                    <span><i class="fa fa-facebook faa-tada animated"></i> Join us</span>
+    				</button>
+                            </div>
+    			</div>
+                    </section>
+                    <?= $this->content ?>
+                    
+                    <!-- FOOTER SECTION -->
+                    <section class="footer">
+                        <div class="footer-menu">
+                            <div class="footer-menu-header">Menu</div>
+                            <ul>
+                                <li><a href="#" data-modal="about-us" class="modal-trigger bs grey small">About us</a></li>		
+                                <li><a href="classes.php" class="bs grey small">Classes</a></li>
+                                <li><a href="#" class="bs grey small">School Life</a></li>
+                                <li><a href="gallery.php" class="bs grey small">Gallery</a></li>
+                                <li><a href="our_team.php" class="bs grey small">Our Team</a></li>
+                                <li><a href="parents.php" class="bs grey small">Parents</a></li>
+                                <li><a href="contact.php" class="bs grey small">Contact</a></li>	
+                            </ul>
+                        </div>
+                        <div class="footer-policies">
+                            <div class="footer-policies-header">Policies</div>
+                            <ul>
+      				<li><a href="#" class="bs grey small modal-trigger" data-modal="anti-bullying-policy"><span>Anti-Bullying Policy</span></a></li>
+				<li><a href="resources/pdf/RSE-Policy-update2.pdf" class="bs grey small"><span>RSE Policy</span></a></li>
+				<li><a href="resources/pdf/Child-Protection-PolicyMay-2012.pdf" class="bs grey small"><span>Child Protection Policy</span></a></li>
+				<li><a href="resources/pdf/Reconstition_of_Classes-1.pdf" class="bs grey small"><span>Reconstitution of Classes Policy</span></a></li>
+				<li><a href="resources/pdf/Policy-on-Split-Classes-in-Scoil-Iósaif-Naofa.pdf" class="bs grey small"><span>Splitting Classes Policy</span></a></li>
+				<li><a href="resources/pdf/enrolment-policy-May-9th2014.pdf" class="bs grey small"><span>Enrollment Policy</span></a></li>
+				<li><a href="resources/pdf/Scoil-Iosaif-Naofa-School-Policy-on-Dyslexia.pdf" class="bs grey small"><span>Dyslexia Policy</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-address">
+                            <div class="footer-address-header">Address</div>
+                                <ul>
+                                    <li><i class="fa fa-home space-15" aria-hidden="true"></i>Scoil Iósaif Naofa - Oranmore Boys National School<br><span>Maree Road, Oranmore, Co.Galway, Rep. of Ireland</span></li>
+                                    <li><i class="fa fa-envelope-o space-15" aria-hidden="true"></i>info@oranmoreboysns.ie</li>
+                                    <li><i class="fa fa-phone space-15" aria-hidden="true"></i>091 790312</li>
+                                </ul>	
+                        </div>
+                        <div class="copy">&copy; Copyright 2017 Scoil Iósaif Naofa - Oranmore Boys National School</div>
+                    </section>		
+    		</div><!-- end container -->
+            </div> <!-- end content-front -->
+	</div> <!-- end main-content -->
+        
+        
+        <?= $this->inlineScript()->prependFile($this->basePath('js/menu.js'))
+                                 ->prependFile($this->basePath('js/modal.js'))
+                                 ->prependFile($this->basePath('js/wow.js'));
+         ?>
+        
+        <script>
+            wow = new WOW({
+                animateClass: 'animated',
+                offset:       100
+            });
+            wow.init();
+        </script>
+    </body>
+</html>

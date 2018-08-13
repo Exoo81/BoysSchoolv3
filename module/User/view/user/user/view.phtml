@@ -1,0 +1,72 @@
+<?php
+$this->headLink()->appendStylesheet('/css/admin.css'); 
+$this->headTitle($this->title);
+?>
+
+<section class="admin">
+    <div class="header">
+        <div class="header-title reverse"><i class="fa fa-user-circle" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    
+    
+    <div class="admin-box">
+        <div class='user-details-wrapper'>
+            <a href=" <?= $this->url('user', ['action'=>'users']); ?>">
+                <button type="button" class="btn-admin-nav btn-burgundy reversed" data-text="Back to users list">
+                    <span><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to users list</span>
+                </button>
+            </a>
+        </div>
+        <div class='user-details-wrapper'>
+            
+            <ul>
+                <li><span>ID:</span><?= $user->getId() ?></li>
+                <li><span>Email:</span><?= $user->getEmail() ?></li>
+                <li><span>Name:</span><?= $user->getFullName() ?></li>
+                <li><span>Status:</span>
+                    <?php if( $user->getStatus() == 1 ): ?>
+                        ACTIVE
+                    <?php else: ?>
+                        INACTIVE
+                    <?php endif; ?>
+                </li>
+                <li><span>Roles:</span><?= $user->getRolesAsString() ?></li>
+                <li><span>Password:</span><?= $user->getPassword() ?></li>
+                <li><span>User was created:</span><?= $user->getDateCreated() ?></li>
+                <li><span>Reset Password Token:</span><?= $user->getResetPasswordToken() ?></li>
+                <li><span>Password Reset Token Creation Date:</span><?= $user->getPasswordResetTokenCreationDate() ?></li>
+            </ul>
+            
+        </div>
+<!--if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.admin')) {-->
+        <?php if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.edit')) {
+            echo '<div class="user-details-wrapper">'
+                    . '<a href="'.$this->url('user', ['action'=>'edit', 'id'=>$user->getId()]).'">'
+                        . '<button type="button" class="btn-add-user btn-blue reversed" data-text="Edit user">'
+                            . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
+                        . '</button>'
+                    . '</a>'
+                . '</div>';
+        
+        } ?>
+<!--                <div class="user-details-wrapper">
+                    <a href="<?= $this->url('user', ['action'=>'edit', 'id'=>$user->getId()]) ?>">
+                        <button type="button" class="btn-add-user btn-blue reversed" data-text="Edit user">
+                            <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>
+                        </button>
+                    </a>
+                </div>-->
+
+    </div>
+    
+</section>
+
+

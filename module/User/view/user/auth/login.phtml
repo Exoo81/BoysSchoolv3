@@ -1,0 +1,89 @@
+<?php
+$this->headLink()->appendStylesheet('css/admin.css'); 
+$this->headTitle($this->title);
+
+//$form->setAttributes(['class'=>'cms']);
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control', 
+    'autofocus' => true
+    ])
+    ->setLabelAttributes([
+//        'class' => 'sr-only'
+    ]);
+$form->get('password')->setAttributes([
+    'class'=>'form-control', 
+    ])
+    ->setLabelAttributes([
+//        'class' => 'sr-only'
+    ]);
+
+
+
+?>
+
+
+<section class="admin">
+    
+    <div class="header">
+        <div class="header-title reverse"><i class="fa fa-unlock" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    
+    
+    <div class='admin-box'>
+        <div class='form-wrapper'>
+            <span>
+                Please sign in
+            </span>
+        </div>
+        <div class='form-wrapper'>
+            <span>
+                <?= $message ?>
+            </span>
+        </div>
+        
+        <div class='form-wrapper'>
+            <form class="cms" method="post">
+                <?php if ($isLoginError): ?>
+                    <div class="alert alert-warning" role="alert">
+                        Incorrect login and/or password. 
+                        <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
+                    </div>
+                <?php endif; ?>
+            
+                <?= $this->formLabel($form->get('email')); ?>
+                <?= $this->formElement($form->get('email')); ?>
+            
+                <?= $this->formLabel($form->get('password')); ?>
+                <?= $this->formElement($form->get('password')); ?>
+            
+                <div class="checkbox">
+                    <label>
+                        <?= $this->formElement($form->get('remember_me')); ?> Remember me
+                    </label>
+                </div>
+                
+                <?= $this->formElement($form->get('redirect_url')); ?>
+                <?= $this->formElement($form->get('csrf')) ?>
+                
+                
+                <button type="submit" class="btn-about-us btn-burgundy" data-text="Log in">
+                    <span><i class="fa fa-lock faa-tada animated"></i> Log in</span>
+                </button>
+                
+                
+                
+            </form>
+        </div>
+        
+    </div>
+</section>
+

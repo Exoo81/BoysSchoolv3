@@ -1,0 +1,270 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        
+        <?= $this->headTitle('ZScoil Iósaif Naofa - ORANMORE BOYS NS')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendName('keywords', 'SCOIL IÓSAIF NAOFA, School, Boys school, Oranmore Boys NS, ')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendHttpEquiv('Content-Type',
+                                   'text/html; charset=UTF-8')    
+        ?>
+
+        <!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans|Reenie+Beanie|Roboto" rel="stylesheet">
+        
+        <!-- summernote-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+        
+        <!-- Le styles -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
+        
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/logo.png'])
+            ->prependStylesheet($this->basePath('css/boy_school3.css'))
+            ->prependStylesheet($this->basePath('css/jquery-ui.css'))
+            ->prependStylesheet($this->basePath('css/animate.css'))
+        ?>
+
+        <!-- Scripts -->
+        <script src="https://use.fontawesome.com/0473802ec1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+        
+        
+        
+      
+        
+    </head>
+    <body>
+        
+        <!-- NAVIGATION -->
+	<div id="navigation">
+            <nav>
+                <!-- close button -->
+		<div class="close-nav"></div>
+		<a href="<?= $this->url('home') ?>"><button type="button" class="btn-menu btn-red active" data-text="Home"><span>Home</span></button></a>
+		<a href="<?= $this->url('classes') ?>"><button class="btn-menu btn-purpure" data-text="Classes"><span>Classes</span></button></a>
+		<button class="btn-menu btn-blue" data-text="School Life"><span>School Life</span></button>
+		<a href="<?= $this->url('gallery') ?>"><button class="btn-menu btn-orange" data-text="Gallery"><span>Gallery</span></button></a>
+		<a href="<?= $this->url('ourteam') ?>"><button class="btn-menu btn-green" data-text="Our Team"><span>Our Team</span></button></a> 
+		<a href="<?= $this->url('parents') ?>"><button class="btn-menu btn-yellow" data-text="Parents"><span>Parents</span></button></a> 
+		<a href="<?= $this->url('contact') ?>"><button type="button" class="btn-menu btn-brown" data-text="Contact"><span>Contact</span></button></a>
+            </nav>
+	</div>
+        
+        <div id="main-content">
+            <div id="content-front">	
+                <!-- side menu button -->	
+                <div class="hamburger">
+                    <span class="lines"></span>
+                </div>  		
+                <div id="container">
+                    <!-- SECTION HEADER -->
+                    <section class="welcome">
+    			<div class="header">
+                            <img class="main-logo" src="/../img/logo_burgundy.png">     					
+                            <div class="school-name">
+    				<div class="lg-name">Scoil Iósaif Naofa</div>
+    				<div class="sm-name">Oranmore Boys NS</div>
+                            </div>
+<!--                            temp possition-->
+                                
+                                   
+                                    
+                                    <?php 
+                                    echo 'Current season: '.$this->currenSeason->getSeasonName().'   ||  ';
+                                    if ($this->identity() == null) {
+
+                                        echo '<a href="/login">Login</a> ||';
+                                         
+                                    }else{
+                                        
+                                        echo 'Welcome '.$this->currentUser()->getFullName();
+                                        
+                                        echo '<p>';
+                                            echo '<a href="'.$this->url('user', ['action' => 'users']).'">Users</a> ||';           
+                                            echo '<a href="/reset-password">Reset pass</a> ||';
+                                            echo '<a href="/logout">Logout</a> ||';
+                                        echo '</p>';
+                                        echo '<p>';
+                                            echo '<a href="/roles">Roles</a> ||';
+                                            echo '<a href="/permissions">Permission</a> || ';
+                                        echo '</p>';
+  
+                                    } ?>
+                                    
+                                    
+                                    
+                                
+    			</div>
+    			<div class="contact">
+                            <div class="address">
+    				<i class="fa fa-home space-5" aria-hidden="true"></i>&nbsp;
+    				Scoil Iósaif Naofa, Maree Rd, Oranmore
+                            </div>
+                            <div class="mail">
+                                <i class="fa fa-envelope-o space-5" aria-hidden="true"></i>&nbsp;
+                                <?= $this->currentContact()->getEmail() ?>
+                            </div>
+                            <div class="phone">
+    				<i class="fa fa-phone space-5" aria-hidden="true"></i>&nbsp;
+    				<?= $this->currentContact()->getPhoneMain() ?>
+                            </div>
+                            <div class="social-media">
+    				<button type="button" class="btn-facebook-joinUs btn-fcb-blue" data-text="Join us">
+                                    <span><i class="fa fa-facebook faa-tada animated"></i> Join us</span>
+    				</button>
+                            </div>
+    			</div>
+                    </section>
+                    <?= $this->content ?>
+                    
+                    <!-- FOOTER SECTION -->
+                    <section class="footer">
+                        <div class="footer-menu">
+                            <div class="footer-menu-header">Menu</div>
+                            <ul>
+                                <li><a href="#" class="modal-trigger bs grey small" data-modal="about-us">About us</a></li>		
+                                <li><a href="<?= $this->url('classes') ?>" class="bs grey small">Classes</a></li>
+                                <li><a href="#" class="bs grey small">School Life</a></li>
+                                <li><a href="<?= $this->url('gallery') ?>" class="bs grey small">Gallery</a></li>
+                                <li><a href="<?= $this->url('ourteam') ?>" class="bs grey small">Our Team</a></li>
+                                <li><a href="<?= $this->url('parents') ?>" class="bs grey small">Parents</a></li>
+                                <li><a href="<?= $this->url('contact') ?>" class="bs grey small">Contact</a></li>	
+                            </ul>
+                        </div>
+                        <div class="footer-policies">
+                            <div class="footer-policies-header">Policies</div>
+                            <ul>
+                                <?php
+                                    foreach($this->currentPolicies() as $policy){
+                                        echo '<li>';
+                                            echo '<a href="#" class="modal-trigger-show-policy bs grey small" data-modal="show-policy-modal" data-policyID="'.$policy->getId().'">';
+                                                echo '<span>'.$policy->getTitle().'</span>';
+                                            echo '</a>';
+                                        echo '</li>';
+                                    } 
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="footer-address">
+                            <div class="footer-address-header">Address</div>
+                                <ul>
+                                    <li><i class="fa fa-home space-15" aria-hidden="true"></i><?= $this->currentContact()->getSchoolName() ?><br><span><?= $this->currentContact()->getAddress() ?></span></li>
+                                    <li><i class="fa fa-envelope-o space-15" aria-hidden="true"></i><?= $this->currentContact()->getEmail() ?></li>
+                                    <li><i class="fa fa-phone space-15" aria-hidden="true"></i><?= $this->currentContact()->getPhoneMain() ?></li>
+                                </ul>	
+                        </div>
+                        <div class="copy">&copy; Copyright 2017 - <?php echo date("Y"); ?> <?= $this->currentContact()->getSchoolName() ?></div>
+                    </section>		
+    		</div><!-- end container -->
+            </div> <!-- end content-front -->
+	</div> <!-- end main-content -->
+        
+        
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+        
+        
+<!-- Show Show Policy Modal -->
+<div class="modal" id="show-policy-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="bookList" src="img/logo_burgundy.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Scoil Iósaif Naofa Policy</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body book-list">
+        
+        <label class='response-msg'></label>
+        <div class="loader"></div>
+ 
+        <div class="print-option-top">
+            <a href="#" class="bs option-trigger-printMe-policy"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+        
+    
+        <div class="modal-text" id='policyContent'>
+  
+            <div class='title centered' id='showPolicyTitle'></div>
+            
+            <hr class="burgundy" />
+            
+            <div class='modal-text' id="showPolicyContent"></div>
+            
+            <hr class="burgundy" />
+
+        </div>
+
+        <div class="print-option-bottom">
+            <a href="#" class="bs option-trigger-printMe-policy"><img src="img/icons/icon-print.png"><span>Print</span></a>
+        </div>
+
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Show Policy Modal -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <?= $this->inlineScript()->prependFile($this->basePath('js/menu.js'))
+                                 ->prependFile($this->basePath('js/modal.js'))
+                                 ->prependFile($this->basePath('js/jquery-ui.js'))
+                                 ->prependFile($this->basePath('js/wow.js'))
+                                 ->prependFile($this->basePath('js/policy-show-info.js'))
+                                 ->prependFile($this->basePath('js/printMe-call.js'))
+                                 ->prependFile($this->basePath('js/jquery-printme.js'));
+         ?>
+        
+        <script>
+            wow = new WOW({
+                animateClass: 'animated',
+                offset:       100
+            });
+            wow.init();
+        </script>
+       
+    </body>
+</html>

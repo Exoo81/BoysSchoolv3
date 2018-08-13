@@ -1,0 +1,22 @@
+<?php
+// module/Application/view/application/index/deleteNewsletter.phtml:
+
+$headTitle = 'Delete newsletter';
+$url   = $this->url('application', ['action' => 'deleteNewsletter', 'id' => $id]);
+
+$this->headTitle($headTitle);
+?>
+<h1><?= $this->escapeHtml($headTitle) ?></h1>
+
+<p>
+    Are you sure that you want to delete
+    "<?= $this->escapeHtml($newsletter->file_name) ?>"
+</p>
+
+<form action="<?= $url ?>" method="post">
+<div class="form-group">
+    <input type="hidden" name="id" value="<?= (int) $newsletter->id ?>" />
+    <input type="submit" class="btn btn-danger" name="del" value="Yes" />
+    <input type="submit" class="btn btn-success" name="del" value="No" />
+</div>
+</form>

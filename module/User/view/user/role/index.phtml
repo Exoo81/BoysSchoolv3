@@ -1,0 +1,82 @@
+<?php
+
+/*
+* Roles view (list) - index
+*/
+
+$this->headLink()->appendStylesheet('/css/admin.css'); 
+$this->headTitle($this->title);
+?>
+<section class="admin">
+    <div class="header">
+	<div class="header-title reverse"><i class="fa fa-puzzle-piece" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+					
+    <div class="admin-box">
+        
+<!-- not implemented<div class="users-wrapper">
+                <a href=" <?= $this->url('roles', ['action'=>'add']); ?>">
+                    <button type="button" class="btn-add-user btn-green reversed" data-text="Add role">
+                        <span><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Add role</span>
+                    </button>
+                </a>
+            </div>-->
+        
+            <div class="datagrid">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Role name</th>
+                            <th>Description</th>
+                            <th>Created (date)</th>
+    <!--  not implemented                      <th>Role options</th>-->
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($this->roles as $role)  :
+                        echo '<a><tr>'
+                                .'<td>'.$role->getId().'</td>'
+                                .'<td>'.$role->getName().'</span></td>'
+                                .'<td>'.$role->getDescription().'</td>'
+                                .'<td>'.$role->getDateCreated().'</td>';
+    // not implemented                           .'<td>'
+    //                                . '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$role->getId()]).'" class="tooltip">'
+    //                                    . '<button class="btn-admin">'
+    //                                        . '<img class="icon-list" src="img/icons/icon-eye-green.png" >'
+    //                                    . '</button>'
+    //                                    . '<span class="tooltiptext bottom details">Details</span>'
+    //                                . '</a>'
+    //                                . '<a href="'.$this->url('user', ['action'=>'edit', 'id'=>$role->getId()]).'" class="tooltip">'
+    //                                    . '<button class="btn-admin">'
+    //                                       . '<img class="icon-list" src="img/icons/icon-edit-blue.png" >'
+    //                                    . '</button>'
+    //                                    . '<span class="tooltiptext bottom edit">Edit</span>'
+    //                                . '</a>'
+    //                                . '<a href="'.$this->url('user', ['action'=>'changePassword', 'id'=>$role->getId()]).'" class="tooltip">'
+    //                                    . '<button class="btn-admin">'
+    //                                       . '<img class="icon-list" src="img/icons/icon-padlock.png" >'
+    //                                    . '</button>'
+    //                                    . '<span class="tooltiptext left remove">Change_password</span>'
+    //                                 . '</a>'
+    //                            
+    //                            . '</td>';
+                        echo '</tr>';
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</section>
+
+

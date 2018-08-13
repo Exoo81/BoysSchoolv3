@@ -1,0 +1,186 @@
+<?php
+
+/*
+ *  Contact - index
+ */
+$current_season = $this->layout()->currenSeason->getSeasonName();
+$this->headTitle($this->headTitle);
+
+?>
+
+<section class="contact">
+    <div class="header">
+	<div class="baner"><img src="/img/contact/banner.jpg" /></div>
+	<div class="header-title">Contact information</div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube2 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>						
+	</div>
+    </div>
+					
+    <div class="contact-box">
+	<div class="contact-address">
+            
+            <?php
+                if($this->access('contact.edit')){
+                    echo '<div class="cms-option address">';
+                        echo '<a href="#" class="bs modal-trigger-edit-address" data-modal="edit-address-modal" data-modal="edit-address-modal">';
+                            echo '<img src="img/icons/icon-edit.png"><span>Edit contact information</span>';
+                        echo '</a>';
+                    echo '</div>';
+                }
+            ?>
+            
+            <div class="title red">Address</div>
+		<ul>
+                    <li>
+			<img class="dubble" src="img/icons/icon-location.png">
+      			<span><?= $this->currentContact()->getSchoolName() ?></span></br>
+      			<span><?= $this->currentContact()->getAddress() ?></span>
+                    </li>
+                    <li><img src="img/icons/icon-email.png"><?= $this->currentContact()->getEmail() ?></li>
+                    <li><img src="img/icons/icon-phone.png"><?= $this->currentContact()->getPhoneMain() ?></li>
+                    <?php
+                        if($this->currentContact()->getPhoneAlt1() !== null){
+                            echo '<li>'.$this->currentContact()->getPhoneAlt1().'</li>';
+                        }
+                        if($this->currentContact()->getPhoneAlt2() !== null){
+                            echo '<li>'.$this->currentContact()->getPhoneAlt2().'</li>';
+                        }
+                    ?>
+                    <li><img src="img/icons/icon-internet.png"><a class="bs green"><?= $this->currentContact()->getWwwUrl() ?></a></li>
+		</ul>
+	</div>
+						
+	<div class="location">
+            <div class="title yellow">Our location</div>
+            <div id="map"></div>
+	</div>
+		
+	<div class="contact-form-box">
+            <div class="title green">Contact form</div>
+            <div class="contact-form">
+		<div class="contact-start">
+                    <form id="contactForm">
+			<input type='text' id="contactName" name="contactName" placeholder="your name" ><br />
+			<input type='text' id="contactEmail" name="contactEmail" placeholder="enter your email" ><br />
+			<input type='text' id="contactTitle" name="contactTitle" placeholder="subject" ><br />
+											
+			<textarea rows="5" id="contactMessage" name="contactMessage" placeholder="Write a message here ..." ></textarea><br />
+											
+			<button type="submit" class="btn-contact-form btn-green" data-text="send message">
+                            <span><i class="fa fa-paper-plane faa-tada animated"></i> send message</span>
+			</button>
+                    </form>
+		</div>
+		<div class="contact-end">
+                    <h3></h3>
+                    <div class="close-contact-form"></div>
+		</div>
+	</div>
+	</div>
+    </div>	
+</section>
+
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+
+
+<!-- Edit Address Modal-->
+<div class="modal" id="edit-address-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img src="img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Contact Information - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editContactForm" class="cms" enctype="multipart/form-data">
+                    
+                    
+                    <div class='width-100'>
+                        <label for="editContactSchoolName">School name:</label>
+                        <input type="text" id="editContactSchoolName" name="editContactSchoolName" required>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label for="editContactAddress">Address:</label>
+                        <input type="text" id="editContactAddress" name="editContactAddress" required>
+                    </div>
+                    
+                    <div class='width-40-left'>
+                        <label for="editContactEmail">E-mail:</label>
+                        <input type="text" name="editContactEmail" id="editContactEmail" required>
+                    </div>
+                    
+                    <div class='width-40-right'>
+                        <label for="editContactPhoneMain">Phone no. (primary):</label>
+                        <input type="text" id="editContactPhoneMain" name="editContactPhoneMain" required>
+                    </div>
+                    
+                    <div class='width-40-left'>
+                        <label for="editContactWwwUrl">Page url:</label>
+                        <input type="text" name="editContactWwwUrl" id="editContactWwwUrl" required>
+                    </div>
+                    
+                    <div class='width-40-right'>
+                        <label for="editContactPhoneAlt1">Phone no. (additional):</label>
+                        <input type="text" id="editContactPhoneAlt1" name="editContactPhoneAlt1">
+                    </div>
+                    
+                    <div class='width-40-left'></div>
+                    
+                    <div class='width-40-right'>
+                        <label for="editContactPhoneAlt2">Phone no. (additional):</label>
+                        <input type="text" id="editContactPhoneAlt2" name="editContactPhoneAlt2">
+                    </div>
+                   
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit contact information"><span>Edit contact information</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Address Modal-->
+
+
+ <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuoa2PX59pQBwmcaDg3TPdPQOLPP7nkBM&sensor=false"></script>
+    <script src="/js/googlemap/google_map.js" type="text/javaScript"></script>
+
+<script src="/js/address-edit.js" type="text/javaScript"></script>
+<script src="js/contact-form.js" type="text/javaScript"></script> 
+
+
+

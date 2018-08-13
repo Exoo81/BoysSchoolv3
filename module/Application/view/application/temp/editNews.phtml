@@ -1,0 +1,60 @@
+<?php
+
+
+// module/Album/view/album/album/edit.phtml:
+
+$headTitle = 'Edit news';
+$this->headTitle($headTitle);
+?>
+<h1><?= $this->escapeHtml($headTitle) ?></h1>
+<?php
+//$imgLoc = '/upload/school-news/2017-2018/band1.jpg';
+//$imgLoc = $this->imgLoc;
+$newsTitle = $form->get('title');
+$newsTitle->setAttribute('class', 'form-control');
+$newsTitle->setAttribute('placeholder', 'Type news title ...');
+
+$content = $form->get('content');
+$content->setAttribute('class', 'form-control');
+$content->setAttribute('placeholder', 'Type news text ...');
+
+$imgurl = $form->get('imgurl');
+$imgurl->setAttribute('class', 'form-control');
+$imgurl->setAttribute('placeholder', 'Edit image');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('application', ['action' => 'editnews', 'id'     => $id,]));
+
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($newsTitle) ?>
+    <?= $this->formElement($newsTitle) ?>
+    <?= $this->formElementErrors()->render($newsTitle, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($content) ?>
+    <?= $this->formElement($content) ?>
+    <?= $this->formElementErrors()->render($content, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($imgurl) ?>
+    <?= $this->formElement($imgurl) ?>
+    <?= $this->formElementErrors()->render($imgurl, ['class' => 'help-block']) ?>
+</div>
+
+<?php if($imgLoc !==null){ ?>
+        <img src="<?= $imgLoc ?>" alt="Mountain View">
+        <a href="<?= $this->url('application', ['action' => 'deleteimagefromnews', 'id' => $id ]) ?>">Delete image</a>
+<?php }?>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

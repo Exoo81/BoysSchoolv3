@@ -1,0 +1,391 @@
+<?php
+
+/*
+ *  Classes - index
+ */
+$current_season = $this->layout()->currenSeason->getSeasonName();
+$this->headTitle($this->title.' '.$current_season);
+
+?>
+
+<section class="classes">
+    <div class="header">
+	<div class="baner"><img src="img/classes/banner.jpg" /></div>
+	<div class="header-title reverse"><?= $this->title ?> <span><?=$current_season ?></span></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    <div class="classes-box">
+        <?php  
+            if(empty($this->blogList['blogs-left']) && empty($this->blogList['blogs-right'])){
+                echo '<div class="no-content">';
+                    echo '<div class="info-wrapper">';
+                        echo '<img src="img/icons/icon-dinosaur.png"/>';
+                        echo '<span>There is no blog yet.</span>';
+                    echo '</div>';
+                        
+                    if ($this->access('classes.add')) {
+                        echo '<div class="cms-option classes">';
+                            echo '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new class blog</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+                        
+                        
+                echo '</div>';
+                 
+            }else{
+                echo '<div class="main-col-left">';
+                    foreach ($this->blogList['blogs-left'] as $key => $value) :
+
+                        echo '<div class="main-box">';
+                            echo '<div class="title '.$this->blogList['colors'][$key].'">'.$this->blogList['title'][$key].'</div>';
+                                echo '<ul class="class-blog-list">';
+                                foreach ($value as $blog) :
+                                    echo '<li class="'.$this->blogList['colors'][$key].'">';
+                                        echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">'; 
+                                        echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
+
+                                            if($blog->getPhotoName() === null){
+                                                echo '<img src="img/classes/dummy-class-photo.png"/>';    
+                                                 echo '<span class="dummy_class_info">Place for a class photo</span>';
+                                            }else{
+                                                 echo '<img src="upload/classes/'.$blog->getSeason()->getSeasonName().'/'.$blog->getPhotoName().'"/>';
+                                            }
+
+                                        echo '</a>';
+                                        echo '<span class="teacher">'.$blog->getTeacher()->getFullName().'</span>';
+    //                                  ADMIN OPTIONS
+                                        echo '<div class="admin-option">';
+                                            if($blog->getLearningSupport() !== null){
+                                                if ($this->access('classes.edit') || 
+                                                $this->access('classes.own.edit', ['user'=>$blog->getTeacher()]) || 
+                                                    $this->access('classes.own.edit', ['user'=>$blog->getLearningSupport()])) {            
+                                                        echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                            . '</a>';      
+                                                }              
+                                            }else{
+                                                $learningSupportID = null;
+                                                if ($this->access('classes.edit') || $this->access('classes.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                    echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                            .'<button class="btn-admin">'
+                                                               .'<img src="img/icons/icon-edit-blue.png" >'
+                                                            .'</button>'
+                                                            .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                        . '</a>';
+                                                }  
+                                            }
+                                            if ($this->access('classes.delete')){
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getFullName()).'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';
+                                            }
+                                        echo '</div>';
+    //                                  end ADMIN OPTIONS 
+
+                                    echo '</li>';
+                                endforeach;
+                                echo '</ul>';
+                        echo '</div>';
+                    endforeach;
+                echo '</div>';
+                
+                echo '<div class="main-col-right">';
+                //temp
+                //echo ''.$this->currentUser()->getFullName();
+                    if ($this->access('classes.add')) {
+                        echo '<div class="cms-option classes">'
+                            . '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">'
+                                . '<img src="img/icons/icon-add.png"><span>Add new class blog</span>'
+                            . '</a>'
+                        . '</div>';
+                    }
+                    foreach ($this->blogList['blogs-right'] as $key => $value) :
+                        echo '<div class="main-box">';
+                            echo '<div class="title '.$this->blogList['colors'][$key].'">'.$this->blogList['title'][$key].'</div>';
+                            echo '<ul class="class-blog-list">';
+                            foreach ($value as $blog) :
+                                echo '<li class="'.$this->blogList['colors'][$key].'">';
+                                    echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">';  
+                                    echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
+                                        
+                                        //$current_year = "2017-2018";
+                                        if($blog->getPhotoName() === null){
+                                            echo '<img src="img/classes/dummy-class-photo.png"/>';    
+                                             echo '<span class="dummy_class_info">Place for a class photo</span>';
+                                        }else{
+                                             echo '<img src="upload/classes/'.$blog->getSeason()->getSeasonName().'/'.$blog->getPhotoName().'"/>';
+                                        }
+                                        
+                                    echo '</a>';
+                                    echo '<span class="teacher">'.$blog->getTeacher()->getFullName().'</span>';
+                                    
+//                                  ADMIN OPTIONS
+                                    echo '<div class="admin-option">';
+                                        if($blog->getLearningSupport() !== null){
+                                            if ($this->access('classes.edit') || 
+                                            $this->access('classes.own.edit', ['user'=>$blog->getTeacher()]) || 
+                                                $this->access('classes.own.edit', ['user'=>$blog->getLearningSupport()])) {            
+                                                    echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                            .'<button class="btn-admin">'
+                                                                .'<img src="img/icons/icon-edit-blue.png" >'
+                                                            .'</button>'
+                                                            .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                        . '</a>';      
+                                            }              
+                                        }else{
+                                            $learningSupportID = null;
+                                            if ($this->access('classes.edit') || $this->access('classes.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                        .'<button class="btn-admin">'
+                                                           .'<img src="img/icons/icon-edit-blue.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                    . '</a>';
+                                            }  
+                                        }
+                                        if ($this->access('classes.delete')){
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getFullName()).'">'
+                                                    .'<button class="btn-admin">'
+                                                        .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                    .'</button>'
+                                                    .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                . '</a>';
+                                        }
+                                    echo '</div>';
+//                                  end ADMIN OPTIONS                                   
+                               echo '</li>';
+                            endforeach;
+                            echo '</ul>';   
+                        echo '</div>';
+                    endforeach;
+                echo '</div>';
+            }
+
+        ?>
+        
+<!--TODO        <div class="archive">
+            <hr class="burgundy">
+            <div class="title"><img src="resources/img/icons/icon-archive.png"/>Archive</div>
+							
+            <div class="seasons-btn-box">
+		<button type="button" class="btn-archive btn-burgundy" data-text="2016/2017"><span>2016/2017</span></button>
+		<button type="button" class="btn-archive btn-burgundy" data-text="2015/2016"><span>2015/2016</span></button>
+		<button type="button" class="btn-archive btn-burgundy" data-text="2014/2015"><span>2014/2015</span></button>
+		<button type="button" class="btn-archive btn-burgundy" data-text="2013/2014"><span>2013/2014</span></button>
+		<button type="button" class="btn-archive btn-burgundy" data-text="2012/2013"><span>2012/2013</span></button>
+            </div>
+	</div>-->
+        
+    </div>
+    
+</section>
+
+<!--*********************************
+*********************************
+*********************************
+ MODALS 
+*********************************
+*********************************
+*********************************-->
+<!-- Add Class Blog Modal-->
+<div class="modal" id="add-class-blog-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="class-blog" src="img/icons/icon-blog.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Class Blog - add</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addClassBlogForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <div class="width-60-left">
+                        
+                        <div class="width-100">
+                            <label for="classLevel">Choose class level:</label>
+                            <select id="classLevel" name="classLevel" class="dropdown"></select>    
+                        </div>
+                        
+                        <div class="width-100">
+                            <label for="classTeacher">Choose teacher:</label>
+                            <select id="classTeacher" name="classTeacher" class="dropdown"></select>
+                        </div>
+                        <div class="width-100">
+                            <label for="classLearningSupport">Choose learning support:</label>
+                            <select id="classLearningSupport" name="classLearningSupport" class="dropdown"></select>
+                        </div>                    
+                    </div>
+                    
+                    <div class="width-35-right">
+                        <div class="width-100">
+                            <label for="addClassPhoto">Choose class photo:</label>
+
+                            <label class='preview-img-label add-class' id='preview-img-add-class-label' for="preview-img-add-class"><a href='#'>X</a></label>
+                            <img class='preview-img add-class' id='preview-img-add-class'>
+
+                            <input type="file" id="addClassPhoto" name="addClassPhoto">
+                        </div>
+                    </div>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add new Class Blog"><span>Add new Class Blog</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add Class Blog Modal-->
+
+<!-- Edit Class Blog Modal-->
+<div class="modal" id="edit-class-blog-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-edit.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Class Blog - edit</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editClassBlogForm" class="cms" enctype="multipart/form-data">
+                    
+                    <input id="editClassBlogID" name='editClassBlogID' type="hidden">
+                    
+                    <div class="width-60-left">
+                        <div class="width-100">
+                            <label for="editClassLevel">Change class level:</label>
+                            <select id="editClassLevel" name="editClassLevel" class="dropdown"></select>
+                        </div>
+                        
+                        <div class="width-100">
+                            <label for="editClassTeacher">Change teacher:</label>
+                            <select id="editClassTeacher" name="editClassTeacher" class="dropdown"></select>
+                        </div>
+                        <div class="width-100">
+                            <label for="editClassLearningSupport">Change learning support:</label>
+                            <select id="editClassLearningSupport" name="editClassLearningSupport" class="dropdown"></select>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="width-35-right">
+                        <div class="width-100">
+                            <label id='editClassBlogPhotoLabel_current'>Current class photo:</label>
+                            <label id='editClassBlogPhotoLabel'>Add class photo:</label>
+                            <label class='preview-img-label edit-class' id='preview-photo-edit-class-blog-label'><a href='#'>X</a></label>
+                            <img class='preview-img edit-class' id='editClassBlogPhoto_current' />
+                            
+                            <input type="file" id="editClassBlogPhoto" name="editClassBlogPhoto">
+                            <input type="checkbox" class='to_remove' id='edit-class-blog-remove-photo'>
+
+                        </div>
+                    </div>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit Class Blog"><span>Edit Class Blog</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit Class Blog Modal-->
+
+<!-- Delete Class Blog Modal -->
+<div class="modal" id="delete-class-blog-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Remove Blog</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-class-blog'>You really want to delete: <span></span></div>
+                <form id="deleteClassBlogForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deleteClassBlogID" name="deleteClassBlogID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end delete Class blog Modal -->
+
+<!--SCRIPTS-->
+<script src="js/blog-hover-effect.js" type="text/javaScript"></script>
+<script src="js/class-blog-add.js" type="text/javaScript"></script>
+<script src="js/class-blog-edit.js" type="text/javaScript"></script>
+<script src="js/class-blog-delete.js" type="text/javaScript"></script>
+
+
+

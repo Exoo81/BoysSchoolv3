@@ -1,0 +1,478 @@
+<?php
+
+namespace Application\Service;
+
+use Application\Entity\News;
+use User\Entity\User;
+use Zend\Db\Sql\Select;
+use Zend\Db\ResultSet\ResultSet;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use Zend\Paginator\Paginator;
+
+
+
+/**
+ * This service is responsible for adding/editing etc. news
+ * pagination.
+ */
+class NewsManager{
+    
+    /**
+     * Doctrine entity manager.
+     * @var Doctrine\ORM\EntityManager
+     */
+    private $entityManager;
+    
+    /**
+     * Season manager.
+     * @var User\Service\SeasonManager
+     */
+    private $seasonManager;
+    
+    private $currentSeason;
+    
+    /**
+     * Constructs the service.
+     */
+    public function __construct($entityManager, $seasonManager) {
+        $this->entityManager = $entityManager;
+        $this->seasonManager = $seasonManager;
+        
+        $this->currentSeason = $this->seasonManager->getCurrentSeason();
+    }
+    
+    public function fetchAll($paginated=false){
+        if ($paginated) {
+            return $this->fetchPaginatedResults();
+        }
+        
+        return $this->entityManager->getRepository(News::class)
+                     ->findBy(['datePublished'=>'DESC']);
+    }
+    
+    private function fetchPaginatedResults(){
+        
+        
+        // Get all news as query
+        $news = $this->getAllNewsQuery();
+
+        $adapter = new DoctrineAdapter(new ORMPaginator($news, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(4);        
+        
+        
+        return $paginator;
+    }
+    
+    private function getAllNewsQuery(){
+
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+  
+        $queryBuilder->select('news')
+            ->from(News::class, 'news')
+            ->innerJoin('news.season', 'season')
+            ->where('season.id =:season_id')
+            ->setParameter('season_id', $this->currentSeason)
+            ->orderBy('news.datePublished', 'DESC');
+
+        return $queryBuilder->getQuery();
+    }
+    
+    public function saveNews($formData){
+        
+        //create new News
+        $news = new News();
+        
+        // json_decode to array regular fields
+        $formFieldsArray = $this->decodeJSONdata($formData);
+        
+        
+        //save news other data
+        $news->setSeason($this->currentSeason);
+        $news->setTitle($formFieldsArray['newsTitle']);
+        $news->setContent($formFieldsArray['newsContent']);
+        
+        $current_date = date('Y-m-d H:i:s');
+        $news->setDatePublished($current_date);
+        
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formFieldsArray['authorID']);
+        
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author.';
+            return $dataResponse;
+        }
+        
+        $news->setAuthor($author);
+        
+              
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($news); 
+        
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        
+        // save doc file if exist
+        if(isset($_FILES['newsDoc'])){
+            
+//            $dataResponse['success'] = true;
+//            $dataResponse['newsDoc'] =  $_FILES["newsDoc"]['name'];
+//            return $dataResponse;
+
+            /*
+            * Save on server
+            */
+
+            //path to save
+            $path_to_save_doc = './public/upload/school-news/'.$this->currentSeason->getSeasonName().'/'.$news->getId().'/doc/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_doc)) {
+                mkdir($path_to_save_doc, 0777, true);
+            }
+
+            //$target
+            $target_file_doc = $path_to_save_doc . basename($_FILES["newsDoc"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_doc)) {
+                //save on server
+                move_uploaded_file($_FILES["newsDoc"]["tmp_name"], $target_file_doc);
+            }
+
+            /*
+            * Save in db
+            */
+            $news->setDocName($_FILES["newsDoc"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($news); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+
+        }
+        
+        // save doc file if exist
+        if(isset($_FILES['newsPhoto'])){
+            
+//            $dataResponse['success'] = true;
+//            $dataResponse['newsPhoto'] =  $_FILES["newsPhoto"]['name'];
+//            return $dataResponse;
+
+            /*
+            * Save on server
+            */
+
+            //path to save
+            $path_to_save_photo = './public/upload/school-news/'.$this->currentSeason->getSeasonName().'/'.$news->getId().'/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_photo)) {
+                mkdir($path_to_save_photo, 0777, true);
+            }
+
+            //$target
+            $target_file_photo = $path_to_save_photo . basename($_FILES["newsPhoto"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_photo)) {
+                //save on server
+                move_uploaded_file($_FILES["newsPhoto"]["tmp_name"], $target_file_photo);
+            }
+
+            /*
+            * Save in db
+            */
+            $news->setPhotoName($_FILES["newsPhoto"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($news); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+
+        }
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'News saved.';
+        
+        return $dataResponse;
+        
+
+    }
+    
+    public function getEditedNews($newsID){
+        
+        // Find a news with such ID.
+        $news = $this->entityManager->getRepository(News::class)
+                ->find($newsID);
+        
+        if($news !== null){
+            $newsJSON = $news->jsonSerialize();
+            $dataResponse['newsToEdit'] = $newsJSON;
+ 
+            //build picure(s) path 
+            $path_to_photo = '/upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/'.$news->getPhotoName();
+            $dataResponse['photoPath'] = $path_to_photo;
+
+     
+        }else{
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t edit news.';
+            return $dataResponse;
+        }
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'News added.';
+        
+        return $dataResponse;
+    }
+    
+    public function editNews($dataToEdit){
+        
+        
+        // json_decode to array
+        $formFieldsArray = $this->decodeJSONdata($dataToEdit);
+        
+        //find news to edit
+        $editNews = $this->entityManager->getRepository(News::class)
+                ->find($formFieldsArray['editNewsID']);
+        
+        if($editNews == null){
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'ERROR: News not found. News can\'t be edited.';
+        
+            return $dataResponse;
+        }
+        
+        /*
+         * edit changes from regular fields
+         */
+        $editNews->setTitle($formFieldsArray['editNewsTitle']);
+        $editNews->setContent($formFieldsArray['editNewsContent']);
+        
+        $current_date = date('Y-m-d H:i:s');
+        $editNews->setDatePublished($current_date);
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($editNews); 
+        
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        
+        /*
+         *  remove doc if apply
+         */
+        if($formFieldsArray['removeDoc']){
+            
+            //path to remove old document
+            $path_to_delete_doc = './public/upload/school-news/'.$editNews->getSeason()->getSeasonName().'/'.$editNews->getId().'/doc/';
+            
+            // document to delete if exist
+            if($editNews->getDocName() != null){
+                $target_doc_to_delete = $path_to_delete_doc . $editNews->getDocName();
+                //remove old photo
+                // if exist
+                if (file_exists($target_doc_to_delete)) {
+                    unlink ($target_doc_to_delete);
+                }
+            }
+            
+            $editNews->setDocName(null);
+           
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editNews); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+        }
+        
+        /*
+         *  remove photo if apply
+         */
+        if($formFieldsArray['removePhoto']){
+            
+            //path to remove old photo
+            $path_to_delete_photo = './public/upload/school-news/'.$editNews->getSeason()->getSeasonName().'/'.$editNews->getId().'/';
+            
+            // photo to delete if exist
+            if($editNews->getPhotoName() != null){
+                $target_photo_to_delete = $path_to_delete_photo . $editNews->getPhotoName();
+                //remove old photo
+                // if exist
+                if (file_exists($target_photo_to_delete)) {
+                    unlink ($target_photo_to_delete);
+                }
+            }
+            
+            $editNews->setPhotoName(null);
+           
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editNews); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+        }
+        
+        
+        // save doc file if posted by form
+        if(isset($_FILES['editNewsDoc'])){ 
+//            $dataResponse['success'] = true;
+//            $dataResponse['editNewsDoc'] =  $_FILES["editNewsDoc"]['name'];
+
+            /*
+            * Save on server
+            */
+
+            //path to save
+            $path_to_save_doc = './public/upload/school-news/'.$editNews->getSeason()->getSeasonName().'/'.$editNews->getId().'/doc/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_doc)) {
+                 mkdir($path_to_save_doc, 0777, true);
+            }
+
+            //$target
+            $target_file_doc = $path_to_save_doc . basename($_FILES["editNewsDoc"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_doc)) {
+                //save on server
+                move_uploaded_file($_FILES["editNewsDoc"]["tmp_name"], $target_file_doc);
+            }
+
+            /*
+            * Save in db
+            */
+            $editNews->setDocName($_FILES["editNewsDoc"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editNews); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+
+        }
+        
+        // save photo if posted by form
+        if(isset($_FILES['editNewsPhoto'])){ 
+//            $dataResponse['success'] = true;
+//            $dataResponse['editNewsPhoto'] =  $_FILES["editNewsPhoto"]['name'];
+
+            /*
+            * Save on server
+            */
+
+            //path to remove/save
+            $path_to_photo = './public/upload/school-news/'.$editNews->getSeason()->getSeasonName().'/'.$editNews->getId().'/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_photo)) {
+                 mkdir($path_to_photo, 0777, true);
+            }
+            
+            //remove old photo if not null (only when input file field choosen without click on remove button "X"
+            // photo to delete if exist
+            if($editNews->getPhotoName() != null){
+                $target_photo_to_delete = $path_to_photo . $editNews->getPhotoName();
+                //remove old photo
+                // if exist
+                if (file_exists($target_photo_to_delete)) {
+                    unlink ($target_photo_to_delete);
+                }
+            }
+            
+
+            //$target new photo
+            $target_photo_to_save = $path_to_photo . basename($_FILES["editNewsPhoto"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_photo_to_save)) {
+                //save on server
+                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
+            }
+
+            /*
+            * Save in db
+            */
+            $editNews->setPhotoName($_FILES["editNewsPhoto"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editNews); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+
+        }
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Edit news completed.';
+        
+        return $dataResponse;
+        
+    }
+    
+    
+    private function decodeJSONdata($data){
+        $formFieldsArray = (array)json_decode($data['objArr'])[0];
+        return $formFieldsArray;
+    }
+    
+    public function deleteNews($id){
+        
+        
+        //find news with id
+        $deleteNews = $this->entityManager->getRepository(News::class)
+                ->find($id);
+        
+        if($deleteNews == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'News NOT found. News can\'t be deleted.';
+            
+            return $dataResponse;
+        }
+        
+        //initial - prepare the path
+        //path to delete doc
+        $path_to_delete_doc = './public/upload/school-news/'.$deleteNews->getSeason()->getSeasonName().'/'.$deleteNews->getId().'/doc/';
+        //path to delete photo
+        $path_to_delete_photo = './public/upload/school-news/'.$deleteNews->getSeason()->getSeasonName().'/'.$deleteNews->getId().'/';
+              
+            //remove doc if exist
+            if($deleteNews->getDocName() != null){
+                unlink ($path_to_delete_doc . $deleteNews->getDocName());
+            }
+            
+            //remove photo if exist
+            if($deleteNews->getPhotoName() != null){
+                unlink ($path_to_delete_photo . $deleteNews->getPhotoName());
+            }
+            
+            //remove from DB
+            $this->entityManager->remove($deleteNews);
+            $this->entityManager->flush();
+
+            
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Deleting news completed.';
+        
+        return $dataResponse;
+        
+    }
+    
+}
+

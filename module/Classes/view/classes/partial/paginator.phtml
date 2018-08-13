@@ -1,0 +1,54 @@
+<?php // in module/Classes/view/partial/paginator.phtml: ?>
+<?php if ($this->pageCount): ?>
+
+  <ul class="pagination">
+  <!-- Previous page link -->
+  <?php if (isset($this->previous)): ?>
+    <li>  
+      <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $this->previous]]) ?>">
+          <button type="button" class="btn-pagination btn-burgundy lg" data-text="Previous"><span>Previous</span></button>
+      </a>
+    </li>
+  <?php else: ?>
+<!--    <li class="disabled">
+      <a href="#">
+        <button type="button" class="btn-pagination btn-burgundy lg" data-text="Previous" disabled><span>Previous</span></button>
+      </a>
+    </li>-->
+  <?php endif ?>
+
+  <!-- Numbered page links -->
+  <?php foreach ($this->pagesInRange as $page): ?>
+    <?php if ($page !== $this->current): ?>
+      <li>
+        <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $page]]) ?>">
+            <button type="button" class="btn-pagination btn-burgundy" data-text="<?= $page ?>"><span><?= $page ?></span></button>
+        </a>
+      </li>
+    <?php else: ?>
+      <li>
+        <a href="#">
+            <button type="button" class="btn-pagination btn-burgundy active" data-text="<?= $page ?>"><span><?= $page ?></span></button>
+        </a>
+      </li>
+    <?php endif ?>
+  <?php endforeach ?>
+
+  <!-- Next page link -->
+  <?php if (isset($this->next)): ?>
+    <li>
+      <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $this->next]]) ?>">
+        <button type="button" class="btn-pagination btn-burgundy lg" data-text="Next"><span>Next</span></button>  
+      </a>
+    </li>
+  <?php else: ?>
+<!--    <li class="disabled">
+      <a href="#">
+        <button type="button" class="btn-pagination btn-burgundy lg" data-text="Next" disabled><span>Next</span></button>
+      </a>
+    </li>-->
+  <?php endif ?>
+  </ul>
+
+<?php endif ?>
+

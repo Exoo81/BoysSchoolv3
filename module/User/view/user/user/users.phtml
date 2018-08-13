@@ -1,0 +1,121 @@
+<?php
+
+$this->headLink()->appendStylesheet('css/admin.css'); 
+$this->headTitle($this->title);
+?>
+<section class="admin">
+    <div class="header">
+	<div class="header-title reverse"><i class="fa fa-users" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+					
+    <div class="admin-box">
+ 
+        <?php if ($this->access('user.add')) {
+
+           echo '<div class="users-wrapper">'
+                    . '<a href="'.$this->url('user', ['action'=>'add']).'">'
+                        . '<button type="button" class="btn-add-user btn-green reversed" data-text="Add user">'
+                            . '<span><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Add user</span>'
+                        . '</button>'
+                   . '</a>';
+            echo '</div>';
+        } ?>
+ 
+        <div class="datagrid">
+            <table>
+                
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>E-mail</th>
+                        <th>Full name</th>
+                        <th>Status</th>
+                        <th>Roles</th>
+<!--                        <th>Password</th>-->
+                        <th>Created (date)</th>
+<!--                        <th>Password token</th>
+                        <th>Reset token (date)</th>-->
+                        <th>User options</th>
+
+                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="9">
+                            <div id="paging">
+                                <ul>
+                                    <li><a href="#"><span>Previous</span></a></li>
+                                    <li><a href="#" class="active"><span>1</span></a></li>
+                                    <li><a href="#"><span>2</span></a></li>
+                                    <li><a href="#"><span>3</span></a></li>
+                                    <li><a href="#"><span>4</span></a></li>
+                                    <li><a href="#"><span>5</span></a></li>
+                                    <li><a href="#"><span>Next</span></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    
+                    <?php foreach ($this->users as $user)  :
+                    echo '<a><tr>'
+                            .'<td>'.$user->getId().'</td>'
+                            .'<td>'.$user->getEmail().'</span></td>'
+                            .'<td>'.$user->getFullName().'</td>'
+                            .'<td>';
+                                    if($user->getStatus() == 1){
+                                        echo 'ACTIVE';
+                                    }else{
+                                       echo 'RETIRED'; 
+                                    }
+                             echo '</td>'
+                            .'<td>'.$user->getRolesAsString().'</td>'
+//                            .'<td>'.$user->getPassword().'</td>'
+                            .'<td>'.$user->getDateCreated().'</td>'
+//                            .'<td>'.$user->getResetPasswordToken().'</td>'
+//                            .'<td>'.$user->getPasswordResetTokenCreationDate().'</td>'
+                            .'<td>'   
+                                . '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$user->getId()]).'" class="tooltip">'
+                                    . '<button class="btn-admin">'
+                                        . '<img class="icon-list" src="img/icons/icon-eye-green.png" >'
+                                    . '</button>'
+                                    . '<span class="tooltiptext bottom details">Details</span>'
+                                . '</a>';
+                            if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.edit')) {
+                                echo '<a href="'.$this->url('user', ['action'=>'edit', 'id'=>$user->getId()]).'" class="tooltip">'
+                                    . '<button class="btn-admin">'
+                                       . '<img class="icon-list" src="img/icons/icon-edit-blue.png" >'
+                                    . '</button>'
+                                    . '<span class="tooltiptext bottom edit">Edit</span>'
+                                . '</a>';
+                            }
+                            if ( $this->access('user.own.changePassword', ['user'=>$user])) {
+                                echo  '<a href="'.$this->url('user', ['action'=>'changePassword', 'id'=>$user->getId()]).'" class="tooltip">'
+                                            . '<button class="btn-admin">'
+                                                . '<img class="icon-list" src="img/icons/icon-padlock.png" >'
+                                            . '</button>'
+                                            . '<span class="tooltiptext left remove">Change_password</span>'
+                                        . '</a>';
+                            }
+                            echo '</td>';
+                    echo '</tr>';
+                    endforeach; ?>
+                </tbody>
+            </table>
+            </div>
+    </div>
+</section>
+
+
+
+
