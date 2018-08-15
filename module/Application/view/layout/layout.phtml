@@ -30,6 +30,8 @@
             ->prependStylesheet($this->basePath('css/jquery-ui.css'))
             ->prependStylesheet($this->basePath('css/animate.css'))
         ?>
+        
+        
 
         <!-- Scripts -->
         <script src="https://use.fontawesome.com/0473802ec1.js"></script>
@@ -80,7 +82,7 @@
                                    
                                     
                                     <?php 
-                                    echo 'Current season: '.$this->currenSeason->getSeasonName().'   ||  ';
+//                                    echo 'Current season: '.$this->currenSeason->getSeasonName().'   ||  ';
                                     if ($this->identity() == null) {
 
                                         echo '<a href="/login">Login</a> ||';
@@ -190,7 +192,7 @@
 	    	<label>close</label>
             </div>
       	</div>
-      	<div class="circle-img-wrapper"><img class="bookList" src="img/logo_burgundy.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="bookList" src="/../../img/logo_burgundy.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Scoil Iósaif Naofa Policy</span>
@@ -203,7 +205,7 @@
         <div class="loader"></div>
  
         <div class="print-option-top">
-            <a href="#" class="bs option-trigger-printMe-policy"><img src="img/icons/icon-print.png"><span>Print</span></a>
+            <a href="#" class="bs option-trigger-printMe-policy"><img src="/../../img/icons/icon-print.png" /><span>Print</span></a>
         </div>
         
     
@@ -220,7 +222,7 @@
         </div>
 
         <div class="print-option-bottom">
-            <a href="#" class="bs option-trigger-printMe-policy"><img src="img/icons/icon-print.png"><span>Print</span></a>
+            <a href="#" class="bs option-trigger-printMe-policy"><img src="/../../img/icons/icon-print.png" /><span>Print</span></a>
         </div>
 
         <div class="btn-modal-box">

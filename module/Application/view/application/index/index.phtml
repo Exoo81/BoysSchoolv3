@@ -27,7 +27,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             echo '</div>';
         } ?>
         
-	<div class="welcome-title">Welcome temp <?= $current_season ?></div>	
+	<div class="welcome-title">Welcome</div>	
 	<div class="color-cubes">
             <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
             <div class="single-cube2 wow fadeInRightBig delay-02s"></div>
@@ -79,7 +79,6 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                     ?>
                     <div class="news-title"><?= $this->escapeHtml($news->getTitle()) ?></div>
                     <hr class="blue">
-                    <?= $this->escapeHtml($news->getAuthor()->getFullName()) ?>
                     <div class="news-date"><img src="img/icons/icon-calendar.png"><?= date('d F Y',strtotime($news->getDatePublished())) ?></div>
                     <p><?= $this->escapeHtml($news->getContent()) ?></p>
                     <?php if($news->getDocName() != null) {
@@ -901,7 +900,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                 . '</div>'
                                 . '</td>'
                                 . ' <td class="content">'
-                                    . '<div class="title">'.$event->getTitle().' - author: '.$event->getAuthor()->getFullName().'</div>';
+                                    . '<div class="title">'.$event->getTitle().'</div>';
                                     
                                     echo '<div class="admin-option">';
                                         if ($this->access('event.edit')) { 

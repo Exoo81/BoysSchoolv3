@@ -204,7 +204,7 @@ a:active, a:hover {
 a.bs{
 	position: relative;
 	display: block;	
-  	font-size: 1em;
+  	font-size: 1.2em;
   	color: #561818;
   	text-transform: uppercase;
   	text-decoration: none;
@@ -212,7 +212,7 @@ a.bs{
 }
 	@media screen and ( max-width :1536px) {
 		 a.bs{
-			font-size: .9em;
+			font-size: 1em;
 		}
 	}
 
@@ -842,6 +842,11 @@ button.modal-btn.medium{
 button.modal-btn.small{
     width: 100px;
 }
+/*@media screen and (max-width:1366px){
+	button.modal-btn.small{
+		width: 120px;
+	}
+}*/
 
 .btn-archive{
 	display: inline;
@@ -887,10 +892,10 @@ textarea{
   	color: #561818;
   	font-size: 1.2em;
 }
-	@media screen and (max-width:1536px){
+	@media screen and (max-width:1366px){
 		input,
 		textarea{
-			font-size: 1.1em;
+                    font-size: 1em;
 			
 		}
 	}
@@ -919,7 +924,7 @@ textarea:hover{
 		textarea:active:focus,
 		textarea:focus,
 		textarea:hover{
-			font-size: 1.1em;
+			font-size: 1em;
 			
 		}
 	} 
@@ -1292,8 +1297,8 @@ select:-webkit-autofill{
 }
 	@media screen and ( max-width :1366px) {
 		#main-content.tilt #content-front {
-			-webkit-transform: rotate(5deg) translateZ(0);
-			transform: rotate(5deg) translateZ(0);
+			-webkit-transform: rotate(6deg) translateZ(0);
+			transform: rotate(6deg) translateZ(0);
 		} 
 	}
 	@media screen and (max-width:1024px) and (max-height: 768px){
@@ -1793,6 +1798,12 @@ ul.file-list img.icon-list{
     /*-moz-box-shadow: none;*/
     /* box-shadow: none; */
 }
+    @media screen and (max-width:1366px){
+	ul.file-list img.icon-list{
+            top: 3px;
+            left: -35px;
+	}
+    }
 
 ul.file-list .admin-option{
     float: right;
@@ -1807,7 +1818,14 @@ ul.file-list .admin-option a{
 }
     @media screen and (max-width:1536px){
         ul.file-list .admin-option a{
-            left: -10%;
+            top: 5px;
+            left: 40%;
+        }
+    }
+    @media screen and (max-width:1366px){
+        ul.file-list .admin-option a{
+            top: -5px;
+            left: 40%;
         }
     }
 
@@ -2124,6 +2142,11 @@ video{
     bottom: 120px;
     right: 120px;
 }
+@media screen and (max-width:1366px){
+	.modal-box.lg .print-option-bottom{
+            right: 50px;
+	}
+    }
 
 .modal-box.lg .print-option-bottom img{
     position: absolute;
@@ -2132,11 +2155,23 @@ video{
     width: 60px;
 }
 
+@media screen and (max-width:1366px){
+	.modal-box.lg .print-option-bottom img{
+            top: -10px;
+            width: 40px;
+	}
+    }
+
 .modal-box.lg .print-option-top{
     position: absolute;
     top: 40px;
     right: 120px;
 }
+    @media screen and (max-width:1366px){
+	.modal-box.lg .print-option-top{
+            right: 50px;
+	}
+    }
 
 .modal-box.lg .print-option-top img{
     position: absolute;
@@ -2144,6 +2179,12 @@ video{
     top: -25px;
     width: 60px;
 }
+    @media screen and (max-width:1366px){
+	.modal-box.lg .print-option-top img{
+            top: -10px;
+            width: 40px;
+	}
+    }
 
 /* Archive */
 .archive .title{
@@ -2232,6 +2273,11 @@ section.school-news .main-col-right{
 .news-box .btn-admin img{
     width: 30px;
 }
+    @media screen and (max-width:1366px){
+	.news-box .btn-admin img{
+            width: 25px
+	}
+    }
 
 .school-news img.left{
     float: left;
@@ -2299,7 +2345,7 @@ section.school-news .main-col-right{
 }
 	@media screen and ( max-width :1536px) {
 		.news-date{
-			font-size: 1.1em;
+                    font-size: 1.2em;
 		}
 	} 
 	@media screen and ( max-width :1280px) {
@@ -3172,7 +3218,8 @@ a li{
 	}
 	@media screen and (max-width:1536px){
 		.subscribe{
-			height: 250px;
+                    height: 250px;
+                    margin: 30px 0 30px 30px;
 		}
 	}
 	@media screen and (max-width:1024px){
@@ -3218,15 +3265,30 @@ a li{
     font-weight: 100;
     line-height: 40px;
 }
+    @media screen and (max-width:1366px){
+	.sub-end h3{
+            font-size: 1.4em;
+	}
+    }
 
 .sub-end#subscribingFaild h3{
   padding-top:70px;
 }
+    @media screen and (max-width:1366px){
+	.sub-end#subscribingFaild h3{
+            padding-top:50px;
+	}
+    }
 	
         
 .sub-end#subscribingSuccess h3{
   padding-top:50px;
 }
+    @media screen and (max-width:1366px){
+	.sub-end#subscribingSuccess h3{
+            padding-top:25px;
+        }
+    }
         
 .sub-end h3 span.subEmail{
     color: #6f4581;
@@ -3312,11 +3374,7 @@ a li{
 	width: 85%;
 	border-bottom: 2px solid #9b59b6;
 }
-	@media screen and (max-width:1536px){
-		.sub-start input{
-			margin-top: 10px;
-		}
-	}
+
 	@media screen and (max-width:1024px){
 		.sub-start input{
 			margin-top: 0px;
@@ -3340,19 +3398,20 @@ a li{
   cursor:pointer;
 }
 	@media screen and (max-width:1680px){
-		.sub-end#subscribingFaild .close{
+		.sub-end#subscribingFaild .close-subscribing{
 			top: -150px;
   			left: 83%;
 		}
 	}
 	@media screen and (max-width:1366px){
-		.sub-end#subscribingFaild .close{
-			top: -200px;
-			left: 80%;
+		.sub-end#subscribingFaild .close-subscribing{
+                    top: -190px;
+                    width: 40px;
+                    height: 40px;
 		}
 	}
 	@media screen and (max-width:1024px){
-		.sub-end#subscribingFaild .close{
+		.sub-end#subscribingFaild .close-subscribing{
 			top: -120px;
 		}
 	}
@@ -3367,19 +3426,19 @@ a li{
   cursor:pointer;
 }
 	@media screen and (max-width:1680px){
-		.sub-end#subscribingSuccess .close{
+		.sub-end#subscribingSuccess .close-subscribing{
 			top: -150px;
   			left: 83%;
 		}
 	}
 	@media screen and (max-width:1366px){
-		.sub-end#subscribingSuccess .close{
-			top: -200px;
-			left: 80%;
-		}
+            .sub-end#subscribingSuccess .close-subscribing{
+		top: -210px;
+		left: 85%;
+            }
 	}
 	@media screen and (max-width:1024px){
-		.sub-end#subscribingSuccess .close{
+		.sub-end#subscribingSuccess .close-subscribing{
 			top: -120px;
 		}
 	}
@@ -3396,12 +3455,12 @@ a li{
   transform:rotate(45deg);
 }
         @media screen and (max-width:1366px){
-            .close:before{
+            .close-subscribing:before{
 		width: 50px;
             }
         }
 	@media screen and (max-width:1024px){
-		.close:before{
+		.close-subscribing:before{
 			width: 50px;
 		}
 	}
@@ -3418,12 +3477,12 @@ a li{
   transform:rotate(-45deg);
 }
         @media screen and (max-width:1366px){
-            .close:after{
+            .close-subscribing:after{
 		width: 50px;
             }
 	}
 	@media screen and (max-width:1024px){
-		.close:after{
+		.close-subscribing:after{
 			width: 50px;
 		}
 	}
@@ -4194,6 +4253,12 @@ section.parents .header-title{
 .parents-assoc-meeting .header{
     font-size: 1.4em;
 }
+@media screen and (max-width:1366px){
+	.parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+        }
+}
 
 .parents-assoc-team a,
 .parents-assoc-meeting a{
@@ -4217,6 +4282,12 @@ section.parents .header-title{
 .modal-body.book-list .admin-option img,
 .modal-body.policies .admin-option img{
     width: 40px;
+}
+@media screen and (max-width:1366px){
+	.modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+		width: 30px;
+	}
 }
 
 .list-of-books,
@@ -4300,6 +4371,14 @@ section.parents .header-title{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+@media screen and (max-width:1366px){
+	.parents-information-table-row .parents-information-table-cell img,
+        .parents-assoc-table-row .parents-assoc-table-cell img{
+            width: 25px;
+		left: -15px;
+	}
 }
 
 .parents-information-table-row .parents-information-table-cell.icon,
@@ -4526,6 +4605,12 @@ section.our-team .header-title{
     left: 0px;
 }
 
+@media screen and (max-width:1366px){
+	.modal-text .our-team-table-cell.remove img.icon-list{
+            width: 25px;
+	}
+}
+
 
 
 
@@ -4710,10 +4795,20 @@ ul.class-blog-list li .admin-option{
     top: 0;
     right: -10%;
 }
+    @media screen and (max-width:1366px){
+	ul.class-blog-list li .admin-option{
+            right: -13%;
+	}
+    }
 
 ul.class-blog-list li .admin-option img{
     width: 60%;
 }
+    @media screen and (max-width:1366px){
+	ul.class-blog-list li .admin-option img{
+            width: 50%;	
+	}
+    }
 
 
 
@@ -4779,6 +4874,11 @@ span.dummy_class_info{
     -webkit-transform: rotate(4deg);
     transform: rotate(4deg);
 }
+    @media screen and (max-width:1366px){
+	span.dummy_class_info{
+            font-size: 3em;
+	}
+    }
 
 ul.class-blog-list li .roll:before {
     content: "\f00e"; 
@@ -5114,7 +5214,7 @@ section.gallery .header{
 }
 	@media screen and ( max-width :1536px) {
 		.gallery .gallery-date{
-			font-size: 1.1em;
+			font-size: 1.2em;
 		}
 	} 
 	@media screen and ( max-width :1280px) {
@@ -5207,6 +5307,12 @@ section.gallery .header{
     position: relative;
     width: 10%;
     float: right;
+}
+
+@media screen and (max-width:1366px){
+	.gallery .admin-option{
+            width: 15%;
+	}
 }
 
 .gallery .admin-option img{
@@ -5336,6 +5442,11 @@ span#welcome{
 	
 	/* background-color: green; */
 }
+    @media screen and (max-width:1366px){
+	span#welcome{
+            font-size: 3.3em;
+	}
+    }
 
 .header-blog#red .title #welcome{
     color: #3498db;
@@ -5417,6 +5528,11 @@ span#blog{
 	/* border-bottom: 1px dotted red; */
 	/* background-color: blue; */
 }
+    @media screen and (max-width:1366px){
+	span#blog{
+		font-size: 2.8em;
+	}
+    }
 
 .header-blog .color-cubes{
 	position: inherit;
@@ -5465,6 +5581,12 @@ section.school-life-blog .school-life-blog-box{
 	
 	/* border: 1px solid red; */
 }
+    @media screen and (max-width:1366px){
+	section.class-blog .class-blog-box,
+        section.school-life-blog .school-life-blog-box{
+		padding-top: 150px;
+	}
+    }
 
 .timeline{
 	position:absolute;
@@ -5557,6 +5679,13 @@ img.end-tl{
   	border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
   	transform: rotate(1deg);
 }
+@media screen and (max-width:1366px){
+	.blog-content{
+	width: 55%;	
+	}
+}
+
+
 .col-left .blog-content{
 	
 	float: right;
@@ -5622,6 +5751,12 @@ img.end-tl{
 	margin-left: 5%;
 	padding-top: 10px;
 }
+@media screen and (max-width:1366px){
+	.blog-title{
+		font-size: 1.8em;
+	}
+}
+
 .blog-text p{
 	text-align: justify;
 	text-indent: 2em;
@@ -5664,6 +5799,13 @@ img.end-tl{
 	width: 60%;
 	
 }
+@media screen and (max-width:1366px){
+	.blog-date{
+		width: 55%;
+	}
+}
+
+
 .col-left .blog-date{
 	right: -60%;
 	top: -5%;
@@ -5671,6 +5813,13 @@ img.end-tl{
 	border-bottom: 3px solid #561818;
 	border-radius: 95% 99% 97% 95%/4% 94% 10% 95%;
 }
+@media screen and (max-width:1366px){
+	.col-left .blog-date{
+		right: -55%;
+	}
+}
+
+
 .col-right .blog-date{
 	left: -60%;
 	bottom: 10%;
@@ -5678,15 +5827,33 @@ img.end-tl{
 	border-bottom: 3px solid #561818;
 	border-radius: 5% 99% 7% 95%/4% 94% 5% 58%
 }
+@media screen and (max-width:1366px){
+	.col-right .blog-date{
+		left: -55%;
+	}
+}
 .blog-date img{
 	width: 40px;
 }
+@media screen and (max-width:1366px){
+	.blog-date img{
+		width: 30px;
+	}
+}
+
+
 .col-left .blog-date img{
 	padding: 20px 20px 20px 20px;
 }
 .col-right .blog-date img{
-	padding: 0 20px 0 70px;
+	padding: 0 20px 0px 70px;
 }
+@media screen and (max-width:1366px){
+	.col-right .blog-date img{
+		padding: 0 20px 10px 20px;
+	}
+}
+
 .blog-date img.blog-poiter{
 	position: absolute;
 	padding: 0px;
@@ -5705,12 +5872,24 @@ img.end-tl{
 	bottom: -2px;
 	left: -10px;	
 }
+@media screen and (max-width:1366px){
+	.col-right .blog-date img.blog-poiter{
+		bottom: -10px;
+	}
+}
+
 .blog-date span{
 	position: absolute;
 	
 	font-family: 'Architects Daughter', 'Arial' ,sans-serif;
 	font-size: 1.3em;
 	color: #561818;
+}
+
+@media screen and (max-width:1366px){
+	.blog-date span{
+		font-size: 1.1em;
+	}
 }
 .col-left .blog-date span{
 	top: 27px;
@@ -5748,16 +5927,32 @@ img.end-tl{
     top: 0;
     right: -12%;
 }
+@media screen and (max-width:1366px){
+	.col-right .blog-content .admin-option{
+            right: -14%;
+	}
+}
 .col-left .blog-content .admin-option{
     position: absolute;
     top: 2%;
     left: -13%;
+}
+@media screen and (max-width:1366px){
+	.col-left .blog-content .admin-option{
+            left: -15%;
+	}
 }
 
 .blog-content .admin-option img{
     padding: 0;
     width: 60%;
     border: none;
+}
+
+@media screen and (max-width:1366px){
+	.blog-content .admin-option img{
+            width: 50%;
+	}
 }
 
 /* end BLOG CONTENT */
@@ -6063,7 +6258,8 @@ img.end-tl{
 }
 	@media screen and (max-width:1536px){
 		.modal-box{
-			width: 70%;
+                    width: 70%;
+                    margin-top: 5%
 		}
 	}
 	@media screen and (max-width:1024px){
@@ -6075,7 +6271,13 @@ img.end-tl{
 .modal-box.lg{
     width: 60%;
     margin-top: 3%;
-}       
+}  
+    @media screen and (max-width:1366px){
+	.modal-box.lg{
+            margin-top: 5%;
+	}
+    }
+
         
 .modal-box.sm {
  	width: 30%;
@@ -6089,6 +6291,12 @@ img.end-tl{
 
 .modal-box.video{
     margin: 3% auto;
+}
+
+@media screen and (max-width:1366px){
+	.modal-box.video{
+		margin: 5% auto;
+	}
 }
 	
 .modal-box.purpure{
@@ -6351,6 +6559,7 @@ img.end-tl{
 
 .modal-title span{
 	margin: 0;
+        text-align: center;
 	font-family: 'Architects Daughter' ,sans-serif ;
 	font-weight: 300;
 	font-size: 3em;
@@ -6698,6 +6907,11 @@ img.end-tl{
     -moz-box-shadow: none;
     box-shadow: none;
 }
+    @media screen and (max-width:1366px){
+	.modal-text img.icon-list{
+		width: 30px;
+	}
+    }
 
 .modal-text .parents-information-table-cell.edit img.icon-list,
 .modal-text .parents-information-table-cell.remove img.icon-list,
@@ -6708,6 +6922,15 @@ img.end-tl{
     top: 0px;
     left: 0px;
 
+}
+
+@media screen and (max-width:1366px){
+	.modal-text .parents-information-table-cell.edit img.icon-list,
+        .modal-text .parents-information-table-cell.remove img.icon-list,
+        .modal-text .parents-assoc-table-cell.edit img.icon-list,
+        .modal-text .parents-assoc-table-cell.remove img.icon-list{
+		width: 25px;
+	}
 }
 
 
@@ -6887,10 +7110,14 @@ table.event-list tr{
     display: inline-block;
     width: 70%;
     float: left;
-    font-size: 1.4em;
-    font-weight: 600;
+    font-size: 1.8em;
     /* background: lime; */
 }
+    @media screen and (max-width:1366px){
+	.content .title{
+		
+	}
+    }
 
 .content .admin-option{
     display: inline-block;
@@ -6906,7 +7133,7 @@ table.event-list tr{
 .content .location{
     display: inline-block;
     width: 100%;
-    font-size: .8em;
+    font-size: 1em;
     color: #717579;
     font-weight: 100;
 	/* background: teal; */
@@ -6916,16 +7143,16 @@ table.event-list tr{
         display: inline-block;
         width: 100%;
 	padding: 20px 0;
-	font-size: 1em;
+	font-size: 1.2em;
 	font-weight: 100;
 	line-height: 20px;
 	/* background: fuchsia; */
 }
-	@media screen and (max-width:1536px){
+/*	@media screen and (max-width:1536px){
 		.content .text{
 			font-size: .9em;
 		}
-	}
+	}*/
 /* end EVENT-LIST TABLE */
 
 /* Anti-Bullying-Code */
@@ -7373,6 +7600,11 @@ div.dhx_modal_cover_dv {
     display: block;
     margin-bottom: 50%;
 }
+    @media screen and (max-width:1366px){
+	.tooltip.horizontal{
+            margin-bottom: 40%;
+	}
+    }
 
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -7404,6 +7636,12 @@ div.dhx_modal_cover_dv {
     top: 13px;
     left: 40px;
 }
+    @media screen and (max-width:1366px){
+	.modal-text .tooltip .tooltiptext{
+            top: 35px;
+            left: -10px;
+	}
+    }
 
 .modal-text .parents-information-table-cell.edit .tooltip .tooltiptext,
 .modal-text .parents-assoc-table-cell.edit .tooltip .tooltiptext{
@@ -7423,10 +7661,18 @@ div.dhx_modal_cover_dv {
 .tooltip .tooltiptext.remove{
     background-color: rgba(192, 57, 43, .3);
     color: #c0392b;
+    top: 35px;
+    left: -10px;
 }
 .tooltip .tooltiptext.bottom.remove{
     left: -5px;
 }
+    @media screen and (max-width:1366px){
+	.tooltip .tooltiptext.bottom.remove{
+            left: -10px;
+	}
+    }
+    
 .admin-option .tooltip .tooltiptext.bottom.remove{
     left: 10px;
 }
@@ -7441,10 +7687,17 @@ div.dhx_modal_cover_dv {
 .tooltip .tooltiptext.edit{
     background-color: rgba(52, 152, 219, .3);
     color: #3498db;
+    top: 35px;
+    left: 0px;
 }
 .tooltip .tooltiptext.bottom.edit{
     left: 0px;
 }
+    @media screen and (max-width:1366px){
+	.tooltip .tooltiptext.bottom.edit{
+            left: -5px;
+	}
+    }
     
 .admin-option .tooltip .tooltiptext.bottom.edit{
     left: 15px;
@@ -7505,6 +7758,11 @@ label.error {
     font-size: .9em;
     text-transform: uppercase;
 }
+    @media screen and (max-width:1366px){
+	label.error{
+            font-size: .8em;
+	}
+    }
 
 #subscribeForm label.error{
     margin: -15px 0 20px 10%;
@@ -7516,6 +7774,7 @@ label.error {
     top: 5%;
     right: 5%
 }
+    .cms-option
 
 .cms-option.events{
     top: 5%;
@@ -7566,6 +7825,11 @@ label.error {
     top: 30px;
     right: 10%;
 }
+@media screen and (max-width:1366px){
+	.cms-option.board-of-management{
+		right: 0;
+	}
+}
 
 .cms-option.teachers{
     top: 30px;
@@ -7575,6 +7839,11 @@ label.error {
 .cms-option.learning-support{
     top: 30px;
     right: 20%;
+}
+@media screen and (max-width:1366px){
+	.cms-option.learning-support{
+		right: 10%;
+	}
 }
 
 .cms-option.secretary{
@@ -7636,6 +7905,12 @@ label.error {
     width: 30px;
     
 }
+    @media screen and (max-width:1366px){
+	.cms-option a img{
+            width: 25px;
+            top: -5px
+	}
+    }
 
 .cms-option a img:hover{
     -webkit-transform: rotate(10deg) scale(1.1);
@@ -7649,40 +7924,83 @@ label.error {
     right: 90px;
     top: -5px;
 }
+    @media screen and (max-width:1366px){
+	.cms-option.events a img{
+            right: 85px;
+            top: -3px
+	}
+    }
 
 .cms-option.newsletter a img{
     right: 125px;
     top: -5px;
 }
+    @media screen and (max-width:1366px){
+	.cms-option.newsletter a img{
+            top: -3px;
+        }
+    }
 
 .cms-option.our-awards a img{
     right: 90px;
     top: -3px;
 }
+    @media screen and (max-width:1366px){
+	.cms-option.our-awards a img{
+            top: 0 ;
+        }
+    }
 
 .cms-option.news a img{
     right: 80px;
     top: -5px;
 }
+    @media screen and (max-width:1366px){
+	.cms-option.news a img{
+            right: 80px;
+            top: -3px
+	}
+    }
 
 .cms-option.classes a img{
     right: 160px;
     top: -5px;
 }
+    @media screen and (max-width:1366px){
+	.cms-option.classes a img{
+            top: -3px
+	}
+    }
 
 .cms-option.post a img{
     right: 120px;
     top: -5px;
 }
 
+@media screen and (max-width:1366px){
+	.cms-option.post a img{
+	 top: -3px;	
+	}
+}
+
 .cms-option.gallery_add a img{
     right: 140px;
     top: -5px;
+}
+@media screen and (max-width:1366px){
+	.cms-option.gallery_add a img{
+	 top: -3px;	
+	}
 }
 
 .cms-option.our-team a img{
     right: 140px;
     top: -5px;
+}
+@media screen and (max-width:1366px){
+	.cms-option.our-team a img{
+	 top: -3px;	
+	}
 }
 
 .cms-option.board-of-management a img{
@@ -7960,13 +8278,17 @@ form.cms label{
     display: block;
     padding-top: 15px;
     padding-bottom: 5px;
-    font-size: .9em;
     color: #575757;
     font-family: 'Architects Daughter' ,sans-serif;
     font-size: 1.2em;
     color: #561818;
 
 }
+    @media screen and (max-width:1536px){
+	form.cms label{
+           font-size: 1.4em;
+	}
+    }
 
 form.cms label.centered{
     text-align: center;
@@ -8023,6 +8345,13 @@ form.cms img.preview-img.edit-class{
     width: 60%;
     margin-left: 20%
 }
+    @media screen and (max-width:1366px){
+	form.cms img.preview-img.add-class,
+        form.cms img.preview-img.edit-class{
+            width: 80%;
+            margin-left: 10%
+	}
+    }
 
 form.cms img.preview-img.add-news,
 form.cms img.preview-img.edit-news{
@@ -8042,6 +8371,12 @@ form.cms label.preview-img-label.edit-class{
     left: 50px;
     top: 50px;
 }
+    @media screen and (max-width:1366px){
+	form.cms label.preview-img-label.add-class,
+        form.cms label.preview-img-label.edit-class{
+            left: 10px;
+	}
+    }
 
 form.cms label.preview-img-label.add-news,
 form.cms label.preview-img-label.edit-news{
@@ -8107,6 +8442,12 @@ form.cms .post-gallery{
     background-position: center;
 }
 
+@media screen and (max-width:1366px){
+	form.cms .post-gallery{
+            height: 150px;
+	}
+}
+
 form.cms .current_gallery_wrap .post-gallery {
     height: 150px;
     background: none;
@@ -8119,6 +8460,7 @@ form.cms .post-gallery img{
     max-height: 150px;
     width: auto;
 }
+
 
 form.cms .post-gallery input[type='file']{
     display: block;
@@ -8186,6 +8528,12 @@ form.cms td.icon img{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+@media screen and (max-width:1366px){
+	form.cms td.icon img{
+		width: 25px;
+	}
 }
 
 form.cms td.text{
