@@ -5687,6 +5687,13 @@ img.end-tl{
 	bottom: -10px;
 }
 
+@media screen and (max-width:1366px){
+	img.end-tl{
+		left:48%;
+                bottom: -40px;
+	}
+    }
+
 .blog-content{
 	position: relative;
 	width: 50%;
@@ -7915,6 +7922,11 @@ label.error {
     float: left;
     padding-left: 10%;
 }
+@media screen and (max-width:1366px){
+	.cms-option.parents-assoc.left{
+		padding-left: 13%
+	}
+    }
 
 .cms-option a img{
     position: absolute;
