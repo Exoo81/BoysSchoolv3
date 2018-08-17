@@ -79,8 +79,8 @@ return [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
                     'host'     => 'localhost',                    
-                    'user'     => 'root',
-                    'password' => '',
+                    'user'     => 'uekfyfsnkp',
+                    'password' => 'P7dWgHkGu8',
                     'dbname'   => 'uekfyfsnkp',
                     'port' => '3306',
                 ]
