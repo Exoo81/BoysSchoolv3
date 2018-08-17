@@ -58,6 +58,21 @@ return [
         ],
     ],
     
+//    'doctrine' => [
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass' => PDOMySqlDriver::class,
+//                'params' => [
+//                    'host'     => 'localhost',                    
+//                    'user'     => 'root',
+//                    'password' => '',
+//                    'dbname'   => 'boyschooldb',
+//                    'port' => '3307',
+//                ]
+//            ],            
+//        ],        
+//    ],
+    
     'doctrine' => [
         'connection' => [
             'orm_default' => [
@@ -66,8 +81,8 @@ return [
                     'host'     => 'localhost',                    
                     'user'     => 'root',
                     'password' => '',
-                    'dbname'   => 'boyschooldb',
-                    'port' => '3307',
+                    'dbname'   => 'uekfyfsnkp',
+                    'port' => '3306',
                 ]
             ],            
         ],        

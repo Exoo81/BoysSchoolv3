@@ -204,7 +204,7 @@ a:active, a:hover {
 a.bs{
 	position: relative;
 	display: block;	
-  	font-size: 1.2em;
+  	font-size: 1em;
   	color: #561818;
   	text-transform: uppercase;
   	text-decoration: none;
