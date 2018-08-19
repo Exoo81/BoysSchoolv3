@@ -2295,6 +2295,7 @@ section.school-news .main-col-right{
     }
 
 .school-news img.left{
+    border-radius: 4px;
     float: left;
     margin-right: 10px;
     width: 50%;
@@ -2305,6 +2306,7 @@ section.school-news .main-col-right{
 }
 
 .school-news img.right{
+    border-radius: 4px;
     float: right;
     margin-left: 10px;
     width: 50%;
@@ -2404,22 +2406,23 @@ section.school-news .main-col-right{
 		}
 	}
         
-.video-link{
+.news-link{
     position: relative;
-    display: inline-block;
+    display: inherit;
     width: auto;
+    padding-bottom: 10px;
     font-family: 'Architects Daughter', 'Arial' ,sans-serif;
     font-size: 1.4em;
 }
 
-.video-link img.video{
+.news-link img{
     position: absolute;
     float: left;
     width: 35px;
     top: 5px;
 }
 
-.video-link a{
+.news-link a{
     float: left;
     padding-top: 10px;
     margin-left: 50px;
@@ -2472,10 +2475,9 @@ section.school-news .main-col-right{
 	}
         
 .news-admin{
-    display: inline-block;
+    display: block;
     position: relative;
-    width: 30%;
-    float: left;
+    width: auto;
 }
 
 
@@ -8440,6 +8442,7 @@ form.cms img.preview-img{
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+    border-radius: 4px;
 }
 
 form.cms img.preview-img.add-class,
@@ -8639,9 +8642,7 @@ form.cms td.icon img{
 }
 
 form.cms td.text{
-    font-family: 'Architects Daughter', 'Arial' ,sans-serif;
-    font-size: 1.4em;
-
+    font-size: 1em;
 }
 
 form.cms td.option{

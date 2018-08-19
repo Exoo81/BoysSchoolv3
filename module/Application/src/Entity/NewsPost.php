@@ -59,5 +59,17 @@ class NewsPost extends Post {
         $this->photoName = $photo_name;
     }
     
+    
+    public function jsonSerialize(){
+        return 
+        [
+            'id'   => $this->getId(),
+            'currentSeason' => $this->getSeason()->getId(),
+            'title' => $this->getTitle(),
+            'content' => $this->getContent(),
+            'photoName' => $this->getPhotoName(),
+            'docName' => $this->getDocName(),
+        ];
+    }
 }
 

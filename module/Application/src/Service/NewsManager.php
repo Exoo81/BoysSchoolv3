@@ -2,7 +2,7 @@
 
 namespace Application\Service;
 
-use Application\Entity\News;
+use Application\Entity\NewsPost;
 use Application\Entity\NewsBlog;
 use Classes\Entity\Post;
 use User\Entity\User;
@@ -107,11 +107,24 @@ class NewsManager{
     public function saveNews($formData){
         
         //create new News
-        $news = new News();
-        
+        $news = new NewsPost();
+ 
         // json_decode to array regular fields
         $formFieldsArray = $this->decodeJSONdata($formData);
         
+        //find current season news Blog
+        $blog = $this->entityManager->getRepository(NewsBlog::class)
+                ->find($formFieldsArray['blogID']);
+        
+        if($blog != null){
+            $news->setBlog($blog);
+        }else{
+            //return error info
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Error Gallery blog id. Blog not exist. Try again.';
+        
+            return $dataResponse;
+        }
         
         //save news other data
         $news->setSeason($this->currentSeason);
@@ -224,6 +237,7 @@ class NewsManager{
 
         }
         
+        
         //return success
         $dataResponse['success'] = true;
         $dataResponse['responseMsg'] =  'News saved.';
@@ -236,7 +250,7 @@ class NewsManager{
     public function getEditedNews($newsID){
         
         // Find a news with such ID.
-        $news = $this->entityManager->getRepository(News::class)
+        $news = $this->entityManager->getRepository(NewsPost::class)
                 ->find($newsID);
         
         if($news !== null){
@@ -244,7 +258,7 @@ class NewsManager{
             $dataResponse['newsToEdit'] = $newsJSON;
  
             //build picure(s) path 
-            $path_to_photo = '/upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/'.$news->getPhotoName();
+            $path_to_photo = 'upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/'.$news->getPhotoName();
             $dataResponse['photoPath'] = $path_to_photo;
 
      
@@ -268,7 +282,7 @@ class NewsManager{
         $formFieldsArray = $this->decodeJSONdata($dataToEdit);
         
         //find news to edit
-        $editNews = $this->entityManager->getRepository(News::class)
+        $editNews = $this->entityManager->getRepository(NewsPost::class)
                 ->find($formFieldsArray['editNewsID']);
         
         if($editNews == null){
@@ -460,7 +474,7 @@ class NewsManager{
         
         
         //find news with id
-        $deleteNews = $this->entityManager->getRepository(News::class)
+        $deleteNews = $this->entityManager->getRepository(NewsPost::class)
                 ->find($id);
         
         if($deleteNews == null){

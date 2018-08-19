@@ -13,8 +13,10 @@ $(".modal-trigger-add-news").click(function(e){
     
     dataModal = $(this).attr("data-modal");
     var authorID = $(this).attr("data-authorID");
+    var blogID = $(this).attr("data-blogID");
     
 //    console.log('authorID: ' + authorID);
+//    console.log('blog ID: ' + blogID);
     
     //clear msg label
         $(".response-msg").html('');
@@ -31,6 +33,7 @@ $(".modal-trigger-add-news").click(function(e){
     
     //insert data
     $('#addNewsAuthorID').val(authorID);
+    $('#addNewsBlogID').val(blogID);
     //display modal
     $("#" + dataModal).css({"display":"block"});
 });
@@ -40,6 +43,9 @@ $("#addNewsForm").validate({
         addNewsAuthorID: {
             required: true,
             maxlength: 100       //max. text length = 100 char
+        },
+        addNewsBlogID: {
+            required: true,
         },
         addNewsTitle: {
             required: true,
@@ -86,17 +92,20 @@ $("#addNewsForm").validate({
         var newsPhoto = document.querySelector('#addNewsPhoto').files[0];
 
         var authorID = $("#addNewsAuthorID").val();
+        
+        var blogID = $("#addNewsBlogID").val();
 
 //    console.log('newsTitle: ' + newsTitle);
 //    console.log('newsContent: ' + newsContent);
 //    console.log('newsDoc: ' + newsDoc);
 //    console.log('newsPhoto: ' + newsPhoto);
 //    console.log('authorID: ' + authorID);
+//    console.log('blog ID: ' + blogID);
 
         var formData = new FormData();
 
         var objArr = [];
-        objArr.push({"newsTitle":newsTitle, "newsContent":newsContent, "authorID":authorID});
+        objArr.push({"newsTitle":newsTitle, "newsContent":newsContent, "authorID":authorID, blogID:blogID});
 
         formData.append('objArr', JSON.stringify(objArr));
 

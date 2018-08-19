@@ -59,7 +59,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
         <div class="news-box">
             <?php if ($this->access('news.add')) {
                 echo '<div class="cms-option news">'
-                        . '<a href="#" class="bs modal-trigger-add-news" data-modal="add-news-modal" data-authorID="'.$this->currentUser()->getId().'">'
+                        . '<a href="#" class="bs modal-trigger-add-news" data-modal="add-news-modal" data-authorID="'.$this->currentUser()->getId().'" data-blogID="'.$this->blog->getId().'">'
                             . '<img src="img/icons/icon-add.png"><span>Add news</span>'
                         . '</a>'
                     . '</div>';
@@ -104,11 +104,12 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                 echo '<hr class="blue">';
                                 echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
                                 echo '<p>'.$this->escapeHtml($news->getContent()).'</p>';
-                                if($news->getDocName() != null) {
-                                    echo '<div class="news-doc"> ';
-                                    echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
-                                        echo '<img src="img/icons/icon-download.png">'.$news->getDocName().'</br>';
-                                    echo '</a>';
+                                if($news->getDocName() != null) {                                                                     
+                                    echo '<div class="news-link">';                                          
+                                            echo '<img src="img/icons/icon-download.png">';
+                                            echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
+                                                echo '<span class="">see attachment</span>';
+                                            echo '</a>';     
                                     echo '</div>';
                                 }
                                 echo '<div class="news-admin">';
@@ -171,14 +172,6 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                     $left_right_adjust++;
                                     
                                 }
-//                                if($this->escapeHtml($news->getPhotoName()) !==null){
-//                                    if($left_right_adjust % 2){
-//                                        echo '<img class="left" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
-//                                    }else{
-//                                        echo '<img class="right" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
-//                                    }
-//                                    $left_right_adjust++;
-//                                }
                                 echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - Gallery</div>';
                                 echo '<hr class="blue">';
                                 echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
@@ -186,8 +179,8 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                 echo '<p>'.$this->escapeHtml($news->getContent()).'</p>';
                                 
                                 if($news->getVideoName() !== null && sizeof($photoGallery) > 0){
-                                        echo '<div class="video-link">';                                          
-                                            echo '<img class="video" src="../../img/icons/icon-video.png">';
+                                        echo '<div class="news-link">';                                          
+                                            echo '<img src="../../img/icons/icon-video.png">';
                                             $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName();
                                             echo '<a class="bs blue modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$news->getTitle().'">';
                                                 echo '<span class="">see also video</span>';
@@ -458,6 +451,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                     </div>
                     
                     <input type="hidden" id="addNewsAuthorID" name="addNewsAuthorID" required>
+                    <input type="hidden" id="addNewsBlogID" name="addNewsBlogID" required>
 
                     
                     <div class="btn-modal-box">
@@ -1365,7 +1359,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
     <script src="js/newsletter-delete.js" type="text/javaScript"></script>
     <script src="js/our-awards-add.js" type="text/javaScript"></script>
     <script src="js/our-awards-delete.js" type="text/javaScript"></script>
-    <script src="/js/show-video.js" type="text/javaScript"></script>
+    <script src="js/show-video.js" type="text/javaScript"></script>
     
 
     
