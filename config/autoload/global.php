@@ -58,35 +58,35 @@ return [
         ],
     ],
     
-//    'doctrine' => [
-//        'connection' => [
-//            'orm_default' => [
-//                'driverClass' => PDOMySqlDriver::class,
-//                'params' => [
-//                    'host'     => 'localhost',                    
-//                    'user'     => 'root',
-//                    'password' => '',
-//                    'dbname'   => 'boyschooldb',
-//                    'port' => '3307',
-//                ]
-//            ],            
-//        ],        
-//    ],
-    
     'doctrine' => [
         'connection' => [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
                     'host'     => 'localhost',                    
-                    'user'     => 'uekfyfsnkp',
-                    'password' => 'P7dWgHkGu8',
-                    'dbname'   => 'uekfyfsnkp',
-                    'port' => '3306',
+                    'user'     => 'root',
+                    'password' => '',
+                    'dbname'   => 'boyschooldb',
+                    'port' => '3307',
                 ]
             ],            
         ],        
     ],
+    
+//    'doctrine' => [
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass' => PDOMySqlDriver::class,
+//                'params' => [
+//                    'host'     => 'localhost',                    
+//                    'user'     => 'uekfyfsnkp',
+//                    'password' => 'P7dWgHkGu8',
+//                    'dbname'   => 'uekfyfsnkp',
+//                    'port' => '3306',
+//                ]
+//            ],            
+//        ],        
+//    ],
     
     
 

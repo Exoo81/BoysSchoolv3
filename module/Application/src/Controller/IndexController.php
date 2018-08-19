@@ -93,6 +93,8 @@ class IndexController extends AbstractActionController{
     
     public function indexAction(){
         
+        //Get curren season news blog
+        $newsBlog = $this->newsManager->getCurrentNewsBlog();
         // Get recent posts
         
         $schoolEvents = $this->eventManager->getSeasonEvents();
@@ -124,6 +126,7 @@ class IndexController extends AbstractActionController{
             'aboutUs' => $aboutUs,
             'newsletters' => $newsletters,
             'ourAwards' => $ourAwards,
+            'blog' => $newsBlog
              ]);
     }
     

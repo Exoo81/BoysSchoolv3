@@ -3,6 +3,8 @@
 namespace Application\Service;
 
 use Application\Entity\News;
+use Application\Entity\NewsBlog;
+use Classes\Entity\Post;
 use User\Entity\User;
 use Zend\Db\Sql\Select;
 use Zend\Db\ResultSet\ResultSet;
@@ -42,6 +44,14 @@ class NewsManager{
         $this->currentSeason = $this->seasonManager->getCurrentSeason();
     }
     
+    public function getCurrentNewsBlog(){
+        
+        $newsBlog = $this->entityManager->getRepository(NewsBlog::class)
+                     ->findOneBySeason($this->currentSeason);
+        
+        return $newsBlog;
+    }
+    
     public function fetchAll($paginated=false){
         if ($paginated) {
             return $this->fetchPaginatedResults();
@@ -67,16 +77,31 @@ class NewsManager{
     
     private function getAllNewsQuery(){
 
+//        $queryBuilder = $this->entityManager->createQueryBuilder();
+//  
+//        $queryBuilder->select('news')
+//            ->from(News::class, 'news')
+//            ->innerJoin('news.season', 'season')
+//            ->where('season.id =:season_id')
+//            ->setParameter('season_id', $this->currentSeason)
+//            ->orderBy('news.datePublished', 'DESC');
+//
+//        return $queryBuilder->getQuery();
+        
         $queryBuilder = $this->entityManager->createQueryBuilder();
-  
-        $queryBuilder->select('news')
-            ->from(News::class, 'news')
-            ->innerJoin('news.season', 'season')
-            ->where('season.id =:season_id')
-            ->setParameter('season_id', $this->currentSeason)
-            ->orderBy('news.datePublished', 'DESC');
+       
+            $queryBuilder->select('post')
+                ->from(Post::class, 'post')
+                ->innerJoin('post.season', 'season')                    
+                ->andWhere('season.id = :seasonID')
+                ->setParameter('seasonID', $this->currentSeason->getId())
 
-        return $queryBuilder->getQuery();
+                ->orderBy('post.datePublished', 'DESC');
+
+            
+            return $queryBuilder->getQuery();
+        
+        
     }
     
     public function saveNews($formData){

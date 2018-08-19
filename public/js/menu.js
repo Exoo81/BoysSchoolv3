@@ -4,6 +4,7 @@ var navigationMenu = {
     $hamburger: $('.hamburger'),
     offset: 1800,
     pageHeight: $('#content-front').outerHeight(),
+    viewPortHeigth: $( window ).height(),           //added 18.08
     open: function () {
     	document.getElementById('main-content').scrollTop = 0;
         this.$window.addClass('tilt');
@@ -21,8 +22,11 @@ var navigationMenu = {
     },
     updateTransformOrigin: function () {
         scrollTop = this.$window.scrollTop();
-        equation = (scrollTop + this.offset) / this.pageHeight * 100;
-        this.$contentFront.css('transform-origin', 'center ' + equation + '%');
+        //equation = (scrollTop + this.offset) / this.pageHeight * 100;   // old
+        //this.$contentFront.css('transform-origin', 'center ' + equation + '%');   //old
+        
+        //equation = (scrollTop + this.offset) / this.viewPortHeigth * 500;   //added 18.08
+        //this.$contentFront.css('transform-origin', 'center ' + equation + 'px');    //added 18.08
     },
     hamburgerFix: function (opening) {
         if (opening) {

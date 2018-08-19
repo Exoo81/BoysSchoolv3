@@ -66,51 +66,170 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             } ?>
 
             <div class="title blue">School news</div>
-            <?php foreach ($this->paginator  as $news) : ?>
-                <div class="school-news">
-                    <?php if($this->escapeHtml($news->getPhotoName()) !==null){
-                        if($left_right_adjust % 2){
-                            echo '<img class="left" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
-                        }else{
-                            echo '<img class="right" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
-                        }
-                        $left_right_adjust++;
-                    }  
-                    ?>
-                    <div class="news-title"><?= $this->escapeHtml($news->getTitle()) ?></div>
-                    <hr class="blue">
-                    <div class="news-date"><img src="img/icons/icon-calendar.png"><?= date('d F Y',strtotime($news->getDatePublished())) ?></div>
-                    <p><?= $this->escapeHtml($news->getContent()) ?></p>
-                    <?php if($news->getDocName() != null) {
-                        echo '<div class="news-doc"> ';
-                        echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
-                            echo '<img src="img/icons/icon-download.png">'.$news->getDocName().'</br>';
-                        echo '</a>';
+            <?php
+                if($this->paginator->getTotalItemCount() == 0){
+                    echo '<div class="school-news">';
+                        echo '<div class="no-content">'
+                                .'<div class="info-wrapper">'
+                                    .'<img src="/../img/icons/icon-summer.png"/>'
+                                    .'<span>Summer break<br>New news for the '.$current_season.'<br>comming soon ... </span>'
+                                .'</div>';
+
                         echo '</div>';
+                    echo '</div>';
+                }else{
+                    foreach($this->paginator  as $news){
+                        $type = null;
+                        $reflect = new ReflectionClass($news);
+                            if($reflect->getShortName() === 'NewsPost'){
+                                $type = 'news';
+                            }
+                            else if($reflect->getShortName() === 'GalleryPost'){
+                                $type = 'gallery';
+                            } 
+                            else{
+                                $type = $reflect->getShortName();
+                            }
+                        if($type === 'news'){
+                            echo '<div class="school-news">';
+                                if($this->escapeHtml($news->getPhotoName()) !==null){
+                                    if($left_right_adjust % 2){
+                                        echo '<img class="left" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+                                    }else{
+                                        echo '<img class="right" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+                                    }
+                                    $left_right_adjust++;
+                                }
+                                echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - News</div>';
+                                echo '<hr class="blue">';
+                                echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
+                                echo '<p>'.$this->escapeHtml($news->getContent()).'</p>';
+                                if($news->getDocName() != null) {
+                                    echo '<div class="news-doc"> ';
+                                    echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
+                                        echo '<img src="img/icons/icon-download.png">'.$news->getDocName().'</br>';
+                                    echo '</a>';
+                                    echo '</div>';
+                                }
+                                echo '<div class="news-admin">';
+                                    if ($this->access('news.edit')) {
+                                        echo '<a href="#" class="tooltip modal-trigger-edit-news" data-modal="edit-news-modal" data-id="'. $this->escapeHtml($news->getId()).'">'
+                                            .'<button class="btn-admin">'
+                                                .'<img src="img/icons/icon-edit-blue.png" >'
+                                            .'</button>'
+                                            .'<span class="tooltiptext bottom edit">Edit</span>';
+                                        echo '</a>';
+                                    }
+                                    if ($this->access('news.delete')) {
+                                        echo '<a href="#" class="tooltip modal-trigger-delete-news" data-modal="delete-news-modal" data-id="'.$this->escapeHtml($news->getId()).'" data-title="'.$this->escapeHtml($news->getTitle()).'">'
+                                                .'<button class="btn-admin">'
+                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                .'</button>'
+                                            .'<span class="tooltiptext bottom remove">Remove</span>';
+                                        echo '</a>';
+                                    }
+                                echo '</div>';
+                            echo '</div>'; 
+                        }
+                        if($type === 'gallery'){
+                            $photoGallery = $news->getPostGallery();
+                            echo '<div class="school-news">';
+                                if(sizeof($photoGallery) > 0){
+                                    $countPhoto = 1;                // first photo from post gallery
+                                    foreach($photoGallery as $photo){
+                                        if($countPhoto === 1){
+                                            if($left_right_adjust % 2){
+                                                echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img class="left" src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img class="right" src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '</a>';
+                                            }
+                                            $left_right_adjust++;
+                                        }else{
+                                            echo '<div class="hidden">';
+                                                echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '</a>';
+                                            echo '</div>';
+                                        }
+                                        $countPhoto ++;
+                                    }
+                                    
+                                }else{
+                                    if($left_right_adjust % 2){
+                                        echo '<video controls class="left">';
+                                            echo '<source src="../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
+                                        echo '</video>';
+                                    }else{
+                                        echo '<video controls class="right">';
+                                            echo '<source src="../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
+                                        echo '</video>';
+                                    }
+                                    $left_right_adjust++;
+                                    
+                                }
+//                                if($this->escapeHtml($news->getPhotoName()) !==null){
+//                                    if($left_right_adjust % 2){
+//                                        echo '<img class="left" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+//                                    }else{
+//                                        echo '<img class="right" src="upload/school-news/'.$current_season.'/'.$this->escapeHtml($news->getId()).'/'.$this->escapeHtml($news->getPhotoName()).'">';
+//                                    }
+//                                    $left_right_adjust++;
+//                                }
+                                echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - Gallery</div>';
+                                echo '<hr class="blue">';
+                                echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
+                                
+                                echo '<p>'.$this->escapeHtml($news->getContent()).'</p>';
+                                
+                                if($news->getVideoName() !== null && sizeof($photoGallery) > 0){
+                                        echo '<div class="video-link">';                                          
+                                            echo '<img class="video" src="../../img/icons/icon-video.png">';
+                                            $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName();
+                                            echo '<a class="bs blue modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$news->getTitle().'">';
+                                                echo '<span class="">see also video</span>';
+                                            echo '</a>';     
+                                        echo '</div>';
+                                }
+//                                if($news->getDocName() != null) {
+//                                    echo '<div class="news-doc"> ';
+//                                    echo '<a target="_blank" class="bs blue" href="upload/school-news/'.$news->getSeason()->getSeasonName().'/'.$news->getId().'/doc/'.$news->getDocName().'">';
+//                                        echo '<img src="img/icons/icon-download.png">'.$news->getDocName().'</br>';
+//                                    echo '</a>';
+//                                    echo '</div>';
+//                                }
+//                                echo '<div class="news-admin">';
+//                                    if ($this->access('news.edit')) {
+//                                        echo '<a href="#" class="tooltip modal-trigger-edit-news" data-modal="edit-news-modal" data-id="'. $this->escapeHtml($news->getId()).'">'
+//                                            .'<button class="btn-admin">'
+//                                                .'<img src="img/icons/icon-edit-blue.png" >'
+//                                            .'</button>'
+//                                            .'<span class="tooltiptext bottom edit">Edit</span>';
+//                                        echo '</a>';
+//                                    }
+//                                    if ($this->access('news.delete')) {
+//                                        echo '<a href="#" class="tooltip modal-trigger-delete-news" data-modal="delete-news-modal" data-id="'.$this->escapeHtml($news->getId()).'" data-title="'.$this->escapeHtml($news->getTitle()).'">'
+//                                                .'<button class="btn-admin">'
+//                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+//                                                .'</button>'
+//                                            .'<span class="tooltiptext bottom remove">Remove</span>';
+//                                        echo '</a>';
+//                                    }
+//                                echo '</div>';
+                            echo '</div>'; 
+                        }
+                        else{
+                            echo '<div class="school-news">';
+                                echo 'OTHER: '.$type.'';
+                            echo '</div>';
+                        }
                     }
-                    ?>
-                    <div class='news-admin'>
-                        <?php if ($this->access('news.edit')) {
-                            echo '<a href="#" class="tooltip modal-trigger-edit-news" data-modal="edit-news-modal" data-id="'. $this->escapeHtml($news->getId()).'">'
-                                .'<button class="btn-admin">'
-                                    .'<img src="img/icons/icon-edit-blue.png" >'
-                                .'</button>'
-                                .'<span class="tooltiptext bottom edit">Edit</span>';
-                            echo '</a>';
-                        } ?>
+                }
+            ?>
 
-                        <?php if ($this->access('news.delete')) {
-                            echo '<a href="#" class="tooltip modal-trigger-delete-news" data-modal="delete-news-modal" data-id="'.$this->escapeHtml($news->getId()).'" data-title="'.$this->escapeHtml($news->getTitle()).'">'
-                                    .'<button class="btn-admin">'
-                                        .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
-                                    .'</button>'
-                                .'<span class="tooltiptext bottom remove">Remove</span>';
-                            echo '</a>';
-                        } ?>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
 
 
             <?= $this->paginationControl(
@@ -1197,11 +1316,38 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 </div>
 <!-- end delete Our Award Modal -->
 
+<!-- Show Video Modal-->
+<div class="modal" id="show-video-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box lg video">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
+            <div class="modal-title">
+                    <span></span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            <video controls id='post-video'></video>        
+        </div>
+    </div>
+</div>
+<!-- end Show Video Modal-->
+
 <!-- Scripts -->
     <!-- slider -->
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
     <script src="js/slider.js" type="text/javaScript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.news-box .school-news');
+    </script>
     <!-- subscribe -->
     <script src="js/subscribe.js" type="text/javaScript"></script>   
     <script src="js/welcome-msg-edit.js" type="text/javaScript"></script>
@@ -1219,6 +1365,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
     <script src="js/newsletter-delete.js" type="text/javaScript"></script>
     <script src="js/our-awards-add.js" type="text/javaScript"></script>
     <script src="js/our-awards-delete.js" type="text/javaScript"></script>
+    <script src="/js/show-video.js" type="text/javaScript"></script>
     
 
     

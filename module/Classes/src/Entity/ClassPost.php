@@ -11,6 +11,9 @@ use Gallery\Entity\GalleryPost;
  * This class represents a class post.
  * @ORM\Entity()
  * @ORM\Table(name="post")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap( {"class_post" = "ClassPost"} )
  */
 class ClassPost extends GalleryPost {
     

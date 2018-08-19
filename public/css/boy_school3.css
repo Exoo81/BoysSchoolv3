@@ -1294,23 +1294,27 @@ select:-webkit-autofill{
 #main-content.tilt #content-front {
   -webkit-transform: rotate(12deg) translateZ(0);
   transform: rotate(6deg) translateZ(0);
+  transform-origin: center 3000px;
 }
 	@media screen and ( max-width :1366px) {
 		#main-content.tilt #content-front {
 			-webkit-transform: rotate(6deg) translateZ(0);
 			transform: rotate(6deg) translateZ(0);
+                        transform-origin: center 2500px;
 		} 
 	}
 	@media screen and (max-width:1024px) and (max-height: 768px){
 		#main-content.tilt #content-front{
-			-webkit-transform: rotate(4deg) translateZ(0);
-			transform: rotate(4deg) translateZ(0);
+			-webkit-transform: rotate(6deg) translateZ(0);
+			transform: rotate(6deg) translateZ(0);
+                        transform-origin: center 2500px;
 		}
 	}
 	@media screen and (max-width:1024px) and (max-height: 601px){
 		#main-content.tilt #content-front{
-			-webkit-transform: rotate(4deg) translateZ(0);
-			transform: rotate(4deg) translateZ(0);
+			-webkit-transform: rotate(6deg) translateZ(0);
+			transform: rotate(6deg) translateZ(0);
+                        transform-origin: center 2500px;
 		}
 	}
 	
@@ -1321,11 +1325,11 @@ select:-webkit-autofill{
   z-index: 3;
   background-color: #561818;
   box-shadow: 0 0 30px rgba(0, 0, 0, 1.5);
-  -webkit-transform-origin: center 160% !important;			/* resolus. depend */
-  -ms-transform-origin: center 160% !important;				/* resolus. depend */
-  transform-origin: center 160% !important;					/* resolus. depend */
+  -webkit-transform-origin: center 160%;			/* resolus. depend */
+  -ms-transform-origin: center 160%;				/* resolus. depend */
+  transform-origin: center 160%;					/* resolus. depend */
   -webkit-transition: all 0.3s ease !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.6s ease !important;
 }
 
 #container section {
@@ -1915,7 +1919,8 @@ section.parents .parents-box,
 section.our-team .our-team-box,
 section.school-life .school-life-box, 
 section.classes .classes-box,
-section.gallery .gallery-box{
+section.gallery .gallery-box,
+section.admin .admin-box{
     display: inline-block;
     width: 100%;
     min-height: 60vh;
@@ -1923,8 +1928,7 @@ section.gallery .gallery-box{
 }
 
 section.admin .admin-box{
-    display: inline-block;
-    width: 100%;
+    min-height: 50vh;
     padding: 3% 0;
 }
 
@@ -2049,7 +2053,9 @@ section.admin .admin-box{
     transform: translate(-50%, -50%);
 }
 
-
+.school-news .no-content .info-wrapper{
+    top: 40%;
+}
 
 .class-blog .no-content .info-wrapper{
     left: 55%;
@@ -2067,6 +2073,10 @@ section.admin .admin-box{
 
 .no-content img{
     margin-left: 20%;
+}
+
+.school-news .no-content img{
+    margin-left: 30%;
 }
 
 .class-blog .no-content img{
@@ -2093,6 +2103,11 @@ section.admin .admin-box{
     border-width: 5px 3px 3px 5px;
     border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
     transform: rotate(1deg);
+}
+
+.school-news .no-content span{
+    width: 70%;
+    text-align: center;
 }
 
 .class-blog .no-content span{
@@ -2267,7 +2282,7 @@ section.school-news .main-col-right{
 .news-box .school-news{
     display: inline-block;
     width: 100%;
-    padding: 2% 0;
+    padding: 2% 0 8% 0;
 }
 
 .news-box .btn-admin img{
@@ -2297,6 +2312,40 @@ section.school-news .main-col-right{
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+}
+
+.school-news .lightbox img{  
+    transition: 0.2s ease-in-out;  
+}
+
+.school-news .lightbox img:hover {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    -moz-box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.school-news video{
+    width: 50%;
+    height: auto;
+    -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+}
+
+.school-news video.left{
+    float: left;
+    margin-right: 10px;
+    
+}
+
+.school-news video.right{
+    float: right;
+    margin-left: 10px;
+    
 }
 
 .school-news p{
@@ -2334,6 +2383,7 @@ section.school-news .main-col-right{
 		}
 	}
 
+
 .news-date{
 	position: relative;
 	display: inline-block;
@@ -2353,6 +2403,27 @@ section.school-news .main-col-right{
 			font-size: 1em;
 		}
 	}
+        
+.video-link{
+    position: relative;
+    display: inline-block;
+    width: auto;
+    font-family: 'Architects Daughter', 'Arial' ,sans-serif;
+    font-size: 1.4em;
+}
+
+.video-link img.video{
+    position: absolute;
+    float: left;
+    width: 35px;
+    top: 5px;
+}
+
+.video-link a{
+    float: left;
+    padding-top: 10px;
+    margin-left: 50px;
+}
         
 .news-doc{
 	position: relative;
@@ -3098,7 +3169,7 @@ a li{
     position: relative;
     width: 100%;
     float: left;
-    margin-top: 5%;
+    margin-top: 10%;
 	
 	/*TEMP*/
 	/* background-color: red; */
@@ -3496,7 +3567,7 @@ a li{
     position: relative;
     width: 90%;
     float: left;
-    margin-top: 5%;
+    margin-top: 10%;
 }
     @media screen and (max-width:1024px){
 	.school-news .our-awards-box{
@@ -5245,6 +5316,7 @@ section.gallery .header{
 	/* border: 1px dotted red; */
 }
 
+.news-box div.hidden,
 .gallery-box div.hidden{
 	display: none;
 }
@@ -5262,9 +5334,9 @@ section.gallery .header{
 
 
 .gallery-box .gallery .lightbox img:hover {
-	-webkit-transform: scale(1.05);
-  	-moz-transform: scale(1.05);
-  	-o-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
     transform: scale(1.05);
     -moz-box-shadow: 0 8px 15px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 8px 15px rgba(0,0,0,0.3);

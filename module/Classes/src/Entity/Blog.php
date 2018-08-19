@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="blog")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap( {"blog" = "Blog", "class_blog" = "ClassBlog", "gallery_blog" = "Gallery\Entity\GalleryBlog"} )
+ * @ORM\DiscriminatorMap( {"blog" = "Blog", "class_blog" = "ClassBlog", "gallery_blog" = "Gallery\Entity\GalleryBlog", "news_blog" = "Application\Entity\NewsBlog"} )
  */
 class Blog {
     
