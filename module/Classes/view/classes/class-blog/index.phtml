@@ -1,5 +1,9 @@
 <?php
 
+/*
+ *  Class Blog - index
+ */
+
 $this->headTitle($this->headTitle);
 
 ?>
@@ -9,10 +13,10 @@ $this->headTitle($this->headTitle);
             <?php
                 
                 if($this->blog->getPhotoName() === null){
-                    echo '<img id="grey" src="/img/classes/dummy-class-photo.png"/>';    
+                    echo '<img id="grey" src="img/classes/dummy-class-photo.png"/>';    
                     echo '<img class="icon" src="/img/icons/icon-image-lg.png">';       
                 }else{
-                    echo '<img src="/upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getPhotoName().'" />';
+                    echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getPhotoName().'" />';
                 }
             ?>
 	</div>
