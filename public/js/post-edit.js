@@ -20,16 +20,16 @@ $(".modal-trigger-edit-post").click(function(e){
     //set edit_post_remove_video as false 
     $("#edit_post_remove_video").attr("checked", false);
     
-    //clear current_gallery_wrap
-    $('#current_gallery_wrap').empty();
+    //clear current_gallery_wrap_class_post
+    $('#current_gallery_wrap_class_post').empty();
     //clear list of photos to remove from current gallery
     $("ul#picture_to_remove_from_post").empty();
     
     //set default last index for added gallery
-    $('#input_fields_wrap_edit').attr('data-last-index', 0);
+    $('#input_fields_wrap_edit_class_post').attr('data-last-index', 0);
     
     //clear all post-gallery from added gallery
-    $("#input_fields_wrap_edit").empty();
+    $("#input_fields_wrap_edit_class_post").empty();
 
     //hidde form
     $("#editPostForm").css({"display":"none"});
@@ -44,8 +44,8 @@ $(".modal-trigger-edit-post").click(function(e){
     $("#editPostVideoLabel_current").css({"display":"none"});
     $("#editPostVideo_current").css({"display":"none"});
     //hide input_fields_wrap_label & input_fields_wrap
-    $("#input_fields_wrap_edit_label").css({"display":"none"});
-    $("#input_fields_wrap_edit").css({"display":"none"});
+    $("#input_fields_wrap_edit_class_post_label").css({"display":"none"});
+    $("#input_fields_wrap_edit_class_post").css({"display":"none"});
     
     
     //read pass data
@@ -126,7 +126,7 @@ $(".modal-trigger-edit-post").click(function(e){
                 if(!(jQuery.isEmptyObject(data.pictureList))){
 //                    $(".response-msg").html('not empty');
                     $.each(data.pictureList, function (key, value){
-                        $('#current_gallery_wrap').append('<div class="post-gallery" data-pictureID="'+key+'">\n\
+                        $('#current_gallery_wrap_class_post').append('<div class="post-gallery" data-pictureID="'+key+'">\n\
                                                                 <img class="preview-img" id="preview-img-edit-post" src="'+value+'" />\n\
                                                                 <label class="preview-img-label" id="preview-img-edit-post-label" for="preview-img-edit-post">\n\
                                                                     <a href="#" class="remove_photo_gallery_current" id="remove_photo_gallery_current">X</a>\n\
@@ -135,16 +135,16 @@ $(".modal-trigger-edit-post").click(function(e){
                     });
  
                     //show current gallery
-                        $("#current_gallery_wrap").css({"display":"inline-block"});
+                        $("#current_gallery_wrap_class_post").css({"display":"inline-block"});
                     //show current gallery label
-                        $("#current_gallery_wrap_label").css({"display":"block"});
+                        $("#current_gallery_wrap_class_post_label").css({"display":"block"});
                     //show remove link
                         $(".preview-img-label").css({"display":"block"});
                 }else{
                     //hide current gallery
-                    $("#current_gallery_wrap").css({"display":"none"});
+                    $("#current_gallery_wrap_class_post").css({"display":"none"});
                     //hide current gallery label
-                    $("#current_gallery_wrap_label").css({"display":"none"});
+                    $("#current_gallery_wrap_class_post_label").css({"display":"none"});
                     
                 }
                 //hide laoder
@@ -258,7 +258,7 @@ $("#editPostForm").validate({
         
         //number of inputs in input_fields_wrap
         //var inputCount = document.getElementById('input_fields_wrap_edit').getElementsByTagName('input').length;
-        var inputCount = $('#input_fields_wrap_edit div').length;
+        var inputCount = $('#input_fields_wrap_edit_class_post div').length;
 //            console.log( 'No. of added photos: ' + inputCount );  
      
         var formData = new FormData();
@@ -283,7 +283,7 @@ $("#editPostForm").validate({
         if(inputCount > 0){
 //            console.log('---=== ADDED PHOTOS TO GALLERY ===---');
             var count = 0;
-            $("#input_fields_wrap_edit .post-gallery > input").each(function() {
+            $("#input_fields_wrap_edit_class_post .post-gallery > input").each(function() {
                 //if input field has photo check if .post-gallery img has attr src
                 var imgAttr = $(this).closest('.post-gallery').find('img').attr('src');
                 if(typeof imgAttr !== typeof undefined && imgAttr !== false){
@@ -343,7 +343,7 @@ $( "#remove_field_doc" ).click(function(e) {
 });
 
 // remove video from edit form
-$( "#remove_field_video" ).click(function(e) { 
+$( "#remove_field_video_class_post" ).click(function(e) { 
 
         e.preventDefault();
 //        alert('remove video');
@@ -362,7 +362,7 @@ $( "#remove_field_video" ).click(function(e) {
 });
 
 //remove photo from current gallery (post-edit) - build list to remove
-$('#current_gallery_wrap').on("click",".remove_photo_gallery_current", function(e){  
+$('#current_gallery_wrap_class_post').on("click",".remove_photo_gallery_current", function(e){  
         
      e.preventDefault();
 //     alert('remove photo');
@@ -375,15 +375,15 @@ $('#current_gallery_wrap').on("click",".remove_photo_gallery_current", function(
         div_to_remove.remove();
         
         //get current gallery size
-        var current_gallery_size = $('#current_gallery_wrap div').length;
+        var current_gallery_size = $('#current_gallery_wrap_class_post div').length;
         if(current_gallery_size === 0){
-            $('#current_gallery_wrap_label').css({"display":"none"});
-            $('#current_gallery_wrap').css({"display":"none"});
+            $('#current_gallery_wrap_class_post_label').css({"display":"none"});
+            $('#current_gallery_wrap_class_post').css({"display":"none"});
         }
 });
 
 //add post-gallery box to gallery (EDIT POST - add extra photo to post gallery)
-$("#add-photo-gallery-button-edit").click(function(e){ //on add input button click
+$("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input button click
         
         e.preventDefault();
             //alert('add photo to gallery');
@@ -392,9 +392,9 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
         var max_fields = 20;
         
         //get current gallery size
-        var current_gallery_size = $('#current_gallery_wrap div').length;        
+        var current_gallery_size = $('#current_gallery_wrap_class_post div').length;        
         //get size of added to gallery
-        var added_gallery_size = $('#input_fields_wrap_edit div').length;
+        var added_gallery_size = $('#input_fields_wrap_edit_class_post div').length;
             //alert('Current gallery size: ' + current_gallery_size + '\n\
             //    Added gallery size: ' + added_gallery_size);
     
@@ -403,7 +403,7 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
             //alert('Total size of gallery: ' + totalGallerySize);
         
         //get last index used
-        var last_index = parseInt($('#input_fields_wrap_edit').attr("data-last-index"));
+        var last_index = parseInt($('#input_fields_wrap_edit_class_post').attr("data-last-index"));
         
 //        var current_gallery_wrap = document.getElementById('current_gallery_wrap');
 //        var currentGalleryCount = current_gallery_wrap.getElementsByTagName('div').length;
@@ -412,22 +412,22 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
         if(totalGallerySize < max_fields){ //max input box allowed
             index = last_index + 1;
             //alert('index: ' + index);
-            $('#input_fields_wrap_edit').append('<div class="post-gallery">\n\
+            $('#input_fields_wrap_edit_class_post').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-edit-post-'+index+'" />\n\
                                 <input type="file" name="editPostFile"  id="'+index+'" onchange="preview_image_edit(this)" />\n\
                                 <label class="preview-img-label" id="preview-img-edit-post-label-'+index+'" for="preview-img-edit-post-'+index+'"><a href="#" class="remove_photo_edit">X</a></label>\n\
                              </div>'); //add input box
             //set new last_index
-            $('#input_fields_wrap_edit').attr('data-last-index', index++);
+            $('#input_fields_wrap_edit_class_post').attr('data-last-index', index++);
         }else{
             alert('Gallery is full.');
         }
         
-        //if more then 0 post-gallery show gallery input_fields_wrap_edit and input_fields_wrap_edit_label
+        //if more then 0 post-gallery show gallery input_fields_wrap_edit_class_post and input_fields_wrap_edit_class_post_label
         if(index>0){
             //show input_fields_wrap_label & input_fields_wrap
-            $("#input_fields_wrap_edit_label").css({"display":"block"});
-            $("#input_fields_wrap_edit").css({"display":"block"});
+            $("#input_fields_wrap_edit_class_post_label").css({"display":"block"});
+            $("#input_fields_wrap_edit_class_post").css({"display":"block"});
         }
       
 });

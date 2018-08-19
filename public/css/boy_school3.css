@@ -2411,6 +2411,7 @@ section.school-news .main-col-right{
     display: inherit;
     width: auto;
     padding-bottom: 10px;
+    margin-right: 10%;
     font-family: 'Architects Daughter', 'Arial' ,sans-serif;
     font-size: 1.4em;
 }
@@ -6345,7 +6346,7 @@ img.end-tl{
 .modal-box {
   	position: relative;	
  	width: 45%;
-  	margin: 8% auto;
+  	margin: 3% auto;
   	border: 1px solid #561818;
   	border-radius: 2px;
   	animation-name: modalbox;
