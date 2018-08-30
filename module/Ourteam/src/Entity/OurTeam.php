@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * This class represents a post entity.
+ * This class represents a our_team entity.
  * @ORM\Entity()
  * @ORM\Table(name="our_team")
  * @ORM\InheritanceType("SINGLE_TABLE")

@@ -7,11 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Ourteam\Entity\OurTeam;
 
 /**
- * This class represents a registered user.
+ * This class represents a Caretaker.
  * @ORM\Entity()
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="role", type="string")
- * @ORM\DiscriminatorMap( {"caretaker" = "Caretaker"} )
+ * @ORM\Table(name="our_team")
  */
 class Caretaker extends OurTeam {
     
