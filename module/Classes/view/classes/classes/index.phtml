@@ -61,7 +61,7 @@ $this->headTitle($this->title.' '.$current_season);
                                             }
 
                                         echo '</a>';
-                                        echo '<span class="teacher">'.$blog->getTeacher()->getFullName().'</span>';
+                                        echo '<span class="teacher">'.$blog->getTeacher()->getOurTeamMember()->getFullName().'</span>';
     //                                  ADMIN OPTIONS
                                         echo '<div class="admin-option">';
                                             if($blog->getLearningSupport() !== null){
@@ -87,7 +87,7 @@ $this->headTitle($this->title.' '.$current_season);
                                                 }  
                                             }
                                             if ($this->access('classes.delete')){
-                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getFullName()).'">'
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getOurTeamMember()->getFullName()).'">'
                                                         .'<button class="btn-admin">'
                                                             .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                         .'</button>'
@@ -132,7 +132,7 @@ $this->headTitle($this->title.' '.$current_season);
                                         }
                                         
                                     echo '</a>';
-                                    echo '<span class="teacher">'.$blog->getTeacher()->getFullName().'</span>';
+                                    echo '<span class="teacher">'.$blog->getTeacher()->getOurTeamMember()->getFullName().'</span>';
                                     
 //                                  ADMIN OPTIONS
                                     echo '<div class="admin-option">';
@@ -159,7 +159,7 @@ $this->headTitle($this->title.' '.$current_season);
                                             }  
                                         }
                                         if ($this->access('classes.delete')){
-                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getFullName()).'">'
+                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getOurTeamMember()->getFullName()).'">'
                                                     .'<button class="btn-admin">'
                                                         .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                     .'</button>'

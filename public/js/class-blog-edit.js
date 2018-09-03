@@ -91,19 +91,19 @@ $(".modal-trigger-edit-class-blog").click(function(e){
                     
                     
                 //insert options for editClassTeacher           
-                $.each(data.teachersLearningSupport, function (key, value){
+                $.each(data.teachers, function (key, value){
                     $('#editClassTeacher').append($('<option></option>').attr('value', key).text(value));
                 });
                 //current teacher selected
                 $('#editClassTeacher option[value='+data.teacherID+']').attr('selected','selected');
                     
                 //insert options for editClassLearningSupport                  
-                $.each(data.teachersLearningSupport, function (key, value){
+                $.each(data.learningSupport, function (key, value){
                     $('#editClassLearningSupport').append($('<option></option>').attr('value', key).text(value));
                 });
                 //current learning support selected
                 $('#editClassLearningSupport option[value='+data.learningSupportID+']').attr('selected','selected');
-                    
+                
                 //if class with photo
                 if(data.classPhotoPath !== null){
                     //show label for current doc

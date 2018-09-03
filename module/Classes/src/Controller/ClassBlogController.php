@@ -66,7 +66,7 @@ class ClassBlogController extends AbstractActionController{
         $color = $this->params()->fromRoute('color', "");  
         
         
-        $headTitle = $blog->getTeacher()->getTitleLastName().' '.$blog->getLevelAsString().' BLOG ('.$blog->getSeason()->getSeasonName().')';
+        $headTitle = $blog->getTeacher()->getOurTeamMember()->getTitleLastName().' '.$blog->getLevelAsString().' BLOG ('.$blog->getSeason()->getSeasonName().')';
          
         return new ViewModel([
             'headTitle' => $headTitle,

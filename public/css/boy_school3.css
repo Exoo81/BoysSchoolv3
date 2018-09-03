@@ -4924,6 +4924,7 @@ ul.class-blog-list li{
 	padding: 0;
 	width: 600px;
 	background-color: #fff;
+        border-radius: 4px;
 	margin: 10px;
 	text-align: center;  
 }
@@ -4982,6 +4983,7 @@ ul.class-blog-list li img{
 	height: auto;
 	top: auto;
 	left: auto;
+        border-radius: 4px;
 }
     
 

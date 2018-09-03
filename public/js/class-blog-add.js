@@ -19,6 +19,8 @@ $(".modal-trigger-add-class-blog").click(function(e){
     
     dataModal = $(this).attr("data-modal");
     
+    //show laoder
+    $(".loader").css({"display":"block"});
     //clear msg label
     $(".response-msg").html('');
     
@@ -38,7 +40,7 @@ $(".modal-trigger-add-class-blog").click(function(e){
         $('#classLearningSupport').empty();
     
     //display form
-    $("#addClassBlogForm").css({"display":"block"});
+    $("#addClassBlogForm").css({"display":"none"});
     //display modal
     $("#" + dataModal).css({"display":"block"});
     
@@ -58,16 +60,20 @@ $(".modal-trigger-add-class-blog").click(function(e){
                 });
                     
                 //insert options for classTeacher
-                $.each(data.teachersLearningSupport, function (key, value){
+                $.each(data.teachers, function (key, value){
                     $('#classTeacher').append($('<option></option>').attr('value', key).text(value));
                 });
                     
                 //insert options for classLearningSupport
-                $.each(data.teachersLearningSupport, function (key, value){
+                $.each(data.learningSupport, function (key, value){
                     $('#classLearningSupport').append($('<option></option>').attr('value', key).text(value));
                 });
+                
+                $(".loader").css({"display":"none"});
+                $("#addClassBlogForm").css({"display":"block"});
                     
             }else{
+                $(".loader").css({"display":"none"});
                 $(".response-msg").html(data.responseMsg);
                 $("#addClassBlogForm").css({"display":"none"});
             }

@@ -22,7 +22,7 @@ $this->headTitle($this->headTitle);
 	</div>
 	<div class="title reverse">
             <span id="welcome">Welcome to</span>				
-            <span id="teacher"><?= $this->blog->getTeacher()->getTitleLastName()?></span>
+            <span id="teacher"><?= $this->blog->getTeacher()->getOurTeamMember()->getTitleLastName()?></span>
             <span id="ourClass"><?= $this->blog->getLevelAsString() ?></span>
             <div class="color-cubes">
 		<div class="single-cube2 wow fadeInRightBig delay-01s"></div>

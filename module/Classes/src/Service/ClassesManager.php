@@ -5,6 +5,8 @@ namespace Classes\Service;
 use Classes\Entity\Blog;
 use Classes\Entity\ClassBlog;
 use User\Entity\User;
+use Ourteam\Entity\Teacher;
+use Ourteam\Entity\LearningSupport;
 use User\Entity\Season;
 
 use Zend\Db\Sql\Select;
@@ -316,7 +318,9 @@ class ClassesManager{
     
     public function getSelectionForm(){
         
-        //get all users with 'teacher' role
+        /*
+         * get all users with 'teacher' role
+         */
         $teacherList = $this->getAllTeachers();
         
         if($teacherList == null){
@@ -326,11 +330,25 @@ class ClassesManager{
             return $dataResponse; 
         }
         
-        $selectTeacherAndLearningSupportList = array();
-        $selectTeacherAndLearningSupportList[0] = '---select---';
+        $selectTeachers = array();
+        $selectTeachers[0] = '---select---';
         
         foreach($teacherList as $teacher){
-            $selectTeacherAndLearningSupportList[$teacher->getId()] = $teacher->getFullName();
+            $selectTeachers[$teacher->getId()] = $teacher->getOurTeamMember()->getFullName();
+        }
+        
+        /*
+         * get all users with 'learning support' role
+         */
+        
+        $learningSupportList = $this->getAllLearningSupport();
+        
+        
+        $selectLearningSupport = array();
+        $selectLearningSupport[0] = '---select---';
+        
+        foreach($learningSupportList as $learningSupport){
+            $selectLearningSupport[$learningSupport->getId()] = $learningSupport->getOurTeamMember()->getFullName();
         }
         
         
@@ -344,7 +362,9 @@ class ClassesManager{
         }
         
         $dataResponse['classLevel'] = $levelsList;
-        $dataResponse['teachersLearningSupport'] = $selectTeacherAndLearningSupportList;
+        $dataResponse['teachers'] = $selectTeachers;
+        $dataResponse['learningSupport'] = $selectLearningSupport;
+//        $dataResponse['teachersLearningSupport'] = $selectTeacherAndLearningSupportList;
         $dataResponse['success'] = true;
         $dataResponse['responseMsg'] = 'Ok.';
         
@@ -353,25 +373,45 @@ class ClassesManager{
     
     private function getAllTeachers(){
         
-        $userList = $this->entityManager->getRepository(User::class)
-                ->findAll();
+        $teacherList = $this->entityManager->getRepository(Teacher::class)
+                     ->findByStatus(1);
         
-        $teacherList = array();
+        $teachersWithAccountList = array();
         
-        if($userList === null){
-            return $teacherList;
+        if($teacherList === null){
+            return $teachersWithAccountList;
         }
-        //get only user with role 'teacher'
-        foreach($userList as $user){
-            $userRoleList = $user->getRoles();
-            foreach($userRoleList as $userRole){
-                if($userRole->getId() == 2){
-                    array_push($teacherList, $user);
-                }
+        
+        //get only with account User
+        foreach($teacherList as $teacher){
+            if($teacher->getUser() !== null){
+                array_push($teachersWithAccountList, $teacher->getUser());
             }
         }
         
-        return $teacherList;
+        return $teachersWithAccountList;
+        
+    }
+    
+    private function getAllLearningSupport(){
+        
+        $learningSupportList = $this->entityManager->getRepository(LearningSupport::class)
+                     ->findByStatus(1);
+        
+        $learningSupportWithAccountList = array();
+        
+        if($learningSupportList === null){
+            return $learningSupportWithAccountList;
+        }
+        
+        //get only with account User
+        foreach($learningSupportList as $learningSupport){
+            if($learningSupport->getUser() !== null){
+                array_push($learningSupportWithAccountList, $learningSupport->getUser());
+            }
+        }
+        
+        return $learningSupportWithAccountList;
     }
 
 
@@ -552,11 +592,10 @@ class ClassesManager{
             
             return $dataResponse;
         }
-        
-        //get list of levels
-        $levelsList = $this->getSelectLevelList();
-        
-        //get all users with 'teacher' role
+
+        /*
+         * get all users with 'teacher' role
+         */
         $teacherList = $this->getAllTeachers();
         
         if($teacherList == null){
@@ -566,31 +605,54 @@ class ClassesManager{
             return $dataResponse; 
         }
         
-        $selectTeacherAndLearningSupportList = array();
-        $selectTeacherAndLearningSupportList[0] = '---select---';
+        $selectTeacherList = array();
+        $selectTeacherList[0] = '---select---';
         
         foreach($teacherList as $teacher){
-            $selectTeacherAndLearningSupportList[$teacher->getId()] = $teacher->getFullName();
+            $selectTeacherList[$teacher->getId()] = $teacher->getOurTeamMember()->getFullName();
         }
-        
-        $currentClassLevel = $classBlog->getLevel();
-        
+
         $teacherID = $classBlog->getTeacher()->getId();
         
+        /*
+         * get all users with 'learning support' role
+         */
+        $learningSupportList = $this->getAllLearningSupport();
+        
+        $selectLearningSupportList = array();
+        $selectLearningSupportList[0] = '---select---';
+        
+        foreach($learningSupportList as $learningSupport){
+            $selectLearningSupportList[$learningSupport->getId()] = $learningSupport->getOurTeamMember()->getFullName();
+        }
+       
         if($classBlog->getLearningSupport() != null){
             $learningSupportID = $classBlog->getLearningSupport()->getId();
         }else{
             $learningSupportID = 0;
         }
         
+        /*
+         * get list of levels
+         */
+        $levelsList = $this->getSelectLevelList();
+        $currentClassLevel = $classBlog->getLevel();
+        
+
+
+        
+        /*
+         * get class photo path
+         */
         $classPhotoPath = $this->getClassPhotoPath($classBlog->getPhotoName(), $classBlog->getSeason());
         
         $dataResponse['success'] = true;
-        $dataResponse['classLevel'] = $levelsList;
-        $dataResponse['teachersLearningSupport'] = $selectTeacherAndLearningSupportList;
-        $dataResponse['currentLevel'] = $currentClassLevel;
+        $dataResponse['teachers'] = $selectTeacherList;
         $dataResponse['teacherID'] = $teacherID;
+        $dataResponse['learningSupport'] = $selectLearningSupportList;
         $dataResponse['learningSupportID'] = $learningSupportID;
+        $dataResponse['classLevel'] = $levelsList;
+        $dataResponse['currentLevel'] = $currentClassLevel;
         $dataResponse['classPhotoPath'] = $classPhotoPath;
         $dataResponse['responseMsg'] = 'Ok.';
             
@@ -608,7 +670,6 @@ class ClassesManager{
         //path to edit
             $path_to_edit = 'upload/classes/'.$season->getSeasonName().'/';
             
-            //$target_dir = "2017-2018/";
             $classPhotoPath = $path_to_edit . basename($photoName);
         
         return $classPhotoPath;
