@@ -89,7 +89,7 @@
                                          
                                     }else{
                                         
-                                        echo 'Welcome '.$this->currentUser()->getFullName();
+                                        echo 'Welcome '.$this->currentUser()->getOurTeamMember()->getFullName();
                                         
                                         echo '<p>';
                                             echo '<a href="'.$this->url('user', ['action' => 'users']).'">Users</a> ||';           

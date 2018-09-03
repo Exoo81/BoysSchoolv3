@@ -1,5 +1,4 @@
-<?php
-$this->headLink()->appendStylesheet('css/admin.css'); 
+<?php 
 $this->headTitle($this->title);
 ?>
 
@@ -19,13 +18,12 @@ $this->headTitle($this->title);
     </div>
     
     
+    
     <div class='admin-box'>
-        <div class='form-wrapper'>
-            <span>
-                Sorry, you have no permission to see this page.
-            </span>
-        </div>
-        
+        <div class='not-authorized'>
+            <img src="/../img/icons/icon-stop.png">
+            <span>Sorry, you have no permission to see this page.</span>
+        </div>   
     </div>
     
 </section>

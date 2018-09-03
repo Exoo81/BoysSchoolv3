@@ -148,9 +148,9 @@ return [
                     ['actions' => ['resetPassword', 'setPassword'], 'allow' => '*'],
                 // Give access to "index", "view", "edit", "changePassword" actions to authorized users only.
                 // access to the icon with the option of using the defined permission in the index.phtml (users) file and in the UserController (action edit and changePassword).
-                    ['actions' => ['users', 'view', 'edit', 'changePassword'], 'allow' => '@'],
-                // Give access to "add" user ADMIN only.
-                    ['actions' => ['add'], 'allow' => '+user.add'],   
+                    ['actions' => ['users', 'view', 'edit', 'editparentsassoc', 'changePassword'], 'allow' => '@'],
+                // Give access to "add", "addAcount" user ADMIN only.
+                    ['actions' => ['add', 'addaccount'], 'allow' => '+user.add'],   
             ],
             Controller\RoleController::class => [
                 // Allow access to authenticated users 

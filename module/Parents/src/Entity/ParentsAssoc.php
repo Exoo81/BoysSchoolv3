@@ -47,12 +47,6 @@ class ParentsAssoc {
     protected $meetingTime;
     
     
-    /**
-    * @ORM\OneToMany(targetEntity="\Parents\Entity\ParentsAssocTeam", mappedBy="parentsAssoc")
-    * @ORM\JoinColumn(name="id", referencedColumnName="parents_assoc_id")
-    * @ORM\OrderBy({"role" = "ASC"})
-    */
-    protected $parentsAssocTeam;
     
     /**
      * Constructor.
@@ -192,39 +186,39 @@ class ParentsAssoc {
     }
     
 
-     /**
-    * Returns parents Assoc Team for this parentsAssoc.
-    * @return array
-    */
-    public function getParentsAssocTeam() {
-      return $this->parentsAssocTeam;
-    }
-    
-    /**
-     * Returns the string of assigned as parents Assoc Team id.
-     */
-    public function getParentsAssocTeamAsString(){
-        $list = '';
-        
-        $count = count($this->parentsAssocTeam);
-        $i = 0;
-        foreach ($this->parentsAssocTeam as $member) {
-            $list .= $member->getId();
-            if ($i<$count-1)
-                $list .= ', ';
-            $i++;
-        }
-        
-        return $list;
-    }
-    
-    /**
-     * Adds a new member of parents assoc team to parentsAssocTeam in this parentsAssoc.
-     * @param $member
-     */
-    public function addToParentsAssocTeam($member) {
-      $this->parentsAssocTeam[] = $member;
-    }
+//     /**
+//    * Returns parents Assoc Team for this parentsAssoc.
+//    * @return array
+//    */
+//    public function getParentsAssocTeam() {
+//      return $this->parentsAssocTeam;
+//    }
+//    
+//    /**
+//     * Returns the string of assigned as parents Assoc Team id.
+//     */
+//    public function getParentsAssocTeamAsString(){
+//        $list = '';
+//        
+//        $count = count($this->parentsAssocTeam);
+//        $i = 0;
+//        foreach ($this->parentsAssocTeam as $member) {
+//            $list .= $member->getId();
+//            if ($i<$count-1)
+//                $list .= ', ';
+//            $i++;
+//        }
+//        
+//        return $list;
+//    }
+//    
+//    /**
+//     * Adds a new member of parents assoc team to parentsAssocTeam in this parentsAssoc.
+//     * @param $member
+//     */
+//    public function addToParentsAssocTeam($member) {
+//      $this->parentsAssocTeam[] = $member;
+//    }
      
     
     

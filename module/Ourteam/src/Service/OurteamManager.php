@@ -51,14 +51,14 @@ class OurteamManager{
     
     public function getPrincipal(){
         $memberList = $this->entityManager->getRepository(Principal::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
     }
     
     public function getTeachers(){
         $memberList = $this->entityManager->getRepository(Teacher::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -74,7 +74,7 @@ class OurteamManager{
     
     public function getLearningSupport(){
         $memberList = $this->entityManager->getRepository(LearningSupport::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -82,7 +82,7 @@ class OurteamManager{
     
     public function getSNA(){
         $memberList = $this->entityManager->getRepository(SNA::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -90,7 +90,7 @@ class OurteamManager{
     
     public function getAsdUnit(){
         $memberList = $this->entityManager->getRepository(ASDUnit::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -98,7 +98,7 @@ class OurteamManager{
     
     public function getSecretary(){
         $memberList = $this->entityManager->getRepository(Secretary::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -106,7 +106,7 @@ class OurteamManager{
     
     public function getCaretaker(){
         $memberList = $this->entityManager->getRepository(Caretaker::class)
-                     ->findBy(['status'=>OurTeam::STATUS_ACTIVE]);
+                     ->findBy([],['status'=>'ASC']);
         
         return $memberList;
         
@@ -154,6 +154,8 @@ class OurteamManager{
         //return success
         $dataResponse['success'] = true;
         $dataResponse['responseMsg'] =  'Member (Our Team) added.';
+        $dataResponse['newMemberID'] =  $member->getId();
+        $dataResponse['newMemberFullName'] = $member->getFullName();
         
         return $dataResponse;
     }
@@ -196,17 +198,74 @@ class OurteamManager{
             return $dataResponse;
         }
         
+        //get User (account) if exist
+        if($member->getUser() !== null){
+            $user = $this->entityManager->getRepository(User::class)
+                    ->find($member->getUser());
+            
+            if($user !== null){
+                $user->setStatus(2);
+                // Add the entity to the entity manager.
+                $this->entityManager->persist($user); 
+                // Apply changes to database.
+                $this->entityManager->flush();
+            }
+        }
+        
+        
+        
         $member->setStatus(2);
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($member); 
-            
         // Apply changes to database.
         $this->entityManager->flush();
         
         //return success
         $dataResponse['success'] = true;
         $dataResponse['responseMsg'] =  'Member (Our Team) deleted.';
+        
+        return $dataResponse;
+
+    }
+    
+    
+    public function activateOurTeamMamber($memberID){
+        
+        //get member with ID
+        $member = $this->entityManager->getRepository(OurTeam::class)
+                ->find($memberID);
+        
+        if($member == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find member of our team to activate.';
+            return $dataResponse;
+        }
+        
+        //get User (account) if exist
+        if($member->getUser() !== null){
+            $user = $this->entityManager->getRepository(User::class)
+                    ->find($member->getUser());
+            
+            if($user !== null){
+                $user->setStatus(1);
+                // Add the entity to the entity manager.
+                $this->entityManager->persist($user); 
+                // Apply changes to database.
+                $this->entityManager->flush();
+            }
+        }
+        
+        $member->setStatus(1);
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member); 
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Member (Our Team) activate.';
         
         return $dataResponse;
 

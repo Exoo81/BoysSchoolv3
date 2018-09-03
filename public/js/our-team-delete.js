@@ -1,5 +1,5 @@
 /* 
- * Delete Our team
+ * Deactivate Our team member
  */
 
 //open modal
@@ -13,7 +13,7 @@ $(".modal-trigger-delete-our-team").click(function(e){
     var memberName = $(this).attr("data-memberFullName");
     var type = $(this).attr("data-type");
 
-//        console.log('---=== GET Our Team member DATA TO DELETE ===---');
+//        console.log('---=== GET Our Team member DATA TO Deactivate ===---');
 //        console.log('member ID: ' + memberID);
 //        console.log('member Name: ' + memberName);
 //        console.log('type: ' + type);
@@ -29,10 +29,10 @@ $(".modal-trigger-delete-our-team").click(function(e){
     //insert data to modal
     $("#deleteOurTeamType").val(type);
 
-    $("#confirmation-question-our-team span").html("<br />" + memberName + " ?");
+    $("#confirmation-question-our-team-deactivate span").html(memberName);
     
-    //show confirmation-question-our-team
-    $("#confirmation-question-our-team").css({"display":"block"});
+    //show confirmation-question-our-team-deactivate
+    $("#confirmation-question-our-team-deactivate").css({"display":"block"});
     //show form
     $("#deleteOurTeamForm").css({"display":"block"});
   
@@ -53,7 +53,7 @@ $("#deleteOurTeamForm").validate({
     //show laoder
     $(".loader").css({"display":"block"});
     //hidde confirmation question
-    $("#confirmation-question-our-team").css({"display":"none"});
+    $("#confirmation-question-our-team-deactivate").css({"display":"none"});
     //hidde form
     $("#deleteOurTeamForm").css({"display":"none"});
           
@@ -61,9 +61,9 @@ $("#deleteOurTeamForm").validate({
     var memberType = $("#deleteOurTeamType").val();
 
  
-//    console.log('---=== Our Team member DATA SEND BY AJAX ===---');
-//    console.log('member ID: ' + memberID);
-//    console.log('member type: ' + memberType);
+    console.log('---=== Our Team member DATA SEND BY AJAX ===---');
+    console.log('member ID: ' + memberID);
+    console.log('member type: ' + memberType);
 
     //if member to delete not from board of management
     if(memberType !== 'management'){

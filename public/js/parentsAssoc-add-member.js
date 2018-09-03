@@ -6,6 +6,7 @@
  $.validator.addMethod("valueNotEquals", function(value, element, arg){
   return arg !== value;
  }, "Value must not equal arg.");
+ 
 
 
 //open modal with form
@@ -24,12 +25,7 @@ $(".modal-trigger-add-parents-assoc-member").click(function(e){
     
     // get data
     dataModal = $(this).attr("data-modal");
-    var parentsAssocID = $(this).attr("data-parentsAssocID");
-    
-    //console.log("parentsAssocID: " + parentsAssocID);
 
-    //insert data to form
-    $('#addParentsAssocNewMemeber_parentsAssocID').val(parentsAssocID);
 
     //display form
     $("#addParentsAssocNewMemeberForm").css({"display":"block"});
@@ -43,11 +39,8 @@ $("#addParentsAssocNewMemeberForm").validate({
         addParentsAssocNewMemeberTitleSelect: {
             valueNotEquals: "0"
         },
-        addParentsAssocNewMemeber_parentsAssocID: {
-            required: true
-        },
-        addParentsAssocNewMemeberRole: {
-            required: true
+        addParentsAssocNewMemeberRoleSelect: {
+            valueNotEquals: "0"
         },
         addParentsAssocNewMemeberFname: {
             required: true
@@ -61,6 +54,10 @@ $("#addParentsAssocNewMemeberForm").validate({
         addParentsAssocNewMemeberTitleSelect:{
             valueNotEquals: "Please select title"
         },
+        addParentsAssocNewMemeberRoleSelect:{
+            valueNotEquals: "Please select role"
+        }
+        
     },
             
     submitHandler: function() {
@@ -75,7 +72,6 @@ $("#addParentsAssocNewMemeberForm").validate({
     var memberRole = $("#addParentsAssocNewMemeberRoleSelect").val();
     var memberFirstName = $("#addParentsAssocNewMemeberFname").val();
     var memberLastName = $("#addParentsAssocNewMemeberLname").val();
-    var parentsAssocID = $("#addParentsAssocNewMemeber_parentsAssocID").val();
 
 
 
@@ -83,20 +79,32 @@ $("#addParentsAssocNewMemeberForm").validate({
 //    console.log('member Role: ' + memberRole);
 //    console.log('member First Name:' + memberFirstName);
 //    console.log('member Last Name:' + memberLastName);
-//    console.log('parents Assoc ID:' + parentsAssocID);
     
 
     
     $.ajax({
         url:'parents/addmembertoparentsassoc',
         type:'POST',
-        data:{memberTitle:memberTitle, memberRole:memberRole, memberFirstName:memberFirstName, memberLastName:memberLastName, parentsAssocID:parentsAssocID},
+        data:{memberTitle:memberTitle, memberRole:memberRole, memberFirstName:memberFirstName, memberLastName:memberLastName},
         dataType: 'JSON', 
         async: true ,
         success: function(data){
             console.log(data);
             if(data.success === true){
-                location.reload();
+                //location.reload();
+                //hidde laoder
+                    $(".loader").css({"display":"none"});
+                //display response-msg
+                    $(".response-msg").html(data.responseMsg);
+                    
+                //close Add Our Team Member Modal
+                    $("#add-parents-assoc-member-modal").css({"display":"none"});
+                    //show dailog with question to create account
+                        $("#newAccountFullName").html("<i>" +data.newMemberFullName + "</i> does not have an account yet.");
+                        $("#new-member-account").attr("href", "/user/addaccount/"+data.newMemberID); 
+  
+                        //display modal
+                        $("#create-account-modal").css({"display":"block"});
             }else{
                 //hidde laoder
                     $(".loader").css({"display":"none"});

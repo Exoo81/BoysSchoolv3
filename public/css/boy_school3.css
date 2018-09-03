@@ -215,6 +215,10 @@ a.bs{
 			font-size: 1em;
 		}
 	}
+        
+a.bs.users{
+    text-transform: capitalize;
+}
 
 a.bs.small{
 	font-size: .9em;
@@ -350,6 +354,10 @@ button:after{
 	transform: translate3d(0, 25%, 0);
 }
 
+button.btn-edit-user-form:after,
+button.btn-edit-user:after,
+button.btn-login:after,
+button.btn-create-account:after,
 button.btn-admin-nav:after,
 button.btn-add-user:after,
 button.btn-facebook-joinUs:after,
@@ -362,6 +370,10 @@ button.modal-btn:after{
 }
 
 	@media screen and (max-width :1366px) {
+                button.btn-edit-user-form:after,
+                button.btn-edit-user:after,
+                button.btn-login:after,
+                button.btn-create-account:after,
 		button.btn-facebook-joinUs:after,
 		button.btn-about-us:after,
 		button.btn-subscribe:after,
@@ -371,6 +383,10 @@ button.modal-btn:after{
 		}
 	}
 	@media screen and (max-width :1024px) {
+                button.btn-edit-user-form:after,
+                button.btn-edit-user:after,
+                button.btn-login:after,
+                button.btn-create-account:after,
 		button.btn-facebook-joinUs:after,
 		button.btn-about-us:after,
 		button.btn-subscribe:after,
@@ -384,7 +400,10 @@ button.btn-max:after{
 	top: 4px;
 	/* color: #561818; */
 }
-        
+
+button.btn-edit-user-form:after,
+button.btn-login:after,
+button.btn-create-account:after,
 button.btn-about-us:after,
 button.modal-btn:after{
     color: #717579;
@@ -616,6 +635,11 @@ button.btn-menu:hover {
 	background-color: #ecf0f1;
 	border-color: #561818;
 }
+
+button.btn-edit-user-form,
+button.btn-edit-user,
+button.btn-login,
+button.btn-create-account,
 button.btn-max,
 button.btn-admin-nav,
 button.btn-add-user,
@@ -632,6 +656,10 @@ button.modal-btn{
 	text-transform:uppercase;
 }
 	@media screen and (max-width :1440px) {
+                button.btn-edit-user-form,
+                button.btn-edit-user,
+                button.btn-login,
+                button.btn-create-account,
 		button.btn-about-us, 
 		button.btn-subscribe,
 		button.btn-filter,
@@ -642,6 +670,10 @@ button.modal-btn{
 	}
 	
 	@media screen and (max-width :1366px) {
+                button.btn-edit-user-form,
+                button.btn-edit-user,
+                button.btn-login,
+                button.btn-create-account,
 		button.btn-about-us, 
 		button.btn-subscribe,
 		button.btn-filter,
@@ -652,6 +684,10 @@ button.modal-btn{
 		}
 	}
 	@media screen and (max-width :1024px) {
+                button.btn-edit-user-form,
+                button.btn-edit-user,
+                button.btn-login,
+                button.btn-create-account,
 		button.btn-about-us, 
 		button.btn-subscribe,
 		button.btn-filter,
@@ -661,10 +697,16 @@ button.modal-btn{
 			font-size: 1em;
 		}
 	}
-        
-        button.btn-max{
-            width: 100%;
-        }
+
+button.btn-edit-user-form,
+button.btn-login,
+button.btn-create-account{
+    margin-top: 5%;
+}
+
+button.btn-max{
+    width: 100%;
+}
 
 button.btn-filter{
 	width: 90px;
@@ -712,6 +754,9 @@ button.btn-filter.btn-yellow{
 	color: #b9970f;
 }
 
+button.btn-edit-user-form > span,
+button.btn-login > span,
+button.btn-create-account > span,
 button.btn-about-us > span,
 button.subscribe > span,
 button.btn-filter > span,
@@ -720,6 +765,10 @@ button.btn-facebook-joinUs > span,
 button.modal-btn > span{			/* depend of icon on hover tes/no */
 	margin-left: 0px;
 }
+
+button.btn-edit-user-form:hover,
+button.btn-login:hover,
+button.btn-create-account:hover,
 button.btn-about-us:hover,
 button.modal-btn:hover{
 	background-color: transparent;
@@ -732,6 +781,10 @@ button.btn-contact-form:hover{
 	border-color: #561818;
 }
 
+button.btn-edit-user-form:after > span,
+button.btn-edit-user:after > span,
+button.btn-login:after > span,
+button.btn-create-account:after > span,
 button.btn-admin-nav:after > span,
 button.btn-add-user:after > span,
 button.btn-about-us:after > span,
@@ -1840,6 +1893,7 @@ ul.file-list .admin-option img.icon-list{
     top: 0;
 }
 
+#container section.admin-error,
 #container section.admin,	
 #container section.contact,
 #container section.classes,
@@ -1928,7 +1982,7 @@ section.admin .admin-box{
 }
 
 section.admin .admin-box{
-    min-height: 50vh;
+    min-height: 40vh;
     padding: 3% 0;
 }
 
@@ -4216,6 +4270,15 @@ section.parents .header-title{
     top: 2px;
 }
 
+.parents-association-box ul li{
+    width: max-content;
+    text-transform: capitalize;
+}
+
+.parents-association-box ul li span{
+    text-transform: uppercase;
+}
+
 .parents-association-box .meeting-location{
 	position: relative;
 	display: inline-block;
@@ -4412,6 +4475,10 @@ section.parents .header-title{
     display: table-row;
 }
 
+.parents-assoc-table-row.member-disable{
+    background-color: rgba(115, 115, 115, .2);
+}
+
 .books-table-row.subject,
 .stationary-table-row.subject{
 /*    background: antiquewhite;*/
@@ -4447,6 +4514,8 @@ section.parents .header-title{
     box-shadow: none;
 }
 
+
+
 @media screen and (max-width:1366px){
 	.parents-information-table-row .parents-information-table-cell img,
         .parents-assoc-table-row .parents-assoc-table-cell img{
@@ -4467,8 +4536,28 @@ section.parents .header-title{
     font-weight: 600;
 }
 
+.parents-assoc-table-row .parents-assoc-table-cell.pa-title{
+    position: relative;
+    padding: 20px 0;
+    width: 30%;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.parents-assoc-table-row .parents-assoc-table-cell.pa-member-name{
+    position: relative;
+    padding: 20px 0;
+    width: 40%;
+    text-transform: capitalize;
+    
+}
+
+.parents-assoc-table-row.member-disable .pa-member-name,
+.parents-assoc-table-row.member-disable .pa-title{
+    color: #737373;
+}
+
 .parents-information-table-row .parents-information-table-cell.pi-title,
-.parents-assoc-table-row .parents-assoc-table-cell.pa-title,
 .books-table-row .books-table-cell.book-title,
 .stationary-table-row .stationary-table-cell.stationary-name,
 .additional-monies-info-table-row .additional-monies-info-table-cell.additional-monies-info-content,
@@ -4491,9 +4580,14 @@ section.parents .header-title{
 /*    background: red;*/
 }
 .parents-information-table-row .parents-information-table-cell.remove,
-.parents-assoc-table-row .parents-assoc-table-cell.remove{
+.parents-assoc-table-row .parents-assoc-table-cell.remove,
+.parents-assoc-table-row .parents-assoc-table-cell.disable,
+.parents-assoc-table-row .parents-assoc-table-cell.enable,
+.parents-assoc-table-row .parents-assoc-table-cell.create-account,
+.parents-assoc-table-row .parents-assoc-table-cell.edit{
     position: relative;
     width: 10%;
+    top: 10px;
 /*    background: green;*/
 }
 
@@ -4624,6 +4718,7 @@ section.our-team .header-title{
     position: relative;
     display: table;
     width: 100%;
+    padding-bottom: 20px;
     border: 1px solid;
     border-top: none;
 }
@@ -4639,6 +4734,10 @@ section.our-team .header-title{
 
 .our-team-table-row{
     display: table-row;
+}
+
+.our-team-table-row.member-disable{
+    background-color: rgba(115, 115, 115, .2);
 }
 
 .our-team-table-cell{
@@ -4659,25 +4758,49 @@ section.our-team .header-title{
     position: relative;
     padding: 20px 0 20px 5%;
     width: 70%;
+    text-transform: capitalize;
+}
+
+.our-team-table-row.member-disable .full-name{
+    color: #737373;
 }
 
 .our-team-table-cell.management-full-name{
     position: relative;
     padding: 20px 0;
     width: 30%;
+    text-transform: capitalize;
 }
 
-.our-team-table-cell.remove{
+.our-team-table-cell.edit,
+.our-team-table-cell.create-account{
     position: relative;
     width: 10%;
+    top: 10px;
 }
 
-.modal-text .our-team-table-cell.remove img.icon-list{
+.our-team-table-cell.remove,
+.our-team-table-cell.disable,
+.our-team-table-cell.enable{
+    position: relative;
+    width: 10%;
+    top:10px;
+}
+
+.modal-text .our-team-table-cell.enable img.icon-list,
+.modal-text .our-team-table-cell.edit img.icon-list,
+.modal-text .our-team-table-cell.remove img.icon-list,
+.modal-text .our-team-table-cell.disable img.icon-list,
+.modal-text .our-team-table-cell.create-account img.icon-list{
     position: relative;
     width: 30px;
     top: 0px;
     left: 0px;
 }
+
+/*.modal-text .our-team-table-cell.edit img.icon-list.inactive{
+    float:left;
+}*/
 
 @media screen and (max-width:1366px){
 	.modal-text .our-team-table-cell.remove img.icon-list{
@@ -6943,7 +7066,21 @@ img.end-tl{
     text-align: center;
     color: #c0392b;
 }
+
+
 .modal-text .confirmation-question span{
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #561818;
+}
+
+.modal-text .create-account-question span{
+    display: block;
+    text-align: center;
+    color: #561818;
+}
+.modal-text .create-account-question span.question{
+    display: block;
     font-weight: 600;
     font-size: 1.1em;
     color: #561818;
@@ -7016,7 +7153,11 @@ img.end-tl{
 .modal-text .parents-information-table-cell.edit img.icon-list,
 .modal-text .parents-information-table-cell.remove img.icon-list,
 .modal-text .parents-assoc-table-cell.edit img.icon-list,
-.modal-text .parents-assoc-table-cell.remove img.icon-list{
+.modal-text .parents-assoc-table-cell.remove img.icon-list,
+.modal-text .parents-assoc-table-cell.disable img.icon-list,
+.modal-text .parents-assoc-table-cell.enable img.icon-list,
+.modal-text .parents-assoc-table-cell.create-account img.icon-list,
+.modal-text .parents-assoc-table-cell.edit img.icon-list{
     position: relative;
     width: 30px;
     top: 0px;
@@ -7299,7 +7440,10 @@ table.event-list tr{
 }
 
 .modal-body .btn-modal-box{
+    display: inline-block;
+    width: 100%;
     padding-top: 35px;
+    padding-bottom: 5px;
 }
 
 .modal-box.lg .modal-body .btn-modal-box{
@@ -7476,8 +7620,42 @@ table.event-list tr{
 
 /**** AdminCss ****/
 
-#container section.admin{
-    min-height: 70vh
+#container section.admin-error{
+    color: #561818;
+}
+#container section.admin-error img{
+    display: block;
+    margin: 5% auto 1%;
+}
+#container section.admin-error h1.error-title,
+#container section.admin-error h2.error-title{
+    text-align: center;  
+}
+#container section.admin-error h2.error-title{
+    padding-bottom: 5%
+}
+#container section.admin-error .admin-info{
+   padding: 0 5%;
+}
+
+section.admin .admin-box .not-authorized img{
+    display: block;
+    margin: 0 auto 1%;
+}
+
+section.admin .admin-box .not-authorized span{
+    display: block;
+    width: 20%;
+    margin: 0 auto;
+    padding: 2%;
+    text-align: center;
+    font-family: 'Architects Daughter' ,sans-serif;
+    font-size: 2em;
+    color: #561818;
+    border: 1px solid #561818;
+    border-width: 5px 3px 3px 5px;
+    border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+    transform: rotate(1deg);
 }
 
 section.admin .header{
@@ -7500,6 +7678,10 @@ section.admin .header{
     margin-right: 20px;
 }
 
+section.admin .admin-box #hiddenMulticheckbox{
+    display: none;
+}
+
 .admin .color-cubes{
     width: 100%;
 }
@@ -7517,6 +7699,33 @@ section.admin .header{
             margin: 0 35% 1% 35%;
         }
     }
+    
+.admin .form-wrapper-header{
+    width: 40%;
+    margin: 0 30%;
+    padding-bottom: 20px;
+    color: #561818;
+    font-size: 1.4em; 
+}
+
+.admin .form-wrapper-header span{
+    font-style: italic;
+    
+}
+
+.admin .form-wrapper-header span.member-name{
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.admin .form-wrapper-form-info{
+    width: 100%;
+    margin: 20px 0;
+    font-size: 1.1em;
+    font-style: italic;
+    color: #561818;
+}
 
 .admin .users-wrapper{
     width: 80%;
@@ -7533,10 +7742,7 @@ section.admin .header{
     text-decoration: none;
 }
 
-.admin .form-wrapper span{
-    color: #561818;
-    font-size: 1.2em;
-}
+
 
 .admin .form-wrapper form pre{
     width: 60%;
@@ -7546,21 +7752,69 @@ section.admin .header{
     font-size: .7em;
 }
 
-.admin .user-details-wrapper ul li{
-    font-size: 1.6em;
+.admin .form-wrapper ul{
+    margin-top: .2em;
 }
-    @media screen and ( max-width :1366px) {
-        .admin .user-details-wrapper ul li{
-            font-size: 1.3em;
-        }
-    }
 
-.admin .user-details-wrapper ul li span{
-    font-family: 'Architects Daughter', 'Arial' ,sans-serif;
-    font-size: 1.1em;
-    color: #561818;
-    padding-right: 4em;
+.admin .form-wrapper ul li,
+.admin .form-wrapper .login-error{
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    color: #c0392b;
+    text-transform: uppercase;
 }
+
+.admin .form-wrapper .login-error a{
+    display: table;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 1.2em;
+    }
+    
+.admin .user-details-wrapper .table{
+    position: relative;
+    display: table;
+    width: 100%;
+    border: 1px solid #561818;
+    border-radius: 4px;
+}
+
+.user-details-wrapper .table .row{
+    display: table-row;
+    background: rgba(86, 24, 24, .2);
+}
+
+.user-details-wrapper .table .row.light{
+    background: rgba(173, 173, 173, .2);
+}
+
+.user-details-wrapper .table .row .cell{
+    display: table-cell;
+    position: relative;
+    padding: 10px 0 10px 5px;
+}
+
+.user-details-wrapper .table .row .cell.table-header{
+    width: 40%;
+    font-weight: 600;
+}
+
+.user-details-wrapper .table .row .cell.table-content{
+    width: 60%;
+    border-left: 1px solid #561818;
+}
+
+.user-details-wrapper .table .row .cell span{
+    color: #561818;
+    font-size: 1.2em;
+}
+
+.user-details-wrapper .table .row .cell span.name{
+    text-transform: capitalize;
+}
+
+
 
 
 
@@ -7743,10 +7997,14 @@ div.dhx_modal_cover_dv {
 	}
     }
 
-.modal-text .parents-information-table-cell.edit .tooltip .tooltiptext,
-.modal-text .parents-assoc-table-cell.edit .tooltip .tooltiptext{
+.modal-text .parents-information-table-cell.edit .tooltip .tooltiptext{
     top: 35px;
     left: 2px;
+}
+
+.modal-text .parents-assoc-table-cell.edit .tooltip .tooltiptext{
+    width: max-content;
+    left: -25px;
 }
 
 .modal-text .parents-information-table-cell.remove .tooltip .tooltiptext,
@@ -7757,13 +8015,48 @@ div.dhx_modal_cover_dv {
 }
 
 
+.modal-text .parents-assoc-table-cell.disable .tooltip .tooltiptext,
+.modal-text .parents-assoc-table-cell.enable .tooltip .tooltiptext,
+.modal-text .our-team-table-cell.disable .tooltip .tooltiptext,
+.modal-text .our-team-table-cell.enable .tooltip .tooltiptext{
+    width: max-content;
+    top: 35px;
+    left: -35px;
+}
 
-.tooltip .tooltiptext.remove{
+.modal-text .parents-assoc-table-cell.disable .tooltip .tooltiptext,
+.modal-text .our-team-table-cell.disable .tooltip .tooltiptext{
+    left: -40px;
+}
+
+.modal-text .our-team-table-cell.edit .tooltip .tooltiptext{
+    width: max-content;
+    left: -25px;
+}
+
+.modal-text .our-team-table-cell.create-account .tooltip .tooltiptext,
+.modal-text .parents-assoc-table-cell.create-account .tooltip .tooltiptext{
+    width: max-content;
+    left: -30px;
+}
+
+
+
+.tooltip .tooltiptext.remove,
+.tooltip .tooltiptext.disable{
     background-color: rgba(192, 57, 43, .3);
     color: #c0392b;
     top: 35px;
     left: -10px;
 }
+
+.tooltip .tooltiptext.enable{
+    background-color: rgba(26, 188, 156, .3);
+    color: #1abc9c;
+    top: 35px;
+    left: -10px;
+}
+
 .tooltip .tooltiptext.bottom.remove{
     left: -5px;
 }
@@ -7790,6 +8083,14 @@ div.dhx_modal_cover_dv {
     top: 35px;
     left: 0px;
 }
+
+.tooltip .tooltiptext.create-account{
+    background-color: rgba(86, 24, 24, .3);
+    color: #561818;
+    top: 35px;
+    left: 0px;
+}
+
 .tooltip .tooltiptext.bottom.edit{
     left: 0px;
 }
@@ -7933,12 +8234,12 @@ label.error {
 
 .cms-option.teachers{
     top: 30px;
-    right: 20%;
+    right: 10%;
 }
 
 .cms-option.learning-support{
     top: 30px;
-    right: 20%;
+    right: 0;
 }
 @media screen and (max-width:1366px){
 	.cms-option.learning-support{
@@ -8114,12 +8415,12 @@ label.error {
 }
 
 .cms-option.teachers a img{
-    right: 170px;
+    right: 220px;
     top: -5px;
 }
 
 .cms-option.learning-support a img{
-    right: 230px;
+    right: 360px;
     top: -5px;
 }
 
@@ -8379,11 +8680,15 @@ form.cms input[type='checkbox']{
     -o-transform: scale(1.5); /* Opera */
 }
 
+form.cms input[type='checkbox'].form-control{
+    width: auto;
+    margin: 0 20px;
+}
+
 form.cms label{
     display: block;
     padding-top: 15px;
     padding-bottom: 5px;
-    color: #575757;
     font-family: 'Architects Daughter' ,sans-serif;
     font-size: 1.2em;
     color: #561818;
@@ -8394,6 +8699,15 @@ form.cms label{
            font-size: 1.4em;
 	}
     }
+    
+form.cms label.form-control{
+    padding-top: 20px;
+    padding-bottom: 0;
+    font-family: 'Architects Daughter' ,sans-serif;
+    font-size: 1.4em;
+    color: #561818;
+
+}
 
 form.cms label.centered{
     text-align: center;

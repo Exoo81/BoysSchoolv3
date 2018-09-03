@@ -439,6 +439,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             
         </div>
     
+        <?php if($this->galleryList != null){ ?>
         <?= 
             $this->paginationControl(
                         // The paginator object:
@@ -450,6 +451,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         // The route to link to when a user clicks a control link:
                         ['route' => 'gallery', 'action' => 'index'])
           ?>
+        <?php } ?>
     
 <!--TODO    <div class="archive">
 	<hr class="burgundy">

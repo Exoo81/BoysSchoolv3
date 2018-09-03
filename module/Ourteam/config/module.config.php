@@ -43,8 +43,8 @@ return [
             Controller\OurteamController::class => [
                 // Give access to "index" to anyone.
                     ['actions' => ['index'], 'allow' => '*'],
-                // Give access to "deleteOurTeam", "deleteManagment", "addOurTeamMember", "addManagementMember" actions to ADMIN only.
-                    ['actions' => ['deleteourteam', 'deletemanagment', 'addourteammember', 'addmanagementmember'], 'allow' => '+ourteam.manage'],
+                // Give access to "deleteOurTeam", "deleteManagment", "addOurTeamMember", "addManagementMember", "activateOurTeam" actions to ADMIN only.
+                    ['actions' => ['deleteourteam', 'deletemanagment', 'addourteammember', 'addmanagementmember', 'activateourteam'], 'allow' => '+ourteam.manage'],
             ],
             
         ]

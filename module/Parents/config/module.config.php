@@ -47,8 +47,8 @@ return [
                     ['actions' => ['addparentsinformation'], 'allow' => '+parentsInformation.add'],
                 // Give access to "getEditParentsInformation", "editParentsInformation" and "deleteParentsInformation" actions to ADMIN only.
                     ['actions' => ['geteditparentsinformation', 'editparentsinformation', 'deleteparentsinformation'], 'allow' => '+parentsInformation.manage'],
-                // Give access to "addMemberToParentsAssoc", "deleteParentsAssocMember", "getEditParentsAssocMeeting" and "editParentsAssocMeeting" actions to ADMIN and Parents_Assoc.
-                    ['actions' => ['addmembertoparentsassoc', 'deleteparentsassocmember', 'geteditparentsassocmeeting', 'editparentsassocmeeting'], 'allow' => '+parentsAssoc.manage'],
+                // Give access to "addMemberToParentsAssoc", "deleteParentsAssocMember", "activateParentsAssocMember", "getEditParentsAssocMeeting" and "editParentsAssocMeeting" actions to ADMIN and Parents_Assoc.
+                    ['actions' => ['addmembertoparentsassoc', 'deleteparentsassocmember', 'activateparentsassocmember', 'geteditparentsassocmeeting', 'editparentsassocmeeting'], 'allow' => '+parentsAssoc.manage'],
                 // Give access to "getAddBookListSelect", "addBookList" actions to ADMIN and Teachers
                     ['actions' => ['getaddbooklistselect', 'addbooklist'], 'allow' => '+bookList.add'],
                 // Give access to "editBookList", "deleteBookList"  authorized users only.

@@ -28,6 +28,10 @@ $form->get('roles')->setAttributes([
     'class'=>'form-control'
     ]);
 
+$form->get('parents_assoc_roles')->setAttributes([
+    'class'=>'form-control dropdown'
+    ]);
+
 $form->get('submit')->setAttributes(['class'=>'btn-about-us btn-burgundy']);
 
 $form->prepare();
@@ -85,6 +89,17 @@ $form->prepare();
                 <?= $this->formElementErrors($form->get('email')); ?>
             <?php } ?>
             
+            <!-- admin only but NOT my own -->
+            <?php if ($this->access('user.edit') && !$this->access('user.own.edit', ['user'=>$user])) { ?>
+                <?= $this->formLabel($form->get('parents_assoc_roles')); ?>
+                <?= $this->formElement($form->get('parents_assoc_roles')); ?>
+                <?= $this->formElementErrors($form->get('parents_assoc_roles')); ?>
+            <?php }else{ ?>
+                <?= $this->formHidden($form->get('parents_assoc_roles')); ?>
+                <?= $this->formElement($form->get('parents_assoc_roles')->setAttributes(['hidden'=>true])); ?>
+                <?= $this->formElementErrors($form->get('parents_assoc_roles')); ?>
+            <?php } ?>
+            
             <!-- how to change email address info (in case you are ADMIN and you want to change your own address) -->
             <?php if ($this->access('user.edit') && $this->access('user.own.edit', ['user'=>$user])) { ?>
                 <div class='form-wrapper-form-info'>
@@ -112,6 +127,8 @@ $form->prepare();
                 <?= $this->formElement($form->get('roles')->setAttributes(['disable'=>true])); ?>
                 <?= $this->formElementErrors($form->get('roles')); ?> 
             <?php }?>
+                
+                
                
                
             

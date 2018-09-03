@@ -4,6 +4,7 @@ namespace User\Service;
 
 use User\Entity\User;
 use User\Entity\Role;
+use Ourteam\Entity\OurTeam;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\Math\Rand;
 
@@ -36,19 +37,32 @@ class UserManager
     /**
      * This method adds a new user.
      */
-    public function addUser($data) {
+    public function addUser($data, $memberID) {
         
         // Do not allow several users with the same email address.
         if($this->checkUserExists($data['email'])) {
             throw new \Exception("User with email address " . $data['$email'] . " already exists");
         }
         
+        if ($memberID<1) {
+            throw new \Exception("Member with id " . $memberID . " incorrect.");
+        }
+        
+        //find member in DB
+        $member = $this->entityManager->getRepository(OurTeam::class)
+                ->find($memberID);
+        
+        
+        if($member == null){
+            throw new \Exception("Member with id " . $memberID . " not found.");
+        }
+        
         // Create new User entity.
         $user = new User();
         $user->setEmail($data['email']);
-        $user->setTitle($data['title']);
-        $user->setFirstName($data['first_name']); 
-        $user->setLastName($data['last_name']);        
+//        $user->setTitle($data['title']);
+//        $user->setFirstName($data['first_name']); 
+//        $user->setLastName($data['last_name']);        
         // Encrypt password and store the password in encrypted state.
         $bcrypt = new Bcrypt();
         $passwordHash = $bcrypt->create($data['password']);        
@@ -60,19 +74,29 @@ class UserManager
         $user->setDateCreated($currentDate);  
         
         // Assign roles to user.
-        $this->assignRoles($user, $data['roles']); 
-                
+        $this->assignRoles($user, $data['roles']);
+        
+        
         // Add the entity to the entity manager.
         $this->entityManager->persist($user);
-        
         // Apply changes to database.
         $this->entityManager->flush();
+        
+        //merge user for member
+        $member->setUser($user);   
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member);
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        
+        //send email with password and link to change default password
         
         return $user;
     }
     
     /**
-     * This method updates data of an existing user.
+     * This method updates data of an existing user (our team).
      */
     public function updateUser($user, $data) {
         // Do not allow to change user email if another user with such email already exits.
@@ -80,17 +104,70 @@ class UserManager
             throw new \Exception("Another user with email address " . $data['email'] . " already exists");
         }
         
+        //find member in DB
+        $member = $this->entityManager->getRepository(OurTeam::class)
+                ->find($user->getOurTeamMember()->getId());
+        
+        
+        if($member == null){
+            throw new \Exception("Member with id " . $user->getOurTeamMember()->getId() . " not found.");
+        }
+        
         $user->setEmail($data['email']);
-        $user->setTitle($data['title']);
-        $user->setFirstName($data['first_name']); 
-        $user->setLastName($data['last_name']); 
-        $user->setStatus($data['status']);
 
         // Assign roles to user.
         $this->assignRoles($user, $data['roles']);        
         
         // Apply changes to database.
         $this->entityManager->flush();
+        
+        $member->setTitle($data['title']);
+        $member->setLastName($data['last_name']);
+
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member);
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        return true;
+    }
+    
+    /**
+     * This method updates data of an existing user (parents accoc).
+     */
+    public function updateUserParentAssoc($user, $data) {
+        // Do not allow to change user email if another user with such email already exits.
+        if($user->getEmail()!=$data['email'] && $this->checkUserExists($data['email'])) {
+            throw new \Exception("Another user with email address " . $data['email'] . " already exists");
+        }
+        
+        //find member in DB
+        $member = $this->entityManager->getRepository(OurTeam::class)
+                ->find($user->getOurTeamMember()->getId());
+        
+        
+        if($member == null){
+            throw new \Exception("Member with id " . $user->getOurTeamMember()->getId() . " not found.");
+        }
+        
+        $user->setEmail($data['email']);
+
+        // Assign roles to user.
+        $this->assignRoles($user, $data['roles']);        
+        
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        $member->setTitle($data['title']);
+        $member->setLastName($data['last_name']);
+        $member->setParentsAssocRole($data['parents_assoc_roles']);
+
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member);
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
         return true;
     }
     

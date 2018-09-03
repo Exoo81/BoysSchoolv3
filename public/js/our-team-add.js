@@ -115,7 +115,7 @@ $("#addOurTeamForm").validate({
 //    console.log('member Last Name:' + memberLastName);
 //    console.log('board member role:' + boardMemberRole);
 
-    //if member to delete not from board of management
+    //if adding member not from board of management
     if(memberType !== 'management'){
         
         $.ajax({
@@ -127,7 +127,19 @@ $("#addOurTeamForm").validate({
             success: function(data){
                 console.log(data);
                 if(data.success === true){
-                    location.reload();
+                    //hidde laoder
+                        $(".loader").css({"display":"none"});
+                    //display response-msg
+                        $(".response-msg").html(data.responseMsg);
+                    
+                    //close Add Our Team Member Modal
+                    $("#add-our-team").css({"display":"none"});
+                    //show dailog with question to create account
+                        $("#newAccountFullName").html("<i>" +data.newMemberFullName + "</i> does not have an account yet.");
+                        $("#new-member-account").attr("href", "/user/addaccount/"+data.newMemberID); 
+  
+                        //display modal
+                        $("#create-account-modal").css({"display":"block"});
                 }else{
                     //hidde laoder
                         $(".loader").css({"display":"none"});
@@ -138,7 +150,7 @@ $("#addOurTeamForm").validate({
             }      
         }); 
         
-    }else if(memberType === 'management'){//if mamber to delete from board of management
+    }else if(memberType === 'management'){//if adding mamber from board of management
         
         $.ajax({
             url:'ourteam/addmanagementmember',

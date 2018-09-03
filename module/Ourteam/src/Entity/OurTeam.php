@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="our_team")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="role", type="string")
- * @ORM\DiscriminatorMap( {"our_team" = "OurTeam", "principal" = "Ourteam\Entity\Principal", "teacher" = "Ourteam\Entity\Teacher", "learning_support" = "Ourteam\Entity\LearningSupport", "sna" = "Ourteam\Entity\SNA", "asd_unit" = "Ourteam\Entity\ASDUnit", "secretary" = "Ourteam\Entity\Secretary", "caretaker" = "Ourteam\Entity\Caretaker" } )
+ * @ORM\DiscriminatorMap( {"our_team" = "OurTeam", "principal" = "Ourteam\Entity\Principal", "teacher" = "Ourteam\Entity\Teacher", "learning_support" = "Ourteam\Entity\LearningSupport", "sna" = "Ourteam\Entity\SNA", "asd_unit" = "Ourteam\Entity\ASDUnit", "secretary" = "Ourteam\Entity\Secretary", "caretaker" = "Ourteam\Entity\Caretaker" , "parents_assoc" = "Parents\Entity\ParentsAssocTeam"} )
  */
 class OurTeam {
     // Our Team member status constants.
@@ -45,6 +45,13 @@ class OurTeam {
      * @ORM\Column(name="status")  
      */
     protected $status;
+    
+    /**
+     * One OurTeam member has One User account.
+     * @ORM\OneToOne(targetEntity="\User\Entity\User", inversedBy="ourTeamMember")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
     
     
     
@@ -147,7 +154,16 @@ class OurTeam {
     public function getTitleLastName() {
        $titleLastName = $this->getTitleString() .' '. $this->lastName;
         return $titleLastName;
-    } 
+    }
+    
+     /**
+     * Returns full name (firstName + lastName).
+     * @return string     
+     */
+    public function getFullNameShort() {
+       $fullNameShort = $this->firstName .' '. $this->lastName;
+        return $fullNameShort;
+    }
     
     
     /**
@@ -188,6 +204,24 @@ class OurTeam {
     public function setStatus($status) {
         $this->status = $status;
     } 
+    
+    
+    /*
+    * Returns associated user account.
+    * @return \User\Entity\User
+    */
+    public function getUser() {
+      return $this->user;
+    }
+    
+    /**
+     * Sets associated user account.
+     * @param \User\Entity\User $user
+     */
+    public function setUser($user) {
+      $this->user = $user;
+      $user->setOurTeamMember($this);
+    }
     
     
 }

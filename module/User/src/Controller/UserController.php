@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\Role;
 use User\Entity\User;
+use Ourteam\Entity\OurTeam;
 use User\Form\UserForm;
 use User\Form\PasswordChangeForm;
 use User\Form\PasswordResetForm;
@@ -47,17 +48,49 @@ class UserController extends AbstractActionController{
         ]);
     }
     
-
+    
     //will display a page allowing the creation of a new user
-    public function addAction(){
-        $title = 'Add user';
+    public function addAccountAction(){
+        
+        $title = 'Create account';
+        
+        //get id member from route
+        $id = (int)$this->params()->fromRoute('id', -1);
+        if ($id<1) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        // Find a member (our team) with such ID.
+        $member = $this->entityManager->getRepository(OurTeam::class)
+                ->find($id);
+        
+        if ($member == null) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        if($member->getUser() !== null){
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        //Access check
+        if (!$this->access('user.add')) {
+            return $this->redirect()->toRoute('not-authorized');
+        }
         
         //create user form
         $form = new UserForm('create', $this->entityManager);
         
+        $form->get('title')->setValue($member->getTitle());
+        $form->get('first_name')->setValue($member->getFirstName());
+        $form->get('last_name')->setValue($member->getLastName());
+        $form->get('status')->setValue($member->getStatus());
+        
         // Get the list of all available roles (sorted by name).
         $allRoles = $this->entityManager->getRepository(Role::class)
-                ->findBy([], ['name'=>'ASC']);
+                ->findBy([], ['id'=>'ASC']);
         
         $roleList = [];
         foreach ($allRoles as $role) {
@@ -81,13 +114,13 @@ class UserController extends AbstractActionController{
                 $data = $form->getData();
                 
                 // Add user.
-                $user = $this->userManager->addUser($data);
+                $user = $this->userManager->addUser($data, $member->getId());
                 
                 // Redirect to "view" page
-//                return $this->redirect()->toRoute('users', 
-//                        ['action'=>'view', 'id'=>$user->getId()]); 
                 return $this->redirect()->toRoute('user', 
-                        ['action'=>'users']); 
+                        ['action'=>'view', 'id'=>$user->getId()]); 
+//                return $this->redirect()->toRoute('user', 
+//                        ['action'=>'users']); 
             } 
             
         }
@@ -95,12 +128,14 @@ class UserController extends AbstractActionController{
         //else just display form
         return new ViewModel([
             'title' => $title,
+            'member' => $member,
             'form' => $form
         ]);
+        
     }
 
 
-    //action will display a page for updating an existing user
+    //action will display a page for updating an existing user (member Our Team)
     public function editAction(){
         
          
@@ -134,7 +169,98 @@ class UserController extends AbstractActionController{
         
         // Get the list of all available roles (sorted by name).
         $allRoles = $this->entityManager->getRepository(Role::class)
-                ->findBy([], ['name'=>'ASC']);
+                ->findBy([], ['id'=>'ASC']);
+        $roleList = [];
+        foreach ($allRoles as $role) {
+            $roleList[$role->getId()] = $role->getName();
+        }
+        
+        $form->get('roles')->setValueOptions($roleList);
+        
+        //show extra field if parents assoc member (parents_assoc_role field)
+        
+        
+        // Check if user has submitted the form
+        if ($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                // Get filtered and validated data
+                $data = $form->getData();
+
+                // Update the user.
+                $this->userManager->updateUser($user, $data);
+
+                // Redirect to "view" page
+                    return $this->redirect()->toRoute('user', 
+                            ['action'=>'view', 'id'=>$user->getId()]);
+                
+            }
+            
+        }else{
+            
+            $userRoleIds = [];
+            foreach ($user->getRoles() as $role) {
+                $userRoleIds[] = $role->getId();
+            }
+            
+           $form->setData(array(
+                    'title'=>$user->getOurTeamMember()->getTitle(),
+                    'first_name'=>$user->getOurTeamMember()->getFirstName(),
+                    'last_name'=>$user->getOurTeamMember()->getLastName(),
+                    'email'=>$user->getEmail(),
+                    'status'=>$user->getStatus(), 
+                    'roles' => $userRoleIds
+                ));
+        }
+        
+        return new ViewModel([
+            'title' => $title,
+            'user' => $user,
+            'form' => $form
+        ]);
+    }
+    
+    //action will display a page for updating an existing user (member Parents Assoc)
+    public function editparentsassocAction(){
+        
+         
+        $title = 'Edit Parents association user';
+        
+        //get id user from route
+        $id = (int)$this->params()->fromRoute('id', -1);
+        if ($id<1) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+
+        
+        // Find a user with such ID.
+        $user = $this->entityManager->getRepository(User::class)
+                ->find($id);
+        
+        if ($user == null) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        //Access check
+        if (!$this->access('user.edit') && 
+            !$this->access('user.own.edit', ['user'=>$user])) {
+            return $this->redirect()->toRoute('not-authorized');
+        }
+        
+        // Create user form
+        $form = new UserForm('update_parents_assoc', $this->entityManager, $user);
+        
+        // Get the list of all available roles (sorted by name).
+        $allRoles = $this->entityManager->getRepository(Role::class)
+                ->findBy([], ['id'=>'ASC']);
         $roleList = [];
         foreach ($allRoles as $role) {
             $roleList[$role->getId()] = $role->getName();
@@ -157,11 +283,12 @@ class UserController extends AbstractActionController{
                 $data = $form->getData();
 
                 // Update the user.
-                $this->userManager->updateUser($user, $data);
+                $this->userManager->updateUserParentAssoc($user, $data);
 
                 // Redirect to "view" page
                     return $this->redirect()->toRoute('user', 
                             ['action'=>'view', 'id'=>$user->getId()]);
+                
             }
             
         }else{
@@ -172,12 +299,13 @@ class UserController extends AbstractActionController{
             }
             
            $form->setData(array(
-                    'title'=>$user->getTitle(),
-                    'first_name'=>$user->getFirstName(),
-                    'last_name'=>$user->getLastName(),
+                    'title'=>$user->getOurTeamMember()->getTitle(),
+                    'first_name'=>$user->getOurTeamMember()->getFirstName(),
+                    'last_name'=>$user->getOurTeamMember()->getLastName(),
                     'email'=>$user->getEmail(),
                     'status'=>$user->getStatus(), 
-                    'roles' => $userRoleIds
+                    'roles' => $userRoleIds,
+                    'parents_assoc_roles'=>$user->getOurTeamMember()->getParentsAssocRole(),
                 ));
         }
         

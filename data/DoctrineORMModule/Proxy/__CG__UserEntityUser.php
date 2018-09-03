@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'title', 'firstName', 'lastName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
+            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'title', 'firstName', 'lastName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
+        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
     }
 
     /**
@@ -224,116 +224,6 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getTitle()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
-
-        return parent::getTitle();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getTitleString()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitleString', []);
-
-        return parent::getTitleString();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setTitle($title)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
-
-        return parent::setTitle($title);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getFirstName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', []);
-
-        return parent::getFirstName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setFirstName($firstName)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', [$firstName]);
-
-        return parent::setFirstName($firstName);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLastName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', []);
-
-        return parent::getLastName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLastName($lastName)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', [$lastName]);
-
-        return parent::setLastName($lastName);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getFullName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFullName', []);
-
-        return parent::getFullName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setFullName($fullName)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFullName', [$fullName]);
-
-        return parent::setFullName($fullName);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getTitleLastName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitleLastName', []);
-
-        return parent::getTitleLastName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getStatus()
     {
 
@@ -450,6 +340,28 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPasswordResetTokenCreationDate', [$date]);
 
         return parent::setPasswordResetTokenCreationDate($date);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOurTeamMember()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOurTeamMember', []);
+
+        return parent::getOurTeamMember();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOurTeamMember($member)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOurTeamMember', [$member]);
+
+        return parent::setOurTeamMember($member);
     }
 
     /**

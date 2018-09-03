@@ -1,5 +1,4 @@
 <?php
-$this->headLink()->appendStylesheet('/css/admin.css'); 
 $this->headTitle($this->title);
 ?>
 
@@ -18,52 +17,148 @@ $this->headTitle($this->title);
     
     
     <div class="admin-box">
-        <div class='user-details-wrapper'>
-            <a href=" <?= $this->url('user', ['action'=>'users']); ?>">
-                <button type="button" class="btn-admin-nav btn-burgundy reversed" data-text="Back to users list">
-                    <span><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to users list</span>
-                </button>
-            </a>
-        </div>
-        <div class='user-details-wrapper'>
-            
-            <ul>
-                <li><span>ID:</span><?= $user->getId() ?></li>
-                <li><span>Email:</span><?= $user->getEmail() ?></li>
-                <li><span>Name:</span><?= $user->getFullName() ?></li>
-                <li><span>Status:</span>
-                    <?php if( $user->getStatus() == 1 ): ?>
-                        ACTIVE
-                    <?php else: ?>
-                        INACTIVE
-                    <?php endif; ?>
-                </li>
-                <li><span>Roles:</span><?= $user->getRolesAsString() ?></li>
-                <li><span>Password:</span><?= $user->getPassword() ?></li>
-                <li><span>User was created:</span><?= $user->getDateCreated() ?></li>
-                <li><span>Reset Password Token:</span><?= $user->getResetPasswordToken() ?></li>
-                <li><span>Password Reset Token Creation Date:</span><?= $user->getPasswordResetTokenCreationDate() ?></li>
-            </ul>
-            
-        </div>
-<!--if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.admin')) {-->
-        <?php if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.edit')) {
-            echo '<div class="user-details-wrapper">'
-                    . '<a href="'.$this->url('user', ['action'=>'edit', 'id'=>$user->getId()]).'">'
-                        . '<button type="button" class="btn-add-user btn-blue reversed" data-text="Edit user">'
-                            . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
-                        . '</button>'
-                    . '</a>'
-                . '</div>';
         
-        } ?>
-<!--                <div class="user-details-wrapper">
-                    <a href="<?= $this->url('user', ['action'=>'edit', 'id'=>$user->getId()]) ?>">
-                        <button type="button" class="btn-add-user btn-blue reversed" data-text="Edit user">
-                            <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>
-                        </button>
-                    </a>
-                </div>-->
+        
+        
+        <div class='user-details-wrapper'>
+            <?php
+                $role = true;
+                $reflect = new ReflectionClass($user->getOurTeamMember());
+                if($reflect->getShortName() === 'ParentsAssocTeam'){
+                    $role = false;
+                }else{
+                    $role = true;
+                }
+                
+                if($role){
+                    echo '<a href="'.$this->url('ourteam').'">';
+                        echo '<button type="button" class="btn-max btn-green reversed" data-text="Back to Our Team page">';
+                            echo '<span><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Our Team page</span>';
+                        echo '</button>';
+                    echo '</a>';
+                }else{
+                    echo '<a href="'.$this->url('parents').'">';
+                        echo '<button type="button" class="btn-max btn-green reversed" data-text="Back to Parents page">';
+                            echo '<span><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Parents page</span>';
+                        echo '</button>';
+                    echo '</a>';
+                }
+            ?>
+        </div>
+        <div class='user-details-wrapper'>
+            
+            <div class='table'>
+                <div class="row">
+                    <div class="cell table-header"><span>ID</span></div>
+                    <div class="cell table-content"><span><?= $user->getId() ?>(only admin)</span></div>
+                </div>
+                <div class="row light">
+                    <div class="cell table-header"><span>Name</span></div>
+                    <div class="cell table-content"><span class='name'><?= $user->getOurTeamMember()->getFullName() ?></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell table-header"><span>Email</span></div>
+                    <div class="cell table-content"><span><?= $user->getEmail() ?></span></div>
+                </div>
+                <div class="row light">
+                    <div class="cell table-header"><span>Status</span></div>
+                    <div class="cell table-content"><span><?= $user->getStatusAsString() ?></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell table-header"><span>Roles in system <i>(account status)</i></span></div>
+                    <div class="cell table-content"><span><?= $user->getRolesAsString() ?> <i>(<?= $user->getStatusAsString() ?>)</i></span></div>
+                </div>
+                <div class="row light">
+                    <div class="cell table-header"><span>Roles in school <i>(status in the our team)</i></span></div>
+                    <?= 
+                        $type = null;
+                        $reflectType = new ReflectionClass($user->getOurTeamMember());
+                        switch ($reflectType->getShortName()) {
+                            case 'OurTeam':
+                                $type = "Our Team (not inherited)";
+                                break;
+                            case 'ParentsAssocTeam':
+                                $type = "Parents Association";
+                                break;
+                            case 'Principal':
+                                $type = "Principal";
+                                break;
+                            case 'Teacher':
+                                $type = "Teacher";
+                                break;
+                            case 'LearningSupport':
+                                $type = "Learning support";
+                                break;
+                            case 'SNA':
+                                $type = "SNA";
+                                break;
+                            case 'ASDUnit':
+                                $type = "ASD Unit";
+                                break;
+                            case 'Secretary':
+                                $type = "Secretary";
+                                break;
+                            case 'Caretaker':
+                                $type = "Caretaker";
+                                break;
+                            default:
+                                $type = "Indeterminate";
+                        }
+                        echo '<div class="cell table-content"><span>'.$type.' <i>('.$user->getOurTeamMember()->getStatusAsString().') </i></span></div>';
+                    ?>
+                </div>
+                <div class="row light">
+                    <div class="cell table-header"><span>Password</span></div>
+                    <div class="cell table-content"><span><?= $user->getPassword() ?></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell table-header"><span>Date of creation</span></div>
+                    <div class="cell table-content"><span><?= $user->getDateCreated() ?></span></div>
+                </div>
+                
+                    <?php
+                        if($reflectType->getShortName() === "ParentsAssocTeam"){
+                                echo '<div class="row light">';
+                                    echo '<div class="cell table-header"><span>Role in the parents association</span></div>';
+                                    echo '<div class="cell table-content"><span>'.$user->getOurTeamMember()->getParentsAssocRoleAsString().'</span></div>';
+                                echo '</div>';
+                        }    
+                    ?>
+                
+                <div class="row light">
+                    <div class="cell table-header"><span>Reset Password Token</span></div>
+                    <div class="cell table-content"><span><?= $user->getResetPasswordToken() ?></span></div>
+                </div>
+                <div class="row">
+                    <div class="cell table-header"><span>Password Reset Token Creation Date</span></div>
+                    <div class="cell table-content"><span><?= $user->getPasswordResetTokenCreationDate() ?></span></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <?php
+           
+            if ( $this->access('user.own.edit', ['user'=>$user]) || $this->access('user.edit')) {
+                if($reflectType->getShortName() !== 'ParentsAssocTeam'){
+                    echo '<div class="user-details-wrapper">'
+                            . '<a href="'.$this->url('user', ['action'=>'edit', 'id'=>$user->getId()]).'">'
+                                . '<button type="button" class="btn-edit-user btn-blue reversed" data-text="Edit user">'
+                                    . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
+                                . '</button>'
+                            . '</a>'
+                        . '</div>';
+                }else{
+                    echo '<div class="user-details-wrapper">'
+                            . '<a href="'.$this->url('user', ['action'=>'editparentsassoc', 'id'=>$user->getId()]).'">'
+                                . '<button type="button" class="btn-edit-user btn-blue reversed" data-text="Edit user">'
+                                    . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
+                                . '</button>'
+                            . '</a>'
+                        . '</div>';
+                }
+            }
+        ?>
 
     </div>
     

@@ -27,20 +27,20 @@ class User {
      */
     protected $email;
     
-    /** 
-     * @ORM\Column(name="title")  
-     */
-    protected $title;
-    
-    /** 
-     * @ORM\Column(name="first_name")  
-     */
-    protected $firstName;
-    
-    /** 
-     * @ORM\Column(name="last_name")  
-     */
-    protected $lastName;
+//    /** 
+//     * @ORM\Column(name="title")  
+//     */
+//    protected $title;
+//    
+//    /** 
+//     * @ORM\Column(name="first_name")  
+//     */
+//    protected $firstName;
+//    
+//    /** 
+//     * @ORM\Column(name="last_name")  
+//     */
+//    protected $lastName;
 
     /** 
      * @ORM\Column(name="password")  
@@ -66,6 +66,13 @@ class User {
      * @ORM\Column(name="pwd_reset_token_creation_date")  
      */
     protected $passwordResetTokenCreationDate;
+    
+    
+    /**
+     * One User has One OurTeam.
+     * @ORM\OneToOne(targetEntity="\Ourteam\Entity\OurTeam", mappedBy="user")
+     */
+    private $ourTeamMember;
     
     /**
      * @ORM\ManyToMany(targetEntity="User\Entity\Role")
@@ -180,97 +187,97 @@ class User {
         $this->email = $email;
     }
     
-    /**
-     * Returns title.
-     * @return string     
-     */
-    public function getTitle() {
-        return $this->title;
-    } 
-    
-    /**
-     * Returns title string.
-     * @return string     
-     */
-    public function getTitleString() {
-        $titleString = '';
-        if($this->title == 1){
-            $titleString = 'Mr.';
-        }
-        if($this->title == 2){
-            $titleString = 'Mrs.';
-        }
-        if($this->title == 3){
-            $titleString = 'Ms.';
-        }
-        return $titleString;
-    }
-
-    /**
-     * Sets title.
-     * @param string $title
-     */
-    public function setTitle($title) {
-        $this->title = $title;
-    }
-    
-    /**
-     * Returns first name.
-     * @return string     
-     */
-    public function getFirstName() {
-        return $this->firstName;
-    }       
-
-    /**
-     * Sets first name.
-     * @param string $firstName
-     */
-    public function setFirstName($firstName) {
-        $this->firstName = $firstName;
-    }
-    
-    /**
-     * Returns last name.
-     * @return string     
-     */
-    public function getLastName() {
-        return $this->lastName;
-    }       
-
-    /**
-     * Sets last name.
-     * @param string $lastName
-     */
-    public function setLastName($lastName) {
-        $this->lastName = $lastName;
-    }
-    
-    /**
-     * Returns full name.
-     * @return string     
-     */
-    public function getFullName() {
-       $fullName = $this->getTitleString() .' '. $this->firstName .' '. $this->lastName;
-        return $fullName;
-    }       
-
-    /**
-     * Sets full name.
-     * @param string $fullName
-     */
-    public function setFullName($fullName) {
-        $this->fullName = $fullName;
-    }
-    
-    /**
-     * Returns title + last name.
-     * @return string     
-     */
-    public function getTitleLastName() {
-       $titleLastName = $this->getTitleString() .' '. $this->lastName;
-        return $titleLastName;
-    }       
+//    /**
+//     * Returns title.
+//     * @return string     
+//     */
+//    public function getTitle() {
+//        return $this->title;
+//    } 
+//    
+//    /**
+//     * Returns title string.
+//     * @return string     
+//     */
+//    public function getTitleString() {
+//        $titleString = '';
+//        if($this->title == 1){
+//            $titleString = 'Mr.';
+//        }
+//        if($this->title == 2){
+//            $titleString = 'Mrs.';
+//        }
+//        if($this->title == 3){
+//            $titleString = 'Ms.';
+//        }
+//        return $titleString;
+//    }
+//
+//    /**
+//     * Sets title.
+//     * @param string $title
+//     */
+//    public function setTitle($title) {
+//        $this->title = $title;
+//    }
+//    
+//    /**
+//     * Returns first name.
+//     * @return string     
+//     */
+//    public function getFirstName() {
+//        return $this->firstName;
+//    }       
+//
+//    /**
+//     * Sets first name.
+//     * @param string $firstName
+//     */
+//    public function setFirstName($firstName) {
+//        $this->firstName = $firstName;
+//    }
+//    
+//    /**
+//     * Returns last name.
+//     * @return string     
+//     */
+//    public function getLastName() {
+//        return $this->lastName;
+//    }       
+//
+//    /**
+//     * Sets last name.
+//     * @param string $lastName
+//     */
+//    public function setLastName($lastName) {
+//        $this->lastName = $lastName;
+//    }
+//    
+//    /**
+//     * Returns full name.
+//     * @return string     
+//     */
+//    public function getFullName() {
+//       $fullName = $this->getTitleString() .' '. $this->firstName .' '. $this->lastName;
+//        return $fullName;
+//    }       
+//
+//    /**
+//     * Sets full name.
+//     * @param string $fullName
+//     */
+//    public function setFullName($fullName) {
+//        $this->fullName = $fullName;
+//    }
+//    
+//    /**
+//     * Returns title + last name.
+//     * @return string     
+//     */
+//    public function getTitleLastName() {
+//       $titleLastName = $this->getTitleString() .' '. $this->lastName;
+//        return $titleLastName;
+//    }       
 
     /**
      * Returns status.
@@ -374,6 +381,27 @@ class User {
     public function setPasswordResetTokenCreationDate($date) {
         $this->passwordResetTokenCreationDate = $date;
     }
+    
+    
+    /*
+    * Returns associated ourTeam member.
+    * @return \Ourteam\Entity\OurTeam
+    */
+    public function getOurTeamMember() {
+      return $this->ourTeamMember;
+    }
+    
+    /**
+     * Sets associated ourTeam member.
+     * @param \Ourteam\Entity\OurTeam $member
+     */
+    public function setOurTeamMember($member) {
+      $this->ourTeamMember = $member;
+      //$member->setUser($this);
+    }
+    
+    
+    
     
     /**
      * Returns the array of roles assigned to this user.

@@ -1,8 +1,10 @@
 <?php
 use Zend\Mvc\Application;
 ?>
-<h1>A 404 error occurred</h1>
-<h2><?= $this->message ?></h2>
+<section class='admin-error'>
+    <img src="/../img/icons/icon-error.png">
+<h1 class='error-title'>A 404 error occurred</h1>
+<h2 class='error-title'><?= $this->message ?></h2>
 
 <?php if (! empty($this->reason)) :
     switch ($this->reason) {
@@ -26,11 +28,11 @@ use Zend\Mvc\Application;
             break;
     }
 ?>
-<p><?= $reasonMessage ?></p>
+<p class='admin-info'>Admin info: <?= $reasonMessage ?></p>
 <?php endif ?>
 
 <?php if (! empty($this->controller)) : ?>
-<dl>
+<dl class='admin-info'>
     <dt>Controller:</dt>
     <dd>
         <?= $this->escapeHtml($this->controller) ?>
@@ -48,7 +50,7 @@ use Zend\Mvc\Application;
         && ($this->exception instanceof \Exception || $this->exception instanceof \Error)) : ?>
 <hr/>
 
-<h2>Additional information:</h2>
+<h2 class='admin-info'>Additional information:</h2>
 <h3><?= get_class($this->exception) ?></h3>
 <dl>
     <dt>File:</dt>
@@ -100,6 +102,7 @@ use Zend\Mvc\Application;
 </ul>
         <?php endif ?>
     <?php else : ?>
-<h3>No Exception available</h3>
+<h3 class='admin-info'>No Exception available</h3>
     <?php endif ?>
 <?php endif ?>
+</section>

@@ -71,7 +71,7 @@ $this->headTitle($this->title);
                     echo '<a><tr>'
                             .'<td>'.$user->getId().'</td>'
                             .'<td>'.$user->getEmail().'</span></td>'
-                            .'<td>'.$user->getFullName().'</td>'
+                            .'<td>'.$user->getOurTeamMember()->getFullName().'</td>'
                             .'<td>';
                                     if($user->getStatus() == 1){
                                         echo 'ACTIVE';

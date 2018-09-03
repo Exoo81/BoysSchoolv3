@@ -1,45 +1,48 @@
 /* 
- * Deactivate Parents Assoc member
+ * Activate Our team member
  */
 
 //open modal
-$(".modal-trigger-delete-parents-assoc-member").click(function(e){
+$(".modal-trigger-activate-our-team-member").click(function(e){
     
     e.preventDefault();
-    
-    //close Parents Assoc manage modal
-    $("#parents-assoc-manage-modal").css({"display":"none"});
 
     dataModal = $(this).attr("data-modal");
+     
     var memberID = $(this).attr("data-memberID");
-    var memberName = $(this).attr("data-memberName");
+    var memberName = $(this).attr("data-memberFullName");
+    var type = $(this).attr("data-type");
 
-    
-
-//        console.log('---=== GET Parents Information DATA TO DELETE ===---');
+//        console.log('---=== GET Our Team member DATA TO Activate ===---');
 //        console.log('member ID: ' + memberID);
 //        console.log('member Name: ' + memberName);
-  
-    //close previous modal base on type
-    $("#parents-assoc-manage-modal").css({"display":"none"});
+//        console.log('type: ' + type);
         
+    //close previous modal base on type
+    $("#manage-"+type+"-modal").css({"display":"none"});
+       
     //clear msg label
     $(".response-msg").html('');
 
     //insert data to modal
-    $("#deleteParentsAssocMemeberID").val(memberID);
+    $("#activateOurTeamID").val(memberID);
+    $("#activateOurTeamType").val(type);
 
-  
-    $("#confirmation-question-pa-deactivate span").html(memberName);
+    $("#confirmation-question-our-team-activate span").html(memberName);
+    
+    //show confirmation-question-our-team-activate
+    $("#confirmation-question-our-team-activate").css({"display":"block"});
+    //show form
+    $("#activateOurTeamForm").css({"display":"block"});
   
     //display modal
     $("#" + dataModal).css({"display":"block"});
     
 });
 
-$("#deleteParentsAssocMemeberForm").validate({
+$("#activateOurTeamForm").validate({
     rules: {
-        deleteParentsAssocMemeberID: {
+        activateOurTeamID: {
             required: true
         }
     },
@@ -49,18 +52,21 @@ $("#deleteParentsAssocMemeberForm").validate({
     //show laoder
     $(".loader").css({"display":"block"});
     //hidde confirmation question
-    $("#confirmation-question-pa-deactivate").css({"display":"none"});
+    $("#confirmation-question-our-team-activate").css({"display":"none"});
     //hidde form
-    $("#deleteParentsAssocMemeberForm").css({"display":"none"});
-        
-    
-    var memberID = $("#deleteParentsAssocMemeberID").val();
+    $("#activateOurTeamForm").css({"display":"none"});
+          
+    var memberID = $("#activateOurTeamID").val();
+    var memberType = $("#activateOurTeamType").val();
+
  
-//    console.log('---=== ParentsAssoc DATA SEND BY AJAX ===---');
-//    console.log('ParentsAssoc Memeber ID: ' + memberID);
-    
+//    console.log('---=== Our Team member DATA SEND BY AJAX ===---');
+//    console.log('member ID: ' + memberID);
+//    console.log('member type: ' + memberType);
+
+
     $.ajax({
-         url: 'parents/deleteparentsassocmember',                   
+        url: 'ourteam/activateourteam',                   
         type:'POST',
         data:{memberID:memberID},
         dataType: 'JSON', 
@@ -78,7 +84,10 @@ $("#deleteParentsAssocMemeberForm").validate({
             } 
             return false;
         }      
-    }); 
+    });
+    
+    
+ 
     
     }
 });
@@ -88,4 +97,5 @@ $("#deleteParentsAssocMemeberForm").validate({
 //$(".close-modal, .btn-modal-box .close-btn, .modal-sandbox").click(function(){
 //	$(".modal").css({"display":"none"});
 //});
+
 

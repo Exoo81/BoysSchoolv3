@@ -1,0 +1,113 @@
+<?php
+ 
+
+$this->headTitle($this->title);
+
+$form->setAttributes(['class'=>'cms']);
+
+$form->get('title')->setAttributes([
+    'class'=>'form-control dropdown'
+    ]);
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+    ]);
+
+$form->get('first_name')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('last_name')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control dropdown'
+    ]);
+
+$form->get('password')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('confirm_password')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('roles')->setAttributes([
+    'class'=>'form-control'
+    ]);
+ 
+
+$form->prepare();
+        
+        
+ ?>
+<section class="admin">
+    <div class="header">
+	<div class="header-title reverse"><i class="fa fa-user-plus" aria-hidden="true"></i><?= $this->escapeHtml($this->title) ?></div>
+	<div class="color-cubes">
+            <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
+            <div class="single-cube3 wow fadeInRightBig delay-03s"></div>
+            <div class="single-cube4 wow fadeInRightBig delay-04s"></div>
+            <div class="single-cube5 wow fadeInRightBig delay-05s"></div>
+            <div class="single-cube6 wow fadeInRightBig delay-06s"></div>
+	</div>
+    </div>
+    
+    <div class='admin-box'>
+        
+        <div class='form-wrapper-header'>
+            To create account for <span class='member-name'><?= $this->member->getFullName() ?></span>, please fill out the form below and click <span>"Create account"</span>    
+        </div>
+
+        <div class='form-wrapper'>
+            <?= $this->form()->openTag($form); ?>
+            
+                <?= $this->formHidden($form->get('title')); ?>
+                <?= $this->formElement($form->get('title')); ?>
+                <?= $this->formElementErrors($form->get('title')); ?> 
+
+                <?= $this->formHidden($form->get('first_name')); ?>
+                <?= $this->formElement($form->get('first_name')); ?>
+                <?= $this->formElementErrors($form->get('first_name')); ?>
+            
+                <?= $this->formHidden($form->get('last_name')); ?>
+                <?= $this->formElement($form->get('last_name')); ?>
+                <?= $this->formElementErrors($form->get('last_name')); ?>
+                
+                <?= $this->formHidden($form->get('status')); ?>
+                <?= $this->formElement($form->get('status')); ?>
+                <?= $this->formElementErrors($form->get('status')); ?>
+                
+                <?= $this->formLabel($form->get('email')); ?>
+                <?= $this->formElement($form->get('email')); ?>
+                <?= $this->formElementErrors($form->get('email')); ?> 
+
+                <?= $this->formLabel($form->get('password')); ?>
+                <?= $this->formElement($form->get('password')); ?>
+                <?= $this->formElementErrors($form->get('password')); ?>
+
+                <?= $this->formLabel($form->get('confirm_password')); ?>
+                <?= $this->formElement($form->get('confirm_password')); ?>
+                <?= $this->formElementErrors($form->get('confirm_password')); ?>
+
+                
+            
+                <?= $this->formLabel($form->get('roles')); ?>
+                <?= $this->formElement($form->get('roles')); ?>
+                <?= $this->formElementErrors($form->get('roles')); ?> 
+
+                
+                <button type="submit" class="btn-create-account btn-burgundy" data-text="Create account">
+                    <span><i class="fa fa-user-plus" aria-hidden="true"></i> Create account</span>
+                </button>
+
+            <?= $this->form()->closeTag(); ?>
+   
+        </div>
+        
+    </div>
+
+</section>
+

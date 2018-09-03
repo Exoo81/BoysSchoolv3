@@ -29,7 +29,7 @@ class UserForm extends Form{
     private $entityManager = null;
     
     /**
-     * Current user.
+     * Current user (to edit).
      * @var User\Entity\User 
      */
     private $user = null;
@@ -56,44 +56,116 @@ class UserForm extends Form{
     
      protected function addElements() {
          
-         // Add "email" field
-        $this->add([            
-            'type'  => 'text',
-            'name' => 'email',
-            'options' => [
-                'label' => 'E-mail',
-            ],
-        ]);
-        
         // Add "title" field
-        $this->add([            
-            'type'  => 'select',
-            'name' => 'title',            
-            'options' => [
-                'label' => 'Title',
-                'value_options' => [
-                    1 => 'Mr.',
-                    2 => 'Mrs.', 
-                    3 => 'Ms.',
-                ]
-            ],
-        ]);
-        
+        if ($this->scenario == 'create') {
+            $this->add([            
+                'type'  => 'select',
+                'name' => 'title',            
+                'options' => [
+                    'label' => 'Title',
+                    'label_attributes' => [
+                        'class'  => 'form-control'
+                     ], 
+                    'value_options' => [
+                        1 => 'Mr.',
+                        2 => 'Mrs.', 
+                        3 => 'Ms.',
+                    ],
+                ],
+                'attributes' => [
+                    'hidden' => true,
+                ],       
+            ]);
+        }else{
+            $this->add([            
+                'type'  => 'select',
+                'name' => 'title',            
+                'options' => [
+                    'label' => 'Title',
+                    'label_attributes' => [
+                        'class'  => 'form-control'
+                     ], 
+                    'value_options' => [
+                        1 => 'Mr.',
+                        2 => 'Mrs.', 
+                        3 => 'Ms.',
+                    ],
+                ],    
+            ]);
+        }
+
         // Add "first_name" field
         $this->add([            
             'type'  => 'text',
             'name' => 'first_name',            
             'options' => [
                 'label' => 'First Name',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ], 
+            ],
+            'attributes' => [
+                'hidden' => true,
             ],
         ]);
         
         // Add "last_name" field
-        $this->add([            
+        if ($this->scenario == 'create') {
+            $this->add([            
+                'type'  => 'text',
+                'name' => 'last_name',            
+                'options' => [
+                    'label' => 'Last Name',
+                    'label_attributes' => [
+                            'class'  => 'form-control'
+                    ], 
+                ],
+                'attributes' => [
+                    'hidden' => true,
+                ],
+            ]);
+        }else{
+            $this->add([            
             'type'  => 'text',
             'name' => 'last_name',            
             'options' => [
                 'label' => 'Last Name',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ], 
+            ],
+        ]);
+        }
+        
+        // Add "status" field
+        $this->add([            
+            'type'  => 'select',
+            'name' => 'status',
+            'options' => [
+                'label' => 'Account status',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ], 
+                'value_options' => [
+                    1 => 'Active',
+                    2 => 'Retired',                    
+                ]
+            ],
+            'attributes' => [
+                'hidden' => true,
+            ],
+        ]);
+        
+        
+        // Add "email" field
+        $this->add([            
+            'type'  => 'text',
+            'name' => 'email',
+            'options' => [
+                'label' => 'E-mail',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                     ], 
             ],
         ]);
         
@@ -105,6 +177,9 @@ class UserForm extends Form{
                 'name' => 'password',
                 'options' => [
                     'label' => 'Password',
+                    'label_attributes' => [
+                        'class'  => 'form-control'
+                     ],  
                 ],
             ]);
             
@@ -114,34 +189,49 @@ class UserForm extends Form{
                 'name' => 'confirm_password',
                 'options' => [
                     'label' => 'Confirm password',
+                    'label_attributes' => [
+                        'class'  => 'form-control'
+                     ], 
                 ],
             ]);
         }
         
-        // Add "status" field
-        $this->add([            
-            'type'  => 'select',
-            'name' => 'status',
-            'options' => [
-                'label' => 'Status',
-                'value_options' => [
-                    1 => 'Active',
-                    2 => 'Retired',                    
-                ]
-            ],
-        ]);
-        
+
+             
         // Add "roles" field
         $this->add([            
-            'type'  => 'select',
+            'type'  => 'Zend\Form\Element\MultiCheckbox',
             'name' => 'roles',
-            'attributes' => [
-                'multiple' => 'multiple',
-            ],
             'options' => [
-                'label' => 'Role(s)',
-            ],
+                'label' => 'Please, choose the roles in the SYSTEM',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                     ], 
+            ],          
         ]);
+        
+        if ($this->scenario == 'update_parents_assoc') {
+            $this->add([            
+                'type'  => 'select',
+                'name' => 'parents_assoc_roles',
+                'options' => [
+                    'label' => 'Please, choose the roles in the PARENTS ASSOCIATION',
+                    'label_attributes' => [
+                            'class'  => 'form-control'
+                    ],
+                    'empty_option' => 'Please choose some role',
+                    'value_options' => [
+                        1 => 'Chairperson',
+                        2 => 'Vice Chairperson',  
+                        3 => 'Secretary',
+                        4 => 'Treasurer',
+                    ]
+                ],
+            ]);
+            
+        }
+        
+        
         
         if ($this->scenario == 'create') {
             // Add the Submit button
@@ -299,7 +389,21 @@ class UserForm extends Form{
                 'validators' => [
                     ['name'=>'InArray', 'options'=>['haystack'=>[1, 2]]]
                 ],
-            ]); 
+            ]);
+        
+        // Add input for "update_parents_assoc" field
+        if ($this->scenario == 'update_parents_assoc') {
+            $inputFilter->add([
+                'name'     => 'parents_assoc_roles',
+                'required' => true,
+                'filters'  => [                    
+                    ['name' => 'ToInt'],
+                ],                
+                'validators' => [
+                    ['name'=>'InArray', 'options'=>['haystack'=>[1, 2, 3, 4]]]
+                ],
+            ]);
+        }
         
         // Add input for "roles" field
         $inputFilter->add([

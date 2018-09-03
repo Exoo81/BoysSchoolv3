@@ -238,6 +238,68 @@ class OurteamController extends AbstractActionController{
         return $view;
     }
     
+    public function activateourteamAction(){
+        
+        $dataResponse['success'] = false;
+        $dataResponse['responseMsg'] = 'ERROR - Member (our team) can not be activate.';
+        
+        $memberID = $this->params()->fromPost('memberID', 0);
+        
+        /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('ourteam.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do (1)';
+            
+            //delete member of our team
+            $dataResponse = $this->ourTeamManager->activateOurTeamMamber($memberID);
+            
+        }else{
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+        
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+    }
+    
     public function deletemanagmentAction(){
         
         $dataResponse['success'] = false;

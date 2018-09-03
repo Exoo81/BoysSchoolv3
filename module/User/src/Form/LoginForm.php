@@ -42,6 +42,7 @@ class LoginForm extends Form
             'name' => 'password',
             'options' => [
                 'label' => 'Password',
+                
             ],
         ]);
         

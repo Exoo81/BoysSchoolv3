@@ -64,6 +64,17 @@ class ParentsManager{
         return $parentsAssoc;
     }
     
+    public function getParentsAssocTeam(){
+        
+        //find active member (status = 1)
+        $parentsAssoc = $this->entityManager->getRepository(ParentsAssocTeam::class)
+                     ->findBy([],['parentsAssocRole'=>'ASC']); 
+        
+        
+        
+        return $parentsAssoc;
+    }
+    
     public function getBooksListSeason() {
         
         $booksListSeason = $this->entityManager->getRepository(BookList::class)
@@ -355,25 +366,13 @@ class ParentsManager{
     public function addNewMemberToParentsAssocTeam($formData) {
         
         $member = new ParentsAssocTeam();
-        
-        $parentsAssoc = $this->entityManager->getRepository(ParentsAssoc::class)
-                        ->find($formData['parentsAssocID']);
-        
-        if($parentsAssoc == null){
-            $dataResponse['success'] = false;
-            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find all information about parents association.';
-            return $dataResponse;
-        }
-
-        
+    
         $member->setTitle($formData['memberTitle']);
-        $member->setRole($formData['memberRole']);
+        $member->setParentsAssocRole($formData['memberRole']);
         $member->setFirstName($formData['memberFirstName']);
         $member->setLastName($formData['memberLastName']);
-        $member->setParentsAssoc($parentsAssoc);
-        
-        $current_date = date('Y-m-d H:i:s');
-        $member->setDateCreated($current_date);
+        $member->setStatus(1);
+
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($member); 
@@ -384,6 +383,8 @@ class ParentsManager{
         //return success
         $dataResponse['success'] = true;
         $dataResponse['responseMsg'] =  'New member added.';
+        $dataResponse['newMemberID'] =  $member->getId();
+        $dataResponse['newMemberFullName'] = $member->getFullName();
         
         return $dataResponse;
         
@@ -401,9 +402,73 @@ class ParentsManager{
             $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find member to delete.';
             return $dataResponse;
         }
-          
-        //remove from DB
-        $this->entityManager->remove($member);
+        
+        //get User (account) if exist
+        if($member->getUser() !== null){
+            $user = $this->entityManager->getRepository(User::class)
+                    ->find($member->getUser());
+            
+            if($user !== null){
+                $user->setStatus(2);
+                // Add the entity to the entity manager.
+                $this->entityManager->persist($user); 
+                // Apply changes to database.
+                $this->entityManager->flush();
+            }
+        }
+        
+        //set our team status on 2
+        $member->setStatus(2);
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member); 
+            
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Member deleted.';
+        
+        return $dataResponse;
+        
+    }
+    
+    public function activateParentsAssocTeamMember($memberID){
+        
+        
+        //find member with id
+        $member = $this->entityManager->getRepository(ParentsAssocTeam::class)
+                ->find($memberID);
+        
+        if($member == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find member to delete.';
+            return $dataResponse;
+        }
+        
+        //get User (account) if exist
+        if($member->getUser() !== null){
+            $user = $this->entityManager->getRepository(User::class)
+                    ->find($member->getUser());
+            
+            if($user !== null){
+                $user->setStatus(1);
+                // Add the entity to the entity manager.
+                $this->entityManager->persist($user); 
+                // Apply changes to database.
+                $this->entityManager->flush();
+            }
+        }
+        
+        //set our team status on 1
+        $member->setStatus(1);
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($member); 
+            
+        // Apply changes to database.
         $this->entityManager->flush();
         
         

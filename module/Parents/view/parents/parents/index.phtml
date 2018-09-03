@@ -66,7 +66,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         }else{
                             echo '<div class="no-content parents-left">';
                                 echo '<div class="info-wrapper">';
-                                    echo '<img src="/../img/icons/icon-update-soon.png"/>';
+                                    echo '<img src="/../img/icons/icon-update-soon-1.png"/>';
                                     echo '<span>will come soon ...</span>';
                                 echo '</div>';
                             echo '</div>';
@@ -141,8 +141,31 @@ $this->headTitle($this->headTitle.' '.$current_season);
                
                 <ul>
                     <?php 
-                        foreach($this->parentsAssoc->getParentsAssocTeam() as $parentsAssocMember){                     
-                            echo '<li><img src="/img/icons/icon-arrow-right-fat.png">'.$parentsAssocMember->getFullNameShort().' - '.$parentsAssocMember->getRoleAsString().'</li>';       
+                        foreach($this->parentsAssocTeam as $parentsAssocMember){
+                            if($parentsAssocMember->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
+                                    }else{
+                                        if($parentsAssocMember->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$parentsAssocMember->getUser()->getId()]).'" class="bs users purpure">';
+                                                 echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users purpure modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$parentsAssocMember->getId().'" >';
+                                                     echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
+                                                echo '</a>';
+                                            }else{
+                                                 echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo '</li>'; 
+                            }
                         }
                     ?>
 
@@ -214,7 +237,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         }else{
                             echo '<div class="no-content parents-left">';
                                 echo '<div class="info-wrapper">';
-                                    echo '<img src="/../img/icons/icon-update-soon.png"/>';
+                                    echo '<img src="/../img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
                                 echo '</div>';
                             echo '</div>';
@@ -569,7 +592,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 
                 <?php 
                     if ($this->access('parentsAssoc.manage')) {
-                        echo '<a href="#" class="modal-trigger-add-parents-assoc-member" data-modal="add-parents-assoc-member-modal" data-parentsAssocID="'.$this->parentsAssoc->getId().'">';
+                        echo '<a href="#" class="modal-trigger-add-parents-assoc-member" data-modal="add-parents-assoc-member-modal">';
                             echo '<button type="button" class="btn-add-user small btn-green reversed" data-text="Add memeber">';
                                 echo '<span><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Add memeber</span>';
                             echo '</button>';
@@ -579,35 +602,98 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 
                 <div class="parents-assoc-table">
                     <?php 
-                    foreach($this->parentsAssoc->getParentsAssocTeam() as $assocMemeber){
+                    foreach($this->parentsAssocTeam as $assocMemeber){
 
-                        echo '<div class="parents-assoc-table-row">';
+                        if($assocMemeber->getStatus() == 1){
+                            echo '<div class="parents-assoc-table-row">';
 
-                            echo '<div class="parents-assoc-table-cell icon">';
-                                echo '<img src="/img/icons/icon-arrow-right-fat.png" />';
-                            echo '</div>';
+                                echo '<div class="parents-assoc-table-cell icon">';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png" />';
+                                echo '</div>';
 
-                            echo '<div class="parents-assoc-table-cell pa-title">';
+                                echo '<div class="parents-assoc-table-cell pa-title">';
+                                    echo '<span>'.$assocMemeber->getParentsAssocRoleAsString().'</span>';
+                                echo '</div>';
 
-                                         echo '<span>'.$assocMemeber->getFullNameShort().'</span>';
+                                echo '<div class="parents-assoc-table-cell pa-member-name">';
+                                    echo '<span>'.$assocMemeber->getFullNameShort().'</span>';
+                                echo '</div>';
 
+                                if($assocMemeber->getUser() != null){
+                                    echo '<div class="parents-assoc-table-cell edit">';
+                                        if ($this->access('user.edit') ||
+                                                 $this->access('user.own.edit', ['user'=>$assocMemeber->getUser()])) {
+                                            echo '<a href="/user/editparentsassoc/'.$assocMemeber->getUser()->getId().'" class="tooltip">';
+                                                echo '<button class="btn-admin">';
+                                                    echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
+                                                echo '</button>';
+                                                echo '<span class="tooltiptext edit">Edit member</span>';
+                                            echo '</a>';
+                                        }
 
-                            echo '</div>';
-                            
-                            echo '<div class="parents-assoc-table-cell remove">';
-                                if ($this->access('parentsAssoc.manage')) {
-                                    echo '<a href="#" class="tooltip modal-trigger-delete-parents-assoc-member" data-modal="delete-parents-assoc-member-modal" data-memberID="'.$assocMemeber->getId().'" data-memberName="'.$assocMemeber->getFullNameShort().'" >';
-                                        echo '<button class="btn-admin">';
-                                            echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
-                                        echo '</button>';
-                                        echo '<span class="tooltiptext remove">Remove</span>';
-                                    echo '</a>';
+                                    echo '</div>';  
+                                }else{
+                                    echo '<div class="parents-assoc-table-cell create-account">';
+                                        if ($this->access('user.add')) {
+                                            echo '<a href="/user/addaccount/'.$assocMemeber->getId().'" class="tooltip">';
+                                                echo '<button class="btn-admin">';
+                                                    echo '<img class="icon-list" src="img/icons/icon-settings.png" >';
+                                                echo '</button>';
+                                                echo '<span class="tooltiptext create-account">Create account</span>';
+                                            echo '</a>';
+                                        }
+
+                                    echo '</div>';
                                 }
 
+                                echo '<div class="parents-assoc-table-cell disable">';
+                                    if ($this->access('user.edit')) {
+                                        echo '<a href="#" class="tooltip modal-trigger-delete-parents-assoc-member" data-modal="delete-parents-assoc-member-modal" data-memberID="'.$assocMemeber->getId().'" data-memberName="'.$assocMemeber->getFullNameShort().'" >';
+                                            echo '<button class="btn-admin">';
+                                                echo '<img class="icon-list" src="img/icons/icon-disable.png" >';
+                                            echo '</button>';
+                                            echo '<span class="tooltiptext disable">Deactivate member</span>';
+                                        echo '</a>';
+                                    }
+                                echo '</div>';
+
                             echo '</div>';
+                        }
 
-                        echo '</div>';
+                    }
+                    
+                    // for disabled members (other way then ourTeam becouse ordering expression used for parents_assoc_role already)
+                    foreach($this->parentsAssocTeam as $assocMemeber){
+                        if($assocMemeber->getStatus() == 2){
+                            echo '<div class="parents-assoc-table-row member-disable">';
+                                echo '<div class="parents-assoc-table-cell icon">';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat-grey.png" />';
+                                echo '</div>';
 
+                                echo '<div class="parents-assoc-table-cell pa-title">';
+                                    echo '<span>'.$assocMemeber->getParentsAssocRoleAsString().'</span>';
+                                echo '</div>';
+                                
+                                echo '<div class="parents-assoc-table-cell pa-member-name">';
+                                    echo '<span>'.$assocMemeber->getFullNameShort().'</span>';
+                                echo '</div>';
+                                
+                                echo '<div class="parents-assoc-table-cell edit"></div>';
+                                
+                                echo '<div class="parents-assoc-table-cell enable">';
+                                    if ($this->access('user.edit')) {
+                                        echo '<a href="#" class="tooltip modal-trigger-activate-parents-assoc-member" data-modal="activate-parents-assoc-member-modal" data-memberID="'.$assocMemeber->getId().'" data-memberName="'.$assocMemeber->getFullNameShort().'" >';
+                                            echo '<button class="btn-admin">';
+                                                echo '<img class="icon-list" src="img/icons/icon-enable.png" >';
+                                            echo '</button>';
+                                            echo '<span class="tooltiptext enable">Activate member</span>';
+                                        echo '</a>';
+                                    }
+                                echo '</div>';
+                                
+                            echo '</div>';
+                        
+                        }
                     }
                     ?>
 
@@ -783,8 +869,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id="addParentsAssocNewMemeberLnameLabel">Last name:</label>
                         <input type="text" id="addParentsAssocNewMemeberLname" name="addParentsAssocNewMemeberLname">
                     </div>
-                    
-                    <input type="hidden" id="addParentsAssocNewMemeber_parentsAssocID" name="addParentsAssocNewMemeber_parentsAssocID" required/>
 
                     
                     <div class="btn-modal-box">
@@ -803,7 +887,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <!-- end Add Parents Assoc Member Modal-->
 
 
-<!-- Delete Parents Assoc Member Modal -->
+<!-- Deactivate Parents Assoc Member Modal -->
 <div class="modal" id="delete-parents-assoc-member-modal">
     <div class="modal-sandbox"></div>
     <div class="modal-box sm">
@@ -813,10 +897,10 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-disable.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
-      		<span>Remove member</span>
+      		<span>Deactivate member</span>
       	</div>
         </div>
         
@@ -826,7 +910,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             <div class="modal-text">
                 <label class='response-msg'></label>
                 <div class="loader"></div>
-                <div class='confirmation-question' id='confirmation-question-pa'>You really want to delete member: <span></span></div>
+                <div class='confirmation-question' id='confirmation-question-pa-deactivate'>You really want to deactivate <span></span> ?</div>
                 <form id="deleteParentsAssocMemeberForm" class="cms" enctype="multipart/form-data">
                     <input type="hidden" id="deleteParentsAssocMemeberID" name="deleteParentsAssocMemeberID" required>
                     <div class="btn-modal-box">
@@ -840,7 +924,46 @@ $this->headTitle($this->headTitle.' '.$current_season);
         </div>
     </div>
 </div>
-<!-- end delete Parents Assoc Member Modal -->
+<!-- end Deactivate Parents Assoc Member Modal -->
+
+<!-- Activate Parents Assoc Member Modal-->
+<div class="modal" id="activate-parents-assoc-member-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-enable.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Activate member</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-pa-activate'>You really want to activate <span></span> ?</div>
+                <form id="activateParentsAssocMemeberForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="activateParentsAssocMemeberID" name="activateParentsAssocMemeberID" required>
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Enable Parents Assoc Member Modal -->
 
 
 <!-- Edit Parents Assoc Meeting  Modal-->
@@ -1491,6 +1614,43 @@ $this->headTitle($this->headTitle.' '.$current_season);
 </div>
 <!-- end Policy Modal -->
 
+<!-- Create Our Team Account Modal-->
+<div class="modal" id="create-account-modal">
+    <div class="modal-sandbox"></div>
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-add-user.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Create Account</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <div class='create-account-question'><span id='newAccountFullName'></span><span class='question'>Do you want to create it now?</span></div>
+                
+                <div class="btn-modal-box">
+                    <a href="" id='new-member-account'>
+                        <button type="button" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                    </a>
+                    <button type="button" onClick="window.location.reload()" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                </div>
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Our Team member Modal -->
+
 
 <script type="text/javascript" src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
@@ -1502,6 +1662,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="/js/parentsInformation-delete.js" type="text/javaScript"></script>
 <script src="/js/parentsAssoc-add-member.js" type="text/javaScript"></script>
 <script src="/js/parentsAssoc-delete-member.js" type="text/javaScript"></script>
+<script src="/js/parentsAssoc-activate-member.js" type="text/javaScript"></script>
 <script src="/js/parentsAssoc-edit-meeting.js" type="text/javaScript"></script>
 <script src="js/date-picker.js" type="text/javaScript"></script>
 <script src="/js/book-list-show-info.js" type="text/javaScript"></script>
@@ -1511,6 +1672,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="/js/policy-add.js" type="text/javaScript"></script>
 <script src="/js/policy-edit.js" type="text/javaScript"></script>
 <script src="/js/policy-delete.js" type="text/javaScript"></script>
+<script src="/js/create-account-passer.js" type="text/javaScript"></script>
 
 
 

@@ -35,6 +35,7 @@ class ParentsController extends AbstractActionController{
         
         $parentsInformation = $this->parentsManager->getAllParentsInformation();
         $parentsAssoc = $this->parentsManager->getParentsAssoc();
+        $parentsAssocTeam = $this->parentsManager->getParentsAssocTeam();
         $booksList = $this->parentsManager->getBooksListSeason();
         //$policies = $this->parentsManager->getPolicies();
         
@@ -42,6 +43,7 @@ class ParentsController extends AbstractActionController{
             'headTitle' => $headTitle,
             'parentsInformation' => $parentsInformation,
             'parentsAssoc' => $parentsAssoc,
+            'parentsAssocTeam' => $parentsAssocTeam,
             'booksList' => $booksList,
             //'policies' => $policies
         ]);
@@ -400,6 +402,68 @@ class ParentsController extends AbstractActionController{
             
             //delete member form parent association
             $dataResponse = $this->parentsManager->deleteParentsAssocTeamMember($memberID);
+            
+        }else{
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+         
+         
+          // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+    }
+    
+    public function activateparentsassocmemberAction(){
+        $dataResponse['success'] = false;
+        $dataResponse['responseMsg'] = 'ERROR - Member can not be activated.';
+        
+        // get parametr from POST 
+         $memberID =  $this->params()->fromPost('memberID', 0);
+         
+         /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('parentsAssoc.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do delete parents Information (1)';
+            
+            //delete member form parent association
+            $dataResponse = $this->parentsManager->activateParentsAssocTeamMember($memberID);
             
         }else{
             //return error
