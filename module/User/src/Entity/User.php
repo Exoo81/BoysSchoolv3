@@ -26,21 +26,6 @@ class User {
      * @ORM\Column(name="email")  
      */
     protected $email;
-    
-//    /** 
-//     * @ORM\Column(name="title")  
-//     */
-//    protected $title;
-//    
-//    /** 
-//     * @ORM\Column(name="first_name")  
-//     */
-//    protected $firstName;
-//    
-//    /** 
-//     * @ORM\Column(name="last_name")  
-//     */
-//    protected $lastName;
 
     /** 
      * @ORM\Column(name="password")  
@@ -135,9 +120,15 @@ class User {
      
      /**
     * @ORM\OneToMany(targetEntity="\Parents\Entity\BookList", mappedBy="teacher")
-    * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
+    * @ORM\JoinColumn(name="id", referencedColumnName="teacher_id")
     */
      protected $bookList;
+     
+     /**
+    * @ORM\OneToMany(targetEntity="\Parents\Entity\BookList", mappedBy="author")
+    * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
+    */
+     protected $bookListAuthor;
     
     /**
      * Constructor.
@@ -152,6 +143,7 @@ class User {
         $this->galleriesList = new ArrayCollection();
         $this->parentsInformationList = new ArrayCollection();
         $this->bookList = new ArrayCollection();
+        $this->bookListAuthor = new ArrayCollection();
     }
     
       
@@ -704,7 +696,7 @@ class User {
     
     
     /**
-    * Returns bookList for this user.
+    * Returns bookList for this user if teacher.
     * @return array
     */
     public function getBookList() {
@@ -730,18 +722,55 @@ class User {
     }
     
     /**
-     * Adds a new bookListObj to bookList in this user.
+     * Adds a new bookListObj to bookList in this user if teacher.
      * @param $bookList
      */
     public function addBookListToList($bookList) {
       $this->bookList[] = $bookList;
     }
     
+    
+    
+    
+    /**
+    * Returns bookList for this user if author.
+    * @return array
+    */
+    public function getBookListAuthor() {
+      return $this->bookListAuthor;
+    }
+    
+    /**
+     * Returns the string of assigned as bookList id.
+     */
+    public function getBookListAuthorAsString(){
+        $bookListAuthor = '';
+        
+        $count = count($this->bookListAuthor);
+        $i = 0;
+        foreach ($this->bookListAuthor as $bookListObj) {
+            $bookListAuthor .= $bookListObj->getId();
+            if ($i<$count-1)
+                $bookListAuthor .= ', ';
+            $i++;
+        }
+        
+        return $bookListAuthor;
+    }
+    
+    /**
+     * Adds a new bookListObj to bookList in this user if author.
+     * @param $bookList
+     */
+    public function addBookListAuthorToList($bookList) {
+      $this->bookListAuthor[] = $bookList;
+    }
+    
     public function jsonSerialize(){
         return 
         [
             'id'   => $this->getId(),
-            'full_name' => $this->getFullName()
+            'full_name' => $this->getOurTeamMember()->getFullName()
         ];
     }
     

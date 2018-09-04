@@ -9,6 +9,7 @@ use Parents\Entity\BookList;
 use Parents\Entity\Book;
 use Parents\Entity\Policy;
 use Parents\Entity\Stationary;
+use Ourteam\Entity\Teacher;
 use User\Entity\User;
 use User\Entity\Season;
 
@@ -632,13 +633,11 @@ class ParentsManager{
     private function getListOfSubjectsDIST($listOfBooks){
         
         $listOfSubjects = array();
-        
-        $current_subject = null;
+
         foreach($listOfBooks as $book){
             $subject = $book->getSubject();
-            if($subject !== $current_subject){
+            if(!in_array($subject, $listOfSubjects)){
                 array_push($listOfSubjects, $subject);
-                $current_subject = $subject;
             }
         }
         
@@ -650,6 +649,7 @@ class ParentsManager{
         
         
         $dataResponse['classLevel'] = $this->getLevelTitleList();
+        $dataResponse['teachers'] = $this->getAllTeachersList();
         
         //return success
         $dataResponse['success'] = true;
@@ -679,7 +679,7 @@ class ParentsManager{
         
         //set  teacher
         $teacher = $this->entityManager->getRepository(User::class)
-                        ->find($formFieldsArray['authorID']);
+                        ->find($formFieldsArray['teacherID']);
         
         if($teacher == null){
             $dataResponse['success'] = false;
@@ -687,6 +687,17 @@ class ParentsManager{
             return $dataResponse;
         }       
         $bookList->setTeacher($teacher);
+        
+        //set author
+        $author = $this->entityManager->getRepository(User::class)
+                        ->find($formFieldsArray['authorID']);
+        
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author for this book list.';
+            return $dataResponse;
+        }       
+        $bookList->setAuthor($author);
         
         $bookList->setSeason($this->currentSeason);
         
@@ -777,6 +788,20 @@ class ParentsManager{
         $bookList->setAdditionalMoniesInfo($formFieldsArray['additionalMonies']);
         $bookList->setUniformInfo($formFieldsArray['uniform']);
         $bookList->setOtherInfo($formFieldsArray['otherInformation']);
+        
+        /*
+         *  find author
+         */
+        //set author
+        $author = $this->entityManager->getRepository(User::class)
+                        ->find($formFieldsArray['authorID']);
+        
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author for this book list.';
+            return $dataResponse;
+        }       
+        $bookList->setAuthor($author);
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($bookList); 
@@ -1043,7 +1068,7 @@ class ParentsManager{
     // return title for each level
     private function getLevelTitleList() {
         
-        $titlesList = ['---select---', '1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class'];
+        $titlesList = ['---select class ---', '1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class'];
         $keysList = ['0', '1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0', '5.5', '6.0'];
         
         
@@ -1054,6 +1079,34 @@ class ParentsManager{
         
       
         return $levelTitleList;
+    }
+    
+    //return list of all teachers
+    private function getAllTeachersList(){
+        
+        $teacherList = $this->entityManager->getRepository(Teacher::class)
+                     ->findByStatus(1);
+        
+        $teachersWithAccountList = array();
+        $teachersWithAccountList[0] = '--- select teacher ---';
+        
+        if($teacherList === null){
+            return $teachersWithAccountList;
+        }
+        
+        
+        
+        //get only with account User
+        foreach($teacherList as $teacher){
+            if($teacher->getUser() !== null){
+                //array_push($teachersWithAccountList, $teacher->getUser());
+                $teachersWithAccountList[$teacher->getUser()->getId()] = $teacher->getFullName();
+            }
+        }
+        
+        return $teachersWithAccountList;
+        
+        
     }
     
     private function decodeJSONdata($formData){

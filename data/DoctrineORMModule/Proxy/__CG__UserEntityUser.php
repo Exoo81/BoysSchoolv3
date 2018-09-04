@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
+            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList'];
+        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor'];
     }
 
     /**
@@ -659,6 +659,39 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBookListToList', [$bookList]);
 
         return parent::addBookListToList($bookList);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBookListAuthor()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBookListAuthor', []);
+
+        return parent::getBookListAuthor();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBookListAuthorAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBookListAuthorAsString', []);
+
+        return parent::getBookListAuthorAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addBookListAuthorToList($bookList)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBookListAuthorToList', [$bookList]);
+
+        return parent::addBookListAuthorToList($bookList);
     }
 
     /**

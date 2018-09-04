@@ -48,6 +48,12 @@ class BookList {
     */
     protected $teacher;
     
+    /**
+    * @ORM\ManyToOne(targetEntity="\User\Entity\User", inversedBy="bookListAuthor")
+    * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+    */
+    protected $author;
+    
     /** 
     * @ORM\ManyToOne(targetEntity="\User\Entity\Season", inversedBy="bookList")
     * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
@@ -213,6 +219,30 @@ class BookList {
       $this->teacher = $teacher;
       $teacher->addBookListToList($this);
     }
+    
+    
+    
+    
+    /*
+    * Returns associated author.
+    * @return \User\Entity\User
+    */
+    public function getAuthor() {
+      return $this->author;
+    }
+    
+    /**
+     * Sets associated author.
+     * @param \User\Entity\User $author
+     */
+    public function setAuthor($author) {
+      $this->author = $author;
+      $author->addBookListAuthorToList($this);
+    }
+    
+    
+    
+    
     
     /*
     * Returns associated season.

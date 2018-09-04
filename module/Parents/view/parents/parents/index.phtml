@@ -99,16 +99,17 @@ $this->headTitle($this->headTitle.' '.$current_season);
                              * after verification normal access is implemented in modal show-book-list-modal 
                              */
                             $access = 0;
-                            $teacher = null;
+                            $author = null;
                             if ($this->access('bookList.manage') || 
                                 $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
                                  $access  = 1; 
-                                 $teacher = $bookList->getTeacher()->getId();
+                                 $author = $this->currentUser()->getId();
                             }
+                            
                             echo '<li>';
                                 echo '<img src="img/icons/icon-list.png">';
-                                echo '<a href="#" class="bs blue modal-trigger-show-book-list" data-modal="show-book-list-modal" data-bookListID="'.$bookList->getId().'" data-authorID="'.$teacher.'" data-access="'.$access.'">';
-                                    echo '<span>'.$bookList->getLevelAsString().' Booklist - '.$bookList->getTeacher()->getTitleLastName().'</span>';
+                                echo '<a href="#" class="bs blue modal-trigger-show-book-list" data-modal="show-book-list-modal" data-bookListID="'.$bookList->getId().'" data-authorID="'.$author.'" data-access="'.$access.'">';
+                                    echo '<span>'.$bookList->getLevelAsString().' Booklist - '.$bookList->getTeacher()->getOurTeamMember()->getTitleLastName().'</span>';
                                 echo '</a>';
                             echo '</li>';
                         }
@@ -1191,6 +1192,11 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id="addBookListLevelLabel">Choose class level:</label>
                         <select id="addBookListLevel" name="addBookListLevel" class="dropdown"></select>
                     </div>
+                    
+                    <div class='width-60-right'>
+                        <label id="addBookListTeacherLabel">Choose teacher:</label>
+                        <select id="addBookListTeacher" name="addBookListTeacher" class="dropdown"></select>
+                    </div>
  
                     <div class='width-100'>     
                         <label class='centered' id='input_fields_wrap_book_label'>List of books</label>
@@ -1215,6 +1221,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                     </td>
                                 </tr>
                             </table>
+                            
+                            <div class="width-100" id="error-valid-last-book"></div>
                             
                             <div class="btn-modal-box">
                                 <button type='button' id='add_book_button' class="btn-max btn-green reversed" data-text="Add another book">
@@ -1247,6 +1255,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                     </td>
                                 </tr>
                             </table>
+                            
+                            <div class="width-100" id="error-valid-last-stationary"></div>
                             
                             <div class="btn-modal-box">
                                 <button type='button' id='add_stationary_button' class="btn-max btn-blue reversed" data-text="Add another item">
@@ -1323,11 +1333,16 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <div class='book-list-season centered' id='editBookListSeason'></div>
                     <hr class="burgundy" />
                     
+                    
+<!--                    <div class="width-100" id="error-valid-last-book-edit"></div>-->
                     <div class='input_fields_wrap book-list' id="editListOfBooks">
                         
                     </div>
                     <ul class='book_to_remove' id='edit-book-to-remove'></ul>
                     
+                    
+                    
+<!--                    <div class="width-100" id="error-valid-last-stationary-edit"></div>-->
                     <div class='input_fields_wrap book-list' id="editListOfStationary">
                         
                     </div>

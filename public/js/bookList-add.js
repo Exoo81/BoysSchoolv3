@@ -21,6 +21,10 @@ $(".modal-trigger-add-book-list").click(function(e){
     //hidde form
     $("#addBookListForm").css({"display":"none"});
     
+    //clear all select fields
+        $('#addBookListLevel').empty();
+        $('#addBookListTeacher').empty();
+    
     //reset form
     document.getElementById("addBookListForm").reset();
     
@@ -46,6 +50,13 @@ $(".modal-trigger-add-book-list").click(function(e){
     });
     //reset last index from input_fields_wrap_book data-last-index
     $("#input_fields_wrap_stationary").attr("data-last-index",1);
+    
+    //reset last book and last sationary error information
+    $('#error-valid-last-book').html('');
+    $('#error-valid-last-stationary').html('');
+    // hide last book and last sationary error information
+    $('#error-valid-last-book').css({"display":"none"});
+    $('#error-valid-last-stationary').css({"display":"none"});
     
     // get data
     dataModal = $(this).attr("data-modal");
@@ -79,7 +90,16 @@ $(".modal-trigger-add-book-list").click(function(e){
                 $.each(data.classLevel, function (key, value){
                     $('#addBookListLevel').append($('<option></option>').attr('value', key).text(value));
                 });
-
+                
+                //insert options for classLevel
+                $.each(data.teachers, function (key, value){
+                    $('#addBookListTeacher').append($('<option></option>').attr('value', key).text(value));
+                });
+                
+                
+                //current teacher selected if author not on list then selected value = 0 (--SELECT-)
+                $('#addBookListTeacher option[value="'+authorID+'"]').attr('selected','selected');
+                
 
                 //hide laoder
                 $(".loader").css({"display":"none"});
@@ -105,9 +125,13 @@ $(".modal-trigger-add-book-list").click(function(e){
 
 $("#addBookListForm").validate({
     
-     
+    
     rules: {
         addBookListLevel: {
+            required: true,
+            valueNotEquals: "0"
+        },
+        addBookListTeacher: {
             required: true,
             valueNotEquals: "0"
         },
@@ -135,6 +159,9 @@ $("#addBookListForm").validate({
         addBookListLevel: { 
             valueNotEquals: "Please select class level" 
         },
+        addBookListTeacher: { 
+            valueNotEquals: "Please select teacher" 
+        },
         addBookSubject:{
             required: 'Subject is required'
         },
@@ -157,154 +184,184 @@ $("#addBookListForm").validate({
             
     submitHandler: function() {
         
-    //show laoder
-        $(".loader").css({"display":"block"});
-    //hidde form
-        $("#addBookListForm").css({"display":"none"});
-    //clear msg label
-        $(".response-msg").html('');
-    
-    var authorID = $("#addBookList_authorID").val();
-    var classLevel = $('#addBookListLevel').val();
-    var additionalMonies = null;
-    var uniform = null;
-    var otherInformation = null;
+    $('#error-valid-last-book').css({"display":"none"});
+    $('#error-valid-last-stationary').css({"display":"none"});
+        
+    var lastBookInFormIsValid = validLastBookInForm();
+    var lastStationaryInFormIsValid = validLastStationaryInForm();
     
     
-    
-    if ($('#addAdditionalMonies').summernote('isEmpty')) {
-        additionalMonies = null;
-    }else{
-        additionalMonies = $("#addAdditionalMonies").val();
-    }
-    
-    if ($('#addUniform').summernote('isEmpty')) {
-        uniform = null;
-    }else{
-        uniform = $("#addUniform").val();
-    }
-    
-    if ($('#addOtherInformation').summernote('isEmpty')) {
-        otherInformation = null;
-    }else{
-        otherInformation = $("#addOtherInformation").val();
-    }
-    
-    //number of books 
-    var booksListSize = $('#books tr').length;
-    // number of Stationary
-    var stationaryListSize = $('#stationary tr').length;
+        
+        if(!lastBookInFormIsValid){ 
+            $('#error-valid-last-book').html('Last book in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-book').css({"display":"block"});
+        }
+        
+        if(!lastStationaryInFormIsValid){ 
+            $('#error-valid-last-stationary').html('Last stationary in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-stationary').css({"display":"block"});
+        }
     
     
-//    console.log('---=== Book list Form DATA posted ===---');
-//    console.log('Book list size : '+ booksListSize);
-//    console.log('Stationary list size : '+ stationaryListSize);
-//    console.log('additional Monies: ' + additionalMonies);
-//    console.log('uniform: ' + uniform);
-//    console.log('other Information: ' + otherInformation);
-//    console.log('author ID: '+ authorID);
-//    console.log('class Level: '+ classLevel);
-//    console.log('---================================---');
-  
     
-    
-    var formData = new FormData();
-   
-    var objArr = [];
-    objArr.push({additionalMonies:additionalMonies, 
-                 uniform:uniform, 
-                 otherInformation:otherInformation, 
-                 authorID:authorID,
-                 classLevel:classLevel
-             });
+        if(lastBookInFormIsValid && lastStationaryInFormIsValid){    
 
-    formData.append('objArr', JSON.stringify(objArr));
-      
+            //show laoder
+                $(".loader").css({"display":"block"});
+            //hidde form
+                $("#addBookListForm").css({"display":"none"});
+            //clear msg label
+                $(".response-msg").html('');
 
-    var booksArr = [];
-    if(booksListSize > 0){
+            var authorID = $("#addBookList_authorID").val();
+            var classLevel = $('#addBookListLevel').val();
+            var teacherID = $('#addBookListTeacher').val();
+            var additionalMonies = null;
+            var uniform = null;
+            var otherInformation = null;
 
-        $("#books tr.book").each(function() {
-            
-            var bookFormID = $(this).attr('id');
-            
-            var inputBookSubject = $(this).find("#subject-"+bookFormID);
-            var bookSubject = inputBookSubject.val();
-            
-            var inputBookTitle = $(this).find("#title-"+bookFormID);
-            var bookTitle = inputBookTitle.val();
-            
-            var inputBookPublisher = $(this).find("#publisher-"+bookFormID);
-            var bookPublisher = inputBookPublisher.val();
-            
-            booksArr.push({
-                            bookSubject:bookSubject,
-                            bookTitle:bookTitle,
-                            bookPublisher:bookPublisher
-                            });
-            
-//            console.log(' =========== Book: ' + bookFormID +'============');
-//            console.log('book Subject: ' + bookSubject);
-//            console.log('book Title: ' + bookTitle);
-//            console.log('book Publisher: ' + bookPublisher);
-//            console.log(' =======================');
 
-        });
-    }
-    
-    formData.append('booksArr', JSON.stringify(booksArr));
-    
-    var stationaryArr = [];
-    if(stationaryListSize > 0){
 
-        $("#stationary tr.item").each(function() {
-            
-            var formItemID = $(this).attr('id');
-            
-            var inputItemName = $(this).find("#item-name-"+formItemID);
-            var itemName = inputItemName.val();
-            
-            var inputItemQty = $(this).find("#qty-"+formItemID);
-            var itemQty = inputItemQty.val();
-
-            
-            stationaryArr.push({
-                            itemName:itemName,
-                            itemQty:itemQty
-                            });
-            
-//            console.log(' =========== Stationary: ' + formItemID +'============');
-//            console.log('item Name: ' + itemName);
-//            console.log('item Qty: ' + itemQty);
-//            console.log(' =======================');
-
-        });
-    }
-    
-    formData.append('stationaryArr', JSON.stringify(stationaryArr));
-
-    
-    $.ajax({
-        url: 'parents/addbooklist',                  
-        type: 'POST',
-        processData: false,
-        contentType: false,
-        data: formData,
-        success: function(data){
-            console.log(data);
-            if(data.success === true){
-                location.reload();
+            if ($('#addAdditionalMonies').summernote('isEmpty')) {
+                additionalMonies = null;
             }else{
-                //hidde laoder
-                    $(".loader").css({"display":"none"});
-                //display response-msg
-                    $(".response-msg").html(data.responseMsg);    
-            }  
-            return false;
-        }      
-    }); 
+                additionalMonies = $("#addAdditionalMonies").val();
+            }
+
+            if ($('#addUniform').summernote('isEmpty')) {
+                uniform = null;
+            }else{
+                uniform = $("#addUniform").val();
+            }
+
+            if ($('#addOtherInformation').summernote('isEmpty')) {
+                otherInformation = null;
+            }else{
+                otherInformation = $("#addOtherInformation").val();
+            }
+
+            //number of books 
+            var booksListSize = $('#books tr').length;
+            // number of Stationary
+            var stationaryListSize = $('#stationary tr').length;
+
+
+        //    console.log('---=== Book list Form DATA posted ===---');
+        //    console.log('Book list size : '+ booksListSize);
+        //    console.log('Stationary list size : '+ stationaryListSize);
+        //    console.log('additional Monies: ' + additionalMonies);
+        //    console.log('uniform: ' + uniform);
+        //    console.log('other Information: ' + otherInformation);
+        //    console.log('author ID: '+ authorID);
+        //    console.log('class Level: '+ classLevel);
+        //    console.log('teacher ID: '+ teacherID);
+        //    console.log('---================================---');
+
+
+
+            var formData = new FormData();
+
+            var objArr = [];
+            objArr.push({additionalMonies:additionalMonies, 
+                         uniform:uniform, 
+                         otherInformation:otherInformation, 
+                         authorID:authorID,
+                         classLevel:classLevel,
+                         teacherID:teacherID
+                     });
+
+            formData.append('objArr', JSON.stringify(objArr));
+
+
+            var booksArr = [];
+            if(booksListSize > 0){
+
+                $("#books tr.book").each(function() {
+
+                    var bookFormID = $(this).attr('id');
+
+                    var inputBookSubject = $(this).find("#subject-"+bookFormID);
+                    var bookSubject = inputBookSubject.val();
+
+                    var inputBookTitle = $(this).find("#title-"+bookFormID);
+                    var bookTitle = inputBookTitle.val();
+
+                    var inputBookPublisher = $(this).find("#publisher-"+bookFormID);
+                    var bookPublisher = inputBookPublisher.val();
+
+                    booksArr.push({
+                                    bookSubject:bookSubject,
+                                    bookTitle:bookTitle,
+                                    bookPublisher:bookPublisher
+                                    });
+
+        //            console.log(' =========== Book: ' + bookFormID +'============');
+        //            console.log('book Subject: ' + bookSubject);
+        //            console.log('book Title: ' + bookTitle);
+        //            console.log('book Publisher: ' + bookPublisher);
+        //            console.log(' =======================');
+
+                });
+            }
+
+            formData.append('booksArr', JSON.stringify(booksArr));
+
+            var stationaryArr = [];
+            if(stationaryListSize > 0){
+
+                $("#stationary tr.item").each(function() {
+
+                    var formItemID = $(this).attr('id');
+
+                    var inputItemName = $(this).find("#item-name-"+formItemID);
+                    var itemName = inputItemName.val();
+
+                    var inputItemQty = $(this).find("#qty-"+formItemID);
+                    var itemQty = inputItemQty.val();
+
+
+                    stationaryArr.push({
+                                    itemName:itemName,
+                                    itemQty:itemQty
+                                    });
+
+        //            console.log(' =========== Stationary: ' + formItemID +'============');
+        //            console.log('item Name: ' + itemName);
+        //            console.log('item Qty: ' + itemQty);
+        //            console.log(' =======================');
+
+                });
+            }
+
+            formData.append('stationaryArr', JSON.stringify(stationaryArr));
+
+
+
+
+            $.ajax({
+                    url: 'parents/addbooklist',                  
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: function(data){
+                        console.log(data);
+                        if(data.success === true){
+                            location.reload();
+                        }else{
+                            //hidde laoder
+                                $(".loader").css({"display":"none"});
+                            //display response-msg
+                                $(".response-msg").html(data.responseMsg);    
+                        }  
+                        return false;
+                    }      
+            });
+
+        }
     
     }
+    
 });
 
 
@@ -365,6 +422,8 @@ $( "#add_book_button" ).click(function() {
             var label = $(this).parent('label');
             var td = label.parent('td'); 
             td.parent('tr').remove(); 
+            
+            $('#error-valid-last-book').css({"display":"none"});
 
         });
 
@@ -422,7 +481,9 @@ $( "#add_stationary_button" ).click(function() {
     
             var label = $(this).parent('label');
             var td = label.parent('td'); 
-            td.parent('tr').remove(); 
+            td.parent('tr').remove();
+            
+            $('#error-valid-last-stationary').css({"display":"none"});
 
         });
 
@@ -464,6 +525,65 @@ function validateStationary(last_index) {
     }
 
     return validator;
+}
+
+function validLastBookInForm(){
+    
+    var validate = true;
+    
+    $("#books tr.book").each(function() {
+
+        var bookFormID = $(this).attr('id');
+
+        var inputBookSubject = $(this).find("#subject-"+bookFormID);
+        if(!inputBookSubject.val()){
+            validate = false;
+            return validate;
+        }
+
+        var inputBookTitle = $(this).find("#title-"+bookFormID);
+        if(!inputBookTitle.val()){
+            validate = false;
+            return validate;
+        }
+        var inputBookPublisher = $(this).find("#publisher-"+bookFormID);
+        
+        if(!inputBookPublisher.val()){
+            validate = false;
+            return validate;
+        }
+
+
+    });
+    
+    return validate;
+    
+}
+
+function validLastStationaryInForm(){
+    
+    var validate = true;
+    
+    $("#stationary tr.item").each(function() {
+
+        var formItemID = $(this).attr('id');
+
+        var inputItemName = $(this).find("#item-name-"+formItemID);
+        if(!inputItemName.val()){
+            validate = false;
+            return validate;
+        }
+
+        var inputItemQty = $(this).find("#qty-"+formItemID);
+        if(!inputItemQty.val()){
+            validate = false;
+            return validate;
+        }
+
+    });
+    
+    return validate;
+    
 }
 
 
