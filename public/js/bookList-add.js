@@ -193,12 +193,12 @@ $("#addBookListForm").validate({
     
         
         if(!lastBookInFormIsValid){ 
-            $('#error-valid-last-book').html('Last book in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-book').html('Last book on this list has not been validated. Complete the missing fields or delete the entire row.');
             $('#error-valid-last-book').css({"display":"block"});
         }
         
         if(!lastStationaryInFormIsValid){ 
-            $('#error-valid-last-stationary').html('Last stationary in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-stationary').html('Last stationary on this list has not been validated. Complete the missing fields or delete the entire row.');
             $('#error-valid-last-stationary').css({"display":"block"});
         }
     

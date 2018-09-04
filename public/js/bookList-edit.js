@@ -127,7 +127,7 @@ $(".modal-trigger-edit-book-list").click(function(e){
                  $('#editListOfBooks').append('<hr class="burgundy" />\n\
                                                 <table id="edit-books" data-last-index="0">\n\
                                                 </table>\n\
-                                                <div class="width-100" id="error-valid-last-book-edit"></div>\n\
+                                                <div class="width-100 error" id="error-valid-last-book-edit"></div>\n\
                                                 <div class="btn-modal-box">\n\
                                                     <button type="button" id="edit-add_book_button" class="btn-max btn-green reversed" data-text="Add another book">\n\
                                                         <span><i class="fa fa-plus"></i>Add another book</span>\n\
@@ -171,7 +171,7 @@ $(".modal-trigger-edit-book-list").click(function(e){
                  $('#editListOfStationary').append('<hr class="burgundy" />\n\
                                                 <table id="edit-stationary" data-last-index="0">\n\
                                                 </table>\n\
-                                                <div class="width-100" id="error-valid-last-stationary-edit"></div>\n\
+                                                <div class="width-100 error" id="error-valid-last-stationary-edit"></div>\n\
                                                 <div class="btn-modal-box">\n\
                                                     <button type="button" id="edit-add_stationary_button" class="btn-max btn-blue reversed" data-text="Add another item">\n\
                                                         <span><i class="fa fa-plus"></i>Add another item</span>\n\
@@ -279,12 +279,12 @@ $("#editBookListForm").validate({
     var lastStationaryInFormIsValid = validLastStationaryInFormEdit();
     
         if(!lastBookInFormIsValid){ 
-            $('#error-valid-last-book-edit').html('Last book in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-book-edit').html('Last book on this list has not been validated. Complete the missing fields or delete the entire row.');
             $('#error-valid-last-book-edit').css({"display":"block"});
         }
         
         if(!lastStationaryInFormIsValid){ 
-            $('#error-valid-last-stationary-edit').html('Last stationary in this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-stationary-edit').html('Last stationary on this list has not been validated. Complete the missing fields or delete the entire row.');
             $('#error-valid-last-stationary-edit').css({"display":"block"});
         }
         

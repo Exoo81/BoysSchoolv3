@@ -8740,7 +8740,8 @@ form.cms select{
     width: 100%
 }
 
-form.cms label.error{
+form.cms label.error,
+form.cms div.error{
     padding: 0 3%;
     font-family: 'Open Sans', sans-serif;
     font-size: .8em;
