@@ -52,6 +52,7 @@ class SchoolEventManager{
             array_push($currentEventsArray, $event->jsonSerialize());
         }
 
+        
         $dataResponse['currentEvents'] =  $currentEventsArray;
         
         $dataResponse['eventsNumberPerDayInMonth'] = $this->getAllEventsNumberFromCurrentMonth();
@@ -108,6 +109,8 @@ class SchoolEventManager{
     public function getFullCalendarPage($year, $month){
 
         $dataResponse['eventsNumberPerDayInMonth'] = $this->getAllEventsNumberFromSelectedMonth($year, $month);
+//        $dataResponse['startYear'] = $this->currentSeason->getStarYear();
+        $dataResponse['season'] = $this->currentSeason->jsonSerialize();
         $dataResponse['success'] = true;
 
         return $dataResponse;
@@ -158,12 +161,21 @@ class SchoolEventManager{
         $event = $this->entityManager->getRepository(SchoolEvent::class)
                 ->find($id);
         
+       
         if($event != null){
             $dataResponse['event'] =  $event->jsonSerialize();
         }else{
             $dataResponse['success'] = false;
             $dataResponse['responseMsg'] =  'Event NOT found.';
         }
+        
+        $dateEvent = $event->getDateEvent();
+        $date = strtotime($dateEvent);
+        $eventYear = date("Y", $date);
+        
+        $dataResponse['eventYear'] = date("Y", $date); 
+        $dataResponse['eventMonth'] = date("m", $date); 
+        $dataResponse['eventDay'] = date("d", $date); 
         
         $dataResponse['success'] = true;
         $dataResponse['colorBox'] = $this->getRandomColorBox();

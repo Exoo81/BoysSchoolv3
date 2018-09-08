@@ -20,20 +20,31 @@ $(".modal-trigger-edit-event").click(function(e){
       
     var eventID = $(this).attr("data-eventID"); 
     var eventTitle = $(this).attr("data-eventTitle"); 
-    var eventDate = $(this).attr("data-eventDate"); 
+    var eventYear = $(this).attr("data-eventYear");
+    var eventMonth = $(this).attr("data-eventMonth");
+    var eventDay = $(this).attr("data-eventDay");  
     var eventLocation = $(this).attr("data-eventLocation"); 
     var eventContent = $(this).attr("data-eventContent"); 
     
-    //convert date to format eg. 05 May 2018
-    var date = new Date(eventDate);
-    var dateEvent = getCurrentDate(date);
     
-//    console.log('eventID: ' + eventID);
-//    console.log('eventTitle: ' + eventTitle);
-//    console.log('eventDate: ' + eventDate);
-//    console.log('eventLocation: ' + eventLocation);
-//    console.log('eventContent: ' + eventContent);
-//    console.log('dateEvent: ' + dateEvent);      
+//    console.log('year: ' + eventYear);
+//    console.log('month: ' + eventMonth);
+//    console.log('day: ' + eventDay);
+    
+    //create date base on passed year, month, day 
+    var date = new Date(eventYear, eventMonth, eventDay, 19,30, 00);
+    //convert date to format eg. 05 May 2018
+    var dateEvent = getCurrentDateEventEdit(date);
+
+//    console.log('==============');
+//    console.log('event ID: ' + eventID);
+//    console.log('event Title: ' + eventTitle);
+//    console.log('event Location: ' + eventLocation);
+//    console.log('event Content: ' + eventContent);
+//   
+//    console.log('dateEvent (created): ' + date);
+//    console.log('dateEvent: (convertetd date)' + dateEvent); 
+//    console.log('==============');
     
 
     
@@ -94,7 +105,7 @@ $("#editEventForm").validate({
             dataType: 'JSON', 
             async: true ,
             success: function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.success === true){
                     // refresh page
                     location.reload(); 
@@ -110,8 +121,8 @@ $("#editEventForm").validate({
 
 });
 
-function getCurrentDate(date){
-    var month_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function getCurrentDateEventEdit(date){
+    var month_short = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return (date.getDate()<10?("0"+date.getDate()):date.getDate()) + ' ' + month_short[date.getMonth()] + ' ' + date.getFullYear();
 }
 
@@ -137,6 +148,14 @@ $(".modal-trigger-edit-event-details").click(function(e){
     var content = $(this).attr("data-content"); 
 
     var eventDate = $(this).attr("data-eventDate"); 
+    
+//    console.log('===========');
+//    console.log('event ID: ' + id);
+//    console.log('event title: ' + title);
+//    console.log('event location: ' + location);
+//    console.log('event content: ' + content);
+//    console.log('eventDate: ' + eventDate);
+//    console.log('===========');
     
     $("#editEventID").val(id);
     $("#editEventTitle").val(title);

@@ -436,10 +436,10 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
 
 
 //remove photo from added gallery (post-edit) - build list to remove
-$('#input_fields_wrap_edit').on("click",".remove_photo_edit", function(e){  
+$('#input_fields_wrap_edit_class_post').on("click",".remove_photo_edit", function(e){  
         
      e.preventDefault();
-//     alert('remove photo');
+     //alert('remove photo');
      
         var label = $(this).parent('label');
         var div_to_remove = label.parent('div');
@@ -449,10 +449,10 @@ $('#input_fields_wrap_edit').on("click",".remove_photo_edit", function(e){
         div_to_remove.remove();
         
         //get current gallery size
-        var numberOfAddedPhotos = $('#input_fields_wrap_edit div').length;
+        var numberOfAddedPhotos = $('#input_fields_wrap_edit_class_post div').length;
         if(numberOfAddedPhotos === 0){
-            $('#input_fields_wrap_edit_label').css({"display":"none"});
-            $('#input_fields_wrap_edit').css({"display":"none"});
+            $('#input_fields_wrap_edit_class_post_label').css({"display":"none"});
+            $('#input_fields_wrap_edit_class_post').css({"display":"none"});
         }
 });
 

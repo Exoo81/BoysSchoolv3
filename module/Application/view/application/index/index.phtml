@@ -363,47 +363,62 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                 <div class="title-sm">Latest newsletters</div>
                 <hr class="purpure">
 
-                <ul class="file-list">
-                    <?php 
-                    $count_elements = 0;
-                    foreach ($this->newsletters  as $newsletter) :
+                <?php 
+                if(!empty($this->newsletters)){
+                
+                    echo '<ul class="file-list">';
+                    
+                        $count_elements = 0;
+                        foreach ($this->newsletters  as $newsletter) :
 
-                        echo '<li>'
-                                . '<div class="list-element">'
-                                    . '<img class="icon-list" src="img/icons/icon-download.png">'
-                                    . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
-                                        . '<span class="">'.$newsletter->getTitle().'</span>'
-                                        //. '<span class="">Newsletter</span>'
-                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
-                                    . '</a>'
-                                . '</div>'
-                                . '';
-                                if ($this->access('newsletter.delete')) {
-                                    echo '<div class="admin-option">'
-                                        . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">  '
-                                            . '<button class="btn-admin">'
-                                                . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
-                                            . '</button>'
-                                            . '<span class="tooltiptext remove">Remove</span>'
+                            echo '<li>'
+                                    . '<div class="list-element">'
+                                        . '<img class="icon-list" src="img/icons/icon-download.png">'
+                                        . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
+                                            . '<span class="">'.$newsletter->getTitle().'</span>'
+    //                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
                                         . '</a>'
-                                    . '</div>';
-                                }
-                        echo '</li>';
+                                    . '</div>'
+                                    . '';
+                                    if ($this->access('newsletter.delete')) {
+                                        echo '<div class="admin-option">'
+                                            . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">  '
+                                                . '<button class="btn-admin">'
+                                                    . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                . '</button>'
+                                                . '<span class="tooltiptext remove">Remove</span>'
+                                            . '</a>'
+                                        . '</div>';
+                                    }
+                                    echo '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
+                            echo '</li>';
 
-                        $count_elements++;
-                        if($count_elements >= 4){
-                            break;
-                        }
+                            $count_elements++;
+                            if($count_elements >= 4){
+                                break;
+                            }
 
-                    endforeach;?>
+                        endforeach;
 
-                </ul>
-                <div class="more-newsletter">								
-                    <a href="#" class="bs purpure modal-trigger" data-modal="older-newsletter"> 
-                        <img src="img/icons/icon-archive.png"> 
-                        <span class="older">see older</span>
-                    </a>
-                </div>
+                    echo '</ul>';
+                    
+                    if(sizeof($this->newsletters) > 4 ){
+                        echo '<div class="more-newsletter">	';							
+                            echo '<a href="#" class="bs purpure modal-trigger" data-modal="older-newsletter"> ';
+                                echo '<img src="img/icons/icon-archive.png"> ';
+                                echo '<span class="older">see older</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+                }else{
+                    echo '<div class="no-content">'
+                                .'<img src="/../img/icons/icon-kite.png"/>'
+                                .'<span>There is no newsletters yet ...</span>';
+                    echo '</div>';
+                }
+                ?>
+                
+                
             </div>
 
             <div class="subscribe">
@@ -744,8 +759,8 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             <h1><span id="title"><?= $aboutUs->getTitle() ?></span></h1>
             <hr class="burgundy">
             <span id="content"><?= $aboutUs->getContent() ?></span>
-            <h3><b>Le gach dea-ghu&iacute;,</b></h3>
-            <h3><i><span id="principal_name"><?= $aboutUs->getPrincipalName() ?></span></i></h3>
+            <h3><span id="principal_greetings">Le gach dea-ghu&iacute;,</span></h3>
+            <h3><span id="principal_name"><?= $aboutUs->getPrincipalName() ?></span></h3>
 			
 	</div>
 	<div class="btn-modal-box">
@@ -837,10 +852,10 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                     
                         echo '<li>'
                                 . '<div class="list-element">'
-                                    . '<img class="icon-list" src="img/icons/icon-pdf-file.png">'
+                                    . '<img class="icon-list" src="img/icons/icon-download.png">'
                                     . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
                                         . '<span class="">'.$newsletter->getTitle().'</span>'
-                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
+
                                     . '</a>'
                                 . '</div>'
                                 . '';
@@ -854,7 +869,9 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                         . '</a>'
                                     . '</div>';
                                 }
+                                echo '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
                         echo '</li>';
+                        
                  
                     }
                     $count_nl++;
@@ -1071,55 +1088,65 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                     $colorBoxList = array("red-box","purpure-box","blue-box","orange-box","green-box", "yellow-box", "brown-box");
                     $countColorList = 0;
                     
-                    foreach ($this->schoolEvents  as $event) :
-                        $dateEvent = date_parse($event->getDateEvent());
-                        $monthEvent = date("M", mktime(0, 0, 0, $dateEvent['month'], 10));
+                    if(empty($this->schoolEvents)){
+                        echo '<div class="modal-no-content">';
+                                echo '<div class="modal-info-wrapper">';
+                                    echo '<img src="/../img/icons/icon-drum.png"/>';
+                                    echo '<span>No events scheduled yet ...</span>';
+                                echo '</div>';
+                        echo '</div>';
+                    }else{
+                    
+                        foreach ($this->schoolEvents  as $event) :
+                            $dateEvent = date_parse($event->getDateEvent());
+                            $monthEvent = date("M", mktime(0, 0, 0, $dateEvent['month'], 10));
 
-                        echo '<tr>';
-                        
-                            echo '<td id="'.$colorBoxList[$countColorList].'" class="date">'
-                                . '<div class="day">'.($dateEvent['day']<10?("0".$dateEvent['day']):$dateEvent['day']).'</div>'
-                                . '<div class="month_year_wrapper">'
-                                    . '<div class="month">'.$monthEvent.'</div>'
-                                    . '<div class="year">'.$dateEvent['year'].'</div>'
-                                . '</div>'
-                                . '</td>'
-                                . ' <td class="content">'
-                                    . '<div class="title">'.$event->getTitle().'</div>';
-                                    
-                                    echo '<div class="admin-option">';
-                                        if ($this->access('event.edit')) { 
-                                        echo '<a href="#" class="tooltip modal-trigger-edit-event" data-modal="edit-event-modal" data-eventID="'.$event->getId().'" data-eventTitle="'.$event->getTitle().'" data-eventDate="'.$event->getDateEvent().'" data-eventLocation="'.$event->getLocation().'" data-eventContent="'.$event->getContent().'" >'
-                                                . '<button class="btn-admin">'
-                                                    . '<img class="icon-list" src="img/icons/icon-edit-blue.png" >'
-                                                . '</button>'
-                                                . '<span class="tooltiptext edit">Edit</span>'
-                                            . '</a>';
+                            echo '<tr>';
+
+                                echo '<td id="'.$colorBoxList[$countColorList].'" class="date">'
+                                    . '<div class="day">'.($dateEvent['day']<10?("0".$dateEvent['day']):$dateEvent['day']).'</div>'
+                                    . '<div class="month_year_wrapper">'
+                                        . '<div class="month">'.$monthEvent.'</div>'
+                                        . '<div class="year">'.$dateEvent['year'].'</div>'
+                                    . '</div>'
+                                    . '</td>'
+                                    . ' <td class="content">'
+                                        . '<div class="title">'.$event->getTitle().'</div>';
+
+                                        echo '<div class="admin-option">';
+                                            if ($this->access('event.edit')) { 
+                                            echo '<a href="#" class="tooltip modal-trigger-edit-event" data-modal="edit-event-modal" data-eventID="'.$event->getId().'" data-eventTitle="'.$event->getTitle().'" data-eventYear="'.$dateEvent['year'].'" data-eventMonth="'.($dateEvent['month']-1).'" data-eventDay="'.$dateEvent['day'].'" data-eventLocation="'.$event->getLocation().'" data-eventContent="'.$event->getContent().'" >'
+                                                    . '<button class="btn-admin">'
+                                                        . '<img class="icon-list" src="img/icons/icon-edit-blue.png" >'
+                                                    . '</button>'
+                                                    . '<span class="tooltiptext edit">Edit</span>'
+                                                . '</a>';
+                                            }
+                                            if ($this->access('event.delete')) {
+                                            echo '<a href="#" class="tooltip modal-trigger-delete-event" data-modal="delete-event-modal" data-id="'.$event->getId().'" data-title="'.$event->getTitle().'">'
+                                                    . '<button class="btn-admin">'
+                                                        . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                    . '</button>'
+                                                    . '<span class="tooltiptext remove">Remove</span>'
+                                                . '</a>';
+                                            }
+
+                                        echo '</div>';
+
+                                        if($event->getLocation() !== null){
+                                            echo '<div class="location">Location: <span>'.$event->getLocation().'</span></div>';
                                         }
-                                        if ($this->access('event.delete')) {
-                                        echo '<a href="#" class="tooltip modal-trigger-delete-event" data-modal="delete-event-modal" data-id="'.$event->getId().'" data-title="'.$event->getTitle().'">'
-                                                . '<button class="btn-admin">'
-                                                    . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
-                                                . '</button>'
-                                                . '<span class="tooltiptext remove">Remove</span>'
-                                            . '</a>';
-                                        }
-                                        
-                                    echo '</div>';
-                                    
-                                    if($event->getLocation() !== null){
-                                        echo '<div class="location">Location: <span>'.$event->getLocation().'</span></div>';
-                                    }
-                                    echo '<div class="text">'.$event->getContent().'</div>'
-                                . '</td>';
-                            
-                        echo '</tr>';
-                        $countColorList ++;
-                        if($countColorList > 6){
-                            $countColorList = 0;
-                        }
-                        
-                    endforeach;
+                                        echo '<div class="text">'.$event->getContent().'</div>'
+                                    . '</td>';
+
+                            echo '</tr>';
+                            $countColorList ++;
+                            if($countColorList > 6){
+                                $countColorList = 0;
+                            }
+
+                        endforeach;
+                    }
                     
                 ?>
 	

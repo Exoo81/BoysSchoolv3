@@ -31,12 +31,13 @@ var navigationMenu = {
     hamburgerFix: function (opening) {
         if (opening) {
             $('.hamburger').css({
-                position: 'fixed',		/*fixed to move down*/
+                position: 'absolute',		/*absolute if open*/
             });
+            
         } else {
             setTimeout(function () {
                 $('.hamburger').css({
-                    position: 'fixed', 	/*fixed/absolute to move down*/
+                    position: 'fixed', 	/*fixed to move down*/
                 });
             }, 300);
         }

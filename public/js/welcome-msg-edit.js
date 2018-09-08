@@ -7,6 +7,7 @@ $(".modal-trigger-welcome-msg-edit").click(function(e){
         
         //clear msg label
         $(".response-msg").html('');
+               
         
         dataModal = $(this).attr("data-modal");
 
@@ -24,6 +25,7 @@ $(".modal-trigger-welcome-msg-edit").click(function(e){
                 console.log(data);
                 if(data.success === true){
                     $("#" + dataModal).css({"display":"block"});
+                    $(".editWelcomeMsgForm").css({"display":"block"});
                     $("#editWelcomeMsgID").val(data.welcomeMsg.id);
                     $("#editWelcomeMsgContent").val(data.welcomeMsg.content);
                 }else{
@@ -64,13 +66,7 @@ $("#editWelcomeMsgForm").validate({
             success: function(data){
                 console.log(data);
                     if(data.success === true){
-                        //without refresh page
-                            // inser data do field
-                            $('.welcome-msg .text').html(data.welcomeMsg.content);
-                            //close modal
-                            $(".modal").css({"display":"none"});
-                            //hidde laoder
-                            $(".loader").css({"display":"none"});
+                        location.reload(); 
 
                     }else{
                         $(".response-msg").html(data.responseMsg);

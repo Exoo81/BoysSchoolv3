@@ -14,6 +14,8 @@
         submitHandler: function() {
             var email = $("#sub-email").val();
             
+            console.log('email ' + email);
+            
             $.ajax({
                 url:'application/addsubscriptions',
                 type:'POST',

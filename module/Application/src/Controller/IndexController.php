@@ -395,6 +395,7 @@ class IndexController extends AbstractActionController{
     public function addnewsletterAction(){
         
         $dataForm = $this->params()->fromPost();
+         
           
         /*
          * check permmision
@@ -407,7 +408,7 @@ class IndexController extends AbstractActionController{
             
             //add newsletter
             $dataResponse = $this->newsletterManager->addNewsletter($dataForm);
-            
+
         }else{
             //return error
             $dataResponse['success'] = false;

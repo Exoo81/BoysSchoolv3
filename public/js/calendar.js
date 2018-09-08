@@ -97,7 +97,7 @@ function getAllMonths(selectedMonth){
  */
 function getYearList(selectedYear){
 	options = '';
-	for(i=2017; i<=2040; i++){
+	for(i=2017; i<=2030; i++){
             selectedOpt = (i === selectedYear)?'selected':'';
             options += '<option value="'+ i +'" '+ selectedOpt +' >'+ i +'</option>';
 	}
@@ -109,11 +109,11 @@ function getYearList(selectedYear){
  */
 function getCalendar(selectedYear, selectedMonth, step){
     
-    
-    var today = new Date();
     var stepDown = -1;
     var stepUp = 1;
     
+    var today = new Date();
+
     var date = new Date(selectedYear, selectedMonth, 1);
     if(step === -1){
         date.setMonth(date.getMonth()- 1);
@@ -127,7 +127,12 @@ function getCalendar(selectedYear, selectedMonth, step){
     
     var dateYear = date.getFullYear();
     var dateMonth = date.getMonth();
-    var currentMonthFirstDay = new Date(dateYear+'-'+(dateMonth+1)+'-'+1).getDay();
+
+    /*old*/
+    //var currentMonthFirstDay = new Date(dateYear+'-'+(dateMonth+1)+'-'+1).getDay();
+    /*new*/
+    var currentMonthFirstDay = new Date(dateYear, (dateMonth), 1, 19, 30, 0).getDay();
+    
     var totalDaysOfMonth = new Date(dateYear, (dateMonth+1), 0).getDate();
     var totalDaysOfMonthDisplay = (currentMonthFirstDay === 7)?(totalDaysOfMonth):(totalDaysOfMonth + currentMonthFirstDay);
     var boxDisplay = (totalDaysOfMonthDisplay <= 35)?35:42;
@@ -164,13 +169,14 @@ function getCalendar(selectedYear, selectedMonth, step){
                 calendar += '<div id="calender_section_bot">';
                     calendar += '<ul>';
                         for(var cb=1; cb<= boxDisplay; cb++){
-                              //console.log(cb);
+                            //console.log(cb);
+                            
                             if((cb >= currentMonthFirstDay+1 || currentMonthFirstDay === 7) && cb <= (totalDaysOfMonthDisplay)){
                                 //Current date
                                 var currentDate = dateYear+'-'+(dateMonth+1)+'-'+dayCount;
                                 // init event number
                                 var eventNum = 0;
-                                //console.log(currentDate);
+                                //console.log('currentDate ' + currentDate);
                                 //console.log(data.eventsNumberPerDayInMonth);
                                 if(currentDate in data.eventsNumberPerDayInMonth){
                                     eventNum = data.eventsNumberPerDayInMonth[currentDate];
@@ -185,7 +191,7 @@ function getCalendar(selectedYear, selectedMonth, step){
 //                                    console.log('date from loop: '+ getCurrentDate(new Date(dateYear, dateMonth, dayCount)));
 //                                    console.log('today: '+ new Date(dateYear, dateMonth, today.getDate()));
 //                                    console.log('dayofweek: '+ dayofweek);
-                                    calendar += '<a href="#" onclick="prepareForEventList('+dayofweek+', '+dateYear+', '+dateMonth+', '+dayCount+')">';
+                                    calendar += '<a href="#" onclick="prepareForEventList('+dayofweek+', '+dateYear+', '+dateMonth+', '+dayCount+')" >';
                                     calendar += '<li date="'+currentDate+'" class=" date_cell">';
                                     //Date cell
                                     calendar += '<div class="today"><span>';
@@ -198,7 +204,7 @@ function getCalendar(selectedYear, selectedMonth, step){
 					calendar += '<div class="events"><span>';
 					calendar += dayCount;
 					calendar += '</span></div>';
-//							
+							
                                 }else{
                                         calendar += '<a href="#" onclick="prepareForEventList('+dayofweek+', '+dateYear+', '+dateMonth+', '+dayCount+')">';
 					calendar += '<li date="'+currentDate+'" class="date_cell">';
@@ -207,7 +213,7 @@ function getCalendar(selectedYear, selectedMonth, step){
 					calendar += dayCount;
 					calendar += '</span></div>';
                                 }
-//                              //Hover event popup
+                                //Hover event popup
                                 if(eventNum > 0){
                                   calendar +=  '<span class="events_number">'+eventNum+'</span>';
                                 }
@@ -236,9 +242,15 @@ function getCurrentDate(date){
     return (date.getDate()<10?("0"+date.getDate()):date.getDate()) + ' ' + month_short[date.getMonth()] + ' ' + date.getFullYear();
 }
 
-function getShortMonth($intMonth){
+function getCurrentDateEventToEdit(date){
+    var month_short = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return (date.getDate()<10?("0"+date.getDate()):date.getDate()) + ' ' + month_short[date.getMonth()] + ' ' + date.getFullYear();
+}
+
+function getShortMonth(month){
+    var intMonth = parseInt(month);
     var month_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return  month_short[$intMonth];
+    return  month_short[intMonth];
 }
 
 
@@ -292,9 +304,10 @@ function showEvent(eventId){
             async: true ,
             success: function(data){
                 if(data.success === true){
-//                    console.log(data);
+                    //console.log(data);
                     var event = data.event;
-                    var eventDate = new Date(event.dateEvent);
+                    var eventDate = new Date(data.eventYear, (data.eventMonth)-1, data.eventDay);
+                    //console.log(eventDate);
                     $("#color-box .day").html(eventDate.getDate()<10?("0"+eventDate.getDate()):eventDate.getDate());
                     $("#color-box .month").html(getShortMonth(eventDate.getMonth()));
                     $("#color-box .year").html(eventDate.getFullYear());
@@ -307,7 +320,7 @@ function showEvent(eventId){
                     //data for edit action
                     $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-id', event.id);
                     $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-title', event.title);
-                    $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-eventDate', getCurrentDate(eventDate));
+                    $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-eventDate', getCurrentDateEventToEdit(eventDate));
                     $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-location', event.location);
                     $("#eventBox .admin-option .modal-trigger-edit-event-details").attr('data-content', event.content);
                     

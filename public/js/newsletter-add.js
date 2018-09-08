@@ -20,6 +20,7 @@ $(".modal-trigger-add-newsletter").click(function(e){
     //reset form
     document.getElementById("addNewsletterForm").reset();
     
+    $("#addNewsletterForm").css({"display":"block"});
     //display modal
     $("#" + dataModal).css({"display":"block"});
 });
@@ -54,8 +55,8 @@ $("#addNewsletterForm").validate({
     var title = $("#addNewsletterTitle").val();
     var addNewsletterDoc = document.querySelector('#addNewsletterFile').files[0]; 
 
-//    console.log(title);
-//    console.log(addNewsletterDoc);
+    console.log(title);
+    console.log(addNewsletterDoc);
     
     var formData = new FormData();
     
@@ -63,12 +64,13 @@ $("#addNewsletterForm").validate({
     objArr.push({"title":title});
     
     formData.append('objArr', JSON.stringify(objArr));
-    //formData.append('tempField', tempField);
+
     formData.append('addNewsletterDoc', addNewsletterDoc);
     
     $.ajax({
         url: 'application/addnewsletter',
         type: 'POST',
+        cache: false,
         processData: false,
         contentType: false,
         data: formData,

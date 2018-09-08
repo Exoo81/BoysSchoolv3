@@ -23,6 +23,16 @@ class Season{
     protected $seasonName;
     
     /** 
+     * @ORM\Column(name="start_year")  
+     */
+    protected $startYear;
+    
+    /** 
+     * @ORM\Column(name="end_year")  
+     */
+    protected $endYear;
+    
+    /** 
      * @ORM\Column(name="status")  
      */
     protected $status;
@@ -111,6 +121,36 @@ class Season{
      */
     public function setSeasonName($seasonName) {
         $this->seasonName = $seasonName;
+    }
+    
+    /**
+     * Returns start year.
+     * @return integer
+     */
+    public function getStartYear() {
+        return $this->startYear;
+    }
+    /**
+     * Sets start year. 
+     * @param int $year    
+     */
+    public function setStartYear($year) {
+        $this->startYear = $year;
+    }
+    
+    /**
+     * Returns end year.
+     * @return integer
+     */
+    public function getEndYear() {
+        return $this->endYear;
+    }
+    /**
+     * Sets end year. 
+     * @param int $year    
+     */
+    public function setEndYear($year) {
+        $this->endYear = $year;
     }
     
     /**
@@ -348,7 +388,9 @@ class Season{
         return 
         [
             'id'   => $this->getId(),
-            'season_name' => $this->getSeasonName()
+            'season_name' => $this->getSeasonName(),
+            'start_year' => $this->getStartYear(),
+            'end_year' => $this->getEndYear(),
         ];
     }
 }
