@@ -30,20 +30,17 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                 if(empty(($this->galleryList))){
                     echo '<div class="no-content">';
-                        echo '<div class="info-wrapper">';
                             echo '<img src="img/icons/icon-photo-camera.png"/>';
                             echo '<span>There is no gallery yet.</span>';
+                    echo '</div>'; 
+                    
+                    if($this->access('gallery.add')){
+                        echo '<div class="cms-option gallery_add">';
+                            echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
+                                echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                            echo '</a>';
                         echo '</div>';
-                        
-                        if($this->access('gallery.add')){
-                            echo '<div class="cms-option gallery_add">';
-                                echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
-                                    echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
-                                echo '</a>';
-                            echo '</div>';
-                        }
-                        
-                    echo '</div>';   
+                    }
                     
                     
                 }else{
@@ -86,7 +83,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             $type = 'classes';
                                         }
 
-                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'/'.($countPost+1).'</div>';
+                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';
                                     echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
                                     
                                     
@@ -257,7 +254,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                         if($reflect->getShortName() === 'ClassPost'){
                                             $type = 'classes';
                                         }
-                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'/'.($countPost-1).'</div>';
+                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';
                                     echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';                              
                                     
                                     echo '<div class="gallery">';

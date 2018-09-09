@@ -185,7 +185,12 @@ $("#editGalleryForm").validate({
         var editAuthorID = $("#editGalleryAuthorID").val();
         var editGalleryTitle = $("#editGalleryTitle").val();
         var editGalleryContent = $("#editGalleryContent").val();
-        var removeVideo = $('#edit_gallery_remove_video').is(':checked');
+        var removeVideo = $('#edit_gallery_remove_video').attr('checked');
+        if(removeVideo === 'checked'){
+            removeVideo = true;
+        }else{
+            removeVideo = false;
+        }
 
         //get video field
         var editGalleryVideo = document.querySelector('#editGalleryVideo').files[0];

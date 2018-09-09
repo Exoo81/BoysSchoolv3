@@ -189,7 +189,7 @@ $( "#add_file_button" ).click(function() {
         index = last_index + 1;
         $('#input_fields_wrap').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-add-gallery-'+index+'" />\n\
-                                <input type="file" name="addGalleryFile" id="'+index+'" onchange="preview_image(this)" />\n\
+                                <input type="file" name="addGalleryFile" id="'+index+'" onchange="preview_image(this, event)" />\n\
                                 <label class="preview-img-label" id="preview-img-add-gallery-label-'+index+'" for="preview-img-gallery-post-'+index+'"><a href="#" class="remove_field">X</a></label>\n\
                              </div>'); //add input box
         //set new last_index
@@ -224,7 +224,7 @@ $( "#add_file_button" ).click(function() {
     
 });
 
-function preview_image(inputFile) {
+function preview_image(inputFile, event) {
         
     inputID = inputFile.getAttribute('id');
     //alert('input id: ' + inputID);

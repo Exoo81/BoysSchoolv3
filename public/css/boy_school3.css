@@ -2135,6 +2135,7 @@ section.admin .admin-box{
     min-height: 0;
 }
 
+.gallery .no-content,
 .classes .no-content{
     padding: 10% 40% 5% 40%;
     min-height: 0;
@@ -2158,11 +2159,6 @@ section.admin .admin-box{
     transform: translate(-50%, -50%);
 }
 
-
-.gallery-box .no-content .info-wrapper{
-    left: 55%;
-}
-
 .parents-box .no-content.parents-left .info-wrapper{
     left: 45%;
     top: 40%;
@@ -2173,19 +2169,17 @@ section.admin .admin-box{
 }
 
 
-.news-box .no-content img,
-.newsletters-list .no-content img,
+.gallery .no-content img,
 .classes .no-content img,
-.class-blog .no-content img{
+.class-blog .no-content img,
+.news-box .no-content img,
+.newsletters-list .no-content img{
     display: block;
     margin: 0 auto;
     padding-bottom: 5%;
     
 }
 
-.gallery-box .no-content img{
-    margin-left: 25%;
-}
 
 .parents-box .no-content img{
     width: 90px;
@@ -2208,10 +2202,11 @@ section.admin .admin-box{
 
 
 
-.school-news .no-content span,
-.newsletters-list .no-content span,
+.gallery .no-content span,
 .classes .no-content span,
-.class-blog .no-content span{
+.class-blog .no-content span,
+.school-news .no-content span,
+.newsletters-list .no-content span{
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -2228,10 +2223,6 @@ section.admin .admin-box{
     transform: rotate(1deg);
 }
 
-
-.gallery-box .no-content span{
-    width: 65%;
-}
 
 .parents-box .no-content span{
     font-size: 1.8em;
@@ -8197,13 +8188,7 @@ div.dhx_modal_cover_dv {
     left: -10px;
 }
 
-    
-.admin-option .tooltip .tooltiptext.bottom.remove{
-    left: 10px;
-    top: 45px;
-}
 
-.gallery .admin-option .tooltip .tooltiptext.bottom.remove,
 .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
 .policies .admin-option .tooltip .tooltiptext.bottom.remove{
     left: -5px;
@@ -8233,12 +8218,8 @@ div.dhx_modal_cover_dv {
 	}
     }
     
-.admin-option .tooltip .tooltiptext.bottom.edit{
-    left: 15px;
-    top: 45px;
-}
 
-.gallery .admin-option .tooltip .tooltiptext.bottom.edit,
+
 .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
 .policies .admin-option .tooltip .tooltiptext.bottom.edit{
     left: 0;
