@@ -39,12 +39,9 @@ $this->headTitle($this->headTitle);
         <?php 
             if(empty($this->postsList)){
                 echo '<div class="class-blog-box">';
-                    echo '<div class="no-content">'
-                            .'<div class="info-wrapper">'
-                                .'<img src="/../img/icons/icon-robot.png"/>'
-                                .'<span>There are no published posts yet.</span>'
-                            .'</div>';
-
+                    echo '<div class="no-content">';
+                        echo '<img src="/../img/icons/icon-robot.png"/>';
+                        echo '<span>There are no published posts yet.</span>';
                     echo '</div>';
                     if($blog->getLearningSupport() !== null){
                         if ($this->access('post.add') || 

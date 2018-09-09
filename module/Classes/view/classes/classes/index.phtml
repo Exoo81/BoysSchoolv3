@@ -25,21 +25,23 @@ $this->headTitle($this->title.' '.$current_season);
         <?php  
             if(empty($this->blogList['blogs-left']) && empty($this->blogList['blogs-right'])){
                 echo '<div class="no-content">';
-                    echo '<div class="info-wrapper">';
+                    
                         echo '<img src="img/icons/icon-dinosaur.png"/>';
                         echo '<span>There is no blog yet.</span>';
-                    echo '</div>';
+                    
                         
-                    if ($this->access('classes.add')) {
+                    
+                        
+                        
+                echo '</div>';
+                
+                if ($this->access('classes.add')) {
                         echo '<div class="cms-option classes">';
                             echo '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">';
                                 echo '<img src="img/icons/icon-add.png"><span>Add new class blog</span>';
                             echo '</a>';
                         echo '</div>';
                     }
-                        
-                        
-                echo '</div>';
                  
             }else{
                 echo '<div class="main-col-left">';
@@ -105,8 +107,6 @@ $this->headTitle($this->title.' '.$current_season);
                 echo '</div>';
                 
                 echo '<div class="main-col-right">';
-                //temp
-                //echo ''.$this->currentUser()->getFullName();
                     if ($this->access('classes.add')) {
                         echo '<div class="cms-option classes">'
                             . '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">'

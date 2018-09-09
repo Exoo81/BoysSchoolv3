@@ -224,8 +224,19 @@ $("#editPostForm").validate({
         var editPostID = $("#editPostID").val();
         var editPostTitle = $("#editPostTitle").val();
         var editPostContent = $("#editPostContent").val();
-        var removeDoc = $('#edit_post_remove_doc').is(':checked');
-        var removeVideo = $('#edit_post_remove_video').is(':checked');
+        var removeDoc = $('#edit_post_remove_doc').attr('checked');
+        if(removeDoc === 'checked'){
+            removeDoc = true;
+        }else{
+            removeDoc = false;
+        }
+        
+        var removeVideo = $('#edit_post_remove_video').attr('checked');
+        if(removeVideo === 'checked'){
+            removeVideo = true;
+        }else{
+            removeVideo = false;
+        }
         var editPostTeacherID = $("#editPost_teacherID").val();
         var editPostLearningSupportID = $("#editPost_learningSupportID").val();
         var editPostAuthorID = $("#editPost_authorID").val();

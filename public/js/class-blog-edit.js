@@ -192,12 +192,12 @@ $("#editClassBlogForm").validate({
         //get input photo
         var editClassBlogPhoto = document.querySelector('#editClassBlogPhoto').files[0];
         
-        console.log('editClassBlogID: ' + editClassBlogID);
-        console.log('editClassLevel: ' + editClassLevel);
-        console.log('editClassTeacherID: ' + editClassTeacherID);
-        console.log('editClassLearningSupportID: ' + editClassLearningSupportID);
-        console.log('removePhoto: ' + removePhoto);
-        console.log('editClassBlogPhoto: ' + editClassBlogPhoto);
+//        console.log('editClassBlogID: ' + editClassBlogID);
+//        console.log('editClassLevel: ' + editClassLevel);
+//        console.log('editClassTeacherID: ' + editClassTeacherID);
+//        console.log('editClassLearningSupportID: ' + editClassLearningSupportID);
+//        console.log('removePhoto: ' + removePhoto);
+//        console.log('editClassBlogPhoto: ' + editClassBlogPhoto);
 
         //add to dataForm
         var formData = new FormData();

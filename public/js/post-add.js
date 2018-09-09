@@ -39,10 +39,10 @@ $(".modal-trigger-add-post").click(function(e){
     //insert authorID
     $('#addPost_authorID').val(authorID);
    
-    console.log('blog id: '+blogId);
-    console.log('teacher id: '+teacherID);
-    console.log('learningSupport id: '+ learningSupportID);
-    console.log('author id: '+ authorID);
+//    console.log('blog id: '+blogId);
+//    console.log('teacher id: '+teacherID);
+//    console.log('learningSupport id: '+ learningSupportID);
+//    console.log('author id: '+ authorID);
 
     //display form
     $("#addPostForm").css({"display":"block"});
@@ -218,7 +218,7 @@ $( "#add_file_button" ).click(function() {
         index = last_index + 1;
         $('#input_fields_wrap').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-add-post-'+index+'" />\n\
-                                <input type="file" name="addPostFile" id="'+index+'" onchange="preview_image(this)" />\n\
+                                <input type="file" name="addPostFile" id="'+index+'" onchange="preview_image(this, event)" />\n\
                                 <label class="preview-img-label" id="preview-img-add-post-label-'+index+'" for="preview-img-add-post-'+index+'"><a href="#" class="remove_field">X</a></label>\n\
                              </div>'); //add input box
         //set new last_index
@@ -253,7 +253,7 @@ $( "#add_file_button" ).click(function() {
     
 });
 
-function preview_image(inputFile) {
+function preview_image(inputFile, event) {
         
     inputID = inputFile.getAttribute('id');
     //alert('input id: ' + inputID);

@@ -69,11 +69,11 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             <?php
                 if($this->paginator->getTotalItemCount() == 0){
                     echo '<div class="school-news">';
-                        echo '<div class="no-content">'
-                                .'<div class="info-wrapper">'
-                                    .'<img src="/../img/icons/icon-summer.png"/>'
-                                    .'<span>Summer break<br>New news for the '.$current_season.'<br>comming soon ... </span>'
-                                .'</div>';
+                        echo '<div class="no-content">';
+                                
+                                    echo '<img src="/../img/icons/icon-summer.png"/>';
+                                    echo '<span>Summer break<br>New news for the '.$current_season.'<br>comming soon ... </span>';
+                                
 
                         echo '</div>';
                     echo '</div>';
