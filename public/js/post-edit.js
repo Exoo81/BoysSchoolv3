@@ -167,13 +167,13 @@ $(".modal-trigger-edit-post").click(function(e){
 $("#editPostForm").validate({
     rules: {
         editPostID: {
-            required: true,
+            required: true
         },
         editPost_teacherID: {
-            required: true,
+            required: true
         },
         editPost_authorID: {
-            required: true,
+            required: true
         },
         editPostTitle: {
             required: true,
@@ -414,7 +414,7 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
             //alert('index: ' + index);
             $('#input_fields_wrap_edit_class_post').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-edit-post-'+index+'" />\n\
-                                <input type="file" name="editPostFile"  id="'+index+'" onchange="preview_image_edit(this)" />\n\
+                                <input type="file" name="editPostFile"  id="'+index+'" onchange="preview_image_edit(this, event)" />\n\
                                 <label class="preview-img-label" id="preview-img-edit-post-label-'+index+'" for="preview-img-edit-post-'+index+'"><a href="#" class="remove_photo_edit">X</a></label>\n\
                              </div>'); //add input box
             //set new last_index
@@ -456,8 +456,34 @@ $('#input_fields_wrap_edit_class_post').on("click",".remove_photo_edit", functio
         }
 });
 
-function preview_image_edit(inputFile) { 
+
+//// remove video from edit form
+//$( "input" ).click(function(e) { 
+//    
+//    alert('dddd');
+//
+////        e.preventDefault();
+//////        alert('remove video');
+////
+////        //remove current label and file name + icon
+////        $("#editPostVideoLabel_current").css({"display":"none"});
+////        $("#editPostVideo_current").css({"display":"none"});
+////
+////        //show choose field with label
+////        $("#editPostVideoLabel").css({"display":"block"});
+////        $("#editPostVideo").css({"display":"block"});
+////        
+////        //check old file "to remove"
+////        $("#edit_post_remove_video").attr("checked", true);
+// 
+//});
+
+
+function preview_image_edit(inputFile, event) { 
+    
         inputID = inputFile.getAttribute('id');
+
+
            
         image = document.getElementById('preview-img-edit-post-'+inputID);
         image.src = URL.createObjectURL(event.target.files[0]);
@@ -476,6 +502,7 @@ function preview_image_edit(inputFile) {
         
 
 }
+
 
 //close modal
 /*$(".close-modal, .btn-modal-box .close-btn, .modal-sandbox").click(function(){

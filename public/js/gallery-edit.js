@@ -341,7 +341,7 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
             //alert('index: ' + index);
             $('#input_fields_wrap_edit').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-edit-gallery-'+index+'" />\n\
-                                <input type="file" name="editGalleryFile"  id="'+index+'" onchange="preview_image_edit_gallery(this)" />\n\
+                                <input type="file" name="editGalleryFile"  id="'+index+'" onchange="preview_image_edit_gallery(this, event)" />\n\
                                 <label class="preview-img-label" id="preview-img-edit-gallery-label-'+index+'" for="preview-img-edit-gallery-'+index+'"><a href="#" class="remove_photo_edit">X</a></label>\n\
                              </div>'); //add input box
             //set new last_index
@@ -380,7 +380,7 @@ $('#input_fields_wrap_edit').on("click",".remove_photo_edit", function(e){
         }
 });
 
-function preview_image_edit_gallery(inputFile) { 
+function preview_image_edit_gallery(inputFile, event) { 
         inputID = inputFile.getAttribute('id');
            
         image = document.getElementById('preview-img-edit-gallery-'+inputID);

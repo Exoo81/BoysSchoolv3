@@ -230,7 +230,7 @@ $( "#preview-doc-edit-news-label" ).click(function() {
 
 
 //preview photo loaded in file field in form
-$( "#editNewsPhoto" ).change(function() {
+$( "#editNewsPhoto" ).change(function(event) {
     var reader = new FileReader();
     reader.onload = function(){
         var output = document.getElementById('editNewsPhoto_current');

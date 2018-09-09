@@ -338,13 +338,17 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 
                 </div>
             </div>
-
-            <div class="event-footer">
-                <a href="#" class="bs orange modal-trigger" data-modal="events-list">
-                    <img src="img/icons/icon-event2.png">
-                    <span class="see-all">see all events</span>
-                </a>
-            </div>
+            
+            <?php
+                if(!empty($this->schoolEvents)){
+                    echo '<div class="event-footer">';
+                        echo'<a href="#" class="bs orange modal-trigger" data-modal="events-list">';
+                            echo'<img src="img/icons/icon-event2.png">';
+                            echo'<span class="see-all">see all events</span>';
+                        echo'</a>';
+                    echo'</div>';
+                }
+            ?>
         </div>
         <!-- end EVENT-BOX -->
         <!-- NEWSLETTER-BOX -->

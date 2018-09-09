@@ -2500,6 +2500,7 @@ section.school-news .main-col-right{
     float: left;
     width: 35px;
     top: 5px;
+    left: 0;
 }
 
 .news-link a{
@@ -9008,6 +9009,11 @@ form.cms .post-gallery input[type='file']{
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
     form.cms .post-gallery input[type='file'] {height: auto;}
 
+}
+
+/** for Firefox **/
+@-moz-document url-prefix() {
+  form.cms .post-gallery input[type='file'] {height: auto;}
 }
 
 
