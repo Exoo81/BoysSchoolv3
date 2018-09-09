@@ -1809,7 +1809,7 @@ ul li{
 	margin-left: 20px;
 	font-size: 1.2em;
 	color: #561818;
-	line-height: normal;
+/*	line-height: normal;*/
 }
 	@media screen and (max-width:1536px){
 		ul li{
@@ -4768,6 +4768,10 @@ section.our-team .header-title{
 
 .our-team-box ul li{
     width: max-content;
+}
+
+.our-team-box ul li span{
+    text-transform: capitalize;
 }
 
 .our-team-box ul li span.our-team-role{
@@ -8142,25 +8146,26 @@ div.dhx_modal_cover_dv {
 .modal-text .parents-assoc-table-cell.enable .tooltip .tooltiptext,
 .modal-text .our-team-table-cell.disable .tooltip .tooltiptext,
 .modal-text .our-team-table-cell.enable .tooltip .tooltiptext{
-    width: max-content;
     top: 35px;
     left: -35px;
+    padding: 0 3px;
 }
 
 .modal-text .parents-assoc-table-cell.disable .tooltip .tooltiptext,
 .modal-text .our-team-table-cell.disable .tooltip .tooltiptext{
     left: -40px;
+    padding: 0 3px;
 }
 
-.modal-text .our-team-table-cell.edit .tooltip .tooltiptext{
+/*.modal-text .our-team-table-cell.edit .tooltip .tooltiptext{
     width: max-content;
     left: -25px;
-}
+}*/
 
 .modal-text .our-team-table-cell.create-account .tooltip .tooltiptext,
 .modal-text .parents-assoc-table-cell.create-account .tooltip .tooltiptext{
-    width: max-content;
-    left: -30px;
+    left: -35px;
+    padding: 0 3px;
 }
 
 
@@ -8179,6 +8184,18 @@ div.dhx_modal_cover_dv {
     color: #c0392b;
     top: 40px;
     left: -5px;
+    padding: 0 3px;
+}
+
+.modal .tooltip .tooltiptext.edit{
+    top: 40px;
+    padding: 0 3px;
+}
+
+.modal .tooltip .tooltiptext.edit_member{
+    top: 35px;
+    left: -25px;
+    padding: 0 3px;
 }
 
 .tooltip .tooltiptext.enable{
@@ -8194,7 +8211,7 @@ div.dhx_modal_cover_dv {
     left: -5px;
 }
     
-    
+.tooltip .tooltiptext.edit_member,   
 .tooltip .tooltiptext.edit{
     background-color: rgba(52, 152, 219, .3);
     color: #3498db;
@@ -8209,14 +8226,15 @@ div.dhx_modal_cover_dv {
     left: 0px;
 }
 
-.tooltip .tooltiptext.bottom.edit{
-    left: 0px;
+.tooltip.horizontal .tooltiptext.bottom.edit{
+    left: 15px;
+    top: 45px;
 }
-    @media screen and (max-width:1366px){
-	.tooltip .tooltiptext.bottom.edit{
-            left: -5px;
-	}
-    }
+.tooltip.horizontal .tooltiptext.bottom.remove{
+    left: 10px;
+    top: 45px;
+}
+    
     
 
 
@@ -8334,7 +8352,7 @@ label.error {
 
 .cms-option.our-team{
     top: 30px;
-    right: 23%;
+    right: 20%;
 }
 
 .cms-option.board-of-management{
@@ -8349,7 +8367,7 @@ label.error {
 
 .cms-option.teachers{
     top: 30px;
-    right: 10%;
+    right: 15%;
 }
 
 .cms-option.learning-support{
@@ -8364,22 +8382,22 @@ label.error {
 
 .cms-option.secretary{
     top: 30px;
-    right: 20%;
+    right: 15%;
 }
 
 .cms-option.sna{
     top: 30px;
-    right: 23%;
+    right: 10%;
 }
 
 .cms-option.asdunit{
     top: 30px;
-    right: 23%;
+    right: 10%;
 }
 
 .cms-option.caretaker{
     top: 30px;
-    right: 23%;
+    right: 15%;
 }
 
 .cms-option.parents-information,
@@ -8515,7 +8533,7 @@ label.error {
 }
 
 .cms-option.our-team a img{
-    right: 140px;
+    right: 170px;
     top: -5px;
 }
 @media screen and (max-width:1366px){
@@ -8535,27 +8553,27 @@ label.error {
 }
 
 .cms-option.learning-support a img{
-    right: 360px;
+    right: 355px;
     top: -5px;
 }
 
 .cms-option.secretary a img{
-    right: 140px;
+    right: 240px;
     top: -5px;
 }
 
 .cms-option.sna a img{
-    right: 130px;
+    right: 250px;
     top: -5px;
 }
 
 .cms-option.asdunit a img{
-    right: 160px;
+    right: 285px;
     top: -5px;
 }
 
 .cms-option.caretaker a img{
-    right: 150px;
+    right: 230px;
     top: -5px;
 }
 
