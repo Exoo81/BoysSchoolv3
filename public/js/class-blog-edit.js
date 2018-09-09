@@ -181,16 +181,23 @@ $("#editClassBlogForm").validate({
         var editClassLevel = $('#editClassLevel').val();
         var editClassTeacherID = $("#editClassTeacher").val();
         var editClassLearningSupportID = $("#editClassLearningSupport").val();
-        var removePhoto = $('#edit-class-blog-remove-photo').is(':checked');
+        var removePhoto = $('#edit-class-blog-remove-photo').attr('checked');
+        if(removePhoto === 'checked'){
+            removePhoto = true;
+        }else{
+            removePhoto = false;
+        }
+        
+
         //get input photo
         var editClassBlogPhoto = document.querySelector('#editClassBlogPhoto').files[0];
         
-//        console.log('editClassBlogID: ' + editClassBlogID);
-//        console.log('editClassLevel: ' + editClassLevel);
-//        console.log('editClassTeacherID: ' + editClassTeacherID);
-//        console.log('editClassLearningSupportID: ' + editClassLearningSupportID);
-//        console.log('removePhoto: ' + removePhoto);
-//        console.log('editClassBlogPhoto: ' + editClassBlogPhoto);
+        console.log('editClassBlogID: ' + editClassBlogID);
+        console.log('editClassLevel: ' + editClassLevel);
+        console.log('editClassTeacherID: ' + editClassTeacherID);
+        console.log('editClassLearningSupportID: ' + editClassLearningSupportID);
+        console.log('removePhoto: ' + removePhoto);
+        console.log('editClassBlogPhoto: ' + editClassBlogPhoto);
 
         //add to dataForm
         var formData = new FormData();

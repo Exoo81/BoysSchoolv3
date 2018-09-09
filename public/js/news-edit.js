@@ -162,8 +162,18 @@ $("#editNewsForm").validate({
         var editNewsID = $("#editNewsID").val();
         var editNewsTitle = $("#editNewsTitle").val();
         var editNewsContent = $("#editNewsContent").val();
-        var removeDoc = $('#edit-news-remove-doc').is(':checked');
-        var removePhoto = $('#edit-news-remove-photo').is(':checked');
+        var removeDoc = $('#edit-news-remove-doc').attr('checked');
+        if(removeDoc === 'checked'){
+            removeDoc = true;
+        }else{
+            removeDoc = false;
+        }
+        var removePhoto = $('#edit-news-remove-photo').attr('checked');
+        if(removePhoto === 'checked'){
+            removePhoto = true;
+        }else{
+            removePhoto = false;
+        }
         //get input doc
         var editNewsDoc = document.querySelector('#editNewsDoc').files[0]; 
         //get input photo

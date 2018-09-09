@@ -1964,6 +1964,12 @@ section.parents .header{
 	z-index: 1;
 }
 
+/**  for IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+    .header .baner{display: -ms-grid;}
+
+}
+
 .header .color-cubes{
 	position: absolute;
 	bottom: 25%;
@@ -8088,7 +8094,7 @@ div.dhx_modal_cover_dv {
 
 .tooltip .tooltiptext.bottom{
     top: initial;
-    bottom: -20px;
+/*    bottom: -20px;*/
     left: 0px;
 }
 
@@ -8179,6 +8185,7 @@ div.dhx_modal_cover_dv {
     
 .admin-option .tooltip .tooltiptext.bottom.remove{
     left: 10px;
+    top: 45px;
 }
 
 .gallery .admin-option .tooltip .tooltiptext.bottom.remove,
@@ -8213,6 +8220,7 @@ div.dhx_modal_cover_dv {
     
 .admin-option .tooltip .tooltiptext.bottom.edit{
     left: 15px;
+    top: 45px;
 }
 
 .gallery .admin-option .tooltip .tooltiptext.bottom.edit,
