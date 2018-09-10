@@ -2146,9 +2146,13 @@ section.admin .admin-box{
     min-height: 0;
 }
 
-.no-content.parents-left{
-    min-height: 30vh;
+.parents-info-box .no-content,
+.book-list-box .no-content,
+.policies-box .no-content{
+    padding: 5% 30%;
+    min-height: 0;
 }
+
 
 .no-content .info-wrapper{
     position: absolute;
@@ -2159,16 +2163,15 @@ section.admin .admin-box{
     transform: translate(-50%, -50%);
 }
 
-.parents-box .no-content.parents-left .info-wrapper{
-    left: 45%;
-    top: 40%;
-}
+
 
 .no-content img{
     margin-left: 20%;
 }
 
-
+.policies-box .no-content img,
+.book-list-box .no-content img,
+.parents-info-box .no-content img,
 .gallery .no-content img,
 .classes .no-content img,
 .class-blog .no-content img,
@@ -2176,14 +2179,9 @@ section.admin .admin-box{
 .newsletters-list .no-content img{
     display: block;
     margin: 0 auto;
-    padding-bottom: 5%;
-    
+    padding-bottom: 5%;    
 }
 
-
-.parents-box .no-content img{
-    width: 90px;
-}
 
 .no-content .info-wrapper span{
     float: left;
@@ -2199,9 +2197,9 @@ section.admin .admin-box{
     transform: rotate(1deg);
 }
 
-
-
-
+.policies-box .no-content span,
+.book-list-box .no-content span,
+.parents-info-box .no-content span,
 .gallery .no-content span,
 .classes .no-content span,
 .class-blog .no-content span,
@@ -2223,10 +2221,6 @@ section.admin .admin-box{
     transform: rotate(1deg);
 }
 
-
-.parents-box .no-content span{
-    font-size: 1.8em;
-}
 
 .main-col-right{
     position: relative;
@@ -4121,6 +4115,7 @@ section.parents .header-title{
 .parents-box .enrolment-box,
 .parents-box .policies-box{
 	display: inline-block;
+        position: relative;
 	width: 100%;
         margin: 0 0 5% 0%;
 	/* border-bottom: 1px solid #561818; */
@@ -4321,14 +4316,14 @@ section.parents .header-title{
 .book-list-box ul,
 .policies-box ul,
 .enrolment-box ul{
-    padding: 5%;        
+    padding: 1% 5%;        
 } 
 
-.book-list-box ul img,
+/*.book-list-box ul img,
 .enrolment-box ul img{
     width: 35px;
     top: 2px;
-}
+}*/
 
 .parents-association-box ul li{
     width: max-content;
@@ -4633,12 +4628,14 @@ section.parents .header-title{
 /*    color: red;*/
 }
 
-.parents-information-table-row .parents-information-table-cell.edit,
+/*.parents-information-table-row .parents-information-table-cell.edit,
 .parents-assoc-table-row .parents-assoc-table-cell.edit{
     position: relative;
     width: 10%;
-/*    background: red;*/
-}
+    background: red;
+}*/
+
+.parents-information-table-row .parents-information-table-cell.edit,
 .parents-information-table-row .parents-information-table-cell.remove,
 .parents-assoc-table-row .parents-assoc-table-cell.remove,
 .parents-assoc-table-row .parents-assoc-table-cell.disable,
@@ -8129,11 +8126,6 @@ div.dhx_modal_cover_dv {
     left: 2px;
 }
 
-.modal-text .parents-assoc-table-cell.edit .tooltip .tooltiptext{
-    width: max-content;
-    left: -25px;
-}
-
 .modal-text .parents-information-table-cell.remove .tooltip .tooltiptext,
 .modal-text .parents-assoc-table-cell.remove .tooltip .tooltiptext,
 .modal-text .our-team-table-cell.remove .tooltip .tooltiptext{
@@ -8208,7 +8200,9 @@ div.dhx_modal_cover_dv {
 
 .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
 .policies .admin-option .tooltip .tooltiptext.bottom.remove{
-    left: -5px;
+    left: -2px;
+    top: 45px;
+    padding: 3px;
 }
     
 .tooltip .tooltiptext.edit_member,   
@@ -8240,7 +8234,9 @@ div.dhx_modal_cover_dv {
 
 .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
 .policies .admin-option .tooltip .tooltiptext.bottom.edit{
-    left: 0;
+    left: 4px;
+    top: 45px;
+    padding: 3px;
 }
     
 .tooltip .tooltiptext.details{
@@ -8400,21 +8396,27 @@ label.error {
     right: 15%;
 }
 
-.cms-option.parents-information,
-.cms-option.parents-assoc,
-.cms-option.book-list,
-.cms-option.policies{
-    display: inline-block;
-    position: relative;
-/*    width: 50%;*/
-/*    float: left;*/
-/*    padding-left: 10%;*/
-    /* margin-left: 8%; */
+.cms-option.book-list{
+    top: 30px;
+    right: 15%
 }
 
-.cms-option.parents-information.left,
-.cms-option.book-list.left,
-.cms-option.policies.left{
+.cms-option.parents-assoc{
+    top: 30px;
+    right: 5%;
+}
+
+.cms-option.policies{
+    top: 30px;
+    right: 15%;
+}
+
+.cms-option.parents-information{
+    display: inline-block;
+    position: relative;
+}
+
+.cms-option.parents-information.left{
     float: left;
     padding-left: 10%;
 }
@@ -8427,15 +8429,7 @@ label.error {
     margin-right: 20%;
 }
 
-.cms-option.parents-assoc.left{
-    float: left;
-    padding-left: 10%;
-}
-@media screen and (max-width:1366px){
-	.cms-option.parents-assoc.left{
-		padding-left: 13%
-	}
-    }
+
 
 .cms-option a img{
     position: absolute;

@@ -490,6 +490,14 @@ class ParentsManager{
             $meetingJSON = $parentsAssoc->jsonSerializeMeeting();
             $dataResponse['meetingToEdit'] = $meetingJSON;
             
+            
+            $dateMeeting = $parentsAssoc->getDateNextMeeting();
+            $date = strtotime($dateMeeting);
+        
+            $dataResponse['meetingYear'] = date("Y", $date); 
+            $dataResponse['meetingMonth'] = date("m", $date); 
+            $dataResponse['meetingDay'] = date("d", $date);
+            
         }else{
             $dataResponse['success'] = false;
             $dataResponse['responseMsg'] = 'ERROR - We couldn\'t get parents assoc. meeting data to edit.';

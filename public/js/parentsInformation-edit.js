@@ -176,8 +176,19 @@ $("#editParentsInformationForm").validate({
     var authorID = $("#editParentsInformationAuthorID").val();
     var parentsInformationTitle = $("#editParentsInformationTitle").val();
     var parentsInformationURL = $("#editParentsInformationURL").val();
-    var removeUrl = $('#edit_parents-information_remove_textInput').is(':checked');
-    var removeDoc = $('#edit_parents-information_remove_doc').is(':checked');
+    var removeUrl = $('#edit_parents-information_remove_textInput').attr('checked');
+        if(removeUrl === 'checked'){
+            removeUrl = true;
+        }else{
+            removeUrl = false;
+        }
+
+    var removeDoc = $('#edit_parents-information_remove_doc').attr('checked');
+        if(removeDoc === 'checked'){
+            removeDoc = true;
+        }else{
+            removeDoc = false;
+        }
     
 
     var parentsInformationDoc = document.querySelector('#editParentsInformationDoc').files[0];

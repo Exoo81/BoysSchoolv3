@@ -64,11 +64,9 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 }
                             }
                         }else{
-                            echo '<div class="no-content parents-left">';
-                                echo '<div class="info-wrapper">';
+                            echo '<div class="no-content">';
                                     echo '<img src="/../img/icons/icon-update-soon-1.png"/>';
-                                    echo '<span>will come soon ...</span>';
-                                echo '</div>';
+                                    echo '<span>will come soon ...</span>';        
                             echo '</div>';
                         }
                     ?>
@@ -82,7 +80,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <div class="title blue">Booklist <?=$current_season ?></div>
                 <?php 
                     if ($this->access('bookList.add')) {
-                        echo '<div class="cms-option book-list left">';
+                        echo '<div class="cms-option book-list">';
                             echo '<a href="#" class="bs modal-trigger-add-book-list" data-modal="add-book-list-modal" data-authorID="'.$this->currentUser()->getId().'">';
                                 echo '<img src="img/icons/icon-add.png"><span>Add new list of books</span>';
                             echo '</a>';
@@ -115,10 +113,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         }
                     }else{
                         echo '<div class="no-content parents-left">';
-                            echo '<div class="info-wrapper">';
                                 echo '<img src="/../img/icons/icon-trumpet.png"/>';
                                 echo '<span>will come soon ...</span>';
-                            echo '</div>';
                         echo '</div>';    
                     }
                     ?>
@@ -133,7 +129,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             <div class="parents-association-box">
                 <div class="title purpure">Parents association</div>
                 <?php if ($this->access('parentsAssoc.manage')) {
-                    echo '<div class="cms-option parents-assoc left">';
+                    echo '<div class="cms-option parents-assoc">';
                         echo '<a href="#" class="bs modal-trigger" data-modal="parents-assoc-manage-modal" data-authorID="'.$this->currentUser()->getId().'">';
                             echo '<img src="img/icons/icon-settings.png"><span>Manage Parents association</span>';
                         echo '</a>';
@@ -237,10 +233,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             }
                         }else{
                             echo '<div class="no-content parents-left">';
-                                echo '<div class="info-wrapper">';
                                     echo '<img src="/../img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
-                                echo '</div>';
                             echo '</div>';
                         }
                     ?>
@@ -323,7 +317,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <input type="hidden" id="addParentsInformation_authorID" name="addParentsInformation_authorID" required/>
                     
                     <div class="btn-modal-box">
-                        <button type="submit" class="modal-btn btn-blue left medium" data-text="Add new information"><span>Add new information</span></button>
+                        <button type="submit" class="modal-btn btn-blue left lg" data-text="Add new information"><span>Add new information</span></button>
                         <button type="button" class="modal-btn btn-red close-btn right medium" data-text="Discard"><span>Discard</span></button>
                     </div>
 		</form>
@@ -628,7 +622,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 echo '<button class="btn-admin">';
                                                     echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
                                                 echo '</button>';
-                                                echo '<span class="tooltiptext edit">Edit member</span>';
+                                                echo '<span class="tooltiptext edit_member">Edit_member</span>';
                                             echo '</a>';
                                         }
 
@@ -640,7 +634,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 echo '<button class="btn-admin">';
                                                     echo '<img class="icon-list" src="img/icons/icon-settings.png" >';
                                                 echo '</button>';
-                                                echo '<span class="tooltiptext create-account">Create account</span>';
+                                                echo '<span class="tooltiptext create-account">Create_account</span>';
                                             echo '</a>';
                                         }
 
@@ -653,7 +647,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             echo '<button class="btn-admin">';
                                                 echo '<img class="icon-list" src="img/icons/icon-disable.png" >';
                                             echo '</button>';
-                                            echo '<span class="tooltiptext disable">Deactivate member</span>';
+                                            echo '<span class="tooltiptext disable">Deactivate_member</span>';
                                         echo '</a>';
                                     }
                                 echo '</div>';
@@ -687,7 +681,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             echo '<button class="btn-admin">';
                                                 echo '<img class="icon-list" src="img/icons/icon-enable.png" >';
                                             echo '</button>';
-                                            echo '<span class="tooltiptext enable">Activate member</span>';
+                                            echo '<span class="tooltiptext enable">Activate_member</span>';
                                         echo '</a>';
                                     }
                                 echo '</div>';

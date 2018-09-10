@@ -114,7 +114,7 @@ $(".modal-trigger-edit-parents-assoc-meeting").click(function(e){
                 }
                 if(data.meetingToEdit.dateStatus === "2"){
                     //convert date to format eg. 05 May 2018
-                    var date = new Date(data.meetingToEdit.dateNextMeeting);
+                    var date = new Date(data.meetingYear, (data.meetingMonth)-1, data.meetingDay);
                     var dateNextMeeting = getCurrentDate(date);
                     //insert current value to field
                     $("#editParentsAssocMeetingDateTitle").append(dateNextMeeting);
@@ -245,7 +245,7 @@ $("#editParentsAssocMeetingForm").validate({
 
 
 function getCurrentDate(date){
-    var month_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var month_short = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return (date.getDate()<10?("0"+date.getDate()):date.getDate()) + ' ' + month_short[date.getMonth()] + ' ' + date.getFullYear();
 }
 

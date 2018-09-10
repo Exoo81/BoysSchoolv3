@@ -171,7 +171,6 @@ class SchoolEventManager{
         
         $dateEvent = $event->getDateEvent();
         $date = strtotime($dateEvent);
-        $eventYear = date("Y", $date);
         
         $dataResponse['eventYear'] = date("Y", $date); 
         $dataResponse['eventMonth'] = date("m", $date); 
