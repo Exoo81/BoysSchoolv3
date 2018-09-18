@@ -22,7 +22,7 @@ $(".modal-trigger-show-video").click(function(e){
     var videoLink = $(this).attr("data-video");
     var title = $(this).attr("data-title");
     
-    $(".modal-title span").html(title);
+//    $(".modal-title span").html(title);
     
 //    console.log('title: ' + title);
 //    console.log('link: ' + videoLink);

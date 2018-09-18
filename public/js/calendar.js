@@ -50,7 +50,7 @@ function getEvents(dayofweek, current_date, isInit) {
                                     eventsList += '<span class="event-title">';
                                         eventsList += '<a href="#" class="bs" onclick="showEvent('+event.id+')">';
 //                                        eventsList += '<a href="#" class="bs modal-trigger-show-event" data-modal="show-event-modal" data-id='+event.id+'>'; 
-                                            eventsList += '<span class="space-10">#</span>' + event.title;
+                                            eventsList += '<span class="space-10"># </span>' + event.title;
                                         eventsList += '</a>';
                                     eventsList += '</span>';
                                 eventsList += '</div>';
@@ -304,7 +304,7 @@ function showEvent(eventId){
             async: true ,
             success: function(data){
                 if(data.success === true){
-                    //console.log(data);
+                    console.log(data);
                     var event = data.event;
                     var eventDate = new Date(data.eventYear, (data.eventMonth)-1, data.eventDay);
                     //console.log(eventDate);
@@ -312,7 +312,13 @@ function showEvent(eventId){
                     $("#color-box .month").html(getShortMonth(eventDate.getMonth()));
                     $("#color-box .year").html(eventDate.getFullYear());
                     $("#event-details .title").html(event.title);
-                    $("#event-details .location span").html(event.location);
+                    
+                    if(event.location !== null){
+                        $("#event-details .location span").html(event.location);
+                        $("#event-details .location").css({"display":"inline-block"});
+                    }else{
+                        $("#event-details .location").css({"display":"none"});
+                    }
                     $("#event-details .text").html(event.content);
                     $("#eventBox .date").attr('id',   data.colorBox);
 //                    $("#eventBox .date").attr('id',   data.colorBox);

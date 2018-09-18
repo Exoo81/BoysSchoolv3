@@ -6,12 +6,16 @@
 $(".modal-trigger-delete-our-awards").click(function(e){
     e.preventDefault();
     
+    //close Our award manage modal
+    $("#manage-our-awards-modal").css({"display":"none"});
+    
     dataModal = $(this).attr("data-modal");
     var ourAwardId = $(this).data("id");
     var ourAwardTitle = $(this).data("title");
     
     //clear msg label
     $(".response-msg").html('');
+    
     
     //insert data
     $("#ourAwardID").val(ourAwardId);

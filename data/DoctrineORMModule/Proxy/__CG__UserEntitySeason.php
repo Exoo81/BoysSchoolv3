@@ -64,10 +64,10 @@ class Season extends \User\Entity\Season implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'seasonName', 'status', 'news', 'eventsList', 'newslettersList', 'classBlogsList', 'classPostsList'];
+            return ['__isInitialized__', 'id', 'seasonName', 'startYear', 'endYear', 'status', 'news', 'eventsList', 'newslettersList', 'classBlogsList', 'classPostsList', 'bookList'];
         }
 
-        return ['__isInitialized__', 'id', 'seasonName', 'status', 'news', 'eventsList', 'newslettersList', 'classBlogsList', 'classPostsList'];
+        return ['__isInitialized__', 'id', 'seasonName', 'startYear', 'endYear', 'status', 'news', 'eventsList', 'newslettersList', 'classBlogsList', 'classPostsList', 'bookList'];
     }
 
     /**
@@ -219,6 +219,50 @@ class Season extends \User\Entity\Season implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSeasonName', [$seasonName]);
 
         return parent::setSeasonName($seasonName);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStartYear()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartYear', []);
+
+        return parent::getStartYear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStartYear($year)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartYear', [$year]);
+
+        return parent::setStartYear($year);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEndYear()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndYear', []);
+
+        return parent::getEndYear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEndYear($year)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndYear', [$year]);
+
+        return parent::setEndYear($year);
     }
 
     /**
@@ -406,6 +450,50 @@ class Season extends \User\Entity\Season implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClassPostToList', [$classPost]);
 
         return parent::addClassPostToList($classPost);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBookList()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBookList', []);
+
+        return parent::getBookList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBookListAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBookListAsString', []);
+
+        return parent::getBookListAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addBookListToList($bookList)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBookListToList', [$bookList]);
+
+        return parent::addBookListToList($bookList);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'jsonSerialize', []);
+
+        return parent::jsonSerialize();
     }
 
 }

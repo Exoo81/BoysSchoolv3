@@ -32,8 +32,8 @@
                         $('.sub-start').siblings('.sub-end').animate({top : '0px'},500);
                     }else{
                          $(".sub-end").attr("id", 'subscribingFaild');
-                        $('.sub-end h3').html('You are already subscribed<br>to the newsletter at the address <br><span class="subEmail">'+data.email+'</span>' );
-                                 
+                         $('.sub-end h3').html('You are already subscribed<br>to the newsletter at the address <br><span class="subEmail">'+data.email+'</span>' );
+                               
                         $('.sub-start').animate({top : '-500px'},500);
                         $('.sub-start').siblings('.sub-end').animate({top : '0px'},500);
                     }

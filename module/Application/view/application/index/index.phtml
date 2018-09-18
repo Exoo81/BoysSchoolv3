@@ -450,11 +450,10 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
         <!-- OUR AWARDS -->
         <div class="our-awards-box">
             <?php if ($this->access('award.add')) {
-                echo '<div class="cms-option our-awards">'
-                    .'<a href="#" class="bs modal-trigger-add-our-awards" data-modal="add-our-awards-modal">'
-                        .'<img src="img/icons/icon-add.png">'
-                        .'<span>Add award</span>'
-                    .'</a>';
+                echo '<div class="cms-option our-awards">';
+                    echo '<a href="#" class="bs modal-trigger" data-modal="manage-our-awards-modal">';
+                        echo '<img src="img/icons/icon-settings.png"><span>Manage awards</span>';
+                    echo '</a>';
                 echo '</div>';
             } ?>
             <div class="title red">Our Awards</div>
@@ -464,9 +463,6 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             foreach ($this->ourAwards  as $award) :
 
                 echo '<div class="award-wrapper">';
-                        if ($this->access('award.delete')) {
-                            echo '<label class="delete-img-label" id="deleteOurAward"><a href="#" class="modal-trigger-delete-our-awards" data-modal="delete-our-awards-modal" data-id="'.$award->getId().'" data-title="'.$award->getTitle().'">X</a></label>';
-                        }
                         echo '<span class="helper"></span>'
                         . '<img src="upload/awards/'.$award->getPhotoName().'" alt="'.$award->getTitle().'">'
                     . '</div>';
@@ -726,7 +722,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
     <div class="modal-sandbox"></div>
     <div class="modal-box lg">
   
-    <div class="modal-header">
+    <div class="modal-header photo">
       	<div class="close-modal">
             <div class="close-modal-inner">
 	    	<label>close</label>
@@ -752,7 +748,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
  
     <div class="modal-body">
         <?php if ($this->access('aboutus.edit')) {
-            echo '<div class="cms-option">'
+            echo '<div class="cms-option about-us">'
                 .'<a href="#" class="bs modal-trigger-about-us-edit" data-modal="about-us-edit-modal" data-id="'.$aboutUs->getId().'">'
                     .'<img src="img/icons/icon-edit.png">'
                     .'<span>Edit</span>'
@@ -802,14 +798,18 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                 
                 <form id="editAboutUsForm" class="cms"> 
                     <input id="editAboutUsID" name='editAboutUsID' type="hidden">
-                    <label for="editAboutUsTitle">Title:</label>
-                    <input id="editAboutUsTitle" name="editAboutUsTitle" type="text">
-                    
-                    <label for="editAboutUsContent">About us (text):</label>
-                    <textarea id="editAboutUsContent" name="editAboutUsContent" rows="10"></textarea>
-                    
-                    <label for="editAboutUsPrincipalName">Principal name:</label>
-                    <input id="editAboutUsPrincipalName" name="editAboutUsPrincipalName" type="text">
+                    <div class="width-100">
+                        <label for="editAboutUsTitle">Title:</label>
+                        <input id="editAboutUsTitle" name="editAboutUsTitle" type="text">
+                    </div>
+                    <div class="width-100">
+                        <label for="editAboutUsContent">About us (text):</label>
+                        <textarea id="editAboutUsContent" name="editAboutUsContent" rows="10"></textarea>
+                    </div>
+                    <div class="width-100">
+                        <label for="editAboutUsPrincipalName">Principal name:</label>
+                        <input id="editAboutUsPrincipalName" name="editAboutUsPrincipalName" type="text">
+                    </div>
                     
                     <div class="btn-modal-box">
                         <button type="submit" class="modal-btn btn-blue left" data-text="Save changes"><span>Save changes</span></button>
@@ -848,41 +848,45 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
         <div class="modal-text">
             <hr class="purpure" />
             
-            <?php 
-                $count_nl = 0; 
-                echo '<ul class="file-list">';
-                foreach ($this->newsletters  as $newsletter) :
-                    if($count_nl > 3){
+            <div class="small-table no-border">    
+                <?php 
+                    $count_nl = 0;
                     
-                        echo '<li>'
-                                . '<div class="list-element">'
-                                    . '<img class="icon-list" src="img/icons/icon-download.png">'
-                                    . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
-                                        . '<span class="">'.$newsletter->getTitle().'</span>'
+                        foreach($this->newsletters as $newsletter){
+                            if($count_nl > 3){
 
-                                    . '</a>'
-                                . '</div>'
-                                . '';
-                                if ($this->access('newsletter.delete')) {
-                                    echo '<div class="admin-option">'
-                                        . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">'
-                                            . '<button class="btn-admin">'
-                                                . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
-                                            . '</button>'
-                                            . '<span class="tooltiptext remove">Remove</span>'
-                                        . '</a>'
-                                    . '</div>';
-                                }
-                                echo '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
-                        echo '</li>';
-                        
-                 
-                    }
-                    $count_nl++;
-                endforeach;
-                echo '</ul>';
-            ?>
-                
+                                echo '<div class="small-table-row ">';
+                                    echo '<div class="small-table-cell icon-cell">';
+                                        echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
+                                    echo '</div>';
+                                    echo '<div class="small-table-cell long-title">';
+                                        echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+                                            echo '<span>'.$newsletter->getTitle().'</span>';                                          
+                                        echo '</a>';
+                                        echo '<span class="newsletter-date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
+                                    echo '</div>';
+
+                                    echo '<div class="small-table-cell remove">';
+                                        if ($this->access('newsletter.delete')) {
+                                            echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">';
+                                                echo '<button class="btn-admin">';
+                                                    echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                                echo '</button>';
+                                                echo '<span class="tooltiptext remove">Remove</span>';
+                                            echo '</a>';
+                                        }                               
+                                    echo '</div>';
+
+                                echo '</div>';
+                            
+                            }
+                        $count_nl++;
+                        }
+                ?>
+            </div>
+            
+            <hr class="purpure" />
+    
             <div class="btn-modal-box">
                 <button type="button" class="modal-btn btn-purpure small close-btn" data-text="Close"><span>Close</span></button>
             </div> 
@@ -1057,7 +1061,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 <div class="modal" id="events-list">
     <div class="modal-sandbox"></div>
     <div class="modal-box lg orange"> 
-        <div class="modal-header">
+        <div class="modal-header photo">
             <div class="close-modal">
                 <div class="close-modal-inner">
                     <label>close</label>
@@ -1328,6 +1332,79 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
     </div>
 </div>
 <!-- end delete Event Modal -->
+
+<!-- Manage Our Awards Modal -->
+<div class="modal" id="manage-our-awards-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box sm">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Our Awards</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            <div class="btn-modal-box our-team-add">
+                <button class="modal-trigger-add-our-awards btn-max btn-red reversed" data-modal="add-our-awards-modal" data-text="Add award">
+                    <span><i class="fa fa-plus"></i>Add award</span>
+                </button>
+            </div>
+            <hr class="burgundy" />
+            
+            
+            <div class="table-header">List of awards</div>
+            <div class="small-table">    
+                <?php 
+                    foreach($this->ourAwards as $award){
+                        
+                        
+                            echo '<div class="small-table-row">';
+
+                                echo '<div class="small-table-cell long-title">';
+                                    echo '<span>'.$award->getTitle().'</span>';
+                                echo '</div>';
+
+                                echo '<div class="small-table-cell remove">';
+                                    if ($this->access('award.delete')) {
+                                        echo '<a href="#" class="modal-trigger-delete-our-awards tooltip" data-modal="delete-our-awards-modal" data-id="'.$award->getId().'" data-title="'.$award->getTitle().'">';
+                                            echo '<button class="btn-admin">';
+                                                echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                            echo '</button>';
+                                            echo '<span class="tooltiptext remove">Remove</span>';
+                                        echo '</a>';
+                                    }                               
+                                echo '</div>';
+
+                            echo '</div>';
+                        
+
+                    }
+                ?>
+            </div>
+            
+            <hr class="burgundy" />
+            
+          
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Our Awards Modal -->
 
 <!-- Add Our Awards Modal -->
 <div class="modal" id="add-our-awards-modal">
@@ -1720,7 +1797,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             </div>
             <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
             <div class="modal-title">
-                    <span></span>
+                    <span>Watch the video</span>
             </div>
 	
         </div>

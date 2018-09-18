@@ -12,6 +12,9 @@ $(".modal-trigger-add-our-awards").click(function(e){
     
     e.preventDefault();
     
+    //close Our award manage modal
+    $("#manage-our-awards-modal").css({"display":"none"});
+    
     dataModal = $(this).attr("data-modal");
     
     //clear msg label
