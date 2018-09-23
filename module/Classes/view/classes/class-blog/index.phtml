@@ -190,7 +190,7 @@ $this->headTitle($this->headTitle);
                                             $this->access('post.own.edit', ['user'=>$blog->getTeacher()]) ||
                                             $this->access('post.own.edit', ['user'=>$blog->getLearningSupport()])) {
 
-                                            echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                            echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
                                                     .'<button class="btn-admin">'
                                                         .'<img src="/../../img/icons/icon-edit-blue.png" >'
                                                     .'</button>'
@@ -204,7 +204,7 @@ $this->headTitle($this->headTitle);
                                         if ($this->access('post.edit') ||
                                             $this->access('post.own.edit', ['user'=>$blog->getTeacher()])) {
                                                 
-                                            echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                            echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                     .'<button class="btn-admin">'
                                                         .'<img src="/../../img/icons/icon-edit-blue.png" >'
                                                     .'</button>'
@@ -221,7 +221,7 @@ $this->headTitle($this->headTitle);
                                                 $this->access('post.own.delete', ['user'=>$blog->getTeacher()]) ||
                                                 $this->access('post.own.delete', ['user'=>$blog->getLearningSupport()])) {
 
-                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                            echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
                                                     .'<button class="btn-admin">'
                                                         .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
                                                     .'</button>'
@@ -234,7 +234,7 @@ $this->headTitle($this->headTitle);
                                         if ($this->access('post.delete') ||
                                                 $this->access('post.own.delete', ['user'=>$blog->getTeacher()])) {
                                             
-                                            echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                            echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                     .'<button class="btn-admin">'
                                                         .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
                                                     .'</button>'
@@ -332,7 +332,7 @@ $this->headTitle($this->headTitle);
                                                 $this->access('post.own.edit', ['user'=>$blog->getTeacher()]) ||
                                                 $this->access('post.own.edit', ['user'=>$blog->getLearningSupport()])) {
 
-                                                echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
                                                         .'<button class="btn-admin">'
                                                             .'<img src="/../../img/icons/icon-edit-blue.png" >'
                                                         .'</button>'
@@ -345,7 +345,7 @@ $this->headTitle($this->headTitle);
                                                 $this->access('post.own.edit', ['user'=>$blog->getTeacher()])) {
                                                 //no learning support
                                                 $learningSupportID = null;
-                                                echo '<a href="#" class="tooltip horizontal modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                         .'<button class="btn-admin">'
                                                             .'<img src="/../../img/icons/icon-edit-blue.png" >'
                                                         .'</button>'
@@ -362,7 +362,7 @@ $this->headTitle($this->headTitle);
                                                     $this->access('post.own.delete', ['user'=>$blog->getTeacher()]) ||
                                                     $this->access('post.own.delete', ['user'=>$blog->getLearningSupport()])) {
 
-                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
                                                         .'<button class="btn-admin">'
                                                             .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
                                                         .'</button>'
@@ -375,7 +375,7 @@ $this->headTitle($this->headTitle);
                                             if ($this->access('post.delete') ||
                                                     $this->access('post.own.delete', ['user'=>$blog->getTeacher()])) {
 
-                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                         .'<button class="btn-admin">'
                                                             .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
                                                         .'</button>'
@@ -404,7 +404,177 @@ $this->headTitle($this->headTitle);
                     echo '</div>';
                 }				
                 echo '</div>'; // end class-blog-box -->    
-            }        
+            }
+            
+            /** mobile version **/
+                echo '<div class="main-col">';
+                    echo '<div class="class-blog-box">';
+                    
+                        if($blog->getLearningSupport() !== null){
+                            if ($this->access('post.add') || 
+                                    $this->access('post.own.add', ['user'=>$blog->getTeacher()]) ||
+                                    $this->access('post.own.add', ['user'=>$blog->getLearningSupport()])) {
+                                echo '<div class="cms-option post">'
+                                    . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'" data-authorID="'.$this->currentUser()->getId().'">'
+                                        . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                    . '</a>'
+                                . '</div>';
+                            }
+                        }else{
+                            $learningSupportID = null;
+                            if ($this->access('post.add') || 
+                                    $this->access('post.own.add', ['user'=>$blog->getTeacher()])) {
+                                echo '<div class="cms-option post">'
+                                    . '<a href="#" class="bs modal-trigger-add-post" data-modal="add-post-modal" data-blogID="'.$this->blog->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'" data-authorID="'.$this->currentUser()->getId().'">'
+                                        . '<img src="/../img/icons/icon-add.png"><span>Add class post</span>'
+                                    . '</a>'
+                                . '</div>';
+                            }
+                        }
+                        
+                        echo '<img class="start-tl" src="/img/icons/icon-circle.png">';
+                        echo '<span id="ourTeam">Our posts</span>';
+                        echo '<img class="end-tl" src="/img/icons/icon-circle.png">';
+                        
+                        
+                        
+                        
+                        foreach($this->postsList  as $post){
+                            echo '<div class="blog-content">';
+                                $postGallery = $post->getPostGallery();
+                                if (sizeof($postGallery) > 0) {
+                                    echo '<div class="gallery">';
+                                        for($i = 0; $i < sizeof($postGallery); $i++){
+                                            if($i == 0){
+                                                echo '<div class="first-photo">';
+                                                    echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '</a>';
+                                                echo '</div>';
+                                            }else{
+                                                echo '<div class="hidden">';
+                                                    echo '<a class="lightbox" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '</a>';
+                                                echo '</div>';
+                                            }
+                                        }     
+                                    echo '</div>';
+                                    
+                                    if($post->getVideoName() !== null){
+                                        echo '<div class="blog-link">';                                          
+                                            echo '<img src="/../../img/icons/icon-video.png">';
+                                            $video_link = '../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                            echo '<a class="bs '.$this->color.' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                echo '<span class="">see also video</span>';
+                                            echo '</a>';     
+                                        echo '</div>';
+                                    }
+                                }else{
+                                    if($post->getVideoName() !== null){
+                                        echo '<video controls>';
+                                            echo '<source src="/../../../../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                        echo '</video>';
+                                    }
+                                }
+                                echo '<div class="blog-title">'.$post->getTitle().'</div>';
+                                echo '<hr class="burgundy">';
+                                echo '<div class="blog-text">'
+                                        .'<p>'.$post->getContent().'</p>';
+                                echo '</div>';
+                                if($post->getDocName() !== null){
+                                    echo '<div class="blog-link">';
+                                        echo '<img src="/../../img/icons/icon-download.png">';
+                                        echo '<a target="_blank" class="bs '.$this->color.'" href="../../../../upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                            echo '<span class="">see attached file</span>';
+                                        echo '</a>';    
+                                    echo '</div>';
+                                }
+                                echo '<div class="blog-date">';
+                                    echo '<img src="/../img/icons/icon-calendar.png">';
+                                    echo '<span>'.date('d F Y',strtotime($post->getDatePublished())).'</span>';
+                                    echo '<img class="blog-poiter" src="/../img/icons/icon-arrow-right.png">';
+                                echo '</div>';
+                                
+                                    /*
+                                     * ADMIN OPTIONS
+                                     */
+                                    echo '<div class="admin-option">';
+                                        /*
+                                         * EDIT POST
+                                         */
+                                        if($blog->getLearningSupport() !== null){
+                                            if ($this->access('post.edit') ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getTeacher()]) ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getLearningSupport()])) {
+
+                                                echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                    . '</a>';
+
+                                            }
+                                        }else{
+                                            if ($this->access('post.edit') ||
+                                                $this->access('post.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                //no learning support
+                                                $learningSupportID = null;
+                                                echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                    . '</a>';
+                                            }
+                                        }
+                                        
+                                        /*
+                                         * DELETE POST
+                                         */
+                                        if($blog->getLearningSupport() !== null){
+                                            if ($this->access('post.delete') ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getTeacher()]) ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getLearningSupport()])) {
+
+                                                echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';      
+                                            }
+                                        }else{
+                                            //no learning support
+                                            $learningSupportID = null;
+                                            if ($this->access('post.delete') ||
+                                                    $this->access('post.own.delete', ['user'=>$blog->getTeacher()])) {
+
+                                                echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';
+
+                                            }
+                                        }
+                                    echo '</div>';
+                                    /*
+                                     * end ADMIN OPTIONS
+                                     */
+                                
+                            echo '</div>';
+                        }
+                        
+                        
+                        
+                        
+                        
+                    echo '</div>';
+                echo '</div>';
+            /** end mobile version **/
         ?>
     <?php if($this->postsList != null){ ?>
         <?= 
@@ -694,7 +864,7 @@ $this->headTitle($this->headTitle);
             </div>
             <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
             <div class="modal-title">
-                    <span></span>
+                    <span>Watch the video</span>
             </div>
 	
         </div>

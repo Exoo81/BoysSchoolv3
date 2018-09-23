@@ -81,6 +81,7 @@ class ClassesManager{
             $fullListsOfBlogs['blogs-left'] = $leftBlogListGroupByLevel;
             $fullListsOfBlogs['colors'] = $levelColorList;
             $fullListsOfBlogs['title'] = $levelTitleList;
+            $fullListsOfBlogs['blogs'] = $blogListGroupByLevel;
             
         }else{
             return null;

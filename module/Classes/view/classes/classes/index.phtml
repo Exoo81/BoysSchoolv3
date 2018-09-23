@@ -174,6 +174,74 @@ $this->headTitle($this->title.' '.$current_season);
                         echo '</div>';
                     endforeach;
                 echo '</div>';
+                
+                
+                /** mobile version **/
+                echo '<div class="main-col">';
+                    if ($this->access('classes.add')) {
+                        echo '<div class="cms-option classes">'
+                            . '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">'
+                                . '<img src="img/icons/icon-add.png"><span>Add new class blog</span>'
+                            . '</a>'
+                        . '</div>';
+                    }               
+                    foreach ($this->blogList['blogs'] as $key => $value) :
+                        echo '<div class="main-box">';
+                            echo '<div class="title '.$this->blogList['colors'][$key].'">'.$this->blogList['title'][$key].'</div>';
+                             echo '<ul class="class-blog-list">';
+                                foreach ($value as $blog) :
+                                    echo '<li class="'.$this->blogList['colors'][$key].'">';
+                                         echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">';
+                                            echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
+
+                                            if($blog->getPhotoName() === null){
+                                               echo '<img src="img/classes/dummy-class-photo.png"/>';    
+                                                echo '<span class="dummy_class_info">Place for a class photo</span>';
+                                           }else{
+                                                echo '<img src="upload/classes/'.$blog->getSeason()->getSeasonName().'/'.$blog->getPhotoName().'"/>';
+                                           }                                       
+                                        echo '</a>';
+                                        echo '<span class="teacher">'.$blog->getTeacher()->getOurTeamMember()->getFullName().'</span>';
+                                        //                                  ADMIN OPTIONS
+                                        echo '<div class="admin-option">';
+                                            if($blog->getLearningSupport() !== null){
+                                                if ($this->access('classes.edit') || 
+                                                $this->access('classes.own.edit', ['user'=>$blog->getTeacher()]) || 
+                                                    $this->access('classes.own.edit', ['user'=>$blog->getLearningSupport()])) {            
+                                                        echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$blog->getLearningSupport()->getId().'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                            . '</a>';      
+                                                }              
+                                            }else{
+                                                $learningSupportID = null;
+                                                if ($this->access('classes.edit') || $this->access('classes.own.edit', ['user'=>$blog->getTeacher()])) {
+                                                    echo '<a href="#" class="tooltip horizontal modal-trigger-edit-class-blog" data-modal="edit-class-blog-modal" data-blogID="'.$this->escapeHtml($blog->getId()).'" data-teacherID="'.$blog->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                            .'<button class="btn-admin">'
+                                                               .'<img src="img/icons/icon-edit-blue.png" >'
+                                                            .'</button>'
+                                                            .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                        . '</a>';
+                                                }  
+                                            }
+                                            if ($this->access('classes.delete')){
+                                                echo '<a href="#" class="tooltip horizontal modal-trigger-delete-class-blog" data-modal="delete-class-blog-modal" data-id="'.$this->escapeHtml($blog->getId()).'" data-level="'.$this->blogList['title'][$key].'" data-teacher="'.$this->escapeHtml($blog->getTeacher()->getOurTeamMember()->getFullName()).'">'
+                                                        .'<button class="btn-admin">'
+                                                            .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
+                                                        .'</button>'
+                                                        .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                    . '</a>';
+                                            }
+                                        echo '</div>';
+    //                                  end ADMIN OPTIONS 
+                                    echo '</li>';
+                                endforeach;
+                             echo '</ul>';
+                        echo '</div>';
+                    endforeach;
+                echo '</div>';
             }
 
         ?>
