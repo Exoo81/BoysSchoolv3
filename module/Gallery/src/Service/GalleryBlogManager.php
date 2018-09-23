@@ -101,7 +101,7 @@ class GalleryBlogManager{
         $adapter = new DoctrineAdapter(new ORMPaginator($galleryPostList, false));
         $paginator = new Paginator($adapter);
 
-        $paginator->setDefaultItemCountPerPage(4);
+        $paginator->setDefaultItemCountPerPage(6);
         
         return $paginator;
     }

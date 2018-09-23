@@ -84,7 +84,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                         }
 
                                     echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';
-                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
+                                    
                                     
                                     
                                     echo '<div class="gallery">';
@@ -108,7 +108,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 $countPhoto ++;
                                             }
                                             if($post->getVideoName() !== null){
-                                                echo '<div class="news-link">';                                          
+                                                echo '<div class="gallery-link">';                                          
                                                     echo '<img  src="/../../img/icons/icon-video.png">';
                                                     $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
                                                     echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
@@ -116,12 +116,20 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                     echo '</a>';     
                                                  echo '</div>';
                                             }
+                                            
+                                            echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                            echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
                                             echo '<div class="gallery-content">'.$post->getContent().'</div>';
+                                            
+                                            
                         
                                         }else{
                                             echo '<video controls>';
                                                 echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                             echo '</video>';
+                                            
+                                            echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                            echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
                                             echo '<div class="gallery-content">'.$post->getContent().'</div>';
                                         }                    
                                         /*
@@ -254,8 +262,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                         if($reflect->getShortName() === 'ClassPost'){
                                             $type = 'classes';
                                         }
-                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';
-                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';                              
+                                    echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';                             
                                     
                                     echo '<div class="gallery">';
                                         if(sizeof($postGallery) > 0){
@@ -278,7 +285,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             }
                                             
                                             if($post->getVideoName() !== null){
-                                                echo '<div class="news-link">';                                          
+                                                echo '<div class="gallery-link">';                                          
                                                     echo '<img src="/../../img/icons/icon-video.png">';
                                                     $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
                                                     echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
@@ -287,12 +294,17 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                  echo '</div>';
                                             }
                                             
+                                            echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                            echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';   
                                             echo '<div class="gallery-content">'.$post->getContent().'</div>';
      
                                         }else{
                                             echo '<video controls>';
                                                 echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                             echo '</video>';
+                                            
+                                            echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                            echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';                                          
                                             echo '<div class="gallery-content">'.$post->getContent().'</div>';
                                         }
                                         /*
@@ -393,7 +405,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 }
                                             echo '</div>';
                                         }
-                                        //add schoollife
+                                        //add 
                                         /*
                                         * end ADMIN OPTIONS (left col)
                                         */ 
@@ -407,30 +419,205 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             
                         echo '</div>';
                     }
-                    
-
-                            
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                   
-                    
-                    
-                    
-                    
+    
                     
                 }
+                
+                /** mobile version **/
+                echo '<div class="main-col">';
+                    if($this->access('gallery.add')){
+                        echo '<div class="cms-option gallery_add">';
+                            echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
+                                echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+                    
+                    $countPost = 0;
+                    $numberPostOnPage = $this->galleryList->getCurrentItemCount();
+                    foreach ($this->galleryList as $post) :
+                        $type = null;
+                        $reflect = new ReflectionClass($post);
+                            if($reflect->getShortName() === 'GalleryPost'){
+                                $type = 'gallery';
+                            }
+                            if($reflect->getShortName() === 'ClassPost'){
+                                $type = 'classes';
+                            }
+                        $postGallery = $post->getPostGallery();
+                        echo '<div class="main-box">';
+                            echo '<div class="title '.$this->colorList[$countPost].'">'.$post->getTitle().'</div>';
+                            echo '<div class="gallery">';
+                                
+                                
+                                if(sizeof($postGallery) > 0){
+                                    $countPhoto = 1;                // first photo from post gallery
+                                    foreach($postGallery as $photo){
+                                        if($countPhoto === 1){
+                                            if($countPost % 2){
+                                                echo '<div class="first-photo right">';
+                                                    echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                        echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                    echo '</a>';
+                                                echo '</div>';
+                                            }else{
+                                                echo '<div class="first-photo left">';
+                                                echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '</a>';
+                                            echo '</div>';
+                                            }
+                                        }else{    
+                                            echo '<div class="hidden">';
+                                                echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '</a>';
+                                            echo '</div>';
+                                        }
+                                        $countPhoto ++;
+                                    }
+                                            
+                                    if($post->getVideoName() !== null){
+                                        echo '<div class="gallery-link">';                                          
+                                            echo '<img src="/../../img/icons/icon-video.png">';
+                                                $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                echo '<span class="">see also video</span>';
+                                            echo '</a>';     
+                                        echo '</div>';
+                                    }
+                                    
+                                    echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
+                                    echo '<div class="gallery-content">'.$post->getContent().'</div>';
+     
+                                }else{
+                                    
+                                    if($countPost % 2){
+                                        echo '<video controls right>';
+                                            echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                        echo '</video>';
+                                    }else{
+                                        echo '<video controls left>';
+                                            echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                        echo '</video>';
+                                    }
+                                    
+                                    echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
+                                    echo '<div class="gallery-date"><img src="/img/icons/icon-calendar.png">'.date('d F Y',strtotime($post->getDatePublished())).'</div>';
+                                    echo '<div class="gallery-content">'.$post->getContent().'</div>';
+                                }
+                                
+                                        /*
+                                        * ADMIN OPTIONS 
+                                        */
+                                        if($type === 'gallery'){
+                                            echo '<div class="admin-option">';
+                                                /*
+                                                * EDIT GALLERY 
+                                                */
+                                                if ($this->access('gallery.edit')) {
+
+                                                    echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom edit">Edit</span>';
+                                                    echo '</a>';
+                                                }
+                                                /*
+                                                * DELETE GALLERY 
+                                                */
+                                                if ($this->access('gallery.delete')) {
+                                                    echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext bottom remove">Remove</span>';
+                                                    echo '</a>';      
+                                                }
+                                            echo '</div>';
+                                        }
+                                        if($type === 'classes'){
+
+                                            echo '<div class="admin-option">';
+                                                /*
+                                                * EDIT POST (left col)
+                                                */
+                                                if($post->getBlog()->getLearningSupport() !== null){
+                                                   if ($this->access('post.edit') ||
+                                                        $this->access('post.own.edit', ['user'=>$post->getBlog()->getTeacher()]) ||
+                                                        $this->access('post.own.edit', ['user'=>$post->getBlog()->getLearningSupport()])) {
+                                                       
+                                                        echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img src="../../img/icons/icon-edit-blue.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                            . '</a>';
+
+                                                   }
+                                                }else{
+                                                    //no learning support
+                                                    $learningSupportID = null;
+                                                    if ($this->access('post.edit') ||
+                                                        $this->access('post.own.edit', ['user'=>$post->getBlog()->getTeacher()])) {
+
+                                                        echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom edit">Edit</span>'
+                                                            . '</a>';
+
+                                                    }
+                                                }
+                                                /*
+                                                * DELETE POST (left col)
+                                                */
+                                                if($post->getBlog()->getLearningSupport() !== null){
+                                                    if ($this->access('post.delete') ||
+                                                            $this->access('post.own.delete', ['user'=>$post->getBlog()->getTeacher()]) ||
+                                                            $this->access('post.own.delete', ['user'=>$post->getBlog()->getLearningSupport()])) {
+
+                                                        echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                            . '</a>';      
+                                                    }
+                                                }else{
+                                                    //no learning support
+                                                    $learningSupportID = null;
+                                                    if ($this->access('post.delete') ||
+                                                            $this->access('post.own.delete', ['user'=>$post->getBlog()->getTeacher()])) {
+
+                                                        echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
+                                                                .'<button class="btn-admin">'
+                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                .'</button>'
+                                                                .'<span class="tooltiptext bottom remove">Remove</span>'
+                                                            . '</a>';
+
+                                                    }
+                                                }
+                                            echo '</div>';
+                                        }
+
+                                        /*
+                                        * end ADMIN OPTIONS
+                                        */
+                                
+                            echo '</div>';
+                        echo '</div>';
+                        $countPost ++;
+                        if($countPost > 10){
+                            $countPost = 0;
+                        }
+                    endforeach;
+                echo '</div>';
+                /** end mobile version **/
                 
             ?>
             
@@ -444,7 +631,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         // The scrolling style:
                         'sliding',
                         // The partial to use to render the control:
-                        'partial/paginator',
+                        'gallery/partial/paginator',
                         // The route to link to when a user clicks a control link:
                         ['route' => 'gallery', 'action' => 'index'])
           ?>
@@ -853,7 +1040,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             </div>
             <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
             <div class="modal-title">
-                    <span></span>
+                    <span>Watch the video</span>
             </div>
 	
         </div>

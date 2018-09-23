@@ -116,6 +116,16 @@ hr.blog{
 	transform: rotate(-1deg);
 }
 
+hr.hr-gallery{
+    width: 45%;
+}
+    /* Breakpoint */
+    @media screen and (max-width: 600px) {
+        hr.hr-gallery{
+            width: 100%;
+        }
+    }
+
 /** end HR **/
 
 /** HEADERS COLORS **/
@@ -3620,7 +3630,7 @@ section.admin .admin-box{
     }
     
     
-
+    
 
 
     /** Breakpoint **/
@@ -3693,6 +3703,34 @@ section.admin .admin-box{
             padding-top: 35px;
         }
     }
+    
+
+    /** Breakpoint **/
+    @media screen and (min-width: 1201px) {
+        .gallery-box .main-col{
+            display: none
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .gallery-box .main-col{
+            display: block;
+            width: 70%;
+            margin: 0 15% 0 15%;
+            padding-top: 110px;
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .gallery-box .main-col{
+            display: block;
+            width: 70%;
+            margin: 0 15% 0 15%;
+            padding-top: 110px;
+            
+        }
+    }
 
 .main-box{
     width: 100%;
@@ -3705,13 +3743,29 @@ video{
 
 .gallery video{
     float: left;
-    margin-top: 10px;
-    width: 49%;
-    margin-right: 1%;
-    
+    width: 50%;
+    margin: 2%;
+    margin-top: 0;
+    border-radius: 4px;
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+}
+
+    /* Breakpoint */
+    @media screen and (max-width: 600px) {
+        .gallery video{
+            width: 100%;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+    }
+    
+.gallery video.right{
+    float: right;
+}
+.gallery video.left{
+    float: left;
 }
 
 .modal-box.lg .print-option-bottom{
@@ -3942,7 +3996,8 @@ section.school-news .main-col-right{
     }
 
 .news-box .btn-admin img,
-.blog-content .admin-option img{
+.blog-content .admin-option img,
+.gallery .admin-option img{
     width: 30px;
 }
 /*    @media screen and (max-width:1366px){
@@ -4191,7 +4246,8 @@ section.school-news .main-col-right{
 	}*/
         
 .news-link,
-.blog-link{
+.blog-link,
+.gallery-link{
     position: relative;
     display: inherit;
     width: auto;
@@ -4200,6 +4256,7 @@ section.school-news .main-col-right{
     font-family: 'Architects Daughter', 'Arial' ,sans-serif;
     font-size: 1.4em;
 }
+
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 1300px) {
         .news-link,
@@ -4209,9 +4266,20 @@ section.school-news .main-col-right{
             font-size: 1.2em; 
         }
     }
+    
+.gallery-link{
+    margin: 0;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 300px) and (max-width: 1300px) {
+        .gallery-link{
+            font-size: 1.2em; 
+        }
+    }
 
 .news-link img,
-.blog-link img{
+.blog-link img,
+.gallery-link img{
     position: absolute;
     float: left;
     width: 35px;
@@ -4222,14 +4290,16 @@ section.school-news .main-col-right{
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 1300px) {
         .news-link img,
-        .blog-link img{
+        .blog-link img,
+        .gallery-link img{
             width: 30px;
             left: 10px; 
         }
     }
 
 .news-link a,
-.blog-link a{
+.blog-link a,
+.gallery-link a{
     float: left;
     padding-top: 10px;
     margin-left: 50px;
@@ -10033,30 +10103,24 @@ section.gallery .header{
 .gallery-box .gallery {
     position: relative;
     display: inline-block;
-/*    padding-top: 2%;*/
+    padding: 5%;
 }
 
 .gallery .gallery-date{
     display: inline-block;
     position: relative;
-    margin-bottom: 10px;
-    margin-left: 10px;
     padding-left: 50px;
     font-family: 'Architects Daughter' ,sans-serif;
     font-size: 1.2em;
     color: #561818;
-/*    border: 1px solid red;*/
 }
-/*	@media screen and ( max-width :1536px) {
-		.gallery .gallery-date{
-			font-size: 1.2em;
-		}
-	} 
-	@media screen and ( max-width :1280px) {
-		.gallery .gallery-date{
-			font-size: 1em;
-		}
-	} */
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .gallery .gallery-date{
+           font-size: 1.1em; 
+        }
+    }
+
 
 .gallery-date img{
 	position:absolute;
@@ -10064,21 +10128,38 @@ section.gallery .header{
 	top: 0px;
 	left: 10px;
 }
-/*	@media screen and (max-width:1536px){
-		.gallery-date img{
-			top: -2px;
-		}
-	}*/
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .gallery-date img{
+           width: 20px;
+            left: 20px;
+        }
+    }
 
 .gallery-box .gallery div.first-photo{
 	float: left;
-	width: 49%;
-	margin-right: 1%;
+	width: 50%;
 	height: auto;
-	
-	/*TEMP*/
-	/* border: 1px dotted red; */
+        padding: 2%;
+        padding-top: 0;
 }
+
+.gallery-box .gallery div.first-photo.right{
+    float: right;
+}
+
+.gallery-box .gallery div.first-photo.left{
+    float: left;
+}
+    
+    /* Breakpoint */
+    @media screen and (max-width: 600px) {
+        .gallery-box .gallery div.first-photo{
+            width: 100%;
+            padding: 0;
+            padding-bottom: 20px;
+        }
+    }
 
 .news-box div.hidden,
 .gallery-box div.hidden{
@@ -10086,13 +10167,19 @@ section.gallery .header{
 }
 
 .gallery-box .gallery .lightbox img { 
-    width: 100%;  
-    /* margin-bottom: 30px; */
+    width: 100%;
+    height: auto;  
+    border-radius: 4px;
+    
     transition: 0.2s ease-in-out;
-
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
+    
+    
+
+    
+
     
 }
 
@@ -10113,9 +10200,6 @@ section.gallery .header{
 
 
 .gallery .gallery-content{
-    display: inline-block;
-    /* float: right; */
-    width: 50%;
     text-align: justify;
     text-indent: 2em;
     margin-top: 10px;
@@ -10123,13 +10207,19 @@ section.gallery .header{
     line-height: 25px;
     color: #561818;
 }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .gallery .gallery-content{
+           font-size: 1em;
+        }
+    }
 
-.gallery .admin-option{
+/*.gallery .admin-option{
     display: inline-block;
     position: relative;
     width: 10%;
     float: right;
-}
+}*/
 
 /*@media screen and (max-width:1366px){
 	.gallery .admin-option{
@@ -10137,9 +10227,9 @@ section.gallery .header{
 	}
 }*/
 
-.gallery .admin-option img{
+/*.gallery .admin-option img{
     width: 30px;
-}
+}*/
 
 .gallery-box .archive{
 	display: inline-block;
@@ -11446,6 +11536,14 @@ section.class-blog .main-col .school-life-blog-box{
     position: relative;
     min-height: 50px;
 }
+
+    /* Breakpoint */
+    @media screen and (max-width: 1200px) {
+        .gallery-box .table-row,
+        .gallery-box .table-row.first{
+            display: none;
+        }
+    }
 
 
 .col-left{
@@ -14182,13 +14280,37 @@ img.end-tl{
     }
     
 .modal-box.lg .circle-img-wrapper img.gallery{
-    top: 10px;
+    top: 16px;
+    left: 16px;
 }
-/*    @media screen and ( max-width :1366px) {
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
         .modal-box.lg .circle-img-wrapper img.gallery{
-            top: 5px;
-	}
-    }*/
+            top: 14px;
+            left: 14px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img.gallery{
+            top: 12px;
+            left: 12px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .modal-box.lg .circle-img-wrapper img.gallery{
+            top: 10px;
+            left: 10px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (max-width: 550px) {
+        .modal-box.lg .circle-img-wrapper img.gallery{
+            top: 7px;
+            left: 7px;
+        }
+    }
     
 .modal-box.lg .circle-img-wrapper img.bookList{
     top: 15px;
@@ -14251,6 +14373,7 @@ img.end-tl{
     background: rgba(211, 84, 0, .9);
 }
 
+
 .modal-title span{
 	margin: 0;
         text-align: center;
@@ -14258,6 +14381,12 @@ img.end-tl{
 	font-weight: 300;
 	font-size: 3em;
 	color: #bdc3c7;
+}
+.modal-box.lg .modal-title span{
+	font-size: 3.5em;
+}
+.modal-box.sm .modal-title span{
+	font-size: 2.4em;
 }
 
 /** Breakpoint **/
@@ -14294,9 +14423,7 @@ img.end-tl{
         }
     }
 
-.modal-box.lg .modal-title span{
-	font-size: 3.5em;
-}
+
 
     /** Breakpoint **/
     @media screen and (min-width: 1021px) and (max-width: 1200px) {
@@ -14313,32 +14440,31 @@ img.end-tl{
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
-        .modal-box.lg .modal-title span{
+        .modal-box.lg .modal-title span,
+        .modal-title span{
             font-size: 2.8em;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 720px) {
-        .modal-box.lg .modal-title span{
+        .modal-box.lg .modal-title span,
+        .modal-title span,
+        .modal-box.sm .modal-title span{
             font-size: 2.4em;
         }
     } 
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 479px) {
-        .modal-box.lg .modal-title span{
+        .modal-box.lg .modal-title span,
+        .modal-title span,
+        .modal-box.sm .modal-title span{
             font-size: 2em;
         }
     }
 
 
-.modal-box.sm .modal-title span{
-	font-size: 2.4em;
-}
-/*	@media screen and ( max-width :1366px) {
-		 .modal-box.sm .modal-title span{
-			font-size: 2.0em;
-		}
-	}*/
+
+
         
 .modal-box.yellow .modal-title span,
 .modal-box.blue .modal-title span{
@@ -17190,6 +17316,43 @@ label.error {
     top: 40px;
     right: 10%;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 800px) {
+        .cms-option.gallery_add{
+            right: 5%;
+            top: 110px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.gallery_add{
+            right: 5%;
+            top: 95px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.gallery_add{
+            right: 5%;
+            top: 80px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 550px) {
+        .cms-option.gallery_add{
+            right: 5%;
+            top: 60px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.gallery_add{
+            right: 5px;
+            width: 80px;
+            text-align: center;
+        }
+    }
 
 .cms-option.address{
     top: 30px;
@@ -17398,7 +17561,7 @@ label.error {
     right: 160px;
     top: -5px;
 }
-        /* Breakpoint */
+    /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .cms-option.classes a img{
             right: 160px;
@@ -17464,11 +17627,56 @@ label.error {
     right: 140px;
     top: -5px;
 }
-/*        @media screen and (max-width:1366px){
-                .cms-option.gallery_add a img{
-                 top: -3px;	
-                }
-        }*/
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.gallery_add a img{
+            right: 140px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.gallery_add a img{
+            right: 140px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.gallery_add a img{
+            right: 140px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.gallery_add a img{
+            right: 120px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.gallery_add a img{
+            right: 120px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.gallery_add a img{
+            right: 120px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.gallery_add a img{
+            right: 80px;
+            top: 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.gallery_add a img{
+            right: 80px;
+            top: 3px;
+        }
+    }
 
 .cms-option.our-team a img{
     right: 170px;
@@ -17641,6 +17849,12 @@ form.cms div.width-30-right{
     width: 30%;
     float: right;
 }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 1000px) {
+        form.cms div.width-30-right{
+            width: 100%;
+        }
+    }
 
 form.cms div.width-35-right{
     display: inline-block;
@@ -18506,11 +18720,13 @@ form.cms td.qty{
 
 #edit-news-modal {
     display: block;
-}
+}*/
 
+/*#delete-news-modal {
+    display: block;
+}*/
 
-
-#edit-class-blog-modal {
+/*#edit-class-blog-modal {
     display: block;
 }
 #add-parents-assoc-member-modal{
@@ -18530,6 +18746,14 @@ form.cms td.qty{
 }*/
 
 /*#add-post-modal{
+    display: block;
+}*/
+
+/*#delete-gallery-modal{
+    display: block;
+}*/
+
+/*#edit-post-modal{
     display: block;
 }*/
 
