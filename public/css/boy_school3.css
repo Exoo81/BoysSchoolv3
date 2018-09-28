@@ -770,7 +770,6 @@ button.modal-btn{
             button.btn-edit-user,
             button.btn-login,
             button.btn-create-account,
-            button.btn-max,
             button.btn-admin-nav,
             button.btn-add-user,
             button.btn-about-us, 
@@ -1007,7 +1006,7 @@ button.modal-btn{
         margin-left: 5%;
     }
         /* Breakpoint */
-        @media screen and (min-width: 300px) and (max-width: 600px) {
+        @media screen and (min-width: 300px) and (max-width: 479px) {
             button.modal-btn.left{
                 margin: 0 auto 30px auto;
                 float: none;
@@ -1020,7 +1019,7 @@ button.modal-btn{
         margin-right: 5%;
     }
         /* Breakpoint */
-        @media screen and (min-width: 300px) and (max-width: 600px) {
+        @media screen and (min-width: 300px) and (max-width: 479px) {
             button.modal-btn.right{
                 margin: 0 auto;
                 float: none;
@@ -1087,14 +1086,14 @@ textarea{
     
     
     /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 1600px) {
+    @media screen and (min-width: 480px) and (max-width: 1600px) {
         input,
         textarea{
             font-size: 1.1em;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         input,
         textarea{
             font-size: 1em;
@@ -2842,14 +2841,14 @@ section.parents .header{
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .header .baner{
 
         }
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header .baner{
             width: 60%;
             top: 50%;
@@ -2952,14 +2951,14 @@ section.parents .header{
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .header .color-cubes{
             height: 3px;
         }
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header .color-cubes{
             width: 100%;
             height: 3px;
@@ -3063,39 +3062,39 @@ section.admin .admin-box{
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .header-title{
             font-size: 3.4em;
-            padding: 4% 10% 0 0;
+            padding: 4% 15% 0 0;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .header-title{
             font-size: 3.2em;
-            padding: 4% 10% 0 0;
+            padding: 4% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .header-title{
             font-size: 3em;
-            padding: 5% 10% 0 0;
+            padding: 5% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .header-title{
             font-size: 3em;
-            padding: 4% 10% 0 0;
+            padding: 4% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .header-title{
             font-size: 3em;
-            padding: 3% 10% 0 0;
+            padding: 3% 15% 0 0;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .header-title{
             font-size: 2.8em;
             padding: 5% 10% 0 0
@@ -3103,7 +3102,7 @@ section.admin .admin-box{
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header-title{
             font-size: 3em;
             padding: 2% 12% 0 0;
@@ -3251,7 +3250,8 @@ section.admin .admin-box{
 }
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
-        .classes-box .main-col-left{
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 38%;
             padding-left: 8%;
             padding-right: 4%;
@@ -3259,7 +3259,8 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
-        .classes-box .main-col-left{
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 40%;
             padding-left: 8%;
             padding-right: 2%;
@@ -3267,7 +3268,8 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
-        .classes-box .main-col-left{
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 40%;
             padding-left: 8%;
             padding-right: 2%;
@@ -3275,7 +3277,8 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
-        .classes-box .main-col-left{
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 42%;
             padding-left: 8%;
             padding-right: 0;
@@ -3283,15 +3286,17 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
-        .classes-box .main-col-left{
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 42%;
             padding-left: 8%;
             padding-right: 0;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
-        .classes-box .main-col-left{
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             width: 42%;
             padding-left: 6%;
             padding-right: 2%;
@@ -3299,8 +3304,9 @@ section.admin .admin-box{
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
-        .classes-box .main-col-left{
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             padding-top: 12%;
             padding-top: 12%;
             width: 42%;
@@ -3309,44 +3315,9 @@ section.admin .admin-box{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 800px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 720px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 601px) and (max-width: 700px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 551px) and (max-width: 600px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 550px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 371px) and (max-width: 479px) {
-        .classes-box .main-col-left{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 370px) {
-        .classes-box .main-col-left{
+    @media screen and (min-width: 300px) and (max-width: 800px) {
+        .classes-box .main-col-left,
+        .our-team-box .main-col-left{
             display: none;
         }
     }
@@ -3406,7 +3377,9 @@ section.admin .admin-box{
     width: 100%;
     padding-bottom: 20px;
     border: 1px solid;
-    border-top: none;    
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;    
 }
 
 .small-table.no-border{
@@ -3416,28 +3389,52 @@ section.admin .admin-box{
 .small-table-row{
     display: table-row;
 }
+.small-table-row.member-disable{
+    background-color: rgba(115, 115, 115, .2);
+    color: #737373;
+}
+
 .small-table-cell{
     display: table-cell;
 }
 /*def of other data*/
-.small-table-cell.long-title{
+.small-table-cell.long-title,
+.small-table-cell.full-name{
     position: relative;
     padding: 20px 0 20px 5%;
     width: 70%;
     text-transform: capitalize;
 }
-
-.small-table-cell.long-title a.bs{
-    font-size: 1.1em;
+    .small-table-cell.long-title a.bs{
+        font-size: 1.1em;
+    }
+    
+.small-table-cell.role{
+    position: relative;
+    padding-left: 5%;
+    width: 40%;
 }
+
+.small-table-cell.role span{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.small-table-cell.management-full-name{
+    position: relative;
+    padding: 20px 20px;
+    width: 50%;
+    text-transform: capitalize;
+}
+
 
 .small-table-cell.icon-cell,
 .small-table-cell.remove,
 .small-table-cell.disable,
-.small-table-cell.enable{
+.small-table-cell.enable,
+.small-table-cell.edit,
+.small-table-cell.create-account{
     position: relative;
     width: 10%;
-    top: 10px;
 }
 
 .small-table-cell.icon-cell img{
@@ -3462,6 +3459,16 @@ section.admin .admin-box{
     left: 0px;
 }
 
+
+
+/*.parents-assoc-table-cell.disable .tooltip .tooltiptext, 
+.parents-assoc-table-cell.enable .tooltip .tooltiptext, 
+.our-team-table-cell.disable .tooltip .tooltiptext, 
+.our-team-table-cell.enable .tooltip .tooltiptext {
+    top: 35px;
+    left: -35px;
+    padding: 0 3px;
+}*/
 
 /** end common table **/
 
@@ -3530,7 +3537,8 @@ section.admin .admin-box{
 }
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
-        .classes-box .main-col-right{
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             width: 38%;
             padding-left: 8%;
             padding-right: 4%
@@ -3538,7 +3546,8 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
-        .classes-box .main-col-right{
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             width: 40%;
             padding-left: 6%;
             padding-right: 4%
@@ -3546,7 +3555,8 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
-        .classes-box .main-col-right{
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             width: 40%;
             padding-left: 6%;
             padding-right: 4%
@@ -3554,7 +3564,8 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
-        .classes-box .main-col-right{
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             width: 42%;
             padding-left: 6%;
             padding-right: 2%
@@ -3562,15 +3573,17 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
-        .classes-box .main-col-right{
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
             width: 42%;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
-        .classes-box .main-col-right{
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
             width: 42%;
@@ -3578,8 +3591,9 @@ section.admin .admin-box{
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
-        .classes-box .main-col-right{
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
             padding-top: 8%;
@@ -3587,44 +3601,9 @@ section.admin .admin-box{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 800px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 720px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 601px) and (max-width: 700px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 551px) and (max-width: 600px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 550px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 371px) and (max-width: 479px) {
-        .classes-box .main-col-right{
-            display: none;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 370px) {
-        .classes-box .main-col-right{
+    @media screen and (min-width: 300px) and (max-width: 800px) {
+        .classes-box .main-col-right,
+        .our-team-box .main-col-right{
             display: none;
         }
     }
@@ -4200,16 +4179,7 @@ section.school-news .main-col-right{
             font-size: 1.2em; 
         }
     }
-/*	@media screen and (max-width:1680px){
-		.news-title{
-			font-size: 1.3em;
-		}
-	}
-	@media screen and (max-width:1536px){
-		.news-title{
-			font-size: 1.2em;
-		}
-	}*/
+
 
 
 .news-date{
@@ -5008,24 +4978,18 @@ button.btn-pagination:after{
 	text-transform: uppercase;
 }
 
-/*	@media screen and ( max-width :1536px) {
-		.dropdown{
-			padding: 8px 16px; 
-			font-size: 1.1em;
-		}
-	}
-	@media screen and ( max-width :1366px) {
-		.dropdown{
-			padding: 5px 15px; 
-			font-size: 1em;
-		}
-	}
-	@media screen and ( max-width :1024px) {
-		.dropdown{
-			padding: 5px 5px; 
-			font-size: 1.1em;
-		}
-	}*/
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 1600px) {
+        .dropdown{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .dropdown{
+            font-size: 1em;
+        }
+    }
 
 /** Breakpoint **/
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
@@ -8792,25 +8756,116 @@ section.our-team .header{
 	
 }
 
-section.our-team .header-title{
+/*section.our-team .header-title{
 	padding: 3% 19% 0 0;
 }
+    * Breakpoint *
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        section.our-team .header-title{
+            font-size: 3.4em;
+            padding: 4% 10% 0 0;
+        }
+    }
+    * Breakpoint *
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        section.our-team .header-title{
+            font-size: 3.2em;
+            padding: 4% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 5% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 4% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 3% 10% 0 0;
+        }
+    }
+    * Breakpoint *
+    @media screen and (min-width: 1021px) and (max-width: 1200px) {
+        section.our-team .header-title{
+            font-size: 2.8em;
+            padding: 5% 10% 0 0
+        }
+    }
 
-/*	@media screen and (max-width:1680px){
-		section.our-team .header-title{
-			padding: 4% 16% 0 0;
-		}
-	}
-	@media screen and (max-width:1600px){
-		section.our-team .header-title{
-			padding: 3% 16% 0 0;
-		}
-	}
-	@media screen and (max-width:1280px){
-		section.our-team .header-title{
-			padding: 5% 16% 0 0;
-		}
-	} */
+    * Breakpoint *
+    @media screen and (min-width: 801px) and (max-width: 1020px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 2% 12% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 3% 10% 0 0;
+        }
+    }
+    * Breakpoint *
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.our-team .header-title{
+            font-size: 3em;
+            padding: 3% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.our-team .header-title{
+            font-size: 2.6em;
+            padding: 2% 10% 0 0;
+        }
+    }
+    * Breakpoint *
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.our-team .header-title{
+            font-size: 2.6em;
+            padding: 2% 10% 0 0;
+        }
+    }
+    * Breakpoint *
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.our-team .header-title{
+            font-size: 2.4em;
+            padding: 1% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.our-team .header-title{
+            font-size: 2.2em;
+            padding: 2% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.our-team .header-title{
+            font-size: 2em;
+            padding: 2% 10% 0 0;
+        }
+    }
+     Breakpoint 
+    @media screen and (max-width: 340px) {
+        section.our-team .header-title{
+            font-size: 1.8em;
+            padding: 2% 10% 0 0;
+        }
+    }*/
+
 
 .our-team-box .principal-box,
 .our-team-box .management-box,
@@ -8830,7 +8885,15 @@ section.our-team .header-title{
     position: relative;
     width: 100%;
     margin: 0 0 5% 10%;
-}  
+}
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 800px) {
+        .our-team-box .teachers-box,
+        .our-team-box .learning-support-box,
+        .our-team-box .secretary-box{
+            margin: 0 0 5% 0%;
+        }
+    }
         
 .our-team-box ul{
     padding: 0 5%;
@@ -8840,6 +8903,102 @@ section.our-team .header-title{
     width: max-content;
 }
 
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .our-team-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .our-team-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .our-team-box ul li{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .our-team-box ul li{
+            font-size: 1em;
+        }
+    }
+    
+.our-team-box ul li a.bs{
+        
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .our-team-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .our-team-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .our-team-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .our-team-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    
+.our-team-box ul li img{
+        
+}
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .our-team-box ul li img{
+            position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .our-team-box ul li img{
+            position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .our-team-box ul li img{
+            position: absolute;
+            width: 20px;
+            top: 10px;
+            left: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .our-team-box ul li img{
+            position: absolute;
+            width: 20px;
+            top: 10px;
+            left: -25px;
+        }
+    }
+    
+
+
 .our-team-box ul li span{
     text-transform: capitalize;
 }
@@ -8847,6 +9006,18 @@ section.our-team .header-title{
 .our-team-box ul li span.our-team-role{
     text-transform: uppercase;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .our-team-box ul li span.our-team-role{
+            display: block;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 479px) {
+        .our-team-box ul li span.our-team-role{
+            display: block;
+        }
+    }
 
 .our-team-table{
     position: relative;
@@ -8860,9 +9031,14 @@ section.our-team .header-title{
 .modal-text .table-header{
     width: 100%;
     text-align: center;
-    padding: 10px 0;
-    font-size: 1.4em;
+    padding: 5px 0;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 600;
     border: 1px solid #561818;
+    border-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     background: rgba(86, 24, 24, .2);
 }
 
@@ -8877,16 +9053,7 @@ section.our-team .header-title{
 .our-team-table-cell{
     display: table-cell;
 }
-.our-team-table-cell.role{
-    position: relative;
-    padding-left: 5%;
-    width: 40%;
-}
 
-.our-team-table-cell.role span{
-    text-transform: uppercase;
-    font-weight: 600;
-}
 
 .our-team-table-cell.full-name{
     position: relative;
@@ -8899,12 +9066,7 @@ section.our-team .header-title{
     color: #737373;
 }
 
-.our-team-table-cell.management-full-name{
-    position: relative;
-    padding: 20px 0;
-    width: 30%;
-    text-transform: capitalize;
-}
+
 
 .our-team-table-cell.edit,
 .our-team-table-cell.create-account{
@@ -13715,7 +13877,7 @@ img.end-tl{
 .modal-box {
   	position: relative;	
  	width: 45%;
-  	margin: 3% auto;
+  	margin: 4% auto;
   	border: 1px solid #561818;
   	border-radius: 2px;
   	animation-name: modalbox;
@@ -13725,51 +13887,22 @@ img.end-tl{
 	-moz-box-shadow: 0 1px 30px rgba(0,0,0,.5);
 	box-shadow: 0 1px 30px rgba(0,0,0,.5);
 }
-    /** Breakpoint **/
-    @media screen and (min-width: 1581px) and (max-width: 1800px) {
-        .modal-box{
-            width: 50%;
-            margin-top: 4%;
-        }
-    }
-    
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1580px) {
         .modal-box{
-            width: 55%;
-            margin-top: 4%;
+            width: 65%;
+            margin-top: 60px;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+    @media screen and (min-width: 1001px) and (max-width: 1300px) {
         .modal-box{
-            width: 60%;
-            margin-top: 5%;
+            width: 80%;
+            margin-top: 60px;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 1200px) {
-        .modal-box{
-            width: 85%;
-            margin-top: 6%;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 720px) {
-        .modal-box{
-            width: 85%;
-            margin-top: 8%;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 700px) {
-        .modal-box{
-            width: 95%;
-            margin-top: 2%;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 300px) and (max-width: 1000px) {
         .modal-box{
             width: 100%;
             margin-top: 0;
@@ -13840,38 +13973,30 @@ img.end-tl{
 .modal-box.sm {
  	width: 30%;
 }
-
+    
     /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1580px) {
+    @media screen and (min-width: 1101px) and (max-width: 1580px) {
         .modal-box.sm{
             width: 40%;
             margin-top: 5%;
         }
     }
-    
     /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
         .modal-box.sm{
             width: 60%;
+            margin-top: 5%;
+        }
+    }  
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm{
+            width: 80%;
             margin-top: 6%;
         }
     }
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 720px) {
-        .modal-box.sm{
-            width: 70%;
-            margin-top: 8%;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 700px) {
-        .modal-box.sm{
-            width: 80%;
-            margin-top: 0;
-        }
-    }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         .modal-box.sm{
             width: 100%;
             margin-top: 0;
@@ -13990,7 +14115,7 @@ img.end-tl{
 }
 
     /** Breakpoint **/
-    @media screen and (min-width: 800px) and (max-width: 1200px) {
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
         .modal-box .circle-img-wrapper{
             width: 70px;
             height: 70px;
@@ -13998,7 +14123,7 @@ img.end-tl{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 601px) and (max-width: 799px) {
+    @media screen and (min-width: 480px) and (max-width: 700px) {
         .modal-box .circle-img-wrapper{
             width: 60px;
             height: 60px;
@@ -14007,7 +14132,7 @@ img.end-tl{
     }
     
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 600px) {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         .modal-box .circle-img-wrapper{
             width: 50px;
             height: 50px;
@@ -14059,6 +14184,15 @@ img.end-tl{
 	height: 50px;
 	bottom: -25px;	
 }
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .circle-img-wrapper{
+            width: 70px;
+            height: 70px;
+            bottom: -35px;
+        }
+    }
+    
 
 .modal-box.purpure .circle-img-wrapper{
 	border-color: #8e44ad;
@@ -14101,7 +14235,34 @@ img.end-tl{
         }
     }
 
-
+.modal-box .circle-img-wrapper img.bom{
+    position: absolute;
+    width: 70%;
+    top: 12px;
+    left: 12px;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
+        .modal-box .circle-img-wrapper img.bom{
+            top: 11px;
+            left: 11px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .modal-box .circle-img-wrapper img.bom{
+            top: 9px;
+            left: 9px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box .circle-img-wrapper img.bom{
+            top: 8px;
+            left: 8px;
+        }
+    }
 
 .modal-box .circle-img-wrapper img.events,
 .modal-box .circle-img-wrapper img.parents-information{
@@ -14312,6 +14473,8 @@ img.end-tl{
         }
     }
     
+
+    
 .modal-box.lg .circle-img-wrapper img.bookList{
     top: 15px;
     left: 15px
@@ -14328,6 +14491,13 @@ img.end-tl{
 	top: 8px;
 	left: 7px
 }
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .circle-img-wrapper img{
+            top: 10px;
+            left: 10px
+        }
+    }
 
 .modal-header img.bg-img{
 	width: 100%;
@@ -14385,9 +14555,7 @@ img.end-tl{
 .modal-box.lg .modal-title span{
 	font-size: 3.5em;
 }
-.modal-box.sm .modal-title span{
-	font-size: 2.4em;
-}
+
 
 /** Breakpoint **/
     
@@ -14448,21 +14616,111 @@ img.end-tl{
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 720px) {
         .modal-box.lg .modal-title span,
-        .modal-title span,
-        .modal-box.sm .modal-title span{
+        .modal-title span{
             font-size: 2.4em;
         }
     } 
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 479px) {
         .modal-box.lg .modal-title span,
-        .modal-title span,
-        .modal-box.sm .modal-title span{
+        .modal-title span{
             font-size: 2em;
         }
     }
 
-
+.modal-box.sm .modal-title span{
+	font-size: 2em;
+}
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .modal-box.sm .modal-title span{
+           font-size: 2.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.4em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.4em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .modal-box.sm .modal-title span{
+            font-size: 2.4em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .modal-box.sm .modal-title span{
+            font-size: 1.8em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .modal-box.sm .modal-title span{
+            font-size: 1.8em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.sm .modal-title span{
+            font-size: 1.6em;
+        }
+    }
 
 
         
@@ -14540,19 +14798,20 @@ img.end-tl{
 .modal-body {
     position: relative;
     background: #ecf0f1;
-    padding: 60px;
+    padding: 40px 60px;
     border-top: 2px solid #561818;
 }
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 1600px) {
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
         .modal-box .modal-body{
-            padding: 50px;
+            padding: 40px 10px;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
+    @media screen and (max-width: 370px) {
         .modal-box .modal-body{
-            padding: 40px;
+            padding: 40px 5px;
         }
     }
 
@@ -14691,6 +14950,19 @@ img.end-tl{
 .modal-box.sm .modal-body {
     padding: 40px;
 }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
+        .modal-box.sm .modal-body{
+            padding: 40px 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.sm .modal-body{
+            padding: 40px 5px;
+        }
+    }
 
 
 .modal-box.purpure .modal-body {
@@ -15037,6 +15309,17 @@ img.end-tl{
 .modal-text ul.square li{
 	font-weight: normal;
 }
+
+.modal-body .modal-text form#addOurTeamForm {
+    padding: 0; 
+} 
+
+    /* Breakpoint */
+    @media screen and (max-width: 700px) {
+        .modal-body .modal-text form#addOurTeamForm{
+            padding: 0 40px;
+        }
+    } 
 
 
 /* EVENT-LIST TABLE */
@@ -16058,7 +16341,7 @@ table.event-list tr{
 
 /* Close modal X Button */
 
-.close-modal {
+.modal-box .close-modal{
   position: absolute;
   float: right;
   top: -50px;
@@ -16067,33 +16350,45 @@ table.event-list tr{
   cursor: pointer;
 }
 
+    /*Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+        .modal-box .close-modal{
+            width: 50px;
+            top: 10px;
+            right: 2%;
+            z-index: 10;
+        }
+    }
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 600px) {
+        .modal-box .close-modal{
+            width: 45px;
+            top: 5px;
+            right: 2%;
+            z-index: 10;
+        }
+    }
     
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 800px) {
-        .close-modal{
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .close-modal{
             width: 50px;
             top: -40px;
             right: -50px;
         }
     }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
-        .close-modal{
-            top: 10px;
-            right: 10px;
-            width: 45px;
-            z-index: 10;
-        }
-    }
+    
+    
+    
 
 .close-modal-inner {
   width: inherit;
   text-align: center;
 }
 
-.close-modal-inner label { 
+.modal-box .close-modal-inner label{ 
   font-size: .8em; 
-  line-height: 4em;
+  line-height: 3.6em;
   font-weight: 600;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -16104,20 +16399,29 @@ table.event-list tr{
 }
 
    
-    
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 800px) {
-        .close-modal-inner label{
-            font-size: .7em;
+    /*Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+        .modal-box .close-modal-inner label{
+           color: #adadad;
+           font-size: .7em;
+           line-height: 3.6em; 
+        }
+    }
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 600px) {
+        .modal-box .close-modal-inner label{
+            color: #adadad;
+            font-size: .6em;
             line-height: 3.6em;
+            letter-spacing: 3px; 
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
-        .close-modal-inner label{
-            color: #adadad;
-            line-height: 3.4em;
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .close-modal-inner label{
+            color: #561818;
             font-size: .7em;
+            line-height: 3.6em;
         }
     }
 
@@ -16151,8 +16455,8 @@ table.event-list tr{
 
 
 
-.close-modal-inner:before, 
-.close-modal-inner:after {
+.modal-box .close-modal-inner:before, 
+.modal-box .close-modal-inner:after{
   position: absolute;
   content: '';
   height: 3px;
@@ -16162,11 +16466,18 @@ table.event-list tr{
   transition: all .3s ease-in;
 }
 
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
-        .close-modal-inner:before, 
-        .close-modal-inner:after{
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 1000px) {
+        .modal-box .close-modal-inner:before, 
+        .modal-box .close-modal-inner:after{
            background: #adadad;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .close-modal-inner:before, 
+        .modal-box.sm .close-modal-inner:after{
+            background: #561818;
         }
     }
 
@@ -16688,12 +16999,19 @@ div.dhx_modal_cover_dv {
     left: -10px;
 }
 
-.modal .tooltip .tooltiptext.remove,
-.modal .tooltip .tooltiptext.disable{
+.modal .tooltip .tooltiptext.remove{
     background-color: rgba(192, 57, 43, .3);
     color: #c0392b;
     top: 40px;
     left: -5px;
+    padding: 0 3px;
+}
+
+.modal .tooltip .tooltiptext.disable{
+    background-color: rgba(192, 57, 43, .3);
+    color: #c0392b;
+    top: 35px;
+    left: -45px;
     padding: 0 3px;
 }
 
@@ -16799,7 +17117,7 @@ div.dhx_modal_cover_dv {
 
 .modal .tooltip .tooltiptext.edit_member{
     top: 35px;
-    left: -25px;
+    left: -30px;
     padding: 0 3px;
 }
 
@@ -16807,9 +17125,9 @@ div.dhx_modal_cover_dv {
     background-color: rgba(26, 188, 156, .3);
     color: #1abc9c;
     top: 35px;
-    left: -10px;
+    left: -35px;
+    padding: 0 3px;
 }
-
 
 .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
 .policies .admin-option .tooltip .tooltiptext.bottom.remove{
@@ -16830,7 +17148,8 @@ div.dhx_modal_cover_dv {
     background-color: rgba(86, 24, 24, .3);
     color: #561818;
     top: 35px;
-    left: 0px;
+    left: -35px;
+    padding: 0 3px;
 }
 
 .tooltip.horizontal .tooltiptext.bottom.edit{
@@ -17361,53 +17680,523 @@ label.error {
 
 .cms-option.our-team{
     top: 30px;
-    right: 20%;
+    right: -5px;
 }
+     
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.our-team{
+            width: 90px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.our-team{
+            right: -55px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 600px) {
+        .cms-option.our-team{
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.our-team{
+            width: 80px;
+            right: -10px;
+            top: 20px;
+            text-align: center;         
+        }
+    }
 
 .cms-option.board-of-management{
     top: 30px;
-    right: 10%;
+    right: -5px;
 }
-/*        @media screen and (max-width:1366px){
-                .cms-option.board-of-management{
-                        right: 0;
-                }
-        }*/
+
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1580px) {
+        .cms-option.board-of-management{
+            width: 120px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.board-of-management{
+            width: 120px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.board-of-management{
+            width: 120px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.board-of-management{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.board-of-management{
+            width: 110px;
+            right: -45px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.board-of-management{
+            width: 110px;
+            right: -35px;
+            top: 50px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.board-of-management{
+            width: 110px;
+            right: -10px;
+            top: 50px;
+            text-align: center;
+        }
+    }
 
 .cms-option.teachers{
     top: 30px;
-    right: 15%;
+    right: -40px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.teachers{
+            top: 30px;
+            right: -40px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.teachers{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.teachers{
+           top: 30px;
+           right: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.teachers{
+            top: 30px;
+            right: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.teachers{
+            top: 30px;
+            right: 10px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .cms-option.teachers{
+            width: 120px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.teachers{
+            width: 120px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.teachers{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.teachers{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.teachers{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.teachers{
+            right: -35px;
+            top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.teachers{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.teachers{
+            width: 110px;
+            right: -10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
 
 .cms-option.learning-support{
     top: 30px;
-    right: 0;
+    right: -40px;
 }
-/*        @media screen and (max-width:1366px){
-                .cms-option.learning-support{
-                        right: 10%;
-                }
-        }*/
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.learning-support{
+            width: 220px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1580px) {
+        .cms-option.learning-support{
+            width: 220px;
+            right: 10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.learning-support{
+            width: 130px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.learning-support{
+            width: 210px;
+            right: -55px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.learning-support{
+            width: 190px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 550px) {
+        .cms-option.learning-support{
+            width: 110px;
+            right: -35px;
+            top: 10px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.learning-support{
+            width: 110px;
+            right: -10px;
+            top: 10px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.learning-support{
+            width: 80px;
+            right: -10px;
+            top: 10px;
+            text-align: center;
+        }
+    }
 
 .cms-option.secretary{
     top: 30px;
-    right: 15%;
+    right: -40px;
 }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.secretary{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1580px) {
+        .cms-option.secretary{
+            top: 30px;
+            right: 10px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.secretary{
+            width: 120px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.secretary{
+            right: -55px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.secretary{
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.secretary{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.secretary{
+            width: 110px;
+            right: -10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.secretary{
+            width: 110px;
+            right: -10px;
+            top: 30px;
+            text-align: center;
+        }
+    }
 
 .cms-option.sna{
     top: 30px;
-    right: 10%;
+    right: -5px;
 }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.sna{
+            width: 120px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.sna{
+            right: -55px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.sna{
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.sna{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.sna{
+            width: 110px;
+            right: -10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
 
 .cms-option.asdunit{
     top: 30px;
-    right: 10%;
+    right: -5px;
 }
+   
+   
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.asdunit{
+            width: 150px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.asdunit{
+            right: -55px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 600px) {
+        .cms-option.asdunit{
+            width: 130px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.asdunit{
+            width: 130px;
+            right: -10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.asdunit{
+            width: 130px;
+            right: -10px;
+            top: 30px;
+            text-align: center;
+        }
+    }
 
 .cms-option.caretaker{
     top: 30px;
-    right: 15%;
+    right: -5px;
 }
+    
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.caretaker{
+            width: 120px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.caretaker{
+            right: -55px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.caretaker{
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.caretaker{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.caretaker{
+            width: 110px;
+            right: -10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.caretaker{
+            width: 110px;
+            right: -10px;
+            top: 30px;
+            text-align: center;
+        }
+    }
 
 .cms-option.book-list{
     top: 30px;
@@ -17682,46 +18471,330 @@ label.error {
     right: 170px;
     top: -5px;
 }
-/*        @media screen and (max-width:1366px){
-                .cms-option.our-team a img{
-                 top: -3px;	
-                }
-        }*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.our-team a img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.our-team a img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.our-team a img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.our-team a img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.our-team a img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .cms-option.our-team a img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.our-team a img{
+            right: 100px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.our-team a img{
+            /* initial */
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.our-team a img{
+            /* initial */
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.our-team a img{
+            /* initial */
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 600px) {
+        .cms-option.our-team a img{
+            right: 150px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .cms-option.our-team a img{
+            right: 90px;
+            top: 5px;
+        }
+    }
 
 .cms-option.board-of-management a img{
     right: 240px;
     top: -5px;
 }
 
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1580px) {
+        .cms-option.board-of-management a img{
+            right: 130px;
+            top: 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.board-of-management a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+
+    /* Breakpoint */
+    @media screen and (max-width: 600px) {
+        .cms-option.board-of-management a img{
+            right: 110px;
+            top: 3px;
+        }
+    }
+
 .cms-option.teachers a img{
     right: 220px;
     top: -5px;
 }
 
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.teachers a img{
+            right: 130px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.teachers a img{
+            right: 200px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 479px) {
+        .cms-option.teachers a img{
+            right: 110px;
+            top:5px;
+        }
+    }
+
 .cms-option.learning-support a img{
     right: 355px;
     top: -5px;
 }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1650px) {
+        .cms-option.learning-support a img{
+            right: 90px;
+            top: -30px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.learning-support a img{
+            right: 50px;
+            top: -30px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.learning-support a img{
+            right: 210px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.learning-support a img{
+            right: 80px;
+            top: -25px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.learning-support a img{
+            right: 50px;
+            top: -25px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
+        .cms-option.learning-support a img{
+            right: 45px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.learning-support a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
 
 .cms-option.secretary a img{
     right: 240px;
     top: -5px;
 }
+     
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.secretary a img{
+            right: 130px;
+            top: 3px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.secretary a img{
+            right: 215px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
+        .cms-option.secretary a img{
+            right: 110px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.secretary a img{
+            right: 45px;
+            top: -25px;
+        }
+    }
 
 .cms-option.sna a img{
     right: 250px;
     top: -5px;
 }
+    
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.sna a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .cms-option.sna a img{
+            right: 250px;
+            top: -5px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.sna a img{
+            right: 225px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 479px) {
+        .cms-option.sna a img{
+            right: 120px;
+            top: 5px;
+        }
+    } 
 
 .cms-option.asdunit a img{
     right: 285px;
     top: -5px;
 }
+    
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.asdunit a img{
+            right: 150px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 600px)  {
+        .cms-option.asdunit a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.asdunit a img{
+            right: 55px;
+            top: -25px;
+        }
+    }
 
 .cms-option.caretaker a img{
     right: 230px;
     top: -5px;
 }
+    
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .cms-option.caretaker a img{
+            right: 125px;
+            top: 5px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .cms-option.caretaker a img{
+            right: 205px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
+        .cms-option.caretaker a img{
+            right: 110px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.caretaker a img{
+            right: 45px;
+            top: -25px;
+        }
+    }
 
 .cms-option.parents-information a img,
 .cms-option.parents-assoc a img,
@@ -17762,8 +18835,9 @@ form.cms div.width-30-left{
     width: 30%;
     float: left;
 }
+    
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-30-left{
             width: 100%;
         }
@@ -17791,8 +18865,8 @@ form.cms div.width-50-left{
     width: 45%;
     float: left;
 }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         form.cms div.width-50-left{
             width: 100%;
         }
@@ -17883,8 +18957,8 @@ form.cms div.width-50-right{
     width: 45%;
     float: right;
 }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         form.cms div.width-50-right{
             width: 100%;
         }
@@ -17910,6 +18984,12 @@ form.cms div.width-65-right{
     width: 65%;
     float: right;
 }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        form.cms div.width-65-right{
+            width: 100%;
+        }
+    }
 
 form.cms div.width-100{
     display: inline-block;
@@ -17935,13 +19015,23 @@ form.cms textarea{
         form.cms input,
         form.cms textarea{
             padding: 8px 8px;
+            width: 94%;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
+    @media screen and (min-width: 480px) and (max-width: 700px) {
         form.cms input,
         form.cms textarea{
             padding: 6px 6px;
+            width: 92%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        form.cms input,
+        form.cms textarea{
+            padding: 6px 6px;
+            width: 95%;
         }
     }
 
@@ -18092,10 +19182,11 @@ form.cms select{
             padding: 5px 5px;
         }
     }
+    
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms select{
-            padding: 3px 5px;
+            padding: 5px 5px;
         }
     }
 

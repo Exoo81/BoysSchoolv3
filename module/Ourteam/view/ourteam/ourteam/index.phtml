@@ -161,10 +161,7 @@ $this->headTitle($this->headTitle);
 	</div>
         
         <div class="main-col-right">
-            
-            
-            
-            
+   
             <div class="principal-box">
                 <div class="title burgundy">Principal</div>
                 <?php 
@@ -363,6 +360,351 @@ $this->headTitle($this->headTitle);
                 </ul>
             </div>
 	</div>
+        
+        
+<!--    mobile version **/-->
+       
+        <div class="main-col">
+            <div class="principal-box">
+                <div class="title burgundy">Principal</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+
+                        echo '<div class="cms-option our-team">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-principal-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the principal</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->principalList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users burgundy">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users burgundy modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'">';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <div class="management-box">
+                <div class="title orange">Board of Management</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option board-of-management">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-management-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage board of management</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->managementList as $member){
+                            echo '<li>';
+                                echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                echo ' <span class="our-team-role">'.$member->getManagementRoleAsString().'</span> - <span>'.$member->getFirstNameLastName().'</span>';
+                            echo  '</li>';
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            
+            <div class="teachers-box">
+                <div class="title blue">Teachers</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option teachers">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-teacher-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of teachers</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->teacherList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users blue">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users blue modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" >';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            
+            <div class="learning-support-box">
+                <div class="title purpure">Learning support</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option learning-support">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-learning_support-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of learning support members</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->learningSupportList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users purpure">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users purpure modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" >';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <div class="sna-box">
+                <div class="title red">SNA</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option sna">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-sna-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of sna members</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->snaList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users red">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users red modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'">';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <div class="asd-unit-box">
+                <div class="title yellow">ASD Unit</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option asdunit">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-asd_unit-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of asd unit members</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->asdUnitList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users yellow">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users yellow modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'">';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <div class="secretary-box">
+                <div class="title orange">Secretary</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option secretary">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-secretary-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of Secretaries</span>';
+                            echo '</a>'; 
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->secretaryList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users orange">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users orange modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" >';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <div class="caretaker-box">
+                <div class="title brown">Caretaker</div>
+                <?php 
+                    if ($this->access('ourteam.manage')) {
+                        echo '<div class="cms-option caretaker">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-caretaker-modal">';
+                                echo '<img src="img/icons/icon-settings.png">';
+                                echo '<span>Manage the list of caretaker</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }     
+                ?>
+                <ul>
+                    <?php
+                        foreach($this->caretakerList as $member){
+                            if($member->getStatus()== 1){
+                                echo '<li>';
+                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+
+                                    if ($this->identity() == null) {
+                                        echo '<span>'.$member->getFullName().'</span>';
+                                    }else{
+                                        if($member->getUser() !== null){
+                                            echo '<a href="'.$this->url('user', ['action'=>'view', 'id'=>$member->getUser()->getId()]).'" class="bs users brown">';
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            echo '</a>';
+                                        }else{
+                                            if ($this->access('user.add')) {
+                                                echo '<a href="#" class="bs users brown modal-trigger-create-account" data-modal="create-account-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'">';
+                                                    echo '<span>'.$member->getFullName().'</span>';
+                                                echo '</a>';
+                                            }else{
+                                                echo '<span>'.$member->getFullName().'</span>';
+                                            }                                
+                                        }           
+                                    }
+
+                                echo  '</li>';
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+                    
+        </div>
+               
+<!--    end mobile version -->
+        
+        
     </div><!-- our-team-box -->
 </section>
 
@@ -397,19 +739,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">Principal</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->principalList as $member){
                         
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -420,7 +762,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -431,7 +773,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="principal">';
                                             echo '<button class="btn-admin">';
@@ -444,15 +786,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {                                    
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="principal">';
                                             echo '<button class="btn-admin">';
@@ -496,7 +838,7 @@ $this->headTitle($this->headTitle);
 	    	<label>close</label>
             </div>
       	</div>
-      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="bom" src="img/icons/icon-settings.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Board of Management</span>
@@ -515,26 +857,21 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of members</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->managementList as $member){
 
-                        echo '<div class="our-team-table-row">';
-                            echo '<div class="our-team-table-cell role">';
+                        echo '<div class="small-table-row">';
+                            echo '<div class="small-table-cell role">';
                                 echo '<span>'.$member->getManagementRoleAsString().'</span>';
 
                             echo '</div>';
-                            echo '<div class="our-team-table-cell management-full-name">';
+                            echo '<div class="small-table-cell management-full-name">';
                                 echo '<span>'.$member->getFirstNameLastName().'</span>';
 
                             echo '</div>';
-                            echo '<div class="our-team-table-cell edit">';
-                                if ($this->access('ourteam.manage')) {
-                                    //
-                                 }                               
-                            echo '</div>';
 
-                            echo '<div class="our-team-table-cell remove">';
+                            echo '<div class="small-table-cell remove">';
                                 if ($this->access('ourteam.manage')) {
                                     echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="management">';
                                         echo '<button class="btn-admin">';
@@ -597,19 +934,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of teachers</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->teacherList as $member){
                         
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -620,7 +957,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -631,7 +968,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="teacher">';
                                             echo '<button class="btn-admin">';
@@ -644,15 +981,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="teacher">';
                                             echo '<button class="btn-admin">';
@@ -714,19 +1051,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">Members of learning support</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->learningSupportList as $member){
                         
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -737,7 +1074,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -748,7 +1085,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="learning_support">';
                                             echo '<button class="btn-admin">';
@@ -761,15 +1098,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="learning_support">';
                                             echo '<button class="btn-admin">';
@@ -831,19 +1168,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of Secretaries</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->secretaryList as $member){
 
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -854,7 +1191,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -865,7 +1202,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="secretary">';
                                             echo '<button class="btn-admin">';
@@ -878,15 +1215,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) { 
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="secretary">';
                                             echo '<button class="btn-admin">';
@@ -949,19 +1286,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of SNA members</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->snaList as $member){
                         
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -972,7 +1309,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -983,7 +1320,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="sna">';
                                             echo '<button class="btn-admin">';
@@ -996,15 +1333,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="sna">';
                                             echo '<button class="btn-admin">';
@@ -1067,19 +1404,19 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of ASD Unit members</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->asdUnitList as $member){
                         
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -1090,7 +1427,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -1101,7 +1438,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="asd_unit">';
                                             echo '<button class="btn-admin">';
@@ -1114,15 +1451,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="asd_unit">';
                                             echo '<button class="btn-admin">';
@@ -1185,20 +1522,20 @@ $this->headTitle($this->headTitle);
             
             
             <div class="table-header">List of Caretakers</div>
-            <div class="our-team-table">    
+            <div class="small-table">    
                 <?php 
                     foreach($this->caretakerList as $member){
                         
 
                         if($member->getStatus() == 1){
-                            echo '<div class="our-team-table-row">';
+                            echo '<div class="small-table-row">';
 
-                                echo '<div class="our-team-table-cell full-name">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
 
                                 if($member->getUser() != null){
-                                    echo '<div class="our-team-table-cell edit">';
+                                    echo '<div class="small-table-cell edit">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/edit/'.$member->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -1209,7 +1546,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }else{
-                                    echo '<div class="our-team-table-cell create-account">';
+                                    echo '<div class="small-table-cell create-account">';
                                         if ($this->access('ourteam.manage')) {
                                             echo '<a href="/user/addaccount/'.$member->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
@@ -1220,7 +1557,7 @@ $this->headTitle($this->headTitle);
                                          }                               
                                     echo '</div>';
                                 }
-                                echo '<div class="our-team-table-cell disable">';
+                                echo '<div class="small-table-cell disable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-delete-our-team" data-modal="delete-our-team-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="caretaker">';
                                             echo '<button class="btn-admin">';
@@ -1233,15 +1570,15 @@ $this->headTitle($this->headTitle);
 
                             echo '</div>';
                         }else{
-                            echo '<div class="our-team-table-row member-disable">';
-                                echo '<div class="our-team-table-cell full-name">';
+                            echo '<div class="small-table-row member-disable">';
+                                echo '<div class="small-table-cell full-name">';
                                     echo '<span>'.$member->getFullName().'</span>';
                                 echo '</div>';
                                 
-                                echo '<div class="our-team-table-cell edit"></div>';
+                                echo '<div class="small-table-cell edit"></div>';
                                 
                                 
-                                echo '<div class="our-team-table-cell enable">';
+                                echo '<div class="small-table-cell enable">';
                                     if ($this->access('ourteam.manage')) {
                                         echo '<a href="#" class="tooltip modal-trigger-activate-our-team-member" data-modal="activate-our-team-member-modal" data-memberID="'.$member->getId().'" data-memberFullName="'.$member->getFullName().'" data-type="caretaker">';
                                             echo '<button class="btn-admin">';
@@ -1318,14 +1655,15 @@ $this->headTitle($this->headTitle);
                     <div class='width-65-right' id="management-select-list">
                         
                     </div>
-                    
-                    
                     <div class='width-100'>
+                    </div>
+                    
+                    <div class='width-50-left'>
                         <label id="addOurTeamFirstNameLabel">First name:</label>
                         <input type="text" id="addOurTeamFirstName" name="addOurTeamFirstName">
                     </div>
                     
-                     <div class='width-100'>
+                     <div class='width-50-right'>
                         <label id="addOurTeamLastNameLabel">Last name:</label>
                         <input type="text" id="addOurTeamLastName" name="addOurTeamLastName">
                     </div>
