@@ -17,6 +17,9 @@ $(".modal-trigger-add-parents-information").click(function(e){
     
     e.preventDefault();
     
+    //close Manage infor. for parents Modal
+    $("#show-all-parents-information-modal").css({"display":"none"});
+    
     //clear msg label
     $(".response-msg").html('');
     

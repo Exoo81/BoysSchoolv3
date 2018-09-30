@@ -1001,38 +1001,122 @@ button.modal-btn{
     padding: 0;
     text-transform: none;
 }
-    button.modal-btn.left{
-        float:left;
-        margin-left: 5%;
-    }
-        /* Breakpoint */
-        @media screen and (min-width: 300px) and (max-width: 479px) {
-            button.modal-btn.left{
-                margin: 0 auto 30px auto;
-                float: none;
-            }
+    
+button.modal-btn.left{
+    float:left;
+    margin-left: 5%;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1800px) {
+        button.modal-btn.left{
+            margin: 0 auto 30px auto;
+            float: none;
         }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1100px) and (max-width: 1300px) {
+        button.modal-btn.left{
+            margin: 0 auto 30px auto;
+            float: none;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 500px) {
+        button.modal-btn.left{
+            margin: 0 auto 30px auto;
+            float: none;
+        }
+    }
+    
+
         
         
-    button.modal-btn.right{
-        float:right;
-        margin-right: 5%;
-    }
-        /* Breakpoint */
-        @media screen and (min-width: 300px) and (max-width: 479px) {
-            button.modal-btn.right{
-                margin: 0 auto;
-                float: none;
-            }
+button.modal-btn.right{
+    float:right;
+    margin-right: 5%;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1800px) {
+        button.modal-btn.right{
+            margin: 0 auto 30px auto;
+            float: none;
         }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1100px) and (max-width: 1300px) {
+        button.modal-btn.right{
+            margin: 0 auto;
+            float: none;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 500px) {
+        button.modal-btn.right{
+            margin: 0 auto;
+            float: none;
+        }
+    }
+    
+/* modal lg, bottom buttons large (no description)*/
+.modal-box.lg button.modal-btn.left{
+    float:left;
+    margin-left: 5%;
+}
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 500px) {
+        .modal-box.lg button.modal-btn.left{
+            margin: 0 auto 30px auto;
+            float: none;
+        }
+    }
+
+.modal-box.lg button.modal-btn.right{
+    float:right;
+    margin-right: 5%;
+}
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 500px) {
+        .modal-box.lg button.modal-btn.right{
+            margin: 0 auto;
+            float: none;
+        }
+    }
+    
+
+/* modal lg, bottom buttons large (no description)*/
     
 button.modal-btn:after{
-	top: 0px;
+    top: 0px;
 }
 
 button.modal-btn.medium{
     width: 150px;
 }
+
+button.modal-btn.left.medium{
+    float:left;
+    margin-left: 5%;
+}
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 370px) {
+        button.modal-btn.left.medium{
+            margin: 0 auto 30px auto;
+            float: none;
+        }
+    }
+        
+        
+button.modal-btn.right.medium{
+    float:right;
+    margin-right: 5%;
+}
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 370px) {
+        button.modal-btn.right.medium{
+            margin: 0 auto;
+            float: none;
+        }
+    }
 
 button.modal-btn.small{
     width: 100px;
@@ -1111,7 +1195,7 @@ textarea:hover{
   
 }  
     /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 1600px) {
+    @media screen and (min-width: 480px) and (max-width: 1600px) {
         input:active:focus,
         input:focus,
         input:hover,
@@ -1122,7 +1206,7 @@ textarea:hover{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 700px) {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         input:active:focus,
         input:focus,
         input:hover,
@@ -1778,67 +1862,202 @@ select:-webkit-autofill{
 	background-color: transparent;
 	
 }
-
-    
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .welcome .header{
+            
+        }
+    }
     /** Breakpoint **/
-
-    @media screen and (min-width: 480px) and (max-width: 800px) {
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .welcome .header{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .welcome .header{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .welcome .header{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .welcome .header{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .welcome .header{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 15%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 15%; 
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 15%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 15%
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
         .welcome .header{
             width: auto;
             margin-left: 15%;
         }
     }
     /* Breakpoint */
-        @media (min-width: 480px) and (max-width: 800px) and (orientation: landscape){
-
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .welcome .header{
+            width: auto;
+            margin-left: 18%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .welcome .header{
+            width: auto;
+            margin-left: 18%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
         .welcome .header{
             width: auto;
             margin-left: 20%;
         }
-
     }
-    /** Breakpoint **/
-    @media screen and (min-width: 300px) and (max-width: 479px) {
-        .welcome .header{
-            width: auto;
-            margin-left: 20%;
-        }
-    }
-/*	@media only screen and ( max-width :320px) {
-		.welcome .header{
-			float: none;
-			width: auto;
-			margin-left: 22%;
-			
-		}
-	}*/
+    
 .header img.main-logo{
 	float:left;
 	margin: 10px 0;
 	width: 80px;
 }
-    /* Breakpoint */
-    @media screen and (min-width: 480px) and (max-width: 768px) {
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .header img.main-logo{
-            width: 65px;
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .header img.main-logo{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .header img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .header img.main-logo{
+            
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .header img.main-logo{
-            width: 60px;
+            width: 64px;
+            margin: 5px 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .header img.main-logo{
-            width: 50px;
+            width: 64px;
+            margin: 5px 0;
         }
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .header img.main-logo{
-            width: 40px;
+            width: 48px;
+            margin: 5px 0;
         }
     }
 
@@ -1855,10 +2074,94 @@ select:-webkit-autofill{
 }
 
     
-    /* Breakpoint */
-     @media screen and (min-width: 300px) and (max-width: 768px) {
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .header .school-name{
-            padding-left: 10px;
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .header .school-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .header .school-name{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .header .school-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .header .school-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .header .school-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .header .school-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .header .school-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .header .school-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .header .school-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .header .school-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .header .school-name{
+            padding: 20px 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .header .school-name{
+            padding: 15px 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .header .school-name{
+            padding: 10px 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .header .school-name{
+            padding: 10px 5px;
         }
     }
     
@@ -1866,8 +2169,74 @@ select:-webkit-autofill{
 	font-size: 2.8em;
 	text-transform: uppercase;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .school-name .lg-name{
+            
+        }
+    }
     /* Breakpoint */
-     @media screen and (min-width: 480px) and (max-width: 768px) {
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .school-name .lg-name{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .school-name .lg-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .school-name .lg-name{
+            font-size: 2.4em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
         .school-name .lg-name{
             font-size: 2.2em;
         }
@@ -1875,13 +2244,13 @@ select:-webkit-autofill{
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .school-name .lg-name{
-            font-size: 1.6em
+            font-size: 1.6em;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .school-name .lg-name{
-            font-size: 1.5em
+            font-size: 1.5em;
         }
     }
     /* Breakpoint */
@@ -1896,17 +2265,91 @@ select:-webkit-autofill{
 	font-size: 1.6em;
 }
     
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .school-name .sm-name{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .school-name .sm-namei{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .school-name .sm-name{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .school-name .sm-name{
+            font-size: 1.6em;
+            margin-top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .school-name .sm-name{
+            font-size: 1.6em;
+            margin-top: -5px;
+        }
+    }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .school-name .sm-name{
-            font-size: 1.4em;
+            font-size: 1.3em;
             margin-top: -5px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .school-name .sm-name{
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-top: -5px;
         }
     }
@@ -2698,7 +3141,7 @@ section.parents .header{
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1300px) {
+    @media screen and (min-width: 1001px) and (max-width: 1300px) {
         section.admin .header,
         section.school-life-blog .header,
         section.class-blog .header,
@@ -2711,9 +3154,9 @@ section.parents .header{
             height: 160px;
         }
     }
-
+    
     /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 1020px) {
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
         section.admin .header,
         section.school-life-blog .header,
         section.class-blog .header,
@@ -2723,7 +3166,22 @@ section.parents .header{
         section.gallery .header,
         section.our-team .header,
         section.parents .header{
-            height: 200px;
+            height: 150px;
+        }
+    }
+
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 800px) {
+        section.admin .header,
+        section.school-life-blog .header,
+        section.class-blog .header,
+        section.contact .header,
+        section.classes .header,
+        section.school-life .header,
+        section.gallery .header,
+        section.our-team .header,
+        section.parents .header{
+            height: 130px;
         }
     }
     /* Breakpoint */
@@ -2850,22 +3308,19 @@ section.parents .header{
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header .baner{
-            width: 60%;
-            top: 50%;
+            
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .header .baner{
-            width: 80%;
-            top: 50%;
+            
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .header .baner{
-            width: 80%;
-            top: 50%;
+            
         }
     }
     /* Breakpoint */
@@ -2960,25 +3415,19 @@ section.parents .header{
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header .color-cubes{
-            width: 100%;
             height: 3px;
-            bottom: 55%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .header .color-cubes{
-            width: 100%;
             height: 3px;
-            bottom: 55%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .header .color-cubes{
-            width: 100%;
             height: 3px;
-            bottom: 55%;
         }
     }
     /* Breakpoint */
@@ -3068,21 +3517,21 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .header-title{
-            font-size: 3.2em;
+            font-size: 3.4em;
             padding: 4% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .header-title{
-            font-size: 3em;
+            font-size: 3.2em;
             padding: 5% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .header-title{
-            font-size: 3em;
+            font-size: 3.2em;
             padding: 4% 15% 0 0;
         }
     }
@@ -3104,22 +3553,22 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .header-title{
-            font-size: 3em;
-            padding: 2% 12% 0 0;
+            font-size: 2.8em;
+            padding: 5% 15% 0 0;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .header-title{
-            font-size: 3em;
-            padding: 3% 10% 0 0;
+            font-size: 2.4em;
+            padding: 5% 10% 0 0;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .header-title{
-            font-size: 3em;
-            padding: 3% 10% 0 0;
+            font-size: 2.4em;
+            padding: 5% 10% 0 0;
         }
     }
     /* Breakpoint */
@@ -3198,7 +3647,13 @@ section.admin .admin-box{
 }
  
     /** Breakpoint **/
-    @media screen and (min-width: 371px) and (max-width: 479px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .title{
+            font-size: 1.8em; 
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 371px) and (max-width: 600px) {
         .title{
             font-size: 1.8em; 
         }
@@ -3231,6 +3686,18 @@ section.admin .admin-box{
 	font-weight: 500;
 }
     /* Breakpoint */
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .title-sm{
+            font-size: 1.3em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .title-sm{
+            font-size: 1.3em;
+        }
+    }
+    /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 479px) {
         .title-sm{
             font-size: 1.2em;
@@ -3251,7 +3718,8 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 38%;
             padding-left: 8%;
             padding-right: 4%;
@@ -3260,7 +3728,8 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 40%;
             padding-left: 8%;
             padding-right: 2%;
@@ -3269,7 +3738,8 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 40%;
             padding-left: 8%;
             padding-right: 2%;
@@ -3278,7 +3748,8 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 42%;
             padding-left: 8%;
             padding-right: 0;
@@ -3287,16 +3758,18 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 42%;
             padding-left: 8%;
             padding-right: 0;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             width: 42%;
             padding-left: 6%;
             padding-right: 2%;
@@ -3304,11 +3777,12 @@ section.admin .admin-box{
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1000px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents-box .main-col-left{
             padding-top: 12%;
-            padding-top: 12%;
+            padding-top: 8%;
             width: 42%;
             padding-left: 6%;
             padding-right: 2%;
@@ -3317,7 +3791,8 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 800px) {
         .classes-box .main-col-left,
-        .our-team-box .main-col-left{
+        .our-team-box .main-col-left,
+        .parents .main-col-left{
             display: none;
         }
     }
@@ -3397,6 +3872,25 @@ section.admin .admin-box{
 .small-table-cell{
     display: table-cell;
 }
+
+.small-table-cell label {
+    position: absolute;
+    top: 15px;
+}
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .small-table-cell label{
+            top: 10px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 479px) {
+        .small-table-cell label{
+           top: 5px; 
+        }
+    }
 /*def of other data*/
 .small-table-cell.long-title,
 .small-table-cell.full-name{
@@ -3424,6 +3918,53 @@ section.admin .admin-box{
     padding: 20px 20px;
     width: 50%;
     text-transform: capitalize;
+}
+
+.small-table-cell.pa-title{
+    position: relative;
+    padding: 20px;
+    width: 30%;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.small-table-cell.pa-member-name{
+    position: relative;
+    padding: 20px;
+    width: 40%;
+    text-transform: capitalize;
+    
+}
+
+.small-table-cell span.mode{
+    font-style: italic;
+    font-weight: 600;
+}
+
+.small-table-cell.pa-meeting{
+    position: relative;
+    padding: 20px;
+    width: 90%;  
+    text-align: left;
+}
+
+.small-table-cell.pa-meeting-stmt-date{
+    position: relative;
+    padding: 5px 2%;
+    width: 60%;  
+}
+
+.small-table-cell.pi-link-doc-edit{
+    position: relative;
+    padding: 5px 2%;
+    width: 60%;  
+}
+
+.small-table-cell.pi-title{
+    position: relative;
+    padding: 20px 2%;
+    text-align: left;
+    text-transform: none;
 }
 
 
@@ -3538,7 +4079,8 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             width: 38%;
             padding-left: 8%;
             padding-right: 4%
@@ -3547,7 +4089,8 @@ section.admin .admin-box{
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             width: 40%;
             padding-left: 6%;
             padding-right: 4%
@@ -3556,7 +4099,8 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             width: 40%;
             padding-left: 6%;
             padding-right: 4%
@@ -3565,7 +4109,8 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             width: 42%;
             padding-left: 6%;
             padding-right: 2%
@@ -3574,16 +4119,18 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
             width: 42%;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
             width: 42%;
@@ -3591,19 +4138,21 @@ section.admin .admin-box{
     }
 
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1000px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents-box .main-col-right{
             padding-left: 6%;
             padding-right: 2%;
-            padding-top: 8%;
+            padding-top: 4%;
             width: 42%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 800px) {
         .classes-box .main-col-right,
-        .our-team-box .main-col-right{
+        .our-team-box .main-col-right,
+        .parents .main-col-right{
             display: none;
         }
     }
@@ -3623,7 +4172,7 @@ section.admin .admin-box{
         .main-col{
             width: 70%;
             margin: 0 15% 0 15%;
-            padding-top: 110px;
+            padding-top: 40px;
         }
     }
     /** Breakpoint **/
@@ -3631,7 +4180,7 @@ section.admin .admin-box{
         .main-col{
             width: 70%;
             margin: 0 15% 0 15%;
-            padding-top: 100px;
+            padding-top: 40px;
         }
     }
     /* Breakpoint */
@@ -3663,7 +4212,7 @@ section.admin .admin-box{
         .main-col{
             width: 80%;
             margin: 0 10% 0 10%;
-            padding-top: 60px;
+            padding-top: 45px;
         }
     }
     /* Breakpoint */
@@ -3706,7 +4255,7 @@ section.admin .admin-box{
             display: block;
             width: 70%;
             margin: 0 15% 0 15%;
-            padding-top: 110px;
+            padding-top: 60px;
             
         }
     }
@@ -3747,54 +4296,238 @@ video{
     float: left;
 }
 
+
+.modal-box.lg .print-option-top{
+    position: absolute;
+    top: 80px;
+    right: 120px;
+}
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .modal-box.lg .print-option-top{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .modal-box.lg .print-option-top{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .modal-box.lg .print-option-top{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .modal-box.lg .print-option-top{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .modal-box.lg .print-option-top{
+            top: 40px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
+        .modal-box.lg .print-option-top{
+            right: 60px;
+            top: 40px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .modal-box.lg .print-option-top{
+            right: 20px;
+            top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .modal-box.lg .print-option-top{
+            right: 5px;
+            top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .modal-box.lg .print-option-top{
+            right: 5px;
+            top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.lg .print-option-top{
+            right: 5px;
+            top: 40px;
+        }
+    }
+    
 .modal-box.lg .print-option-bottom{
     position: absolute;
     bottom: 120px;
     right: 120px;
 }
-/*    @media screen and (max-width:1366px){
-            .modal-box.lg .print-option-bottom{
-                right: 50px;
-            }
-        }*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .modal-box.lg .print-option-bottom{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .modal-box.lg .print-option-bottom{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .modal-box.lg .print-option-bottom{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .modal-box.lg .print-option-bottom{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .modal-box.lg .print-option-bottom{
+            bottom: 90px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
+        .modal-box.lg .print-option-bottom{
+            right: 60px;
+            bottom: 100px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .modal-box.lg .print-option-bottom{
+            right: 20px;
+            bottom: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .modal-box.lg .print-option-bottom{
+            right: 5px;
+            bottom: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .modal-box.lg .print-option-bottom{
+            right: 5px;
+            bottom: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.lg .print-option-bottom{
+            right: 5px;
+            bottom: 100px;
+        }
+    }
 
+
+.modal-box.lg .print-option-top img,
 .modal-box.lg .print-option-bottom img{
     position: absolute;
     right: 50px;
     top: -25px;
     width: 60px;
 }
-
-/*    @media screen and (max-width:1366px){
-            .modal-box.lg .print-option-bottom img{
-                top: -10px;
-                width: 40px;
-            }
-        }*/
-
-.modal-box.lg .print-option-top{
-    position: absolute;
-    top: 40px;
-    right: 120px;
-}
-/*    @media screen and (max-width:1366px){
-	.modal-box.lg .print-option-top{
-            right: 50px;
-	}
-    }*/
-
-.modal-box.lg .print-option-top img{
-    position: absolute;
-    right: 50px;
-    top: -25px;
-    width: 60px;
-}
-/*    @media screen and (max-width:1366px){
-	.modal-box.lg .print-option-top img{
-            top: -10px;
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            width: 55px;
+            top: -20px;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            width: 50px;
+            top: -20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            width: 50px;
+            top: -20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
             width: 40px;
-	}
-    }*/
+            top: -15px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.lg .print-option-top img,
+        .modal-box.lg .print-option-bottom img{
+            width: 40px;
+            top: -15px;
+        }
+    }
 
 /* Archive */
 .archive .title{
@@ -8145,19 +8878,6 @@ button.btn-contact-form{
 	background-image: url('../img/bg-yellow.png');
 } 
 
-section.parents .header-title{
-	padding: 3% 20% 0 0;
-}
-/*	@media screen and (max-width:1280px){
-		section.parents .header-title{
-			padding: 5% 20% 0 0;
-		}
-	}
-	@media screen and (max-width:1024px){
-		section.parents .header-title{
-			padding: 5% 18% 0 0;
-		}
-	}*/
 
 .parents-box .parents-info-box,
 .parents-box .book-list-box{
@@ -8165,8 +8885,113 @@ section.parents .header-title{
     position: relative;
     width: 100%;
     margin: 0 0 5% 10%;
-	/* border-bottom: 1px solid #d35400; */
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+           /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            /*            margin: 0 0 5% 0;*/
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-box .parents-info-box,
+        .parents-box .book-list-box{
+            margin: 0 0 5% 0;
+        }
+    }
 
 
 .parents-box .parents-association-box,
@@ -8185,7 +9010,7 @@ section.parents .header-title{
 	position: relative;
 	display: inline-block;
 	float: left;
-	margin: 20px 0;
+	margin: 20px;
 	margin-left: 60px;
 	width: 30%;
 	font-family: 'Architects Daughter' ,sans-serif ;
@@ -8195,51 +9020,230 @@ section.parents .header-title{
   	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
   	box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 }
-/*	@media screen and (max-width:1680px){
-		#parents_association_meeting_date{
-			margin-top: 40px;
-		}
-	}
-	@media screen and (max-width:1366px){
-		#parents_association_meeting_date{
-			margin-top: 20px;
-		}
-	}
-	@media screen and (max-width:1024px){
-		#parents_association_meeting_date{
-			margin-left: 30px;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px; 
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px 5%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px 5%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #parents_association_meeting_date{
+            width: 40%;
+            margin: 20px 0%;          
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date{
+            width: 46%;
+            margin: 20px 27%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date{
+            width: 50%;
+            margin: 20px 25%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date{
+            width: 60%;
+            margin: 20px 20%;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date{
+            width: 60%;
+            margin: 20px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date{
+            width: 60%;
+            margin: 20px 20%;
+        }
+    }
 
 #parents_association_meeting_date img.pin{
 	position: absolute;
 	top: -10px;
 	width: 50px;
-	margin-left: 40%;
+	left: 40%;
 	z-index: 1;
 }
-/*	@media screen and (max-width:1680px){
-		#parents_association_meeting_date img.pin{
-			width: 40px;
-		}
-	}
-	@media screen and (max-width:1536px){
-		#parents_association_meeting_date img.pin{
-			width: 35px;
-			top: -2px;
-		}
-	}
-	@media screen and (max-width:1366px){
-		#parents_association_meeting_date img.pin{
-			width: 30px;
-			top: -3px;
-		}
-	}
-	@media screen and (max-width:1280px){
-		#parents_association_meeting_date img.pin{
-			width: 25px;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date img.pin{
+           
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date img.pin{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date img.pin{
+            width: 40px; 
+            left: 40%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date img.pin{
+            width: 40px; 
+            left: 40%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date img.pin{
+            width: 40px; 
+            left: 35%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date img.pin{
+            width: 40px; 
+            left: 35%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date img.pin{
+            width: 40px; 
+            left: 35%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date img.pin{
+/*            width: 36px;
+            top: -5px;
+            left: 38%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date img.pin{
+/*            width: 36px;
+            top: -5px;
+            left: 38%;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #parents_association_meeting_date img.pin{
+/*            width: 36px;
+            top: -5px;
+            left: 38%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date img.pin{
+/*            width: 36px;
+            top: -5px;
+            left: 38%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date img.pin{
+/*            width: 36px;
+            top: -5px;
+            left: 38%;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date img.pin{
+            width: 36px;
+            top: -5px;
+            left: 38%;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date img.pin{
+            width: 36px;
+            top: -5px;
+            left: 38%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date img.pin{
+            width: 36px;
+            top: -5px;
+            left: 38%;
+        }
+    }
 
 #parents_association_meeting_date .month{
 	padding-top: 10px;
@@ -8252,32 +9256,111 @@ section.parents .header-title{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
-/*	@media screen and (max-width:1680px){
-		#parents_association_meeting_date .month{
-			font-size: 2.1em;
-		}
-	}
-	@media screen and (max-width:1536px){
-		#parents_association_meeting_date .month{
-			font-size: 2em;
-		}
-	}
-	@media screen and (max-width:1366px){
-		#parents_association_meeting_date .month{
-			font-size: 1.7em;
-		}
-	}
-	@media screen and (max-width:1280px){
-		#parents_association_meeting_date .month{
-			font-size: 1.5em;
-		}
-	}
-	@media screen and (max-width:1024px){
-		#parents_association_meeting_date .month{
-			font-size: 1.5em;
-			padding: 8px 0;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date .month{
+            font-size: 2em; 
+            padding: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date .month{
+            font-size: 2em; 
+            padding: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date .month{
+            font-size: 1.8em; 
+            padding: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date .month{
+            font-size: 1.8em; 
+            padding: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date .month{
+            font-size: 1.8em;
+            padding: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date .month{
+/*            font-size: 1.8em;
+            padding: 5px;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date .month{
+            font-size: 1.8em;
+            padding: 5px;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date .month{
+            font-size: 2em;
+            padding: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date .month{
+            font-size: 1.8em;
+            padding: 5px;
+        }
+    }
 
 #parents_association_meeting_date .day{
 	text-align: center;
@@ -8285,31 +9368,96 @@ section.parents .header-title{
 	font-size: 6em;
 	/* font-weight: bold; */
 }
-/*	@media screen and (max-width:1680px){
-		#parents_association_meeting_date .day{
-			font-size: 5em;
-		}
-	}
-	@media screen and (max-width:1536px){
-		#parents_association_meeting_date .day{
-			font-size: 4.6em;
-		}
-	}
-	@media screen and (max-width:1366px){
-		#parents_association_meeting_date .day{
-			font-size: 4em;
-		}
-	}
-	@media screen and (max-width:1280px){
-		#parents_association_meeting_date .day{
-			font-size: 3.8em;
-		}
-	}
-	@media screen and (max-width:1024px){
-		#parents_association_meeting_date .day{
-			font-size: 3em;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date .day{
+            font-size: 5em;          
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date .day{
+            font-size: 5em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date .day{
+            font-size: 5em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date .day{
+            font-size: 5em;            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date .day{
+            font-size: 4em;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date .day{
+/*            font-size: 4em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date .day{
+            font-size: 5em;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date .day{
+            font-size: 5em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date .day{
+            font-size: 4em;
+        }
+    }
 
 #parents_association_meeting_date .time{
 	position: relative;
@@ -8324,62 +9472,320 @@ section.parents .header-title{
 	left: 25%;
 	top: 8px;
 }
-/*	@media screen and (max-width:1366px){
-		#parents_association_meeting_date .time img{
-			left: 20%;
-		}
-	}
-	@media screen and (max-width:1280px){
-		#parents_association_meeting_date .time img{
-			top: 5px;
-		}
-	}
-	@media screen and (max-width:1024px){
-		#parents_association_meeting_date .time img{
-			left: 10px;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date .time img{
+           left: 20%;           
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date .time img{
+/*            left: 20%;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date .time img{
+            left: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date .time img{
+            left: 20%;
+        }
+    }
 
 #parents_association_meeting_date .time span.hour{
 	margin-left: 20%;
-	/* font-family: 'Architects Daughter' ,sans-serif ; */
 	font-size: 1.4em;
 	color: #561818;
 	text-transform: none;
 	font-weight: bold;
 }
-/*	@media screen and (max-width:1680px){
-		#parents_association_meeting_date .time span.hour{
-			font-size: 1.3em;
-		}
-	}
-	@media screen and (max-width:1536px){
-		#parents_association_meeting_date .time span.hour{
-			font-size: 1.2em;
-		}
-	}
-	@media screen and (max-width:1280px){
-		#parents_association_meeting_date .time span.hour{
-			font-size: 1.1em;
-		}
-	}
-	@media screen and (max-width:1024px){
-		#parents_association_meeting_date .time span.hour{
-			font-size: 1em;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.3em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.3em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.2em;            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.2em;            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.2em;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #parents_association_meeting_date .time span.hour{
+ /*            font-size: 1.2em;*/           
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+       #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #parents_association_meeting_date .time span.hour{
+/*            font-size: 1.2em;*/            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.4em;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.4em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #parents_association_meeting_date .time span.hour{
+            font-size: 1.2em;
+        }
+    }
 
-      
-.parents-association-box ul,
-.book-list-box ul,
-.policies-box ul,
-.enrolment-box ul{
-    padding: 1% 5%;        
-} 
+.parents-box ul{
+    padding: 0 5%;
+}
 
+.parents-box ul li{
+/*    width: max-content;*/
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .parents-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .parents-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-box ul li{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-box ul li{
+            font-size: 1em;
+        }
+    }
+    
+.parents-box ul li a.bs{
+        
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .parents-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .parents-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    
+.parents-box ul li img{
+        
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .parents-box ul li img{
+            position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }  
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .parents-box ul li img{
+            position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-box ul li img{
+          position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-box ul li img{
+            position: absolute;
+            width: 20px;
+            top: 10px;
+            left: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-box ul li img{
+            position: absolute;
+            width: 20px;
+            top: 10px;
+            left: -25px;
+        }
+    }
 
-.parents-association-box ul li{
-    width: max-content;
+  
+    
+    
+.parents-box .parents-association-box ul li{
     text-transform: capitalize;
 }
 
@@ -8395,45 +9801,257 @@ section.parents .header-title{
 	padding-top: 120px;
 	margin-left: 40px;
 }
-/*	@media screen and (max-width:1366px){
-		.parents-association-box .meeting-location{
-			padding-top: 100px;
-		}
-	}
-	@media screen and (max-width:1280px){
-		.parents-association-box .meeting-location{
-			margin-left: 30px;
-		}
-	}
-	@media screen and (max-width:1024px){
-		.parents-association-box .meeting-location{
-			padding-top: 80px;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .parents-association-box .meeting-location{
+            width: 50%;
+            margin: 0;
+            padding-top: 110px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .parents-association-box .meeting-location{
+            width: 50%;
+            margin: 0;
+            padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .parents-association-box .meeting-location{
+            width: 50%;
+            margin: 0;
+            padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .parents-association-box .meeting-location{
+            width: 50%;
+            margin: 0;
+            padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .parents-association-box .meeting-location{
+            width: 50%;
+            margin: 0;
+            padding-top: 90px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .parents-association-box .meeting-location{
+            width: 40%;
+            margin: 0;
+            padding-top: 80px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .parents-association-box .meeting-location{
+            width: 40%;
+            margin: 0;
+            padding-top: 80px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .parents-association-box .meeting-location{
+            margin: 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .parents-association-box .meeting-location{
+            margin: 0;     
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .parents-association-box .meeting-location{
+            margin-left: 5%;
+            width: 55%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .parents-association-box .meeting-location{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .parents-association-box .meeting-location{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-association-box .meeting-location{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-association-box .meeting-location{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-association-box .meeting-location{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
 
 .meeting-location img {
 	position: absolute;
-	top: 40px;
+	top: 30px;
 	left: 40%;
 	width: 60px;
 }
-/*	@media screen and (max-width:1366px){
-		.meeting-location img{
-			top: 30px;
-			width: 50px;
-		}
-	}
-	@media screen and (max-width:1280px){
-		.meeting-location img{
-			left: 30%;
-		}
-	}
-	@media screen and (max-width:1024px){
-		.meeting-location img{
-			top: 20px;
-			width: 40px;
-		}
-	}*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .meeting-location img{
+          
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .meeting-location img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .meeting-location img{
+            width: 50px;
+            top: 30px;
+
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .meeting-location img{
+            width: 50px;
+            top: 30px;
+
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .meeting-location img{
+            width: 50px;
+            top: 15px;
+
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .meeting-location img{
+            width: 40px;
+            top: 20px;
+
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .meeting-location img{
+            width: 40px;
+            top: 20px;
+
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .meeting-location img{
+            width: 50px;
+            top: 40px;
+            left: 30%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .meeting-location img{
+            width: 50px;
+            top: 40px;
+            left: 30%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .meeting-location img{
+            width: 50px;
+            top: 40px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .meeting-location img{
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 60px;
+            margin: 10px auto;        
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .meeting-location img{
+          position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 60px;
+            margin: 10px auto;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .meeting-location img{
+          position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 52px;
+            margin: 10px auto;            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .meeting-location img{
+          position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 50px;
+            margin: 5px auto;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .meeting-location img{
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            margin: 5px auto;
+        }
+    }
 
 .meeting-location span{
 	padding: 0 0;
@@ -8441,32 +10059,115 @@ section.parents .header-title{
 	font-size: 1.4em;
 	font-weight: 500;
 	color: #561818;
-	line-height: 45px;
+	line-height: 35px;
 }
 
-/*	 @media screen and (max-width:1680px){
-		.meeting-location span{
-			font-size: 1.3em;
-			line-height: 35px;
-		}
-	}
-	@media screen and (max-width:1536px){
-		.meeting-location span{
-			font-size: 1.2em;
-			line-height: 30px;
-		}
-	}
-	@media screen and (max-width:1280px){
-		.meeting-location span{
-			font-size: 1.1em;
-			line-height: 25px;
-		}
-	}
-	@media screen and (max-width:1280px){
-		.meeting-location span{
-			font-size: 1em;
-		}
-	}*/
+   /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .meeting-location span{
+            font-size: 1.3em;
+            line-height: 35px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .meeting-location span{
+            font-size: 1.3em;
+            line-height: 35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .meeting-location span{
+            font-size: 1.3em;
+            line-height: 30px; 
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px; 
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;   
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .meeting-location span{
+            font-size: 1.1em;
+            line-height: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .meeting-location span{
+            font-size: 1em;
+            line-height: 25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .meeting-location span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .meeting-location span{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+            margin-top: 40px;           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+            margin-top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .meeting-location span{
+            font-size: 1.2em;
+            line-height: 30px;
+            margin-top: 40px;
+        }
+    }
 
 /****/
 
@@ -8474,18 +10175,20 @@ section.parents .header-title{
     display: inline-block;
     padding-top: 3%;
 }
+    
 
-.parents-info-box ul li,
-.book-list-box ul li,
-.policies-box ul li,
-.enrolment-box ul li{
-    width: max-content;
-}
 
 .parents-assoc-team{
     display: inline-block;
     width: 55%;
 }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 800px) {
+        .parents-assoc-team{
+            width: 100%;
+        }
+    }
 
 .parents-assoc-meeting{
     display: inline-block;
@@ -8493,17 +10196,227 @@ section.parents .header-title{
     width: 40%;
     margin-left: 5%;
 }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 800px) {
+        .parents-assoc-meeting{
+            width: 100%;
+        }
+    }
 
 .parents-assoc-team .header,
 .parents-assoc-meeting .header{
     font-size: 1.4em;
+    text-align: center;
 }
-/*        @media screen and (max-width:1366px){
-                .parents-assoc-team .header,
-                .parents-assoc-meeting .header{
-                    font-size: 1.2em;
-                }
-        }*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.3em;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.3em;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.3em;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.3em;
+            text-align: center;
+            padding-top: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+        }
+    }
+    
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 800px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-assoc-team .header,
+        .parents-assoc-meeting .header{
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+    
+.small-table-cell.icon-cell img.pa-arrow,
+.small-table-cell.icon-cell img.pa-meeting{
+     top: 10px;
+     left: -10px
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .small-table-cell.icon-cell img.pa-arrow,
+        .small-table-cell.icon-cell img.pa-meeting{
+            width: 25px;
+            top: 5px;
+            left: -10px;
+        }
+    }    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .small-table-cell.icon-cell img.pa-arrow,
+        .small-table-cell.icon-cell img.pa-meeting{
+            width: 25px;
+            top: 5px;
+            left: -10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .small-table-cell.icon-cell img.pa-arrow,
+        .small-table-cell.icon-cell img.pa-meeting{
+            width: 25px;
+            top: 5px;
+            left: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .small-table-cell.icon-cell img.pa-arrow,
+        .small-table-cell.icon-cell img.pa-meeting{
+            width: 20px;
+            top: 5px;
+            left: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .small-table-cell.icon-cell img.pa-arrow,
+        .small-table-cell.icon-cell img.pa-meeting{
+            width: 20px;
+            top: 5px;
+            left: -5px;
+        }
+    }
+    
+.small-table-cell.icon-cell img.pi-icon{
+    top: 10px;
+    left: -10px
+}
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 1100px) {
+        .small-table-cell.icon-cell img.pi-icon{
+            width: 30px;
+            top: 10px;
+            left: 0px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .small-table-cell.icon-cell img.pi-icon{
+            width: 25px;
+            top: 8px;
+            left: 0px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .small-table-cell.icon-cell img.pi-icon{
+            width: 20px;
+            top: 5px;
+            left: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 370px) {
+        .small-table-cell.icon-cell img.pi-icon{
+            width: 20px;
+            top: 5px;
+            left: -5px;
+        }
+    }
+    
+
+.small-table-cell.icon-cell img.pa-meeting-icon-edit{
+     top: 12px;
+     left: -10px;
+    width: 35px;
+}
+       
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .small-table-cell.icon-cell img.pa-meeting-icon-edit{
+            width: 30px;
+            top: 10px;
+            left: -10px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (max-width: 479px) {
+        .small-table-cell.icon-cell img.pa-meeting-icon-edit{
+            width: 25px;
+            top: 7px;
+            left: -5px;
+        }
+    }
 
 .parents-assoc-team a,
 .parents-assoc-meeting a{
@@ -8514,7 +10427,7 @@ section.parents .header-title{
 .parents-assoc-meeting button.btn-add-user{
     font-size: .8em;
     width: 100%;
-    margin: 5% 0;
+    margin: 10px 0;
 }
 
 .modal-body.book-list .admin-option,
@@ -8528,12 +10441,111 @@ section.parents .header-title{
 .modal-body.policies .admin-option img{
     width: 40px;
 }
-/*        @media screen and (max-width:1366px){
-                .modal-body.book-list .admin-option img,
-                .modal-body.policies .admin-option img{
-                        width: 30px;
-                }
-        }*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            width: 35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            width: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-body.book-list .admin-option img,
+        .modal-body.policies .admin-option img{
+            width: 30px;
+        }
+    }
 
 .list-of-books,
 .list-of-stationary,
@@ -8639,26 +10651,11 @@ section.parents .header-title{
 /*    background: blue;*/
 }
 
-.parents-assoc-table-row .parents-assoc-table-cell.icon span{
-    font-style: italic;
-    font-weight: 600;
-}
 
-.parents-assoc-table-row .parents-assoc-table-cell.pa-title{
-    position: relative;
-    padding: 20px 0;
-    width: 30%;
-    font-weight: 600;
-    text-transform: capitalize;
-}
 
-.parents-assoc-table-row .parents-assoc-table-cell.pa-member-name{
-    position: relative;
-    padding: 20px 0;
-    width: 40%;
-    text-transform: capitalize;
-    
-}
+
+
+
 
 .parents-assoc-table-row.member-disable .pa-member-name,
 .parents-assoc-table-row.member-disable .pa-title{
@@ -8708,7 +10705,8 @@ section.parents .header-title{
 .additional-monies-info-table-row .additional-monies-info-table-cell.additional-monies-info-content,
 .uniform-info-table-row .uniform-info-table-cell.uniform-info-content,
 .other-info-table-row .other-info-table-cell.other-info-content{
-    padding: 10px 0 10px 10%;
+    padding: 10px 10%;
+    text-align: left;
 }
 
 
@@ -8717,6 +10715,7 @@ section.parents .header-title{
     position: relative;
     width: 20%;
     padding: 10px 0 10px 0%;
+    text-align: left;
 }
 
 .books-table-row .books-table-cell.remove,
@@ -8904,7 +10903,13 @@ section.our-team .header{
 }
 
     /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 550px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .our-team-box ul li{
+            font-size: 1.1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
         .our-team-box ul li{
             font-size: 1.1em;
         }
@@ -8932,7 +10937,13 @@ section.our-team .header{
         
 }
     /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 550px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .our-team-box ul li a.bs{
+            font-size: 1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
         .our-team-box ul li a.bs{
             font-size: 1em;
         }
@@ -8959,9 +10970,17 @@ section.our-team .header{
 .our-team-box ul li img{
         
 }
-    
     /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 550px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .our-team-box ul li img{
+            position: absolute;
+            width: 25px;
+            top: 8px;
+            left: -30px;
+        }
+    }    
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
         .our-team-box ul li img{
             position: absolute;
             width: 25px;
@@ -9016,6 +11035,16 @@ section.our-team .header{
     @media screen and (max-width: 479px) {
         .our-team-box ul li span.our-team-role{
             display: block;
+        }
+    }
+
+.our-team-box .cms-option a.bs{
+    
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .our-team-box .cms-option a.bs{
+            font-size: .9em;
         }
     }
 
@@ -13911,58 +15940,24 @@ img.end-tl{
 
 .modal-box.lg{
     width: 60%;
-    margin-top: 3%;
+    margin-top: 4%;
 }  
     
-    /** Breakpoint **/
-    @media screen and (min-width: 1581px) and (max-width: 1800px) {
-        .modal-box.lg{
-            width: 65%;
-            margin-top: 4%;
-        }
-    }
     
+    
+
     /* Breakpoint */
-    @media screen and (min-width: 1301px) and (max-width: 1580px) {
-        .modal-box.lg{
-            width: 70%;
-            margin-top: 4%;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+    @media screen and (min-width: 1201px) and (max-width: 1580px) {
         .modal-box.lg{
             width: 80%;
             margin-top: 5%;
         }
     }
     
-    /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
-        .modal-box.lg{
-            width: 85%;
-            margin-top: 6%;
-        }
-    }
     
-    /** Breakpoint **/
-    @media screen and (min-width: 701px) and (max-width: 800px) {
-        .modal-box.lg{
-            width: 85%;
-            margin-top: 8%;
-        }
-    }
-    
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 700px) {
-        .modal-box.lg{
-            width: 95%;
-            margin-top: 2%;
-        }
-    }
-    
+
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
         .modal-box.lg{
             width: 100%;
             margin-top: 0%;
@@ -14163,7 +16158,7 @@ img.end-tl{
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 551px) and (max-width: 600px) {
+    @media screen and (min-width: 480px) and (max-width: 600px) {
         .modal-box.lg .circle-img-wrapper{
             width: 70px;
             height: 70px;
@@ -14171,7 +16166,7 @@ img.end-tl{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 550px) {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         .modal-box.lg .circle-img-wrapper{
             width: 50px;
             height: 50px;
@@ -14270,34 +16265,96 @@ img.end-tl{
     left: 12px;
 }
 
-.modal-box .circle-img-wrapper img.add-pa-member{
-    top: 10px;
+.modal-box.lg .circle-img-wrapper img.booklist{
+    top: 15px;
     left: 15px;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .modal-box.lg .circle-img-wrapper img.booklist{
+            top: 13px;
+            left: 13px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img.booklist{
+            top: 11px;
+            left: 11px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .modal-box.lg .circle-img-wrapper img.booklist{
+            top: 9px;
+            left: 9px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box.lg .circle-img-wrapper img.booklist{
+            top: 7px;
+            left: 7px;
+        }
+    }
+
+.modal-box .circle-img-wrapper img.add-pa-member{
+    top: 10px;
+    left: 13px;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 1200px) {
+        .modal-box .circle-img-wrapper img.add-pa-member{
+            top: 10px;
+            left: 13px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 480px) and (max-width: 700px) {
+        .modal-box .circle-img-wrapper img.add-pa-member{
+            top: 10px;
+            left: 10px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box .circle-img-wrapper img.add-pa-member{
+            top: 8px;
+            left: 8px;
+        }
+    }
 
 .modal-box.lg .circle-img-wrapper img{
 	top: 8px;
 	left: 15px
 }
-    /* Breakpoint */
-    @media screen and (min-width: 601px) and (max-width: 1200px) {
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
         .modal-box.lg .circle-img-wrapper img{
-            top: 9px;
-            left: 12px;
+            top: 8px;
+            left: 13px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img{
+            top: 6px;
+            left: 12px
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 551px) and (max-width: 600px) {
+    @media screen and (min-width: 480px) and (max-width: 600px) {
         .modal-box.lg .circle-img-wrapper img{
             top: 7px;
-            left: 10px;
+            left: 10px
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 550px) {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
         .modal-box.lg .circle-img-wrapper img{
-            top: 6px;
-            left: 6px;
+            top: 5px;
+            left: 7px
         }
     }
 
@@ -14400,6 +16457,52 @@ img.end-tl{
             left: 8px;
         }
     }
+    
+.modal-box.lg .circle-img-wrapper img.pa{
+	top: 16px;
+        left: 16px;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .modal-box.lg .circle-img-wrapper img.pa{
+            top: 14px;
+            left: 14px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img.pa{
+            top: 12px;
+            left: 12px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .modal-box.lg .circle-img-wrapper img.pa{
+            top: 10px;
+            left: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box.lg .circle-img-wrapper img.pa{
+            top: 8px;
+            left: 8px;
+        }
+    }
+
+.modal-box.sm .circle-img-wrapper img.ifp{
+    top: 8px;
+    left: 7px;
+}
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px) {
+        .modal-box.sm .circle-img-wrapper img.ifp{
+            top: 10px;
+            left: 10px;
+        }
+    }
+    
         
 .modal-box.lg .circle-img-wrapper img.class-blog,
 .modal-box.lg .circle-img-wrapper img.video{
@@ -14476,14 +16579,75 @@ img.end-tl{
 
     
 .modal-box.lg .circle-img-wrapper img.bookList{
-    top: 15px;
-    left: 15px
+    top: 16px;
+    left: 16px
 }
-/*    @media screen and ( max-width :1366px) {
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
         .modal-box.lg .circle-img-wrapper img.bookList{
-            top: 5px;
-	}
-    }*/
+            top: 14px;
+            left: 14px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img.bookList{
+            top: 12px;
+            left: 12px
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .modal-box.lg .circle-img-wrapper img.bookList{
+            top: 10px;
+            left: 10px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box.lg .circle-img-wrapper img.bookList{
+            top: 7px;
+            left: 7px
+        }
+    }
+    
+.modal-box.lg .circle-img-wrapper img.bookList-icon-edit,
+.modal-box.lg .circle-img-wrapper img.policy-icon-edit{
+    top: 16px;
+    left: 16px;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .modal-box.lg .circle-img-wrapper img.bookList-icon-edit,
+        .modal-box.lg .circle-img-wrapper img.policy-icon-edit{
+            top: 14px;
+            left: 14px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+        .modal-box.lg .circle-img-wrapper img.bookList-icon-edit,
+        .modal-box.lg .circle-img-wrapper img.policy-icon-edit{
+            top: 12px;
+            left: 12px
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 600px) {
+        .modal-box.lg .circle-img-wrapper img.bookList-icon-edit,
+        .modal-box.lg .circle-img-wrapper img.policy-icon-edit{
+            top: 10px;
+            left: 10px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-box.lg .circle-img-wrapper img.bookList-icon-edit,
+        .modal-box.lg .circle-img-wrapper img.policy-icon-edit{
+            top: 7px;
+            left: 7px
+        }
+    }
     
 
 
@@ -14552,9 +16716,7 @@ img.end-tl{
 	font-size: 3em;
 	color: #bdc3c7;
 }
-.modal-box.lg .modal-title span{
-	font-size: 3.5em;
-}
+
 
 
 /** Breakpoint **/
@@ -14562,68 +16724,61 @@ img.end-tl{
     /** Breakpoint **/
     @media screen and (min-width: 1021px) and (max-width: 1200px) {
         .modal-title span{
-            font-size: 2.7em;
+            font-size: 2.8em;
         }
     }
 
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1020px) {
         .modal-title span{
-            font-size: 2.5em;
+            font-size: 2.8em;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
-        .modal-title span{
-            font-size: 2.3em;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 720px) {
-        .modal-title span{
-            font-size: 1.9em;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
-        .modal-title span{
-            font-size: 1.5em;
-        }
-    }
-
-
-
-    /** Breakpoint **/
-    @media screen and (min-width: 1021px) and (max-width: 1200px) {
-        .modal-box.lg .modal-title span{
-            font-size: 3.2em;
-        }
-    }
-
-    /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
-        .modal-box.lg .modal-title span{
-            font-size: 3em;
-        }
-    }
-    /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 800px) {
-        .modal-box.lg .modal-title span,
         .modal-title span{
             font-size: 2.8em;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 720px) {
-        .modal-box.lg .modal-title span,
         .modal-title span{
+            font-size: 2.4em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+        .modal-title span{
+            font-size: 2em;
+        }
+    }
+
+.modal-box.lg .modal-title span{
+	font-size: 3.5em;
+}
+
+
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .modal-box.lg .modal-title span{
+            font-size: 3em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .modal-box.lg .modal-title span{
+            font-size: 2.8em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 720px) {
+        .modal-box.lg .modal-title span{
             font-size: 2.4em;
         }
     } 
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 479px) {
-        .modal-box.lg .modal-title span,
-        .modal-title span{
+        .modal-box.lg .modal-title span{
             font-size: 2em;
         }
     }
@@ -14818,29 +16973,35 @@ img.end-tl{
 .modal-box.lg .modal-body {
     padding: 80px;
 }
-
     /* Breakpoint */
-    @media screen and (min-width: 721px) and (max-width: 800px) {
+    @media screen and (min-width: 1001px) and (max-width: 1300px)  {
         .modal-box.lg .modal-body{
-            padding: 70px;
+            padding: 40px 60px;
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 701px) and (max-width: 1000px)  {
+        .modal-box.lg .modal-body{
+            padding: 40px 40px;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 601px) and (max-width: 720px) {
+    @media screen and (min-width: 480px) and (max-width: 700px)  {
         .modal-box.lg .modal-body{
-            padding: 60px;
-        }
-    }
-    /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 600px) {
-        .modal-box.lg .modal-body{
-            padding: 50px;
+            padding: 40px 20px;
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 341px) and (max-width: 479px)  {
         .modal-box.lg .modal-body{
-            padding: 30px;
+            padding: 40px 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .modal-box.lg .modal-body{
+            padding: 40px 5px;
         }
     }
     
@@ -15141,7 +17302,12 @@ img.end-tl{
     }
 
 .modal-box.sm .modal-text hr{
-	margin: 20px auto;
+    margin: 20px auto;
+}
+
+.modal-box .parents-assoc-team hr,
+.modal-box .parents-assoc-meeting hr{
+    margin: 10px auto;
 }
 
 
@@ -15256,6 +17422,8 @@ img.end-tl{
 	list-style-type: decimal;
 }
 
+
+
 .modal-text ul.file-list{
     list-style-type: none;
 }
@@ -15308,6 +17476,14 @@ img.end-tl{
 
 .modal-text ul.square li{
 	font-weight: normal;
+}
+
+.modal-text#policyContentOrigin ul{
+	list-style-type: disc;
+}
+
+.modal-text#policyContentOrigin ul li{
+	font-weight: initial;
 }
 
 .modal-body .modal-text form#addOurTeamForm {
@@ -16359,6 +18535,18 @@ table.event-list tr{
             z-index: 10;
         }
     }
+    
+    /*Breakpoint */
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-box.lg .close-modal{
+            width: 60px;
+            top: 10px;
+            right: 2%;
+            z-index: 10;
+        }
+    }
+    
+    
     /*Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 600px) {
         .modal-box .close-modal{
@@ -16405,6 +18593,14 @@ table.event-list tr{
            color: #adadad;
            font-size: .7em;
            line-height: 3.6em; 
+        }
+    }
+    /*Breakpoint */
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-box.lg .close-modal-inner label{
+            color: #adadad;
+            font-size: .8em; 
+            line-height: 3.6em;
         }
     }
     /*Breakpoint */
@@ -16471,6 +18667,13 @@ table.event-list tr{
         .modal-box .close-modal-inner:before, 
         .modal-box .close-modal-inner:after{
            background: #adadad;
+        }
+    }
+    /*Breakpoint */
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-box.lg .close-modal-inner:before,
+        .modal-box.lg .close-modal-inner:after{
+            background: #adadad;
         }
     }
     /* Breakpoint */
@@ -16904,6 +19107,7 @@ div.dhx_modal_cover_dv {
 .tooltip {
     position: relative;
     display: inline-block;
+    top: 10px;
 }
 
 .tooltip.horizontal {
@@ -17135,6 +19339,114 @@ div.dhx_modal_cover_dv {
     top: 45px;
     padding: 3px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            top: 40px;
+            left: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            top: 35px;
+            left: -10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+            top: 35px;
+            left: -10px;
+        }
+    }
     
 .tooltip .tooltiptext.edit_member,   
 .tooltip .tooltiptext.edit{
@@ -17377,6 +19689,114 @@ div.dhx_modal_cover_dv {
     top: 45px;
     padding: 3px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            top: 40px;
+            left: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            top: 35px;
+            left: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+            top: 35px;
+            left: 0;
+        }
+    }
     
 .tooltip .tooltiptext.details{
     background-color: rgba(26, 188, 156, .3);
@@ -17570,7 +19990,7 @@ label.error {
     @media screen and (min-width: 701px) and (max-width: 800px) {
         .cms-option.classes{
             right: 5%;
-            top: 110px;
+            top: 20px;
         }
     }
     /* Breakpoint */
@@ -17639,7 +20059,7 @@ label.error {
     @media screen and (min-width: 701px) and (max-width: 800px) {
         .cms-option.gallery_add{
             right: 5%;
-            top: 110px;
+            top: 20px;
         }
     }
     /* Breakpoint */
@@ -17720,7 +20140,7 @@ label.error {
 }
 
     /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1580px) {
+    @media screen and (min-width: 1101px) and (max-width: 1580px) {
         .cms-option.board-of-management{
             width: 120px;
             right: -5px;
@@ -17729,11 +20149,11 @@ label.error {
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
         .cms-option.board-of-management{
             width: 120px;
             right: -5px;
-            top: 20px;
+            top: 50px;
             text-align: center;
         }
     }
@@ -17913,7 +20333,17 @@ label.error {
     }
     
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.learning-support{
+            width: 140px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
         .cms-option.learning-support{
             width: 130px;
             right: 0;
@@ -18197,26 +20627,563 @@ label.error {
             text-align: center;
         }
     }
+    
+.parents-box .cms-option a.bs{
+    
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .parents-box .cms-option a.bs{
+            font-size: .9em;
+        }
+    } 
 
 .cms-option.book-list{
     top: 30px;
-    right: 15%
+    right: -40px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.book-list{
+            top: 30px;
+            right: -40px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.book-list{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.book-list{
+            top: 30px;
+            right: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.book-list{
+            top: 30px;
+            right: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.book-list{
+            width: 100px;
+            right: 10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.book-list{
+            width: 100px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.book-list{
+            width: 90px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.book-list{
+            width: 90px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.book-list{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.book-list{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.book-list{
+            right: -55px;
+            top: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.book-list{
+            right: -35px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.book-list{
+            width: 90px;
+            right: -45px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.book-list{
+            width: 90px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.book-list{
+            width: 90px;
+            top: 25px;
+            right: -10px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.book-list{
+            right: -10px;
+            top: 0;
+        }
+    }
 
 .cms-option.parents-assoc{
     top: 30px;
-    right: 5%;
+    right: -5px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.parents-assoc{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.parents-assoc{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.parents-assoc{
+            width: 125px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.parents-assoc{
+            width: 110px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.parents-assoc{
+            width: 110px;
+            right: -5px;
+            top: 30px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.parents-assoc{
+            width: 130px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.parents-assoc{
+            width: 110px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.parents-assoc{
+            width: 110px;
+            right: -45px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.parents-assoc{
+            width: 80px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.parents-assoc{
+            width: 80px;
+            right: -10px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.parents-assoc{
+            right: -10px;
+            top: 0;
+        }
+    }
 
 .cms-option.policies{
     top: 30px;
-    right: 15%;
+    right: -5px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.policies{
+            right: -5px;
+            top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.policies{
+            right: -55px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.policies{
+            right: -55px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.policies{
+            right: -55px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.policies{
+            right: -35px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.policies{
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.policies{
+            top: 30px;
+            right: -35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.policies{
+            right: -10px;
+            top: 25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.policies{
+            right: -10px;
+            top: 25px;
+        }
+    }
 
 .cms-option.parents-information{
-    display: inline-block;
-    position: relative;
+    position: absolute;
+    top: 30px;
+    right: -40px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            top: 20px;
+            right: -40px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: 10px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: 10px;
+            top: 20px;
+            text-align: center;          
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 100px;
+            right: 10px;
+            top: 10px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 130px;
+            right: 0;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 90px;
+            right: 0;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.parents-information{
+            position: absolute;
+            top: 0px;
+            right: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 160px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 150px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 90px;
+            right: -45px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 90px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.parents-information{
+            position: absolute;
+            right: -10px;
+            top: 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.parents-information{
+            position: absolute;
+            width: 100px;
+            right: -10px;
+            top: 25px;
+            text-align: center;
+        }
+    }
 
 .cms-option.parents-information.left{
     float: left;
@@ -18240,7 +21207,14 @@ label.error {
     width: 30px;
     
 }
-    
+    /* Breakpoint */
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .cms-option a img{
+            width: 25px;
+            top: -6px;
+            right: 30px;
+        }
+    }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 600px) {
         .cms-option a img{
@@ -18496,21 +21470,22 @@ label.error {
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+    @media screen and (min-width: 1101px) and (max-width: 1300px) {
         .cms-option.our-team a img{
             
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
         .cms-option.our-team a img{
-            
+            right: 150px;
+            top: -5px;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .cms-option.our-team a img{
-            right: 100px;
+            right: 90px;
             top: 5px;
         }
     }
@@ -18554,7 +21529,7 @@ label.error {
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1580px) {
         .cms-option.board-of-management a img{
-            right: 130px;
+            right: 120px;
             top: 3px;
         }
     }
@@ -18578,11 +21553,18 @@ label.error {
     right: 220px;
     top: -5px;
 }
-
+    
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .cms-option.teachers a img{
             right: 130px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .cms-option.teachers a img{
+            right: 120px;
             top: 3px;
         }
     }
@@ -18605,7 +21587,6 @@ label.error {
     right: 355px;
     top: -5px;
 }
-    
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1650px) {
         .cms-option.learning-support a img{
@@ -18613,11 +21594,18 @@ label.error {
             top: -30px;
         }
     }
+    /* Breakpoint */
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.learning-support a img{
+            right: 55px;
+            top: -30px;
+        }
+    }
     
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
         .cms-option.learning-support a img{
-            right: 50px;
+            right: 55px;
             top: -30px;
         }
     }
@@ -18664,11 +21652,24 @@ label.error {
     top: -5px;
 }
      
-    
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .cms-option.secretary a img{
             right: 130px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.secretary a img{
+            right: 120px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.secretary a img{
+            right: 120px;
             top: 3px;
         }
     }
@@ -18700,11 +21701,24 @@ label.error {
     top: -5px;
 }
     
-    
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .cms-option.sna a img{
             right: 130px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.sna a img{
+            right: 120px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.sna a img{
+            right: 120px;
             top: 5px;
         }
     }
@@ -18737,11 +21751,24 @@ label.error {
     top: -5px;
 }
     
-    
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .cms-option.asdunit a img{
-            right: 150px;
+            right: 155px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.asdunit a img{
+            right: 145px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.asdunit a img{
+            right: 145px;
             top: 5px;
         }
     }
@@ -18765,11 +21792,24 @@ label.error {
     top: -5px;
 }
     
-    
     /** Breakpoint **/
-    @media screen and (min-width: 801px) and (max-width: 1200px) {
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
         .cms-option.caretaker a img{
-            right: 125px;
+            right: 130px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.caretaker a img{
+            right: 120px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.caretaker a img{
+            right: 120px;
             top: 5px;
         }
     }
@@ -18796,13 +21836,479 @@ label.error {
         }
     }
 
-.cms-option.parents-information a img,
-.cms-option.parents-assoc a img,
-.cms-option.book-list a img,
-.cms-option.policies a img{
-    left: -40px;
+.cms-option.book-list a img{
+    right: 175px;
     top: -5px;
-}
+} 
+
+    
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.book-list a img{
+            right: 170px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.book-list a img{
+            right: 105px;
+            top: 5px;
+
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.book-list a img{
+            right: 110px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.book-list a img{
+            right: 95px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.book-list a img{
+            right: 95px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.book-list a img{
+            right: 175px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.book-list a img{
+            right: 155px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.book-list a img{
+            right: 95px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.book-list a img{
+            right: 35px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.book-list a img{
+            top: -25px;
+            right: 35px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.book-list a img{
+            top: -5px;
+            right: 155px;
+        }
+    }
+    
+
+.cms-option.parents-information a img{
+    right: 260px;
+    top: -5px;
+} 
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.parents-information a img{
+            right: 165px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.parents-information a img{
+            right: 165px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.parents-information a img{
+            right: 65px;
+            top: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.parents-information a img{
+            right: 60px;
+            top: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.parents-information a img{
+            right: 105px;
+            top: 15px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.parents-information a img{
+            right: 50px;
+            top: -30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.parents-information a img{
+            right: 35px;
+            top: -25px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.parents-information a img{
+            right: 235px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.parents-information a img{
+            right: 70px;
+            top: -30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.parents-information a img{
+            right: 70px;
+            top: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.parents-information a img{
+            right: 70px;
+            top: -30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.parents-information a img{
+            right: 65px;
+            top: -25px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.parents-information a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.parents-information a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.parents-information a img{
+            right: 235px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.parents-information a img{
+            right: 40px;
+            top: -25px;
+        }
+    }
+    
+    
+.cms-option.parents-assoc a img{
+    right: 225px;
+    top: -5px;
+}    
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.parents-assoc a img{
+            right: 220px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.parents-assoc a img{
+            right: 220px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.parents-assoc a img{
+            right: 115px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.parents-assoc a img{
+            right: 40px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.parents-assoc a img{
+            right: 130px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.parents-assoc a img{
+            right: 115px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.parents-assoc a img{
+            right: 115px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.parents-assoc a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.parents-assoc a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.parents-assoc a img{
+            right: 200px;
+            top: -5px;
+        }
+    }
+    
+    
+.cms-option.policies a img{
+    right: 125px;
+    top: -5px;
+}   
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.policies a img{
+            right: 125px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.policies a img{
+            right: 120px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.policies a img{
+            right: 110px;
+        }                             
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.policies a img{
+            right: 110px;
+            top: -5px;
+        }
+    }
 
 .cms-option.address a img{
     right: 210px;
@@ -18851,6 +22357,12 @@ form.cms div.width-35-left{
     width: 35%;
     float: left;
 }
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        form.cms div.width-35-left{
+            width: 100%;
+        }
+    }
 
 form.cms div.width-40-left{
     display: inline-block;
@@ -18866,7 +22378,7 @@ form.cms div.width-50-left{
     float: left;
 }
     /*Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-50-left{
             width: 100%;
         }
@@ -18890,7 +22402,7 @@ form.cms div.width-60-left{
     float: left;
 }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-60-left{
             width: 100%;
         }
@@ -18924,7 +22436,7 @@ form.cms div.width-30-right{
     float: right;
 }
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-30-right{
             width: 100%;
         }
@@ -18938,7 +22450,7 @@ form.cms div.width-35-right{
 }
 
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-35-right{
             width: 100%;
         }
@@ -18972,7 +22484,7 @@ form.cms div.width-60-right{
 }
 
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 1000px) {
+    @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms div.width-60-right{
             width: 100%;
         }
@@ -19023,7 +22535,7 @@ form.cms textarea{
         form.cms input,
         form.cms textarea{
             padding: 6px 6px;
-            width: 92%;
+            width: 94%;
         }
     }
     /* Breakpoint */
@@ -19179,7 +22691,8 @@ form.cms select{
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 1600px) {
         form.cms select{
-            padding: 5px 5px;
+            padding: 7px 5px;
+            width: 97%
         }
     }
     
@@ -19187,6 +22700,7 @@ form.cms select{
     @media screen and (min-width: 300px) and (max-width: 700px) {
         form.cms select{
             padding: 5px 5px;
+            width: 97%
         }
     }
 
@@ -19353,8 +22867,7 @@ form.cms .input_fields_wrap{
 }
 
 form.cms .input_fields_wrap.book-list{
-    margin-left: -10px;
-    padding: 10px 20px 10px 10px;
+    padding: 0;
 }
 form.cms .input_fields_wrap.book-list#editListOfBooks,
 form.cms .input_fields_wrap.book-list#editListOfStationary{
@@ -19632,8 +23145,98 @@ form.cms .post-gallery label.preview-img-label a{
 label.preview-book-list-label a{
     position: absolute;
     top: 10px;
-    left: -15px;
+    left: -5px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        label.preview-book-list-label a{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        label.preview-book-list-label a{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        label.preview-book-list-label a{
+            
+        }
+    }
 
 label.preview-book-list-label.edit a{
     left: 0;
@@ -19679,9 +23282,9 @@ form.cms td.icon img{
         }
     }
 
-form.cms td.text{
+/*form.cms td.text{
     font-size: 1em;
-}
+}*/
 
 form.cms td.option{
     padding-left: 5%;
@@ -19692,18 +23295,18 @@ form.cms td.subject{
 }
 
 form.cms td.book-title{
-    width: 60%;
-    padding-left: 5%;
+    width: 50%;
+    padding-left: 2%;
 }
 
 form.cms td.publisher{
     width: 15%;
-    padding-left: 5%;
+    padding-left: 2%;
 }
 
 form.cms td.option.book,
 form.cms td.option.stationary{
-    width: 5%;
+    width: 20%;
 }
 
 form.cms td.item-name{
@@ -19711,8 +23314,16 @@ form.cms td.item-name{
 }
 
 form.cms td.qty{
-    width: 10%;
-    padding-left: 5%
+    width: 15%;
+    padding-left: 2%
+}
+
+#edit-add_book_button,
+#edit-add_stationary_button,
+#add_book_button,
+#add_stationary_button{
+    width: 96%;
+    margin: 0 2%;
 }
 
 
@@ -19848,3 +23459,40 @@ form.cms td.qty{
     display: block;
 }*/
 
+/*#add-parents-assoc-member-modal{
+    display: block;
+}*/
+
+/*#edit-parents-assoc-meeting-modal{
+    display: block;
+}*/
+
+
+
+/*#edit-parents-information-modal{
+    display: block;
+}*/
+
+/*#show-book-list-modal{
+    display: block;
+}*/
+
+/*#edit-book-list-modal{
+    display: block;
+}*/
+
+/*#add-book-list-modal{
+    display: block;
+}*/
+
+/*#delete-book-list-modal{
+    display: block;
+}*/
+
+/*#show-policy-modal-origin{
+    display: block;
+}*/
+
+/*#edit-policy-modal{
+    display: block;
+}*/
