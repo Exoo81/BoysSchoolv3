@@ -36,17 +36,25 @@
                 success: function(data){
                     console.log(data);
                     if(data.success === true){
+
+
                         $(".contact-end").attr("id", 'sentSuccess');
                         $('.contact-end h3').html('Message has been sent.<BR><span class="thankYou">THANK YOU <br>'+data.author+'</span>' );
                             
                         $('.contact-start').animate({top : '-500px'},500);
                         $('.contact-start').siblings('.contact-end').animate({top : '0px'},500);
+                        
+                        
                     }else{
+
+            
                          $(".contact-end").attr("id", 'sentFaild');
                         $('.contact-end h3').html('Sorry but there was a problem <br>sending the message.<br><span class="tryAgain">Please, try again</span>' );
                                  
                         $('.contact-start').animate({top : '-500px'},500);
                         $('.contact-start').siblings('.contact-end').animate({top : '0px'},500);
+
+            
                     }
                             
                 }

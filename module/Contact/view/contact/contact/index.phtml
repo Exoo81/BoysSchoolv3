@@ -28,7 +28,7 @@ $this->headTitle($this->headTitle);
                 if($this->access('contact.edit')){
                     echo '<div class="cms-option address">';
                         echo '<a href="#" class="bs modal-trigger-edit-address" data-modal="edit-address-modal" data-modal="edit-address-modal">';
-                            echo '<img src="img/icons/icon-edit.png"><span>Edit contact information</span>';
+                            echo '<img src="img/icons/icon-settings.png"><span>Edit contact information</span>';
                         echo '</a>';
                     echo '</div>';
                 }
@@ -71,7 +71,7 @@ $this->headTitle($this->headTitle);
 											
 			<textarea rows="5" id="contactMessage" name="contactMessage" placeholder="Write a message here ..." ></textarea><br />
 											
-			<button type="submit" class="btn-contact-form btn-green" data-text="send message">
+			<button type="submit" class="btn-contact-form btn-green reversed" data-text="send message">
                             <span><i class="fa fa-paper-plane faa-tada animated"></i> send message</span>
 			</button>
                     </form>
@@ -80,8 +80,10 @@ $this->headTitle($this->headTitle);
                     <h3></h3>
                     <div class="close-contact-form"></div>
 		</div>
+            </div>
 	</div>
-	</div>
+        
+        
     </div>	
 </section>
 
@@ -105,11 +107,11 @@ $this->headTitle($this->headTitle);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img src="img/icons/icon-edit.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="edit-address-icon" src="img/icons/icon-edit.png" alt="" /></div>
 
             <!-- original version -->
             <div class="modal-title">
-                    <span>Contact Information - edit</span>
+                    <span>Edit contact information</span>
             </div>
 	
         </div>
