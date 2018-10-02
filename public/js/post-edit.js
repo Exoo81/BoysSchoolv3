@@ -72,7 +72,7 @@ $(".modal-trigger-edit-post").click(function(e){
     
     //send id by AJAX to get full object
     $.ajax({
-        url:'../../../../classblog/geteditpost',
+        url:'classblog/geteditpost',
         type:'POST',
         data:{postId:postId, teacherID:teacherID, learningSupportID:learningSupportID},
         dataType: 'JSON', 
