@@ -59,20 +59,20 @@ return [
     ],
     
 //    NEW DB
-    'doctrine' => [
-        'connection' => [
-            'orm_default' => [
-                'driverClass' => PDOMySqlDriver::class,
-                'params' => [
-                    'host'     => 'localhost',                    
-                    'user'     => 'root',
-                    'password' => '',
-                    'dbname'   => 'oranmoreboysnsdb',
-                    'port' => '3307',
-                ]
-            ],            
-        ],        
-    ],
+//    'doctrine' => [
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass' => PDOMySqlDriver::class,
+//                'params' => [
+//                    'host'     => 'localhost',                    
+//                    'user'     => 'root',
+//                    'password' => '',
+//                    'dbname'   => 'oranmoreboysnsdb',
+//                    'port' => '3307',
+//                ]
+//            ],            
+//        ],        
+//    ],
     
 //    OLD DB
 //    'doctrine' => [
@@ -90,20 +90,20 @@ return [
 //        ],        
 //    ],
     
-//    'doctrine' => [
-//        'connection' => [
-//            'orm_default' => [
-//                'driverClass' => PDOMySqlDriver::class,
-//                'params' => [
-//                    'host'     => '209.97.142.163',                    
-//                    'user'     => 'rccnwgwvhb',
-//                    'password' => 'eQ52JYspr3',
-//                    'dbname'   => 'rccnwgwvhb',
-//                    'port' => '3306',
-//                ]
-//            ],            
-//        ],        
-//    ],
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => PDOMySqlDriver::class,
+                'params' => [
+                    'host'     => '209.97.142.163',                    
+                    'user'     => 'rccnwgwvhb',
+                    'password' => 'eQ52JYspr3',
+                    'dbname'   => 'rccnwgwvhb',
+                    'port' => '3306',
+                ]
+            ],            
+        ],        
+    ],
     
     
 
