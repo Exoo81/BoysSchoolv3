@@ -58,7 +58,7 @@ return [
         ],
     ],
     
-////    NEW DB
+//    NEW DB
 //    'doctrine' => [
 //        'connection' => [
 //            'orm_default' => [
