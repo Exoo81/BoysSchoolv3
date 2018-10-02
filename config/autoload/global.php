@@ -58,21 +58,7 @@ return [
         ],
     ],
     
-//    NEW DB
-//    'doctrine' => [
-//        'connection' => [
-//            'orm_default' => [
-//                'driverClass' => PDOMySqlDriver::class,
-//                'params' => [
-//                    'host'     => 'localhost',                    
-//                    'user'     => 'root',
-//                    'password' => '',
-//                    'dbname'   => 'oranmoreboysnsdb',
-//                    'port' => '3307',
-//                ]
-//            ],            
-//        ],        
-//    ],
+
     
 //    OLD DB
 //    'doctrine' => [
