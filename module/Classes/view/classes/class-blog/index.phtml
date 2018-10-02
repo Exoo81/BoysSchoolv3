@@ -16,7 +16,7 @@ $this->headTitle($this->headTitle);
                     echo '<img id="grey" src="/../img/classes/dummy-class-photo.png"/>';    
                     echo '<img class="icon" src="/img/icons/icon-image-lg.png">';       
                 }else{
-                    echo '<img src="/../upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getPhotoName().'" />';
+                    echo '<img src="'.$this->basePath() .'/upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getPhotoName().'" />';
                 }
             ?>
 	</div>
