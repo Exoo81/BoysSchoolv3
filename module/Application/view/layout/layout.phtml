@@ -211,7 +211,11 @@
 	    	<label>close</label>
             </div>
       	</div>
-      	<div class="circle-img-wrapper"><img src="/../../img/logo_burgundy.png" alt="" /></div>
+      	<div class="circle-img-wrapper">
+            <?php 
+                echo '<img src="'.$this->basePath() .'/img/logo_burgundy.png" alt="" />';
+            ?>        
+        </div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Scoil Iósaif Naofa Policy</span>
@@ -224,7 +228,11 @@
         <div class="loader"></div>
  
         <div class="print-option-top">
-            <a href="#" class="bs option-trigger-printMe-policy"><img src="/../../img/icons/icon-print.png" /><span>Print</span></a>
+            <a href="#" class="bs option-trigger-printMe-policy">
+                <?php 
+                    echo '<img src="'.$this->basePath() .'/img/icons/icon-print.png" /><span>Print</span>';
+                ?>               
+            </a>
         </div>
         
     

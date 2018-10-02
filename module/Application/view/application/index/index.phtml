@@ -1500,7 +1500,12 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="news-edit" src="../img/icons/icon-edit.png" alt="" /></div>
+            
+            <div class="circle-img-wrapper">
+                <?php 
+                    echo '<img class="news-edit" src="'.$this->basePath() .'/img/icons/icon-edit.png" alt="" />';
+                ?>   
+            </div>
 
             <!-- original version -->
             <div class="modal-title">
@@ -1594,7 +1599,11 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper">
+            <?php 
+                echo '<img class="events" src="'.$this->basePath() .'/img/icons/icon-bin.png" alt="" />';
+            ?> 
+        </div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Remove gallery</span>
@@ -1643,7 +1652,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 
             <!-- original version -->
             <div class="modal-title">
-                    <span>Post - edit</span>
+                    <span>Edit post</span>
             </div>
 	
         </div>
@@ -1677,7 +1686,11 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                         <label id='editPostDocLabel_current'>Current document:</label>
                         <table id='editPostDoc_current'>
                             <tr>
-                                <td class="icon"><img class="icon" src="/../../img/icons/icon-document.png"></td>
+                                <td class="icon">
+                                    <?php 
+                                        echo '<img class="icon" src="'.$this->basePath() .'/img/icons/icon-document.png">';
+                                    ?>  
+                                </td>
                                 <td class="text" id='editPostDocTitle'></td>
                                 <td class="option">
                                     <label class="preview-doc-label" id="preview-doc-edit-post-label">
