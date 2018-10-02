@@ -78,37 +78,45 @@
                             <div class="school-name">
     				<div class="lg-name">Scoil Iósaif Naofa</div>
     				<div class="sm-name">Oranmore Boys NS</div>
-                            </div>
-<!--                            temp possition-->
-                                
+                            </div>              
+    			</div>
+                        
+                        
+                         <?php 
+//                                    authorizated only
+        //                                      echo 'Current season: '.$this->currenSeason->getSeasonName().'   ||  ';
+                                        echo '<div class="logged-wrapper">';
+                                            if ($this->identity() == null) {
+
+        //                                        echo '<a href="/login">Login</a> ||';
+
+                                            }else{
+
+                                                echo '<div class="layout-welcome-msg">Welcome '.$this->currentUser()->getOurTeamMember()->getTitleLastName().'</div>';
+
+                                                echo '<div class="logout-button-wrapper">';
+                                                    echo '<a href="/logout" class="tooltip">';
+                                                        echo '<button class="btn-admin">';
+                                                            echo '<img src="/img/icons/icon-logout.png">';
+                                                        echo '</button>';
+                                                        echo '<span class="tooltiptext logout">Logout</span>';
+                                                    echo '</a>';
+        //                                            echo '<a href="'.$this->url('user', ['action' => 'users']).'">Users</a> ||';           
+        //                                            echo '<a href="/reset-password">Reset pass</a> ||';
+        //                                            echo '<a href="/logout">Logout</a>';
+                                                echo '</div>';
+        //                                        echo '<p>';
+        //                                            echo '<a href="/roles">Roles</a> ||';
+        //                                            echo '<a href="/permissions">Permission</a> || ';
+        //                                        echo '</p>';
+
+                                            }
+                                        echo '</div>';
+                    ?>                               
                                    
                                     
-                                    <?php 
-//                                    echo 'Current season: '.$this->currenSeason->getSeasonName().'   ||  ';
-                                    if ($this->identity() == null) {
 
-//                                        echo '<a href="/login">Login</a> ||';
-                                         
-                                    }else{
-                                        
-                                        echo 'Welcome '.$this->currentUser()->getOurTeamMember()->getFullName();
-                                        
-                                        echo '<p>';
-                                            echo '<a href="'.$this->url('user', ['action' => 'users']).'">Users</a> ||';           
-                                            echo '<a href="/reset-password">Reset pass</a> ||';
-                                            echo '<a href="/logout">Logout</a> ||';
-                                        echo '</p>';
-                                        echo '<p>';
-                                            echo '<a href="/roles">Roles</a> ||';
-                                            echo '<a href="/permissions">Permission</a> || ';
-                                        echo '</p>';
-  
-                                    } ?>
-                                    
-                                    
-                                    
-                                
-    			</div>
+                        
     			<div class="contact">
                             <div class="address">
     				<i class="fa fa-home space-5" aria-hidden="true"></i>&nbsp;
@@ -128,6 +136,13 @@
     				</button>
                             </div>
     			</div>
+                        
+                        
+
+                        
+                        
+                        
+                        
                     </section>
                     <?= $this->content ?>
                     

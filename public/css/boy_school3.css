@@ -1881,7 +1881,7 @@ select:-webkit-autofill{
 }
 
 .welcome .header{
-	display:block;
+	display: inline-block;
 	float:left;
 	width: 60%;
 	margin-left:10%;
@@ -1891,37 +1891,37 @@ select:-webkit-autofill{
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .welcome .header{
-            
+            width: 50%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .welcome .header{
-            
+            width: 50%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .welcome .header{
-           
+           width: 50%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .welcome .header{
-            
+            width: 50%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .welcome .header{
-            
+            width: 50%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .welcome .header{
-            
+            width: 45%;
         }
     }
     /** Breakpoint **/
@@ -2386,8 +2386,61 @@ select:-webkit-autofill{
             margin-top: -5px;
         }
     }
+    
+/*logged button*/
+
+section.welcome .logged-wrapper{
+    display: inline-block;
+    float: right;
+    padding-right: 3%;
+}
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+
+    .logged-wrapper .layout-welcome-msg{
+        padding-top: 5px;
+        font-family: 'Architects Daughter', 'Arial' ,sans-serif;
+        color: #561818;
+        font-size: 1.2em;  
+        font-weight: 600;
+    }
+        /* Breakpoint */
+        @media screen and (max-width: 340px) {
+            .logged-wrapper .layout-welcome-msg{
+                padding: 15px 10px;
+                font-size: 1.2em;
+            }
+        }
+    
+    
+    .logged-wrapper .logout-button-wrapper{
+        display: inline-block;
+        margin-left: 80px;
+    }
+    
+        .logout-button-wrapper img{
+            width: 30px;
+        } 
+            /* Breakpoint */
+            @media screen and (max-width: 340px) {
+                .logout-button-wrapper img{
+                    width: 25px;
+                }
+            }
+
+
+/*logged button*/
 
 section.welcome .contact{
+    display: inline-block;
+    float: right;
+    padding-right: 3%;
 	width: auto;
 	overflow:hidden;
 	background-color: transparent;
@@ -2992,12 +3045,10 @@ ul.file-list img.icon-list{
     left: -40px;
 
 }
-/*    @media screen and (max-width:1366px){
-	ul.file-list img.icon-list{
-            top: 3px;
-            left: -35px;
-	}
-    }*/
+
+
+
+
 
 ul.file-list .admin-option{
     float: right;
@@ -20142,6 +20193,25 @@ div.dhx_modal_cover_dv {
     top: 7px;
     left: 40px;
 }
+
+
+.tooltip .tooltiptext.logout{
+    top: 5px;
+    left: 40px;
+    padding: 3px 6px;
+    
+    background-color: rgba(86, 24, 24, .3);
+    color: #561818;
+
+}
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .tooltip .tooltiptext.logout{
+            top: 4px;
+            left: 30px;
+        }
+    }
+    
 
 .modal-text .tooltip .tooltiptext{
     top: 13px;
