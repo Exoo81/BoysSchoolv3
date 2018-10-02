@@ -164,11 +164,11 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                     if($type === 'gallery' || ($type === 'classes' && $news->getVideoName() !== null)){
                                         if($left_right_adjust % 2){
                                             echo '<video controls class="left">';
-                                                echo '<source src="../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
+                                                echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
                                             echo '</video>';
                                         }else{
                                             echo '<video controls class="right">';
-                                                echo '<source src="../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
+                                                echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName().'" type="video/mp4">';                                        
                                             echo '</video>';
                                         }
                                         $left_right_adjust++;
