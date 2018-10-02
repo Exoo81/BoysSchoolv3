@@ -249,7 +249,11 @@
         </div>
 
         <div class="print-option-bottom">
-            <a href="#" class="bs option-trigger-printMe-policy"><img src="/../../img/icons/icon-print.png" /><span>Print</span></a>
+            <a href="#" class="bs option-trigger-printMe-policy">
+                <?php 
+                    echo '<img src="'.$this->basePath() .'/img/icons/icon-print.png" /><span>Print</span>';
+                ?> 
+            </a>
         </div>
 
         <div class="btn-modal-box">
