@@ -28,7 +28,7 @@ return [
             'classblog' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/classblog[/:action[/:id[/:color]/]]',
+                    'route'    => '/classblog[/:action[/:id[/:color]]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*',
