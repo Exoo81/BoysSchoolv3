@@ -36,14 +36,19 @@ class ClassBlogController extends AbstractActionController{
     }
     
     public function indexAction() {
+        
+        $request = $this->getRequest(); //$this should refer to a controller
+        $id = (int) $request->getQuery('id', 0);
+        $color = $request->getQuery('color', "green");
 
         //get id blog from route
-        $id = (int)$this->params()->fromRoute('id', -1);
-        if ($id<1) {
-            $this->getResponse()->setStatusCode(404);
-            return;
-        }
-        
+//        $id = (int)$this->params()->fromRoute('id', -1);
+//        if ($id<1) {
+//            $this->getResponse()->setStatusCode(404);
+//            return;
+//        }
+//        $color = $this->params()->fromRoute('color', "");  
+//        
         //find blog 
         $blog = $this->entityManager->getRepository(ClassBlog::class)
                 ->find($id);
@@ -61,10 +66,11 @@ class ClassBlogController extends AbstractActionController{
             $page = (int) $this->params()->fromQuery('page', 1);
             $page = ($page < 1) ? 1 : $page;
             $paginator->setCurrentPageNumber($page);
+            
         }
         
-        $color = $this->params()->fromRoute('color', "");  
-        
+
+
         
         $headTitle = $blog->getTeacher()->getOurTeamMember()->getTitleLastName().' '.$blog->getLevelAsString().' BLOG ('.$blog->getSeason()->getSeasonName().')';
          

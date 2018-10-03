@@ -52,7 +52,8 @@ $this->headTitle($this->title.' '.$current_season);
                                 echo '<ul class="class-blog-list">';
                                 foreach ($value as $blog) :
                                     echo '<li class="'.$this->blogList['colors'][$key].'">';
-                                        echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">'; 
+//                                        echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">'; 
+                                        echo '<a href="'.$this->url('classblog',['action'=>'index'], ['query' => ['id' => $blog->getId(), 'color'=>$this->blogList['colors'][$key]]]).'">'; 
                                         echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
 
                                             if($blog->getPhotoName() === null){
@@ -120,8 +121,9 @@ $this->headTitle($this->title.' '.$current_season);
                             echo '<ul class="class-blog-list">';
                             foreach ($value as $blog) :
                                 echo '<li class="'.$this->blogList['colors'][$key].'">';
-                                    echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">';  
-                                    echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
+//                                        echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">'; 
+                                    echo '<a href="'.$this->url('classblog',['action'=>'index'], ['query' => ['id' => $blog->getId(), 'color'=>$this->blogList['colors'][$key]]]).'">';  
+                                        echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
                                         
                                         //$current_year = "2017-2018";
                                         if($blog->getPhotoName() === null){
@@ -191,7 +193,8 @@ $this->headTitle($this->title.' '.$current_season);
                              echo '<ul class="class-blog-list">';
                                 foreach ($value as $blog) :
                                     echo '<li class="'.$this->blogList['colors'][$key].'">';
-                                         echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">';
+//                                         echo '<a href="'.$this->url('classblog', ['action'=>'index', 'id'=>$blog->getId(), 'color'=>$this->blogList['colors'][$key]]).'">';
+                                         echo '<a href="'.$this->url('classblog',['action'=>'index'], ['query' => ['id' => $blog->getId(), 'color'=>$this->blogList['colors'][$key]]]).'">';
                                             echo '<span class="roll '.$this->blogList['colors'][$key].'" ></span>';
 
                                             if($blog->getPhotoName() === null){

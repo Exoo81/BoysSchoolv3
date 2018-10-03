@@ -69,11 +69,11 @@ $(".modal-trigger-edit-post").click(function(e){
     //display modal
     $("#" + dataModal).css({"display":"block"});
     
-    var base_url = window.location.origin;
+//    var base_url = window.location.origin;
     
     //send id by AJAX to get full object
     $.ajax({
-        url: base_url+'/public/classblog/geteditpost',
+        url: 'classblog/geteditpost',
         type:'POST',
         data:{postId:postId, teacherID:teacherID, learningSupportID:learningSupportID},
         dataType: 'JSON', 

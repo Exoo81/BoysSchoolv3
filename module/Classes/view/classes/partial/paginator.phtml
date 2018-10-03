@@ -6,7 +6,7 @@
 <div class="pagination full-page">
   <?php if (isset($this->previous)): ?>
     <div class="previous">   
-      <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $this->previous]]) ?>">
+      <a href="<?= $this->url($this->route, ['action'=>'index'], ['query' => ['id' =>$this->id, 'color' =>$this->color, 'page' => $this->previous]]) ?>">
           <button type="button" class="btn-pagination btn-burgundy lg" data-text="Previous"><span>Previous</span></button>
       </a>
     </div>
@@ -21,7 +21,7 @@
   <?php foreach ($this->pagesInRange as $page): ?>
     <?php if ($page !== $this->current): ?>
       <div class="page">
-        <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $page]]) ?>">
+        <a href="<?= $this->url($this->route,['action'=>'index'], ['query' => ['id' =>$this->id, 'color' =>$this->color, 'page' => $page]]) ?>">
             <button type="button" class="btn-pagination btn-burgundy" data-text="<?= $page ?>"><span><?= $page ?></span></button>
         </a>
       </div>
@@ -37,7 +37,7 @@
   <!-- Next page link -->
   <?php if (isset($this->next)): ?>
     <div class="next">
-      <a href="<?= $this->url($this->route, ['id' => $this->id, 'color' => $this->color], ['query' => ['page' => $this->next]]) ?>">
+      <a href="<?= $this->url($this->route,['action'=>'index'], ['query' => ['id' =>$this->id, 'color' =>$this->color, 'page' => $this->next]]) ?>">
         <button type="button" class="btn-pagination btn-burgundy lg" data-text="Next"><span>Next</span></button>  
       </a>
     </div>
