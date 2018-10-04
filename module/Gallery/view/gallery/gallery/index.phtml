@@ -94,14 +94,14 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             foreach($postGallery as $photo){
                                                 if($countPhoto === 1){
                                                     echo '<div class="first-photo">';
-                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';  
                                                 }else{
                                                     echo '<div class="hidden">';
-                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';
                                                 }
@@ -270,14 +270,14 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             foreach($postGallery as $photo){
                                                 if($countPhoto === 1){
                                                     echo '<div class="first-photo">';
-                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';  
                                                 }else{    
                                                     echo '<div class="hidden">';
-                                                        echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                            echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                            echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';
                                                 }
@@ -456,21 +456,21 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                         if($countPhoto === 1){
                                             if($countPost % 2){
                                                 echo '<div class="first-photo right">';
-                                                    echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                        echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                    echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                        echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                     echo '</a>';
                                                 echo '</div>';
                                             }else{
                                                 echo '<div class="first-photo left">';
-                                                echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                    echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                 echo '</a>';
                                             echo '</div>';
                                             }
                                         }else{    
                                             echo '<div class="hidden">';
-                                                echo '<a class="lightbox" href="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
-                                                    echo '<img src="/upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
+                                                echo '<a class="lightbox" href="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'">';
+                                                    echo '<img src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$photo->getPhotoName().'" alt="">';
                                                 echo '</a>';
                                             echo '</div>';
                                         }
