@@ -144,7 +144,7 @@ $("#addGalleryForm").validate({
 
     
     $.ajax({
-        url: '../../../../gallery/addgallerypost',                  
+        url: 'gallery/addgallerypost',                  
         type: 'POST',
         processData: false,
         contentType: false,
