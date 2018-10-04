@@ -57,7 +57,7 @@ $("#deleteGalleryForm").validate({
 
     
     $.ajax({
-         url: '../../../../gallery/deletegallerypost',                   // ???
+         url: 'gallery/deletegallerypost',                  
         type:'POST',
         data:{galleryID:galleryID},
         dataType: 'JSON', 
