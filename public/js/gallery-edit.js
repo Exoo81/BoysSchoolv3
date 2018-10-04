@@ -61,7 +61,7 @@ $(".modal-trigger-edit-gallery").click(function(e){
     
     //send id by AJAX to get full object
     $.ajax({
-        url:'../../../../gallery/geteditgallery',
+        url:'gallery/geteditgallery',
         type:'POST',
         data:{galleryId:galleryId},
         dataType: 'JSON', 
