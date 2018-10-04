@@ -12,7 +12,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <section class="gallery">
     
     <div class="header">
-	<div class="baner"><img src="/img/gallery/banner.svg" /></div>
+	<div class="baner"><img src="img/gallery/banner.svg" /></div>
         <div class="header-title"><?= $this->headTitle ?> <span><?=$current_season ?></span></div>
         <div class="color-cubes">
             <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
@@ -37,7 +37,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     if($this->access('gallery.add')){
                         echo '<div class="cms-option gallery_add">';
                             echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
-                                echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new gallery</span>';
                             echo '</a>';
                         echo '</div>';
                     }
@@ -58,7 +58,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 if($this->access('gallery.add')){
                                     echo '<div class="cms-option gallery_add">';
                                         echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
-                                            echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                                            echo '<img src="img/icons/icon-add.png"><span>Add new gallery</span>';
                                         echo '</a>';
                                     echo '</div>';
                                 }
@@ -109,8 +109,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             }
                                             if($post->getVideoName() !== null){
                                                 echo '<div class="gallery-link">';                                          
-                                                    echo '<img  src="/../../img/icons/icon-video.png">';
-                                                    $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                    echo '<img  src="img/icons/icon-video.png">';
+                                                    $video_link = 'upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
                                                     echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
                                                         echo '<span class="">see also video</span>';
                                                     echo '</a>';     
@@ -125,7 +125,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         
                                         }else{
                                             echo '<video controls>';
-                                                echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                                echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                             echo '</video>';
                                             
                                             echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
@@ -144,7 +144,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                     echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                            echo '<img src="img/icons/icon-edit-blue.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom edit">Edit</span>';
                                                     echo '</a>';
@@ -155,7 +155,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 if ($this->access('gallery.delete')) {
                                                     echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                            echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom remove">Remove</span>';
                                                     echo '</a>';      
@@ -177,7 +177,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                          echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                  .'<button class="btn-admin">'
-                                                                     .'<img src="../../img/icons/icon-edit-blue.png" >'
+                                                                     .'<img src="img/icons/icon-edit-blue.png" >'
                                                                  .'</button>'
                                                                  .'<span class="tooltiptext bottom edit">Edit</span>'
                                                              . '</a>';
@@ -191,7 +191,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img src="../../img/icons/icon-edit-blue.png" >'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom edit">Edit</span>'
                                                             . '</a>';
@@ -208,7 +208,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';      
@@ -221,7 +221,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';
@@ -286,8 +286,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             
                                             if($post->getVideoName() !== null){
                                                 echo '<div class="gallery-link">';                                          
-                                                    echo '<img src="/../../img/icons/icon-video.png">';
-                                                    $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                    echo '<img src="img/icons/icon-video.png">';
+                                                    $video_link = 'upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
                                                     echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
                                                         echo '<span class="">see also video</span>';
                                                     echo '</a>';     
@@ -300,7 +300,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
      
                                         }else{
                                             echo '<video controls>';
-                                                echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                                echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                             echo '</video>';
                                             
                                             echo '<hr class="'.$this->colorList[$countPost].' hr-gallery">';
@@ -319,7 +319,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                     echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                            echo '<img src="img/icons/icon-edit-blue.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom edit">Edit</span>';
                                                     echo '</a>';
@@ -330,7 +330,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 if ($this->access('gallery.delete')) {
                                                     echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                            echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom remove">Remove</span>';
                                                     echo '</a>';      
@@ -352,7 +352,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                        
                                                         echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img src="../../img/icons/icon-edit-blue.png" >'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom edit">Edit</span>'
                                                             . '</a>';
@@ -366,7 +366,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom edit">Edit</span>'
                                                             . '</a>';
@@ -383,7 +383,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';      
@@ -396,7 +396,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';
@@ -428,7 +428,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     if($this->access('gallery.add')){
                         echo '<div class="cms-option gallery_add">';
                             echo '<a href="#" class="bs modal-trigger-add-gallery" data-modal="add-gallery-modal" data-blogID="'.$this->blog->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
-                                echo '<img src="/../img/icons/icon-add.png"><span>Add new gallery</span>';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new gallery</span>';
                             echo '</a>';
                         echo '</div>';
                     }
@@ -479,8 +479,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             
                                     if($post->getVideoName() !== null){
                                         echo '<div class="gallery-link">';                                          
-                                            echo '<img src="/../../img/icons/icon-video.png">';
-                                                $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                            echo '<img src="img/icons/icon-video.png">';
+                                                $video_link = 'upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
                                                 echo '<a class="bs '.$this->colorList[$countPost].' modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
                                                 echo '<span class="">see also video</span>';
                                             echo '</a>';     
@@ -495,11 +495,11 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                     
                                     if($countPost % 2){
                                         echo '<video controls right>';
-                                            echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                            echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                         echo '</video>';
                                     }else{
                                         echo '<video controls left>';
-                                            echo '<source src="/../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                            echo '<source src="upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
                                         echo '</video>';
                                     }
                                     
@@ -520,7 +520,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                     echo '<a href="#" class="tooltip modal-trigger-edit-gallery" data-modal="edit-gallery-modal" data-authorID="'.$this->currentUser()->getId().'" data-galleryID="'.$post->getId().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img src="/../../img/icons/icon-edit-blue.png" >';
+                                                            echo '<img src="img/icons/icon-edit-blue.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom edit">Edit</span>';
                                                     echo '</a>';
@@ -531,7 +531,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                 if ($this->access('gallery.delete')) {
                                                     echo '<a href="#" class="tooltip modal-trigger-delete-gallery" data-modal="delete-gallery-modal" data-galleryID="'.$post->getId().'" data-galleryTitle="'.$post->getTitle().'">';
                                                         echo '<button class="btn-admin">';
-                                                            echo '<img class="icon-list" src="/../../img/icons/icon-bin-red.png" >';
+                                                            echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext bottom remove">Remove</span>';
                                                     echo '</a>';      
@@ -551,7 +551,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                                        
                                                         echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img src="../../img/icons/icon-edit-blue.png" >'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom edit">Edit</span>'
                                                             . '</a>';
@@ -565,7 +565,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-edit-post" data-modal="edit-post-modal" data-postID="'.$post->getId().'" data-authorID="'.$this->currentUser()->getId().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img src="/../../img/icons/icon-edit-blue.png" >'
+                                                                    .'<img src="img/icons/icon-edit-blue.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom edit">Edit</span>'
                                                             . '</a>';
@@ -582,7 +582,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$post->getBlog()->getLearningSupport()->getId().'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';      
@@ -595,7 +595,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
                                                         echo '<a href="#" class="tooltip modal-trigger-delete-post" data-modal="delete-post-modal" data-postID="'.$post->getId().'" data-postTitle="'.$post->getTitle().'" data-teacherID="'.$post->getBlog()->getTeacher()->getId().'" data-learningSupportID="'.$learningSupportID.'">'
                                                                 .'<button class="btn-admin">'
-                                                                    .'<img class="icon-list" src="../../img/icons/icon-bin-red.png" >'
+                                                                    .'<img class="icon-list" src="img/icons/icon-bin-red.png" >'
                                                                 .'</button>'
                                                                 .'<span class="tooltiptext bottom remove">Remove</span>'
                                                             . '</a>';
@@ -670,7 +670,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="gallery" src="/../img/icons/icon-photo-camera.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="gallery" src="img/icons/icon-photo-camera.png" alt="" /></div>
 
             
             <!-- original version -->
@@ -744,7 +744,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="news-edit" src="/../img/icons/icon-edit.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-edit.png" alt="" /></div>
 
             <!-- original version -->
             <div class="modal-title">
@@ -776,7 +776,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id='editGalleryVideoLabel_current'>Current video:</label>
                         <table id='editGalleryVideo_current'>
                             <tr>
-                                <td class="icon"><img class="icon" src="/../../img/icons/icon-video.png"></td>
+                                <td class="icon"><img class="icon" src="img/icons/icon-video.png"></td>
                                 <td class="text" id='editGalleryVideoTitle'></td>
                                 <td class="option">
                                     <label class="preview-video-label" id="preview-video-edit-gallery-label">
@@ -838,7 +838,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Remove gallery</span>
@@ -915,7 +915,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id='editPostDocLabel_current'>Current document:</label>
                         <table id='editPostDoc_current'>
                             <tr>
-                                <td class="icon"><img class="icon" src="/../../img/icons/icon-document.png"></td>
+                                <td class="icon"><img class="icon" src="img/icons/icon-document.png"></td>
                                 <td class="text" id='editPostDocTitle'></td>
                                 <td class="option">
                                     <label class="preview-doc-label" id="preview-doc-edit-post-label">
@@ -937,7 +937,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id='editPostVideoLabel_current'>Current video:</label>
                         <table id='editPostVideo_current'>
                             <tr>
-                                <td class="icon"><img class="icon" src="../../img/icons/icon-video.png"></td>
+                                <td class="icon"><img class="icon" src="img/icons/icon-video.png"></td>
                                 <td class="text" id='editPostVideoTitle'></td>
                                 <td class="option">
                                     <label class="preview-video-label" id="preview-video-edit-post-label">
@@ -1038,7 +1038,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="video" src="/../img/icons/icon-video.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="video" src="img/icons/icon-video.png" alt="" /></div>
             <div class="modal-title">
                     <span>Watch the video</span>
             </div>

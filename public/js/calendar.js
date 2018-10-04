@@ -29,7 +29,7 @@ function getEvents(dayofweek, current_date, isInit) {
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
 
                 //yellow page event
