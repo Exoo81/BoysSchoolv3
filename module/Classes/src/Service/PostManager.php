@@ -316,7 +316,7 @@ class PostManager{
 
                 
                 //build picure(s) path 
-                $path_to_read = '/upload/classes/'.$post->getBlog()->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/';
+                $path_to_read = 'upload/classes/'.$post->getBlog()->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/';
                 
                 //find all pictures for this post
                 $queryBuilder = $this->entityManager->createQueryBuilder();

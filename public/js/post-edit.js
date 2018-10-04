@@ -79,7 +79,7 @@ $(".modal-trigger-edit-post").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            //console.log(data);
+            console.log(data);
             if(data.success === true){
                 
 
