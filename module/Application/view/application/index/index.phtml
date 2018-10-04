@@ -189,7 +189,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                                 if($news->getVideoName() !== null && sizeof($photoGallery) > 0){
                                         echo '<div class="news-link">';                                          
                                             echo '<img src="img/icons/icon-video.png">';
-                                            $video_link = '../../../../upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName();
+                                            $video_link = 'upload/'.$type.'/'.$this->blog->getSeason()->getSeasonName().'/'.$news->getBlog()->getId().'/'.$news->getId().'/video/'.$news->getVideoName();
                                             echo '<a class="bs blue modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$news->getTitle().'">';
                                                 echo '<span class="">see also video</span>';
                                             echo '</a>';     
