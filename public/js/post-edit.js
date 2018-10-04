@@ -70,6 +70,7 @@ $(".modal-trigger-edit-post").click(function(e){
     $("#" + dataModal).css({"display":"block"});
     
     
+    
     //send id by AJAX to get full object
     $.ajax({
         url: 'classblog/geteditpost',
