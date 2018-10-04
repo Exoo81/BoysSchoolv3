@@ -75,7 +75,7 @@ $("#deletePostForm").validate({
 //    console.log('learning support ID: ' + learningSupportID);
     
     $.ajax({
-         url: '../../../../classblog/deletepost',                   // ???
+         url: 'classblog/deletepost',                   // ???
         type:'POST',
         data:{postID:postID, teacherID:teacherID, learningSupportID:learningSupportID},
         dataType: 'JSON', 
