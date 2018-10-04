@@ -45,7 +45,7 @@ $(".modal-trigger-show-policy").click(function(e){
         
     //send id by AJAX to get full object
     $.ajax({
-        url:'../../../parents/getpolicy',
+        url:'parents/getpolicy',
         type:'POST',
         data:{policyID:policyID},
         dataType: 'JSON', 
