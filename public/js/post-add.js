@@ -134,15 +134,15 @@ $("#addPostForm").validate({
     var gallerySize = $('#input_fields_wrap input').length;
     
 
-    console.log('postTitle: ' + postTitle);
-    console.log('postContent: ' + postContent);
-    console.log('blogID: ' + blogID);
-    console.log('postDoc:' + addPostDoc);
-    console.log('postVideo: ' + addPostVideo);
-    console.log('gallery size: ' + gallerySize);
-    console.log('teacher ID: '+ teacherID);
-    console.log('learningSupport ID: '+ learningSupportID);
-    console.log('author ID: '+ authorID);
+//    console.log('postTitle: ' + postTitle);
+//    console.log('postContent: ' + postContent);
+//    console.log('blogID: ' + blogID);
+//    console.log('postDoc:' + addPostDoc);
+//    console.log('postVideo: ' + addPostVideo);
+//    console.log('gallery size: ' + gallerySize);
+//    console.log('teacher ID: '+ teacherID);
+//    console.log('learningSupport ID: '+ learningSupportID);
+//    console.log('author ID: '+ authorID);
     
     
     var formData = new FormData();
@@ -173,13 +173,13 @@ $("#addPostForm").validate({
 
     
     $.ajax({
-        url: '../../../../classblog/addpost',                   // ???
+        url: 'classblog/addpost',                   // ???
         type: 'POST',
         processData: false,
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 location.reload();
             }else{
