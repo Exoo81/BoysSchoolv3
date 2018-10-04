@@ -24118,7 +24118,7 @@ form.cms .post-gallery{
     text-align: center;
     margin: 2%;
     background-color: rgba(86, 24, 24, .2);
-    background-image: url('../../../../img/icons/icon-image.png');
+    background-image: url('../img/icons/icon-image.png');
     background-repeat: no-repeat;
     background-position: center;
 }
