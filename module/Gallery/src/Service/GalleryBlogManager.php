@@ -315,7 +315,7 @@ class GalleryBlogManager{
 
                 
                 //build picure(s) path 
-                $path_to_read = '/upload/gallery/'.$post->getBlog()->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/';
+                $path_to_read = 'upload/gallery/'.$post->getBlog()->getSeason()->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/';
                 
                 //find all pictures for this post
                 $queryBuilder = $this->entityManager->createQueryBuilder();
