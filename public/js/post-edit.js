@@ -310,7 +310,7 @@ $("#editPostForm").validate({
         
         
         $.ajax({
-            url: 'classblog/editpost',          //??
+            url: 'classblog/editpost',          
             type: 'POST',
             processData: false,
             contentType: false,
