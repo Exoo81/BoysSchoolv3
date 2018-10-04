@@ -53,7 +53,7 @@ $(".modal-trigger-show-policy").click(function(e){
         success: function(data){
             console.log(data);
             if(data.success === true){
-                
+               
                 /*
                  * if request from Parents/Policies block
                  */
