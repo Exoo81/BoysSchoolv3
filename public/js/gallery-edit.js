@@ -250,7 +250,7 @@ $("#editGalleryForm").validate({
         
         
         $.ajax({
-            url: '../../../../gallery/editgallerypost',          //??
+            url: 'gallery/editgallerypost',         
             type: 'POST',
             processData: false,
             contentType: false,
