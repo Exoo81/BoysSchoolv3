@@ -135,7 +135,7 @@ $("#addGalleryForm").validate({
             if(typeof imgAttr !== typeof undefined && imgAttr !== false){
 //                console.log( 'input id: ' + $(this).attr("id") );
                 var inputFile = $(this)[0].files[0];
-//                console.log( 'inputFile : ' + inputFile );
+//               console.log( 'inputFile : ' + inputFile );
                 formData.append('file'+count , inputFile);
             count ++;
             }
