@@ -79,9 +79,8 @@ $(".modal-trigger-edit-post").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
-            if(data.success === true){
-                
+            //console.log(data);
+            if(data.success === true){    
 
                 //inster data to fields
                 $("#editPostID").val(data.postToEdit.id);
