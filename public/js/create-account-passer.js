@@ -19,7 +19,7 @@ $(".modal-trigger-create-account").click(function(e){
         console.log('member ID: ' + memberID);
         console.log('member Full Name: ' + memberFullName);
 
-     $("#new-member-account").attr("href", "/user/addaccount/"+memberID); 
+     $("#new-member-account").attr("href", "user/addaccount/"+memberID); 
      $("#newAccountFullName").html("<i>" +memberFullName + "</i> does not have an account yet.");
   
     //display modal
