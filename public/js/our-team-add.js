@@ -136,7 +136,7 @@ $("#addOurTeamForm").validate({
                     $("#add-our-team").css({"display":"none"});
                     //show dailog with question to create account
                         $("#newAccountFullName").html("<i>" +data.newMemberFullName + "</i> does not have an account yet.");
-                        $("#new-member-account").attr("href", "/user/addaccount/"+data.newMemberID); 
+                        $("#new-member-account").attr("href", "user/addaccount/"+data.newMemberID); 
   
                         //display modal
                         $("#create-account-modal").css({"display":"block"});
