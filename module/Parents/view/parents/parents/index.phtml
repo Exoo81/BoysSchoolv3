@@ -48,15 +48,15 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         if(!empty($this->parentsInformation)){
                             foreach($this->parentsInformation as $parentsInformation){
                                 if($parentsInformation->getDocName() != null){
-                                    echo '<li><img src="/img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                    echo '<li><img src="img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
                                 }
                                 if($parentsInformation->getUrl() != null){
-                                    echo '<li><img src="/img/icons/icon-link.png"><a target="_blank" href="'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                    echo '<li><img src="img/icons/icon-link.png"><a target="_blank" href="'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
                                 }
                             }
                         }else{
                             echo '<div class="no-content">';
-                                    echo '<img src="/../img/icons/icon-update-soon-1.png"/>';
+                                    echo '<img src="img/icons/icon-update-soon-1.png"/>';
                                     echo '<span>will come soon ...</span>';        
                             echo '</div>';
                         }
@@ -104,7 +104,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         }
                     }else{
                         echo '<div class="no-content parents-left">';
-                                echo '<img src="/../img/icons/icon-trumpet.png"/>';
+                                echo '<img src="img/icons/icon-trumpet.png"/>';
                                 echo '<span>will come soon ...</span>';
                         echo '</div>';    
                     }
@@ -132,7 +132,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         foreach($this->parentsAssocTeam as $parentsAssocMember){
                             if($parentsAssocMember->getStatus()== 1){
                                 echo '<li>';
-                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                    echo '<img src="img/icons/icon-arrow-right-fat.png">';
 
                                     if ($this->identity() == null) {
                                         echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
@@ -215,7 +215,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                      $access  = 1; 
                                 }
                                 echo '<li>';
-                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                    echo '<img src="img/icons/icon-arrow-right-fat.png">';
                                     echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
                                         echo '<span>'.$policy->getTitle().'</span>';
                                     echo '</a>';
@@ -224,7 +224,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             }
                         }else{
                             echo '<div class="no-content parents-left">';
-                                    echo '<img src="/../img/icons/icon-justice.png"/>';
+                                    echo '<img src="img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
                             echo '</div>';
                         }
@@ -265,7 +265,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                      $access  = 1; 
                                 }
                                 echo '<li>';
-                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                    echo '<img src="img/icons/icon-arrow-right-fat.png">';
                                     echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
                                         echo '<span>'.$policy->getTitle().'</span>';
                                     echo '</a>';
@@ -274,7 +274,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             }
                         }else{
                             echo '<div class="no-content parents-left">';
-                                    echo '<img src="/../img/icons/icon-justice.png"/>';
+                                    echo '<img src="img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
                             echo '</div>';
                         }
@@ -299,7 +299,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         foreach($this->parentsAssocTeam as $parentsAssocMember){
                             if($parentsAssocMember->getStatus()== 1){
                                 echo '<li>';
-                                    echo '<img src="/img/icons/icon-arrow-right-fat.png">';
+                                    echo '<img src="img/icons/icon-arrow-right-fat.png">';
 
                                     if ($this->identity() == null) {
                                         echo '<span class="parents-assoc-role">'.$parentsAssocMember->getParentsAssocRoleAsString().'</span> - '.$parentsAssocMember->getFullNameShort().'';
@@ -372,15 +372,15 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         if(!empty($this->parentsInformation)){
                             foreach($this->parentsInformation as $parentsInformation){
                                 if($parentsInformation->getDocName() != null){
-                                    echo '<li><img src="/img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                    echo '<li><img src="img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
                                 }
                                 if($parentsInformation->getUrl() != null){
-                                    echo '<li><img src="/img/icons/icon-link.png"><a target="_blank" href="'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                    echo '<li><img src="img/icons/icon-link.png"><a target="_blank" href="'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
                                 }
                             }
                         }else{
                             echo '<div class="no-content">';
-                                    echo '<img src="/../img/icons/icon-update-soon-1.png"/>';
+                                    echo '<img src="img/icons/icon-update-soon-1.png"/>';
                                     echo '<span>will come soon ...</span>';        
                             echo '</div>';
                         }
@@ -426,7 +426,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         }
                     }else{
                         echo '<div class="no-content parents-left">';
-                                echo '<img src="/../img/icons/icon-trumpet.png"/>';
+                                echo '<img src="img/icons/icon-trumpet.png"/>';
                                 echo '<span>will come soon ...</span>';
                         echo '</div>';    
                     }
@@ -469,7 +469,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="parents-information" src="/../img/icons/icon-info.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="parents-information" src="img/icons/icon-info.png" alt="" /></div>
 
             
             <!-- original version -->
@@ -574,10 +574,10 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     echo '<div class="small-table-row">';
                         echo '<div class="small-table-cell icon-cell">';
                             if($parentsInformation->getDocName() !=null){
-                                echo '<img class="pi-icon" src="/img/icons/icon-download.png" />';  
+                                echo '<img class="pi-icon" src="img/icons/icon-download.png" />';  
                             }
                             if($parentsInformation->getUrl() !=null){
-                                echo '<img class="pi-icon" src="/img/icons/icon-link.png" />';
+                                echo '<img class="pi-icon" src="img/icons/icon-link.png" />';
                             }
                         echo '</div>';
                         echo '<div class="small-table-cell pi-title">';
@@ -680,7 +680,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id='editParentsInformationDocLabel_current'>Current document:</label>
                         <div  class='small-table no-border' id='editParentsInformationDoc_current'>
                             <div class='small-table-row'>
-                                <div class="small-table-cell icon-cell"><img class="pi-icon" src="/../../img/icons/icon-document.png"></div>
+                                <div class="small-table-cell icon-cell"><img class="pi-icon" src="img/icons/icon-document.png"></div>
                                 <div class="small-table-cell pi-link-doc-edit" id='editParentsInformationDocTitle'></div>
                                 <div class="small-table-cell remove">
                                     <label class="preview-doc-label" id="preview-doc-edit-parents-information-label">
@@ -701,7 +701,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         <label id='editParentsInformationUrlLabel_current'>Current link:</label>
                         <div  class='small-table no-border' id='editParentsInformationUrl_current'>
                             <div class='small-table-row'>
-                                <div class="small-table-cell icon-cell"><img class="pi-icon" src="/../../img/icons/icon-link.png"></div>
+                                <div class="small-table-cell icon-cell"><img class="pi-icon" src="img/icons/icon-link.png"></div>
                                 <div class="small-table-cell pi-link-doc-edit" id='editParentsInformationUrlTitle'></div>
                                 <div class="small-table-cell remove">
                                     <label class="preview-doc-label" id="preview-textInput-edit-parents-information-label">
@@ -736,7 +736,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Remove information for parents</span>
@@ -811,7 +811,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '<div class="small-table-row">';
 
                                 echo '<div class="small-table-cell icon-cell">';
-                                    echo '<img class="pa-arrow" src="/img/icons/icon-arrow-right-fat.png" />';
+                                    echo '<img class="pa-arrow" src="img/icons/icon-arrow-right-fat.png" />';
                                 echo '</div>';
 
                                 echo '<div class="small-table-cell pa-title">';
@@ -870,7 +870,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         if($assocMemeber->getStatus() == 2){
                             echo '<div class="small-table-row member-disable">';
                                 echo '<div class="small-table-cell icon-cell">';
-                                    echo '<img class="icon-cell" src="/img/icons/icon-arrow-right-fat-grey.png" />';
+                                    echo '<img class="icon-cell" src="img/icons/icon-arrow-right-fat-grey.png" />';
                                 echo '</div>';
 
                                 echo '<div class="small-table-cell pa-title">';
@@ -943,7 +943,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <div class="small-table-row">
                         <div class="small-table-cell icon-cell">
-                            <img class="pa-meeting" src="/img/icons/icon-calendar.png" />
+                            <img class="pa-meeting" src="img/icons/icon-calendar.png" />
                         </div>
                         <div class="small-table-cell pa-meeting">
                             <span>
@@ -968,7 +968,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <div class="small-table-row">
                         <div class="small-table-cell icon-cell">
-                            <img class="pa-meeting" src="/img/icons/icon-clock.png" />
+                            <img class="pa-meeting" src="img/icons/icon-clock.png" />
                         </div>
                         <div class="small-table-cell pa-meeting">
                             <span>
@@ -983,7 +983,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <div class="small-table-row">
                         <div class="small-table-cell icon-cell">
-                            <img class="pa-meeting" src="/img/icons/icon-map-location.png" />
+                            <img class="pa-meeting" src="img/icons/icon-map-location.png" />
                         </div>
                         <div class="small-table-cell pa-meeting">
                             <span>
@@ -1022,7 +1022,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="add-pa-member" src="/../img/icons/icon-add-user.png" alt="" /></div>
+            <div class="circle-img-wrapper"><img class="add-pa-member" src="img/icons/icon-add-user.png" alt="" /></div>
 
             
             <!-- original version -->
@@ -1100,7 +1100,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-disable.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-disable.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Deactivate member</span>
@@ -1139,7 +1139,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-enable.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-enable.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Activate member</span>
@@ -1302,11 +1302,11 @@ $this->headTitle($this->headTitle.' '.$current_season);
         
         <div class="admin-option" id='bookList-delete'>
             <a href="#" class="tooltip modal-trigger-edit-book-list" data-modal="edit-book-list-modal">
-                <button class="btn-admin"><img src="/../../img/icons/icon-edit-blue.png"></button>
+                <button class="btn-admin"><img src="img/icons/icon-edit-blue.png"></button>
                 <span class="tooltiptext bottom edit">Edit</span>
             </a>
             <a href="#" class="tooltip modal-trigger-delete-book-list" data-modal="delete-book-list-modal">
-                <button class="btn-admin"><img class="icon-list" src="/../../img/icons/icon-bin-red.png"></button>
+                <button class="btn-admin"><img class="icon-list" src="img/icons/icon-bin-red.png"></button>
                 <span class="tooltiptext bottom remove">Remove</span>
             </a>
         </div>
@@ -1593,7 +1593,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Remove Booklist</span>
@@ -1650,11 +1650,11 @@ $this->headTitle($this->headTitle.' '.$current_season);
         
         <div class="admin-option">
             <a href="#" class="tooltip modal-trigger-edit-policy" data-modal="edit-policy-modal">
-                <button class="btn-admin"><img src="/../../img/icons/icon-edit-blue.png"></button>
+                <button class="btn-admin"><img src="img/icons/icon-edit-blue.png"></button>
                 <span class="tooltiptext bottom edit">Edit</span>
             </a>
             <a href="#" class="tooltip modal-trigger-delete-policy" data-modal="delete-policy-modal">
-                <button class="btn-admin"><img class="icon-list" src="/../../img/icons/icon-bin-red.png"></button>
+                <button class="btn-admin"><img class="icon-list" src="img/icons/icon-bin-red.png"></button>
                 <span class="tooltiptext bottom remove">Remove</span>
             </a>
         </div>
@@ -1801,7 +1801,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-bin.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Remove Policy</span>
@@ -1840,7 +1840,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 	    	<label>close</label>
                 </div>
             </div>
-      	<div class="circle-img-wrapper"><img class="events" src="/../img/icons/icon-add-user.png" alt="" /></div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-add-user.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
       		<span>Create Account</span>
@@ -1871,7 +1871,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script type="text/javascript" src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
 
-<script src="/js/summernote/summernote-options.js" type="text/javaScript"></script>
+<script src="js/summernote/summernote-options.js" type="text/javaScript"></script>
 
 <script src="js/parentsInformation-add.js" type="text/javaScript"></script>
 <script src="js/parentsInformation-edit.js" type="text/javaScript"></script>
