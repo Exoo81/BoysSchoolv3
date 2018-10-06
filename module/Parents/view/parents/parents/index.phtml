@@ -826,7 +826,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                     echo '<div class="small-table-cell edit">';
                                         if ($this->access('user.edit') ||
                                                  $this->access('user.own.edit', ['user'=>$assocMemeber->getUser()])) {
-                                            echo '<a href="/user/editparentsassoc/'.$assocMemeber->getUser()->getId().'" class="tooltip">';
+                                            echo '<a href="user/editparentsassoc/'.$assocMemeber->getUser()->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
                                                     echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
                                                 echo '</button>';
@@ -838,7 +838,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 }else{
                                     echo '<div class="small-table-cell create-account">';
                                         if ($this->access('user.add')) {
-                                            echo '<a href="/user/addaccount/'.$assocMemeber->getId().'" class="tooltip">';
+                                            echo '<a href="user/addaccount/'.$assocMemeber->getId().'" class="tooltip">';
                                                 echo '<button class="btn-admin">';
                                                     echo '<img class="icon-list" src="img/icons/icon-settings.png" >';
                                                 echo '</button>';
