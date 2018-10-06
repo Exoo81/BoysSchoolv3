@@ -48,10 +48,10 @@ $this->headTitle($this->title);
         <div class='user-details-wrapper'>
             
             <div class='table'>
-                <div class="row">
+<!--                <div class="row">
                     <div class="cell table-header"><span>ID</span></div>
                     <div class="cell table-content"><span><?= $user->getId() ?>(only admin)</span></div>
-                </div>
+                </div>-->
                 <div class="row light">
                     <div class="cell table-header"><span>Name</span></div>
                     <div class="cell table-content"><span class='name'><?= $user->getOurTeamMember()->getFullName() ?></span></div>
@@ -65,11 +65,11 @@ $this->headTitle($this->title);
                     <div class="cell table-content"><span><?= $user->getStatusAsString() ?></span></div>
                 </div>
                 <div class="row">
-                    <div class="cell table-header"><span>Roles in system <i>(account status)</i></span></div>
-                    <div class="cell table-content"><span><?= $user->getRolesAsString() ?> <i>(<?= $user->getStatusAsString() ?>)</i></span></div>
+                    <div class="cell table-header"><span>Roles in system</span></div>
+                    <div class="cell table-content"><span><?= $user->getRolesAsString() ?></span></div>
                 </div>
                 <div class="row light">
-                    <div class="cell table-header"><span>Roles in school <i>(status in the our team)</i></span></div>
+                    <div class="cell table-header"><span>Roles in school</span></div>
                     <?= 
                         $type = null;
                         $reflectType = new ReflectionClass($user->getOurTeamMember());
@@ -104,13 +104,13 @@ $this->headTitle($this->title);
                             default:
                                 $type = "Indeterminate";
                         }
-                        echo '<div class="cell table-content"><span>'.$type.' <i>('.$user->getOurTeamMember()->getStatusAsString().') </i></span></div>';
+                        echo '<div class="cell table-content"><span>'.$type.'</span></div>';
                     ?>
                 </div>
-                <div class="row light">
+<!--                <div class="row light">
                     <div class="cell table-header"><span>Password</span></div>
                     <div class="cell table-content"><span><?= $user->getPassword() ?></span></div>
-                </div>
+                </div>-->
                 <div class="row">
                     <div class="cell table-header"><span>Date of creation</span></div>
                     <div class="cell table-content"><span><?= $user->getDateCreated() ?></span></div>
@@ -125,14 +125,14 @@ $this->headTitle($this->title);
                         }    
                     ?>
                 
-                <div class="row light">
+<!--                <div class="row light">
                     <div class="cell table-header"><span>Reset Password Token</span></div>
                     <div class="cell table-content"><span><?= $user->getResetPasswordToken() ?></span></div>
                 </div>
                 <div class="row">
                     <div class="cell table-header"><span>Password Reset Token Creation Date</span></div>
                     <div class="cell table-content"><span><?= $user->getPasswordResetTokenCreationDate() ?></span></div>
-                </div>
+                </div>-->
             </div>
             
         </div>

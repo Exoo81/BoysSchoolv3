@@ -18,9 +18,9 @@ $(".modal-trigger-create-account").click(function(e){
 //        console.log('---=== Member ID passer ===---');
 //        console.log('member ID: ' + memberID);
 //        console.log('member Full Name: ' + memberFullName);
-    var addAccountLink = "./user/addaccount/"+memberID;
-
-     $("#new-member-account").attr("href", addAccountLink); 
+        
+    var addAccountLink = "user/addaccount/"+memberID;
+    $("#new-member-account").attr("href", addAccountLink); 
      $("#newAccountFullName").html("<i>" +memberFullName + "</i> does not have an account yet.");
   
     //display modal
