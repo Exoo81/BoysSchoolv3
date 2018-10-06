@@ -146,21 +146,37 @@ $this->headTitle($this->title);
                                 . '<button type="button" class="btn-edit-user btn-blue reversed" data-text="Edit user">'
                                     . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
                                 . '</button>'
-                            . '</a>'
-                        . '</div>';
+                            . '</a>';
+                            if ( $this->access('user.own.changePassword', ['user'=>$user])) {
+                                echo '<a href="'.$this->url('user', ['action'=>'changePassword', 'id'=>$user->getId()]).'">'
+                                    . '<button type="button" class="btn-change-password btn-red reversed" data-text="Change password">'
+                                        . '<span><i class="fa fa-key" aria-hidden="true"></i> Change password</span>'
+                                    . '</button>'
+                                . '</a>';
+                            }
+                        echo '</div>';
                 }else{
                     echo '<div class="user-details-wrapper">'
                             . '<a href="'.$this->url('user', ['action'=>'editparentsassoc', 'id'=>$user->getId()]).'">'
                                 . '<button type="button" class="btn-edit-user btn-blue reversed" data-text="Edit user">'
-                                    . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit user</span>'
+                                    . '<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit sdfuser</span>'
                                 . '</button>'
-                            . '</a>'
-                        . '</div>';
+                            . '</a>';
+                            if ( $this->access('user.own.changePassword', ['user'=>$user])) {
+                                echo '<a href="'.$this->url('user', ['action'=>'changePassword', 'id'=>$user->getId()]).'">'
+                                    . '<button type="button" class="btn-change-password btn-red reversed" data-text="Change password">'
+                                        . '<span><i class="fa fa-key" aria-hidden="true"></i> Change password</span>'
+                                    . '</button>'
+                                . '</a>';
+                            }
+                        echo '</div>';
                 }
             }
         ?>
 
     </div>
+    
+    
     
 </section>
 

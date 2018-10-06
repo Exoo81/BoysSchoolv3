@@ -376,7 +376,8 @@ button.btn-facebook-joinUs:after,
 button.btn-about-us:after,
 button.btn-subscribe:after,
 button.btn-contact-form:after,
-button.modal-btn:after{
+button.modal-btn:after,
+button.btn-change-password:after{
 	top: 5px;
 }
 
@@ -756,7 +757,8 @@ button.btn-about-us,
 button.btn-subscribe,
 button.btn-filter,
 button.btn-contact-form,
-button.modal-btn{
+button.modal-btn,
+button.btn-change-password{
 	margin: 0 auto;
 	width: 200px;
 	padding: 5px 0;
@@ -20373,6 +20375,12 @@ section.admin .admin-box #hiddenMulticheckbox{
             margin: 0 10% 1% 10%;
         }
     }
+    
+
+
+.user-details-wrapper button.btn-change-password{
+    margin-top: 20px;
+}
     
 .admin .form-wrapper-header{
     width: 40%;
