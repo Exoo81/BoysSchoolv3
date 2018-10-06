@@ -33,6 +33,9 @@ class PasswordResetForm extends Form{
             'name' => 'email',
             'options' => [
                 'label' => 'Your E-mail',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ],
             ],
         ]);
         
@@ -43,7 +46,10 @@ class PasswordResetForm extends Form{
             'attributes' => [                                                
             ],
             'options' => [
-                    'label' => 'Human check',
+                    'label' => 'Enter the letters you see in the box below',
+                    'label_attributes' => [
+                            'class'  => 'form-control'
+                    ],
                     'captcha' => [
                             'class' => 'Figlet',
                             'wordLen' => 6,

@@ -769,7 +769,6 @@ button.modal-btn{
             button.btn-edit-user-form,
             button.btn-edit-user,
             button.btn-login,
-            button.btn-create-account,
             button.btn-admin-nav,
             button.btn-add-user,
             button.btn-about-us, 
@@ -3575,6 +3574,96 @@ section.admin .admin-box{
     min-height: 40vh;
     padding: 3% 0;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        section.admin .admin-box{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.admin .admin-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.admin .admin-box{
+            padding: 6% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.admin .admin-box{
+            padding: 6% 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.admin .admin-box{
+            padding: 6% 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.admin .admin-box{
+            padding: 6% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.admin .admin-box{
+            padding: 10% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.admin .admin-box{
+            padding: 10% 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        section.admin .admin-box{
+            padding: 10% 0;
+        }
+    }
 
 .header-title{
 	float: right;
@@ -19875,8 +19964,98 @@ section.admin .header{
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    line-height: 15vh;
+    padding-top: 30px;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin .header-title{
+            padding-top: 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .header-title{
+            padding-top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .header-title{
+           padding-top: 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .header-title{
+            padding-top: 25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .header-title{
+            padding-top: 10px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .header-title{
+            padding-top: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .header-title{
+            padding-top: 15px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .header-title{
+            padding-top: 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .header-title{
+            padding-top: 15px;
+        }
+    }
 
 .admin .header-title i{
     padding: 20px;
@@ -19884,6 +20063,99 @@ section.admin .header{
     background: #4B0B0B;
     margin-right: 20px;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .header-title i{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .header-title i{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .header-title i{
+            font-size: .9em;
+            padding: 15px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .header-title i{
+            font-size: .9em;
+            padding: 15px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .header-title i{
+            font-size: .7em;
+            padding: 13px;
+        }
+    }
 
 section.admin .admin-box #hiddenMulticheckbox{
     display: none;
@@ -19892,20 +20164,215 @@ section.admin .admin-box #hiddenMulticheckbox{
 .admin .color-cubes{
     width: 100%;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .color-cubes{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .color-cubes{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .color-cubes{
+            bottom: 30%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .color-cubes{
+            bottom: 25%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .color-cubes{
+            bottom: 30%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .color-cubes{
+            bottom: 30%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .color-cubes{
+            bottom: 25%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .color-cubes{
+           bottom: 25%;
+        }
+    }
 
 .admin .form-wrapper,
 .admin .user-details-wrapper{
     width: 40%;
     margin: 0 30% 1% 30%;
 }
-
-/*    @media screen and (max-width:1366px){
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .admin .form-wrapper,
         .admin .user-details-wrapper{
-            width: 30%;
-            margin: 0 35% 1% 35%;
+            
         }
-    }*/
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 60%;
+            margin: 0 20% 1% 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 60%;
+            margin: 0 20% 1% 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 60%;
+            margin: 0 20% 1% 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 60%;
+            margin: 0 20% 1% 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 80%;
+            margin: 0 10% 1% 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 80%;
+            margin: 0 10% 1% 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 80%;
+            margin: 0 10% 1% 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .form-wrapper,
+        .admin .user-details-wrapper{
+            width: 80%;
+            margin: 0 10% 1% 10%;
+        }
+    }
     
 .admin .form-wrapper-header{
     width: 40%;
@@ -19913,7 +20380,116 @@ section.admin .admin-box #hiddenMulticheckbox{
     padding-bottom: 20px;
     color: #561818;
     font-size: 1.4em; 
+    text-align: justify;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin .form-wrapper-header{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .form-wrapper-header{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .form-wrapper-header{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .form-wrapper-header{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .form-wrapper-header{
+            width: 60%;
+            margin: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .form-wrapper-header{
+            width: 60%;
+            margin: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .form-wrapper-header{
+            width: 60%;
+            margin: 0 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .form-wrapper-header{
+            width: 80%;
+            margin: 0 10%;
+            font-size: 1em;
+    
+        }
+    }
 
 .admin .form-wrapper-header span{
     font-style: italic;
@@ -19925,6 +20501,100 @@ section.admin .admin-box #hiddenMulticheckbox{
     font-style: normal;
     text-decoration: underline;
 }
+
+.admin form.cms label.form-control{
+    
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin form.cms label.form-control{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin form.cms label.form-control{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin form.cms label.form-control{
+            font-size: 1.3em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin form.cms label.form-control{
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin form.cms label.form-control{
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin form.cms label.form-control{
+            font-size: 1.2em;
+        }
+    }
 
 .admin .form-wrapper-form-info{
     width: 100%;
@@ -19953,11 +20623,106 @@ section.admin .admin-box #hiddenMulticheckbox{
 
 .admin .form-wrapper form pre{
     width: 60%;
-    margin-left: 20%;
+    margin: 1em auto;
     text-align: center;
-    background-color: white;
+    background-color: #561818;
+    border-radius: 4px;
+    color: white;
     font-size: .7em;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .admin .form-wrapper form pre{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .admin .form-wrapper form pre{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .admin .form-wrapper form pre{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .admin .form-wrapper form pre{
+            width: 80%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .admin .form-wrapper form pre{
+            width: 80%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .admin .form-wrapper form pre{
+            width: 80%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .admin .form-wrapper form pre{
+            width: 80%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .admin .form-wrapper form pre{
+            width: 80%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+            font-size: .6em
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .admin .form-wrapper form pre{
+            width: 100%;
+            font-size: .5em
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .admin .form-wrapper form pre{
+            width: 100%;
+            font-size: .5em
+        }
+    }
 
 .admin .form-wrapper ul{
     margin-top: .2em;
@@ -20016,6 +20781,96 @@ section.admin .admin-box #hiddenMulticheckbox{
     color: #561818;
     font-size: 1.2em;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .user-details-wrapper .table .row .cell span{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .user-details-wrapper .table .row .cell span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1.1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1.1em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1.1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .user-details-wrapper .table .row .cell span{
+            font-size: 1em;
+        }
+    }
 
 .user-details-wrapper .table .row .cell span.name{
     text-transform: capitalize;

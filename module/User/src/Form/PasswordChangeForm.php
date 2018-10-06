@@ -47,6 +47,9 @@ class PasswordChangeForm extends Form{
                 'name' => 'old_password',
                 'options' => [
                     'label' => 'Old Password',
+                    'label_attributes' => [
+                        'class'  => 'form-control'
+                    ],
                 ],
             ]);  
         }
@@ -57,6 +60,9 @@ class PasswordChangeForm extends Form{
             'name' => 'new_password',
             'options' => [
                 'label' => 'New Password',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ],
             ],
         ]);
         
@@ -66,6 +72,9 @@ class PasswordChangeForm extends Form{
             'name' => 'confirm_new_password',
             'options' => [
                 'label' => 'Confirm new password',
+                'label_attributes' => [
+                        'class'  => 'form-control'
+                ],
             ],
         ]);
         

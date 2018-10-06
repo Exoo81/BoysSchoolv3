@@ -420,7 +420,7 @@ class UserController extends AbstractActionController{
     //action will allow a user to reset his own password
     public function resetPasswordAction(){
         
-        $title = 'Change password';
+        $title = 'Reset password';
         $message = 'Enter your e-mail address below to reset your password';
         
         // Create form
@@ -474,7 +474,7 @@ class UserController extends AbstractActionController{
     public function setPasswordAction(){
         
         $title = 'Set new password';
-        $message = 'empty msg';
+        $message = '';
         
          $token = $this->params()->fromQuery('token', null);
          
