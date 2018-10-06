@@ -48,7 +48,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         if(!empty($this->parentsInformation)){
                             foreach($this->parentsInformation as $parentsInformation){
                                 if($parentsInformation->getDocName() != null){
-                                    echo '<li><img src="img/icons/icon-download.png"><a target="_blank" href="/upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
+                                    echo '<li><img src="img/icons/icon-download.png"><a target="_blank" href="upload/parents/parents_information/'.$parentsInformation->getDocName().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
                                 }
                                 if($parentsInformation->getUrl() != null){
                                     echo '<li><img src="img/icons/icon-link.png"><a target="_blank" href="'.$parentsInformation->getUrl().'" class="bs orange"><span>'.$parentsInformation->getTitle().'</span></a></li>';
