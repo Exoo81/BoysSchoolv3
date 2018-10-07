@@ -1914,22 +1914,23 @@ select:-webkit-autofill{
         }
     }
     /* Breakpoint */
-    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+    @media screen and (min-width: 1101px) and (max-width: 1300px) {
         .welcome .header{
-            width: 50%;
+            width: 45%;
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
         .welcome .header{
-            width: 45%;
+            width: auto;
+            margin-left: 15%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .welcome .header{
             width: auto;
-            margin-left: 20%;
+            margin-left: 15%;
         }
     }
     /* Breakpoint */
@@ -2395,27 +2396,213 @@ section.welcome .logged-wrapper{
     float: right;
     padding-right: 3%;
 }
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        section.welcome .logged-wrapper{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        section.welcome .logged-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.welcome .logged-wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            background-color: rgba(86, 24, 24, .3);
+        }
+    }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         section.welcome .logged-wrapper{
             width: 100%;
-            margin: 0;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
             background-color: rgba(86, 24, 24, .3);
         }
     }
 
     .logged-wrapper .layout-welcome-msg{
-        padding-top: 5px;
+        padding-top: 20px;
         font-family: 'Architects Daughter', 'Arial' ,sans-serif;
         color: #561818;
         font-size: 1.2em;  
         font-weight: 600;
     }
+           /* Breakpoint */
+        @media screen and (min-width: 1301px) and (max-width: 1400px) {
+            .logged-wrapper .layout-welcome-msg{
+
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 1201px) and (max-width: 1300px) {
+            .logged-wrapper .layout-welcome-msg{
+
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 1001px) and (max-width: 1200px) {
+            .logged-wrapper .layout-welcome-msg{
+
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 801px) and (max-width: 1000px) {
+            .logged-wrapper .layout-welcome-msg{
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 721px) and (max-width: 800px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 701px) and (max-width: 720px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 601px) and (max-width: 700px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 551px) and (max-width: 600px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 480px) and (max-width: 550px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 371px) and (max-width: 479px) {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 341px) and (max-width: 370px)  {
+            .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
+                padding: 15px 10px;
+            }
+        }
         /* Breakpoint */
         @media screen and (max-width: 340px) {
             .logged-wrapper .layout-welcome-msg{
+                display: inline-block;
                 padding: 15px 10px;
-                font-size: 1.2em;
             }
         }
     
@@ -2424,6 +2611,98 @@ section.welcome .logged-wrapper{
         display: inline-block;
         margin-left: 80px;
     }
+    
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .logged-wrapper .logout-button-wrapper{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .logged-wrapper .logout-button-wrapper{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .logged-wrapper .logout-button-wrapper{
+            margin-left: 2%;
+        }
+    }
+    
     
         .logout-button-wrapper img{
             width: 30px;
@@ -2456,7 +2735,7 @@ section.welcome .contact{
 
     /** Breakpoint **/
 
-    @media screen and (min-width: 300px) and (max-width: 800px) {
+    @media screen and (min-width: 300px) and (max-width: 1100px) {
         section.welcome .contact{
             display: none
         }
@@ -21067,11 +21346,94 @@ div.dhx_modal_cover_dv {
     color: #561818;
 
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .tooltip .tooltiptext.logout{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .tooltip .tooltiptext.logout{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .tooltip .tooltiptext.logout{
+            left: 35px;
+        }
+    }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .tooltip .tooltiptext.logout{
-            top: 4px;
-            left: 30px;
+            display: none;
         }
     }
     
