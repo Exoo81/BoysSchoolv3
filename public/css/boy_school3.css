@@ -21542,13 +21542,13 @@ div.dhx_modal_cover_dv {
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .tooltip .tooltiptext.logout{
-            
+            display: none;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .tooltip .tooltiptext.logout{
-            left: 35px;
+            display: none;
         }
     }
     /* Breakpoint */
