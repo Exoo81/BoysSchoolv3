@@ -18923,7 +18923,7 @@ img.end-tl{
 	border-spacing: 15px;
 }
     /* Breakpoint */
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 600px) {
         .modal-body table.event-list{
             border-spacing: 5px;
         }
