@@ -80,7 +80,11 @@
                             <div class="school-name">
     				<div class="lg-name">Scoil Iósaif Naofa</div>
     				<div class="sm-name">Oranmore Boys NS</div>
-                                <div>Resolusion test: <span id="resWidth"></span> x <span id="resHeigth"></span></div>
+                                <?php
+                                    if($this->identity() !== null && $this->currentUser()->getId() == 1){
+                                        echo '<div>Resolusion test: <span id="resWidth"></span> x <span id="resHeigth"></span></div>';
+                                    }
+                                ?>
                             </div>              
     			</div>
                         
