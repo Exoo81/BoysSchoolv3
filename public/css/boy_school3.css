@@ -18922,6 +18922,12 @@ img.end-tl{
 	/* border: 1px solid green; */
 	border-spacing: 15px;
 }
+    /* Breakpoint */
+    @media screen and (max-width: 480px) {
+        .modal-body table.event-list{
+            border-spacing: 5px;
+        }
+    }
 
 table.event-list tbody{
     display: inline-table;
