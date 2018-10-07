@@ -80,6 +80,7 @@
                             <div class="school-name">
     				<div class="lg-name">Scoil Iósaif Naofa</div>
     				<div class="sm-name">Oranmore Boys NS</div>
+                                <div>Resolusion test: <span id="resWidth"></span> x <span id="resHeigth"></span></div>
                             </div>              
     			</div>
                         
@@ -103,15 +104,7 @@
                                                         echo '</button>';
                                                         echo '<span class="tooltiptext logout">Logout</span>';
                                                     echo '</a>';
-        //                                            echo '<a href="'.$this->url('user', ['action' => 'users']).'">Users</a> ||';           
-        //                                            echo '<a href="/reset-password">Reset pass</a> ||';
-        //                                            echo '<a href="/logout">Logout</a>';
                                                 echo '</div>';
-        //                                        echo '<p>';
-        //                                            echo '<a href="/roles">Roles</a> ||';
-        //                                            echo '<a href="/permissions">Permission</a> || ';
-        //                                        echo '</p>';
-
                                             }
                                         echo '</div>';
                     ?>                               
@@ -283,6 +276,17 @@
                 offset:       100
             });
             wow.init();
+        </script>
+        
+        <script type="text/javascript">
+                var findwidth = screen.width;
+                var findheigth = screen.height;
+                
+                var w = document.getElementById("resWidth");
+                w.innerHTML += findwidth;
+                var h = document.getElementById("resHeigth");
+                h.innerHTML += findheigth;
+ 
         </script>
        
     </body>

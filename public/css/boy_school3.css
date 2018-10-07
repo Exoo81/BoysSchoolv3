@@ -653,9 +653,6 @@ button.btn-menu {
         }
   
     }
-    
-    
-    
     /* Breakpoint */
     @media (min-width: 481px) and (max-width: 800px) and (orientation: landscape){
   
@@ -694,47 +691,101 @@ button.btn-menu {
         }
   
     }
-/*	@media screen and (max-width:1600px){
-		button.btn-menu{
-			margin: .8em;
-		}
-	}
-	@media screen and (max-width:1600px){
-		button.btn-menu{
-			margin: .5em;
-		}
-	}
-	@media screen and (max-width:1366px){
-		button.btn-menu{
-			margin: .65em;
-			font-size: .8em;
-		}
-	}
-	
-	@media screen and (max-width:1280px) and (max-height: 1024px){
-		button.btn-menu{
-			margin: .7em;
-			font-size: 1em;
-		}
-	}
-	@media screen and (max-width:1280px) and (max-height: 800px){
-		button.btn-menu{
-			margin: .6em;
-			font-size: .9em;
-		}
-	}
-	@media screen and (max-width:1024px) and (max-height: 768px){
-		button.btn-menu{
-			margin: .7em;
-			font-size: .9em;
-		}
-	}
-	@media screen and (max-width:1024px) and (max-height: 601px){
-		button.btn-menu{
-			margin: .6em;
-			font-size: .6em;
-		}
-	}*/
+    /*old*/
+    
+    /*new*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        button.btn-menu{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        button.btn-menu{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        button.btn-menu{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-height: 340px) {
+        button.btn-menu{
+            font-size: .5em; 
+        }
+    }
+    
+    
 button.btn-menu::after,
 button.btn-menu > span {
 	margin-left: 20px;
@@ -1348,23 +1399,100 @@ select:-webkit-autofill{
         }
   
     }
+    /*old*/
     
+    /*new*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        #navigation nav{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        #navigation nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        #navigation nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        #navigation nav{
+            
+        }
+    }
     
-/*	@media screen and (max-width:1600px){
-		#navigation nav{
-			padding: 100px 20px 20px;
-		}
-	}
-	@media screen and (max-width:1366px){
-		#navigation nav{
-			padding: 110px 20px 20px;
-		}
-	}
-	@media screen and (max-width:1024px) and (max-height: 600px){
-		#navigation nav{
-			padding: 100px 20px 20px;
-		}
-	}*/
 	
 /* CLOSE MENU BUTTON */
 .close-nav {
@@ -1391,6 +1519,99 @@ select:-webkit-autofill{
             top: 10px;
         }
   
+    }
+    /*old*/
+    
+    /*new*/
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .close-nav{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .close-nav{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .close-nav{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .close-nav{
+            
+        }
     }
 
 .close-nav:before, .close-nav:after {
