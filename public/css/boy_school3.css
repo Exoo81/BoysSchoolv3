@@ -320,6 +320,10 @@ a.bs.in-text{
 	text-transform: none;
 	font-style: italic;
 }
+
+a.bs.button-wrapper:before{
+    position: relative;
+}
 /** end LINKS **/
 
 /** common button css **/
