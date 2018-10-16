@@ -7182,7 +7182,7 @@ span.event-title a.bs:before{
 #calender_section_top ul li{ 
 	float: left; 
 	display: block; 
-	width: 70px; 
+	width: 65px; 
 	text-align: center; 
 	font-size: 1.2em;
 	font-weight: 100;
@@ -7303,7 +7303,7 @@ span.event-title a.bs:before{
 #calender_section_bot ul li{ 
 	position:relative;
 	float:left; 
-	width:70px; 
+	width:65px; 
 	height:65px; 
 	text-align:center; 
 	min-height:0; 
