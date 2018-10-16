@@ -2002,7 +2002,7 @@ select:-webkit-autofill{
 .welcome .header{
 	display: inline-block;
 	float:left;
-	width: 60%;
+	width: auto;
 	margin-left:10%;
 	background-color: transparent;
 	
@@ -2010,31 +2010,31 @@ select:-webkit-autofill{
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .welcome .header{
-            width: 50%;
+            width: auto;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .welcome .header{
-            width: 50%;
+            width: auto;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .welcome .header{
-           width: 50%;
+          width: auto;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .welcome .header{
-            width: 50%;
+            width: auto;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1101px) and (max-width: 1300px) {
         .welcome .header{
-            width: 45%;
+            width: auto;
         }
     }
     /** Breakpoint **/
@@ -20912,6 +20912,13 @@ section.admin .admin-box #hiddenMulticheckbox{
     font-weight: 600;
     font-style: normal;
     text-decoration: underline;
+}
+
+.admin .form-wrapper-header.error{
+    padding: 0;
+    font-size: 1em;
+    color: #c0392b;
+    text-transform: uppercase;
 }
 
 .admin form.cms label.form-control{

@@ -422,6 +422,7 @@ class UserController extends AbstractActionController{
         
         $title = 'Reset password';
         $message = 'Enter your e-mail address below to reset your password';
+        $message_error = '';
         
         // Create form
         $form = new PasswordResetForm();
@@ -443,7 +444,8 @@ class UserController extends AbstractActionController{
                 $user = $this->entityManager->getRepository(User::class)
                         ->findOneByEmail($data['email']);
                 if ($user!=null) {
-//                    $message = 'user found';
+                    $message_error = '';
+                    $message = 'A link to reset your password has been sent to the email you entered.';
                     // Generate a new password for user and send an E-mail 
                     // notification about that.
                     $this->userManager->generatePasswordResetToken($user);
@@ -452,7 +454,8 @@ class UserController extends AbstractActionController{
 //                    return $this->redirect()->toRoute('users', 
 //                            ['action'=>'message', 'id'=>'sent']); 
                 }else{
-                    $message = 'User NOT found';
+                    $message = '';
+                    $message_error = 'The e-mail you entered does not exist.';
 //                    return $this->redirect()->toRoute('users', 
 //                            ['action'=>'message', 'id'=>'invalid-email']);
 //                    $message = 'Enter your e-mail address below to reset your password';
@@ -463,6 +466,7 @@ class UserController extends AbstractActionController{
         return new ViewModel([
             'title' => $title,
             'message' => $message,
+            'message_error' => $message_error,
             'form' => $form
         ]);
         

@@ -56,7 +56,7 @@
 		<div class="close-nav"></div>
 		<a href="<?= $this->url('home') ?>"><button type="button" class="btn-menu btn-red active" data-text="Home"><span>Home</span></button></a>
 		<a href="<?= $this->url('classes') ?>"><button class="btn-menu btn-purpure" data-text="Classes"><span>Classes</span></button></a>
-		<button class="btn-menu btn-blue" data-text="School Life"><span>School Life</span></button>
+		<button class="btn-menu btn-blue" id="" data-text="School Life"><span>School Life</span></button>
 		<a href="<?= $this->url('gallery') ?>"><button class="btn-menu btn-orange" data-text="Gallery"><span>Gallery</span></button></a>
 		<a href="<?= $this->url('ourteam') ?>"><button class="btn-menu btn-green" data-text="Our Team"><span>Our Team</span></button></a> 
 		<a href="<?= $this->url('parents') ?>"><button class="btn-menu btn-yellow" data-text="Parents"><span>Parents</span></button></a> 
@@ -268,7 +268,7 @@
 
         
         
-        <?= $this->inlineScript()->prependFile($this->basePath('js/menu.js'))
+        <?= $this->inlineScript()->prependFile($this->basePath('js/menu.js')) 
                                  ->prependFile($this->basePath('js/modal.js'))
                                  ->prependFile($this->basePath('js/jquery-ui.js'))
                                  ->prependFile($this->basePath('js/wow.js'))

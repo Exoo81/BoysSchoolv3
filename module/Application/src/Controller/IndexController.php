@@ -92,7 +92,7 @@ class IndexController extends AbstractActionController{
     
     
     public function indexAction(){
-        
+   
         //Get curren season news blog
         $newsBlog = $this->newsManager->getCurrentNewsBlog();
         // Get recent posts

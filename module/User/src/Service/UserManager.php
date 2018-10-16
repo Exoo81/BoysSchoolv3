@@ -7,6 +7,8 @@ use User\Entity\Role;
 use Ourteam\Entity\OurTeam;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\Math\Rand;
+use Zend\Mail\Message;
+use Zend\Mail\Transport\Sendmail as SendmailTransport;
 
 /**
  * This service is responsible for adding/editing users
@@ -262,18 +264,34 @@ class UserManager
         
         $this->entityManager->flush();
         
+        $message = new \Zend\Mail\Message();
+
+        // This will be considered as plain text message, even if the string is valid HTML code
+        $message->setBody('Hello world');
         
-        //uncoment on server
-//        $subject = 'Password Reset';
-//            
+//        $message = new Message();
+//        $message->addTo($user->getEmail())
+//                ->addFrom('marcin.piskor@gmail.com')
+//                ->setSubject('Greetings and Salutations!')
+//                ->setBody("Sorry, I'm going to be late today!");
+//        
+//        
+//
+//        $transport = new SendmailTransport();
+//        $transport->send($message);
+        
+        
+        //send link witch reset token
+//        $subject = 'Password Reset - Scoil Iósaif Naofa';
+            
 //        $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
 //        $passwordResetUrl = 'http://' . $httpHost . '/set-password?token=' . $token;
-//        
+        
 //        $body = 'Please follow the link below to reset your password:\n';
 //        $body .= "$passwordResetUrl\n";
 //        $body .= "If you haven't asked to reset your password, please ignore this message.\n";
 //        
-//        // Send email to user.
+        // Send email to user.
 //        mail($user->getEmail(), $subject, $body);
     }
     
