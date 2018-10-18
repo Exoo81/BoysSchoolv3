@@ -31,7 +31,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <div class="title orange">Information for parents</div>
 
                 <?php 
-                if(!empty($this->parentsInformation)){
                     if ($this->access('parentsInformation.manage')) {
                         echo '<div class="cms-option parents-information right">';
                             echo '<a href="#" class="bs modal-trigger" data-modal="show-all-parents-information-modal">';
@@ -39,7 +38,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</a>';
                         echo '</div>';
                     } 
-                }
                 ?>
                 <div class="title-sm">Below is information about your child's learning in primary school.</div>
                 <hr class="orange">
@@ -103,7 +101,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</li>';
                         }
                     }else{
-                        echo '<div class="no-content parents-left">';
+                        echo '<div class="no-content ">';
                                 echo '<img src="img/icons/icon-trumpet.png"/>';
                                 echo '<span>will come soon ...</span>';
                         echo '</div>';    
@@ -223,7 +221,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 
                             }
                         }else{
-                            echo '<div class="no-content parents-left">';
+                            echo '<div class="no-content">';
                                     echo '<img src="img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
                             echo '</div>';
@@ -273,7 +271,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 
                             }
                         }else{
-                            echo '<div class="no-content parents-left">';
+                            echo '<div class="no-content">';
                                     echo '<img src="img/icons/icon-justice.png"/>';
                                     echo '<span>will come soon ...</span>';
                             echo '</div>';
@@ -355,7 +353,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <div class="title orange">Information for parents</div>
 
                 <?php 
-                if(!empty($this->parentsInformation)){
                     if ($this->access('parentsInformation.manage')) {
                         echo '<div class="cms-option parents-information right">';
                             echo '<a href="#" class="bs modal-trigger" data-modal="show-all-parents-information-modal">';
@@ -363,7 +360,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</a>';
                         echo '</div>';
                     } 
-                }
                 ?>
                 <div class="title-sm">Below is information about your child's learning in primary school.</div>
                 <hr class="orange">
@@ -425,7 +421,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</li>';
                         }
                     }else{
-                        echo '<div class="no-content parents-left">';
+                        echo '<div class="no-content">';
                                 echo '<img src="img/icons/icon-trumpet.png"/>';
                                 echo '<span>will come soon ...</span>';
                         echo '</div>';    

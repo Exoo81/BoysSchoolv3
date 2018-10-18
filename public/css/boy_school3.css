@@ -4372,6 +4372,102 @@ section.admin .admin-box{
     padding: 5% 20%;
     min-height: 0;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .school-news .no-content{
+                padding: 5% 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .school-news .no-content{
+           padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .school-news .no-content{
+            padding: 0 5%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .school-news .no-content{
+            padding: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .school-news .no-content{
+            padding: 0 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .school-news .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .school-news .no-content{
+            padding: 0 30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .school-news .no-content{
+            padding: 0 30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .school-news .no-content{
+            padding: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .school-news .no-content{
+            padding: 10px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .school-news .no-content{
+            padding: 10px;
+        }
+    }
 .newsletters-list .no-content{
     padding: 5%;
     min-height: 0;
@@ -4382,18 +4478,333 @@ section.admin .admin-box{
     padding: 10% 40% 5% 40%;
     min-height: 0;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .gallery .no-content,
+        .classes .no-content{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .gallery .no-content,
+        .classes .no-content{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .gallery .no-content,
+        .classes .no-content{
+           padding: 10% 30% 5% 30%
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 10% 30% 5% 30%
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 10% 30% 5% 30%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 10% 30% 5% 30%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 100px 20% 60px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 100px 20% 60px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 150px 20% 60px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 150px 20% 60px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 120px 20% 60px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 120px 20% 60px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 120px 20px 60px 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 80px 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .gallery .no-content,
+        .classes .no-content{
+            padding: 80px 20px;
+        }
+    }
 
 .class-blog .no-content{
     padding: 0 30% 5% 30%;
     min-height: 0;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .class-blog .no-content{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .class-blog .no-content{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .class-blog .no-content{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .class-blog .no-content{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .class-blog .no-content{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .class-blog .no-content{
+            padding: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .class-blog .no-content{
+            padding: 0 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .class-blog .no-content{
+            padding: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .class-blog .no-content{
+            padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .class-blog .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .class-blog .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .class-blog .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .class-blog .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .class-blog .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .class-blog .no-content{
+            padding: 0 20px;
+        }
+    }
 
 .parents-info-box .no-content,
 .book-list-box .no-content,
 .policies-box .no-content{
-    padding: 5% 30%;
+    padding: 5% 20%;
     min-height: 0;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 5% 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 5% 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+           padding: 5% 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 5% 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 5% 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 5% 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 0px 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .parents-info-box .no-content,
+        .book-list-box .no-content,
+        .policies-box .no-content{
+            padding: 20px 20px;
+        }
+    }
 
 
 .no-content .info-wrapper{
@@ -4591,6 +5002,195 @@ section.admin .admin-box{
     margin: 0 auto;
     padding-bottom: 5%;    
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img,
+        .newsletters-list .no-content img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 100px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 100px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .policies-box .no-content img,
+        .book-list-box .no-content img,
+        .parents-info-box .no-content img,
+        .gallery .no-content img,
+        .classes .no-content img,
+        .class-blog .no-content img,
+        .news-box .no-content img{
+            width: 80px;
+        }
+    }
 
 
 .no-content .info-wrapper span{
@@ -4630,6 +5230,208 @@ section.admin .admin-box{
     border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
     transform: rotate(1deg);
 }
+
+/** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.7em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.7em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.7em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.5em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.5em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .policies-box .no-content span,
+        .book-list-box .no-content span,
+        .parents-info-box .no-content span,
+        .gallery .no-content span,
+        .classes .no-content span,
+        .class-blog .no-content span,
+        .school-news .no-content span,
+        .newsletters-list .no-content span{
+            font-size: 1.3em;
+            border-width: 3px 1px 1px 3px;
+        }
+    }
 
 
 .main-col-right{
@@ -5125,7 +5927,7 @@ video{
 /**** end COMMON ****/
 
 /****** SECTION SCHOOL-NEWS ******/
-#container section.school-news {
+#container section.main-page {
 	display: inline-block;
   	width: 100%;
   	/* text-align:center; */
@@ -5144,7 +5946,7 @@ video{
   	
 }
 /*	@media screen and (max-width :320px) {
-		#container section.school-news {
+		#container section.main-page {
 			display: grid;
 			width:100%;
 			margin: 5px 0 0 0;
@@ -5153,7 +5955,7 @@ video{
 
 /** NEWS-BOX **/
 
-section.school-news .main-col-left{
+section.main-page .main-col-left{
     width: 40%;
     margin: 0 5%;
     padding: 0;
@@ -5163,7 +5965,7 @@ section.school-news .main-col-left{
    
     /** Breakpoint **/
     @media screen and (min-width: 1201px) and (max-width: 1800px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 40%;
             margin: 0 3% 0 7%;
             
@@ -5171,41 +5973,41 @@ section.school-news .main-col-left{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1024px) and (max-width: 1200px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 45%;
             margin: 0 5% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 901px) and (max-width: 1023px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 85%;
             margin: 0 5% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 640px) and (max-width: 900px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 639px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 479px) {
-        section.school-news .main-col-left{
+        section.main-page .main-col-left{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
 
-section.school-news .main-col-right{
+section.main-page .main-col-right{
     width: 50%;
     float: left;
     padding: 0;
@@ -5213,46 +6015,46 @@ section.school-news .main-col-right{
 
     /** Breakpoint **/
     @media screen and (min-width: 1201px) and (max-width: 1800px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 50%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1024px) and (max-width: 1200px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 40%;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 901px) and (max-width: 1023px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 85%;
             margin: 0 5% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 640px) and (max-width: 900px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 639px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 479px) {
-        section.school-news .main-col-right{
+        section.main-page .main-col-right{
             width: 80%;
             margin: 0 10% 0 10%; 
         }
     }
 
-.school-news .news-box{
+.main-page .news-box{
     position: relative;
     width: 100%;
     float: left;
@@ -6241,7 +7043,7 @@ button.btn-pagination:after{
 
 /** EVENT-BOX **/
 
-.school-news .event-box{
+.main-page .event-box{
     position: relative;
     width: 100%;
     float: left;
@@ -6250,9 +7052,19 @@ button.btn-pagination:after{
 }
 
     /** Breakpoint **/
-    @media screen and (min-width: 300px) and (max-width: 1020px) {
-        .school-news .event-box{
+    @media screen and (min-width: 1101px) and (max-width: 1020px) {
+        .main-page .event-box,
+        .main-page .newsletter-box,
+        .main-page .our-awards-box{
             margin-top: 120px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 1100px) {
+        .main-page .event-box,
+        .main-page .newsletter-box,
+        .main-page .our-awards-box{
+            margin-top: 60px
         }
     }
 
@@ -7179,6 +7991,7 @@ span.event-title a.bs:before{
 	padding:0; 
 	list-style-type:none;}
 
+
 #calender_section_top ul li{ 
 	float: left; 
 	display: block; 
@@ -7783,7 +8596,7 @@ a li{
 
 /** NEWSLETTER-BOX **/
 
-.school-news .newsletter-box{
+.main-page .newsletter-box{
     position: relative;
     width: 100%;
     float: left;
@@ -7791,12 +8604,12 @@ a li{
 	
 }
 
-    /** Breakpoint **/
+/*    * Breakpoint *
     @media screen and (min-width: 300px) and (max-width: 1020px) {
-        .school-news .newsletter-box{
+        .main-page .newsletter-box{
             margin-top: 120px
         }
-    }
+    }*/
 
  .newsletter-box .newsletters-list{
 	display:inline-block;
@@ -8075,7 +8888,7 @@ a li{
     @media screen and (min-width: 300px) and (max-width: 370px) {
         .subscribe{
             width: 100%;
-            height: 240px;
+            height: 250px;
             margin: 0;
         }
     }
@@ -8888,18 +9701,18 @@ a li{
 
 /** OUR AWARDS **/
 
-.school-news .our-awards-box{
+.main-page .our-awards-box{
     position: relative;
     width: 100%;
     float: left;
     margin-top: 10%;
 }
-    /** Breakpoint **/
+/*    * Breakpoint *
     @media screen and (min-width: 300px) and (max-width: 1020px) {
-        .school-news .our-awards-box{
+        .main-page .our-awards-box{
             margin-top: 120px
         }
-    }
+    }*/
 
 .our-awards-box hr{
     margin-bottom: 20px;
@@ -9114,13 +9927,13 @@ a li{
 
 
 /** DONATE **/
-.school-news .donate-box{
+.main-page .donate-box{
 	width: 40%;
 	float: left;
 	margin-top: 2%;
 }
 /*	@media screen and (max-width:1024px){
-		.school-news .donate-box{
+		.main-page .donate-box{
 			width: 30%;
 			margin: 3% 0 3% 5%;
 		}
@@ -22318,7 +23131,7 @@ label.error {
     @media screen and (min-width: 300px) and (max-width: 1020px) {
         .cms-option.events{
             top: 25px;
-            right: 0px;
+            right: -25px;
         }
     }
 
@@ -22337,21 +23150,21 @@ label.error {
     @media screen and (min-width: 480px) and (max-width: 1020px) {
         .cms-option.newsletter{
             top: 30px;
-            right: 0px;
+            right: -25px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .cms-option.newsletter{
             top: 15px;
-            right: 15px;
+            right: -25px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 370px) {
         .cms-option.newsletter{
             top: 15px;
-            right: 15px;
+            right: -25px;
         }
     }
 
@@ -22361,7 +23174,7 @@ label.error {
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .cms-option.newsletter a span{
             display: block;
-            width: 60px;
+            width: 80px;
             text-align: center;
         }
     }
@@ -22369,7 +23182,7 @@ label.error {
     @media screen and (min-width: 300px) and (max-width: 370px) {
         .cms-option.newsletter a span{
             display: block;
-            width: 60px;
+            width: 80px;
             text-align: center;
         }
     }
@@ -22383,7 +23196,7 @@ label.error {
     @media screen and (min-width: 300px) and (max-width: 1020px) {
         .cms-option.news{
             top: 25px;
-            right: 0;
+            right: -25px;
         }
     }
 
@@ -22395,13 +23208,13 @@ label.error {
     @media screen and (min-width: 480px) and (max-width: 1020px) {
         .cms-option.our-awards{
             top: 25px;
-            right: 0px;
+            right: -25px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 479px) {
         .cms-option.our-awards{
-            right: 0px;
+            right: -25px;
             top: 20px;
         }
     }
@@ -23794,14 +24607,14 @@ label.error {
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .cms-option.newsletter a img{
             top: 5px;
-            right: 70px;
+            right: 85px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 370px) {
         .cms-option.newsletter a img{
             top: 5px;
-            right: 70px;
+            right: 80px;
         }
     }
 

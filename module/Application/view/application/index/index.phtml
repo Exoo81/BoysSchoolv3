@@ -53,7 +53,7 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
 </section>
 
 <!-- SCHOOL BOX -->
-<section class="school-news">
+<section class="main-page">
 
     <?php
         // module/Album/view/album/album/index.phtml:
@@ -76,11 +76,8 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
                 if($this->paginator->getTotalItemCount() == 0){
                     echo '<div class="school-news">';
                         echo '<div class="no-content">';
-                                
-                                    echo '<img src="/../img/icons/icon-summer.png"/>';
-                                    echo '<span>Summer break<br>New news for the '.$current_season.'<br>comming soon ... </span>';
-                                
-
+                            echo '<img src="/../img/icons/icon-summer.png"/>';
+                            echo '<span>Summer break<br>New news for the '.$current_season.'<br>comming soon ... </span>';
                         echo '</div>';
                     echo '</div>';
                 }else{
