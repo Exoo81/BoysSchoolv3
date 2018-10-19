@@ -4,6 +4,7 @@ namespace Classes\Service;
 
 use Classes\Entity\Blog;
 use Classes\Entity\ClassBlog;
+use Classes\Entity\Post;
 use User\Entity\User;
 use Ourteam\Entity\Teacher;
 use Ourteam\Entity\LearningSupport;
@@ -458,8 +459,8 @@ class ClassesManager{
         
         $classBlog->setLearningSupport($learningSupport);
         
-        //check if blog season+level+teacher exist
-        $blogExist = $this->checkIfBlogExist($this->currentSeason, $teacher, $formFieldsArray['classLevel'], null);
+        //check if teacher has a blog in this season
+        $blogExist = $this->checkIfBlogExist($teacher, null);
         
         if($blogExist){
             $dataResponse['success'] = false;
@@ -530,7 +531,7 @@ class ClassesManager{
         return $formFieldsArray;
     }
     
-    private function checkIfBlogExist($season, $teacher, $classLevel, $blogId){
+    private function checkIfBlogExist($teacher, $blogId){
         
 
         
@@ -542,41 +543,47 @@ class ClassesManager{
                 ->from(ClassBlog::class, 'blog')  
                 ->innerJoin('blog.season', 'season')
                 ->where('season.id LIKE :seasonID')
-                ->andWhere('blog.level LIKE :classLevel')
-                ->setParameter('classLevel', '%'.$classLevel.'%')
-                ->setParameter('seasonID', $season->getId());
+                ->andWhere('blog.teacher = :teacher')
+                ->setParameter('teacher', $teacher)
+                ->setParameter('seasonID', $this->currentSeason->getId());
 
-
-
-            $level_year = $queryBuilder->getQuery()->getResult();
-            //find teacher
-            foreach($level_year as $blog){
-                
-                
-                
-                if($blog->getTeacher()->getId() === $teacher->getId()){
-                    
-                    /*
-                     * if save new blog
-                     */
-                    if($blogId == null){
-                        return true;
-                    }
-                    
-                    /*
-                     * if edit blog
-                     */
-                    if($blog->getId() !== $blogId ){
-                        return true;
-                    }
-                    
-                } 
-                
-                
-                
+            $blogsFound = $queryBuilder->getQuery()->getResult();
+            
+            if(!empty($blogsFound)){
+                return true;
             }
-
+            
             return false;
+
+//            $level_year = $queryBuilder->getQuery()->getResult();
+//            //find teacher
+//            foreach($level_year as $blog){
+//                
+//                
+//                
+//                if($blog->getTeacher()->getId() === $teacher->getId()){
+//                    
+//                    /*
+//                     * if save new blog
+//                     */
+//                    if($blogId == null){
+//                        return true;
+//                    }
+//                    
+//                    /*
+//                     * if edit blog
+//                     */
+//                    if($blog->getId() !== $blogId ){
+//                        return true;
+//                    }
+//                    
+//                } 
+//                
+//                
+//                
+//            }
+//
+//            return false;
         
         
         
@@ -717,7 +724,7 @@ class ClassesManager{
         $editClassBlog->setLearningSupport($learningSupport);
         
         //check if blog season+level+teacher exist
-        $blogExist = $this->checkIfBlogExist($editClassBlog->getSeason(), $teacher, $formFieldsArray['editClassLevel'], $editClassBlog->getId());
+        $blogExist = $this->checkIfBlogExist($teacher, $editClassBlog->getId());
         
         if($blogExist){
             $dataResponse['success'] = false;
@@ -834,6 +841,16 @@ class ClassesManager{
             return $dataResponse;
         }
         
+        //check if blog is empty
+        $blogEmpty = $this->checkIfBlogIsEmpty($deleteBlog);
+        
+        if(!$blogEmpty){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'ERROR - The blog can not be deleted (blog contains posts).';
+            
+            return $dataResponse;
+        }
+        
         //initial - prepare the path
         //path to delete photo
         $path_to_delete_photo = './public/upload/classes/'.$deleteBlog->getSeason()->getSeasonName().'/';
@@ -854,6 +871,18 @@ class ClassesManager{
         
         return $dataResponse;
         
+    }
+    
+    private function checkIfBlogIsEmpty($deleteBlog){
+        
+        $posts = $this->entityManager->getRepository(Post::class)
+                     ->findByBlog($deleteBlog);
+        
+        if($posts == null){
+            return true;
+        }
+        
+        return false;
     }
     
     

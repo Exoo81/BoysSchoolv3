@@ -129,14 +129,14 @@ $this->headTitle($this->headTitle);
                                         for($i = 0; $i < sizeof($postGallery); $i++){
                                             if($i == 0){
                                                 echo '<div class="first-photo">';
-                                                    echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                        echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
                                                     echo '</a>';
                                                 echo '</div>';
                                             }else{
                                                 echo '<div class="hidden">';
-                                                    echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                        echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                    echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                        echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
                                                     echo '</a>';
                                                 echo '</div>';
                                             }
@@ -167,7 +167,7 @@ $this->headTitle($this->headTitle);
                                 if($post->getDocName() !== null){
                                     echo '<div class="blog-link">';
                                         echo '<img class="icon-list" src="img/icons/icon-download.png">';
-                                        echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                        echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
                                             echo '<span class="">see attached file</span>';
                                         echo '</a>';    
                                     echo '</div>';
@@ -270,14 +270,14 @@ $this->headTitle($this->headTitle);
                                             for($i = 0; $i < sizeof($postGallery); $i++){
                                                 if($i == 0){
                                                     echo '<div class="first-photo">';
-                                                        echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                            echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
 							echo '</a>';
                                                      echo '</div>';
                                                 }else{
                                                     echo '<div class="hidden">';
-                                                        echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                            echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
 							echo '</a>';
                                                      echo '</div>';
                                                 }
@@ -309,7 +309,7 @@ $this->headTitle($this->headTitle);
                                     if($post->getDocName() !== null){
                                         echo '<div class="blog-link">';
                                             echo '<img class="icon-list" src="img/icons/icon-download.png">';
-                                            echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                            echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
                                                 echo '<span class="">see attached file</span>';
                                             echo '</a>';    
                                         echo '</div>';
@@ -477,14 +477,14 @@ $this->headTitle($this->headTitle);
                                             for($i = 0; $i < sizeof($postGallery); $i++){
                                                 if($i == 0){
                                                     echo '<div class="first-photo">';
-                                                        echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                            echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';
                                                 }else{
                                                     echo '<div class="hidden">';
-                                                        echo '<a class="lightbox" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
-                                                            echo '<img src="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                        echo '<a class="lightbox" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                            echo '<img src="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
                                                         echo '</a>';
                                                     echo '</div>';
                                                 }
@@ -515,7 +515,7 @@ $this->headTitle($this->headTitle);
                                     if($post->getDocName() !== null){
                                         echo '<div class="blog-link">';
                                             echo '<img src="img/icons/icon-download.png">';
-                                            echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/2017-2018/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                            echo '<a target="_blank" class="bs '.$this->color.'" href="upload/classes/'.$this->blog->getSeason()->getSeasonName().'/'.$this->blog->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
                                                 echo '<span class="">see attached file</span>';
                                             echo '</a>';    
                                         echo '</div>';

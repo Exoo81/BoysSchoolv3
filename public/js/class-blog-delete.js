@@ -12,9 +12,9 @@ $(".modal-trigger-delete-class-blog").click(function(e){
     var level = $(this).data("level");
     var teacherFullName = $(this).data("teacher");
     
-        console.log(blogId);
-        console.log(level);
-        console.log(teacherFullName);
+//        console.log(blogId);
+//        console.log(level);
+//        console.log(teacherFullName);
     
     //clear msg label
     $(".response-msg").html('');
@@ -41,7 +41,7 @@ $("#deleteClassBlogForm").validate({
     },
             
     submitHandler: function() {
-     
+
     //show laoder
     $(".loader").css({"display":"block"});
     //hidde confirmation question
@@ -52,6 +52,7 @@ $("#deleteClassBlogForm").validate({
     
     var blogID = $("#deleteClassBlogID").val();
     
+
     $.ajax({
         url:'classes/deleteblog',
         type:'POST',
