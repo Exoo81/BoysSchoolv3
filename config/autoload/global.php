@@ -58,7 +58,7 @@ return [
         ],
     ],
     
-//    NEW DB
+//    NEW DB (local)
 //    'doctrine' => [
 //        'connection' => [
 //            'orm_default' => [
@@ -74,22 +74,8 @@ return [
 //        ],        
 //    ],
     
-//    OLD DB
-//    'doctrine' => [
-//        'connection' => [
-//            'orm_default' => [
-//                'driverClass' => PDOMySqlDriver::class,
-//                'params' => [
-//                    'host'     => 'localhost',                    
-//                    'user'     => 'root',
-//                    'password' => '',
-//                    'dbname'   => 'boyschooldb',
-//                    'port' => '3307',
-//                ]
-//            ],            
-//        ],        
-//    ],
-    
+
+// NEW DB (remote)    
     'doctrine' => [
         'connection' => [
             'orm_default' => [
@@ -106,9 +92,7 @@ return [
     ], 
     
   
-//        stary układ w front-end\temp katalogu
-//        stworzyc konta dla nauczycieli
-//dokonac zmian w bazie danych wg zmian zrobionych przez szkole
+
         
 
 ];
