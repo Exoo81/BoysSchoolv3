@@ -105,7 +105,7 @@ return [
         ],        
     ], 
     
- 
+  
 //        stary układ w front-end\temp katalogu
 //        stworzyc konta dla nauczycieli
 //dokonac zmian w bazie danych wg zmian zrobionych przez szkole
