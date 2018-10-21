@@ -19843,6 +19843,7 @@ img.end-tl{
 
 .modal-text#policyContentOrigin ul li{
 	font-weight: initial;
+        padding: initial;
 }
 
 .modal-body .modal-text form#addOurTeamForm {
