@@ -9,7 +9,7 @@ $(".modal-trigger").click(function(e){
        
 });
 
-$(".close-modal, .btn-modal-box .close-btn").click(function(){
+$(".close-modal, .btn-modal-box .close-btn, .modal-sandbox").click(function(){
 	$(".modal").css({"display":"none"});
 });
 
