@@ -459,14 +459,14 @@ class ClassesManager{
         
         $classBlog->setLearningSupport($learningSupport);
         
-        //check if teacher has a blog in this season
-        $blogExist = $this->checkIfBlogExist($teacher, null);
-        
-        if($blogExist){
-            $dataResponse['success'] = false;
-            $dataResponse['responseMsg'] = 'ERROR - This blog already exists.';
-            return $dataResponse;
-        }
+        //To Fix check if teacher has a blog in this season
+//        $blogExist = $this->checkIfBlogExist($teacher, null);
+//        
+//        if($blogExist){
+//            $dataResponse['success'] = false;
+//            $dataResponse['responseMsg'] = 'ERROR - This blog already exists.';
+//            return $dataResponse;
+//        }
         
         
         // Add the entity to the entity manager.
@@ -735,14 +735,14 @@ class ClassesManager{
         
         $editClassBlog->setLearningSupport($learningSupport);
         
-        //check if blog season+level+teacher exist
-        $blogExist = $this->checkIfBlogExist($teacher, $editClassBlog->getId());
-        
-        if($blogExist){
-            $dataResponse['success'] = false;
-            $dataResponse['responseMsg'] = 'ERROR - This blog already exists.';
-            return $dataResponse;
-        }
+        //To Fix check if blog season+level+teacher exist
+//        $blogExist = $this->checkIfBlogExist($teacher, $editClassBlog->getId());
+//        
+//        if($blogExist){
+//            $dataResponse['success'] = false;
+//            $dataResponse['responseMsg'] = 'ERROR - This blog already exists.';
+//            return $dataResponse;
+//        }
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($editClassBlog); 

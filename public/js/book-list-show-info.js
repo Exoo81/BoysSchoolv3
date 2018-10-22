@@ -130,7 +130,7 @@ $(".modal-trigger-show-book-list").click(function(e){
                  * insert stationary list
                  */
                 if(data.stationaryList.length !== 0){
-                    $('#listOfStationary').append('<div class="title centered book-list-title">Stationary</div>');
+                    $('#listOfStationary').append('<div class="title centered book-list-title">Stationery</div>');
                     $('#listOfStationary').append('<div class="stationary-table" id="stationaryTable"></div>');
                     
                     $.each(data.stationaryList, function (key, value){

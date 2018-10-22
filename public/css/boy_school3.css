@@ -15078,6 +15078,43 @@ section.school-life-blog .header.header-blog{
     width: 256px;
     border: none;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .header-blog img.icon{
+            width: 200px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .header-blog img.icon{
+            width: 200px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .header-blog img.icon{
+           width: 156px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .header-blog img.icon{
+            width: 156px;
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .header-blog img.icon{
+            width: 156px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1051px) and (max-width: 1200px) {
+        .header-blog img.icon{
+            width: 156px;
+        }
+    }
 
 
 .header-blog .title{

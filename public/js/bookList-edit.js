@@ -142,7 +142,7 @@ $(".modal-trigger-edit-book-list").click(function(e){
                  */
            
                 if(data.stationaryList.length !== 0){
-                    $('#editListOfStationary').append('<div class="title centered book-list-title">Stationary</div>');
+                    $('#editListOfStationary').append('<div class="title centered book-list-title">Stationery</div>');
                     $('#editListOfStationary').append('<div class="stationary-table" id="edit-stationaryTable"></div>');
                     
                     $.each(data.stationaryList, function (key, value){
@@ -284,7 +284,7 @@ $("#editBookListForm").validate({
         }
         
         if(!lastStationaryInFormIsValid){ 
-            $('#error-valid-last-stationary-edit').html('Last stationary on this list has not been validated. Complete the missing fields or delete the entire row.');
+            $('#error-valid-last-stationary-edit').html('Last stationery on this list has not been validated. Complete the missing fields or delete the entire row.');
             $('#error-valid-last-stationary-edit').css({"display":"block"});
         }
         
