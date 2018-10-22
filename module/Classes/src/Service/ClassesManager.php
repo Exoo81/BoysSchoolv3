@@ -547,11 +547,23 @@ class ClassesManager{
                 ->setParameter('teacher', $teacher)
                 ->setParameter('seasonID', $this->currentSeason->getId());
 
-            $blogsFound = $queryBuilder->getQuery()->getResult();
+            $blogsFound = $queryBuilder->getQuery()->getOneOrNullResult();
             
-            if(!empty($blogsFound)){
-                return true;
+            //add
+            if($blogId == null){
+                if(!empty($blogsFound)){
+                    return true;
+                }
             }
+            
+            //edit
+            if($blogId !== null){
+                if($blogsFound->getId() !== $blogId){
+                    return true;
+                } 
+            }
+            
+            
             
             return false;
 
