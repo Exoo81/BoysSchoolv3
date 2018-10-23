@@ -3156,8 +3156,8 @@ button.btn-facebook-joinUs:after{
 }
 
 .welcome-msg .text{
-	padding: 20px 40px;
-	font-size: 1.2em;
+	padding: 20px 60px;
+	font-size: 1.3em;
 	font-weight: 300;
 	color: #561818;
 	line-height: normal;
@@ -3166,63 +3166,79 @@ button.btn-facebook-joinUs:after{
 
 	@media screen and (max-width :1680px) {
 		.welcome-msg .text {
-                    padding: 10px 40px;	
+                    padding: 25px 40px;
+                    font-size: 1.1em;	
 		}
 	}
         
         /** Breakpoint **/
-        @media screen and (min-width: 1367px) and (max-width: 1600px) {
+        @media screen and (min-width: 1401px) and (max-width: 1580px) {
             .welcome-msg .text {
-                padding: 10px 25px 0px 25px;
-                font-size: 1.1em;
-            }
-        }
-        
-        /** Breakpoint **/
-        @media screen and (min-width: 1281px) and (max-width: 1366px) {
-            .welcome-msg .text {
-                padding: 10px 25px 0px 25px;
+                padding: 20px 40px;
                 font-size: 1em;
             }
         }
         
         /** Breakpoint **/
-        @media screen and (min-width: 1201px) and (max-width: 1280px) {
+        @media screen and (min-width: 1301px) and (max-width: 1400px) {
             .welcome-msg .text {
-                padding: 10px 15px 0px 15px;
+                padding: 10px 40px;
                 font-size: 1em;
+            }
+        }
+        
+        /** Breakpoint **/
+        @media screen and (min-width: 1201px) and (max-width: 1300px) {
+            .welcome-msg .text {
+                padding: 20px 40px;
+                font-size: .9em;
             }
         }
         
         /** Breakpoint **/
         @media screen and (min-width: 801px) and (max-width: 1200px) {
             .welcome-msg .text {
-                    padding: 20px 100px 20px 100px;
-                    font-size: 1.2em;
+                padding: 30px 120px;
+                font-size: 1.3em;
             }
         }
         
         /** Breakpoint **/
-        @media screen and (min-width: 641px) and (max-width: 800px) {
+        @media screen and (min-width: 701px) and (max-width: 800px) {
             .welcome-msg .text {
-                    padding: 20px 50px 20px 50px;
-                    font-size: 1.2em;
+                padding: 30px 100px;
+                font-size: 1.2em;
             }
         }
         
         /** Breakpoint **/
-        @media screen and (min-width: 480px) and (max-width: 640px) {
+        @media screen and (min-width: 480px) and (max-width: 700px) {
             .welcome-msg .text {
-                    padding: 20px 30px 20px 30px;
-                    font-size: 1.1em;	
+                padding: 30px 80px;
+                font-size: 1.1em;	
             }
         }
         
         /** Breakpoint **/
-        @media screen and (min-width: 300px) and (max-width: 479px) {
+        @media screen and (min-width: 371px) and (max-width: 479px) {
             .welcome-msg .text {
-                    padding: 20px 30px 20px 30px;
-                    font-size: 1em;	
+                padding: 30px 40px;
+                font-size: 1em;	
+            }
+        }
+        /** Breakpoint **/
+        @media screen and (min-width: 341px) and (max-width: 370px) {
+            .welcome-msg .text {
+                padding: 30px 30px;
+                font-size: .9em;	
+            }
+        }
+        
+        /* Breakpoint */
+        @media screen and (max-width: 340px) {
+            .welcome-msg .text{
+                padding: 30px 30px;
+                font-size: .9em;
             }
         }
 	

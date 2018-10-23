@@ -7,6 +7,9 @@ $(".modal-trigger-welcome-msg-edit").click(function(e){
         
         //clear msg label
         $(".response-msg").html('');
+        
+        //clear  textarea (summernote)
+        $('#editWelcomeMsgContent').summernote('reset');
                
         
         dataModal = $(this).attr("data-modal");
@@ -27,7 +30,7 @@ $(".modal-trigger-welcome-msg-edit").click(function(e){
                     $("#" + dataModal).css({"display":"block"});
                     $(".editWelcomeMsgForm").css({"display":"block"});
                     $("#editWelcomeMsgID").val(data.welcomeMsg.id);
-                    $("#editWelcomeMsgContent").val(data.welcomeMsg.content);
+                    $("#editWelcomeMsgContent").summernote('code', data.welcomeMsg.content);
                 }else{
                     $("#" + dataModal).css({"display":"block"});
                     $(".response-msg").html(data.responseMsg);

@@ -127,4 +127,16 @@ $('#editPolicyContent').summernote({
       dialogsInBody: true
 });
 
+$('#editWelcomeMsgContent').summernote({
+        toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['clear']],
+//                ['para', ['ul', 'ol', 'paragraph']],
+//                ['height', ['height']],
+
+        ],
+        height: 300,
+        dialogsInBody: true
+});
+
 
