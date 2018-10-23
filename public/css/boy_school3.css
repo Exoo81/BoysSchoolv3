@@ -5676,8 +5676,8 @@ video{
 
 .modal-box.lg .print-option-top{
     position: absolute;
-    top: 80px;
-    right: 120px;
+    top: 40px;
+    right: 40px;
 }
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
@@ -5700,57 +5700,59 @@ video{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .modal-box.lg .print-option-top{
-            
+            top: 40px;
+            right: 40px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .modal-box.lg .print-option-top{
-            top: 40px;
+            top: 20px;
+            right: 40px;
         }
     }
     
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 1200px) {
         .modal-box.lg .print-option-top{
-            right: 60px;
-            top: 40px;
+            right: 20px;
+            top: 20px;
         }
     }
     
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 700px) {
         .modal-box.lg .print-option-top{
-            right: 20px;
-            top: 40px;
+            right: 10px;
+            top: 20px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .modal-box.lg .print-option-top{
             right: 5px;
-            top: 40px;
+            top: 15px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .modal-box.lg .print-option-top{
             right: 5px;
-            top: 40px;
+            top: 15px;
         }
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .modal-box.lg .print-option-top{
             right: 5px;
-            top: 40px;
+            top: 15px;
         }
     }
     
 .modal-box.lg .print-option-bottom{
     position: absolute;
     bottom: 120px;
-    right: 120px;
+    right: 40px;
 }
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
@@ -5773,12 +5775,13 @@ video{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .modal-box.lg .print-option-bottom{
-            
+            right: 40px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .modal-box.lg .print-option-bottom{
+            right: 40px;
             bottom: 90px;
         }
     }
@@ -5786,7 +5789,7 @@ video{
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 1200px) {
         .modal-box.lg .print-option-bottom{
-            right: 60px;
+            right: 20px;
             bottom: 100px;
         }
     }
@@ -5794,7 +5797,7 @@ video{
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 700px) {
         .modal-box.lg .print-option-bottom{
-            right: 20px;
+            right: 10px;
             bottom: 100px;
         }
     }
@@ -5825,8 +5828,8 @@ video{
 .modal-box.lg .print-option-bottom img{
     position: absolute;
     right: 50px;
-    top: -25px;
-    width: 60px;
+    width: 40px;
+    top: -10px;
 }
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
@@ -5853,14 +5856,16 @@ video{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            
+            width: 40px;
+            top: -10px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            
+            width: 40px;
+            top: -10px;
         }
     }
     
@@ -5868,8 +5873,8 @@ video{
     @media screen and (min-width: 701px) and (max-width: 1200px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            width: 55px;
-            top: -20px;
+            width: 35px;
+            top: -10px;
         }
     }
     
@@ -5877,32 +5882,36 @@ video{
     @media screen and (min-width: 480px) and (max-width: 700px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            width: 50px;
-            top: -20px;
+            width: 35px;
+            top: -10px;
+            right: 45px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            width: 50px;
-            top: -20px;
+            width: 35px;
+            top: -10px;
+            right: 40px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            width: 40px;
-            top: -15px;
+            width: 30px;
+            top: -10px;
+            right: 40px;
         }
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .modal-box.lg .print-option-top img,
         .modal-box.lg .print-option-bottom img{
-            width: 40px;
-            top: -15px;
+            width: 25px;
+            top: -5px;
+            right: 40px;
         }
     }
 
@@ -19602,6 +19611,12 @@ img.end-tl{
     border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
     transform: rotate(1deg); 
 }
+
+.modal-text div#content-lg-text{
+    padding: 0 5%;
+    font-size: 0.95em;
+}
+
 
 .modal-text span#principal_greetings{
     font-weight: 600;

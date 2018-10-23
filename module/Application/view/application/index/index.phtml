@@ -763,11 +763,13 @@ $current_season = $this->layout()->currenSeason->getSeasonName();
             echo '</div>';
         } ?>
 	<div class="modal-text">
+            <div id="content-lg-text">
             <h1><span id="title"><?= $aboutUs->getTitle() ?></span></h1>
             <hr class="burgundy">
-            <span id="content"><?= $aboutUs->getContent() ?></span>
+                <?= $aboutUs->getContent() ?>
             <h3><span id="principal_greetings">Le gach dea-ghu&iacute;,</span></h3>
             <h3><span id="principal_name"><?= $aboutUs->getPrincipalName() ?></span></h3>
+            </div>
 			
 	</div>
 	<div class="btn-modal-box">
