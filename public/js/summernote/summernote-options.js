@@ -129,11 +129,15 @@ $('#editPolicyContent').summernote({
 
 $('#editWelcomeMsgContent').summernote({
         toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['clear']],
-//                ['para', ['ul', 'ol', 'paragraph']],
-//                ['height', ['height']],
+            ['style', ['clear']]
+        ],
+        height: 300,
+        dialogsInBody: true
+});
 
+$('#editAboutUsContent').summernote({
+        toolbar: [
+            ['style', ['clear']]
         ],
         height: 300,
         dialogsInBody: true

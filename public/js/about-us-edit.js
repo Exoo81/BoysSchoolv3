@@ -12,6 +12,9 @@ $(".modal-trigger-about-us-edit").click(function(e){
         
     //clear msg label
     $(".response-msg").html('');
+    
+    //clear  textarea (summernote)
+    $('#editAboutUsContent').summernote('reset');
         
     dataModal = $(this).attr("data-modal");
 
@@ -30,7 +33,7 @@ $(".modal-trigger-about-us-edit").click(function(e){
                     $("#" + dataModal).css({"display":"block"});
                     $("#editAboutUsID").val(data.aboutUs.id);
                     $("#editAboutUsTitle").val(data.aboutUs.title);
-                    $("#editAboutUsContent").val(data.aboutUs.content);
+                    $("#editAboutUsContent").summernote('code', data.aboutUs.content);
                     $("#editAboutUsPrincipalName").val(data.aboutUs.principalName);
                     
             }else{
@@ -84,17 +87,17 @@ $("#editAboutUsForm").validate({
                 console.log(data);
                     if(data.success === true){
                         //1. with refresh page
-                            //location.reload();
-                        //2. without refresh page
-                            $('#about-us .modal-text #title').html(data.aboutUs.title);
-                            $('#about-us .modal-text #content').html(data.aboutUs.content);
-                            $('#about-us .modal-text #principal_name').html(data.aboutUs.principalName);
-                            $(".modal").css({"display":"none"});
-                            $(".response-msg").html(data.responseMsg);
-                            //hidde laoder
-                                $(".loader").css({"display":"none"});
-                            //show form
-                                $("#editAboutUsForm").css({"display":"block"});  
+                            location.reload();
+//                        //2. without refresh page
+//                            $('#about-us .modal-text #title').html(data.aboutUs.title);
+//                            $('#about-us .modal-text #content').html(data.aboutUs.content);
+//                            $('#about-us .modal-text #principal_name').html(data.aboutUs.principalName);
+//                            $(".modal").css({"display":"none"});
+//                            $(".response-msg").html(data.responseMsg);
+//                            //hidde laoder
+//                                $(".loader").css({"display":"none"});
+//                            //show form
+//                                $("#editAboutUsForm").css({"display":"block"});  
                     }else{
                         $(".response-msg").html(data.responseMsg);
                         //hidde laoder
