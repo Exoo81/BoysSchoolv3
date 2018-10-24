@@ -7323,7 +7323,7 @@ button.btn-pagination:after{
         /** Breakpoint **/
         @media screen and (min-width: 1600px) and (max-width: 1800px) {
             #calendar-page .current_date{
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
         }
         /** Breakpoint **/
@@ -7341,7 +7341,7 @@ button.btn-pagination:after{
         /* Breakpoint */
         @media screen and (min-width: 1301px) and (max-width: 1399px) {
             #calendar-page .current_date{
-                font-size: 1.4em;
+                font-size: 1.2em;
             }
         }
         
@@ -7429,7 +7429,7 @@ button.btn-pagination:after{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #event_list{
-            min-height: 280px;
+            min-height: 260px;
         }
     }
     /* Breakpoint */
@@ -18365,9 +18365,13 @@ img.end-tl{
 
 .modal-box {
   	position: relative;	
- 	width: 45%;
-  	margin: 4% auto;
-  	border: 1px solid #561818;
+/* 	width: 45%;*/
+        width: 40%;
+        min-height: 100%;
+/*  	margin: 4% auto;*/
+        padding: 4% 30%;
+/*  	border: 1px solid #561818;*/
+        background: rgba(189, 195, 199, .9);
   	border-radius: 2px;
   	animation-name: modalbox;
   	animation-duration: .6s;
@@ -18379,28 +18383,32 @@ img.end-tl{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1580px) {
         .modal-box{
-            width: 65%;
-            margin-top: 60px;
+            width: 60%;
+/*            margin-top: 60px;*/
+            padding: 5% 20%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1001px) and (max-width: 1300px) {
         .modal-box{
             width: 80%;
-            margin-top: 60px;
+            padding: 6% 10%;
+/*            margin-top: 60px;*/
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 1000px) {
         .modal-box{
             width: 100%;
-            margin-top: 0;
+            padding: 0;
+/*            margin-top: 0;*/
         }
     }
 
 .modal-box.lg{
     width: 60%;
-    margin-top: 4%;
+/*    margin-top: 4%;*/
+    padding: 4% 20%;
 }  
     
     
@@ -18410,7 +18418,7 @@ img.end-tl{
     @media screen and (min-width: 1201px) and (max-width: 1580px) {
         .modal-box.lg{
             width: 80%;
-            margin-top: 5%;
+            padding: 5% 10%;
         }
     }
     
@@ -18420,41 +18428,46 @@ img.end-tl{
     @media screen and (min-width: 300px) and (max-width: 1200px) {
         .modal-box.lg{
             width: 100%;
-            margin-top: 0%;
+            padding: 0;
         }
     }
 
         
 .modal-box.sm {
  	width: 30%;
+        padding: 4% 35%;
 }
     
     /* Breakpoint */
     @media screen and (min-width: 1101px) and (max-width: 1580px) {
         .modal-box.sm{
             width: 40%;
-            margin-top: 5%;
+/*            margin-top: 5%;*/
+            padding: 5% 30%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1001px) and (max-width: 1100px) {
         .modal-box.sm{
             width: 60%;
-            margin-top: 5%;
+/*            margin-top: 5%;*/
+            padding: 6% 20%;
         }
     }  
     /* Breakpoint */
     @media screen and (min-width: 701px) and (max-width: 1000px) {
         .modal-box.sm{
             width: 80%;
-            margin-top: 6%;
+/*            margin-top: 6%;*/
+            padding: 6% 10%;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 700px) {
         .modal-box.sm{
             width: 100%;
-            margin-top: 0;
+/*            margin-top: 0;*/
+            padding: 0;
         }
     }
 
@@ -18484,8 +18497,9 @@ img.end-tl{
 .modal-header{
 	position: relative;
 	display: grid;
-	width: 100%;
-	min-height: 150px;	
+	width: auto;
+	min-height: 150px;
+        border: 1px solid #561818;
   	background: #561818;
   	background-image: url('../img/bg-burgundy.png');
   	
@@ -19441,7 +19455,8 @@ img.end-tl{
     position: relative;
     background: #ecf0f1;
     padding: 40px 60px;
-    border-top: 2px solid #561818;
+/*    border-top: 2px solid #561818;*/
+    border: 1px solid #561818;
 }
     
     /* Breakpoint */
@@ -26961,6 +26976,18 @@ form.cms td.qty{
 }
 
 /** end LOADER **/
+
+/*#edit-welcome-msg-modal {
+    display: block;
+}*/
+
+/*#manage-our-awards-modal{
+    display: block;
+}*/
+
+/*#about-us {
+    display: block;
+}*/
 
 /*#add-news-modal {
     display: block;
