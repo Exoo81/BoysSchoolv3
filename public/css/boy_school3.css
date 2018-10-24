@@ -11241,7 +11241,7 @@ button.btn-contact-form{
     display: inline-block;
     position: relative;
     width: 100%;
-    margin: 0 0 5% 10%;
+    margin: 0 0 5% 0;
 }
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
@@ -15135,9 +15135,69 @@ section.school-life-blog .header.header-blog{
         }
     }
     /** Breakpoint **/
-    @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    @media screen and (min-width: 1100px) and (max-width: 1200px) {
         .header-blog img.icon{
             width: 156px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .header-blog img.icon{
+            width: 128px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .header-blog img.icon{
+            width: 128px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .header-blog img.icon{
+            width: 96px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .header-blog img.icon{
+            width: 96px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .header-blog img.icon{
+            width: 128px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .header-blog img.icon{
+            width: 128px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .header-blog img.icon{
+            width: 96px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .header-blog img.icon{
+            width: 84px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .header-blog img.icon{
+            width: 74px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .header-blog img.icon{
+            width: 64px;
         }
     }
 
@@ -15999,6 +16059,12 @@ section.class-blog .main-col .school-life-blog-box{
             
         }
     }
+
+section.class-blog .main-col .class-blog-box.empty,
+section.class-blog .main-col .school-life-blog-box.empty{
+    border : 0
+}
+
 
 .main-col .class-blog-box img.start-tl{
     width: 40px;
@@ -18183,7 +18249,7 @@ img.end-tl{
 	padding: 0;
 	padding-bottom: 3px;
 	margin: 0;
-	width: max-content;
+	width: auto;
 	font-size: .9em;
 	color: #bdc3c7;
 	text-transform: none;
