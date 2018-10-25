@@ -385,6 +385,22 @@ button.btn-change-password:after{
 	top: 5px;
 }
 
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+            button.btn-edit-user-form:after,
+            button.btn-edit-user:after,
+            button.btn-login:after,
+            button.btn-create-account:after,
+            button.btn-admin-nav:after,
+            button.btn-add-user:after,
+            button.btn-facebook-joinUs:after,
+            button.btn-about-us:after,
+            button.btn-subscribe:after,
+            button.btn-contact-form:after,
+            button.modal-btn:after {
+                top: 4px;
+        }
+    }
     /** Breakpoint **/
         @media screen and (min-width: 1201px) and (max-width: 1300px) {
             button.btn-edit-user-form:after,
@@ -767,7 +783,22 @@ button.btn-change-password{
 	font-size: 1em;
 	text-transform:uppercase;
 }
-
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .button.btn-edit-user-form,
+            button.btn-edit-user,
+            button.btn-login,
+            button.btn-admin-nav,
+            button.btn-add-user,
+            button.btn-about-us, 
+            button.btn-subscribe,
+            button.btn-filter,
+            button.btn-contact-form{
+                width: 180px;
+                padding: 3px 0;
+                font-size: .9em;
+        }
+    }
     /** Breakpoint **/
         @media screen and (min-width: 1201px) and (max-width: 1300px) {
             button.btn-edit-user-form,
@@ -3026,14 +3057,27 @@ button.btn-facebook-joinUs:after{
 	}
         
         /** Breakpoint **/
-        @media screen and (min-width: 1441px) and (max-width: 1600px) {
+        @media screen and (min-width: 1581px) and (max-width: 1600px) {
             .welcome-msg .text {
                 padding: 15px 0;
             }
         }
-        
         /* Breakpoint */
-        @media screen and (min-width: 1281px) and (max-width: 1440px) {
+        @media screen and (min-width: 1401px) and (max-width: 1580px) {
+            .welcome-msg .welcome-title{
+                font-size: 2.4em;
+                padding: 15px 0;
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 1301px) and (max-width: 1400px) {
+            .welcome-msg .welcome-title{
+                font-size: 2.2em;
+                padding: 15px 0;
+            }
+        }
+        /* Breakpoint */
+        @media screen and (min-width: 1281px) and (max-width: 1300px) {
             .welcome-msg .welcome-title{
                 font-size: 2.2em;
                 padding: 10px 0;
@@ -4418,7 +4462,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .school-news .no-content{
-            padding: 0 10%;
+            padding: 0 20%;
         }
     }
     /* Breakpoint */
@@ -4528,7 +4572,7 @@ section.admin .admin-box{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .gallery .no-content,
         .classes .no-content{
-            padding: 10% 30% 5% 30%
+            padding: 10% 40% 5% 40%
         }
     }
     /* Breakpoint */
@@ -4634,7 +4678,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .class-blog .no-content{
-            
+            padding: 0 40% 5% 40%;
         }
     }
     /* Breakpoint */
@@ -4739,7 +4783,7 @@ section.admin .admin-box{
         .parents-info-box .no-content,
         .book-list-box .no-content,
         .policies-box .no-content{
-            padding: 5% 20%;
+            padding: 5% 30%;
         }
     }
     /* Breakpoint */
@@ -5074,9 +5118,8 @@ section.admin .admin-box{
         .gallery .no-content img,
         .classes .no-content img,
         .class-blog .no-content img,
-        .news-box .no-content img,
-        .newsletters-list .no-content img{
-            
+        .news-box .no-content img{
+            width: 80px;
         }
     }
     /* Breakpoint */
@@ -5305,7 +5348,7 @@ section.admin .admin-box{
         .class-blog .no-content span,
         .school-news .no-content span,
         .newsletters-list .no-content span{
-            
+            font-size: 1.5em
         }
     }
     /* Breakpoint */
@@ -6392,6 +6435,16 @@ section.main-page .main-col-right{
     left: 0;
 }
 
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .news-link img,
+        .blog-link img,
+        .gallery-link img{
+            width: 30px;
+            top: 8px;
+            left: 10px;
+        }
+    }
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 1300px) {
         .news-link img,
@@ -7273,7 +7326,7 @@ button.btn-pagination:after{
     /** Breakpoint **/
     @media screen and (min-width: 1201px) and (max-width: 1400px) {
         #calendar-page{
-            width: 45%;
+            width: 40%;
         }
     }
     
@@ -7329,7 +7382,7 @@ button.btn-pagination:after{
         /** Breakpoint **/
         @media screen and (min-width: 1501px) and (max-width: 1599px) {
             #calendar-page .current_date{
-                font-size: 1.2em;
+                font-size: 1.15em;
             }
         }
         /* Breakpoint */
@@ -7348,7 +7401,7 @@ button.btn-pagination:after{
         /** Breakpoint **/
         @media screen and (min-width: 1201px) and (max-width: 1300px) {
             #calendar-page .current_date{
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
         }
         /** Breakpoint **/
@@ -7429,13 +7482,14 @@ button.btn-pagination:after{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #event_list{
-            min-height: 260px;
+            min-height: 250px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         #event_list{
-            min-height: 280px;
+            min-height: 250px;
+            margin-left: 10%;
         }
     }
     /** Breakpoint **/
@@ -7518,7 +7572,9 @@ button.btn-pagination:after{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #event_list .event_header img{
-            
+            width: 30%;
+            left: 35%;
+            top: 55%;
         }
     }
     /* Breakpoint */
@@ -7645,7 +7701,7 @@ span.event-title a.bs{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         span.event-title a.bs{
-            font-size: .9em;
+            font-size: .75em;
         }
     }
     /* Breakpoint */
@@ -7965,7 +8021,8 @@ span.event-title a.bs:before{
     /** Breakpoint **/
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section{
-            width: 50%;
+            width: 55%;
+            margin-right: 5%;
         }
     }
     /** Breakpoint **/
@@ -8067,8 +8124,8 @@ span.event-title a.bs:before{
     /** Breakpoint **/
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section_top ul li{
-            width: 35px;
-            font-size: 1em;
+            width: 40px;
+            font-size: 1.2em;
         }
     }
     /** Breakpoint **/
@@ -8184,9 +8241,9 @@ span.event-title a.bs:before{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section_bot ul li{
-            width: 35px;
-            height: 35px;
-            margin: 5px 0 5px 10px;
+            width: 40px;
+            height: 40px;
+            margin: 2px 0 2px 10px;
         }
     }
     /* Breakpoint */
@@ -8299,8 +8356,8 @@ span.event-title a.bs:before{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section_bot ul li div{
             margin: 0;
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
         }
     }
     /* Breakpoint */
@@ -8402,7 +8459,7 @@ span.event-title a.bs:before{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section_bot ul li span{
             font-size: .9em;
-            line-height: 35px;
+            line-height: 40px;
         }
     }
     /* Breakpoint */
@@ -8510,8 +8567,8 @@ a li{
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #calender_section_bot ul li span.events_number{
-            bottom: -7px;
-            right: -8px;
+            bottom: -5px;
+            right: -6px;
             font-size: .6em;
         }
     }
@@ -13222,6 +13279,18 @@ section.our-team .header{
         }
     }*/
 
+section.our-team .header .color-cubes{
+    width: 100%;
+}
+
+section.our-team .header .header-title{
+    padding: 3% 40% 0 0;
+}
+
+
+section.our-team .main-col-left{
+    padding-top: 3%;
+}
 
 .our-team-box .principal-box,
 .our-team-box .management-box,
@@ -16823,6 +16892,14 @@ img.end-tl{
     padding: 0;
     border-radius: 0;
 }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .blog-link img{
+            width: 30px;
+            top: 8px;
+            left: 10px;
+        }
+    }
     /** Breakpoint **/
     @media screen and (min-width: 300px) and (max-width: 1300px) {
         .blog-link img{
@@ -17224,7 +17301,7 @@ img.end-tl{
             position: relative;
             width: 30px;
             top: 12px;
-            margin: 0 10px;
+            margin: 0 10px 0 30px;
             padding: 0;
             border-radius: 0;
         }
