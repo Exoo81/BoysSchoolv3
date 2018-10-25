@@ -59,7 +59,7 @@ return [
             Controller\IndexController::class => [
                 // Give access to "index", "Add subscriptions" actions
                 // to anyone.
-                    ['actions' => ['index', 'addsubscriptions', 'getevents', 'getcalendar', 'getevent'], 'allow' => '*'],
+                    ['actions' => ['index', 'addsubscriptions', 'getevents', 'getcalendar', 'getevent', 'getaboutusorigin'], 'allow' => '*'],
                 // Give access to "addNews" actions to ADMIN only.
                     ['actions' => ['addnews'], 'allow' => '+news.add'],
                 // Give access to edit news to ADMIN only

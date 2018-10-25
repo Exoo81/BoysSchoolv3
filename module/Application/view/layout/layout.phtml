@@ -153,7 +153,8 @@
                         <div class="footer-menu">
                             <div class="footer-menu-header">Menu</div>
                             <ul>
-                                <li><a href="#" class="modal-trigger bs grey small" data-modal="about-us">About us</a></li>		
+                                
+                                <li><a href="#" class="modal-trigger-show-about-us bs grey small" data-modal="about-us-origin">About us</a></li>		
                                 <li><a href="<?= $this->url('classes') ?>" class="bs grey small">Classes</a></li>
                                 <li><a href="#" class="bs grey small">School Life</a></li>
                                 <li><a href="<?= $this->url('gallery') ?>" class="bs grey small">Gallery</a></li>
@@ -198,7 +199,55 @@
 *********************************
 *********************************
 *********************************-->
+<!-- About-us Modal -->
+<div class="modal" id="about-us-origin">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box lg">
+  
+    <div class="modal-header photo">
+      	<div class="close-modal">
+            <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img src="img/logo_burgundy.png" alt="school" /></div>
+      	
+      	<!-- original version -->
+      	<!-- <div class="modal-title">
+      		<span>About us</span>
+      	</div> -->
+      	
+      	<!-- img version -->
+    	<img class="bg-img" src="img/about-us/about-us.jpg"/>
+      	<div class="cut-box">	
+            <div class="modal-title">
+      		<span>About us</span>
+            </div>
+            <div class="modal-title-cut"></div>
+    	</div>
+    	<!-- end img version -->	
+    </div>
+ 
+    <div class="modal-body">
+        <div class="loader"></div>
+	<div class="modal-text">
+            <div id="content-lg-text">
+            <h1><span id="title"></span></h1>
+            <hr class="burgundy">
+                <div id="content"></div>
+            <h3><span id="principal_greetings">Le gach dea-ghu&iacute;,</span></h3>
+            <h3><span id="principal_name">principal name</span></h3>
+            </div>
+			
+	</div>
+	<div class="btn-modal-box">
+            <button type="button" class="modal-btn btn-burgundy small close-btn" data-text="Close"><span>Close</span></button>
+	</div>
+    </div> 
         
+  </div>
+</div>
+<!-- end About-us Modal -->        
         
 <!-- Show Show Policy Modal -->
 <div class="modal" id="show-policy-modal">
@@ -277,6 +326,7 @@
                                  ->prependFile($this->basePath('js/jquery-ui.js'))
                                  ->prependFile($this->basePath('js/wow.js'))
                                  ->prependFile($this->basePath('js/policy-show-info.js'))
+                                ->prependFile($this->basePath('js/about-us-show.js'))
                                  ->prependFile($this->basePath('js/printMe-call.js'))
                                  ->prependFile($this->basePath('js/jquery-printme.js'));
          ?>

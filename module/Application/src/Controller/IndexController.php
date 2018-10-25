@@ -781,6 +781,29 @@ class IndexController extends AbstractActionController{
         return $view;   
     }
     
+    public function getaboutusoriginAction(){
+        
+        $dataResponse = $this->aboutUsManager->getAboutUsOrigin(1);
+        
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+        
+    }
+    
     public function geteventsAction(){
         
         // take parametr from POST
