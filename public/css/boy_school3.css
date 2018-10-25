@@ -4320,6 +4320,42 @@ section.admin .admin-box{
 	font-size: 1.4em;
 	font-weight: 500;
 }
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .title-sm{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .title-sm{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .title-sm{
+           font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .title-sm{
+            font-size: 1.2em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .title-sm{
+            font-size: 1.2em;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .title-sm{
+            font-size: 1.2em;
+        }
+    }
     /* Breakpoint */
     @media screen and (min-width: 801px) and (max-width: 1100px) {
         .title-sm{
@@ -4456,7 +4492,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .school-news .no-content{
-           padding: 0 10%;
+           padding: 0 20%;
         }
     }
     /* Breakpoint */
@@ -4468,7 +4504,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .school-news .no-content{
-            padding: 0 5%;
+            padding: 0 10%;
         }
     }
     /** Breakpoint **/
@@ -4565,7 +4601,7 @@ section.admin .admin-box{
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .gallery .no-content,
         .classes .no-content{
-           padding: 10% 30% 5% 30%
+           padding: 10% 40% 5% 40%
         }
     }
     /* Breakpoint */
@@ -4579,7 +4615,7 @@ section.admin .admin-box{
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .gallery .no-content,
         .classes .no-content{
-            padding: 10% 30% 5% 30%;
+            padding: 10% 40% 5% 40%
         }
     }
     /** Breakpoint **/
@@ -4672,7 +4708,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .class-blog .no-content{
-           
+           padding: 0 40% 5% 40%;
         }
     }
     /* Breakpoint */
@@ -4684,7 +4720,7 @@ section.admin .admin-box{
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .class-blog .no-content{
-            
+            padding: 0 40% 5% 40%;
         }
     }
     /** Breakpoint **/
@@ -4775,7 +4811,7 @@ section.admin .admin-box{
         .parents-info-box .no-content,
         .book-list-box .no-content,
         .policies-box .no-content{
-           padding: 5% 20%;
+           padding: 5% 30%;
         }
     }
     /* Breakpoint */
@@ -4791,7 +4827,7 @@ section.admin .admin-box{
         .parents-info-box .no-content,
         .book-list-box .no-content,
         .policies-box .no-content{
-            padding: 5% 20%;
+            padding: 5% 30%;
         }
     }
     /** Breakpoint **/
@@ -5105,9 +5141,8 @@ section.admin .admin-box{
         .gallery .no-content img,
         .classes .no-content img,
         .class-blog .no-content img,
-        .news-box .no-content img,
-        .newsletters-list .no-content img{
-           
+        .news-box .no-content img{
+           width: 80px;
         }
     }
     /* Breakpoint */
@@ -5130,9 +5165,8 @@ section.admin .admin-box{
         .gallery .no-content img,
         .classes .no-content img,
         .class-blog .no-content img,
-        .news-box .no-content img,
-        .newsletters-list .no-content img{
-            
+        .news-box .no-content img{
+            width: 80px;
         }
     }
     /** Breakpoint **/
@@ -5335,7 +5369,7 @@ section.admin .admin-box{
         .class-blog .no-content span,
         .school-news .no-content span,
         .newsletters-list .no-content span{
-           
+           font-size: 1.5em
         }
     }
     /* Breakpoint */
@@ -5361,7 +5395,7 @@ section.admin .admin-box{
         .class-blog .no-content span,
         .school-news .no-content span,
         .newsletters-list .no-content span{
-            
+            font-size: 1.5em
         }
     }
     /** Breakpoint **/
@@ -7483,6 +7517,7 @@ button.btn-pagination:after{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         #event_list{
             min-height: 250px;
+            margin-top: 15px;
         }
     }
     /* Breakpoint */
