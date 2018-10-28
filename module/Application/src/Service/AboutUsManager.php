@@ -87,31 +87,7 @@ class AboutUsManager{
         return $dataResponse;
     }
     
-    public function getAboutUsOrigin($id){
-        
-        //find About Us message with id
-        $editAboutUs = $this->entityManager->getRepository(AboutUs::class)
-                ->find($id);
-        
-        if($editAboutUs == null){
-            $dataResponse['success'] = false;
-            $dataResponse['responseMsg'] =  '"About us" information not found.';
-            
-            return $dataResponse;
-        }
-        
-       
-        // convert onejct News to JSON
-        $aboutUsJSON = $editAboutUs->jsonSerialize();
-        $dataResponse['aboutUs'] = $aboutUsJSON;
-        
-        
-        //return success
-        $dataResponse['success'] = true;
-        $dataResponse['responseMsg'] =  'okk';
-        
-        return $dataResponse;
-    }
+    
     
 }
 
