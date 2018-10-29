@@ -4,11 +4,7 @@ config/development.config.php
 data/cache/*
 !data/cache/.gitkeep
 phpunit.xml
-public/upload/awards/*
-public/upload/classes/*
-public/upload/gallery/*
-public/upload/newsletters/*
-public/upload/parents/*
-public/upload/school-news/*
+
+
 
 
