@@ -75,21 +75,37 @@ return [
 //    ],
     
 
-// NEW DB (remote)    
+// DB (Marcin cloudways)    
+//    'doctrine' => [
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass' => PDOMySqlDriver::class,
+//                'params' => [
+//                    'host'     => '209.97.142.163',                    
+//                    'user'     => 'rccnwgwvhb',
+//                    'password' => 'eQ52JYspr3',
+//                    'dbname'   => 'rccnwgwvhb',
+//                    'port' => '3306',
+//                ]
+//            ],            
+//        ],        
+//    ],
+    
+// DB (OranmoreBoysNS cloudways)    
     'doctrine' => [
         'connection' => [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => '209.97.142.163',                    
-                    'user'     => 'rccnwgwvhb',
-                    'password' => 'eQ52JYspr3',
-                    'dbname'   => 'rccnwgwvhb',
+                    'host'     => '178.62.8.86',                    
+                    'user'     => 'zxksbrhazf',
+                    'password' => 'zxksbrhazf',
+                    'dbname'   => 'zxksbrhazf',
                     'port' => '3306',
                 ]
             ],            
         ],        
-    ], 
+    ],
     
   
 
