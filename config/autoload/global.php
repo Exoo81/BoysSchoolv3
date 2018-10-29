@@ -76,36 +76,36 @@ return [
     
 
 // DB (Marcin cloudways)    
-    'doctrine' => [
-        'connection' => [
-            'orm_default' => [
-                'driverClass' => PDOMySqlDriver::class,
-                'params' => [
-                    'host'     => '209.97.142.163',                    
-                    'user'     => 'rccnwgwvhb',
-                    'password' => 'eQ52JYspr3',
-                    'dbname'   => 'rccnwgwvhb',
-                    'port' => '3306',
-                ]
-            ],            
-        ],        
-    ],
-    
-// DB (OranmoreBoysNS cloudways)    
 //    'doctrine' => [
 //        'connection' => [
 //            'orm_default' => [
 //                'driverClass' => PDOMySqlDriver::class,
 //                'params' => [
-//                    'host'     => '178.62.8.86',                    
-//                    'user'     => 'bfnvauxgwy',
-//                    'password' => '3aFnHmu8uq',
-//                    'dbname'   => 'bfnvauxgwy',
+//                    'host'     => '209.97.142.163',                    
+//                    'user'     => 'rccnwgwvhb',
+//                    'password' => 'eQ52JYspr3',
+//                    'dbname'   => 'rccnwgwvhb',
 //                    'port' => '3306',
 //                ]
 //            ],            
 //        ],        
 //    ],
+    
+// DB (OranmoreBoysNS cloudways)    
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => PDOMySqlDriver::class,
+                'params' => [
+                    'host'     => '178.62.8.86',                    
+                    'user'     => 'bfnvauxgwy',
+                    'password' => '3aFnHmu8uq',
+                    'dbname'   => 'bfnvauxgwy',
+                    'port' => '3306',
+                ]
+            ],            
+        ],        
+    ],
     
   
 
