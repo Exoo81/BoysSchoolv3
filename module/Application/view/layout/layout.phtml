@@ -49,6 +49,13 @@
     </head>
     <body>
         
+        <div class="loader-wrapper">
+            <?php 
+                echo '<img class="main-logo" src="'.$this->basePath() .'/img/logo_burgundy.png">';
+            ?> 
+            <div class="loader main-loader"></div>
+
+        </div>
         <!-- NAVIGATION -->
 	<div id="navigation">
             <nav>
@@ -325,7 +332,8 @@
                                  ->prependFile($this->basePath('js/wow.js'))
                                  ->prependFile($this->basePath('js/policy-show-info.js'))
                                  ->prependFile($this->basePath('js/printMe-call.js'))
-                                 ->prependFile($this->basePath('js/jquery-printme.js'));
+                                 ->prependFile($this->basePath('js/jquery-printme.js'))
+                                 ->prependFile($this->basePath('js/loader/main-loader.js'));
          ?>
         
         <script>
@@ -350,6 +358,16 @@
                 $("#resHeigth").html(findheigth);
 
  
+        </script>
+        
+        <script language="javascript" type="text/javascript">
+//            $(window).ready(function() {
+//                function show_popup(){
+//                    //$(".loader-wrapper").fadeOut();
+//            };
+//            window.setTimeout( show_popup, 1000 ); // 3 seconds
+//
+//            });
         </script>
        
     </body>

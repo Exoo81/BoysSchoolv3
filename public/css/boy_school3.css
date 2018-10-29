@@ -27385,6 +27385,117 @@ form.cms td.qty{
 /**** end Admin****/
 
 /** LOADER **/
+
+.loader-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #ecf0f1;
+}
+
+.loader-wrapper img.main-logo{
+    display: block;
+    width: 10%;
+    margin: 15vh auto;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .loader-wrapper img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .loader-wrapper img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .loader-wrapper img.main-logo{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .loader-wrapper img.main-logo{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .loader-wrapper img.main-logo{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 401px) and (max-width: 479px) {
+        .loader-wrapper img.main-logo{
+            width: 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 400px)  {
+        .loader-wrapper img.main-logo{
+            width: 30%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .loader-wrapper img.main-logo{
+            width: 30%;
+        }
+    }
+
+
+.loader-wrapper .main-loader{
+    display: block;
+}
+
+
 .loader  {
   display: none;
   animation: rotate 1s infinite;  
@@ -27392,6 +27503,8 @@ form.cms td.qty{
   width: 50px;
   margin: 5vh auto;
 }
+
+
 
 .loader:before,
 .loader:after {   
@@ -27464,6 +27577,7 @@ form.cms td.qty{
     margin-top: 0;
   }
 }
+
 
 /** end LOADER **/
 
