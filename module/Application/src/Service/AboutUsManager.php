@@ -25,6 +25,14 @@ class AboutUsManager{
         $this->entityManager = $entityManager;
     }
     
+    public function getCurrentAboutUs(){
+        
+        $aboutUs = $this->entityManager->getRepository(AboutUs::class)
+                        ->find(1);
+        
+        return $aboutUs;
+    }
+    
     public function getEditAboutUs($id){
         
         //find About Us message with id

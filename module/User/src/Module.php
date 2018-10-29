@@ -9,6 +9,7 @@ use User\Controller\AuthController;
 use User\Service\AuthManager;
 
 use User\Service\SeasonManager;
+use Application\Service\AboutUsManager;
 
 class Module implements ConfigProviderInterface{
     
@@ -43,6 +44,16 @@ class Module implements ConfigProviderInterface{
         // get viewModel layout
         $viewModel = $event->getViewModel();
         $viewModel->setVariable('currenSeason', $currentSeason);
+        
+        /*
+         * Add vsr aboutUs to layout (for all pages)
+         */
+        $aboutUsManager = $event->getApplication()->getServiceManager()->get(AboutUsManager::class);
+        //get Object CurrentSeason
+        $aboutUs = $aboutUsManager->getCurrentAboutUs();
+        
+        // get viewModel layout
+        $viewModel->setVariable('aboutUs', $aboutUs);
     }
     
  /**

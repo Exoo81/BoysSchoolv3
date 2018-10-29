@@ -105,8 +105,8 @@ class IndexController extends AbstractActionController{
         $paginator = $this->newsManager->fetchAll(true);
         $welcomeMsg = $this->entityManager->getRepository(WelcomeMsg::class)
                         ->find(1);
-        $aboutUs = $this->entityManager->getRepository(AboutUs::class)
-                        ->find(1);
+//        $aboutUs = $this->entityManager->getRepository(AboutUs::class)
+//                        ->find(1);
         $newsletters = $this->newsletterManager->getSeasonNewsletters();
         
         $ourAwards = $this->entityManager->getRepository(OurAwards::class)
@@ -123,7 +123,7 @@ class IndexController extends AbstractActionController{
             'schoolEvents' => $schoolEvents,
             'paginator' => $paginator,
             'welcomeMsg' => $welcomeMsg,
-            'aboutUs' => $aboutUs,
+//            'aboutUs' => $aboutUs,
             'newsletters' => $newsletters,
             'ourAwards' => $ourAwards,
             'blog' => $newsBlog
