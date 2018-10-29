@@ -98,9 +98,9 @@ return [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
                     'host'     => '178.62.8.86',                    
-                    'user'     => 'zxksbrhazf',
-                    'password' => 'zxksbrhazf',
-                    'dbname'   => 'zxksbrhazf',
+                    'user'     => 'bfnvauxgwy',
+                    'password' => '3aFnHmu8uq',
+                    'dbname'   => 'bfnvauxgwy',
                     'port' => '3306',
                 ]
             ],            
