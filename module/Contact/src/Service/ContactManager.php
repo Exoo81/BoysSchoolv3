@@ -128,9 +128,21 @@ class ContactManager{
         $message = new Message();
         
         $message->addFrom("info@oranmoreboysns.ie", "CONTACT FORM - Oranmore National Boys School Website")
-                ->addTo("info@oranmoreboysns.ie")
+                ->addTo("marcin.piskor@gmail.com") 
                 ->setSubject($title);
-        $message->setBody($contentMsg);
+        
+//        $message->setBody($contentMsg);
+        $htmlPart = new \Zend\Mime\Part('<html><body><h1>'.$contentMsg.'</h1></body></html>');
+        $htmlPart->type = "text/html";
+        
+        $textPart = new \Zend\Mime\Part($contentMsg);
+        $textPart->type = "text/plain";
+        
+        $body = new \Zend\Mime\Message();
+        $body->setParts(array($textPart, $htmlPart));
+        
+        $message->setBody($body);
+        
         $message->addReplyTo($emailFrom, $author);
         
         $transport = new SendmailTransport();
