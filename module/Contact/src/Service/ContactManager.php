@@ -127,7 +127,7 @@ class ContactManager{
         
         $message = new Message();
         
-        $message->addFrom("info@oranmoreboysns.ie", "CONTACT FORM")
+        $message->addFrom("info@oranmoreboysns.ie", "\[CONTACT FORM\] - Website")
                 ->addTo("marcin.piskor@gmail.com")
                 ->setSubject($title);
         $message->setBody($contentMsg);
