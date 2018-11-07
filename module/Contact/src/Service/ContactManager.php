@@ -128,11 +128,11 @@ class ContactManager{
         $message = new Message();
         
         $message->addFrom("info@oranmoreboysns.ie", "CONTACT FORM - Oranmore National Boys School Website")
-                ->addTo("marcin.piskor@gmail.com") 
+                ->addTo("info@oranmoreboysns.ie") 
                 ->setSubject($title);
         
 //        $message->setBody($contentMsg);
-        $htmlPart = new \Zend\Mime\Part('<html><body><div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;"><font color="#561818" face="verdana" size="1" ><strong>INFO:</strong> The message was sent from the contact form at www.oranmoreboysns.ie</font></div><hr><p>'.$contentMsg.'</p><p>Regards,</br>'.$author.'</p><hr></body></html>');
+        $htmlPart = new \Zend\Mime\Part('<html><body><div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;"><font color="#561818" face="verdana" size="1" ><strong>INFO:</strong> The message was sent from the contact form at www.oranmoreboysns.ie</font></div><hr><p>'.$contentMsg.'</p><p>Regards,</p>'.$author.'</br><hr></body></html>');
         $htmlPart->type = "text/html";
         
         $textPart = new \Zend\Mime\Part($contentMsg);
