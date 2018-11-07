@@ -132,7 +132,7 @@ class ContactManager{
                 ->setSubject($title);
         
 //        $message->setBody($contentMsg);
-        $htmlPart = new \Zend\Mime\Part('<html><body><h1>'.$contentMsg.'</h1></body></html>');
+        $htmlPart = new \Zend\Mime\Part('<html><body><h3>The message was sent from the contact form at www.oranmoreboysns.ie</h3><h2>'.$contentMsg.'</h2></body></html>');
         $htmlPart->type = "text/html";
         
         $textPart = new \Zend\Mime\Part($contentMsg);
