@@ -459,6 +459,9 @@ class UserController extends AbstractActionController{
 //                            ['action'=>'message', 'id'=>'invalid-email']);
 //                    $message = 'Enter your e-mail address below to reset your password';
                 }
+           }else{
+                $message = '';
+                $message_error = 'Incorrect code. Try again.';
            }
         }
         
