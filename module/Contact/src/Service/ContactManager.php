@@ -128,7 +128,7 @@ class ContactManager{
         $message = new Message();
         
         $message->addFrom("info@oranmoreboysns.ie", "CONTACT FORM - Oranmore National Boys School Website")
-                ->addTo("marcin.piskor@gmail.com")
+                ->addTo("info@oranmoreboysns.ie")
                 ->setSubject($title);
         $message->setBody($contentMsg);
         $message->addReplyTo($emailFrom, $author);
