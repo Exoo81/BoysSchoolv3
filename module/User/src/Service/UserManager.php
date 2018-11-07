@@ -10,6 +10,7 @@ use Zend\Math\Rand;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\Sendmail as SendmailTransport;
 
+
 /**
  * This service is responsible for adding/editing users
  * and changing user password.
@@ -264,10 +265,33 @@ class UserManager
         
         $this->entityManager->flush();
         
-        $message = new \Zend\Mail\Message();
-
-        // This will be considered as plain text message, even if the string is valid HTML code
-        $message->setBody('Hello world');
+        $message = new Message();
+        
+        $title = 'Do you want to reset your password ?';
+        $linkToReset = 'www.oranmoreboysns.ie/set-password?token='.$user->getResetPasswordToken();
+        
+        $message->addFrom("info@oranmoreboysns.ie", "RESET PASSWORD - Oranmore National Boys School Website")
+                ->addTo($user->getEmail()) 
+                ->setSubject($title);
+        
+        $htmlPart = new \Zend\Mime\Part('<html><body><div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;"><font color="#561818" face="verdana" size="1" ><strong>INFO:</strong> If you want to change your password at www.oranmoreboysns.ie, click on the link below and enter your new password.</font></div><hr><p>'.$linkToReset.'</p><hr></body></html>');
+        $htmlPart->type = "text/html";
+        
+        $textPart = new \Zend\Mime\Part($linkToReset);
+        $textPart->type = "text/plain";
+        
+        $body = new \Zend\Mime\Message();
+        $body->setParts(array($textPart, $htmlPart));
+        
+        $message->setBody($body);
+        
+        $transport = new SendmailTransport();
+        $transport->send($message);
+        
+//        $message = new \Zend\Mail\Message();
+//
+//        // This will be considered as plain text message, even if the string is valid HTML code
+//        $message->setBody('Hello world');
         
 //        $message = new Message();
 //        $message->addTo($user->getEmail())

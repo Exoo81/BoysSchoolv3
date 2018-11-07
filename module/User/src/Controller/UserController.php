@@ -436,7 +436,6 @@ class UserController extends AbstractActionController{
             
             $form->setData($data);
             
-//            $message = 'aac';
             
             if($form->isValid()) {
 //                $message = 'is valid';
