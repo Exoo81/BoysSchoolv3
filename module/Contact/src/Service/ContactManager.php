@@ -132,6 +132,8 @@ class ContactManager{
                 ->setSubject($title);
         $message->setBody($contentMsg);
         
+        $message->getHeaders()->addHeaderLine('X-API-Key', 'FOO-BAR-BAZ-BAT');
+        
         $transport = new SendmailTransport();
         $transport->send($message);
         
