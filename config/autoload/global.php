@@ -90,7 +90,7 @@ return [
 //            ],            
 //        ],        
 //    ],
-    
+
 // DB (OranmoreBoysNS cloudways)    
     'doctrine' => [
         'connection' => [

@@ -1,9 +1,11 @@
 <?php
 
 namespace Contact\Service;
-
+use Zend\Mail\Message;
+use Zend\Mail\Transport\Sendmail as SendmailTransport;
 use Contact\Entity\Contact;
 use User\Entity\User;
+
 
 /**
  * This service is responsible for adding/editing elements on Contact page 
@@ -117,10 +119,28 @@ class ContactManager{
     
     public function sendMessage($formData){
         
+        //get data from form
+        $emailFrom = $formData['email'];
+        $author = $formData['name'];
+        $title = $formData['title'];
+        $contentMsg = $formData['message'];
+        
+        $message = new Message();
+        
+        $message->addFrom($emailFrom, $author)
+                ->addTo("marcin.piskor@gmail.com")
+                ->setSubject($title);
+        $message->setBody($contentMsg);
+        
+        $transport = new SendmailTransport();
+        $transport->send($message);
+        
         //TODO
         //send emails to Subscription emails
         
-        $dataResponse['author'] = $formData['name'];
+        
+        
+        $dataResponse['author'] = $author;
         
         //return success
         $dataResponse['success'] = true;
