@@ -127,12 +127,11 @@ class ContactManager{
         
         $message = new Message();
         
-        $message->addFrom($emailFrom, $author)
+        $message->addFrom("info@oranmoreboysns.ie", "Website [CONTACT FORM] - ".$author)
                 ->addTo("marcin.piskor@gmail.com")
                 ->setSubject($title);
         $message->setBody($contentMsg);
-        
-        $message->getHeaders()->addHeaderLine('X-API-Key', 'FOO-BAR-BAZ-BAT');
+        $message->addReplyTo($emailFrom, $author);
         
         $transport = new SendmailTransport();
         $transport->send($message);
