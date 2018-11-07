@@ -120,7 +120,6 @@ class ContactManager{
     public function sendMessage($formData){
         
         //get data from form
-        $xxx = '[CONTACT FORM] - Website';
         $emailFrom = $formData['email'];
         $author = $formData['name'];
         $title = $formData['title'];
@@ -128,7 +127,7 @@ class ContactManager{
         
         $message = new Message();
         
-        $message->addFrom("info@oranmoreboysns.ie", $xxx)
+        $message->addFrom("info@oranmoreboysns.ie", "CONTACT FORM - Website")
                 ->addTo("marcin.piskor@gmail.com")
                 ->setSubject($title);
         $message->setBody($contentMsg);
