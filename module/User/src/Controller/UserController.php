@@ -519,7 +519,7 @@ class UserController extends AbstractActionController{
                 // Set new password for the user.
                 if ($this->userManager->setNewPasswordByToken($token, $data['new_password'])) {
                     
-                    $message = 'New password saved. Do you want to log in now ? <a href="/login">Click to Login</a>?';
+                    $message = 'New password saved. If you want to log in <a class="bs" href="/login">click here</a>?';
 //                    // Redirect to "message" page
 //                    return $this->redirect()->toRoute('users', 
 //                            ['action'=>'message', 'id'=>'set']); 
