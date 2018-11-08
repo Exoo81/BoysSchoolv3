@@ -449,6 +449,8 @@ class UserController extends AbstractActionController{
                     // notification about that.
                     $this->userManager->generatePasswordResetToken($user);
                     
+                    $form = new PasswordResetForm();
+                    
                     // Redirect to "message" page
 //                    return $this->redirect()->toRoute('users', 
 //                            ['action'=>'message', 'id'=>'sent']); 

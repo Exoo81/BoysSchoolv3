@@ -280,7 +280,7 @@ class UserManager
                 $content .= '<strong>INFO:</strong> If you want to change your password at www.oranmoreboysns.ie, click on the link below and enter your new password.';
             $content .= '</font>';
             $content .= '</div>';
-            $content .= '<p>'.$linkToReset.'</p>';
+            $content .= '<p>Click here -> '.$linkToReset.'</p>';
             $content .= '<div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;">';
             $content .= '<font color="#561818" face="verdana" size="2" >';
                 $content .= '<strong>INFO:</strong>This link will be valid for 24 hours.';
