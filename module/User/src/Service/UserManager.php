@@ -274,7 +274,16 @@ class UserManager
                 ->addTo($user->getEmail()) 
                 ->setSubject($title);
         
-        $htmlPart = new \Zend\Mime\Part('<html><body><div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;"><font color="#561818" face="verdana" size="1" ><strong>INFO:</strong> If you want to change your password at www.oranmoreboysns.ie, click on the link below and enter your new password.</font></div><hr><p>'.$linkToReset.'</p><hr></body></html>');
+        $content = '<html><body>';
+            $content .= '<div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;">';
+            $content .= '<font color="#561818" face="verdana" size="1" >';
+                $content .= '<strong>INFO:</strong> If you want to change your password at www.oranmoreboysns.ie, click on the link below and enter your new password.';
+                $content .= '<p>'.$linkToReset.'</p>';
+            $content .= '</font>';
+            $content .= '</div>';
+        $content .= '</body></html>';
+        
+        $htmlPart = new \Zend\Mime\Part($content);
         $htmlPart->type = "text/html";
         
         $textPart = new \Zend\Mime\Part($linkToReset);
