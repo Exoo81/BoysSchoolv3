@@ -214,7 +214,11 @@
 	    	<label>close</label>
             </div>
       	</div>
-      	<div class="circle-img-wrapper"><img src="img/logo_burgundy.png" alt="school" /></div>
+      	<div class="circle-img-wrapper">
+            <?php 
+                echo '<img src="'.$this->basePath() .'/img/logo_burgundy.png" alt="school" />';
+            ?> 
+        </div>
       	
       	<!-- original version -->
       	<!-- <div class="modal-title">
@@ -222,7 +226,9 @@
       	</div> -->
       	
       	<!-- img version -->
-    	<img class="bg-img" src="img/about-us/about-us.jpg"/>
+        <?php 
+            echo '<img src="'.$this->basePath() .'/img/about-us/about-us.jpg" alt="" />';
+        ?> 
       	<div class="cut-box">	
             <div class="modal-title">
       		<span>About us</span>
