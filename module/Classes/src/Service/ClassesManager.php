@@ -7,6 +7,7 @@ use Classes\Entity\ClassBlog;
 use Classes\Entity\Post;
 use User\Entity\User;
 use Ourteam\Entity\Teacher;
+use Ourteam\Entity\ASDUnit;
 use Ourteam\Entity\LearningSupport;
 use User\Entity\Season;
 
@@ -388,6 +389,9 @@ class ClassesManager{
         $teacherList = $this->entityManager->getRepository(Teacher::class)
                      ->findByStatus(1);
         
+        $asdList = $this->entityManager->getRepository(ASDUnit::class)
+                     ->findByStatus(1);
+        
         $teachersWithAccountList = array();
         
         if($teacherList === null){
@@ -400,6 +404,14 @@ class ClassesManager{
                 array_push($teachersWithAccountList, $teacher->getUser());
             }
         }
+        
+        //add ASD to all teachers
+        foreach($asdList as $teacher){
+            if($teacher->getUser() !== null){
+                array_push($teachersWithAccountList, $teacher->getUser());
+            }
+        }
+        
         
         return $teachersWithAccountList;
         
