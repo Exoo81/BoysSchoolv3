@@ -227,7 +227,7 @@
       	
       	<!-- img version -->
         <?php 
-            echo '<img src="'.$this->basePath() .'/img/about-us/about-us.jpg" alt="" />';
+            echo '<img class="bg-img" src="'.$this->basePath() .'/img/about-us/about-us.jpg" alt="" />';
         ?> 
       	<div class="cut-box">	
             <div class="modal-title">
@@ -353,13 +353,7 @@
         <script type="text/javascript">
                 
                 var findwidth = screen.width;
-                var findheigth = screen.height;
-                
-//                var w = document.getElementById("resWidth");
-//                w.innerHTML += findwidth;
-//                var h = document.getElementById("resHeigth");
-//                h.innerHTML += findheigth;
-                
+                var findheigth = screen.height;    
                 $("#resWidth").html(findwidth);
                 $("#resHeigth").html(findheigth);
 

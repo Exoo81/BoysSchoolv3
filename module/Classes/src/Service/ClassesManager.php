@@ -110,6 +110,7 @@ class ClassesManager{
         $blogListLevel_5 = array();
         $blogListLevel_55 = array();
         $blogListLevel_6 = array();
+        $blogListLevel_7 = array();
         
         
         foreach ($blogList as $blog){
@@ -146,6 +147,9 @@ class ClassesManager{
             }
             if($level == 6){
                 array_push($blogListLevel_6, $blog);
+            }
+            if($level == 7){
+                array_push($blogListLevel_7, $blog);
             }
         }
         
@@ -243,6 +247,12 @@ class ClassesManager{
             $key6 = $blogListLevel_6[0]->getLevel();
             $blogListGroupByLevel[$key6]  = $blogListLevel_6 ;
         }
+        //check if $blogListLevel_7 is empty 
+        if (!empty($blogListLevel_7)) {
+            //$blogListLevel_7 to $blogListGroupByLevel by key=level
+            $key7 = $blogListLevel_7[0]->getLevel();
+            $blogListGroupByLevel[$key7]  = $blogListLevel_7 ;
+        }
         
         
         
@@ -279,7 +289,7 @@ class ClassesManager{
     // return color for each level
     private function getLevelColorList($blogListGroupByLevel) {
         
-        $colorList = ['green', 'red', 'yellow', 'blue', 'orange', 'purpure', 'green','red', 'yellow', 'blue', 'orange'];
+        $colorList = ['green', 'red', 'yellow', 'blue', 'orange', 'purpure', 'green','red', 'yellow', 'blue', 'orange', 'purpure'];
         $levelColorList = null;
         $count = 0;
         foreach ($blogListGroupByLevel as $key => $value){
@@ -295,8 +305,8 @@ class ClassesManager{
     // return title for each level
     private function getLevelTitleList() {
         
-        $titlesList = ['1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class'];
-        $keysList = ['1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0', '5.5', '6.0'];
+        $titlesList = ['1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class', 'ASD Class'];
+        $keysList = ['1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0', '5.5', '6.0', '7.0'];
         
         
         
@@ -419,8 +429,8 @@ class ClassesManager{
 
     private function getSelectLevelList(){
         
-        $titlesList = ['---select---','1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class'];
-        $keysList = ['0', '1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0', '5.5', '6.0'];
+        $titlesList = ['---select---','1st Class', '1st - 2nd Class', '2nd Class', '2nd - 3rd Class', '3rd Class', '3rd - 4th Class', '4th Class', '4th - 5th Class', '5th Class', '5th - 6th Class', '6th Class', 'ASD Class'];
+        $keysList = ['0', '1.0', '1.5', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0', '5.5', '6.0', '7.0'];
         for($i=0; $i<count($titlesList); $i++){
             $selectLevelList[$keysList[$i]] = $titlesList[$i];
         }
