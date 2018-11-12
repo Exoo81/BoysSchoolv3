@@ -31,5 +31,6 @@ return [
     'Parents',
     'Contact',
     'Ourteam',
+    'Schoollife',
     'School',
 ];
