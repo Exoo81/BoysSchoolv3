@@ -19,7 +19,7 @@ return [
                         'id'     => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => Controller\SchoollifeController::class,
+                        'controller' => Controller\SchoolLifeController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -30,8 +30,8 @@ return [
 
     'controllers' => [
         'factories' => [
-            Controller\SchoollifeController::class => InvokableFactory::class,
-//            Controller\SchoollifeController::class => Controller\Factory\ContactControllerFactory::class,
+//            Controller\SchoolLifeController::class => InvokableFactory::class,
+            Controller\SchoolLifeController::class => Controller\Factory\SchoolLifeControllerFactory::class,
         ],
     ],
     
@@ -39,7 +39,7 @@ return [
     // access to certain controller actions for unauthorized visitors.
     'access_filter' => [
         'controllers' => [
-            Controller\SchoollifeController::class => [
+            Controller\SchoolLifeController::class => [
                 // Give access to "index" to anyone.
                     ['actions' => ['index'], 'allow' => '*'],  
 //                // Give access to "getEditContactInfo" and "editContact" actions to ADMIN only.
@@ -47,14 +47,14 @@ return [
             ],
         ]
     ],
-//    
-//    'service_manager' => [
-//        'factories' => [       
-//            Service\ContactManager::class => Service\Factory\ContactManagerFactory::class,
-//        ],
-//    ],
-//    
-//    
+    
+    'service_manager' => [
+        'factories' => [       
+            Service\SchoolLifeManager::class => Service\Factory\SchoolLifeManagerFactory::class,
+        ],
+    ],
+    
+    
     'view_manager' => [
         'template_path_stack' => [
             'schoollife' => __DIR__ . '/../view',

@@ -129,6 +129,12 @@ class User {
     * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
     */
      protected $bookListAuthor;
+     
+     /**
+    * @ORM\OneToMany(targetEntity="\Schoollife\Entity\SchoolLife", mappedBy="author")
+    * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
+    */
+     protected $schoolLifeList;
     
     /**
      * Constructor.
@@ -144,6 +150,7 @@ class User {
         $this->parentsInformationList = new ArrayCollection();
         $this->bookList = new ArrayCollection();
         $this->bookListAuthor = new ArrayCollection();
+        $this->schoolLifeList = new ArrayCollection();
     }
     
       
@@ -765,6 +772,45 @@ class User {
     public function addBookListAuthorToList($bookList) {
       $this->bookListAuthor[] = $bookList;
     }
+    
+    
+    
+    /**
+    * Returns schoolLifeList for this user if author.
+    * @return array
+    */
+    public function getSchoolLifeList() {
+      return $this->schoolLifeList;
+    }
+    
+    /**
+     * Returns the string of assigned as schoolLife id.
+     */
+    public function getSchoolLifeListAsString(){
+        $schoolLifeList = '';
+        
+        $count = count($this->schoolLifeList);
+        $i = 0;
+        foreach ($this->schoolLifeList as $schoolLifeObj) {
+            $schoolLifeList .= $schoolLifeObj->getId();
+            if ($i<$count-1)
+                $schoolLifeList .= ', ';
+            $i++;
+        }
+        
+        return $schoolLifeList;
+    }
+    
+    /**
+     * Adds a new schoolLife to schoolLifeList in this user if author.
+     * @param $schoolLife
+     */
+    public function addSchoolLifeToList($schoolLife) {
+      $this->schoolLifeList[] = $schoolLife;
+    }
+    
+    
+    
     
     public function jsonSerialize(){
         return 

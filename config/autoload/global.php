@@ -59,20 +59,20 @@ return [
     ],
     
 //    NEW DB (local)
-    'doctrine' => [
-        'connection' => [
-            'orm_default' => [
-                'driverClass' => PDOMySqlDriver::class,
-                'params' => [
-                    'host'     => 'localhost',                    
-                    'user'     => 'root',
-                    'password' => '',
-                    'dbname'   => 'oranmoreboysnsdb',
-                    'port' => '3307',
-                ]
-            ],            
-        ],        
-    ],
+//    'doctrine' => [
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass' => PDOMySqlDriver::class,
+//                'params' => [
+//                    'host'     => 'localhost',                    
+//                    'user'     => 'root',
+//                    'password' => '',
+//                    'dbname'   => 'oranmoreboysnsdb',
+//                    'port' => '3307',
+//                ]
+//            ],            
+//        ],        
+//    ],
     
 
 // DB (Marcin cloudways)    
@@ -92,20 +92,20 @@ return [
 //    ],
 
 // DB (OranmoreBoysNS cloudways)    
-//    'doctrine' => [
-//        'connection' => [
-//            'orm_default' => [
-//                'driverClass' => PDOMySqlDriver::class,
-//                'params' => [
-//                    'host'     => '178.62.8.86',                    
-//                    'user'     => 'bfnvauxgwy',
-//                    'password' => '3aFnHmu8uq',
-//                    'dbname'   => 'bfnvauxgwy',
-//                    'port' => '3306',
-//                ]
-//            ],            
-//        ],        
-//    ],
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => PDOMySqlDriver::class,
+                'params' => [
+                    'host'     => '178.62.8.86',                    
+                    'user'     => 'bfnvauxgwy',
+                    'password' => '3aFnHmu8uq',
+                    'dbname'   => 'bfnvauxgwy',
+                    'port' => '3306',
+                ]
+            ],            
+        ],        
+    ],
         
 
 ];
