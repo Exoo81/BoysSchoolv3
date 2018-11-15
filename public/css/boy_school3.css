@@ -5785,7 +5785,7 @@ section.admin .admin-box{
 
 video{
     width: 100%;
-    height: max-content;
+    height: max-content; 
 }
 
 .gallery video{
