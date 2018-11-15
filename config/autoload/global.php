@@ -95,7 +95,7 @@ return [
     'doctrine' => [
         'connection' => [
             'orm_default' => [
-                'driverClass' => PDOMySqlDriver::class,
+                'driverClass' => PDOMySqlDriver::class, 
                 'params' => [
                     'host'     => '178.62.8.86',                    
                     'user'     => 'bfnvauxgwy',
