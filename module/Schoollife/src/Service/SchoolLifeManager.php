@@ -59,11 +59,19 @@ class SchoolLifeManager{
         if($schoolLifeList != null){
             $schoolLifeListLeftRight = $this->splitSchoolLifeToLeftAndRight($schoolLifeList);
             
+            $schoolLifeColorList = $this->getLevelColorList($schoolLifeList);
+            
+            $fullListsOfSchoolLife = array();
+            
+            $fullListsOfSchoolLife['schoolLife-right'] = $schoolLifeListLeftRight['right'];
+            $fullListsOfSchoolLife['schoolLife-left'] = $schoolLifeListLeftRight['left'];
+            $fullListsOfSchoolLife['colors'] = $schoolLifeColorList;
+            
         }else{
             $schoolLifeList = null;
         }
         
-        return $schoolLifeListLeftRight;
+        return $fullListsOfSchoolLife;
     }
     
     private function splitSchoolLifeToLeftAndRight($schoolLifeList){
@@ -89,6 +97,26 @@ class SchoolLifeManager{
         
         return $schoolLifeListLeftRight;
         
+    }
+    
+    // return color for each level
+    private function getLevelColorList($schoolLifeList) {
+        
+        $colorList = ['blue', 'red', 'yellow', 'green', 'orange', 'purpure', 'blue','red', 'yellow', 'green', 'orange', 'purpure'];
+        $schoolLifeColorList = null;
+        $count = 0;
+        foreach ($schoolLifeList as $schoolLife){
+            $key = $schoolLife->getId();
+            $schoolLifeColorList[$key] = $colorList[$count];
+            
+            if($count>=11){
+                $count = 0;
+            }else{
+                $count++;
+            }
+        }
+      
+        return $schoolLifeColorList;
     }
     
 }

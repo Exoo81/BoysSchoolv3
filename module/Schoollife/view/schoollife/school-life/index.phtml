@@ -11,7 +11,7 @@ $this->headTitle($this->headTitle);
 <section class="school-life">
     <div class="header">
 	<div class="baner"><img src="img/schoollife/banner.jpg" /></div>
-	<div class="header-title"><?= $this->title ?></div>
+	<div class="header-title"><?= $this->headTitle ?></div>
 	<div class="color-cubes">
             <div class="single-cube1 wow fadeInRightBig delay-01s"></div>
             <div class="single-cube6 wow fadeInRightBig delay-02s"></div>
@@ -45,13 +45,13 @@ $this->headTitle($this->headTitle);
                  
             }else{
                 echo '<div class="main-col-left">';
-                    foreach ($this->schoolLifeList['left'] as $schoolLife) :
+                    foreach ($this->schoolLifeList['schoolLife-left'] as $schoolLife) :
                         echo '<div class="main-box">';
-                            echo '<div class="title red">'.$schoolLife->getTitle().'</div>';
+                            echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
                                 echo '<li>';	
                                     echo '<a href="#">';
-                                    echo '<span class="roll red"></span>';
+                                    echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
 				echo '</li>';
@@ -62,13 +62,13 @@ $this->headTitle($this->headTitle);
                 echo '</div>';
                 
                 echo '<div class="main-col-right">';
-                    foreach ($this->schoolLifeList['right'] as $schoolLife) :
+                    foreach ($this->schoolLifeList['schoolLife-right'] as $schoolLife) :
                         echo '<div class="main-box">';
-                            echo '<div class="title blue">'.$schoolLife->getTitle().'</div>';
+                            echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
                                 echo '<li>';	
                                     echo '<a href="#">';
-                                    echo '<span class="roll blue"></span>';
+                                    echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
 				echo '</li>';

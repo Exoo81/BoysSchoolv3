@@ -30,9 +30,12 @@ class SchoolLifeController extends AbstractActionController{
     public function indexAction(){
         
         $headTitle = "School Life";
+        
+        $schoolLifeList = $this->schoolLifeManager->getActiveSchoolLife();
 
         return new ViewModel([
             'headTitle' => $headTitle,
+            'schoolLifeList' => $schoolLifeList
         ]);
         
     }
