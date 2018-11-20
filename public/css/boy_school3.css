@@ -18741,31 +18741,37 @@ img.end-tl{
 .modal-box.purpure .modal-header{
 	background: #8e44ad;
   	background-image: url('../img/bg-purpure.png');
+        border-color: #8e44ad;
 }
 
 .modal-box.yellow .modal-header{
 	background: #f1c40f;
   	background-image: url('../img/bg-yellow.png');
+        border-color: #f1c40f;
 }
 
 .modal-box.blue .modal-header{
 	background: #3498db;
   	background-image: url('../img/bg-blue.png');
+        border-color: #3498db;
 }
 
 .modal-box.orange .modal-header{
 	background: #d35400;
   	background-image: url('../img/bg-orange.png');
+        border-color: #d35400;
 }
 
 .modal-box.red .modal-header{
 	background: #c0392b;
   	background-image: url('../img/bg-red.png');
+        border-color: #c0392b;
 }
 
 .modal-box.green .modal-header{
 	background: #1abc9c;
   	background-image: url('../img/bg-green.png');
+        border-color: #1abc9c;
 }
 
 
@@ -18876,6 +18882,18 @@ img.end-tl{
 
 .modal-box.orange .circle-img-wrapper{
 	border-color: #d35400;	
+}
+
+.modal-box.blue .circle-img-wrapper{
+	border-color: #3498db;	
+}
+
+.modal-box.red .circle-img-wrapper{
+	border-color: #c0392b;	
+}
+
+.modal-box.green .circle-img-wrapper{
+	border-color: #1abc9c;	
 }
 
 .modal-box .circle-img-wrapper img{
@@ -19841,6 +19859,18 @@ img.end-tl{
 
 .modal-box.orange .modal-body {
     border-color: #d35400;
+}
+
+.modal-box.blue .modal-body {
+    border-color: #3498db;
+}
+
+.modal-box.red .modal-body {
+    border-color: #c0392b;
+}
+
+.modal-box.green .modal-body {
+    border-color: #1abc9c;
 }
 
 .modal-box.video .modal-body {
@@ -21315,14 +21345,7 @@ table.event-list tr{
            line-height: 3.6em; 
         }
     }
-    /*Breakpoint */
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
-        .modal-box.lg .close-modal-inner label{
-            color: #adadad;
-            font-size: .8em; 
-            line-height: 3.6em;
-        }
-    }
+    
     /*Breakpoint */
     @media screen and (min-width: 300px) and (max-width: 600px) {
         .modal-box .close-modal-inner label{
@@ -21340,6 +21363,22 @@ table.event-list tr{
             line-height: 3.6em;
         }
     }
+    
+    /*Breakpoint */
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .modal-box.lg .close-modal-inner label{
+            color: #adadad;
+            font-size: .8em; 
+            line-height: 3.6em;
+        }
+    }
+    
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg .modal-header.photo .close-modal-inner label{
+            color: #561818;
+        }
+    }
 
 .modal-box.orange .close-modal-inner label {
 	color: #d35400
@@ -21353,21 +21392,56 @@ table.event-list tr{
 	color: #3498db
 }
 
+.modal-box.red .close-modal-inner label {
+	color: #c0392b
+}
+
+.modal-box.yellow .close-modal-inner label {
+	color: #f1c40f
+}
+
+.modal-box.green .close-modal-inner label {
+	color: #1abc9c
+}
+
+/*    sm modal for grey*/
     /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 700px) {
-        .modal-box.orange .close-modal-inner label,
-        .modal-box.purpure .close-modal-inner label{
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        .modal-box.sm.orange .close-modal-inner label,
+        .modal-box.sm.purpure .close-modal-inner label,
+        .modal-box.sm.red .close-modal-inner label,
+        .modal-box.sm.green .close-modal-inner label{
             color: #bdc3c7;
         }
     }
     
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
-        .modal-box.orange .close-modal-inner label,
-        .modal-box.purpure .close-modal-inner label{
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        .modal-box.lg.blue .close-modal-inner label,
+        .modal-box.lg.yellow .close-modal-inner label{
+            color: #561818;
+        }
+    }
+    
+/*    lg modal for grey*/
+    /** Breakpoint **/
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg.orange .close-modal-inner label,
+        .modal-box.lg.purpure .close-modal-inner label,
+        .modal-box.lg.red .close-modal-inner label,
+        .modal-box.lg.green .close-modal-inner label{
             color: #bdc3c7;
         }
     }
+/*    lg modal for grey*/   
+    /** Breakpoint **/
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg.blue .close-modal-inner label,
+        .modal-box.lg.yellow .close-modal-inner label{
+            color: #561818;
+        }
+    }
+    
 
 
 
@@ -21403,6 +21477,14 @@ table.event-list tr{
             background: #561818;
         }
     }
+    
+    /*Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg .modal-header.photo .close-modal-inner:before,
+        .modal-box.lg .modal-header.photo .close-modal-inner:after{
+            background: #561818;
+        }
+    }
 
 .modal-box.orange .close-modal-inner:before, 
 .modal-box.orange .close-modal-inner:after {
@@ -21420,23 +21502,72 @@ table.event-list tr{
 	background: #3498db;
 }
 
+.modal-box.red .close-modal-inner:before, 
+.modal-box.red .close-modal-inner:after {
+	background: #c0392b;
+}
+
+.modal-box.yellow .close-modal-inner:before, 
+.modal-box.yellow .close-modal-inner:after {
+	background: #f1c40f;
+}
+
+.modal-box.green .close-modal-inner:before, 
+.modal-box.green .close-modal-inner:after {
+	background: #1abc9c;
+}
+
+/* lg modal for grey*/
 /** Breakpoint **/
-    @media screen and (min-width: 480px) and (max-width: 700px) {
-        .modal-box.orange .close-modal-inner:before, 
-        .modal-box.orange .close-modal-inner:after,
-        .modal-box.purpure .close-modal-inner:before, 
-        .modal-box.purpure .close-modal-inner:after{
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg.orange .close-modal-inner:before, 
+        .modal-box.lg.orange .close-modal-inner:after,
+        .modal-box.lg.red .close-modal-inner:before, 
+        .modal-box.lg.red .close-modal-inner:after,
+        .modal-box.lg.green .close-modal-inner:before, 
+        .modal-box.lg.green .close-modal-inner:after,
+        .modal-box.lg.orange .close-modal-inner:before, 
+        .modal-box.lg.orange .close-modal-inner:after,
+        .modal-box.lg.purpure .close-modal-inner:before, 
+        .modal-box.lg.purpure .close-modal-inner:after{
             background: #bdc3c7;
         }
     }
-    
+/*lg modal for bungu    */
     /* Breakpoint */
-    @media screen and (min-width: 300px) and (max-width: 479px) {
-        .modal-box.orange .close-modal-inner:before, 
-        .modal-box.orange .close-modal-inner:after,
-        .modal-box.purpure .close-modal-inner:before, 
-        .modal-box.purpure .close-modal-inner:after{
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        .modal-box.lg.blue .close-modal-inner:before, 
+        .modal-box.lg.blue .close-modal-inner:after,       
+        .modal-box.lg.yellow .close-modal-inner:before, 
+        .modal-box.lg.yellow .close-modal-inner:after{
+            background: #561818;
+        }
+    }
+    
+/* sm modal for grey*/
+/** Breakpoint **/
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        .modal-box.sm.orange .close-modal-inner:before, 
+        .modal-box.sm.orange .close-modal-inner:after,
+        .modal-box.sm.red .close-modal-inner:before, 
+        .modal-box.sm.red .close-modal-inner:after,
+        .modal-box.sm.green .close-modal-inner:before, 
+        .modal-box.sm.green .close-modal-inner:after,
+        .modal-box.sm.orange .close-modal-inner:before, 
+        .modal-box.sm.orange .close-modal-inner:after,
+        .modal-box.sm.purpure .close-modal-inner:before, 
+        .modal-box.sm.purpure .close-modal-inner:after{
             background: #bdc3c7;
+        }
+    }
+/*sm modal for bungu    */
+    /* Breakpoint */
+    @media screen and (min-width: 300px) and (max-width: 700px) {
+        .modal-box.sm.blue .close-modal-inner:before, 
+        .modal-box.sm.blue .close-modal-inner:after,       
+        .modal-box.sm.yellow .close-modal-inner:before, 
+        .modal-box.sm.yellow .close-modal-inner:after{
+            background: #561818;
         }
     }
 
