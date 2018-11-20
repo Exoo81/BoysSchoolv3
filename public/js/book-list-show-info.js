@@ -41,7 +41,7 @@ $(".modal-trigger-show-book-list").click(function(e){
     var bookListID = $(this).attr("data-bookListID");
     var authorID = $(this).attr("data-authorID");
     
-    var access = $(this).data("access") === 1 ? true : false; ;
+    var access = $(this).data("access") === 1 ? true : false;
 
     
 //    console.log('======== Show Book List =======');

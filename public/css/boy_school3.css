@@ -18758,6 +18758,15 @@ img.end-tl{
   	background-image: url('../img/bg-orange.png');
 }
 
+.modal-box.red .modal-header{
+	background: #c0392b;
+  	background-image: url('../img/bg-red.png');
+}
+
+.modal-box.green .modal-header{
+	background: #1abc9c;
+  	background-image: url('../img/bg-green.png');
+}
 
 
 .modal-box.sm .modal-header,

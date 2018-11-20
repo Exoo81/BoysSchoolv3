@@ -49,8 +49,20 @@ $this->headTitle($this->headTitle);
                         echo '<div class="main-box">';
                             echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
-                                echo '<li>';	
-                                    echo '<a href="#">';
+                                echo '<li>';
+//                                    /*
+//                                    * checking only if access to this bookList 
+//                                    * after verification normal access is implemented in modal show-book-list-modal 
+//                                    */
+//                                   $access = 0;
+//                                   $author = null;
+//                                   if ($this->access('bookList.manage') || 
+//                                       $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
+//                                        $access  = 1; 
+//                                        $author = $this->currentUser()->getId();
+//                                   }
+                                    $access  = 1;
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-schoolLifeTitle="'.$schoolLife->getTitle().'" data-schoolLifeContent="'.$schoolLife->getContent().'" data-schoolLifePhoto="'.$schoolLife->getPhotoName().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
@@ -66,8 +78,20 @@ $this->headTitle($this->headTitle);
                         echo '<div class="main-box">';
                             echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
-                                echo '<li>';	
-                                    echo '<a href="#">';
+                                echo '<li>';
+//                                    /*
+//                                    * checking only if access to this bookList 
+//                                    * after verification normal access is implemented in modal show-book-list-modal 
+//                                    */
+//                                   $access = 0;
+//                                   $author = null;
+//                                   if ($this->access('bookList.manage') || 
+//                                       $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
+//                                        $access  = 1; 
+//                                        $author = $this->currentUser()->getId();
+//                                   }
+                                    $access  = 1;
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-schoolLifeTitle="'.$schoolLife->getTitle().'" data-schoolLifeContent="'.$schoolLife->getContent().'" data-schoolLifePhoto="'.$schoolLife->getPhotoName().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
@@ -84,8 +108,47 @@ $this->headTitle($this->headTitle);
     </div>	
 </section>
 
+<!-- Show School Life Modal -->
+<div class="modal" id="show-school-life-modal">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box lg" id="modal-color">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	      	<div class="close-modal-inner">
+                    <label>close</label>
+	  	</div>
+      	</div>
+      	<div class="circle-img-wrapper"><img src="/img/logo_burgundy.png" alt="school" /></div>
+      	
+      	<!-- original version -->
+      	<div class="modal-title" id="school-life-title">
+      		<span></span>
+      	</div>
+      	<!-- end original version -->
+      	
+    </div>
+ 
+    <div class="modal-body">
+    
+		 <div class="modal-text">
+		 	<img id="school-life-img" src="">
+                        <div id='school-life-content'>
+			
+                        </div>
+		</div>
+		<div class="btn-modal-box">
+                    <button type="button" class="modal-btn btn-purpure small close-btn" data-text="Close"><span>Close</span></button>
+		</div> 
+    </div> 
+  </div>
+</div>
+<!-- end Show School Life Modal -->
+
 <!--SCRIPTS-->
 <script src="js/blog-hover-effect.js" type="text/javaScript"></script>
+
+<script src="js/school-life-show-info.js" type="text/javaScript"></script>
 
 
 

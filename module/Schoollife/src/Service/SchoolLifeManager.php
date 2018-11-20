@@ -66,6 +66,8 @@ class SchoolLifeManager{
             $fullListsOfSchoolLife['schoolLife-right'] = $schoolLifeListLeftRight['right'];
             $fullListsOfSchoolLife['schoolLife-left'] = $schoolLifeListLeftRight['left'];
             $fullListsOfSchoolLife['colors'] = $schoolLifeColorList;
+//            mobile
+            $fullListsOfSchoolLife['schoolLife'] = $schoolLifeList;
             
         }else{
             $schoolLifeList = null;
