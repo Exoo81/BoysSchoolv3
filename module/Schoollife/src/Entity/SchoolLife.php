@@ -192,6 +192,21 @@ class SchoolLife {
       $this->author = $user;
       $user->addSchoolLifeToList($this);
     }
+    
+    
+    
+    
+    public function jsonSerialize(){
+        return 
+        [
+            'id'   => $this->getId(),
+            'status' => $this->getStatus(),
+            'title'   => $this->getTitle(),
+            'content' => $this->getContent(),
+            'photoName' => $this->getPhotoName(),
+            'date_published' => $this->getDatePublished()
+        ];
+    }
 }
 
 

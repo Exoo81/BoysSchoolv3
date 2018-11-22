@@ -12937,111 +12937,127 @@ button.btn-contact-form{
 }
 
 .modal-body.book-list .admin-option img,
-.modal-body.policies .admin-option img{
+.modal-body.policies .admin-option img,
+.modal-body.school-life .admin-option img{
     width: 40px;
 }
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
            
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 601px) and (max-width: 700px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 551px) and (max-width: 600px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 550px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             width: 35px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             width: 30px;
         }
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .modal-body.book-list .admin-option img,
-        .modal-body.policies .admin-option img{
+        .modal-body.policies .admin-option img,
+        .modal-body.school-life .admin-option img{
             width: 30px;
         }
     }
@@ -14624,6 +14640,14 @@ section.school-life .header{
 	padding-top: 2%;
 	/* border: 1px dotted brown; */
 }
+
+
+.modal-body.school-life .admin-option{
+    position: absolute;
+    display: none;
+    top: 0px;
+}
+
 
 .school-life-box .archive{
 	display: inline-block;
@@ -20012,7 +20036,9 @@ img.end-tl{
 .modal-text img{
     float: right;
     width: 40%;
-    margin: 10px;
+    margin: 1.5em;
+    margin-top: .5em;
+    border-radius: 4px;
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
@@ -23444,7 +23470,8 @@ div.dhx_modal_cover_dv {
 }
 
 .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-.policies .admin-option .tooltip .tooltiptext.bottom.remove{
+.policies .admin-option .tooltip .tooltiptext.bottom.remove,
+.school-life .admin-option .tooltip .tooltiptext.bottom.remove{
     left: -2px;
     top: 45px;
     padding: 3px;
@@ -23452,91 +23479,104 @@ div.dhx_modal_cover_dv {
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
            
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 601px) and (max-width: 700px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 551px) and (max-width: 600px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 550px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             top: 40px;
             left: -5px;
         }
@@ -23544,7 +23584,8 @@ div.dhx_modal_cover_dv {
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             top: 35px;
             left: -10px;
         }
@@ -23552,7 +23593,8 @@ div.dhx_modal_cover_dv {
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.remove,
-        .policies .admin-option .tooltip .tooltiptext.bottom.remove{
+        .policies .admin-option .tooltip .tooltiptext.bottom.remove,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.remove{
             top: 35px;
             left: -10px;
         }
@@ -23794,7 +23836,8 @@ div.dhx_modal_cover_dv {
 
 
 .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-.policies .admin-option .tooltip .tooltiptext.bottom.edit{
+.policies .admin-option .tooltip .tooltiptext.bottom.edit,
+.school-life .admin-option .tooltip .tooltiptext.bottom.edit{
     left: 4px;
     top: 45px;
     padding: 3px;
@@ -23802,91 +23845,104 @@ div.dhx_modal_cover_dv {
        /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
            
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 601px) and (max-width: 700px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 551px) and (max-width: 600px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 550px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             top: 40px;
             left: 0;
         }
@@ -23894,7 +23950,8 @@ div.dhx_modal_cover_dv {
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             top: 35px;
             left: 0;
         }
@@ -23902,7 +23959,8 @@ div.dhx_modal_cover_dv {
     /* Breakpoint */
     @media screen and (max-width: 340px) {
         .book-list .admin-option .tooltip .tooltiptext.bottom.edit,
-        .policies .admin-option .tooltip .tooltiptext.bottom.edit{
+        .policies .admin-option .tooltip .tooltiptext.bottom.edit,
+        .school-life .admin-option .tooltip .tooltiptext.bottom.edit{
             top: 35px;
             left: 0;
         }

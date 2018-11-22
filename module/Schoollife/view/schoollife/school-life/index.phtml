@@ -42,6 +42,8 @@ $this->headTitle($this->headTitle);
 //                            echo '</a>';
 //                        echo '</div>';
 //                    }
+                
+                
                  
             }else{
                 echo '<div class="main-col-left">';
@@ -50,19 +52,15 @@ $this->headTitle($this->headTitle);
                             echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
                                 echo '<li>';
-//                                    /*
-//                                    * checking only if access to this bookList 
-//                                    * after verification normal access is implemented in modal show-book-list-modal 
-//                                    */
-//                                   $access = 0;
-//                                   $author = null;
-//                                   if ($this->access('bookList.manage') || 
-//                                       $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
-//                                        $access  = 1; 
-//                                        $author = $this->currentUser()->getId();
-//                                   }
-                                    $access  = 1;
-                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-schoolLifeTitle="'.$schoolLife->getTitle().'" data-schoolLifeContent="'.$schoolLife->getContent().'" data-schoolLifePhoto="'.$schoolLife->getPhotoName().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
+//                                 /*
+//                                 * checking only if access to this schoolLife 
+//                                 * after verification normal access is implemented in modal show-school-life-modal 
+//                                 */
+                                   $access = 0;
+                                   if ($this->access('schoolLife.manage')){
+                                        $access  = 1; 
+                                   }
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
@@ -79,19 +77,15 @@ $this->headTitle($this->headTitle);
                             echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
                             echo '<ul class="school-life-blog-list">';
                                 echo '<li>';
-//                                    /*
-//                                    * checking only if access to this bookList 
-//                                    * after verification normal access is implemented in modal show-book-list-modal 
-//                                    */
-//                                   $access = 0;
-//                                   $author = null;
-//                                   if ($this->access('bookList.manage') || 
-//                                       $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
-//                                        $access  = 1; 
-//                                        $author = $this->currentUser()->getId();
-//                                   }
-                                    $access  = 1;
-                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-schoolLifeTitle="'.$schoolLife->getTitle().'" data-schoolLifeContent="'.$schoolLife->getContent().'" data-schoolLifePhoto="'.$schoolLife->getPhotoName().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
+//                                 /*
+//                                 * checking only if access to this schoolLife 
+//                                 * after verification normal access is implemented in modal show-school-life-modal 
+//                                 */
+                                   $access = 0;
+                                   if ($this->access('schoolLife.manage')){
+                                        $access  = 1; 
+                                   }
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
                                     echo '</a>';
@@ -122,18 +116,25 @@ $this->headTitle($this->headTitle);
       	<div class="circle-img-wrapper"><img src="/img/logo_burgundy.png" alt="school" /></div>
       	
       	<!-- original version -->
-      	<div class="modal-title" id="school-life-title">
+      	<div class="modal-title" id="showSchoolLifeTitle">
       		<span></span>
       	</div>
       	<!-- end original version -->
       	
     </div>
+      
+    
  
-    <div class="modal-body">
+    <div class="modal-body school-life">
+        
+        <label class='response-msg'></label>
+        <div class="loader"></div>
+        
+        <div class="admin-option" id="adminOption"></div>
     
 		 <div class="modal-text">
-		 	<img id="school-life-img" src="">
-                        <div id='school-life-content'>
+		 	<img id="schoolLifeImg" src="">
+                        <div id='schoolLifeContent'>
 			
                         </div>
 		</div>

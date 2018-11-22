@@ -109,9 +109,9 @@ $(".modal-trigger-show-policy").click(function(e){
                 //hide laoder
                 $(".loader").css({"display":"none"});
             }else{
-//                $(".response-msg").html(data.responseMsg);
-//                //hide laoder
-//                $(".loader").css({"display":"none"}); 
+                $(".response-msg").html(data.responseMsg);
+                //hide laoder
+                $(".loader").css({"display":"none"}); 
             }
             return false;
         }

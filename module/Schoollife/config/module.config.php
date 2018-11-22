@@ -40,10 +40,10 @@ return [
     'access_filter' => [
         'controllers' => [
             Controller\SchoolLifeController::class => [
-                // Give access to "index" to anyone.
-                    ['actions' => ['index'], 'allow' => '*'],  
-//                // Give access to "getEditContactInfo" and "editContact" actions to ADMIN only.
-//                    ['actions' => ['geteditcontactinfo', 'editcontact'], 'allow' => '+contact.edit'],
+                // Give access to "index" and getschoollife to anyone.
+                    ['actions' => ['index', 'getschoollife'], 'allow' => '*'],  
+                // Give access to "getSchoolLife"  actions to ADMIN only.
+                //    ['actions' => ['getschoollife'], 'allow' => '+schoolLife.manage'],
             ],
         ]
     ],

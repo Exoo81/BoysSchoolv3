@@ -76,6 +76,31 @@ class SchoolLifeManager{
         return $fullListsOfSchoolLife;
     }
     
+    public function getSchoolLife($schoolLifeID){
+        //find schoolLife
+        $schoolLife = $this->entityManager->getRepository(SchoolLife::class)
+                        ->find($schoolLifeID);
+        
+        if($schoolLife == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find this school life.';
+            return $dataResponse;
+        }
+
+        
+        $schoolLifeJSON = $schoolLife->jsonSerialize();
+        $dataResponse['schoolLife'] = $schoolLifeJSON;
+        
+
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'School Life found.';
+        
+        return $dataResponse;
+    }
+
+
     private function splitSchoolLifeToLeftAndRight($schoolLifeList){
         
         $schoolLifeListLeftRight = array();

@@ -39,6 +39,33 @@ class SchoolLifeController extends AbstractActionController{
         ]);
         
     }
+    
+    public function getschoollifeAction(){
+        $dataResponse['success'] = false;
+        $dataResponse['responseMsg'] = 'ERROR - School Life not found.';
+        
+        // get parametr from POST 
+         $schoolLifeID =  $this->params()->fromPost('schoolLifeID', 0);
+         
+         //get policyIDschoolLifeID data
+         $dataResponse = $this->schoolLifeManager->getSchoolLife($schoolLifeID);
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+    }
 
 }
 
