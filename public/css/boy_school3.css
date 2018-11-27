@@ -20246,12 +20246,14 @@ img.end-tl{
 }
 
 .modal-text#policyContentOrigin ul,
-.modal-text#policyContent ul{
+.modal-text#policyContent ul,
+.modal-text #schoolLifeContent ul{
 	list-style-type: disc;
 }
 
 .modal-text#policyContentOrigin ul li,
-.modal-text#policyContent ul li{
+.modal-text#policyContent ul li,
+.modal-text #schoolLifeContent ul li{
 	font-weight: initial;
         padding: initial;
 }
