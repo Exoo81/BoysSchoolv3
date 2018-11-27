@@ -26991,6 +26991,10 @@ form.cms label.form-control{
 
 }
 
+form.cms label.form-control.school-life{
+    padding-top: 10px;
+}
+
 form.cms label.centered{
     text-align: center;
     font-size: 1.6em;   
@@ -27061,7 +27065,8 @@ form.cms img.preview-img{
 form.cms img.preview-img.add-class,
 form.cms img.preview-img.edit-class,
 form.cms img.preview-img.add-news,
-form.cms img.preview-img.edit-news{
+form.cms img.preview-img.edit-news,
+form.cms img.preview-img.edit-school-life{
     width: 90%;
     margin-left: 10%;
     margin-bottom: 10px;
@@ -27071,7 +27076,8 @@ form.cms img.preview-img.edit-news{
         form.cms img.preview-img.add-class,
         form.cms img.preview-img.edit-class,
         form.cms img.preview-img.add-news,
-        form.cms img.preview-img.edit-news{
+        form.cms img.preview-img.edit-news,
+        form.cms img.preview-img.edit-school-life{
             width: 80%;
             margin-left: 10%;
             margin-bottom: 10px;
@@ -27093,7 +27099,8 @@ form.cms label.preview-img-label{
 form.cms label.preview-img-label.add-news,
 form.cms label.preview-img-label.edit-news,
 form.cms label.preview-img-label.add-class,
-form.cms label.preview-img-label.edit-class{
+form.cms label.preview-img-label.edit-class,
+form.cms label.preview-img-label.edit-school-life{
     position: absolute;
     top: 60px;
     left: 8%;
@@ -27104,7 +27111,8 @@ form.cms label.preview-img-label.edit-class{
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
-        form.cms label.preview-img-label.edit-class{
+        form.cms label.preview-img-label.edit-class,
+        form.cms label.preview-img-label.edit-school-life{
             top: 50px;
             left: 5%;
             padding: 15px 0;
@@ -27115,7 +27123,8 @@ form.cms label.preview-img-label.edit-class{
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
-        form.cms label.preview-img-label.edit-class{
+        form.cms label.preview-img-label.edit-class,
+        form.cms label.preview-img-label.edit-school-life{
             top: 60px;
             left: 8%;
             padding: 15px 0;
@@ -27126,7 +27135,8 @@ form.cms label.preview-img-label.edit-class{
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
-        form.cms label.preview-img-label.edit-class{
+        form.cms label.preview-img-label.edit-class,
+        form.cms label.preview-img-label.edit-school-life{
             top: 50px;
             left: 8%;
             padding: 15px 0;
@@ -27138,7 +27148,8 @@ form.cms label.preview-img-label.edit-class{
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
-        form.cms label.preview-img-label.edit-class{
+        form.cms label.preview-img-label.edit-class,
+        form.cms label.preview-img-label.edit-school-life{
             top: 50px;
             left: 5%;
             padding: 15px 0;
@@ -27166,7 +27177,14 @@ form.cms label.preview-img-label.edit-news{
         }
     }*/
     
-    
+form.cms label.preview-img-label.add-news.not-valid,
+form.cms label.preview-img-label.edit-news.not-valid,
+form.cms label.preview-img-label.add-class.not-valid,
+form.cms label.preview-img-label.edit-class.not-valid,
+form.cms label.preview-img-label.edit-school-life.not-valid{
+    left: 100%;
+    top: 40px;
+}    
 
 form.cms label.preview-doc-label,
 form.cms label.preview-video-label,

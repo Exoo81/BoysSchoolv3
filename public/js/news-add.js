@@ -7,6 +7,7 @@
     return this.optional(element) || (element.files[0].size <= param);
 }, 'File size must be less than {0}');*/
 
+
 //open modal with form
 $(".modal-trigger-add-news").click(function(e){
     e.preventDefault();
@@ -30,6 +31,9 @@ $(".modal-trigger-add-news").click(function(e){
         $('#preview-img-add-news').removeAttr('src');
         $("#preview-img-add-news").css({"display":"none"});
         $("#preview-img-add-news-label").css({"display":"none"});
+        
+    //remove not-falid class
+        $("#preview-img-add-news-label").removeClass("not-valid");
     
     //insert data
     $('#addNewsAuthorID').val(authorID);
@@ -144,9 +148,31 @@ $( "#addNewsPhoto" ).change(function(event) {
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
-    $("#preview-img-add-news").css({"display":"block"});
-    //disply remove img button
-    $("#preview-img-add-news-label").css({"display":"block"});
+    
+    // validation if photo file
+    var isValid = checkValidationForFileExtension(event.target.files[0]); 
+    
+    if(isValid){
+        //remove addNewsPhoto file field
+        $("#addNewsPhoto").css({"display":"none"});
+        // show img
+        $("#preview-img-add-news").css({"display":"block"});
+        //disply remove img button
+        $("#preview-img-add-news-label").css({"display":"block"});
+        //remove not-falid class
+            $("#preview-img-add-news-label").removeClass("not-valid");
+    }else{
+        $("#addNewsPhoto").css({"display":"block"});
+        //disply remove img button
+        $("#preview-img-add-news-label").css({"display":"block"});
+        //add not-valid class
+        $("#preview-img-add-news-label").addClass("not-valid");
+    }
+    
+    
+//    $("#preview-img-add-news").css({"display":"block"});
+//    //disply remove img button
+//    $("#preview-img-add-news-label").css({"display":"block"});
     
 });
 
@@ -159,8 +185,29 @@ $( "#preview-img-add-news-label" ).click(function() {
         $("#preview-img-add-news").css({"display":"none"});
     //hide remove link
         $("#preview-img-add-news-label").css({"display":"none"});
+        
+        //show addNewsPhoto file field
+        $("#addNewsPhoto").css({"display":"block"});
+        
+        //remove jquert validation error for editSchoolLifePhoto
+        $("#addNewsPhoto-error").css({"display":"none"});
 
 });
+
+function checkValidationForFileExtension(file){
+    
+    var isValid = true;
+    var fileType = file["type"];
+    
+    //alert(fileType);
+    var ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, ValidImageTypes) < 0) {
+         isValid = false;
+    }
+    
+    return isValid;
+    
+}
 
 
 //close modal

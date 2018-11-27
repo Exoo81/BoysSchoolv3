@@ -200,7 +200,8 @@ class SchoolLife {
         return 
         [
             'id'   => $this->getId(),
-            'status' => $this->getStatus(),
+            'status' => $this->getStatusAsString(),
+            'statusList' => $this->getStatusList(),
             'title'   => $this->getTitle(),
             'content' => $this->getContent(),
             'photoName' => $this->getPhotoName(),

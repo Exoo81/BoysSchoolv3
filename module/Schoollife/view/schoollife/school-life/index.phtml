@@ -62,7 +62,11 @@ $this->headTitle($this->headTitle);
                                    }
                                     echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
-                                    echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                    if($schoolLife->getPhotoName() !== null){
+                                        echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                    }else{
+                                        echo '<img src="upload/school-life/dummy.jpg"/>';
+                                    }
                                     echo '</a>';
 				echo '</li>';
                             echo '</ul>';
@@ -87,7 +91,11 @@ $this->headTitle($this->headTitle);
                                    }
                                     echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
-                                    echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                    if($schoolLife->getPhotoName() !== null){
+                                        echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                    }else{
+                                        echo '<img src="upload/school-life/dummy.jpg"/>';
+                                    }
                                     echo '</a>';
 				echo '</li>';
                             echo '</ul>';
@@ -130,7 +138,16 @@ $this->headTitle($this->headTitle);
         <label class='response-msg'></label>
         <div class="loader"></div>
         
-        <div class="admin-option" id="adminOption"></div>
+        <div class="admin-option" id="adminOption">
+            <a href="#" class="tooltip modal-trigger-edit-school-life" data-modal="edit-school-life-modal">
+                <button class="btn-admin"><img src="img/icons/icon-edit-blue.png"></button>
+                <span class="tooltiptext bottom edit">Edit</span>
+            </a>
+<!--            <a href="#" class="tooltip modal-trigger-delete-policy" data-modal="delete-policy-modal">
+                <button class="btn-admin"><img class="icon-list" src="img/icons/icon-bin-red.png"></button>
+                <span class="tooltiptext bottom remove">Remove</span>
+            </a>-->
+        </div>
     
 		 <div class="modal-text">
 		 	<img id="schoolLifeImg" src="">
@@ -146,10 +163,86 @@ $this->headTitle($this->headTitle);
 </div>
 <!-- end Show School Life Modal -->
 
+<!-- Edit School Life Modal-->
+<div class="modal" id="edit-school-life-modal">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="policy-icon-edit" src="img/icons/icon-edit.png" alt="" /></div>
+
+            
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Edit School Life</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="editSchoolLifeForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <input type="hidden" id="editSchoolLifeID" name="editSchoolLifeID" required/>
+                    
+                    <div class="width-60-left">
+                        <label for="editSchoolLifeTitle">Edit title:</label>
+                        <input type="text" id="editSchoolLifeTitle" name="editSchoolLifeTitle"  autocomplete="off">
+                    </div>
+                    <div class="width-35-right">
+                        <label for="editSchoolLifeStatus">Status:</label>
+                        <select id="editSchoolLifeStatus" name="editSchoolLifeStatus" class="dropdown"></select>                  
+                    </div>
+                    
+                    <div class='width-60-left'>
+                        <label for="editSchoolLifeContent">Edit content (text):</label>
+                        <textarea id="editSchoolLifeContent" name="editSchoolLifeContent" rows="10"></textarea>
+                    </div>
+                    
+                    <div class='width-35-right'>                       
+                        <div class="width-100">
+                            <label id='editSchoolLifePhotoLabel_current'>Current photo:</label>
+                            <label id='editSchoolLifePhotoLabel'>Add photo:</label>
+                            <label class='preview-img-label edit-school-life' id='preview-photo-edit-school-life-label'><a href='#'>X</a></label>
+                            <img class='preview-img edit-school-life' id='editSchoolLifePhoto_current' />
+
+
+                            <input type="file" id="editSchoolLifePhoto" name="editSchoolLifePhoto">
+                            <input type="checkbox" class='to_remove' id='edit-school-life-remove-photo'>
+                        </div>
+                    </div>
+
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Save"><span>Save</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Cancel"><span>Cancel</span></button>
+                    </div>
+		</form>          
+     
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Edit School Life Modal-->
+
 <!--SCRIPTS-->
 <script src="js/blog-hover-effect.js" type="text/javaScript"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+<script src="js/summernote/summernote-options.js" type="text/javaScript"></script>
+
 <script src="js/school-life-show-info.js" type="text/javaScript"></script>
+<script src="js/school-life-edit.js" type="text/javaScript"></script>
 
 
 

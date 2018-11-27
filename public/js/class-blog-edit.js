@@ -114,7 +114,7 @@ $(".modal-trigger-edit-class-blog").click(function(e){
                     //show remove link
                     $("#preview-photo-edit-class-blog-label").css({"display":"block"});
                     //show input field for photo
-                    $("#editClassBlogPhoto").css({"display":"block"});
+                    //$("#editClassBlogPhoto").css({"display":"block"});
                 }else{
                     //show input field label for photo
                     $("#editClassBlogPhotoLabel").css({"display":"block"});
@@ -244,6 +244,15 @@ $( "#editClassBlogPhoto" ).change(function(event) {
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
+    
+    //remove "add class photo" label
+    $("#editClassBlogPhotoLabel").css({"display":"none"});
+    // remove input field for photo
+    $("#editClassBlogPhoto").css({"display":"none"});
+    
+    // show curent photo label
+    $("#editClassBlogPhotoLabel_current").css({"display":"block"});
+    // show img
     $("#editClassBlogPhoto_current").css({"display":"block"});
     //disply remove img button
     $("#preview-photo-edit-class-blog-label").css({"display":"block"});
@@ -260,10 +269,16 @@ $("#preview-photo-edit-class-blog-label").click(function() {
         $("#editClassBlogPhoto").val(null);
         $('#editClassBlogPhoto_current').removeAttr('src');
         $("#editClassBlogPhoto_current").css({"display":"none"});
+        $("#editClassBlogPhotoLabel_current").css({"display":"none"});
     //hide remove link
         $("#preview-photo-edit-class-blog-label").css({"display":"none"});
     //remove photo set true
     $("#edit-class-blog-remove-photo").attr("checked", true);
+    
+    //show "add class photo" label
+    $("#editClassBlogPhotoLabel").css({"display":"block"});
+    //show input field for photo
+    $("#editClassBlogPhoto").css({"display":"block"});
 
 });
 

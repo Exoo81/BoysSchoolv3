@@ -16,27 +16,13 @@ $(".modal-trigger-show-school-life").click(function(e){
     $('#adminOption').css({"display":"none"});
     //hide bookList content
     $("#schoolLifeContent").css({"display":"none"});
-//    //hide print option
-//    $(".print-option-bottom").css({"display":"none"});
-//    $(".print-option-top").css({"display":"none"});
-//    
+
     //clear and show schoolList
     $("#showSchoolLifeTitle span").empty(); 
     $("#showSchoolLifeTitle span").css({"display":"block"}); 
     // clear img src
     $('#schoolLifeImg').removeAttr('src');
-//    //clear and show listOfStationary
-//    $("#listOfStationary").empty(); 
-//    $("#listOfStationary").css({"display":"block"}); 
-//    //clear and show additionalMoniesInfo
-//    $("#additionalMoniesInfo").empty(); 
-//    $("#additionalMoniesInfo").css({"display":"block"}); 
-//    //clear and show uniformInfo
-//    $("#uniformInfo").empty(); 
-//    $("#uniformInfo").css({"display":"block"}); 
-//    //clear and show otherInfo
-//    $("#otherInfo").empty(); 
-//    $("#otherInfo").css({"display":"block"});
+
 //    
     dataModal = $(this).attr("data-modal");
     var schoolLifeID = $(this).attr("data-schoolLifeID");
@@ -44,17 +30,17 @@ $(".modal-trigger-show-school-life").click(function(e){
     var access = $(this).data("access") === 1 ? true : false;
 
     
-    console.log('======== Show School Life =======');
-    console.log('School Life ID: ' + schoolLifeID);
-    console.log('School Life color: ' + color);
-    console.log('access: '+ access);
+//    console.log('======== Show School Life =======');
+//    console.log('School Life ID: ' + schoolLifeID);
+//    console.log('School Life color: ' + color);
+//    console.log('access: '+ access);
     
     $("#modal-color").attr("class", 'modal-box lg '+color);
-    $(".btn-modal-box button").attr("class", 'modal-btn btn-'+color+' small close-btn');
+    $("#show-school-life-modal .btn-modal-box button").attr("class", 'modal-btn btn-'+color+' small close-btn');
   
     //display modal
     $("#" + dataModal).css({"display":"block"});
-    
+ 
 
         
     //send id by AJAX to get full object
@@ -78,18 +64,15 @@ $(".modal-trigger-show-school-life").click(function(e){
                  * insert attributes to admin options
                  */
                 
-                var adminOption = '<a href="#" class="tooltip modal-trigger-edit-school-life" data-modal="edit-school-life-modal" data-schoolLife="'+data.schoolLife.id+'">\n\
-                                        <button class="btn-admin"><img src="img/icons/icon-edit-blue.png"></button>\n\
-                                        <span class="tooltiptext bottom edit">Edit</span>\n\
-                                    </a>\n\
-                                    <a href="#" class="tooltip modal-trigger-delete-policy" data-modal="delete-policy-modal">\n\
-                                        <button class="btn-admin"><img class="icon-list" src="img/icons/icon-bin-red.png"></button>\n\
-                                        <span class="tooltiptext bottom remove">Remove</span>\n\
-                                    </a>';
-                
                 if(access){
-                    $('#adminOption').html(adminOption);
-                    $("#adminOption").css({"display":"block"});
+
+                    $('#adminOption').css({"display":"inline-block"});
+                    var editElement = $("a.modal-trigger-edit-school-life");
+                        editElement.attr('data-schoolLifeID', data.schoolLife.id);
+                        
+//                    var deleteElement = $( "a.modal-trigger-delete-policy" );
+//                        deleteElement.attr('data-policyID', data.policy.id);
+//                        deleteElement.attr('data-title', data.policy.title);
                                       
                 }
                 
@@ -102,8 +85,8 @@ $(".modal-trigger-show-school-life").click(function(e){
                 /*
                  * insert school life img
                  */
-                var imgURL = '/upload/school-life/'+data.schoolLife.id+'/'+data.schoolLife.photoName;
-                $("#schoolLifeImg").attr("src", imgURL);
+                //var imgURL = '/upload/school-life/'+data.schoolLife.id+'/'+data.schoolLife.photoName;
+                $("#schoolLifeImg").attr("src", data.schoolLifePhotoPath);
 
                 //hide laoder
                 $(".loader").css({"display":"none"});

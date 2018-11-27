@@ -91,6 +91,12 @@ class SchoolLifeManager{
         $schoolLifeJSON = $schoolLife->jsonSerialize();
         $dataResponse['schoolLife'] = $schoolLifeJSON;
         
+        $schoolLifePhotoPath = 'upload/school-life/dummy.jpg';
+        if($schoolLife->getPhotoName() != null){
+            $schoolLifePhotoPath = 'upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName();
+        }
+        
+        $dataResponse['schoolLifePhotoPath'] = $schoolLifePhotoPath;
 
         
         //return success
@@ -98,6 +104,125 @@ class SchoolLifeManager{
         $dataResponse['responseMsg'] =  'School Life found.';
         
         return $dataResponse;
+    }
+    
+    public function editSchoolLife($formData){
+        
+        // json_decode to array
+        $formFieldsArray = $this->decodeJSONdata($formData);
+        
+        //find school life to edit
+        $editSchoolLife = $this->entityManager->getRepository(SchoolLife::class)
+                ->find($formFieldsArray['schoolLifeID']);
+        
+        if($editSchoolLife == null){
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'ERROR: School Life not found. School Life can\'t be edited.';
+        
+            return $dataResponse;
+        }
+        
+        /*
+         * edit changes from regular fields
+         */
+        $editSchoolLife->setTitle($formFieldsArray['schoolLifeTitle']);
+        $editSchoolLife->setStatus($formFieldsArray['schoolLifeStatus']);
+        $editSchoolLife->setContent($formFieldsArray['schoolLifeContent']);
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($editSchoolLife); 
+        
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        /*
+         *  remove photo if apply
+         */
+        if($formFieldsArray['removePhoto']){
+            
+            //path to remove old photo
+            $path_to_delete_photo = './public/upload/school-life/'.$editSchoolLife->getId().'/';
+            
+            // photo to delete if exist
+            if($editSchoolLife->getPhotoName() != null){
+                $target_photo_to_delete = $path_to_delete_photo . $editSchoolLife->getPhotoName();
+                //remove old photo
+                // if exist
+                if (file_exists($target_photo_to_delete)) {
+                    unlink ($target_photo_to_delete);
+                }
+            }
+            
+            $editSchoolLife->setPhotoName(null);
+           
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editSchoolLife); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+        }
+        
+        // save class photo file if posted by form
+        if(isset($_FILES['editSchoolLifePhoto'])){ 
+//            $dataResponse['success'] = true;
+//            $dataResponse['editSchoolLifePhoto'] =  $_FILES["editSchoolLifePhoto"]['name'];
+//            return $dataResponse;
+
+            /*
+            * Save on server
+            */
+
+            //path to remove/save
+            $path_to_photo = './public/upload/school-life/'.$editSchoolLife->getId().'/';
+
+            // save new photo form input file field
+            //check if dir exist else - create
+            if(!is_dir($path_to_photo)) {
+                 mkdir($path_to_photo, 0777, true);
+            }
+            
+            //remove old photo if not null (only when input file field choosen without click on remove button "X"
+            // photo to delete if exist
+            if($editSchoolLife->getPhotoName() != null){
+                $target_photo_to_delete = $path_to_photo . $editSchoolLife->getPhotoName();
+                //remove old photo
+                // if exist
+                if (file_exists($target_photo_to_delete)) {
+                    unlink ($target_photo_to_delete);
+                }
+            }
+
+            //$target new photo
+            $target_file_photo = $path_to_photo . basename($_FILES["editSchoolLifePhoto"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_photo)) {
+                //save on server
+                move_uploaded_file($_FILES["editSchoolLifePhoto"]["tmp_name"], $target_file_photo);
+            }
+
+            /*
+            * Save in db
+            */
+            $editSchoolLife->setPhotoName($_FILES["editSchoolLifePhoto"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($editSchoolLife); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+
+        }
+        
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Edit "School Life" completed.';
+        
+        return $dataResponse;
+        
     }
 
 
@@ -144,6 +269,11 @@ class SchoolLifeManager{
         }
       
         return $schoolLifeColorList;
+    }
+    
+    private function decodeJSONdata($formData){
+        $formFieldsArray = (array)json_decode($formData['objArr'])[0];
+        return $formFieldsArray;
     }
     
 }

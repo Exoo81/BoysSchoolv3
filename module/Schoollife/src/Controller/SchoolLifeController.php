@@ -66,6 +66,68 @@ class SchoolLifeController extends AbstractActionController{
         
         return $view;
     }
+    
+    public function editschoollifeAction(){
+        
+        $dataResponse['success'] = false;
+        $dataResponse['responseMsg'] = 'ERROR - This "School Life" can not be edited.';
+        
+        $formData = $this->params()->fromPost();
+        
+        /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('schoolLife.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do (1)';
+            
+            // add new policy
+            $dataResponse = $this->schoolLifeManager->editSchoolLife($formData);
+            
+        }else{
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+        
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+    }
 
 }
 
