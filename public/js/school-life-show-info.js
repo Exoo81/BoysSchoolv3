@@ -85,8 +85,12 @@ $(".modal-trigger-show-school-life").click(function(e){
                 /*
                  * insert school life img
                  */
-                //var imgURL = '/upload/school-life/'+data.schoolLife.id+'/'+data.schoolLife.photoName;
-                $("#schoolLifeImg").attr("src", data.schoolLifePhotoPath);
+                if(data.schoolLife.photoName !== null){
+                    $("#schoolLifeImg").attr("src", data.schoolLifePhotoPath);
+                    $("#schoolLifeImg").css({"display":"block"});
+                }else{
+                    $("#schoolLifeImg").css({"display":"none"});
+                }
 
                 //hide laoder
                 $(".loader").css({"display":"none"});
