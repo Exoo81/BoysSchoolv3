@@ -148,10 +148,9 @@ $('#editSchoolLifeContent').summernote({
                 // [groupName, [list of button]]
                 ['style', ['bold', 'italic', 'underline', 'clear']],
                 ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
                 ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
                 ['link', ['linkDialogShow', 'unlink']],
+                ['color', ['color']],
                 ['misc', ['codeview']]
         ],
       height: 250,
