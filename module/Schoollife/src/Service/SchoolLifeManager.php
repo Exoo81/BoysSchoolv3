@@ -224,7 +224,41 @@ class SchoolLifeManager{
         return $dataResponse;
         
     }
-
+    
+    public function deleteSchoolLife($schoolLifeID){
+        
+        //find schoolLife
+        $schoolLife = $this->entityManager->getRepository(SchoolLife::class)
+                        ->find($schoolLifeID);
+        
+        if($schoolLife == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find this school life.';
+            return $dataResponse;
+        }
+        
+        //initial - prepare the path
+        $path_to_delete = './public/upload/school-life/'.$schoolLife->getId().'/';
+        
+        //remove photo
+        if($schoolLife->getPhotoName() != null){
+            $target_file = $path_to_delete . $schoolLife->getPhotoName();
+            if (file_exists($target_file)) {
+                unlink ($target_file);
+            }
+        }
+        
+        //remove from DB
+        $this->entityManager->remove($schoolLife);
+        $this->entityManager->flush();
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'School Life deleted.';
+        
+        return $dataResponse;
+        
+    }
 
     private function splitSchoolLifeToLeftAndRight($schoolLifeList){
         

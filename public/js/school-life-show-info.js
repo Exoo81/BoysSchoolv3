@@ -51,7 +51,7 @@ $(".modal-trigger-show-school-life").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
 
                 /**
@@ -70,9 +70,9 @@ $(".modal-trigger-show-school-life").click(function(e){
                     var editElement = $("a.modal-trigger-edit-school-life");
                         editElement.attr('data-schoolLifeID', data.schoolLife.id);
                         
-//                    var deleteElement = $( "a.modal-trigger-delete-policy" );
-//                        deleteElement.attr('data-policyID', data.policy.id);
-//                        deleteElement.attr('data-title', data.policy.title);
+                    var deleteElement = $( "a.modal-trigger-delete-school-life" );
+                        deleteElement.attr('data-schoolLifeID', data.schoolLife.id);
+                        deleteElement.attr('data-schoolLifeTitle', data.schoolLife.title);
                                       
                 }
                 
