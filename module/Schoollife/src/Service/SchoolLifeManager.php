@@ -127,7 +127,7 @@ class SchoolLifeManager{
          * edit changes from regular fields
          */
         $editSchoolLife->setTitle($formFieldsArray['schoolLifeTitle']);
-        $editSchoolLife->setStatus($formFieldsArray['schoolLifeStatus']);
+//        $editSchoolLife->setStatus($formFieldsArray['schoolLifeStatus']);
         $editSchoolLife->setContent($formFieldsArray['schoolLifeContent']);
         
         // Add the entity to the entity manager.

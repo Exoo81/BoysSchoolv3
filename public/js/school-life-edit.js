@@ -70,12 +70,12 @@ $(".modal-trigger-edit-school-life").click(function(e){
                 $('#editSchoolLifeTitle').val(data.schoolLife.title);
                 $('#editSchoolLifeContent').summernote('code', data.schoolLife.content);
                 
-                //insert options for editSchoolLifeStatus
-                $.each(data.schoolLife.statusList, function (key, value){
-                    $('#editSchoolLifeStatus').append($('<option></option>').attr('value', key).text(value));
-                });
-                //current status selected
-                $('#editSchoolLifeStatus option[value="'+data.status+'"]').attr('selected','selected');
+//                //insert options for editSchoolLifeStatus
+//                $.each(data.schoolLife.statusList, function (key, value){
+//                    $('#editSchoolLifeStatus').append($('<option></option>').attr('value', key).text(value));
+//                });
+//                //current status selected
+//                $('#editSchoolLifeStatus option[value="'+data.status+'"]').attr('selected','selected');
                 
                 //if school-life with photo
                 if(data.schoolLife.photoName !== null){
