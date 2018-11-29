@@ -42,8 +42,8 @@ return [
             Controller\SchoolLifeController::class => [
                 // Give access to "index" and getschoollife to anyone.
                     ['actions' => ['index', 'getschoollife'], 'allow' => '*'],  
-                // Give access to "editSchoolLife", "deleteSchoolLife"  actions to ADMIN only.
-                    ['actions' => ['editschoollife', 'deleteschoollife'], 'allow' => '+schoolLife.manage'],
+                // Give access to "editSchoolLife", "deleteSchoolLife" and "addSchoolLife"  actions to ADMIN only.
+                    ['actions' => ['editschoollife', 'deleteschoollife', 'addschoollife'], 'allow' => '+schoolLife.manage'],
             ],
         ]
     ],

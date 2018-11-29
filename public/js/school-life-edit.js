@@ -40,14 +40,12 @@ $(".modal-trigger-edit-school-life").click(function(e){
 
     dataModal = $(this).attr("data-modal");
     var schoolLifeID = $(this).attr("data-schoolLifeID");
+    var schoolLifeAuthorID = $(this).attr("data-schoolLifeAuthorID");
    
-    //console.log('========Edit school life =======');
-    //console.log('school life ID: ' + schoolLifeID);
+//    console.log('========Edit school life =======');
+//    console.log('school life ID: ' + schoolLifeID);
+//    console.log('school life author ID: ' + schoolLifeAuthorID);
 
-
-    
-    //insert bookListID to form
-//    $('#editPolicyID').val(policyID);
 
     //display modal
     $("#" + dataModal).css({"display":"block"});
@@ -62,7 +60,9 @@ $(".modal-trigger-edit-school-life").click(function(e){
         success: function(data){
             //console.log(data);
             if(data.success === true){
-                    
+                
+                
+                $('#editSchoolLifeAuthorID').val(schoolLifeAuthorID);
                 /**
                  * insert school life data
                  */
@@ -118,6 +118,9 @@ $("#editSchoolLifeForm").validate({
     ignore: ":hidden:not(#summernote),.note-editable.panel-body",
      
     rules: {
+        editSchoolLifeAuthorID:{
+            required: true
+        },
         editSchoolLifeID:{
             required: true
         },
@@ -132,6 +135,9 @@ $("#editSchoolLifeForm").validate({
         }
     },
     messages:{
+        editSchoolLifeAuthorID:{
+            required: 'Error - author required.'
+        },
         editSchoolLifeTitle:{
             required: 'Title is required.'
         },
@@ -154,8 +160,9 @@ $("#editSchoolLifeForm").validate({
         $(".response-msg").html('');
     
     var schoolLifeID = $("#editSchoolLifeID").val();
+    var authorID = $("#editSchoolLifeAuthorID").val();
     var schoolLifeTitle = $("#editSchoolLifeTitle").val();
-    var schoolLifeStatus = $('#editSchoolLifeStatus').val();
+//    var schoolLifeStatus = $('#editSchoolLifeStatus').val();
     var schoolLifeContent = $('#editSchoolLifeContent').val();
     var removePhoto = $('#edit-school-life-remove-photo').attr('checked');
         if(removePhoto === 'checked'){
@@ -171,6 +178,7 @@ $("#editSchoolLifeForm").validate({
     
 //        console.log('---=== School Life edit Form DATA posted ===---');
 //        console.log('School Life ID: '+ schoolLifeID);
+//        console.log('School Life Author ID: '+ authorID);
 //        console.log('School Life title: '+ schoolLifeTitle);
 //        console.log('School Life status: '+ schoolLifeStatus);
 //        console.log('School Life content: '+ schoolLifeContent);
@@ -184,8 +192,9 @@ $("#editSchoolLifeForm").validate({
     var objArr = [];
         objArr.push({
             "schoolLifeID":schoolLifeID,
+            "authorID":authorID,
             "schoolLifeTitle":schoolLifeTitle, 
-            "schoolLifeStatus":schoolLifeStatus, 
+//            "schoolLifeStatus":schoolLifeStatus, 
             "schoolLifeContent":schoolLifeContent, 
             "removePhoto":removePhoto });
     

@@ -307,10 +307,13 @@ function showEvent(eventId){
                     console.log(data);
                     var event = data.event;
                     var eventDate = new Date(data.eventYear, (data.eventMonth)-1, data.eventDay);
-                    //console.log(eventDate);
-                    $("#color-box .day").html(eventDate.getDate()<10?("0"+eventDate.getDate()):eventDate.getDate());
-                    $("#color-box .month").html(getShortMonth(eventDate.getMonth()));
-                    $("#color-box .year").html(eventDate.getFullYear());
+                    console.log(eventDate);
+                    console.log(eventDate.getDate());
+                    console.log(eventDate.getMonth());
+                    console.log(eventDate.getFullYear());
+                    $("#eventDay").html(eventDate.getDate()<10?("0"+eventDate.getDate()):eventDate.getDate());
+                    $("#eventMonth").html(getShortMonth(eventDate.getMonth()));
+                    $("#eventYear").html(eventDate.getFullYear());
                     $("#event-details .title").html(event.title);
                     
                     if(event.location !== null){

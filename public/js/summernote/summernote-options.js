@@ -143,6 +143,20 @@ $('#editAboutUsContent').summernote({
         dialogsInBody: true
 });
 
+$('#addSchoolLifeContent').summernote({
+        toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['link', ['linkDialogShow', 'unlink']],
+                ['color', ['color']],
+                ['misc', ['codeview']]
+        ],
+      height: 250,
+      dialogsInBody: true
+});
+
 $('#editSchoolLifeContent').summernote({
         toolbar: [
                 // [groupName, [list of button]]

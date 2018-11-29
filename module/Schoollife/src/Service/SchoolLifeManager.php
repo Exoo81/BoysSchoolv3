@@ -106,6 +106,95 @@ class SchoolLifeManager{
         return $dataResponse;
     }
     
+    public function saveSchoolLife($formData){
+        
+        //create new schoolLife object
+        $schoolLife = new SchoolLife();
+        
+        // json_decode to array
+        $formFieldsArray = $this->decodeJSONdata($formData);
+        
+        //set schoolLife fields
+        $schoolLife->setStatus(1);
+        $schoolLife->setTitle($formFieldsArray['schoolLifeTitle']);
+        $schoolLife->setContent($formFieldsArray['schoolLifeContent']);
+        
+        $current_date = date('Y-m-d H:i:s');
+        $schoolLife->setDatePublished($current_date);
+        
+        
+        // set Author
+        //get author form formData
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formFieldsArray['authorID']);
+
+        if($author != null){
+            $schoolLife->setAuthor($author);
+        }else{
+            //return error info
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Error Author id. User not exist. Try again.';
+        
+            return $dataResponse;
+        }
+        
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($schoolLife);        
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        
+        // save file if exist
+        if(isset($_FILES['schoolLifePhoto'])){
+            
+//            $dataResponse['success'] = true;
+//            $dataResponse['schoolLifePhoto'] =  $_FILES["schoolLifePhoto"]['name'];
+//            return $dataResponse;
+
+            /*
+            * Save on server
+            */
+
+            //path to save
+            $path_to_save_photo = './public/upload/school-life/'.$schoolLife->getId().'/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_photo)) {
+                mkdir($path_to_save_photo, 0777, true);
+            }
+            
+            //$target
+            $target_file_photo = $path_to_save_photo . basename($_FILES["schoolLifePhoto"]["name"]);
+
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_photo)) {
+                //save on server
+                move_uploaded_file($_FILES["schoolLifePhoto"]["tmp_name"], $target_file_photo);
+            }
+            
+            /*
+            * Save in db
+            */
+            $schoolLife->setPhotoName($_FILES["schoolLifePhoto"]["name"]);
+
+            // Add the entity to the entity manager.
+            $this->entityManager->persist($schoolLife); 
+            
+            // Apply changes to database.
+            $this->entityManager->flush();
+            
+        }
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'School Life saved.';
+        
+        return $dataResponse;
+
+        
+    }
+    
     public function editSchoolLife($formData){
         
         // json_decode to array
@@ -129,6 +218,24 @@ class SchoolLifeManager{
         $editSchoolLife->setTitle($formFieldsArray['schoolLifeTitle']);
 //        $editSchoolLife->setStatus($formFieldsArray['schoolLifeStatus']);
         $editSchoolLife->setContent($formFieldsArray['schoolLifeContent']);
+        
+        $current_date = date('Y-m-d H:i:s');
+        $editSchoolLife->setDatePublished($current_date);
+        
+        // set Author
+        //get author form formData
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formFieldsArray['authorID']);
+
+        if($author != null){
+            $editSchoolLife->setAuthor($author);
+        }else{
+            //return error info
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Error Author id. User not exist. Try again.';
+        
+            return $dataResponse;
+        }
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($editSchoolLife); 

@@ -67,6 +67,66 @@ class SchoolLifeController extends AbstractActionController{
         return $view;
     }
     
+        public function addschoollifeAction(){
+        $dataResponse['success'] = false;
+        $dataResponse['responseMsg'] = 'ERROR - School Life not found.';
+        
+        $formData = $this->params()->fromPost();        
+         /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('schoolLife.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do (1)';
+            
+            // add School Life
+            $dataResponse = $this->schoolLifeManager->saveSchoolLife($formData);
+            
+        }else{
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+        
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+    }
+    
     public function editschoollifeAction(){
         
         $dataResponse['success'] = false;

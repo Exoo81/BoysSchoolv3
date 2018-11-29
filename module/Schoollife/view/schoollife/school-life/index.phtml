@@ -35,13 +35,13 @@ $this->headTitle($this->headTitle);
                         
                 echo '</div>';
                 
-//                if ($this->access('classes.add')) {
-//                        echo '<div class="cms-option classes">';
-//                            echo '<a href="#" class="bs modal-trigger-add-class-blog" data-modal="add-class-blog-modal">';
-//                                echo '<img src="img/icons/icon-add.png"><span>Add new class blog</span>';
-//                            echo '</a>';
-//                        echo '</div>';
-//                    }
+                if ($this->access('schoolLife.manage')) {
+                        echo '<div class="cms-option school-life">';
+                            echo '<a href="#" class="bs modal-trigger-add-school-life" data-modal="add-school-life-modal" data-authorID="'.$this->currentUser()->getId().'">';
+                                echo '<img src="img/icons/icon-add.png"><span>Add new activity</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
                 
                 
                  
@@ -57,10 +57,12 @@ $this->headTitle($this->headTitle);
 //                                 * after verification normal access is implemented in modal show-school-life-modal 
 //                                 */
                                    $access = 0;
+                                   $authorID = 0;
                                    if ($this->access('schoolLife.manage')){
-                                        $access  = 1; 
+                                        $access  = 1;
+                                        $authorID = $this->currentUser()->getId();
                                    }
-                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'" data-schoolLifeAuthorID="'.$authorID.'">';
                                     echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
                                     if($schoolLife->getPhotoName() !== null){
                                         echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
@@ -76,6 +78,15 @@ $this->headTitle($this->headTitle);
                 echo '</div>';
                 
                 echo '<div class="main-col-right">';
+                
+                    if ($this->access('schoolLife.manage')) {
+                        echo '<div class="cms-option school-life">'
+                            . '<a href="#" class="bs modal-trigger-add-school-life" data-modal="add-school-life-modal" data-authorID="'.$this->currentUser()->getId().'">'
+                                . '<img src="img/icons/icon-add.png"><span>Add new activity</span>'
+                            . '</a>'
+                        . '</div>';
+                    }
+                    
                     foreach ($this->schoolLifeList['schoolLife-right'] as $schoolLife) :
                         echo '<div class="main-box">';
                             echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
@@ -86,16 +97,18 @@ $this->headTitle($this->headTitle);
 //                                 * after verification normal access is implemented in modal show-school-life-modal 
 //                                 */
                                    $access = 0;
+                                   $authorID = 0;
                                    if ($this->access('schoolLife.manage')){
-                                        $access  = 1; 
+                                        $access  = 1;
+                                        $authorID = $this->currentUser()->getId();
                                    }
-                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'">';
-                                    echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
-                                    if($schoolLife->getPhotoName() !== null){
-                                        echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
-                                    }else{
-                                        echo '<img src="upload/school-life/dummy.jpg"/>';
-                                    }
+                                    echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'" data-schoolLifeAuthorID="'.$authorID.'">';
+                                        echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
+                                        if($schoolLife->getPhotoName() !== null){
+                                            echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                        }else{
+                                            echo '<img src="upload/school-life/dummy.jpg"/>';
+                                        }
                                     echo '</a>';
 				echo '</li>';
                             echo '</ul>';
@@ -163,6 +176,71 @@ $this->headTitle($this->headTitle);
 </div>
 <!-- end Show School Life Modal -->
 
+<!-- Add School Life Modal-->
+<div class="modal" id="add-school-life-modal">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box lg">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+                    <label>close</label>
+                </div>
+            </div>
+            <div class="circle-img-wrapper"><img class="school-life" src="img/icons/icon-omega.png" alt="" /></div>
+
+            <!-- original version -->
+            <div class="modal-title">
+                    <span>Add activity</span>
+            </div>
+	
+        </div>
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                
+                <form id="addSchoolLifeForm" class="cms" enctype="multipart/form-data"> 
+                    
+                    <input type="hidden" id="addSchoolLife_authorID" name="addSchoolLife_authorID" required/>
+                    
+                    <div class="width-100">
+                        <label for="addSchoolLifeTitle">Title of activity:</label>
+                        <input type="text" id="addSchoolLifeTitle" name="addSchoolLifeTitle"  autocomplete="off">
+                    </div>
+                    
+                    <div class='width-60-left'>
+                        <label for="addSchoolLifeContent">Content (text):</label>
+                        <textarea id="addSchoolLifeContent" name="addSchoolLifeContent" rows="10"></textarea>
+                    </div>
+                    
+                    <div class='width-35-right'>                       
+                        <div class="width-100">
+                            <label id='addSchoolLifePhotoLabel_current'>Current photo:</label>
+                            <label id='addSchoolLifePhotoLabel'>Add photo:</label>
+                            <label class='preview-img-label add-school-life' id='preview-photo-add-school-life-label'><a href='#'>X</a></label>
+                            <img class='preview-img add-school-life' id='addSchoolLifePhoto_current' />
+
+
+                            <input type="file" id="addSchoolLifePhoto" name="addSchoolLifePhoto">
+<!--                            <input type="checkbox" class='to_remove' id='edit-school-life-remove-photo'>-->
+                        </div>
+                    </div>
+                    
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Add new activity"><span>Add new activity</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Cancel"><span>Cancel</span></button>
+                    </div>
+		</form>
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end Add School Life Modal-->
+
 <!-- Edit School Life Modal-->
 <div class="modal" id="edit-school-life-modal">
 <!--    <div class="modal-sandbox"></div>-->
@@ -178,7 +256,7 @@ $this->headTitle($this->headTitle);
             
             <!-- original version -->
             <div class="modal-title">
-                    <span>Edit School Life</span>
+                    <span>Edit activity</span>
             </div>
 	
         </div>
@@ -192,6 +270,7 @@ $this->headTitle($this->headTitle);
                 <form id="editSchoolLifeForm" class="cms" enctype="multipart/form-data"> 
                     
                     <input type="hidden" id="editSchoolLifeID" name="editSchoolLifeID" required/>
+                    <input type="hidden" id="editSchoolLifeAuthorID" name="editSchoolLifeAuthorID" required/>
                     
                     <div class="width-100">
                         <label for="editSchoolLifeTitle">Edit title:</label>
@@ -248,7 +327,7 @@ $this->headTitle($this->headTitle);
       	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-bin.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
-      		<span>Remove School Life</span>
+      		<span>Remove activity</span>
       	</div>
         </div>
         
@@ -281,6 +360,7 @@ $this->headTitle($this->headTitle);
 <script src="js/summernote/summernote-options.js" type="text/javaScript"></script>
 
 <script src="js/school-life-show-info.js" type="text/javaScript"></script>
+<script src="js/school-life-add.js" type="text/javaScript"></script>
 <script src="js/school-life-edit.js" type="text/javaScript"></script>
 <script src="js/school-life-delete.js" type="text/javaScript"></script>
 

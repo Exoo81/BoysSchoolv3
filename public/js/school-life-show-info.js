@@ -28,12 +28,18 @@ $(".modal-trigger-show-school-life").click(function(e){
     var schoolLifeID = $(this).attr("data-schoolLifeID");
     var color = $(this).attr("data-color"); 
     var access = $(this).data("access") === 1 ? true : false;
+    
+    var schoolLifeAuthorID = null;
+    if(access){
+        schoolLifeAuthorID = $(this).attr("data-schoolLifeAuthorID");
+    }
 
     
 //    console.log('======== Show School Life =======');
 //    console.log('School Life ID: ' + schoolLifeID);
 //    console.log('School Life color: ' + color);
 //    console.log('access: '+ access);
+//    console.log('author ID: '+ schoolLifeAuthorID);
     
     $("#modal-color").attr("class", 'modal-box lg '+color);
     $("#show-school-life-modal .btn-modal-box button").attr("class", 'modal-btn btn-'+color+' small close-btn');
@@ -69,6 +75,7 @@ $(".modal-trigger-show-school-life").click(function(e){
                     $('#adminOption').css({"display":"inline-block"});
                     var editElement = $("a.modal-trigger-edit-school-life");
                         editElement.attr('data-schoolLifeID', data.schoolLife.id);
+                        editElement.attr('data-schoolLifeAuthorID', schoolLifeAuthorID);
                         
                     var deleteElement = $( "a.modal-trigger-delete-school-life" );
                         deleteElement.attr('data-schoolLifeID', data.schoolLife.id);
