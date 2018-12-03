@@ -2,21 +2,8 @@
 
 namespace Schoollife\Service;
 
-
 use Schoollife\Entity\SchoolLife;
-use Classes\Entity\Post;
 use User\Entity\User;
-use Ourteam\Entity\Teacher;
-use Ourteam\Entity\ASDUnit;
-use Ourteam\Entity\LearningSupport;
-use User\Entity\Season;
-
-use Zend\Db\Sql\Select;
-use Zend\Db\ResultSet\ResultSet;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use Zend\Paginator\Paginator;
-
 
 
 /**

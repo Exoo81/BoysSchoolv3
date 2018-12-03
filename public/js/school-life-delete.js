@@ -14,9 +14,9 @@ $(".modal-trigger-delete-school-life").click(function(e){
     var schoolLifeID = $(this).attr("data-schoolLifeID");
     var schoolLifeTitle = $(this).attr("data-schoolLifeTitle");
 
-        console.log('---=== GET SCHOOL LIFE DATA TO DELETE ===---');
-        console.log('school Life ID: ' + schoolLifeID);
-        console.log('school Life title: ' + schoolLifeTitle);
+//        console.log('---=== GET SCHOOL LIFE DATA TO DELETE ===---');
+//        console.log('school Life ID: ' + schoolLifeID);
+//        console.log('school Life title: ' + schoolLifeTitle);
        
     //clear msg label
     $(".response-msg").html('');
@@ -58,8 +58,8 @@ $("#deleteSchoolLifeForm").validate({
     var schoolLifeID = $("#deleteSchoolLifeID").val();
 
  
-    console.log('---=== School Life DATA SEND BY AJAX ===---');
-    console.log('school Life ID: ' + schoolLifeID);
+//    console.log('---=== School Life DATA SEND BY AJAX ===---');
+//    console.log('school Life ID: ' + schoolLifeID);
 
     
     $.ajax({
@@ -69,7 +69,7 @@ $("#deleteSchoolLifeForm").validate({
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 //refresh page
                 location.reload();

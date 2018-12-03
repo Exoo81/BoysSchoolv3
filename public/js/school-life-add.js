@@ -93,11 +93,11 @@ $("#addSchoolLifeForm").validate({
         var schoolLifePhoto = document.querySelector('#addSchoolLifePhoto').files[0];
     
         
-    console.log('---=== School Life ADD Form DATA posted ===---');
-    console.log("schoolLife Title: " + schoolLifeTitle);
-    console.log("schoolLife Content: " + schoolLifeContent);
-    console.log("authorID: " + authorID);
-    console.log("schoolLife Photo: " + schoolLifePhoto);
+//    console.log('---=== School Life ADD Form DATA posted ===---');
+//    console.log("schoolLife Title: " + schoolLifeTitle);
+//    console.log("schoolLife Content: " + schoolLifeContent);
+//    console.log("authorID: " + authorID);
+//    console.log("schoolLife Photo: " + schoolLifePhoto);
 
     
     var formData = new FormData();
@@ -119,7 +119,7 @@ $("#addSchoolLifeForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 //reload page
                 location.reload();
