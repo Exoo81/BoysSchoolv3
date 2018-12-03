@@ -116,6 +116,46 @@ $this->headTitle($this->headTitle);
                     endforeach;
                 
                 echo '</div>';
+                
+
+                /** mobile version **/
+                echo '<div class="main-col">';
+                    if ($this->access('schoolLife.manage')) {
+                        echo '<div class="cms-option school-life">'
+                            . '<a href="#" class="bs modal-trigger-add-school-life" data-modal="add-school-life-modal" data-authorID="'.$this->currentUser()->getId().'">'
+                                . '<img src="img/icons/icon-add.png"><span>Add new activity</span>'
+                            . '</a>'
+                        . '</div>';
+                    }              
+                    foreach ($this->schoolLifeList['schoolLife'] as $schoolLife) :
+                        echo '<div class="main-box">';
+                            echo '<div class="title '.$this->schoolLifeList['colors'][$schoolLife->getId()].'">'.$schoolLife->getTitle().'</div>';
+                                echo '<ul class="school-life-blog-list">';
+                                    echo '<li>';
+    //                                 /*
+    //                                 * checking only if access to this schoolLife 
+    //                                 * after verification normal access is implemented in modal show-school-life-modal 
+    //                                 */
+                                       $access = 0;
+                                       $authorID = 0;
+                                       if ($this->access('schoolLife.manage')){
+                                            $access  = 1;
+                                            $authorID = $this->currentUser()->getId();
+                                       }
+                                        echo '<a href="#" class="modal-trigger-show-school-life" data-modal="show-school-life-modal" data-schoolLifeID="'.$schoolLife->getId().'" data-color="'.$this->schoolLifeList['colors'][$schoolLife->getId()].'" data-access="'.$access.'" data-schoolLifeAuthorID="'.$authorID.'">';
+                                            echo '<span class="roll '.$this->schoolLifeList['colors'][$schoolLife->getId()].'"></span>';
+                                            if($schoolLife->getPhotoName() !== null){
+                                                echo '<img src="upload/school-life/'.$schoolLife->getId().'/'.$schoolLife->getPhotoName().'"/>';
+                                            }else{
+                                                echo '<img src="upload/school-life/dummy.jpg"/>';
+                                            }
+                                        echo '</a>';
+                                    echo '</li>';
+                            echo '</ul>';
+                        echo '</div>';
+                    endforeach;
+                echo '</div>';
+                /** end mobile version **/
                
             }
             
