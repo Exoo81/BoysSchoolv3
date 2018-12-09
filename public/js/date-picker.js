@@ -17,6 +17,12 @@ $(function() {
 
     }),
     
+    $('#addNewsletterDate').datepicker({
+
+        dateFormat: 'dd MM yy'
+
+    }),
+    
     $('#editParentsAssocMeetingDate').datepicker({
 
         dateFormat: 'dd MM yy'
@@ -30,6 +36,7 @@ $(function() {
         'maxTime': '11:30pm',
 
     });
+    
     
     
     

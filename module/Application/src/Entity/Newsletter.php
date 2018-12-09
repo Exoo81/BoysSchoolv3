@@ -22,6 +22,11 @@ class Newsletter {
     protected $title;
     
     /** 
+    * @ORM\Column(name="date_newsletter")  
+    */
+    protected $dateNewsletter;
+    
+    /** 
     * @ORM\Column(name="date_published")  
     */
     protected $datePublished;
@@ -70,6 +75,22 @@ class Newsletter {
      */
     public function setTitle($title) {
         $this->title = $title;
+    }
+    
+    /**
+     * Returns newsletter  date.
+     * @return string
+     */
+    public function getDateNewsletter() {
+        return $this->dateNewsletter;
+    }
+
+    /**
+     * Sets newsletter  date. 
+     * @param string $date_newsletter    
+     */
+    public function setDateNewsletter($date_newsletter) {
+        $this->dateNewsletter = $date_newsletter;
     }
     
     /**

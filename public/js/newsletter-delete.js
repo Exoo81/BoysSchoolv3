@@ -5,19 +5,20 @@
 //open modal with form
 $(".modal-trigger-delete-newsletter").click(function(e){
     e.preventDefault();
-    //close older-newsletter modal
-    $("#older-newsletter").css({"display":"none"});
+    //close manage newsletter modal
+    $("#manage-newsletter-modal").css({"display":"none"});
     
     dataModal = $(this).attr("data-modal");
     var newsletterId = $(this).data("id");
     var newsletterTitle = $(this).data("title");
+    var newsletterDate = $(this).data("date");
     
     //clear msg label
     $(".response-msg").html('');
     
     //insert data
     $("#deleteNewsletterID").val(newsletterId);
-    $("#confirmation-question-newsletter span").html("<br />\"" + newsletterTitle + "\"");
+    $("#confirmation-question-newsletter span").html("<br />\""+newsletterTitle+" "+ newsletterDate + "\"");
     
     //display confirmation question
     $("#confirmation-question-newsletter").css({"display":"block"});

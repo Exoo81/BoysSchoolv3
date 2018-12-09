@@ -354,62 +354,66 @@ $aboutUs = $this->layout()->aboutUs;
             ?>
         </div>
         <!-- end EVENT-BOX -->
+        
+        
         <!-- NEWSLETTER-BOX -->
         <div class="newsletter-box">
             <?php if ($this->access('newsletter.add')) {
                 echo '<div class="cms-option newsletter">'
-                    .'<a href="#" class="bs modal-trigger-add-newsletter" data-modal="add-newsletter-modal">'
-                        .'<img src="img/icons/icon-add.png">'
-                        .'<span>Add newsletter</span>'
+                    .'<a href="#" class="bs modal-trigger" data-modal="manage-newsletter-modal">'
+                        .'<img src="img/icons/icon-settings.png">'
+                        .'<span>Manage newsletters</span>'
                     .'</a>';
                 echo '</div>';
             } ?>
 
             <div class="title purpure"><span>Newsletter</span></div>
+            <hr class="purpure">
             <div class="newsletters-list">
-                <div class="title-sm">Latest newsletters</div>
-                <hr class="purpure">
-
                 <?php 
-                if(!empty($this->newsletters)){
                 
-                    echo '<ul class="file-list">';
-                    
-                        $count_elements = 0;
-                        foreach ($this->newsletters  as $newsletter) :
-
-                            echo '<li>'
-                                    . '<div class="list-element">'
-                                        . '<img class="icon-list" src="img/icons/icon-download.png">'
-                                        . '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">'
-                                            . '<span class="">'.$newsletter->getTitle().'</span>'
-    //                                        . '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>'
-                                        . '</a>'
-                                    . '</div>'
-                                    . '';
-                                    if ($this->access('newsletter.delete')) {
-                                        echo '<div class="admin-option">'
-                                            . '<a href="#" class="tooltip modal-trigger-delete-newsletter" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">  '
-                                                . '<button class="btn-admin">'
-                                                    . '<img class="icon-list" src="img/icons/icon-bin-red.png" >'
-                                                . '</button>'
-                                                . '<span class="tooltiptext remove">Remove</span>'
-                                            . '</a>'
-                                        . '</div>';
-                                    }
-                                    echo '<span class="date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
-                            echo '</li>';
-
-                            $count_elements++;
-                            if($count_elements >= 4){
-                                break;
-                            }
-
+                if(!empty($this->newsletters)){                 
+                        
+                    echo '<div class="newsletter-latest-month">';
+                        echo '<div class="newsletter-title">'.$this->newsletters[1]['month'].'</div>';
+                        foreach ($this->newsletters[1]['newsletters']  as $newsletter) :
+                            
+                            echo '<div class="list-element">';
+                                echo '<img class="icon-list" src="img/icons/icon-download.png">';
+                                    echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+                                        echo '<span class="">'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';
+                                    echo '</a>';
+                            echo '</div>';
+                                
                         endforeach;
-
-                    echo '</ul>';
+                        
+                    echo '</div>';
                     
-                    if(sizeof($this->newsletters) > 4 ){
+                    
+                        if(array_key_exists(2, $this->newsletters)){
+                            echo '<div class="newsletter-month-before">';
+                                echo '<div class="newsletter-title">'.$this->newsletters[2]['month'].'</div>';
+                                foreach ($this->newsletters[2]['newsletters']  as $newsletter) :
+
+                                    echo '<div class="list-element">';
+                                        echo '<img class="icon-list" src="img/icons/icon-download.png">';
+                                        echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+                                            echo '<span class="">'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';
+                                        echo '</a>';
+                                    echo '</div>';
+
+                                endforeach;
+                            echo '</div>';
+                        }else{
+                            echo '<div class="newsletter-month-before empty">';
+                                echo '<div class="no-content">';
+                                    echo '<img src="img/icons/icon-kite.png"/>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+
+                    
+                    if(sizeof($this->newsletters) > 2 ){
                         echo '<div class="more-newsletter">	';							
                             echo '<a href="#" class="bs purpure modal-trigger" data-modal="older-newsletter"> ';
                                 echo '<img src="img/icons/icon-archive.png"> ';
@@ -428,7 +432,7 @@ $aboutUs = $this->layout()->aboutUs;
                 
             </div>
 
-            <div class="subscribe">
+<!--            <div class="subscribe">
                 <div class="sub-start">
                     <div class="sub-logo">
                         <img src="img/icons/icon-envelope-purpure.png">
@@ -446,7 +450,7 @@ $aboutUs = $this->layout()->aboutUs;
                     <h3></h3>
                     <div class="close-subscribing"></div>
                 </div>
-            </div>					
+            </div>					-->
         </div>
         <!-- end NEWSLETTER-BOX -->
 
@@ -857,42 +861,40 @@ $aboutUs = $this->layout()->aboutUs;
         <div class="modal-text">
             <hr class="purpure" />
             
-            <div class="small-table no-border">    
-                <?php 
-                    $count_nl = 0;
-                    
-                        foreach($this->newsletters as $newsletter){
-                            if($count_nl > 3){
-
-                                echo '<div class="small-table-row ">';
-                                    echo '<div class="small-table-cell icon-cell">';
-                                        echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
-                                    echo '</div>';
-                                    echo '<div class="small-table-cell long-title">';
-                                        echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
-                                            echo '<span>'.$newsletter->getTitle().'</span>';                                          
-                                        echo '</a>';
-                                        echo '<span class="newsletter-date">('.date('d-M-Y',strtotime($newsletter->getDatePublished())).')</span>';
-                                    echo '</div>';
-
-                                    echo '<div class="small-table-cell remove">';
-                                        if ($this->access('newsletter.delete')) {
-                                            echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'">';
-                                                echo '<button class="btn-admin">';
-                                                    echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
-                                                echo '</button>';
-                                                echo '<span class="tooltiptext remove">Remove</span>';
-                                            echo '</a>';
-                                        }                               
-                                    echo '</div>';
-
-                                echo '</div>';
+               
+                <?php                    
+                    $count_nl = 1 ;                   
+                    foreach($this->newsletters as $newslettersMonth){
+                        if($count_nl > 2){
+                            $monthName = $newslettersMonth['month'];
                             
+                            echo '<div class="newsletter-title">'.$monthName.'</div>';
+                            
+                            $newsletters = $newslettersMonth['newsletters'];
+                            
+                            foreach($newsletters as $newsletter){
+                                
+                                echo '<div class="small-table no-border">';
+                                    echo '<div class="small-table-row ">';
+                                        echo '<div class="small-table-cell icon-cell">';
+                                            echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
+                                        echo '</div>';
+                                        echo '<div class="small-table-cell long-title">';
+                                            echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+                                                echo '<span>'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';                                          
+                                            echo '</a>';
+                                        echo '</div>';
+
+                                    echo '</div>';
+                                echo '</div>';
                             }
-                        $count_nl++;
                         }
+                            
+                        $count_nl++;
+                    }
+
                 ?>
-            </div>
+
             
             <hr class="purpure" />
     
@@ -905,6 +907,92 @@ $aboutUs = $this->layout()->aboutUs;
   </div>
 </div>
 <!-- end Older Newsletters Modal -->
+
+<!-- Manage Newsletter Modal -->
+<div class="modal" id="manage-newsletter-modal">
+<!--  <div class="modal-sandbox"></div>-->
+  <div class="modal-box sm">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Manage Newsletters</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            <div class="btn-modal-box our-team-add">
+                <button class="modal-trigger-add-newsletter btn-max btn-purpure reversed" data-modal="add-newsletter-modal" data-text="Add newsletter">
+                    <span><i class="fa fa-plus"></i>Add newsletter</span>
+                </button>
+            </div>
+            <hr class="burgundy" />
+            
+            
+<!--            <div class="table-header">List of newletters</div>-->
+           
+            <?php 
+                foreach($this->newsletters as $newslettersMonth){
+                       
+                    $monthName = $newslettersMonth['month'];
+                            
+                    echo '<div class="newsletter-title">'.$monthName.'</div>';
+                            
+                    $newsletters = $newslettersMonth['newsletters'];
+                            
+                    foreach($newsletters as $newsletter){
+                                
+                        echo '<div class="small-table no-border">';
+                            echo '<div class="small-table-row ">';
+                                echo '<div class="small-table-cell icon-cell">';
+                                    echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
+                                echo '</div>';
+                                echo '<div class="small-table-cell long-title">';
+                                    echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+                                        echo '<span>'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';                                          
+                                    echo '</a>';
+                                echo '</div>';
+
+                                echo '<div class="small-table-cell remove">';
+                                    if ($this->access('newsletter.delete')) {
+                                        echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'" data-date="'.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'">';
+                                            echo '<button class="btn-admin">';
+                                                echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                            echo '</button>';
+                                            echo '<span class="tooltiptext remove">Remove</span>';
+                                        echo '</a>';
+                                    }                               
+                                echo '</div>';
+
+                            echo '</div>';
+                        echo '</div>';
+                    }
+                        
+                }
+
+            ?>
+            
+            <hr class="burgundy" />
+            
+          
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Manage Newsletter Modal -->
 
 <!-- Add Newsletters Modal -->
 <div class="modal" id="add-newsletter-modal">
@@ -931,9 +1019,14 @@ $aboutUs = $this->layout()->aboutUs;
                 <div class="loader"></div>
                 <form id="addNewsletterForm" class="cms" enctype="multipart/form-data">
                     
-                    <div class='width-100'>
+<!--                    <div class='width-100'>
                         <label id="newsletterTitle-label" for="addNewsletterTitle">Newsletter title</label>
                         <input type="text" id="addNewsletterTitle" name="addNewsletterTitle" required>
+                    </div>-->
+                    
+                    <div class='width-100'>
+                        <label for="addNewsletterDate">Newsletter date:</label>
+                        <input type="text" name="addNewsletterDate" id="addNewsletterDate" autocomplete="off">
                     </div>
                     
                     <div class='width-100'>
@@ -1863,7 +1956,7 @@ $aboutUs = $this->layout()->aboutUs;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
     <script src="js/summernote/summernote-options.js" type="text/javaScript"></script>
     <!-- subscribe -->
-    <script src="js/subscribe.js" type="text/javaScript"></script>   
+<!--    <script src="js/subscribe.js" type="text/javaScript"></script>   -->
     <script src="js/welcome-msg-edit.js" type="text/javaScript"></script>
     <script src="js/about-us-edit.js" type="text/javaScript"></script>
     <script src="js/news-add.js" type="text/javaScript"></script>

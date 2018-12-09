@@ -107,7 +107,8 @@ class IndexController extends AbstractActionController{
                         ->find(1);
 //        $aboutUs = $this->entityManager->getRepository(AboutUs::class)
 //                        ->find(1);
-        $newsletters = $this->newsletterManager->getSeasonNewsletters();
+//        $newsletters = $this->newsletterManager->getSeasonNewsletters();
+        $newsletters = $this->newsletterManager->getSeasonNewslettersWrappedInMonths();
         
         $ourAwards = $this->entityManager->getRepository(OurAwards::class)
                 ->findBy([], ['datePublished'=>'ASC']);
@@ -519,7 +520,7 @@ class IndexController extends AbstractActionController{
         //get POST email
         $email =  $this->params()->fromPost('email', '');
         
-        $dataResponse = $this->subscriptionManager->addSubscription($email);
+        //$dataResponse = $this->subscriptionManager->addSubscription($email);
         
         // 3. get request object
         $request = $this->getRequest();

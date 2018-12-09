@@ -38,6 +38,19 @@ class NewsletterManager{
         return $newsletters;
     }
     
+    public function getSeasonNewslettersWrappedInMonths(){
+        
+        $newslettersForSeason = $this->getSeasonNewsletters();
+        
+        if($newslettersForSeason !== null){
+            $seasonNewslettersWrappedInMonths = $this->wrappNewsletteresInMonths($newslettersForSeason);
+            
+            return $seasonNewslettersWrappedInMonths;
+        }
+        
+    }
+
+
     public function addNewsletter($formData){
         
         //create new News
@@ -49,6 +62,10 @@ class NewsletterManager{
          //save newsletter other data
         $newsletter->setSeason($this->currentSeason);
         $newsletter->setTitle($formFieldsArray['title']);
+        
+        //$newsletterDate = strtotime($formData['addNewsletterDate']);   //get format m/d/Y
+        $dateNewsletter = date('Y-m-d H:i:s', strtotime($formFieldsArray['addNewsletterDate']));
+        $newsletter->setDateNewsletter($dateNewsletter);
         
         $current_date = date('Y-m-d H:i:s');
         $newsletter->setDatePublished($current_date);
@@ -149,6 +166,54 @@ class NewsletterManager{
         
      }
      
+     private function wrappNewsletteresInMonths($newslettersForSeason){
+         
+         //create list for every month
+         $arrayNewslettersInMonth = array();
+         
+         //list for month
+         $arrayMonth = null;
+        
+         $count = 0;
+        $month = null;
+        foreach($newslettersForSeason as $newsletter){
+             //get newsletter moth
+             $newsletterMonth = date("m",strtotime($newsletter->getDatePublished()));
+             if($newsletterMonth !== $month){
+
+                 // add new month name with new index
+                 $count ++;
+                 $arrayNewslettersInMonth[$count]['month'] = $this->getNewsletterMonthName($newsletterMonth);
+
+                 // create new list of newsletters for this month
+                 $arrayMonth = array();
+                 //add this newsletter to $arrayMonth
+                 array_push($arrayMonth, $newsletter);
+             }else{
+                //add this newsletter to current $arrayMonth
+                 array_push($arrayMonth, $newsletter);
+             }
+            
+             //set $month as $newsletterMonth
+             $month = $newsletterMonth;
+             //save current $arrayMonth in $arrayNewslettersInMonth 
+                 $arrayNewslettersInMonth[$count]['newsletters'] = $arrayMonth;
+             
+             
+         }
+         
+         return $arrayNewslettersInMonth;
+         
+     }
+     
+     private function getNewsletterMonthName($newsletterMonth){
+         
+         $monthNameList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+         
+         return $monthNameList[$newsletterMonth-1];
+     }
+
+
      private function decodeJSONdata($data){
         $formFieldsArray = (array)json_decode($data['objArr'])[0];
         return $formFieldsArray;

@@ -7,10 +7,31 @@
     return this.optional(element) || (element.files[0].size <= param);
 }, 'File size must be less than {0}');*/
 
+//additionam method for jQuery validate addNewsletterDate with format eg. 01 June 2018
+$.validator.addMethod(
+    "formatDateAddMethod",
+    function(value, element) {
+        
+//TODO
+        //format value to format requested
+        //if not error return true
+        return true;
+        
+        /**
+         * TODO this method add to event-edit.js
+         */
+       
+    },
+    "Please enter a date in the format eg. \"05 April 2018\"."
+);
+
 //open modal with form
 $(".modal-trigger-add-newsletter").click(function(e){
     
     e.preventDefault();
+    
+    //close manage newsletter modal
+    $("#manage-newsletter-modal").css({"display":"none"});
     
     dataModal = $(this).attr("data-modal");
     
@@ -28,8 +49,9 @@ $(".modal-trigger-add-newsletter").click(function(e){
 
 $("#addNewsletterForm").validate({
     rules: {
-        addNewsletterTitle: {
-            required: true
+        addNewsletterDate: {
+            required: true,
+            formatDateAddMethod : true
         },
         addNewsletterFile: {              //input name: content
             required: true,   
@@ -52,16 +74,19 @@ $("#addNewsletterForm").validate({
     //clear msg label
         $(".response-msg").html('');
     
-    var title = $("#addNewsletterTitle").val();
+    //var title = $("#addNewsletterTitle").val();
+    var title = 'Newsletter';
+    var addNewsletterDate = $("#addNewsletterDate").val();
     var addNewsletterDoc = document.querySelector('#addNewsletterFile').files[0]; 
 
     console.log(title);
+    console.log(addNewsletterDate);
     console.log(addNewsletterDoc);
     
     var formData = new FormData();
     
     var objArr = [];
-    objArr.push({"title":title});
+    objArr.push({"title":title, "addNewsletterDate":addNewsletterDate});
     
     formData.append('objArr', JSON.stringify(objArr));
 
