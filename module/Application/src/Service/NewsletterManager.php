@@ -33,7 +33,7 @@ class NewsletterManager{
     public function getSeasonNewsletters(){
         
         $newsletters = $this->entityManager->getRepository(Newsletter::class)
-                     ->findBySeason($this->currentSeason, ['datePublished'=>'DESC']);
+                     ->findBySeason($this->currentSeason, ['dateNewsletter'=>'DESC']);
                
         return $newsletters;
     }
@@ -178,7 +178,7 @@ class NewsletterManager{
         $month = null;
         foreach($newslettersForSeason as $newsletter){
              //get newsletter moth
-             $newsletterMonth = date("m",strtotime($newsletter->getDatePublished()));
+             $newsletterMonth = date("m",strtotime($newsletter->getDateNewsletter()));
              if($newsletterMonth !== $month){
 
                  // add new month name with new index
