@@ -44,6 +44,10 @@ class NewsManager{
         $this->currentSeason = $this->seasonManager->getCurrentSeason();
     }
     
+    
+    
+    
+    
     public function getCurrentNewsBlog(){
         
         $newsBlog = $this->entityManager->getRepository(NewsBlog::class)
@@ -76,17 +80,6 @@ class NewsManager{
     }
     
     private function getAllNewsQuery(){
-
-//        $queryBuilder = $this->entityManager->createQueryBuilder();
-//  
-//        $queryBuilder->select('news')
-//            ->from(News::class, 'news')
-//            ->innerJoin('news.season', 'season')
-//            ->where('season.id =:season_id')
-//            ->setParameter('season_id', $this->currentSeason)
-//            ->orderBy('news.datePublished', 'DESC');
-//
-//        return $queryBuilder->getQuery();
         
         $queryBuilder = $this->entityManager->createQueryBuilder();
        
@@ -95,10 +88,8 @@ class NewsManager{
                 ->innerJoin('post.season', 'season')                    
                 ->andWhere('season.id = :seasonID')
                 ->setParameter('seasonID', $this->currentSeason->getId())
-
                 ->orderBy('post.datePublished', 'DESC');
-
-            
+           
             return $queryBuilder->getQuery();
         
         
@@ -195,7 +186,7 @@ class NewsManager{
 
         }
         
-        // save doc file if exist
+        // save photo file if exist
         if(isset($_FILES['newsPhoto'])){
             
 //            $dataResponse['success'] = true;
@@ -220,8 +211,32 @@ class NewsManager{
             // Check if file already exists
             // if not exist
             if (!file_exists($target_file_photo)) {
-                //save on server
-                move_uploaded_file($_FILES["newsPhoto"]["tmp_name"], $target_file_photo);
+                
+                
+                $exif_data = null;
+                $iOS_orientation = null;
+                if($_FILES["newsPhoto"]['type'] == "image/jpeg"){
+                  $photoTempName = $_FILES["newsPhoto"]['tmp_name'];
+                  $exif_data = exif_read_data($photoTempName);
+                  $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                }
+                
+                
+                // save oryginal photo on server
+                if(move_uploaded_file($_FILES["newsPhoto"]["tmp_name"], $target_file_photo)){             
+                    $this->compressImage($target_file_photo, $target_file_photo, $iOS_orientation);  
+                }        
+
+                //return success
+                $dataResponse['success'] = true;
+                //$dataResponse['Photo temp name'] =  $photoTempName;
+                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
+                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
+                $dataResponse['Efix_data'] =  $exif_data;
+                $dataResponse['iOS orientation'] =  $iOS_orientation;
+                $dataResponse['photo size'] =  filesize($target_file_photo);
+                $dataResponse['responseMsg'] =  'Save news TEST.';
+              
             }
 
             /*
@@ -513,5 +528,70 @@ class NewsManager{
         
     }
     
+    private function checkPhotoOrientation($exif_data){
+        
+        //
+        foreach($exif_data as $key => $value){
+            if(strtolower($key)== "orientation"){
+                return $value;
+            }
+        }
+        
+        return 0;
+    }
+    
+    private function checkDegrees($iOS_orientation){
+        
+        switch ($iOS_orientation):
+            case 1:
+                return 0;
+            case 8:
+                return 90;
+            case 3:
+                return 180;
+            case 6:
+                return 270;             
+        endswitch;
+        
+    }
+    
+    private function compressImage($target_file_photo, $image_destination, $iOS_orientation){
+        
+        $image_info = getimagesize($target_file_photo);
+        
+        $file_size = filesize($target_file_photo); 
+        
+        if ($image_info['mime'] == 'image/jpeg') {
+            $image = imagecreatefromjpeg($target_file_photo);
+
+            if($iOS_orientation > 1){
+                $rotateDeg = $this->checkDegrees($iOS_orientation);
+                $imageRotate = imagerotate($image, $rotateDeg, 0);
+                
+                if($file_size > 600000){                //600000 = 600KB
+                    imagejpeg($imageRotate, $image_destination, 50);
+                }else{
+                    imagejpeg($imageRotate, $image_destination, 100);
+                }
+//                        imagedestroy($imageSource);
+//                        imagedestroy($image);
+            }else{
+                if($file_size > 600000){                //600000 = 600KB
+                    imagejpeg($image, $image_destination, 50);
+                }
+            }
+            
+            imagedestroy($image);
+        } elseif ($image_info['mime'] == 'image/png') {
+            $image = imagecreatefrompng($target_file_photo);
+            imagepng($image, $image_destination, 6);
+            
+            imagedestroy($image);
+        }
+    
+        return $image_destination;
+        
+    }
+
 }
 

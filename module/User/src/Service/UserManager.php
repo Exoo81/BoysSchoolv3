@@ -93,7 +93,8 @@ class UserManager
         $this->entityManager->flush();
         
         
-        //send email with password and link to change default password
+        //TODO - not tested send email with password
+        //$this->accountCreatedEmailToNewUser($user);
         
         return $user;
     }
@@ -360,6 +361,66 @@ class UserManager
         
         return true;
     }
+    
+    /*
+     * This methos sending emial to new created user with info about new account and link to changed password
+     * 
+     */
+    
+//    private function accountCreatedEmailToNewUser($user){
+//        
+//        // Generate a token.
+//        $token = Rand::getString(32, '0123456789abcdefghijklmnopqrstuvwxyz', true);
+//        $user->setPasswordResetToken($token);
+//        
+//        $currentDate = date('Y-m-d H:i:s');
+//        $user->setPasswordResetTokenCreationDate($currentDate);  
+//        
+//        $this->entityManager->flush();
+//        
+//        $message = new Message();
+//        
+//        $title = 'New account on www.oranmoreboysns.ie';
+//        $linkToReset = 'www.oranmoreboysns.ie/set-password?token='.$user->getResetPasswordToken();
+//        
+//        $message->addFrom("info@oranmoreboysns.ie", "NEW ACCOUNT - Oranmore National Boys School Website")
+//                ->addTo($user->getEmail()) 
+//                ->setSubject($title);
+//        
+//        $content = '<html><body>';
+//            
+//            $content .= '<p><strong>The account at www.oranmoreboysns.ie has been created for you.</strong></p>';
+//            $content .= '<p><strong>To set your individual password click on the link --> '.$linkToReset.'</strong></p>';
+//            $content .= '<div style="background-color:#ecf0f1; border:1px solid #561818; width:max-content; padding:5px;">';
+//            $content .= '<font color="#561818" face="verdana" size="2" >';
+//                $content .= '<strong>INFO:</strong>This link will be valid for 24 hours.';
+//                $content .= '<p>If you do not want to change the password, please ignore/delete this email.</p>';
+//            $content .= '</font>';
+//            $content .= '</div>';
+//            
+//            $content .= '<p><strong>To log in to the website, click <a href="www.oranmoreboysns.ie/login">www.oranmoreboysns.ie/login</a></strong></p>';
+//            $content .= '<p>Login: Your login is your email address</p>';
+//            
+//            $content .= '<p><strong>Please read the attachment with instructions on how to use your account at www.oranmoreboysns.ie</strong></p>';
+//            
+//            
+//        $content .= '</body></html>';
+//        
+//        $htmlPart = new \Zend\Mime\Part($content);
+//        $htmlPart->type = "text/html";
+//        
+//        $textPart = new \Zend\Mime\Part($linkToReset);
+//        $textPart->type = "text/plain";
+//        
+//        $body = new \Zend\Mime\Message();
+//        $body->setParts(array($textPart, $htmlPart));
+//        
+//        $message->setBody($body);
+//        
+//        $transport = new SendmailTransport();
+//        $transport->send($message);
+//        
+//    }
     
 }
 
