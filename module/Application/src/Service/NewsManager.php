@@ -227,15 +227,14 @@ class NewsManager{
                     $this->compressImage($target_file_photo, $target_file_photo, $iOS_orientation);  
                 }        
 
-                //return success
-                $dataResponse['success'] = true;
-                //$dataResponse['Photo temp name'] =  $photoTempName;
-                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
-                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
-                $dataResponse['Efix_data'] =  $exif_data;
-                $dataResponse['iOS orientation'] =  $iOS_orientation;
-                $dataResponse['photo size'] =  filesize($target_file_photo);
-                $dataResponse['responseMsg'] =  'Save news TEST.';
+//                //return success
+//                $dataResponse['success'] = true;
+//                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_file_photo);
+//                $dataResponse['responseMsg'] =  'Save news TEST.';
               
             }
 
