@@ -450,11 +450,41 @@ class NewsManager{
             //$target new photo
             $target_photo_to_save = $path_to_photo . basename($_FILES["editNewsPhoto"]["name"]);
 
+//            // Check if file already exists
+//            // if not exist
+//            if (!file_exists($target_photo_to_save)) {
+//                //save on server
+//                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
+//            }
+            
             // Check if file already exists
             // if not exist
             if (!file_exists($target_photo_to_save)) {
-                //save on server
-                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
+                
+                
+                $exif_data = null;
+                $iOS_orientation = null;
+                if($_FILES["editNewsPhoto"]['type'] == "image/jpeg"){
+                  $photoTempName = $_FILES["editNewsPhoto"]['tmp_name'];
+                  $exif_data = exif_read_data($photoTempName);
+                  $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                }
+                
+                
+                // save oryginal photo on server
+                if(move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save)){             
+                    $this->compressImage($target_photo_to_save, $target_photo_to_save, $iOS_orientation);  
+                }        
+
+//                //return success
+//                $dataResponse['success'] = true;
+//                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_file_photo);
+//                $dataResponse['responseMsg'] =  'Save news TEST.';
+              
             }
 
             /*
