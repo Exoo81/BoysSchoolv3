@@ -127,7 +127,7 @@ $("#addNewsForm").validate({
                 console.log(data);
                 if(data.success === true){
                     //refresh page
-                    location.reload();
+                    //location.reload();
                 }else{
                     //hidde laoder
                     $(".loader").css({"display":"none"});
