@@ -216,15 +216,14 @@ class NewsManager{
                 $exif_data = null;
                 $iOS_orientation = null;
                 if($_FILES["newsPhoto"]['type'] == "image/jpeg"){
-                  $photoTempName = $_FILES["newsPhoto"]['tmp_name'];
-                  $exif_data = exif_read_data($photoTempName);
+                  $exif_data = exif_read_data($_FILES["newsPhoto"]['tmp_name']);
                   $iOS_orientation = $this->checkPhotoOrientation($exif_data);
                 }
                 
                 
                 // save oryginal photo on server
                 if(move_uploaded_file($_FILES["newsPhoto"]["tmp_name"], $target_file_photo)){             
-                    $this->compressImage($target_file_photo, $target_file_photo, $iOS_orientation);  
+                    $this->processImage($target_file_photo, $iOS_orientation);  
                 }        
 
                 //return success
@@ -450,12 +449,35 @@ class NewsManager{
             //$target new photo
             $target_photo_to_save = $path_to_photo . basename($_FILES["editNewsPhoto"]["name"]);
 
-            // Check if file already exists
-            // if not exist
-            if (!file_exists($target_photo_to_save)) {
-                //save on server
-                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
-            }
+//            // Check if file already exists
+//            // if not exist
+//            if (!file_exists($target_photo_to_save)) {
+//                //save on server
+//                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
+//            }
+            
+                $exif_data = null;
+                $iOS_orientation = null;
+                if($_FILES["editNewsPhoto"]['type'] == "image/jpeg"){
+                  $photoTempName = $_FILES["editNewsPhoto"]['tmp_name'];
+                  $exif_data = exif_read_data($photoTempName);
+                  $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                }
+                
+                
+                // save oryginal photo on server
+                if(move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save)){             
+                    $this->processImage($target_photo_to_save, $iOS_orientation);  
+                }        
+
+                //return success
+                $dataResponse['success'] = true;
+                $dataResponse['Photo name'] =  $_FILES["editNewsPhoto"]['name'];
+                $dataResponse['Photo type'] =  $_FILES["editNewsPhoto"]['type'];
+                $dataResponse['Efix_data'] =  $exif_data;
+                $dataResponse['iOS orientation'] =  $iOS_orientation;
+                $dataResponse['photo size'] =  filesize($target_photo_to_save);
+                $dataResponse['responseMsg'] =  'Save edit news TEST.';
 
             /*
             * Save in db
@@ -554,7 +576,7 @@ class NewsManager{
         
     }
     
-    private function compressImage($target_file_photo, $image_destination, $iOS_orientation){
+    private function processImage($target_file_photo, $iOS_orientation){
         
         $image_info = getimagesize($target_file_photo);
         
@@ -565,13 +587,26 @@ class NewsManager{
             //shrink photo
             list($width, $heigth)= getimagesize($target_file_photo);
             
-            if($width > 1024){
-                $newWidth = $width*0.5;
-                $newHeigth = $heigth*0.5; 
+            // if Landscape else Portrait
+            if($width > $heigth){
+                if($width > 2048){
+                $newWidth = 2048;
+                $newHeigth = ($heigth*$newWidth)/$width; 
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+                
             }else{
-                $newWidth = $width;
-                $newHeigth = $heigth;
+                if($heigth > 1024){
+                    $newHeigth = 1024 ;
+                    $newWidth = ($width*$newHeigth)/$heigth;
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
             }
+            
 
             $image = imagecreatefromjpeg($target_file_photo);
             $truecolor = imagecreatetruecolor($newWidth, $newHeigth);
@@ -582,14 +617,14 @@ class NewsManager{
                 $imageRotate = imagerotate($truecolor, $rotateDeg, 0);
                 
                 if($file_size > 500000){                //500000 = 500KB
-                    imagejpeg($imageRotate, $image_destination, 70);
+                    imagejpeg($imageRotate, $target_file_photo, 70);
                 }else{
-                    imagejpeg($imageRotate, $image_destination, 100);
+                    imagejpeg($imageRotate, $target_file_photo, 100);
                 }
                 imagedestroy($imageRotate);
             }else{
                 if($file_size > 500000){                //500000 = 500KB
-                    imagejpeg($truecolor, $image_destination, 70);
+                    imagejpeg($truecolor, $target_file_photo, 70);
                 }
             }
             
@@ -600,25 +635,36 @@ class NewsManager{
             //shrink photo
             list($width, $heigth)= getimagesize($target_file_photo);
             
-            if($width > 1024){
-                $newWidth = $width*0.5;
-                $newHeigth = $heigth*0.5; 
+            // if Landscape else Portrait
+            if($width > $heigth){
+                if($width > 2048){
+                $newWidth = 2048;
+                $newHeigth = ($heigth*$newWidth)/$width; 
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+                
             }else{
-                $newWidth = $width;
-                $newHeigth = $heigth;
+                if($heigth > 1024){
+                    $newHeigth = 1024 ;
+                    $newWidth = ($width*$newHeigth)/$heigth;
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
             }
             
             $image = imagecreatefrompng($target_file_photo);
             $truecolor = imagecreatetruecolor($newWidth, $newHeigth);
             imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
             
-            imagepng($truecolor, $image_destination, 5);
+            imagepng($truecolor, $target_file_photo, 5);
             
             imagedestroy($image);
             imagedestroy($truecolor);
         }
     
-        return $image_destination;
         
     }
 
