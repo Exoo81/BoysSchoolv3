@@ -153,7 +153,7 @@ $( "#addNewsDoc" ).change(function(event) {
     var isValid = checkValidationForDoc(event.target.files[0]);
     //alert("is Valid file type? " + isValid);
     if(isValid){
-        $("#preview-doc-add-news-label").css({"display":"block"});
+        //$("#preview-doc-add-news-label").css({"display":"block"});
     }else{
         $("#preview-doc-add-news-label").css({"display":"block"});
         //add not-valid class
@@ -168,6 +168,10 @@ $( "#preview-doc-add-news-label" ).click(function() {
         $("#addNewsDoc").val(null);
     //hide remove link
         $("#preview-doc-add-news-label").css({"display":"none"});
+    //remove not-falid class
+        $("#preview-doc-add-news-label").removeClass("not-valid");
+    //remove jquert validation error for editSchoolLifePhoto
+        $("#addNewsDoc-error").css({"display":"none"});
 });
 
 //preview photo loaded in file field in form
