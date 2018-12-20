@@ -53,7 +53,7 @@ $("#addNewsletterForm").validate({
             required: true,
             formatDateAddMethod : true
         },
-        addNewsletterFile: {              //input name: content
+        addNewsletterFile: {          
             required: true,   
             extension: "pdf|docx|doc"
             //filesize: 10000000           // 4MB

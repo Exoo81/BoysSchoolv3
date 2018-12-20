@@ -28552,6 +28552,14 @@ form.cms label.preview-book-list-label{
     padding-bottom: 0;
 }
 
+form.cms label.preview-doc-label.add-news{
+    position: absolute;
+    left: 100%;
+    top: 40px;
+    margin-left: 20px;
+    padding: 15px 0;
+}
+
 form.cms label.preview-book-list-label{
     position: relative;
 }
@@ -28783,31 +28791,36 @@ label.preview-book-list-label a{
     text-decoration: none;
 }
 
-label.preview-img-label a{
+label.preview-img-label a,
+label.preview-doc-label a{
     font-size: 60px;
 }
 
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1400px) {
-        label.preview-img-label a{
+        label.preview-img-label a,
+        label.preview-doc-label a{
             font-size: 50px;
         }
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 1000px) {
-        label.preview-img-label a{
+        label.preview-img-label a,
+        label.preview-doc-label a{
             font-size: 60px;
         }
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 700px) {
-        label.preview-img-label a{
+        label.preview-img-label a,
+        label.preview-doc-label a{
             font-size: 50px;
         }
     }
     /* Breakpoint */
     @media screen and (max-width: 370px) {
-        label.preview-img-label a{
+        label.preview-img-label a,
+        label.preview-doc-label a{
             font-size: 40px;
         }
     }

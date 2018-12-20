@@ -3,9 +3,9 @@
  */
 
 //additionam method for file max size
-/*$.validator.addMethod('filesize', function (value, element, param) {
+$.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, 'File size must be less than {0}');*/
+}, 'File size must be less than {0}');
 
 
 //open modal with form
@@ -24,7 +24,11 @@ $(".modal-trigger-add-news").click(function(e){
     
     //reset form
         document.getElementById("addNewsForm").reset();
-        
+    
+    //hide remove doc button
+        $("#preview-doc-add-news-label").css({"display":"none"});
+    //remove not-falid class
+        $("#preview-doc-add-news-label").removeClass("not-valid");
     //restet preview photo field
     //reset file field and remove img src=''
         $("#addNewsPhoto").val(null);
@@ -61,22 +65,24 @@ $("#addNewsForm").validate({
         },
         addNewsPhoto: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         },
         addNewsDoc: {              //input name: content
             required: false,   
-            extension: "pdf|docx|doc"
-            //filesize: 10000000           // 4MB
+            extension: "pdf|docx|doc",
+            filesize: 4000000           // 4MB
         }
       
     },
     messages:{
         addNewsPhoto:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be less than 4MB"
         },
         addNewsDoc:{
-            extension: "Allowed file extensions: pdf, docx, doc"
+            extension: "Allowed file extensions: pdf, docx, doc",
+            filesize: "File size must be less than 4MB"
         },
     },
             
@@ -140,6 +146,30 @@ $("#addNewsForm").validate({
     }
 });
 
+//show remove button for doc field afrer file loaded
+$( "#addNewsDoc" ).change(function(event) {
+    
+    // validation if photo and photo size
+    var isValid = checkValidationForDoc(event.target.files[0]);
+    //alert("is Valid file type? " + isValid);
+    if(isValid){
+        $("#preview-doc-add-news-label").css({"display":"block"});
+    }else{
+        $("#preview-doc-add-news-label").css({"display":"block"});
+        //add not-valid class
+       $("#preview-doc-add-news-label").addClass("not-valid");
+    }
+});
+
+//remove file from doc field "X"
+$( "#preview-doc-add-news-label" ).click(function() {
+
+    //reset file field 
+        $("#addNewsDoc").val(null);
+    //hide remove link
+        $("#preview-doc-add-news-label").css({"display":"none"});
+});
+
 //preview photo loaded in file field in form
 $( "#addNewsPhoto" ).change(function(event) {
     var reader = new FileReader();
@@ -149,8 +179,8 @@ $( "#addNewsPhoto" ).change(function(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
     
-    // validation if photo file
-    var isValid = checkValidationForFileExtension(event.target.files[0]); 
+    // validation if photo and photo size
+    var isValid = checkValidationForImage(event.target.files[0]); 
     
     if(isValid){
         //remove addNewsPhoto file field
@@ -194,16 +224,50 @@ $( "#preview-img-add-news-label" ).click(function() {
 
 });
 
-function checkValidationForFileExtension(file){
+function checkValidationForImage(file){
     
     var isValid = true;
     var fileType = file["type"];
     
-    //alert(fileType);
-    var ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
-    if ($.inArray(fileType, ValidImageTypes) < 0) {
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
          isValid = false;
     }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        isValid = false;
+    }
+    
+    
+    return isValid;
+    
+}
+
+function checkValidationForDoc(file){
+    
+    var isValid = true;
+    var fileType = file["type"];
+    //alert("Doc type: " + fileType);
+    
+    //validation for file type;
+    var validDocTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if ($.inArray(fileType, validDocTypes) < 0) {
+         isValid = false;
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        isValid = false;
+    }
+    
     
     return isValid;
     
