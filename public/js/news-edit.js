@@ -208,10 +208,10 @@ $("#editNewsForm").validate({
             contentType: false,
             data: formData,
             success: function(data){
-                console.log(data);
+                //console.log(data);
                     if(data.success === true){
                         //refresh page
-                        //location.reload(); 
+                        location.reload(); 
 
                     }else{
                         //display response-msg
