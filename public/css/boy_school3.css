@@ -28246,11 +28246,7 @@ form.cms img.preview-img.edit-school-life{
         }
     }
 
-/*form.cms img.preview-img.add-news,
-form.cms img.preview-img.edit-news{
-    width: 80%;
-    margin-left: 10%
-}*/
+
 
 form.cms label.preview-img-label{
     display: none;
@@ -28259,6 +28255,7 @@ form.cms label.preview-img-label{
 }
 
 form.cms label.preview-img-label.add-news,
+form.cms label.preview-img-label.edit-news,
 form.cms label.preview-img-label.edit-news,
 form.cms label.preview-img-label.add-class,
 form.cms label.preview-img-label.edit-class,
@@ -28273,6 +28270,7 @@ form.cms label.preview-img-label.edit-school-life{
     @media screen and (min-width: 1001px) and (max-width: 1400px) {
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
+        form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
         form.cms label.preview-img-label.edit-class,
         form.cms label.preview-img-label.add-school-life,
@@ -28286,6 +28284,7 @@ form.cms label.preview-img-label.edit-school-life{
     @media screen and (min-width: 701px) and (max-width: 1000px) {
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
+        form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
         form.cms label.preview-img-label.edit-class,
         form.cms label.preview-img-label.add-school-life,
@@ -28298,6 +28297,7 @@ form.cms label.preview-img-label.edit-school-life{
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 700px) {
         form.cms label.preview-img-label.add-news,
+        form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
         form.cms label.preview-img-label.edit-class,
@@ -28313,6 +28313,7 @@ form.cms label.preview-img-label.edit-school-life{
     @media screen and (max-width: 479px) {
         form.cms label.preview-img-label.add-news,
         form.cms label.preview-img-label.edit-news,
+        form.cms label.preview-img-label.edit-news,
         form.cms label.preview-img-label.add-class,
         form.cms label.preview-img-label.edit-class,
         form.cms label.preview-img-label.add-school-life,
@@ -28323,26 +28324,130 @@ form.cms label.preview-img-label.edit-school-life{
         }
     }
 
-/*form.cms label.preview-img-label.add-news,
-form.cms label.preview-img-label.edit-news{
+form.cms label.input-X-button{
+    display: none;
     position: absolute;
-    left: 20px;
-    top: 50px;
+    left: 100%;
+    top: 40px;
+    margin-left: 20px;
+    margin-bottom: -50px;
+    padding: 15px 0;
 }
-    * Breakpoint *
-    @media screen and (min-width: 801px) and (max-width: 1020px) {
-        form.cms label.preview-img-label.add-news,
-        form.cms label.preview-img-label.edit-news{
-            left: 60px;
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
         }
     }
-    * Breakpoint *
-    @media screen and (min-width: 551px) and (max-width: 800px) {
-        form.cms label.preview-img-label.add-news,
-        form.cms label.preview-img-label.edit-news{
-            left: 40px;
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
         }
-    }*/
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        form.cms label.input-X-button{
+            left: 100%;
+            top: 40px;
+            z-index: 100;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        form.cms label.input-X-button{
+            left: 93%;
+            top: 40px;
+            z-index: 100;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        form.cms label.input-X-button{
+            left: 93%;
+            top: 40px;
+            z-index: 100;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        form.cms label.input-X-button{
+            left: 93%;
+            top: 40px;
+            z-index: 100;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        form.cms label.input-X-button{
+            left: 93%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        form.cms label.input-X-button{
+            left: 85%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        form.cms label.input-X-button{
+            left: 85%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        form.cms label.input-X-button{
+            left: 80%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        form.cms label.input-X-button{
+            left: 80%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        form.cms label.input-X-button{
+            left: 80%;
+            top: 35px;
+            z-index: 100;
+        }
+    }
     
 form.cms label.preview-img-label.add-news.not-valid,
 form.cms label.preview-img-label.edit-news.not-valid,
@@ -28780,6 +28885,7 @@ form.cms .post-gallery input[type='file']{
 
 
 label.preview-img-label a,
+label.input-X-button a,
 label.preview-doc-label a,
 label.preview-video-label a,
 label.preview-add-book-label a,
@@ -28792,6 +28898,7 @@ label.preview-book-list-label a{
 }
 
 label.preview-img-label a,
+label.input-X-button a,
 label.preview-doc-label a{
     font-size: 60px;
 }
@@ -28799,6 +28906,7 @@ label.preview-doc-label a{
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1400px) {
         label.preview-img-label a,
+        label.input-X-button a,
         label.preview-doc-label a{
             font-size: 50px;
         }
@@ -28806,6 +28914,7 @@ label.preview-doc-label a{
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 1000px) {
         label.preview-img-label a,
+        label.input-X-button a,
         label.preview-doc-label a{
             font-size: 60px;
         }
@@ -28813,6 +28922,7 @@ label.preview-doc-label a{
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 700px) {
         label.preview-img-label a,
+        label.input-X-button a,
         label.preview-doc-label a{
             font-size: 50px;
         }
@@ -28820,6 +28930,7 @@ label.preview-doc-label a{
     /* Breakpoint */
     @media screen and (max-width: 370px) {
         label.preview-img-label a,
+        label.input-X-button a,
         label.preview-doc-label a{
             font-size: 40px;
         }

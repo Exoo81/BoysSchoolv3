@@ -27,6 +27,11 @@ $(".modal-trigger-add-news").click(function(e){
     
     //hide remove doc button
         $("#preview-doc-add-news-label").css({"display":"none"});
+    //hide current doc label
+        $("#addNewsDocLabel_current").css({"display":"none"});
+    //show add doc label
+        $("#addNewsDocLabel").css({"display":"block"});
+    
     //remove not-falid class
         $("#preview-doc-add-news-label").removeClass("not-valid");
     //restet preview photo field
@@ -35,6 +40,11 @@ $(".modal-trigger-add-news").click(function(e){
         $('#preview-img-add-news').removeAttr('src');
         $("#preview-img-add-news").css({"display":"none"});
         $("#preview-img-add-news-label").css({"display":"none"});
+    //show "add News photo" label
+        $("#addNewsPhotoLabel").css({"display":"block"});
+    //hide "current news photo" label
+        $("#addNewsPhotoLabel_current").css({"display":"none"});
+       
         
     //remove not-falid class
         $("#preview-img-add-news-label").removeClass("not-valid");
@@ -83,7 +93,7 @@ $("#addNewsForm").validate({
         addNewsDoc:{
             extension: "Allowed file extensions: pdf, docx, doc",
             filesize: "File size must be less than 4MB"
-        },
+        }
     },
             
     submitHandler: function() {
@@ -149,20 +159,28 @@ $("#addNewsForm").validate({
 //show remove button for doc field afrer file loaded
 $( "#addNewsDoc" ).change(function(event) {
     
-    // validation if photo and photo size
-    var isValid = checkValidationForDoc(event.target.files[0]);
-    //alert("is Valid file type? " + isValid);
-    if(isValid){
-        //$("#preview-doc-add-news-label").css({"display":"block"});
-    }else{
-        $("#preview-doc-add-news-label").css({"display":"block"});
-        //add not-valid class
-       $("#preview-doc-add-news-label").addClass("not-valid");
-    }
+    //show current doc label and hide add doc label
+    $("#addNewsDocLabel_current").css({"display":"block"});
+    $("#addNewsDocLabel").css({"display":"none"});
+    
+    $("#preview-doc-add-news-label").css({"display":"block"});
+    
+//    // validation if photo and photo size
+//    var isValid = checkValidationForDoc(event.target.files[0]);
+//    //alert("is Valid file type? " + isValid);
+//    if(!isValid){
+//        //add not-valid class
+//       $("#preview-doc-add-news-label").addClass("not-valid");
+//    }
 });
 
 //remove file from doc field "X"
 $( "#preview-doc-add-news-label" ).click(function() {
+    
+    //show add doc label and hide current doc label
+    $("#addNewsDocLabel").css({"display":"block"});
+    $("#addNewsDocLabel_current").css({"display":"none"});
+    
 
     //reset file field 
         $("#addNewsDoc").val(null);
@@ -183,6 +201,10 @@ $( "#addNewsPhoto" ).change(function(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
     
+    //hide "add News photo" label AND show "current news photo" label
+        $("#addNewsPhotoLabel").css({"display":"none"});
+        $("#addNewsPhotoLabel_current").css({"display":"block"});
+    
     // validation if photo and photo size
     var isValid = checkValidationForImage(event.target.files[0]); 
     
@@ -202,16 +224,16 @@ $( "#addNewsPhoto" ).change(function(event) {
         //add not-valid class
         $("#preview-img-add-news-label").addClass("not-valid");
     }
-    
-    
-//    $("#preview-img-add-news").css({"display":"block"});
-//    //disply remove img button
-//    $("#preview-img-add-news-label").css({"display":"block"});
+
     
 });
 
 //remove img src + hidde "remove button"
 $( "#preview-img-add-news-label" ).click(function() {
+    
+    //show "add News photo" label AND hide "current news photo" label
+        $("#addNewsPhotoLabel").css({"display":"block"});
+        $("#addNewsPhotoLabel_current").css({"display":"none"});
     //restet preview photo field
     //reset file field and remove img src=''
         $("#addNewsPhoto").val(null);
@@ -252,30 +274,30 @@ function checkValidationForImage(file){
     
 }
 
-function checkValidationForDoc(file){
-    
-    var isValid = true;
-    var fileType = file["type"];
-    //alert("Doc type: " + fileType);
-    
-    //validation for file type;
-    var validDocTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    if ($.inArray(fileType, validDocTypes) < 0) {
-         isValid = false;
-    }
-    
-    //validation for file size max. 4MB
-    var fileSize =  file["size"];
-    //alert ("File size: " + fileSize);
-    
-    if(fileSize > 4000000){
-        isValid = false;
-    }
-    
-    
-    return isValid;
-    
-}
+//function checkValidationForDoc(file){
+//    
+//    var isValid = true;
+//    var fileType = file["type"];
+//    //alert("Doc type: " + fileType);
+//    
+//    //validation for file type;
+//    var validDocTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+//    if ($.inArray(fileType, validDocTypes) < 0) {
+//         isValid = false;
+//    }
+//    
+//    //validation for file size max. 4MB
+//    var fileSize =  file["size"];
+//    //alert ("File size: " + fileSize);
+//    
+//    if(fileSize > 4000000){
+//        isValid = false;
+//    }
+//    
+//    
+//    return isValid;
+//    
+//}
 
 
 //close modal

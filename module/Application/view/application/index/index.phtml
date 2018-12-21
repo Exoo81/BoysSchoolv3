@@ -524,8 +524,9 @@ $aboutUs = $this->layout()->aboutUs;
                     </div>
                     
                     <div class="width-35-right">
-                        <label for="addNewsDoc">Add document:</label>
-                        <label class='preview-img-label add-news' id='preview-doc-add-news-label' for="preview-doc-add-news"><a href='#'>X</a></label>
+                        <label id="addNewsDocLabel_current">Current document:</label>
+                        <label id="addNewsDocLabel">Add document:</label>
+                        <label class='input-X-button' id='preview-doc-add-news-label' for="preview-doc-add-news"><a href='#'>X</a></label>
                         <input type="file" id="addNewsDoc" name="addNewsDoc">
                     </div>
                     
@@ -536,7 +537,9 @@ $aboutUs = $this->layout()->aboutUs;
                     
                     <div class='width-35-right'>                       
                         <div class="width-100">
-                            <label for="addNewsPhoto">Add news photo:</label>
+                            <label id="addNewsPhotoLabel_current">Current news photo:</label>
+                            <label id="addNewsPhotoLabel">Add news photo:</label>
+                            
 
                             <label class='preview-img-label add-news' id='preview-img-add-news-label' for="preview-img-add-news"><a href='#'>X</a></label>
                             <img class='preview-img add-news' id='preview-img-add-news'>
@@ -602,13 +605,14 @@ $aboutUs = $this->layout()->aboutUs;
                                 <td class="icon"><img class="icon" src="img/icons/icon-document.png"></td>
                                 <td class="text" id='editNewsDocTitle'></td>
                                 <td class="option">
-                                    <label class="preview-doc-label" id="preview-doc-edit-news-label">
+                                    <label class="preview-doc-label" id="preview-doc-edit-news-label_current">
                                         <a href="#" class="remove_field_doc">X</a>
                                     </label>
                                 </td>
                             </tr>
                         </table>
                         
+                        <label class='input-X-button' id='preview-doc-edit-news-label'><a href='#'>X</a></label>
                         <input type="file" id="editNewsDoc" name="editNewsDoc">
                         <input type="checkbox" class='to_remove' id='edit-news-remove-doc'>
                     </div>

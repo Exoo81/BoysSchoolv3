@@ -663,6 +663,7 @@ class NewsManager{
             
             imagedestroy($image);
             imagedestroy($truecolor);
+            imagedestroy($image_info);
         }
     
         

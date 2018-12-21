@@ -1,6 +1,10 @@
 /* 
  * Edit News
  */
+//additionam method for file max size
+$.validator.addMethod('filesize', function (value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param);
+}, 'File size must be less than {0}');
 
 // open modal with news data
 $(".modal-trigger-edit-news").click(function(e){
@@ -20,11 +24,6 @@ $(".modal-trigger-edit-news").click(function(e){
             
         //remove photo set false
             $("#edit-news-remove-photo").attr("checked", false);
-          
-//        //hide img
-//            $("#previewImgEdit").css({"display":"none"});
-//        //hide "remove link"
-//            $("#previewImgEditLabel").css({"display":"none"});
         
         //hide edit news form
         $("#editNewsForm").css({"display":"none"});
@@ -33,6 +32,8 @@ $(".modal-trigger-edit-news").click(function(e){
         $("#editNewsDoc").css({"display":"none"});
         $("#editNewsDocLabel_current").css({"display":"none"});
         $("#editNewsDoc_current").css({"display":"none"});
+        $("#preview-doc-edit-news-label").css({"display":"none"});
+        
         
         
         //hide all news photo fields
@@ -85,17 +86,17 @@ $(".modal-trigger-edit-news").click(function(e){
                     
                     //if news with photo
                     if(data.newsToEdit.photoName !== null){
-                        //show label for current doc
+                        //show "Current photo" label
                         $("#editNewsPhotoLabel_current").css({"display":"block"});
                         //show img + insert src of file
                         $("#editNewsPhoto_current").attr("src",data.photoPath);
                         $("#editNewsPhoto_current").css({"display":"block"}); 
                         //show remove link
                         $("#preview-photo-edit-news-label").css({"display":"block"});
-                        //show input field for photo
-                        $("#editNewsPhoto").css({"display":"block"});                       
+                        //hide input field for photo
+                        $("#editNewsPhoto").css({"display":"none"});                       
                     }else{
-                        //show input field label for photo
+                        //show "Add news photo" label
                         $("#editNewsPhotoLabel").css({"display":"block"});
                         //show input field for photo
                         $("#editNewsPhoto").css({"display":"block"});
@@ -130,22 +131,24 @@ $("#editNewsForm").validate({
         },
         editNewsPhoto: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         },
         editNewsDoc: {
             required: false,
-            extension: "pdf|docx|doc"
-            //filesize: 10000000           // 4MB
+            extension: "pdf|docx|doc",
+            filesize: 4000000           // 4MB
         }
       
     },
     messages:{
         editNewsPhoto:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be less than 4MB"
         },
         editNewsDoc:{
-            extension: "Allowed file extensions: pdf, docx, doc"
+            extension: "Allowed file extensions: pdf, docx, doc",
+            filesize: "File size must be less than 4MB"
         }
     },
             
@@ -224,14 +227,58 @@ $("#editNewsForm").validate({
 
 });
 
-//remove img src + hidde "remove button" for doc
+//show remove button "X" for not valid file in DOC field
+$( "#editNewsDoc" ).change(function(event) {
+    //hide add doc label and show current doc label
+    $("#editNewsDocLabel_current").css({"display":"block"});
+    $("#editNewsDocLabel").css({"display":"none"});
+    
+    //show remove "X" button
+    $("#preview-doc-edit-news-label").css({"display":"block"});
+//    // validation if photo and photo size
+//    var isValid = checkValidationForDoc(event.target.files[0]);
+//    if(!isValid){
+//        //alert("is Valid file type? " + isValid);
+//        if(!isValid){
+//            //add not-valid class
+//           //$("#preview-doc-edit-news-label").addClass("not-valid");
+//        }
+//    }
+    
+    
+});
+
+//remove NOT-VALID file from DOC field
 $( "#preview-doc-edit-news-label" ).click(function() {
-    //show input doc
-    $("#editNewsDoc").css({"display":"block"});
-    $("#editNewsDoc").val(null);
+    
+    //show add doc label and hide current doc label
+    $("#editNewsDocLabel").css({"display":"block"});
+    $("#editNewsDocLabel_current").css({"display":"none"});
+  
+    //reset file field and remove img src=''
+        $("#editNewsDoc").val(null);
+    //hide remove "X" button for not-valid field
+        $("#preview-doc-edit-news-label").css({"display":"none"});
+    //remove not-falid class
+        $("#preview-doc-edit-news-label").removeClass("not-valid");
+    //remove jquert validation error for editSchoolLifePhoto
+        $("#editNewsDoc-error").css({"display":"none"});
+
+});
+
+//remove CURRENT DOC -  remove button "X" for CURRENT doc
+$( "#preview-doc-edit-news-label_current" ).click(function() {
     
     //hide current document
     $('#editNewsDoc_current').css({"display":"none"});
+    //hide current label
+    $('#editNewsDocLabel_current').css({"display":"none"});
+    
+    //show add doc label editNewsDocLabel
+    $('#editNewsDocLabel').css({"display":"block"});
+    //show input doc
+    $("#editNewsDoc").val(null);
+    $("#editNewsDoc").css({"display":"block"});
     
     //remove doc set true
     $("#edit-news-remove-doc").attr("checked", true);
@@ -247,25 +294,62 @@ $( "#editNewsPhoto" ).change(function(event) {
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
-    $("#editNewsPhoto_current").css({"display":"block"});
-    //disply remove img button
-    $("#preview-photo-edit-news-label").css({"display":"block"});
+//    $("#editNewsPhoto_current").css({"display":"block"});
+//    //disply remove img button
+//    $("#preview-photo-edit-news-label").css({"display":"block"});
     
-    //remove photo set false
-    //$("#edit-news-remove-photo").attr("checked", false);
+    
+    //hide "Add news photo" label AND show "Current news photo" label
+        $("#editNewsPhotoLabel").css({"display":"none"});
+        $("#editNewsPhotoLabel_current").css({"display":"block"});
+        
+    // validation if photo and photo size
+    var isValid = checkValidationForImage(event.target.files[0]); 
+    
+    if(isValid){
+        //hide editNewsPhoto file field
+            $("#editNewsPhoto").css({"display":"none"});
+        // show img
+            $("#editNewsPhoto_current").css({"display":"block"});
+        //disply remove img button
+            $("#preview-photo-edit-news-label").css({"display":"block"});
+        //remove not-falid class
+            $("#preview-photo-edit-news-label").removeClass("not-valid");
+        //remove jquert validation error for editSchoolLifePhoto
+            $("#editNewsPhoto-error").css({"display":"none"});    
+    }else{
+        //show editNewsPhoto file field
+            $("#editNewsPhoto").css({"display":"block"});
+        //disply remove img button
+            $("#preview-photo-edit-news-label").css({"display":"block"});
+        //add not-valid class
+            $("#preview-photo-edit-news-label").addClass("not-valid");
+    }
     
 });
 
 //remove img src + hidde "remove button" for photo
 $( "#preview-photo-edit-news-label" ).click(function() {
-    //restet preview photo field
-    //reset file field and remove img src=''
+    
+    //hide "Current photo" label AND show "Add news photo" label
+        $("#editNewsPhotoLabel_current").css({"display":"none"});
+        $("#editNewsPhotoLabel").css({"display":"block"});
+    
+    
+    //reset file field AND show
         $("#editNewsPhoto").val(null);
+        $("#editNewsPhoto").css({"display":"block"});
+    //preview photo - remove 'src' AND hidde
         $('#editNewsPhoto_current').removeAttr('src');
         $("#editNewsPhoto_current").css({"display":"none"});
-    //hide remove link
+    //hide remove "X" button for photo
         $("#preview-photo-edit-news-label").css({"display":"none"});
-    //remove photo set true
+        
+    //remove jquert validation error for editSchoolLifePhoto
+        $("#editNewsPhoto-error").css({"display":"none"});
+        
+        
+    //set - 'remove photo' == true
     $("#edit-news-remove-photo").attr("checked", true);
 
 });
