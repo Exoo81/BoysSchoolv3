@@ -3,24 +3,19 @@
  */
 
 //additionam method for file max size
-/*$.validator.addMethod('filesize', function (value, element, param) {
+$.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, 'File size must be less than {0}');*/
+}, 'File size must be less than {0}');
 
 //additionam method for jQuery validate addNewsletterDate with format eg. 01 June 2018
 $.validator.addMethod(
-    "formatDateAddMethod",
+    "addNewsletterFormatDateAddMethod",
     function(value, element) {
-        
-//TODO
-        //format value to format requested
-        //if not error return true
-        return true;
-        
-        /**
-         * TODO this method add to event-edit.js
-         */
-       
+        var d = Date.parse(value);
+        //alert('value: ' +value + '    Date: ' + d );     
+        if (!isNaN(d)) {  // d.valueOf() could also work
+            return true;
+        }
     },
     "Please enter a date in the format eg. \"05 April 2018\"."
 );
@@ -51,18 +46,23 @@ $("#addNewsletterForm").validate({
     rules: {
         addNewsletterDate: {
             required: true,
-            formatDateAddMethod : true
+            addNewsletterFormatDateAddMethod : true
         },
         addNewsletterFile: {          
             required: true,   
-            extension: "pdf|docx|doc"
-            //filesize: 10000000           // 4MB
+            extension: "pdf|docx|doc",
+            filesize: 4000000           // 4MB
         }
       
     },
     messages:{
+        addNewsletterDate:{
+            addNewsletterFormatDateAddMethod: "Incorrect date format. The correct format is eg. 01 April 2019."
+
+        },
         addNewsletterFile:{
-            extension: "Allowed file extensions: pdf, docx, doc"
+            extension: "Allowed file extensions: pdf, docx, doc",
+            filesize: "File size must be less than 4MB"
         }
     },
             

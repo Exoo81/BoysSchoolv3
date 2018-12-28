@@ -3,20 +3,15 @@
  */
 //additionam method for jQuery validate addEventDate with format eg. 01 June 2018
 $.validator.addMethod(
-    "formatDateAddMethod",
+    "addEventFormatDateAddMethod",
     function(value, element) {
-        
-//TODO
-        //format value to format requested
-        //if not error return true
-        return true;
-        
-        /**
-         * TODO this method add to event-edit.js
-         */
-       
+        var d = Date.parse(value);
+        //alert('value: ' +value + '    Date: ' + d );     
+        if (!isNaN(d)) {  // d.valueOf() could also work
+            return true;
+        }
     },
-    "Please enter a date in the format eg. \"05 April 2018\"."
+    "Please enter a date in the format eg. \"06 April 2018\"."
 );
 
 //open modal with form
@@ -50,14 +45,18 @@ $("#addEventForm").validate({
         },
         addEventDate: {
             required: true,
-            formatDateAddMethod : true
+            addEventFormatDateAddMethod : true
         },
         addEventContent: {
             required: true,
             maxlength: 1000       //max. text length = 1000 char
-        },
-        
-      
+        } 
+    },
+    messages:{
+        addEventDate:{
+            addEventFormatDateAddMethod: "Incorrect date format. The correct format is eg. 02 April 2019."
+
+        }
     },
              
     submitHandler: function() {
