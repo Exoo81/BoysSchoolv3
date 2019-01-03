@@ -151,8 +151,8 @@ $("#editClassBlogForm").validate({
         },
         editClassBlogPhoto: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         }
       
     },
@@ -164,7 +164,8 @@ $("#editClassBlogForm").validate({
             valueNotEquals: "Please select teacher" 
         },
         editClassBlogPhoto:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be less than 4MB"
         }
     },
             
@@ -245,40 +246,64 @@ $( "#editClassBlogPhoto" ).change(function(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
     
-    //remove "add class photo" label
-    $("#editClassBlogPhotoLabel").css({"display":"none"});
-    // remove input field for photo
-    $("#editClassBlogPhoto").css({"display":"none"});
-    
-    // show curent photo label
-    $("#editClassBlogPhotoLabel_current").css({"display":"block"});
-    // show img
-    $("#editClassBlogPhoto_current").css({"display":"block"});
-    //disply remove img button
+    //disply remove img button (X)
     $("#preview-photo-edit-class-blog-label").css({"display":"block"});
+
+
+    //hide "add ClassBlog photo" label AND show "current ClassBlog photo" label
+        $("#editClassBlogPhotoLabel").css({"display":"none"});
+        $("#editClassBlogPhotoLabel_current").css({"display":"block"});
+        
+    // validation if photo and photo size
+    var isValid = checkValidationForImage(event.target.files[0]);
     
-    //remove photo set false
-    //$("#edit-news-remove-photo").attr("checked", false);
+    if(isValid){
+        //remove addClassPhoto file field
+        $("#editClassBlogPhoto").css({"display":"none"});
+        // show img
+        $("#editClassBlogPhoto_current").css({"display":"block"});
+        //disply remove img button (X)
+        $("#preview-photo-edit-class-blog-label").css({"display":"block"});
+        //remove not-falid class
+        $("#preview-photo-edit-class-blog-label").removeClass("not-valid");
+        
+        //hide error info if exist
+            $("#editClassBlogPhoto-error").css({"display":"none"});
+    }else{
+        $("#editClassBlogPhoto").css({"display":"block"});
+        //disply remove img button (X)
+        $("#preview-photo-edit-class-blog-label").css({"display":"block"});
+        //add not-valid class
+        $("#preview-photo-edit-class-blog-label").addClass("not-valid");
+ 
+        //show error info if exist
+            $("#editClassBlogPhoto-error").css({"display":"block"});
+    }
+
     
 });
 
+
+
 //remove img src + hidde "remove button" for photo
 $("#preview-photo-edit-class-blog-label").click(function() {
+
+    //show "add ClassBlog photo" label AND hide "current ClassBlog photo" label
+        $("#editClassBlogPhotoLabel").css({"display":"block"});
+        $("#editClassBlogPhotoLabel_current").css({"display":"none"});
     //restet preview photo field
     //reset file field and remove img src=''
         $("#editClassBlogPhoto").val(null);
         $('#editClassBlogPhoto_current').removeAttr('src');
         $("#editClassBlogPhoto_current").css({"display":"none"});
-        $("#editClassBlogPhotoLabel_current").css({"display":"none"});
-    //hide remove link
+    //hide remove link (X)
         $("#preview-photo-edit-class-blog-label").css({"display":"none"});
-    //remove photo set true
-    $("#edit-class-blog-remove-photo").attr("checked", true);
-    
-    //show "add class photo" label
-    $("#editClassBlogPhotoLabel").css({"display":"block"});
-    //show input field for photo
-    $("#editClassBlogPhoto").css({"display":"block"});
+        
+        //show editClassPhoto file field
+        $("#editClassBlogPhoto").css({"display":"block"});
+        
+        //remove jquert validation error for editClassBlogPhoto
+        $("#editClassBlogPhoto-error").css({"display":"none"});
 
 });
 

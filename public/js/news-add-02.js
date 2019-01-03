@@ -164,14 +164,6 @@ $( "#addNewsDoc" ).change(function(event) {
     $("#addNewsDocLabel").css({"display":"none"});
     
     $("#preview-doc-add-news-label").css({"display":"block"});
-    
-//    // validation if photo and photo size
-//    var isValid = checkValidationForDoc(event.target.files[0]);
-//    //alert("is Valid file type? " + isValid);
-//    if(!isValid){
-//        //add not-valid class
-//       $("#preview-doc-add-news-label").addClass("not-valid");
-//    }
 });
 
 //remove file from doc field "X"
@@ -217,12 +209,18 @@ $( "#addNewsPhoto" ).change(function(event) {
         $("#preview-img-add-news-label").css({"display":"block"});
         //remove not-falid class
             $("#preview-img-add-news-label").removeClass("not-valid");
+       
+        //hide error info if exist
+            $("#addNewsPhoto-error").css({"display":"none"});
     }else{
         $("#addNewsPhoto").css({"display":"block"});
         //disply remove img button
         $("#preview-img-add-news-label").css({"display":"block"});
         //add not-valid class
         $("#preview-img-add-news-label").addClass("not-valid");
+        
+        //show error info if exist
+            $("#addNewsPhoto-error").css({"display":"block"});
     }
 
     
@@ -245,7 +243,7 @@ $( "#preview-img-add-news-label" ).click(function() {
         //show addNewsPhoto file field
         $("#addNewsPhoto").css({"display":"block"});
         
-        //remove jquert validation error for editSchoolLifePhoto
+        //remove jquert validation error for addNewsPhoto
         $("#addNewsPhoto-error").css({"display":"none"});
 
 });

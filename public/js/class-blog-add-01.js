@@ -8,9 +8,9 @@ $.validator.addMethod("valueNotEquals", function(value, element, arg){
   return arg !== value;
  }, "Value must not equal arg.");
 //additionam method for file max size
-/*$.validator.addMethod('filesize', function (value, element, param) {
+$.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, 'File size must be less than {0}');*/
+}, 'File size must be less than {0}');
 
 //open modal with form
 $(".modal-trigger-add-class-blog").click(function(e){
@@ -33,6 +33,11 @@ $(".modal-trigger-add-class-blog").click(function(e){
         $('#preview-img-add-class').removeAttr('src');
         $("#preview-img-add-class").css({"display":"none"});
         $("#preview-img-add-class-label").css({"display":"none"});
+        
+     //show "add Class photo" label
+        $("#addClassPhotoLabel").css({"display":"block"});
+    //hide "current class photo" label
+        $("#addClassPhotoLabel_current").css({"display":"none"});
         
     //clear all select fields
         $('#classLevel').empty();
@@ -94,8 +99,8 @@ $("#addClassBlogForm").validate({
         },
         addClassPhoto: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         }
       
     },
@@ -107,7 +112,8 @@ $("#addClassBlogForm").validate({
             valueNotEquals: "Please select teacher" 
         },
         addClassPhoto:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be less than 4MB"
         }
     },
             
@@ -144,7 +150,7 @@ $("#addClassBlogForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 //reload page
                 location.reload();
@@ -169,13 +175,50 @@ $( "#addClassPhoto" ).change(function(event) {
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
-    $("#preview-img-add-class").css({"display":"block"});
-    //disply remove img button
+    
+    
+    //disply remove img button (X)
     $("#preview-img-add-class-label").css({"display":"block"});
+
+
+    //hide "add News photo" label AND show "current news photo" label
+        $("#addClassPhotoLabel").css({"display":"none"});
+        $("#addClassPhotoLabel_current").css({"display":"block"});
+        
+    // validation if photo and photo size
+    var isValid = checkValidationForImage(event.target.files[0]);
+    
+    if(isValid){
+        //remove addClassPhoto file field
+        $("#addClassPhoto").css({"display":"none"});
+        // show img
+        $("#preview-img-add-class").css({"display":"block"});
+        //disply remove img button
+        $("#preview-img-add-class-label").css({"display":"block"});
+        //remove not-falid class
+        $("#preview-img-add-class-label").removeClass("not-valid");
+        
+        //hide error info if exist
+            $("#addClassPhoto-error").css({"display":"none"});
+    }else{
+        $("#addClassPhoto").css({"display":"block"});
+        //disply remove img button
+        $("#preview-img-add-class-label").css({"display":"block"});
+        //add not-valid class
+        $("#preview-img-add-class-label").addClass("not-valid");
+ 
+        //show error info if exist
+            $("#addClassPhoto-error").css({"display":"block"});
+    }
 });
+
 
 //remove img src + hidde "remove button"
 $( "#preview-img-add-class-label" ).click(function() {
+
+    //show "add Class photo" label AND hide "current Class photo" label
+        $("#addClassPhotoLabel").css({"display":"block"});
+        $("#addClassPhotoLabel_current").css({"display":"none"});
     //restet preview photo field
     //reset file field and remove img src=''
         $("#addClassPhoto").val(null);
@@ -183,7 +226,38 @@ $( "#preview-img-add-class-label" ).click(function() {
         $("#preview-img-add-class").css({"display":"none"});
     //hide remove link
         $("#preview-img-add-class-label").css({"display":"none"});
+        
+        //show addClassPhoto file field
+        $("#addClassPhoto").css({"display":"block"});
+        
+        //remove jquert validation error for addClassPhoto
+        $("#addClassPhoto-error").css({"display":"none"});
 });
+
+
+function checkValidationForImage(file){
+    
+    var isValid = true;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+         isValid = false;
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        isValid = false;
+    }
+    
+    
+    return isValid;
+    
+}
 
 
 
