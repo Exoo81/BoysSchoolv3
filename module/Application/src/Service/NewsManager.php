@@ -216,8 +216,11 @@ class NewsManager{
                 $exif_data = null;
                 $iOS_orientation = null;
                 if($_FILES["newsPhoto"]['type'] == "image/jpeg"){
-                  $exif_data = exif_read_data($_FILES["newsPhoto"]['tmp_name']);
-                  $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                    if(function_exists('exif_read_data')){
+                        $exif_data = @exif_read_data($_FILES["newsPhoto"]['tmp_name']);
+                        $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                    }
+                  
                 }
                 
                 
@@ -228,11 +231,11 @@ class NewsManager{
 
                 //return success
                 $dataResponse['success'] = true;
-                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
-                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
-                $dataResponse['Efix_data'] =  $exif_data;
-                $dataResponse['iOS orientation'] =  $iOS_orientation;
-                $dataResponse['photo size'] =  filesize($target_file_photo);
+//                $dataResponse['Photo name'] =  $_FILES["newsPhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["newsPhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_file_photo);
                 $dataResponse['responseMsg'] =  'Save news TEST.';
               
             }
@@ -449,19 +452,14 @@ class NewsManager{
             //$target new photo
             $target_photo_to_save = $path_to_photo . basename($_FILES["editNewsPhoto"]["name"]);
 
-//            // Check if file already exists
-//            // if not exist
-//            if (!file_exists($target_photo_to_save)) {
-//                //save on server
-//                move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save);
-//            }
             
                 $exif_data = null;
                 $iOS_orientation = null;
                 if($_FILES["editNewsPhoto"]['type'] == "image/jpeg"){
-                  $photoTempName = $_FILES["editNewsPhoto"]['tmp_name'];
-                  $exif_data = exif_read_data($photoTempName);
-                  $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                    if(function_exists('exif_read_data')){
+                        $exif_data = @exif_read_data($_FILES["editNewsPhoto"]['tmp_name']);
+                        $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                    }
                 }
                 
                 
@@ -472,11 +470,11 @@ class NewsManager{
 
                 //return success
                 $dataResponse['success'] = true;
-                $dataResponse['Photo name'] =  $_FILES["editNewsPhoto"]['name'];
-                $dataResponse['Photo type'] =  $_FILES["editNewsPhoto"]['type'];
-                $dataResponse['Efix_data'] =  $exif_data;
-                $dataResponse['iOS orientation'] =  $iOS_orientation;
-                $dataResponse['photo size'] =  filesize($target_photo_to_save);
+//                $dataResponse['Photo name'] =  $_FILES["editNewsPhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["editNewsPhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_photo_to_save);
                 $dataResponse['responseMsg'] =  'Save edit news TEST.';
 
             /*
@@ -619,12 +617,14 @@ class NewsManager{
                 if($file_size > 500000){                //500000 = 500KB
                     imagejpeg($imageRotate, $target_file_photo, 70);
                 }else{
-                    imagejpeg($imageRotate, $target_file_photo, 100);
+                    imagejpeg($imageRotate, $target_file_photo, 90);
                 }
                 imagedestroy($imageRotate);
             }else{
                 if($file_size > 500000){                //500000 = 500KB
                     imagejpeg($truecolor, $target_file_photo, 70);
+                }else{
+                    imagejpeg($truecolor, $target_file_photo, 90);
                 }
             }
             
@@ -637,8 +637,8 @@ class NewsManager{
             
             // if Landscape else Portrait
             if($width > $heigth){
-                if($width > 2048){
-                $newWidth = 2048;
+                if($width > 860){
+                $newWidth = 860;
                 $newHeigth = ($heigth*$newWidth)/$width; 
                 }else{
                     $newWidth = $width;
@@ -646,8 +646,8 @@ class NewsManager{
                 }
                 
             }else{
-                if($heigth > 1024){
-                    $newHeigth = 1024 ;
+                if($heigth > 860){
+                    $newHeigth = 860 ;
                     $newWidth = ($width*$newHeigth)/$heigth;
                 }else{
                     $newWidth = $width;
@@ -657,13 +657,20 @@ class NewsManager{
             
             $image = imagecreatefrompng($target_file_photo);
             $truecolor = imagecreatetruecolor($newWidth, $newHeigth);
+            
+            imagealphablending($truecolor, false);
+            imagesavealpha($truecolor,true);
+            $transparent = imagecolorallocatealpha($truecolor, 255, 255, 255, 127);
+            imagefilledrectangle($truecolor, 0, 0, $newWidth, $newHeigth, $transparent);
             imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
             
-            imagepng($truecolor, $target_file_photo, 5);
+            //imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
+            
+            
+            imagepng($truecolor, $target_file_photo, 6);
             
             imagedestroy($image);
             imagedestroy($truecolor);
-            imagedestroy($image_info);
         }
     
         

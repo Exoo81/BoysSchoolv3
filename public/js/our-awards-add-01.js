@@ -35,14 +35,15 @@ $("#addOurAwardForm").validate({
         },
         addOurAwardFile: {              //input name: content
             required: true,   
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         }
       
     },
     messages:{
         addOurAwardFile:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be less than 4MB"
         }
     },
             
@@ -76,7 +77,7 @@ $("#addOurAwardForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 //refresh page
                 location.reload();
