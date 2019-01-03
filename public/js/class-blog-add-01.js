@@ -100,8 +100,12 @@ $("#addClassBlogForm").validate({
       
     },
     messages:{
-        classLevel: { valueNotEquals: "Please select class level" },
-        classTeacher: { valueNotEquals: "Please select teacher" },
+        classLevel: { 
+            valueNotEquals: "Please select class level" 
+        },
+        classTeacher: { 
+            valueNotEquals: "Please select teacher" 
+        },
         addClassPhoto:{
             extension: "Allowed file extensions: jpg, jpeg, png, gif"
         }
