@@ -520,12 +520,29 @@ class ClassesManager{
             //$target
             $target_file_photo = $path_to_save_photo . basename($_FILES["classPhoto"]["name"]);
 
-            // Check if file already exists
-            // if not exist
-            if (!file_exists($target_file_photo)) {
-                //save on server
-                move_uploaded_file($_FILES["classPhoto"]["tmp_name"], $target_file_photo);
+            
+            $exif_data = null;
+            $iOS_orientation = null;
+            if($_FILES["classPhoto"]['type'] == "image/jpeg"){
+                if(function_exists('exif_read_data')){
+                    $exif_data = @exif_read_data($_FILES["classPhoto"]['tmp_name']);
+                    $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                }    
             }
+                
+            // save oryginal photo on server
+            if(move_uploaded_file($_FILES["classPhoto"]["tmp_name"], $target_file_photo)){             
+                $this->processImage($target_file_photo, $iOS_orientation);  
+            }        
+
+                //return success
+                $dataResponse['success'] = true;
+//                $dataResponse['Photo name'] =  $_FILES["classPhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["classPhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_file_photo);
+                $dataResponse['responseMsg'] =  'Save news TEST.';
             
             /*
             * Save in db
@@ -917,6 +934,138 @@ class ClassesManager{
         }
         
         return false;
+    }
+    
+    private function checkPhotoOrientation($exif_data){
+        
+        //
+        foreach($exif_data as $key => $value){
+            if(strtolower($key)== "orientation"){
+                return $value;
+            }
+        }
+        
+        return 0;
+    }
+    
+    private function checkDegrees($iOS_orientation){
+        
+        switch ($iOS_orientation):
+            case 1:
+                return 0;
+            case 8:
+                return 90;
+            case 3:
+                return 180;
+            case 6:
+                return 270;             
+        endswitch;
+        
+    }
+    
+    private function processImage($target_file_photo, $iOS_orientation){
+        
+        $image_info = getimagesize($target_file_photo);
+        
+        $file_size = filesize($target_file_photo); 
+        
+        if ($image_info['mime'] == 'image/jpeg') {
+            
+            //shrink photo
+            list($width, $heigth)= getimagesize($target_file_photo);
+            
+            // if Landscape else Portrait
+            if($width > $heigth){
+                if($width > 1024){
+                    $newWidth = 1024;
+                    $newHeigth = ($heigth*$newWidth)/$width; 
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+                
+            }else{
+                if($heigth > 1024){
+                    $newHeigth = 1024 ;
+                    $newWidth = ($width*$newHeigth)/$heigth;
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+            }
+            
+
+            $image = imagecreatefromjpeg($target_file_photo);
+            $truecolor = imagecreatetruecolor($newWidth, $newHeigth);
+            imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
+
+            if($iOS_orientation > 1){
+                $rotateDeg = $this->checkDegrees($iOS_orientation);
+                $imageRotate = imagerotate($truecolor, $rotateDeg, 0);
+                
+//                if($file_size > 500000){                //500000 = 500KB
+//                    imagejpeg($imageRotate, $target_file_photo, 70);
+//                }else{
+//                    imagejpeg($imageRotate, $target_file_photo, 95);
+//                }
+                imagejpeg($imageRotate, $target_file_photo, 95);
+                
+                imagedestroy($imageRotate);
+            }else{
+//                if($file_size > 500000){                //500000 = 500KB
+//                    imagejpeg($truecolor, $target_file_photo, 70);
+//                }else{
+//                    imagejpeg($truecolor, $target_file_photo, 95);
+//                }
+                imagejpeg($truecolor, $target_file_photo, 95);
+            }
+            
+            imagedestroy($image);
+            imagedestroy($truecolor);
+        }elseif ($image_info['mime'] == 'image/png') {
+            
+            //shrink photo
+            list($width, $heigth)= getimagesize($target_file_photo);
+            
+            // if Landscape else Portrait
+            if($width > $heigth){
+                if($width > 860){
+                $newWidth = 860;
+                $newHeigth = ($heigth*$newWidth)/$width; 
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+                
+            }else{
+                if($heigth > 860){
+                    $newHeigth = 860 ;
+                    $newWidth = ($width*$newHeigth)/$heigth;
+                }else{
+                    $newWidth = $width;
+                    $newHeigth = $heigth;
+                }
+            }
+            
+            $image = imagecreatefrompng($target_file_photo);
+            $truecolor = imagecreatetruecolor($newWidth, $newHeigth);
+            
+            imagealphablending($truecolor, false);
+            imagesavealpha($truecolor,true);
+            $transparent = imagecolorallocatealpha($truecolor, 255, 255, 255, 127);
+            imagefilledrectangle($truecolor, 0, 0, $newWidth, $newHeigth, $transparent);
+            imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
+            
+            //imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
+            
+            
+            imagepng($truecolor, $target_file_photo, 6);
+            
+            imagedestroy($image);
+            imagedestroy($truecolor);
+        }
+    
+        
     }
     
     

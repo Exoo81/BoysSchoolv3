@@ -68,8 +68,7 @@ class OurAwardsManager{
 //                move_uploaded_file($_FILES["ourAwardPhoto"]["tmp_name"], $target_file_photo);
 //            }
             
-            // Check if file already exists
-            // if not exist  
+             
                 $exif_data = null;
                 $iOS_orientation = null;
                 if($_FILES["ourAwardPhoto"]['type'] == "image/jpeg"){
