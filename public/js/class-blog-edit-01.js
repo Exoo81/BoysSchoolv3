@@ -283,8 +283,6 @@ $( "#editClassBlogPhoto" ).change(function(event) {
     
 });
 
-
-
 //remove img src + hidde "remove button" for photo
 $("#preview-photo-edit-class-blog-label").click(function() {
 
