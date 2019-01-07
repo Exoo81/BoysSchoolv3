@@ -76,7 +76,7 @@ $(".modal-trigger-edit-class-blog").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                     
                 //insert classBlogID
@@ -302,6 +302,9 @@ $("#preview-photo-edit-class-blog-label").click(function() {
         
         //remove jquert validation error for editClassBlogPhoto
         $("#editClassBlogPhoto-error").css({"display":"none"});
+        
+    //set - 'remove photo' == true
+        $("#edit-class-blog-remove-photo").attr("checked", true);
 
 });
 

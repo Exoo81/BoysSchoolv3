@@ -56,7 +56,7 @@ $(".modal-trigger-add-class-blog").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 
                 //insert options for classLevel
@@ -150,7 +150,7 @@ $("#addClassBlogForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                 //reload page
                 location.reload();

@@ -462,7 +462,7 @@ class NewsManager{
                     }
                 }
                 
-                
+          
                 // save oryginal photo on server
                 if(move_uploaded_file($_FILES["editNewsPhoto"]["tmp_name"], $target_photo_to_save)){             
                     $this->processImage($target_photo_to_save, $iOS_orientation);  
