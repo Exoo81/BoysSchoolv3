@@ -682,12 +682,18 @@ $this->headTitle($this->headTitle);
                     </div>
                     
                     <div class='width-50-left'>
-                        <label for="addPostDoc">Add document:</label>
+                        <label id="addPostDocLabel_current">Current document:</label>
+                        <label id="addPostDocLabel">Add document:</label>
+                        <label class='input-X-button' id='preview-doc-add-post-label'><a href='#'>X</a></label>
                         <input type="file" id="addPostDoc" name="addPostDoc">
                     </div>
                     
                     <div class='width-50-right'>
-                        <label for="addPostVideo">Add video:</label>
+<!--                        <label for="addPostVideo">Add video:</label>
+                        <input type="file" id="addPostVideo" name="addPostVideo">-->
+                        <label id="addPostVideoLabel_current">Current video:</label>
+                        <label id="addPostVideoLabel">Add video:</label>
+                        <label class='input-X-button' id='preview-video-add-post-label'><a href='#'>X</a></label>
                         <input type="file" id="addPostVideo" name="addPostVideo">
                     </div>
                     
@@ -909,6 +915,46 @@ $this->headTitle($this->headTitle);
     </div>
 </div>
 <!-- end Show Video Modal-->
+
+<!-- Error Post Modal -->
+<div class="modal" id="error-post-modal">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box red sm">
+        <div class="modal-header">
+            <div class="modal-title">
+                    <span>Error</span>
+            </div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <div class='confirmation-question' id='error-input-file'></div>
+                <div class='confirmation-question' id='error-description-input-file'><span class='error-description'></span></div>
+                <hr class="red" />
+                <button type="button" class="modal-btn btn-red small error-close-btn" data-text="OK"><span>OK</span></button>
+                
+                
+<!--                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <div class='confirmation-question' id='confirmation-question-post'>You really want to delete post: <span></span></div>
+                <form id="deletePostForm" class="cms" enctype="multipart/form-data">
+                    <input type="hidden" id="deletePostID" name="deletePostID" required>
+                    <input type="hidden" id="deleteTeacherID" name="deleteTeacherID" required>
+                    <input type="hidden" id="deleteLearningSupportID" name="deleteLearningSupportID">
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-green medium reversed left" data-text="Yes"><span><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Yes</span></button>
+                        <button type="button" class="modal-btn btn-red medium reversed close-btn right" data-text="No"><span><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>No</span></button>
+                    </div>
+                </form>-->
+   
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end error post Modal -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>

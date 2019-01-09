@@ -20944,6 +20944,12 @@ img.end-tl{
     color: #561818;
 }
 
+.modal-text .confirmation-question span.error-description{
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: .9em;
+}
+
 .modal-text .create-account-question span{
     display: block;
     text-align: center;
@@ -28209,6 +28215,9 @@ form.cms div.error{
     
 }
 
+/*form.cms .post-gallery label.error{
+    line-height: 1.1em;
+}*/
 
 
 form.cms img.preview-img{

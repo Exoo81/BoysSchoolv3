@@ -25,12 +25,12 @@ $(".modal-trigger-add-news").click(function(e){
     //reset form
         document.getElementById("addNewsForm").reset();
     
-    //hide remove doc button
-        $("#preview-doc-add-news-label").css({"display":"none"});
     //hide current doc label
         $("#addNewsDocLabel_current").css({"display":"none"});
     //show add doc label
         $("#addNewsDocLabel").css({"display":"block"});
+    //hide remove doc button
+        $("#preview-doc-add-news-label").css({"display":"none"});
     
     //remove not-falid class
         $("#preview-doc-add-news-label").removeClass("not-valid");
@@ -156,7 +156,7 @@ $("#addNewsForm").validate({
     }
 });
 
-//show remove button for doc field afrer file loaded
+//show 'Current doc' Label and remove 'X' button for doc field after file loaded
 $( "#addNewsDoc" ).change(function(event) {
     
     //show current doc label and hide add doc label
@@ -166,21 +166,21 @@ $( "#addNewsDoc" ).change(function(event) {
     $("#preview-doc-add-news-label").css({"display":"block"});
 });
 
-//remove file from doc field "X"
+//remove file from doc field - "X"
 $( "#preview-doc-add-news-label" ).click(function() {
     
-    //show add doc label and hide current doc label
+    //show 'Add doc' Label and hide 'Current doc' Label
     $("#addNewsDocLabel").css({"display":"block"});
     $("#addNewsDocLabel_current").css({"display":"none"});
     
 
-    //reset file field 
+    //reset doc field 
         $("#addNewsDoc").val(null);
     //hide remove link
         $("#preview-doc-add-news-label").css({"display":"none"});
     //remove not-falid class
         $("#preview-doc-add-news-label").removeClass("not-valid");
-    //remove jquert validation error for editSchoolLifePhoto
+    //remove jquert validation error for addNewsDoc
         $("#addNewsDoc-error").css({"display":"none"});
 });
 

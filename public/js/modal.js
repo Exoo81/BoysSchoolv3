@@ -15,3 +15,11 @@ $(".close-modal, .btn-modal-box .close-btn").click(function(){
 
 
 
+
+//close error modal
+$(".error-close-btn").click(function(){
+	$("#error-post-modal").css({"display":"none"});
+});
+
+
+
