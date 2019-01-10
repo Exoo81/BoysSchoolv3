@@ -967,7 +967,6 @@ class ClassesManager{
     
     private function checkPhotoOrientation($exif_data){
         
-        //
         foreach($exif_data as $key => $value){
             if(strtolower($key)== "orientation"){
                 return $value;
@@ -1084,10 +1083,7 @@ class ClassesManager{
             $transparent = imagecolorallocatealpha($truecolor, 255, 255, 255, 127);
             imagefilledrectangle($truecolor, 0, 0, $newWidth, $newHeigth, $transparent);
             imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
-            
-            //imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
-            
-            
+        
             imagepng($truecolor, $target_file_photo, 6);
             
             imagedestroy($image);

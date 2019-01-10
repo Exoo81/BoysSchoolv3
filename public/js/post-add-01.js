@@ -107,7 +107,7 @@ $("#addPostForm").validate({
         addPostVideo: {              //input name: content
             required: false,   
             accept: "video/*",
-            filesize: 200000000           // 200MB raw file before commpression
+            filesize: 300000000           // 300MB raw file before commpression
         },
         addPostFile: {
             required: false,
@@ -160,7 +160,7 @@ $("#addPostForm").validate({
     //number of inputs in input_fields_wrap
     var gallerySize = $('#input_fields_wrap input').length;
     
-
+//    console.log('--=== ADD POST DATA ==--');
 //    console.log('postTitle: ' + postTitle);
 //    console.log('postContent: ' + postContent);
 //    console.log('blogID: ' + blogID);
@@ -170,6 +170,7 @@ $("#addPostForm").validate({
 //    console.log('teacher ID: '+ teacherID);
 //    console.log('learningSupport ID: '+ learningSupportID);
 //    console.log('author ID: '+ authorID);
+//    console.log('--====================--');
     
     
     var formData = new FormData();
@@ -200,7 +201,7 @@ $("#addPostForm").validate({
 
     
     $.ajax({
-        url: 'classblog/addpost',                   // ???
+        url: 'classblog/addpost',                   
         type: 'POST',
         processData: false,
         contentType: false,
@@ -309,7 +310,12 @@ $( "#add_file_button" ).click(function() {
         //set new last_index
         $('#input_fields_wrap').attr('data-last-index', index++);
     }else{
-        alert('Gallery is full.');
+        //show error modal
+            $("#error-post-modal").css({"display":"block"});
+        //insert error-information
+            $("#error-input-file").html("Gallery is full.");
+        //insert error-description
+            $("#error-description-input-file span").html('The maximum size of the gallery is 12 photos.'); 
     }
     
     //if more then 0 post-gallery show gallery input_fields_wrap and label
