@@ -2,6 +2,11 @@
  * Edit Post
  */
 
+//additionam method for file max size
+$.validator.addMethod('filesize', function (value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param);
+}, 'File size must be less than {0}');
+
 // open modal with news data
 $(".modal-trigger-edit-post").click(function(e){
     
@@ -15,8 +20,25 @@ $(".modal-trigger-edit-post").click(function(e){
     //reset form
     document.getElementById("editPostForm").reset();
     
+    //hide all post document fields
+    $("#editPostDocLabel").css({"display":"none"});
+    $("#editPostDoc").css({"display":"none"});
+    $("#editPostDocLabel_current").css({"display":"none"});
+    $("#editPostDoc_current").css({"display":"none"});
+    //remove jquert validation error for doc field - editPostDoc
+        $("#editPostDoc-error").css({"display":"none"});
+    $("#preview-doc-edit-post-label").css({"display":"none"});
     //set edit_post_remove_doc as false 
     $("#edit_post_remove_doc").attr("checked", false);
+    
+    //hide all post video fields
+    $("#editPostVideoLabel").css({"display":"none"});
+    $("#editPostVideo").css({"display":"none"});
+    $("#editPostVideoLabel_current").css({"display":"none"});
+    $("#editPostVideo_current").css({"display":"none"});
+    //remove jquert validation error for video field - editPostVideo
+        $("#editPostVideo-error").css({"display":"none"});
+    $("#preview-video-edit-post-label").css({"display":"none"}); 
     //set edit_post_remove_video as false 
     $("#edit_post_remove_video").attr("checked", false);
     
@@ -33,16 +55,7 @@ $(".modal-trigger-edit-post").click(function(e){
 
     //hidde form
     $("#editPostForm").css({"display":"none"});
-    //hide all post document fields
-    $("#editPostDocLabel").css({"display":"none"});
-    $("#editPostDoc").css({"display":"none"});
-    $("#editPostDocLabel_current").css({"display":"none"});
-    $("#editPostDoc_current").css({"display":"none"});
-    //hide all post video fields
-    $("#editPostVideoLabel").css({"display":"none"});
-    $("#editPostVideo").css({"display":"none"});
-    $("#editPostVideoLabel_current").css({"display":"none"});
-    $("#editPostVideo_current").css({"display":"none"});
+ 
     //hide input_fields_wrap_label & input_fields_wrap
     $("#input_fields_wrap_edit_class_post_label").css({"display":"none"});
     $("#input_fields_wrap_edit_class_post").css({"display":"none"});
@@ -185,29 +198,32 @@ $("#editPostForm").validate({
         },
         editPostDoc: {
             required: false,
-            extension: "pdf|docx|doc"
-            //filesize: 10000000           // 4MB
+            extension: "pdf|docx|doc",
+            filesize: 4000000           // 4MB
         },
         editPostVideo: {
             required: false,   
-            accept: "video/*"
-            //filesize: 10000000           // 4MB
+            accept: "video/*",
+            filesize: 300000000           // 300MB raw file before commpression
         },
         editPostFile: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         }
     },
     messages:{
         editPostFile:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be<br> less than 4MB"
         },
         editPostDoc:{
-            extension: "Allowed file extensions: pdf, docx, doc"
+            extension: "Allowed file extensions: pdf, docx, doc",
+            filesize: "File size must be less than 4MB"
         },
         editPostVideo:{
-            accept: "Allowed only video file."
+            accept: "Allowed only video file.",
+            filesize: "The video file is too big."
         }
     },
             
@@ -307,7 +323,6 @@ $("#editPostForm").validate({
             });
         }
         
-        
         $.ajax({
             url: 'classblog/editpost',          
             type: 'POST',
@@ -332,47 +347,112 @@ $("#editPostForm").validate({
 
 });
 
+/*
+ * 
+ *  DOCUMENT FIELD
+ * 
+ */
+//show remove button "X" for file in DOC field
+$( "#editPostDoc" ).change(function(event) {
+    //hide add doc label and show current doc label
+    $("#editPostDocLabel_current").css({"display":"block"});
+    $("#editPostDocLabel").css({"display":"none"});
+    
+    //show remove "X" button
+    $("#preview-doc-edit-post-label").css({"display":"block"});
 
-
-// remove document from edit form 
-$( "#remove_field_doc" ).click(function(e) {
-        
-        e.preventDefault();
-//        alert('remove doc');
-
-        //remove current label and file name + icon
-        $("#editPostDocLabel_current").css({"display":"none"});
-        $("#editPostDoc_current").css({"display":"none"});
-        
-        //show choose field with label
-        $("#editPostDocLabel").css({"display":"block"});
-        $("#editPostDoc").css({"display":"block"});
-        
-        //check old file "to remove"
-        $("#edit_post_remove_doc").attr("checked", true);
- 
 });
 
-// remove video from edit form
-$( "#remove_field_video_class_post" ).click(function(e) { 
+//remove file from DOC field
+$( "#preview-doc-edit-post-label" ).click(function() {
+    
+    //show add doc label and hide current doc label
+    $("#editPostDocLabel").css({"display":"block"});
+    $("#editPostDocLabel_current").css({"display":"none"});
+  
+    //reset file field and remove img src=''
+        $("#editPostDoc").val(null);
+    //hide remove "X" button for field
+        $("#preview-doc-edit-post-label").css({"display":"none"});
+    //remove jquert validation error for editPostDoc
+        $("#editPostDoc-error").css({"display":"none"});
 
-        e.preventDefault();
-//        alert('remove video');
-
-        //remove current label and file name + icon
-        $("#editPostVideoLabel_current").css({"display":"none"});
-        $("#editPostVideo_current").css({"display":"none"});
-
-        //show choose field with label
-        $("#editPostVideoLabel").css({"display":"block"});
-        $("#editPostVideo").css({"display":"block"});
-        
-        //check old file "to remove"
-        $("#edit_post_remove_video").attr("checked", true);
- 
 });
 
-//remove photo from current gallery (post-edit) - build list to remove
+//remove CURRENT DOC -  remove button "X" for CURRENT doc
+$( "#preview-doc-edit-post-label_current" ).click(function() {
+    
+    //hide current document
+    $('#editPostDoc_current').css({"display":"none"});
+    //hide current label
+    $('#editPostDocLabel_current').css({"display":"none"});
+    
+    //show add doc label editPostDocLabel
+    $('#editPostDocLabel').css({"display":"block"});
+    //show input doc
+    $("#editPostDoc").val(null);
+    $("#editPostDoc").css({"display":"block"});
+    
+    //remove doc set true
+    $("#edit_post_remove_doc").attr("checked", true);
+
+});
+
+
+/*
+ * 
+ *  VIDEO FIELD
+ * 
+ */
+//show remove button "X" for file in VIDEO field
+$( "#editPostVideo" ).change(function(event) {
+    //hide add video label and show current video label
+    $("#editPostVideoLabel_current").css({"display":"block"});
+    $("#editPostVideoLabel").css({"display":"none"});
+    
+    //show remove "X" button
+    $("#preview-video-edit-post-label").css({"display":"block"});
+
+});
+
+//remove file from VIDEO field
+$( "#preview-video-edit-post-label" ).click(function() {
+    
+    //show add video label and hide current video label
+    $("#editPostVideoLabel").css({"display":"block"});
+    $("#editPostVideoLabel_current").css({"display":"none"});
+  
+    //reset file field and remove img src=''
+        $("#editPostVideo").val(null);
+    //hide remove "X" button for field
+        $("#preview-video-edit-post-label").css({"display":"none"});
+    //remove jquert validation error for editPostVideo
+        $("#editPostVideo-error").css({"display":"none"});
+
+});
+
+
+//remove CURRENT VIDEO -  remove button "X" for CURRENT video
+$( "#preview-video-edit-post-label_current" ).click(function() {
+    
+    //hide current video
+    $('#editPostVideo_current').css({"display":"none"});
+    //hide current label
+    $('#editPostVideoLabel_current').css({"display":"none"});
+    
+    //show add video label editPostVideoLabel
+    $('#editPostVideoLabel').css({"display":"block"});
+    //show input doc
+    $("#editPostVideo").val(null);
+    $("#editPostVideo").css({"display":"block"});
+    
+    //remove video set true
+    $("#edit_post_remove_video").attr("checked", true);
+
+});
+
+
+//remove PHOTO from CURRENT gallery
 $('#current_gallery_wrap_class_post').on("click",".remove_photo_gallery_current", function(e){  
         
      e.preventDefault();
@@ -393,14 +473,15 @@ $('#current_gallery_wrap_class_post').on("click",".remove_photo_gallery_current"
         }
 });
 
-//add post-gallery box to gallery (EDIT POST - add extra photo to post gallery)
+
+// add extra PHOTO to gallery
 $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input button click
         
         e.preventDefault();
             //alert('add photo to gallery');
         
         // max size of gallery
-        var max_fields = 20;
+        var max_fields = 12;
         
         //get current gallery size
         var current_gallery_size = $('#current_gallery_wrap_class_post div').length;        
@@ -431,7 +512,12 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
             //set new last_index
             $('#input_fields_wrap_edit_class_post').attr('data-last-index', index++);
         }else{
-            alert('Gallery is full.');
+            //show error modal
+                $("#error-post-modal").css({"display":"block"});
+            //insert error-information
+                $("#error-input-file").html("Gallery is full.");
+            //insert error-description
+                $("#error-description-input-file span").html('The maximum size of the gallery is 12 photos.'); 
         }
         
         //if more then 0 post-gallery show gallery input_fields_wrap_edit_class_post and input_fields_wrap_edit_class_post_label
@@ -446,7 +532,7 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
 
 
 
-//remove photo from added gallery (post-edit) - build list to remove
+//remove PHOTO from EXTRA gallery
 $('#input_fields_wrap_edit_class_post').on("click",".remove_photo_edit", function(e){  
         
      e.preventDefault();
@@ -468,50 +554,63 @@ $('#input_fields_wrap_edit_class_post').on("click",".remove_photo_edit", functio
 });
 
 
-//// remove video from edit form
-//$( "input" ).click(function(e) { 
-//    
-//    alert('dddd');
-//
-////        e.preventDefault();
-//////        alert('remove video');
-////
-////        //remove current label and file name + icon
-////        $("#editPostVideoLabel_current").css({"display":"none"});
-////        $("#editPostVideo_current").css({"display":"none"});
-////
-////        //show choose field with label
-////        $("#editPostVideoLabel").css({"display":"block"});
-////        $("#editPostVideo").css({"display":"block"});
-////        
-////        //check old file "to remove"
-////        $("#edit_post_remove_video").attr("checked", true);
-// 
-//});
-
-
 function preview_image_edit(inputFile, event) { 
+
+    var inputID = inputFile.getAttribute('id');
+    image = document.getElementById('preview-img-edit-post-'+inputID);
     
-        inputID = inputFile.getAttribute('id');
-
-
-           
-        image = document.getElementById('preview-img-edit-post-'+inputID);
-        image.src = URL.createObjectURL(event.target.files[0]);
-
-        
-        $("#preview-img-edit-post-"+inputID).css({"display":"block"});
-        $("#preview-img-edit-post-label-"+inputID).css({"display":"block"});
-        
+    // validation if photo and photo size
+    var isValid = checkValidationForImage(event.target.files[0]);
+    
+    if(isValid === null){
+        //remove addPostFile file field
+            $("input#"+inputID).css({"display":"none"});
+        // add src to image
+            image.src = URL.createObjectURL(event.target.files[0]);
+        //show image
+            $("#preview-img-edit-post-"+inputID).css({"display":"block"});
+        //disply remove img button
+            $("#preview-img-edit-post-label-"+inputID).css({"display":"block"});
         //remove default background from post-gallery
-        $("#preview-img-edit-post-"+inputID).parent('div').css({"background-image":"none"});
-        //hide input field
-        $("input#"+inputID).css({"display":"none"});
-        //change post-gallery background on transparent
-        var post_gallery = $("#preview-img-edit-post-"+inputID).parent('div');
-            post_gallery.css({"background":"none"});
+            $("#preview-img-edit-post-"+inputID).parent('div').css({"background":"none"});
+
+    }else{
+        //show error modal
+            $("#error-post-modal").css({"display":"block"});
+        //insert error-information
+            $("#error-input-file").html("You can not add this file to gallery.");
+        //insert error-description
+            $("#error-description-input-file span").html(isValid); 
+        //remove file from input
+            $("input#"+inputID).val(null);
+        
+    }
         
 
+}
+
+function checkValidationForImage(file){
+    
+    var isValid = null;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+        return isValid = 'Allowed file extensions: jpg, jpeg, png, gif';
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        return isValid = 'File size must be less than 4MB';
+    }
+    
+    
+    return isValid;
+    
 }
 
 

@@ -288,7 +288,7 @@ $( "#preview-video-add-post-label" ).click(function() {
 //add next photo field for galllery
 $( "#add_file_button" ).click(function() {
     
-    var max_fields = 20;
+    var max_fields = 12;
     
     //get current gallery size
     var current_gallery_size = $('#input_fields_wrap div').length;
@@ -363,16 +363,12 @@ function preview_image(inputFile, event) {
             $("#preview-img-add-post-label-"+inputID).css({"display":"block"});
         //remove default background from post-gallery
             $("#preview-img-add-post-"+inputID).parent('div').css({"background":"none"});
-            
-        //remove not-falid class
-            //$("#preview-img-add-news-label").removeClass("not-valid");
-        //hide error info if exist
-            //$("#addNewsPhoto-error").css({"display":"none"});
+
     }else{
         //show error modal
             $("#error-post-modal").css({"display":"block"});
         //insert error-information
-            $("#error-input-file").html("You can add only photos to the gallery.");
+            $("#error-input-file").html("You can not add this file to gallery.");
         //insert error-description
             $("#error-description-input-file span").html(isValid); 
         //remove file from input
@@ -381,6 +377,7 @@ function preview_image(inputFile, event) {
     }
 
 }
+
 
 function checkValidationForImage(file){
     

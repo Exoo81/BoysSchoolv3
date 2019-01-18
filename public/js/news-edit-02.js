@@ -227,7 +227,7 @@ $("#editNewsForm").validate({
 
 });
 
-//show remove button "X" for not valid file in DOC field
+//show remove button "X" for file in DOC field
 $( "#editNewsDoc" ).change(function(event) {
     //hide add doc label and show current doc label
     $("#editNewsDocLabel_current").css({"display":"block"});
@@ -235,20 +235,10 @@ $( "#editNewsDoc" ).change(function(event) {
     
     //show remove "X" button
     $("#preview-doc-edit-news-label").css({"display":"block"});
-//    // validation if photo and photo size
-//    var isValid = checkValidationForDoc(event.target.files[0]);
-//    if(!isValid){
-//        //alert("is Valid file type? " + isValid);
-//        if(!isValid){
-//            //add not-valid class
-//           //$("#preview-doc-edit-news-label").addClass("not-valid");
-//        }
-//    }
-    
-    
+  
 });
 
-//remove NOT-VALID file from DOC field
+//remove file from DOC field
 $( "#preview-doc-edit-news-label" ).click(function() {
     
     //show add doc label and hide current doc label
@@ -257,10 +247,8 @@ $( "#preview-doc-edit-news-label" ).click(function() {
   
     //reset file field and remove img src=''
         $("#editNewsDoc").val(null);
-    //hide remove "X" button for not-valid field
+    //hide remove "X" button for field
         $("#preview-doc-edit-news-label").css({"display":"none"});
-    //remove not-falid class
-        $("#preview-doc-edit-news-label").removeClass("not-valid");
     //remove jquert validation error for editSchoolLifePhoto
         $("#editNewsDoc-error").css({"display":"none"});
 

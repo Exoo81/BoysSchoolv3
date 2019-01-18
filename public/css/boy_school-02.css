@@ -28908,7 +28908,8 @@ label.preview-book-list-label a{
 
 label.preview-img-label a,
 label.input-X-button a,
-label.preview-doc-label a{
+label.preview-doc-label a,
+label.preview-video-label a{
     font-size: 60px;
 }
 
@@ -28916,7 +28917,8 @@ label.preview-doc-label a{
     @media screen and (min-width: 1001px) and (max-width: 1400px) {
         label.preview-img-label a,
         label.input-X-button a,
-        label.preview-doc-label a{
+        label.preview-doc-label a,
+        label.preview-video-label a{
             font-size: 50px;
         }
     }
@@ -28924,7 +28926,8 @@ label.preview-doc-label a{
     @media screen and (min-width: 701px) and (max-width: 1000px) {
         label.preview-img-label a,
         label.input-X-button a,
-        label.preview-doc-label a{
+        label.preview-doc-label a,
+        label.preview-video-label a{
             font-size: 60px;
         }
     }
@@ -28932,7 +28935,8 @@ label.preview-doc-label a{
     @media screen and (min-width: 371px) and (max-width: 700px) {
         label.preview-img-label a,
         label.input-X-button a,
-        label.preview-doc-label a{
+        label.preview-doc-label a,
+        label.preview-video-label a{
             font-size: 50px;
         }
     }
@@ -28940,7 +28944,8 @@ label.preview-doc-label a{
     @media screen and (max-width: 370px) {
         label.preview-img-label a,
         label.input-X-button a,
-        label.preview-doc-label a{
+        label.preview-doc-label a,
+        label.preview-video-label a{
             font-size: 40px;
         }
     }
