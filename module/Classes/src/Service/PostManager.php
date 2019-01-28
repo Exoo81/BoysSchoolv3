@@ -261,13 +261,6 @@ class PostManager{
 
                     
                     $target_file = $path_to_save . basename($_FILES["file".$count]["name"]);
-
-//                    // Check if file already exists
-//                    // if not exist
-//                    if (!file_exists($target_file)) {
-//                        //save on server
-//                        move_uploaded_file($_FILES["file".$count]["tmp_name"], $target_file);
-//                    }
                     
                     $exif_data = null;
                     $iOS_orientation = null;
@@ -285,12 +278,12 @@ class PostManager{
 
                     //return success
                     $dataResponse['success'] = true;
-                    $dataResponse['Photo name'] =  $_FILES["file".$count]['name'];
-                    $dataResponse['Photo type'] =  $_FILES["file".$count]['type'];
-                    $dataResponse['Efix_data'] =  $exif_data;
-                    $dataResponse['iOS orientation'] =  $iOS_orientation;
-                    $dataResponse['photo size'] =  filesize($target_file);
-                    $dataResponse['responseMsg'] =  'Save news TEST.';
+//                    $dataResponse['Photo name'] =  $_FILES["file".$count]['name'];
+//                    $dataResponse['Photo type'] =  $_FILES["file".$count]['type'];
+//                    $dataResponse['Efix_data'] =  $exif_data;
+//                    $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                    $dataResponse['photo size'] =  filesize($target_file);
+                    $dataResponse['responseMsg'] =  'Save post TEST.';
 
                     /*
                      * Save in db
@@ -644,12 +637,12 @@ class PostManager{
 
                     //return success
                     $dataResponse['success'] = true;
-                    $dataResponse['Photo name'] =  $_FILES["file".$count]['name'];
-                    $dataResponse['Photo type'] =  $_FILES["file".$count]['type'];
-                    $dataResponse['Efix_data'] =  $exif_data;
-                    $dataResponse['iOS orientation'] =  $iOS_orientation;
-                    $dataResponse['photo size'] =  filesize($target_file);
-                    $dataResponse['responseMsg'] =  'Save news TEST.';
+//                    $dataResponse['Photo name'] =  $_FILES["file".$count]['name'];
+//                    $dataResponse['Photo type'] =  $_FILES["file".$count]['type'];
+//                    $dataResponse['Efix_data'] =  $exif_data;
+//                    $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                    $dataResponse['photo size'] =  filesize($target_file);
+                    $dataResponse['responseMsg'] =  'Save edit post TEST.';
 
                     /*
                      * Save in db

@@ -877,7 +877,11 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label>close</label>
                 </div>
             </div>
-            <div class="circle-img-wrapper"><img class="news-edit" src="img/icons/icon-edit.png" alt="" /></div>
+            <?php 
+                echo '<div class="circle-img-wrapper"><img class="news-edit" src="'.$this->basePath() .'/img/icons/icon-edit.png" alt="" /></div>';
+                               
+            ?>  
+            
 
             <!-- original version -->
             <div class="modal-title">
@@ -905,53 +909,46 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <textarea id="editPostContent" name="editPostContent" rows="10"></textarea>
 
                     
-                    
-                    
-                    <div class='width-50-left'>
-                        <label id='editPostDocLabel'>Add document:</label>
-                        <input type="file" id="editPostDoc" name="editPostDoc">
-                    </div>
                     <div class='width-50-left'>
                         <label id='editPostDocLabel_current'>Current document:</label>
+                        <label id='editPostDocLabel'>Add document:</label>
                         <table id='editPostDoc_current'>
                             <tr>
                                 <td class="icon"><img class="icon" src="img/icons/icon-document.png"></td>
                                 <td class="text" id='editPostDocTitle'></td>
                                 <td class="option">
-                                    <label class="preview-doc-label" id="preview-doc-edit-post-label">
-                                        <a href="#" class="remove_field_doc" id='remove_field_doc'>X</a>
+                                    <label class="preview-doc-label" id="preview-doc-edit-post-label_current">
+                                        <a href="#" class="input-X-button">X</a>
                                     </label>
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                   <input type="checkbox" class='to_remove' id='edit_post_remove_doc'>
+                        
+                        <label class='input-X-button' id='preview-doc-edit-post-label'><a href='#'>X</a></label>
+                        <input type="file" id="editPostDoc" name="editPostDoc">
+                        <input type="checkbox" class='to_remove' id='edit_post_remove_doc'>
+                    </div> 
                     
                     
-                    
-                    <div class='width-50-right'>
-                        <label id='editPostVideoLabel'>Add video:</label>
-                        <input type="file" id="editPostVideo" name="editPostVideo">
-                    </div>
                     <div class='width-50-right'>
                         <label id='editPostVideoLabel_current'>Current video:</label>
+                        <label id='editPostVideoLabel'>Add video:</label>
                         <table id='editPostVideo_current'>
                             <tr>
                                 <td class="icon"><img class="icon" src="img/icons/icon-video.png"></td>
                                 <td class="text" id='editPostVideoTitle'></td>
                                 <td class="option">
-                                    <label class="preview-video-label" id="preview-video-edit-post-label">
-                                        <a href="#" class="remove_field_video" id='remove_field_video_class_post'>X</a>
+                                    <label class="preview-video-label" id="preview-video-edit-post-label_current">
+                                        <a href="#" class="input-X-button">X</a>
                                     </label>
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                   <input type="checkbox" class='to_remove' id='edit_post_remove_video'>
-                    
-                    
-                    
-                    
+                        
+                        <label class='input-X-button' id='preview-video-edit-post-label'><a href='#'>X</a></label>
+                        <input type="file" id="editPostVideo" name="editPostVideo">
+                        <input type="checkbox" class='to_remove' id='edit_post_remove_video'>
+                    </div>      
                     
                     <div class='width-100'>
                         <label for="current_gallery_wrap_class_post" id="current_gallery_wrap_class_post_label">Current gallery:</label>
@@ -1051,6 +1048,31 @@ $this->headTitle($this->headTitle.' '.$current_season);
 </div>
 <!-- end Show Video Modal-->
 
+<!-- Error Post Modal -->
+<div class="modal" id="error-post-modal">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box red sm">
+        <div class="modal-header">
+            <div class="modal-title">
+                    <span>Error</span>
+            </div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <div class='confirmation-question' id='error-input-file'></div>
+                <div class='confirmation-question' id='error-description-input-file'><span class='error-description'></span></div>
+                <hr class="red" />
+                <button type="button" class="modal-btn btn-red small error-close-btn" data-text="OK"><span>OK</span></button> 
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end error post Modal -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
     
@@ -1064,7 +1086,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/gallery-edit.js" type="text/javaScript"></script>
 <script src="js/gallery-delete.js" type="text/javaScript"></script>
 
-<script src="js/post-edit.js" type="text/javaScript"></script>
+<script src="js/post-edit-01.js" type="text/javaScript"></script>
 <script src="js/post-delete.js" type="text/javaScript"></script>
 <script src="js/show-video.js" type="text/javaScript"></script>
 
