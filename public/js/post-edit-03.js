@@ -209,7 +209,7 @@ $("#editPostForm").validate({
         editPostFile: {
             required: false,
             extension: "jpg|jpeg|png|gif",
-            filesize: 4000000           // 4MB
+            filesize: 10000000           // 4MB temp
         }
     },
     messages:{
