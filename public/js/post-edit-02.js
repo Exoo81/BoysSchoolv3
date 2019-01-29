@@ -481,7 +481,7 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
             //alert('add photo to gallery');
         
         // max size of gallery
-        var max_fields = 12;
+        var max_fields = 42;
         
         //get current gallery size
         var current_gallery_size = $('#current_gallery_wrap_class_post div').length;        
@@ -517,7 +517,7 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
             //insert error-information
                 $("#error-input-file").html("Gallery is full.");
             //insert error-description
-                $("#error-description-input-file span").html('The maximum size of the gallery is 12 photos.'); 
+                $("#error-description-input-file span").html('The maximum size of the gallery is '+max_fields+' photos.'); 
         }
         
         //if more then 0 post-gallery show gallery input_fields_wrap_edit_class_post and input_fields_wrap_edit_class_post_label

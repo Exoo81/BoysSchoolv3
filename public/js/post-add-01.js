@@ -68,12 +68,7 @@ $(".modal-trigger-add-post").click(function(e){
 //    console.log('author id: '+ authorID);
 
     //display form
-    $("#addPostForm").css({"display":"block"});
-    
-
-    
-    
-    
+    $("#addPostForm").css({"display":"block"});  
     
     //display modal
     $("#" + dataModal).css({"display":"block"});
