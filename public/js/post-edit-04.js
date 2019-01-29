@@ -604,7 +604,7 @@ function checkValidationForImage(file){
     var fileSize =  file["size"];
     //alert ("File size: " + fileSize);
     
-    if(fileSize > 4000000){
+    if(fileSize > 10000000){
         return isValid = 'File size must be less than 4MB';
     }
     
