@@ -209,7 +209,7 @@ $("#editPostForm").validate({
         editPostFile: {
             required: false,
             extension: "jpg|jpeg|png|gif",
-            filesize: 10000000           // 4MB temp
+            filesize: 4000000           // 4MB
         }
     },
     messages:{
@@ -481,7 +481,7 @@ $("#add-photo-gallery-button-edit-class-post").click(function(e){ //on add input
             //alert('add photo to gallery');
         
         // max size of gallery
-        var max_fields = 42;
+        var max_fields = 12;
         
         //get current gallery size
         var current_gallery_size = $('#current_gallery_wrap_class_post div').length;        
@@ -604,7 +604,7 @@ function checkValidationForImage(file){
     var fileSize =  file["size"];
     //alert ("File size: " + fileSize);
     
-    if(fileSize > 10000000){
+    if(fileSize > 4000000){
         return isValid = 'File size must be less than 4MB';
     }
     

@@ -398,7 +398,7 @@ class PostManager{
                 ->find($formFieldsArray['editPostAuthorID']);
         
         if($author != null){
-            //$post->setAuthor($author);
+            $post->setAuthor($author);
         }else{
             //return error info
             $dataResponse['success'] = false;
@@ -414,7 +414,7 @@ class PostManager{
         $post->setContent($formFieldsArray['editPostContent']);
         
         $current_date = date('Y-m-d H:i:s');
-        //$post->setDatePublished($current_date);
+        $post->setDatePublished($current_date);
         
               
         // Add the entity to the entity manager.

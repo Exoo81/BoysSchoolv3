@@ -587,9 +587,9 @@ class NewsManager{
             
             // if Landscape else Portrait
             if($width > $heigth){
-                if($width > 2048){
-                $newWidth = 2048;
-                $newHeigth = ($heigth*$newWidth)/$width; 
+                if($width > 1024){
+                    $newWidth = 1024;
+                    $newHeigth = ($heigth*$newWidth)/$width; 
                 }else{
                     $newWidth = $width;
                     $newHeigth = $heigth;
@@ -614,23 +614,26 @@ class NewsManager{
                 $rotateDeg = $this->checkDegrees($iOS_orientation);
                 $imageRotate = imagerotate($truecolor, $rotateDeg, 0);
                 
-                if($file_size > 500000){                //500000 = 500KB
-                    imagejpeg($imageRotate, $target_file_photo, 70);
-                }else{
-                    imagejpeg($imageRotate, $target_file_photo, 90);
-                }
+//                if($file_size > 500000){                //500000 = 500KB
+//                    imagejpeg($imageRotate, $target_file_photo, 70);
+//                }else{
+//                    imagejpeg($imageRotate, $target_file_photo, 95);
+//                }
+                imagejpeg($imageRotate, $target_file_photo, 95);
+                
                 imagedestroy($imageRotate);
             }else{
-                if($file_size > 500000){                //500000 = 500KB
-                    imagejpeg($truecolor, $target_file_photo, 70);
-                }else{
-                    imagejpeg($truecolor, $target_file_photo, 90);
-                }
+//                if($file_size > 500000){                //500000 = 500KB
+//                    imagejpeg($truecolor, $target_file_photo, 70);
+//                }else{
+//                    imagejpeg($truecolor, $target_file_photo, 95);
+//                }
+                imagejpeg($truecolor, $target_file_photo, 95);
             }
             
             imagedestroy($image);
             imagedestroy($truecolor);
-        } elseif ($image_info['mime'] == 'image/png') {
+        }elseif ($image_info['mime'] == 'image/png') {
             
             //shrink photo
             list($width, $heigth)= getimagesize($target_file_photo);
@@ -664,9 +667,7 @@ class NewsManager{
             imagefilledrectangle($truecolor, 0, 0, $newWidth, $newHeigth, $transparent);
             imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
             
-            //imagecopyresampled($truecolor, $image, 0, 0, 0, 0, $newWidth, $newHeigth, $width, $heigth);
-            
-            
+
             imagepng($truecolor, $target_file_photo, 6);
             
             imagedestroy($image);
