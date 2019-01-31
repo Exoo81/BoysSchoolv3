@@ -17,7 +17,7 @@ $(".modal-trigger-add-class-blog").click(function(e){
     
     e.preventDefault();
     
-    dataModal = $(this).attr("data-modal");
+    
     
     //show laoder
     $(".loader").css({"display":"block"});
@@ -26,23 +26,37 @@ $(".modal-trigger-add-class-blog").click(function(e){
     
     //reset form 
     document.getElementById("addClassBlogForm").reset();
-        
-    //restet preview photo field
-    //reset file field and remove img src=''
-        $("#addClassPhoto").val(null);
-        $('#preview-img-add-class').removeAttr('src');
-        $("#preview-img-add-class").css({"display":"none"});
-        $("#preview-img-add-class-label").css({"display":"none"});
-        
-     //show "add Class photo" label
-        $("#addClassPhotoLabel").css({"display":"block"});
-    //hide "current class photo" label
-        $("#addClassPhotoLabel_current").css({"display":"none"});
-        
+    
     //clear all select fields
-        $('#classLevel').empty();
-        $('#classTeacher').empty();
-        $('#classLearningSupport').empty();
+    $('#classLevel').empty();
+    $('#classTeacher').empty();
+    $('#classLearningSupport').empty();
+    
+    //hide "current class photo" label
+    $("#addClassPhotoLabel_current").css({"display":"none"});
+    //show "add Class photo" label
+    $("#addClassPhotoLabel").css({"display":"block"});
+           
+    //restet preview photo field
+    $("#addClassPhoto").val(null);
+    //show addClassPhoto field
+    $("#addClassPhoto").css({"display":"block"});
+        //remove jquert validation error for addClassPhoto
+        $("#addClassPhoto-error").css({"display":"none"});
+        
+    
+    //reset file field and remove img src=''
+    $('#preview-img-add-class').removeAttr('src');
+    //hide preview image
+    $("#preview-img-add-class").css({"display":"none"});
+    
+    //hide 'X' button
+    $("#preview-img-add-class-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-add-class-label").removeClass("not-valid");    
+
+    //get data    
+    dataModal = $(this).attr("data-modal");
     
     //display form
     $("#addClassBlogForm").css({"display":"none"});
@@ -169,6 +183,7 @@ $("#addClassBlogForm").validate({
 
 //preview photo loaded in file field in form
 $( "#addClassPhoto" ).change(function(event) {
+    
     var reader = new FileReader();
     reader.onload = function(){
         var output = document.getElementById('preview-img-add-class');
@@ -176,40 +191,34 @@ $( "#addClassPhoto" ).change(function(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
     
-    
-    //disply remove img button (X)
-    $("#preview-img-add-class-label").css({"display":"block"});
-
-
     //hide "add News photo" label AND show "current news photo" label
-        $("#addClassPhotoLabel").css({"display":"none"});
-        $("#addClassPhotoLabel_current").css({"display":"block"});
-        
+    $("#addClassPhotoLabel").css({"display":"none"});
+    $("#addClassPhotoLabel_current").css({"display":"block"});
+
+
     // validation if photo and photo size
-    var isValid = checkValidationForImage(event.target.files[0]);
+    var isValid = checkValidationForAddClassBlogImage(event.target.files[0]);
     
     if(isValid){
         //remove addClassPhoto file field
         $("#addClassPhoto").css({"display":"none"});
         // show img
-        $("#preview-img-add-class").css({"display":"block"});
-        //disply remove img button
-        $("#preview-img-add-class-label").css({"display":"block"});
+        $("#preview-img-add-class").css({"display":"block"}); 
         //remove not-falid class
         $("#preview-img-add-class-label").removeClass("not-valid");
-        
         //hide error info if exist
-            $("#addClassPhoto-error").css({"display":"none"});
+        $("#addClassPhoto-error").css({"display":"none"});
     }else{
         $("#addClassPhoto").css({"display":"block"});
-        //disply remove img button
-        $("#preview-img-add-class-label").css({"display":"block"});
+        
         //add not-valid class
         $("#preview-img-add-class-label").addClass("not-valid");
- 
         //show error info if exist
-            $("#addClassPhoto-error").css({"display":"block"});
+        $("#addClassPhoto-error").css({"display":"block"});
     }
+    
+    //disply remove img button (X)
+    $("#preview-img-add-class-label").css({"display":"block"});
 });
 
 
@@ -217,25 +226,29 @@ $( "#addClassPhoto" ).change(function(event) {
 $( "#preview-img-add-class-label" ).click(function() {
 
     //show "add Class photo" label AND hide "current Class photo" label
-        $("#addClassPhotoLabel").css({"display":"block"});
-        $("#addClassPhotoLabel_current").css({"display":"none"});
+    $("#addClassPhotoLabel").css({"display":"block"});
+    $("#addClassPhotoLabel_current").css({"display":"none"});
+    
     //restet preview photo field
-    //reset file field and remove img src=''
-        $("#addClassPhoto").val(null);
-        $('#preview-img-add-class').removeAttr('src');
-        $("#preview-img-add-class").css({"display":"none"});
-    //hide remove link
-        $("#preview-img-add-class-label").css({"display":"none"});
-        
-        //show addClassPhoto file field
-        $("#addClassPhoto").css({"display":"block"});
-        
-        //remove jquert validation error for addClassPhoto
+    $("#addClassPhoto").val(null);
+    //show addClassPhoto file field
+    $("#addClassPhoto").css({"display":"block"});
+    //remove jquert validation error for addClassPhoto
         $("#addClassPhoto-error").css({"display":"none"});
+    
+    //reset file field and remove img src=''
+    $('#preview-img-add-class').removeAttr('src');
+    $("#preview-img-add-class").css({"display":"none"});
+    
+    //hide 'X' button
+    $("#preview-img-add-class-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-add-class-label").removeClass("not-valid");
+      
 });
 
 
-function checkValidationForImage(file){
+function checkValidationForAddClassBlogImage(file){
     
     var isValid = true;
     var fileType = file["type"];
