@@ -152,13 +152,6 @@ class SchoolLifeManager{
             
             //$target
             $target_file_photo = $path_to_save_photo . basename($_FILES["schoolLifePhoto"]["name"]);
-
-//            // Check if file already exists
-//            // if not exist
-//            if (!file_exists($target_file_photo)) {
-//                //save on server
-//                move_uploaded_file($_FILES["schoolLifePhoto"]["tmp_name"], $target_file_photo);
-//            }
             
             $exif_data = null;
             $iOS_orientation = null;
@@ -313,12 +306,29 @@ class SchoolLifeManager{
             //$target new photo
             $target_file_photo = $path_to_photo . basename($_FILES["editSchoolLifePhoto"]["name"]);
 
-            // Check if file already exists
-            // if not exist
-            if (!file_exists($target_file_photo)) {
-                //save on server
-                move_uploaded_file($_FILES["editSchoolLifePhoto"]["tmp_name"], $target_file_photo);
+            
+            $exif_data = null;
+            $iOS_orientation = null;
+            if($_FILES["editSchoolLifePhoto"]['type'] == "image/jpeg"){
+                if(function_exists('exif_read_data')){
+                    $exif_data = @exif_read_data($_FILES["editSchoolLifePhoto"]['tmp_name']);
+                    $iOS_orientation = $this->checkPhotoOrientation($exif_data);
+                }    
             }
+                
+            // save oryginal photo on server
+            if(move_uploaded_file($_FILES["editSchoolLifePhoto"]["tmp_name"], $target_file_photo)){             
+                $this->processImage($target_file_photo, $iOS_orientation);  
+            }        
+
+                //return success
+                $dataResponse['success'] = true;
+//                $dataResponse['Photo name'] =  $_FILES["editSchoolLifePhoto"]['name'];
+//                $dataResponse['Photo type'] =  $_FILES["editSchoolLifePhoto"]['type'];
+//                $dataResponse['Efix_data'] =  $exif_data;
+//                $dataResponse['iOS orientation'] =  $iOS_orientation;
+//                $dataResponse['photo size'] =  filesize($target_file_photo);
+                $dataResponse['responseMsg'] =  'Save news TEST.';
 
             /*
             * Save in db

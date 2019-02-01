@@ -42,7 +42,7 @@ $(".modal-trigger-add-school-life").click(function(e){
     $("#preview-img-add-school-life-label").css({"display":"none"});
     //remove not-falid class
     $("#preview-img-add-school-life-label").removeClass("not-valid");
-
+         
          
     //get data
     dataModal = $(this).attr("data-modal"); 

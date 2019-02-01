@@ -7,67 +7,76 @@ $.validator.addMethod("valueNotEquals", function(value, element, arg){
   return arg !== value;
  }, "Value must not equal arg.");
 //additionam method for file max size
-/*$.validator.addMethod('filesize', function (value, element, param) {
+$.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, 'File size must be less than {0}');*/
+}, 'File size must be less than {0}');
 
 // open modal with news data
 $(".modal-trigger-edit-class-blog").click(function(e){
     
     e.preventDefault();
     
-    //show laoder
-        $(".loader").css({"display":"block"});
-    //clear msg label
-        $(".response-msg").html('');
-    //clear form
-        document.getElementById("editClassBlogForm").reset();
-    //clear src to img
-        $("#editClassBlogPhoto_current").attr("src",'');
-    //remove photo set false
-        $("#edit-class-blog-remove-photo").attr("checked", false);
+    //hide edit Class Blog form
+    $("#editClassBlogForm").css({"display":"none"});
     
-    //hide edit news form
-        $("#editClassBlogForm").css({"display":"none"});
+    //show laoder
+    $(".loader").css({"display":"block"});
+    //clear msg label
+    $(".response-msg").html('');
         
-    //hide all class photo fields
-        $("#editClassBlogPhotoLabel_current").css({"display":"none"});
-        $("#editClassBlogPhoto_current").css({"display":"none"});
-        $("#editClassBlogPhotoLabel").css({"display":"none"});
-        $("#editClassBlogPhoto").css({"display":"none"});
-        $("#preview-photo-edit-class-blog-label").css({"display":"none"});
+    //clear form
+    document.getElementById("editClassBlogForm").reset();
         
     //clear all select fields
-        $('#editClassLevel').empty();
-        $('#editClassTeacher').empty();
-        $('#editClassLearningSupport').empty();
+    $('#editClassLevel').empty();
+    $('#editClassTeacher').empty();
+    $('#editClassLearningSupport').empty();
+        
+    //hide "current Class Blog photo" label
+    $("#editClassBlogPhotoLabel_current").css({"display":"none"}); 
+    //hide "add Class Blog photo" label    
+    $("#editClassBlogPhotoLabel").css({"display":"none"});
     
-//    //show form
-//            $("#editClassBlogForm").css({"display":"block"});
-        
-//        //hide img
-//            $("#preview-img-edit-class").css({"display":"none"});
-//        //hide "remove link"
-//            $("#preview-img-edit-class-label").css({"display":"none"});
-        
-        
+    //restet preview photo
+    $("#editClassBlogPhoto").val(null);
+    //hide editClassBlogPhoto
+    $("#editClassBlogPhoto").css({"display":"none"});
+    //remove jquert validation error for editClassBlogPhoto
+        $("#editClassBlogPhoto-error").css({"display":"none"});
+    
+    //reset file field and remove img src=''
+    $("#preview-img-edit-class-blog").attr("src",'');
+    //hide preview image
+    $("#preview-img-edit-class-blog").css({"display":"none"});
+    
+    //hide 'X' button
+    $("#preview-img-edit-class-blog-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-edit-class-blog-label").removeClass("not-valid");
+     
+      
+    //remove photo set false
+    $("#edit-class-blog-remove-photo").attr("checked", false);      
+    
+    //get data
     dataModal = $(this).attr("data-modal");
-        
-    //display modal
-        $("#" + dataModal).css({"display":"block"});
-
     var classBlogID = $(this).attr("data-blogID");
     var teacherID = $(this).attr("data-teacherID");
     var learningSupportID = $(this).attr("data-learningSupportID");
         
     if(learningSupportID === ""){
         learningSupportID = null;
-    }
-        
+    }       
 //    console.log('blog id: '+classBlogID);
 //    console.log('teacher id: '+teacherID);
 //    console.log('learningSupport id: '+learningSupportID);
         
+    //display modal
+    $("#" + dataModal).css({"display":"block"});
+    
+    
+
+          
     //send id by AJAX to get full object
     $.ajax({
         url:'classes/geteditclassblog',
@@ -106,15 +115,13 @@ $(".modal-trigger-edit-class-blog").click(function(e){
                 
                 //if class with photo
                 if(data.classPhotoPath !== null){
-                    //show label for current doc
+                    //show label for current file
                     $("#editClassBlogPhotoLabel_current").css({"display":"block"});
                     //show img + insert src of file
-                    $("#editClassBlogPhoto_current").attr("src",data.classPhotoPath);
-                    $("#editClassBlogPhoto_current").css({"display":"block"});
-                    //show remove link
-                    $("#preview-photo-edit-class-blog-label").css({"display":"block"});
-                    //show input field for photo
-                    //$("#editClassBlogPhoto").css({"display":"block"});
+                    $("#preview-img-edit-class-blog").attr("src",data.classPhotoPath);
+                    $("#preview-img-edit-class-blog").css({"display":"block"});
+                    //show 'X' link
+                    $("#preview-img-edit-class-blog-label").css({"display":"block"});
                 }else{
                     //show input field label for photo
                     $("#editClassBlogPhotoLabel").css({"display":"block"});
@@ -135,7 +142,8 @@ $(".modal-trigger-edit-class-blog").click(function(e){
     });
 });
 
-//after submit
+
+
 $("#editClassBlogForm").validate({
     rules: {
         editClassBlogID:{
@@ -168,6 +176,8 @@ $("#editClassBlogForm").validate({
             filesize: "File size must be less than 4MB"
         }
     },
+    
+    
             
     submitHandler: function() {
         
@@ -239,74 +249,93 @@ $("#editClassBlogForm").validate({
 
 //preview photo loaded in file field in form
 $( "#editClassBlogPhoto" ).change(function(event) {
+    
     var reader = new FileReader();
     reader.onload = function(){
-        var output = document.getElementById('editClassBlogPhoto_current');
+        var output = document.getElementById('preview-img-edit-class-blog');
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
     
-    //disply remove img button (X)
-    $("#preview-photo-edit-class-blog-label").css({"display":"block"});
-
-
-    //hide "add ClassBlog photo" label AND show "current ClassBlog photo" label
-        $("#editClassBlogPhotoLabel").css({"display":"none"});
-        $("#editClassBlogPhotoLabel_current").css({"display":"block"});
-        
-    // validation if photo and photo size
-    var isValid = checkValidationForImage(event.target.files[0]);
+    //hide "add Class Blog photo" label AND show "current Class Blog photo" label
+    $("#editClassBlogPhotoLabel").css({"display":"none"});
+    $("#editClassBlogPhotoLabel_current").css({"display":"block"});
+    
+    // validation if photo file
+    var isValid = checkValidationForEditClassBlogImage(event.target.files[0]);
     
     if(isValid){
         //remove addClassPhoto file field
         $("#editClassBlogPhoto").css({"display":"none"});
         // show img
-        $("#editClassBlogPhoto_current").css({"display":"block"});
-        //disply remove img button (X)
-        $("#preview-photo-edit-class-blog-label").css({"display":"block"});
+        $("#preview-img-edit-class-blog").css({"display":"block"});
         //remove not-falid class
-        $("#preview-photo-edit-class-blog-label").removeClass("not-valid");
-        
+        $("#preview-img-edit-class-blog-label").removeClass("not-valid");
         //hide error info if exist
-            $("#editClassBlogPhoto-error").css({"display":"none"});
-    }else{
+        $("#editClassBlogPhoto-error").css({"display":"none"});   
+    }else{    
         $("#editClassBlogPhoto").css({"display":"block"});
-        //disply remove img button (X)
-        $("#preview-photo-edit-class-blog-label").css({"display":"block"});
         //add not-valid class
-        $("#preview-photo-edit-class-blog-label").addClass("not-valid");
- 
+        $("#preview-img-edit-class-blog-label").addClass("not-valid");
         //show error info if exist
-            $("#editClassBlogPhoto-error").css({"display":"block"});
+        $("#editClassBlogPhoto-error").css({"display":"block"});
     }
-
     
+    //disply remove img button (X)
+    $("#preview-img-edit-class-blog-label").css({"display":"block"});
+    
+   
 });
 
 //remove img src + hidde "remove button" for photo
-$("#preview-photo-edit-class-blog-label").click(function() {
+$("#preview-img-edit-class-blog-label").click(function() {
 
     //show "add ClassBlog photo" label AND hide "current ClassBlog photo" label
-        $("#editClassBlogPhotoLabel").css({"display":"block"});
-        $("#editClassBlogPhotoLabel_current").css({"display":"none"});
+    $("#editClassBlogPhotoLabel").css({"display":"block"});
+    $("#editClassBlogPhotoLabel_current").css({"display":"none"});
+        
     //restet preview photo field
-    //reset file field and remove img src=''
-        $("#editClassBlogPhoto").val(null);
-        $('#editClassBlogPhoto_current').removeAttr('src');
-        $("#editClassBlogPhoto_current").css({"display":"none"});
-    //hide remove link (X)
-        $("#preview-photo-edit-class-blog-label").css({"display":"none"});
-        
-        //show editClassPhoto file field
-        $("#editClassBlogPhoto").css({"display":"block"});
-        
-        //remove jquert validation error for editClassBlogPhoto
+    $("#editClassBlogPhoto").val(null);
+    //show editClassBlogPhoto file field
+    $("#editClassBlogPhoto").css({"display":"block"});
+    //remove jquert validation error for editClassBlogPhoto
         $("#editClassBlogPhoto-error").css({"display":"none"});
+    
+    //reset file field and remove img src=''
+    $('#preview-img-edit-class-blog').removeAttr('src');
+    $("#preview-img-edit-class-blog").css({"display":"none"});
         
-    //set - 'remove photo' == true
-        $("#edit-class-blog-remove-photo").attr("checked", true);
+    //hide 'X' button
+    $("#preview-img-edit-class-blog-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-edit-class-blog-label").removeClass("not-valid");    
+           
+    //remove photo set true
+    $("#edit-class-blog-remove-photo").attr("checked", true);
 
 });
 
 
-
+function checkValidationForEditClassBlogImage(file){
+    
+    var isValid = true;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+         isValid = false;
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        isValid = false;
+    }
+    
+    
+    return isValid;
+    
+}

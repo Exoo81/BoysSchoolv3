@@ -8,112 +8,127 @@ $.validator.addMethod('filesize', function (value, element, param) {
 
 // open modal with news data
 $(".modal-trigger-edit-news").click(function(e){
-	e.preventDefault();
+	
+    e.preventDefault();
+    
+    //hide edit news form
+    $("#editNewsForm").css({"display":"none"});
         
-        //show laoder
-            $(".loader").css({"display":"block"});
-        //clear msg label
-            $(".response-msg").html('');
-        //clear form
-            document.getElementById("editNewsForm").reset();
-        //clear src to img
-            $("#editNewsPhoto_current").attr("src",'');
-            
-        //remove doc set false
-            $("#edit-news-remove-doc").attr("checked", false);
-            
-        //remove photo set false
-            $("#edit-news-remove-photo").attr("checked", false);
+    //show laoder
+    $(".loader").css({"display":"block"});
+    //clear msg label
+    $(".response-msg").html('');
+    
+    //clear form
+    document.getElementById("editNewsForm").reset();
+    
+    //hide all news document fields
+    $("#editNewsDocLabel").css({"display":"none"});
+    $("#editNewsDoc").css({"display":"none"});
+    $("#editNewsDocLabel_current").css({"display":"none"});
+    $("#editNewsDoc_current").css({"display":"none"});
+    $("#preview-doc-edit-news-label").css({"display":"none"});
+    
+    
+    //hide "current News photo" label
+    $("#editNewsPhotoLabel_current").css({"display":"none"}); 
+    //hide "add News photo" label    
+    $("#editNewsPhotoLabel").css({"display":"none"});
+    
+    //restet preview photo
+    $("#editNewsPhoto").val(null);
+    //hide editNewsPhoto
+    $("#editNewsPhoto").css({"display":"none"});
+    //remove jquert validation error for editNewsPhoto
+        $("#editNewsPhoto-error").css({"display":"none"});
         
-        //hide edit news form
-        $("#editNewsForm").css({"display":"none"});
-        //hide all news document fields
-        $("#editNewsDocLabel").css({"display":"none"});
-        $("#editNewsDoc").css({"display":"none"});
-        $("#editNewsDocLabel_current").css({"display":"none"});
-        $("#editNewsDoc_current").css({"display":"none"});
-        $("#preview-doc-edit-news-label").css({"display":"none"});
+    //reset file field and remove img src=''
+    $("#preview-img-edit-news").attr("src",'');
+    //hide preview image
+    $("#preview-img-edit-news").css({"display":"none"});
+    
+    //hide 'X' button
+    $("#preview-img-edit-news-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-edit-news-label").removeClass("not-valid");
+    
+    
+    //remove doc set false
+    $("#edit-news-remove-doc").attr("checked", false);
+    //remove photo set false
+    $("#edit-news-remove-photo").attr("checked", false);
         
         
+    //get data    
+    dataModal = $(this).attr("data-modal");
+    var id = $(this).data("id");
         
-        //hide all news photo fields
-        $("#editNewsPhotoLabel_current").css({"display":"none"});
-        $("#editNewsPhoto_current").css({"display":"none"});
-        $("#editNewsPhotoLabel").css({"display":"none"});
-        $("#editNewsPhoto").css({"display":"none"});
-        $("#preview-photo-edit-news-label").css({"display":"none"});
-        
-        dataModal = $(this).attr("data-modal");
-        
-        //display modal
-        $("#" + dataModal).css({"display":"block"});
+    //display modal
+    $("#" + dataModal).css({"display":"block"});
 
-        var id = $(this).data("id");
         
-        //send id by AJAX to get full object
-        $.ajax({
-            url:'application/geteditnews',
-            type:'POST',
-            data:{id:id},
-            dataType: 'JSON', 
-            async: true ,
-            success: function(data){
-                //console.log(data);
-                if(data.success === true){
+        
+    //send id by AJAX to get full object
+    $.ajax({
+        url:'application/geteditnews',
+        type:'POST',
+        data:{id:id},
+        dataType: 'JSON', 
+        async: true ,
+        success: function(data){
+            //console.log(data);
+            if(data.success === true){
                     
-                    $("#" + dataModal).css({"display":"block"});
-
-                    //inster data to fields
-                        $("#editNewsID").val(data.newsToEdit.id);
-                        $("#editNewsTitle").val(data.newsToEdit.title);
-                        $("#editNewsContent").val(data.newsToEdit.content);
+                //inster data to fields
+                $("#editNewsID").val(data.newsToEdit.id);
+                $("#editNewsTitle").val(data.newsToEdit.title);
+                $("#editNewsContent").val(data.newsToEdit.content);
                         
                     //if news doc exist
-                    if(data.newsToEdit.docName !== null){
-                    
-                        //show label for current doc
-                        $("#editNewsDocLabel_current").css({"display":"block"});
-                        //show icon + doc title + remove
-                        $("#editNewsDoc_current").css({"display":"block"});
-                        //insert doc title
-                        $("#editNewsDocTitle").html(data.newsToEdit.docName);
-                    }else{  
-                        //show input field label for document
-                        $("#editNewsDocLabel").css({"display":"block"});
-                        //show input field for document
-                        $("#editNewsDoc").css({"display":"block"});
-                    }
-                    
-                    //if news with photo
-                    if(data.newsToEdit.photoName !== null){
-                        //show "Current photo" label
-                        $("#editNewsPhotoLabel_current").css({"display":"block"});
-                        //show img + insert src of file
-                        $("#editNewsPhoto_current").attr("src",data.photoPath);
-                        $("#editNewsPhoto_current").css({"display":"block"}); 
-                        //show remove link
-                        $("#preview-photo-edit-news-label").css({"display":"block"});
-                        //hide input field for photo
-                        $("#editNewsPhoto").css({"display":"none"});                       
-                    }else{
-                        //show "Add news photo" label
-                        $("#editNewsPhotoLabel").css({"display":"block"});
-                        //show input field for photo
-                        $("#editNewsPhoto").css({"display":"block"});
-                    }
-                    //hide laoder
-                        $(".loader").css({"display":"none"});
-                    //show form
-                        $("#editNewsForm").css({"display":"block"});
-                }else{
-                    $(".response-msg").html(data.responseMsg);
-                    $("#" + dataModal).css({"display":"block"});
-                    $("#editNewsForm").css({"display":"none"});
+                if(data.newsToEdit.docName !== null){  
+                    //show label for current doc
+                    $("#editNewsDocLabel_current").css({"display":"block"});
+                    //show icon + doc title + remove
+                    $("#editNewsDoc_current").css({"display":"block"});
+                    //insert doc title
+                    $("#editNewsDocTitle").html(data.newsToEdit.docName);          
+                }else{            
+                    //show input field label for document
+                    $("#editNewsDocLabel").css({"display":"block"});
+                    //show input field for document
+                    $("#editNewsDoc").css({"display":"block"});
                 }
-                return false;
+                    
+                //if news with photo
+                if(data.newsToEdit.photoName !== null){
+                    //show label for current file
+                    $("#editNewsPhotoLabel_current").css({"display":"block"});
+                    //show img + insert src of file
+                    $("#preview-img-edit-news").attr("src",data.photoPath);
+                    $("#preview-img-edit-news").css({"display":"block"}); 
+                    //show 'X' link
+                    $("#preview-img-edit-news-label").css({"display":"block"});                       
+                }else{
+                    //show input field label for photo
+                    $("#editNewsPhotoLabel").css({"display":"block"});
+                    //show input field for photo
+                    $("#editNewsPhoto").css({"display":"block"});
+                }
+                //hide laoder
+                    $(".loader").css({"display":"none"});
+                //show form
+                    $("#editNewsForm").css({"display":"block"});
+            }else{
+                $(".response-msg").html(data.responseMsg);
+                //hide laoder
+                $(".loader").css({"display":"none"}); 
             }
-         });
+            return false;
+        }
+    });
 });
+
+
 
 //after submit
 $("#editNewsForm").validate({
@@ -276,71 +291,94 @@ $( "#preview-doc-edit-news-label_current" ).click(function() {
 
 //preview photo loaded in file field in form
 $( "#editNewsPhoto" ).change(function(event) {
+    
     var reader = new FileReader();
     reader.onload = function(){
-        var output = document.getElementById('editNewsPhoto_current');
+        var output = document.getElementById('preview-img-edit-news');
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
-//    $("#editNewsPhoto_current").css({"display":"block"});
-//    //disply remove img button
-//    $("#preview-photo-edit-news-label").css({"display":"block"});
-    
     
     //hide "Add news photo" label AND show "Current news photo" label
-        $("#editNewsPhotoLabel").css({"display":"none"});
-        $("#editNewsPhotoLabel_current").css({"display":"block"});
-        
-    // validation if photo and photo size
-    var isValid = checkValidationForImage(event.target.files[0]); 
+    $("#editNewsPhotoLabel").css({"display":"none"});
+    $("#editNewsPhotoLabel_current").css({"display":"block"});
+    
+    // validation if photo file
+    var isValid = checkValidationForEditNewsImage(event.target.files[0]); 
     
     if(isValid){
         //hide editNewsPhoto file field
-            $("#editNewsPhoto").css({"display":"none"});
+        $("#editNewsPhoto").css({"display":"none"});
         // show img
-            $("#editNewsPhoto_current").css({"display":"block"});
-        //disply remove img button
-            $("#preview-photo-edit-news-label").css({"display":"block"});
+        $("#preview-img-edit-news").css({"display":"block"});
         //remove not-falid class
-            $("#preview-photo-edit-news-label").removeClass("not-valid");
-        //remove jquert validation error for editSchoolLifePhoto
-            $("#editNewsPhoto-error").css({"display":"none"});    
+        $("#preview-img-edit-news-label").removeClass("not-valid");
+        //hide error info if exist
+        $("#editNewsPhoto-error").css({"display":"none"});    
     }else{
-        //show editNewsPhoto file field
-            $("#editNewsPhoto").css({"display":"block"});
-        //disply remove img button
-            $("#preview-photo-edit-news-label").css({"display":"block"});
+        $("#editNewsPhoto").css({"display":"block"});
         //add not-valid class
-            $("#preview-photo-edit-news-label").addClass("not-valid");
+        $("#preview-img-edit-news-label").addClass("not-valid");
+        //show error info if exist
+        $("#editNewsPhoto-error").css({"display":"block"});
     }
+    
+    //disply remove img button (X)
+    $("#preview-img-edit-news-label").css({"display":"block"});
     
 });
 
 //remove img src + hidde "remove button" for photo
-$( "#preview-photo-edit-news-label" ).click(function() {
+$( "#preview-img-edit-news-label" ).click(function() {
     
-    //hide "Current photo" label AND show "Add news photo" label
-        $("#editNewsPhotoLabel_current").css({"display":"none"});
-        $("#editNewsPhotoLabel").css({"display":"block"});
+    //show "add News photo" label AND hide "current News photo" label
+    $("#editNewsPhotoLabel_current").css({"display":"none"});
+    $("#editNewsPhotoLabel").css({"display":"block"});  
     
-    
-    //reset file field AND show
-        $("#editNewsPhoto").val(null);
-        $("#editNewsPhoto").css({"display":"block"});
-    //preview photo - remove 'src' AND hidde
-        $('#editNewsPhoto_current').removeAttr('src');
-        $("#editNewsPhoto_current").css({"display":"none"});
-    //hide remove "X" button for photo
-        $("#preview-photo-edit-news-label").css({"display":"none"});
-        
+    //restet preview photo field
+    $("#editNewsPhoto").val(null);
+    //show editNewsPhoto file field
+    $("#editNewsPhoto").css({"display":"block"});
     //remove jquert validation error for editSchoolLifePhoto
         $("#editNewsPhoto-error").css({"display":"none"});
-        
-        
-    //set - 'remove photo' == true
+    
+    //reset file field and remove img src=''
+    $('#preview-img-edit-news').removeAttr('src');
+    $("#preview-img-edit-news").css({"display":"none"});
+    
+    //hide "X" button 
+    $("#preview-img-edit-news-label").css({"display":"none"});
+    //remove not-falid class
+    $("#preview-img-edit-news-label").removeClass("not-valid");    
+   
+    //remove photo set true
     $("#edit-news-remove-photo").attr("checked", true);
 
 });
+
+function checkValidationForEditNewsImage(file){
+    
+    var isValid = true;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+         isValid = false;
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        isValid = false;
+    }
+    
+    
+    return isValid;
+    
+}
 
 
 
