@@ -694,7 +694,9 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     </div>
                     
                     <div class='width-30-right'>
-                        <label for="addGalleryVideo">Add video:</label>
+                        <label id="addGalleryVideoLabel_current">Current video:</label>
+                        <label id="addGalleryVideoLabel">Add video:</label>
+                        <label class='input-X-button' id='preview-video-add-gallery-label'><a href='#'>X</a></label>
                         <input type="file" id="addGalleryVideo" name="addGalleryVideo">
                     </div>
                     
@@ -710,9 +712,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             <button type='button' id='add_file_button' class="btn-add-user btn-green reversed" data-text="Add photo(s)"><span>Add photo(s)</span></button>
                         </div>
                         <label id='input_fields_wrap_label' for="input_fields_wrap">Selected photo(s):</label>
-                        <div class="input_fields_wrap" id="input_fields_wrap" data-last-index='0'>
-                            
-    <!--                        GALLERY-->
+                        <div class="input_fields_wrap" id="input_fields_wrap" data-last-index='0'>      
+                            <!--GALLERY-->
                         </div>
                     </div>
 
@@ -1082,7 +1083,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
 </script>
 
-<script src="js/gallery-add.js" type="text/javaScript"></script>
+<script src="js/gallery-add-01.js" type="text/javaScript"></script>
 <script src="js/gallery-edit.js" type="text/javaScript"></script>
 <script src="js/gallery-delete.js" type="text/javaScript"></script>
 

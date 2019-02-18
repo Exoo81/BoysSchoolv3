@@ -3,9 +3,9 @@
  */
 
 //additionam method for file max size
-/*$.validator.addMethod('filesize', function (value, element, param) {
+$.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param);
-}, 'File size must be less than {0}');*/
+}, 'File size must be less than {0}');
 
 //open modal with form
 $(".modal-trigger-add-gallery").click(function(e){
@@ -17,11 +17,23 @@ $(".modal-trigger-add-gallery").click(function(e){
     
     //reset form
     document.getElementById("addGalleryForm").reset();
+    
+    //hidde 'Current video' Label
+        $("#addGalleryVideoLabel_current").css({"display":"none"});
+    //show 'Add video' Label
+        $("#addGalleryVideoLabel").css({"display":"block"});
+    //remove jquert validation error for video field - addGalleryVideo
+        $("#addGalleryVideo-error").css({"display":"none"});
+    //hide remove 'X' button
+        $("#preview-video-add-gallery-label").css({"display":"none"});
         
     //remove all post-gallery div's
-    $(".post-gallery").remove();
+        $(".post-gallery").remove();
     //reset lase index from gallery field data-last-index
-    $("#input_fields_wrap").attr("data-last-index",0);
+        $("#input_fields_wrap").attr("data-last-index",0);
+    //hide input_fields_wrap_label & input_fields_wrap
+        $("#input_fields_wrap_label").css({"display":"none"});
+        $("#input_fields_wrap").css({"display":"none"});
     
     dataModal = $(this).attr("data-modal");
 
@@ -30,7 +42,6 @@ $(".modal-trigger-add-gallery").click(function(e){
     
     //insert blogID
     $('#addGallery_blogID').val(blogId);
-
     //insert authorID
     $('#addGallery_authorID').val(authorID);
    
@@ -40,10 +51,6 @@ $(".modal-trigger-add-gallery").click(function(e){
     //display form
     $("#addGalleryForm").css({"display":"block"});
     
-    //hide input_fields_wrap_label & input_fields_wrap
-    $("#input_fields_wrap_label").css({"display":"none"});
-    $("#input_fields_wrap").css({"display":"none"});
-    
     //display modal
     $("#" + dataModal).css({"display":"block"});
 });
@@ -52,10 +59,10 @@ $(".modal-trigger-add-gallery").click(function(e){
 $("#addGalleryForm").validate({
     rules: {
         addGallery_blogID:{
-            required: true, 
+            required: true 
         },
         addGallery_authorID:{
-            required: true,
+            required: true
         },
         addGalleryTitle: {
             required: true,
@@ -67,21 +74,23 @@ $("#addGalleryForm").validate({
         },
         addGalleryVideo: {              //input name: content
             required: false,   
-            accept: "video/*"
-            //filesize: 10000000           // 4MB
+            accept: "video/*",
+            filesize: 300000000           // 300MB raw file before commpression
         },
         addGalleryFile: {
             required: false,
-            extension: "jpg|jpeg|png|gif"
-            //filesize: 10000000           // 4MB
+            extension: "jpg|jpeg|png|gif",
+            filesize: 4000000           // 4MB
         }   
     },
     messages:{
         addGalleryFile:{
-            extension: "Allowed file extensions: jpg, jpeg, png, gif"
+            extension: "Allowed file extensions: jpg, jpeg, png, gif",
+            filesize: "File size must be<br> less than 4MB"
         },
         addGalleryVideo:{
-            accept: "Allowed only video file."
+            accept: "Allowed only video file.",
+            filesize: "The video file is too big."
         }
     },
             
@@ -150,9 +159,9 @@ $("#addGalleryForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-//            console.log(data);
+            console.log(data);
             if(data.success === true){
-                location.reload();
+                //location.reload();
             }else{
                 //hidde laoder
                     $(".loader").css({"display":"none"});
@@ -166,6 +175,33 @@ $("#addGalleryForm").validate({
     }
 });
 
+//show 'Current video' Label and show 'remove X button' for video field after file loaded
+$( "#addGalleryVideo" ).change(function(event) {
+    
+    //show 'Current video' Label and hide 'Add video' Label
+    $("#addGalleryVideoLabel_current").css({"display":"block"});
+    $("#addGalleryVideoLabel").css({"display":"none"});
+    
+    //show 'remove X button'
+    $("#preview-video-add-gallery-label").css({"display":"block"});
+});
+
+//remove file from video field - "X"
+$( "#preview-video-add-gallery-label" ).click(function() {
+    
+    //show 'Add video' Label and hide 'Current video' Label
+    $("#addGalleryVideoLabel").css({"display":"block"});
+    $("#addGalleryVideoLabel_current").css({"display":"none"});
+    
+
+    //reset video field 
+        $("#addGalleryVideo").val(null);
+    //hide 'remove X button'
+        $("#preview-video-add-gallery-label").css({"display":"none"});
+    //remove jquert validation error for doc field - addPostDoc
+        $("#addGalleryVideo-error").css({"display":"none"});
+});
+
 
 /*
  *  Gallery builder
@@ -173,7 +209,7 @@ $("#addGalleryForm").validate({
 //add next photo field for galllery
 $( "#add_file_button" ).click(function() {
     
-    var max_fields = 30;
+    var max_fields = 12;
     
     //get current gallery size
     var current_gallery_size = $('#input_fields_wrap div').length;
@@ -195,7 +231,12 @@ $( "#add_file_button" ).click(function() {
         //set new last_index
         $('#input_fields_wrap').attr('data-last-index', index++);
     }else{
-        alert('Gallery is full.');
+        //show error modal
+            $("#error-post-modal").css({"display":"block"});
+        //insert error-information
+            $("#error-input-file").html("Gallery is full.");
+        //insert error-description
+            $("#error-description-input-file span").html('The maximum size of the gallery is 12 photos.');
     }
     
     //if more then 0 post-gallery show gallery input_fields_wrap and label
@@ -226,21 +267,58 @@ $( "#add_file_button" ).click(function() {
 
 function preview_image(inputFile, event) {
         
-    inputID = inputFile.getAttribute('id');
-    //alert('input id: ' + inputID);
-        
+    var inputID = inputFile.getAttribute('id');
     image = document.getElementById('preview-img-add-gallery-'+inputID);
-        
-    image.src = URL.createObjectURL(event.target.files[0]);
-        
-    $("#preview-img-add-gallery-"+inputID).css({"display":"block"});
-    $("#preview-img-add-gallery-label-"+inputID).css({"display":"block"});
-        
-    //hide input field
-    $("input#"+inputID).css({"display":"none"});
-    //remove default background from post-gallery
-    $("#preview-img-add-gallery-"+inputID).parent('div').css({"background":"none"});
+    
+    // validation if photo and photo size
+    var isValid = checkValidationForAddGalleryImage(event.target.files[0]);
+    
+    if(isValid === null){
+        //remove addGalleryFile file field
+            $("input#"+inputID).css({"display":"none"});
+        // add src to image
+            image.src = URL.createObjectURL(event.target.files[0]);
+        //show image
+            $("#preview-img-add-gallery-"+inputID).css({"display":"block"});
+        //disply remove img button
+            $("#preview-img-add-gallery-label-"+inputID).css({"display":"block"});
+        //remove default background from post-gallery
+            $("#preview-img-add-gallery-"+inputID).parent('div').css({"background":"none"});
+    }else{
+        //show error modal
+            $("#error-post-modal").css({"display":"block"});
+        //insert error-information
+            $("#error-input-file").html("You can not add this file to gallery.");
+        //insert error-description
+            $("#error-description-input-file span").html(isValid); 
+        //remove file from input
+            $("input#"+inputID).val(null);
+    }
 
+}
+
+function checkValidationForAddGalleryImage(file){
+    
+    var isValid = null;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+        return isValid = 'Allowed file extensions: jpg, jpeg, png, gif';
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        return isValid = 'File size must be less than 4MB';
+    }
+    
+    
+    return isValid;
+    
 }
 
 

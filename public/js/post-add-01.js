@@ -78,13 +78,13 @@ $(".modal-trigger-add-post").click(function(e){
 $("#addPostForm").validate({
     rules: {
         addPost_blogID:{
-            required: true, 
+            required: true 
         },
         addPost_teacherID:{
-            required: true,
+            required: true
         },
         addPost_authorID:{
-            required: true,
+            required: true
         },
         addPostTitle: {
             required: true,
@@ -270,8 +270,6 @@ $( "#preview-video-add-post-label" ).click(function() {
         $("#addPostVideo").val(null);
     //hide 'remove X button'
         $("#preview-video-add-post-label").css({"display":"none"});
-    //remove not-falid class
-        //$("#preview-doc-add-news-label").removeClass("not-valid");
     //remove jquert validation error for doc field - addPostDoc
         $("#addPostVideo-error").css({"display":"none"});
 });

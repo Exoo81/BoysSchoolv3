@@ -205,8 +205,8 @@ class PostManager{
                 }
                 
                 if(isset($_FILES['addPostVideo'])){
-                    $dataResponse['success'] = true;
-                    $dataResponse['addPostVideo'] =  $_FILES["addPostVideo"]['name'];
+//                    $dataResponse['success'] = true;
+//                    $dataResponse['addPostVideo'] =  $_FILES["addPostVideo"]['name'];
                     
                     /*
                     * Save on server
@@ -245,8 +245,8 @@ class PostManager{
                 
                 if(isset($_FILES['file'.$count])){
                     
-                    $dataResponse['success'] = true;
-                    $dataResponse['photo'.$count] =  $_FILES['file'.$count]['name'];
+//                    $dataResponse['success'] = true;
+//                    $dataResponse['photo'.$count] =  $_FILES['file'.$count]['name'];
                     /*
                      * Save on server
                      */
