@@ -364,7 +364,7 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
         //    alert('add photo to gallery');
         
         // max size of gallery
-        var max_fields = 15;
+        var max_fields = 12;
         
         //get current gallery size
         var current_gallery_size = $('#current_gallery_wrap div').length;        
