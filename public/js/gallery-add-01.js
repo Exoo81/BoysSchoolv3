@@ -159,9 +159,9 @@ $("#addGalleryForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
-                //location.reload();
+                location.reload();
             }else{
                 //hidde laoder
                     $(".loader").css({"display":"none"});

@@ -613,15 +613,8 @@ class PostManager{
                     }
                    
                     $target_file = $path_to_save . basename($_FILES["file".$count]["name"]);
-
-//                    // Check if file already exists
-//                    // if not exist
-//                    if (!file_exists($target_file)) {
-//                        //save on server
-//                        move_uploaded_file($_FILES["file".$count]["tmp_name"], $target_file);
-//                    }
                     
-                                        $exif_data = null;
+                    $exif_data = null;
                     $iOS_orientation = null;
                     if($_FILES["file".$count]['type'] == "image/jpeg"){
                         if(function_exists('exif_read_data')){

@@ -166,7 +166,6 @@ $(".modal-trigger-edit-post").click(function(e){
                 $("#editPostForm").css({"display":"block"});
             }else{
                 $(".response-msg").html(data.responseMsg);
-//                $("#editNewsForm").css({"display":"none"});
                 //hide laoder
                 $(".loader").css({"display":"none"});
             }
@@ -442,11 +441,11 @@ $( "#preview-video-edit-post-label_current" ).click(function() {
     
     //show add video label editPostVideoLabel
     $('#editPostVideoLabel').css({"display":"block"});
-    //show input doc
+    //show input video
     $("#editPostVideo").val(null);
     $("#editPostVideo").css({"display":"block"});
     
-    //remove video set true
+    //remove video - set true
     $("#edit_post_remove_video").attr("checked", true);
 
 });
@@ -569,7 +568,7 @@ function preview_image_edit(inputFile, event) {
             image.src = URL.createObjectURL(event.target.files[0]);
         //show image
             $("#preview-img-edit-post-"+inputID).css({"display":"block"});
-        //disply remove img button
+        //disply 'X' button - remove img 
             $("#preview-img-edit-post-label-"+inputID).css({"display":"block"});
         //remove default background from post-gallery
             $("#preview-img-edit-post-"+inputID).parent('div').css({"background":"none"});

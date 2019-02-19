@@ -1618,13 +1618,9 @@ $aboutUs = $this->layout()->aboutUs;
                     <label>close</label>
                 </div>
             </div>
-            
-            <div class="circle-img-wrapper">
-                <?php 
-                    echo '<img class="news-edit" src="'.$this->basePath() .'/img/icons/icon-edit.png" alt="" />';
-                ?>   
-            </div>
-
+            <?php 
+                echo '<div class="circle-img-wrapper"><img class="news-edit" src="'.$this->basePath() .'/img/icons/icon-edit.png" alt="" /></div>';                    
+            ?>
             <!-- original version -->
             <div class="modal-title">
                     <span>Edit gallery</span>
@@ -1647,25 +1643,26 @@ $aboutUs = $this->layout()->aboutUs;
                         <input type="text" id="editGalleryTitle" name="editGalleryTitle" required>
                     </div>
                     
-                    <div class='width-35-right'>
-                        <label id='editGalleryVideoLabel'>Add video:</label>
-                        <input type="file" id="editGalleryVideo" name="editGalleryVideo">
-                    </div>
+                    
                     <div class='width-35-right'>
                         <label id='editGalleryVideoLabel_current'>Current video:</label>
+                        <label id='editGalleryVideoLabel'>Add video:</label>
                         <table id='editGalleryVideo_current'>
                             <tr>
                                 <td class="icon"><img class="icon" src="img/icons/icon-video.png"></td>
                                 <td class="text" id='editGalleryVideoTitle'></td>
                                 <td class="option">
-                                    <label class="preview-video-label" id="preview-video-edit-gallery-label">
-                                        <a href="#" class="remove_field_video" id='remove_field_video'>X</a>
+                                    <label class="preview-video-label" id="preview-video-edit-gallery-label_current">
+                                        <a href="#" class="input-X-button">X</a>
                                     </label>
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                    <input type="checkbox" class='to_remove' id='edit_gallery_remove_video'>
+                        
+                        <label class='input-X-button' id='preview-video-edit-gallery-label'><a href='#'>X</a></label>
+                        <input type="file" id="editGalleryVideo" name="editGalleryVideo">
+                        <input type="checkbox" class='to_remove' id='edit_gallery_remove_video'>
+                    </div> 
                     
                     <div class='width-100'>
                         <label for="editGalleryContent">Gallery description (text):</label>
@@ -1687,16 +1684,16 @@ $aboutUs = $this->layout()->aboutUs;
                             <button id='add-photo-gallery-button-edit' class="btn-add-user btn-burgundy reversed" data-text="Add some photo(s)"><span>Add some photo(s)</span></button>
                         </div>
                         
-                        <label id="input_fields_wrap_edit_label">Selected photos:</label>
-                        <div class="input_fields_wrap" id="input_fields_wrap_edit">
+                        <label id="input_fields_wrap_edit_gallery_label">Selected photos:</label>
+                        <div class="input_fields_wrap" id="input_fields_wrap_edit_gallery">
                             
     <!--                        ADDED PHOTO GALLERY-->
                         </div>
                     </div>
 
                     <div class="btn-modal-box">
-                        <button type="submit" class="modal-btn btn-blue left" data-text="Edit gallery"><span>Edit gallery</span></button>
-                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Discard"><span>Discard</span></button>
+                        <button type="submit" class="modal-btn btn-blue left" data-text="Save"><span>Save</span></button>
+                        <button type="button" class="modal-btn btn-red close-btn right" data-text="Cancel"><span>Cancel</span></button>
                     </div>
 		</form>
                
@@ -1990,7 +1987,7 @@ $aboutUs = $this->layout()->aboutUs;
     <script src="js/our-awards-add-01.js" type="text/javaScript"></script>
     <script src="js/our-awards-delete.js" type="text/javaScript"></script>
     
-    <script src="js/gallery-edit.js" type="text/javaScript"></script>
+    <script src="js/gallery-edit-01.js" type="text/javaScript"></script>
     <script src="js/gallery-delete.js" type="text/javaScript"></script>
     <script src="js/show-video.js" type="text/javaScript"></script>
     

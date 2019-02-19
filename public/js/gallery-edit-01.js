@@ -1,6 +1,10 @@
 /* 
  * Edit Gallery
  */
+//additionam method for file max size
+$.validator.addMethod('filesize', function (value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param);
+}, 'File size must be less than {0}');
 
 // open modal with news data
 $(".modal-trigger-edit-gallery").click(function(e){
@@ -15,9 +19,17 @@ $(".modal-trigger-edit-gallery").click(function(e){
     //reset form
     document.getElementById("editGalleryForm").reset();
     
-
-    //set edit_gallery_remove_video as false 
+    //hide all gallery video fields
+    $("#editGalleryVideoLabel").css({"display":"none"});
+    $("#editGalleryVideo").css({"display":"none"});
+    $("#editGalleryVideoLabel_current").css({"display":"none"});
+    $("#editGalleryVideo_current").css({"display":"none"});
+    //remove jquert validation error for video field - editPostVideo
+        $("#editGalleryVideo-error").css({"display":"none"});
+    $("#preview-video-edit-gallery-label").css({"display":"none"}); 
+    //set edit_post_remove_video as false 
     $("#edit_gallery_remove_video").attr("checked", false);
+    
     
     //clear current_gallery_wrap (new selected photos)
     $('#current_gallery_wrap').empty();
@@ -25,22 +37,17 @@ $(".modal-trigger-edit-gallery").click(function(e){
     $("ul#picture_to_remove_from_gallery").empty();
     
     //set default last index for added gallery
-    $('#input_fields_wrap_edit').attr('data-last-index', 0);
+    $('#input_fields_wrap_edit_gallery').attr('data-last-index', 0);
     
     //clear all post-gallery from added gallery
-    $("#input_fields_wrap_edit").empty();
+    $("#input_fields_wrap_edit_gallery").empty();
 
     //hidde form
     $("#editGalleryForm").css({"display":"none"});
 
-    //hide all gallery video fields
-    $("#editGalleryVideoLabel").css({"display":"none"});
-    $("#editGalleryVideo").css({"display":"none"});
-    $("#editGalleryVideoLabel_current").css({"display":"none"});
-    $("#editGalleryVideo_current").css({"display":"none"});
-    //hide input_fields_wrap_label & input_fields_wrap
-    $("#input_fields_wrap_edit_label").css({"display":"none"});
-    $("#input_fields_wrap_edit").css({"display":"none"});
+//    //hide input_fields_wrap_label & input_fields_wrap
+    $("#input_fields_wrap_edit_gallery_label").css({"display":"none"});
+    $("#input_fields_wrap_edit_gallery").css({"display":"none"});
     
     
     //read pass data
@@ -138,10 +145,10 @@ $(".modal-trigger-edit-gallery").click(function(e){
 $("#editGalleryForm").validate({
     rules: {
         editGalleryID: {
-            required: true,
+            required: true
         },
         editGalleryAuthorID: {
-            required: true,
+            required: true
         },
         editGalleryTitle: {
             required: true,
@@ -153,8 +160,8 @@ $("#editGalleryForm").validate({
         },
         editGalleryVideo: {
             required: false,   
-            accept: "video/*"
-            //filesize: 10000000           // 4MB
+            accept: "video/*",
+            filesize: 300000000           // 300MB raw file before commpression
         },
         editGalleryFile: {
             required: false,
@@ -167,7 +174,8 @@ $("#editGalleryForm").validate({
             extension: "Allowed file extensions: jpg, jpeg, png, gif"
         },
         editGalleryVideo:{
-            accept: "Allowed only video file."
+            accept: "Allowed only video file.",
+            filesize: "The video file is too big."
         }
     },
             
@@ -213,7 +221,7 @@ $("#editGalleryForm").validate({
         });
         
         //number of inputs in input_fields_wrap (no. of added photo)
-        var inputCount = $('#input_fields_wrap_edit div').length;
+        var inputCount = $('#input_fields_wrap_edit_gallery div').length;
 //            console.log( 'No. of added photos: ' + inputCount );  
      
         var formData = new FormData();
@@ -223,7 +231,7 @@ $("#editGalleryForm").validate({
                         "editAuthorID":editAuthorID,
                         "editGalleryTitle":editGalleryTitle, 
                         "editGalleryContent":editGalleryContent,  
-                        "removeVideo":removeVideo,
+                        "removeVideo":removeVideo
                     });
         
         formData.append('objArr', JSON.stringify(objArr));
@@ -234,7 +242,7 @@ $("#editGalleryForm").validate({
         if(inputCount > 0){
 //            console.log('---=== ADDED PHOTOS TO GALLERY ===---');
             var count = 0;
-            $("#input_fields_wrap_edit .post-gallery > input").each(function() {
+            $("#input_fields_wrap_edit_gallery .post-gallery > input").each(function() {
                 //if input field has photo check if .post-gallery img has attr src
                 var imgAttr = $(this).closest('.post-gallery').find('img').attr('src');
                 if(typeof imgAttr !== typeof undefined && imgAttr !== false){
@@ -273,27 +281,60 @@ $("#editGalleryForm").validate({
 
 });
 
+/*
+ * 
+ *  VIDEO FIELD
+ * 
+ */
+//show remove button "X" for file in VIDEO field
+$( "#editGalleryVideo" ).change(function(event) {
+    //hide add video label and show current video label
+    $("#editGalleryVideoLabel_current").css({"display":"block"});
+    $("#editGalleryVideoLabel").css({"display":"none"});
+    
+    //show remove "X" button
+    $("#preview-video-edit-gallery-label").css({"display":"block"});
 
-// remove video from edit form
-$( "#remove_field_video" ).click(function(e) { 
-
-        e.preventDefault();
-//        alert('remove video');
-
-        //remove current label and file name + icon
-        $("#editGalleryVideoLabel_current").css({"display":"none"});
-        $("#editGalleryVideo_current").css({"display":"none"});
-
-        //show choose field with label
-        $("#editGalleryVideoLabel").css({"display":"block"});
-        $("#editGalleryVideo").css({"display":"block"});
-        
-        //check old file "to remove"
-        $("#edit_gallery_remove_video").attr("checked", true);
- 
 });
 
-//remove photo from current gallery (gallery-edit) - build list to remove
+//remove file from VIDEO field
+$( "#preview-video-edit-gallery-label" ).click(function() {
+    
+    //show add video label and hide current video label
+    $("#editGalleryVideoLabel").css({"display":"block"});
+    $("#editGalleryVideoLabel_current").css({"display":"none"});
+  
+    //reset file field and remove img src=''
+        $("#editGalleryVideo").val(null);
+    //hide remove "X" button for field
+        $("#preview-video-edit-gallery-label").css({"display":"none"});
+    //remove jquert validation error for editPostVideo
+        $("#editGalleryVideo-error").css({"display":"none"});
+
+});
+
+
+//remove CURRENT VIDEO -  remove button "X" for CURRENT video
+$( "#preview-video-edit-gallery-label_current" ).click(function() {
+    
+    //hide current video
+    $('#editGalleryVideo_current').css({"display":"none"});
+    //hide current label
+    $('#editGalleryVideoLabel_current').css({"display":"none"});
+    
+    //show add video label editGalleryVideoLabel
+    $('#editGalleryVideoLabel').css({"display":"block"});
+    //show input video
+    $("#editGalleryVideo").val(null);
+    $("#editGalleryVideo").css({"display":"block"});
+    
+    //remove video - set true
+    $("#edit_gallery_remove_video").attr("checked", true);
+
+});
+
+
+//remove PHOTO from CURRENT gallery
 $('#current_gallery_wrap').on("click",".remove_photo_gallery_current", function(e){  
         
      e.preventDefault();
@@ -314,19 +355,21 @@ $('#current_gallery_wrap').on("click",".remove_photo_gallery_current", function(
         }
 });
 
-//add post-gallery box to gallery (EDIT GALLERY - add extra photo to galleryPost gallery)
+
+
+// add extra PHOTO to gallery
 $("#add-photo-gallery-button-edit").click(function(e){ //on add input button click
         
         e.preventDefault();
         //    alert('add photo to gallery');
         
         // max size of gallery
-        var max_fields = 30;
+        var max_fields = 12;
         
         //get current gallery size
         var current_gallery_size = $('#current_gallery_wrap div').length;        
         //get size of added to gallery
-        var added_gallery_size = $('#input_fields_wrap_edit div').length;
+        var added_gallery_size = $('#input_fields_wrap_edit_gallery div').length;
             //alert('Current gallery size: ' + current_gallery_size + '\n\
             //    Added gallery size: ' + added_gallery_size);
     
@@ -335,7 +378,7 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
             //alert('Total size of gallery: ' + totalGallerySize);
         
         //get last index used
-        var last_index = parseInt($('#input_fields_wrap_edit').attr("data-last-index"));
+        var last_index = parseInt($('#input_fields_wrap_edit_gallery').attr("data-last-index"));
         
 //        var current_gallery_wrap = document.getElementById('current_gallery_wrap');
 //        var currentGalleryCount = current_gallery_wrap.getElementsByTagName('div').length;
@@ -344,28 +387,33 @@ $("#add-photo-gallery-button-edit").click(function(e){ //on add input button cli
         if(totalGallerySize < max_fields){ //max input box allowed
             index = last_index + 1;
             //alert('index: ' + index);
-            $('#input_fields_wrap_edit').append('<div class="post-gallery">\n\
+            $('#input_fields_wrap_edit_gallery').append('<div class="post-gallery">\n\
                                 <img class="preview-img" id="preview-img-edit-gallery-'+index+'" />\n\
                                 <input type="file" name="editGalleryFile"  id="'+index+'" onchange="preview_image_edit_gallery(this, event)" />\n\
                                 <label class="preview-img-label" id="preview-img-edit-gallery-label-'+index+'" for="preview-img-edit-gallery-'+index+'"><a href="#" class="remove_photo_edit">X</a></label>\n\
                              </div>'); //add input box
             //set new last_index
-            $('#input_fields_wrap_edit').attr('data-last-index', index++);
+            $('#input_fields_wrap_edit_gallery').attr('data-last-index', index++);
         }else{
-            alert('Gallery is full.');
+            //show error modal
+                $("#error-post-modal").css({"display":"block"});
+            //insert error-information
+                $("#error-input-file").html("Gallery is full.");
+            //insert error-description
+                $("#error-description-input-file span").html('The maximum size of the gallery is '+max_fields+' photos.'); 
         }
         
-        //if more then 0 post-gallery show gallery input_fields_wrap_edit and input_fields_wrap_edit_label
+        //if more then 0 post-gallery show gallery input_fields_wrap_edit_gallery and input_fields_wrap_edit_gallery_label
         if(index>0){
             //show input_fields_wrap_label & input_fields_wrap
-            $("#input_fields_wrap_edit_label").css({"display":"block"});
-            $("#input_fields_wrap_edit").css({"display":"block"});
+            $("#input_fields_wrap_edit_gallery_label").css({"display":"block"});
+            $("#input_fields_wrap_edit_gallery").css({"display":"block"});
         }
       
 });
 
-//remove photo from added gallery (gallery-edit) - build list to remove
-$('#input_fields_wrap_edit').on("click",".remove_photo_edit", function(e){  
+//remove PHOTO from EXTRA gallery
+$('#input_fields_wrap_edit_gallery').on("click",".remove_photo_edit", function(e){  
         
      e.preventDefault();
 //     alert('remove photo');
@@ -378,32 +426,70 @@ $('#input_fields_wrap_edit').on("click",".remove_photo_edit", function(e){
         div_to_remove.remove();
         
         //get current gallery size
-        var numberOfAddedPhotos = $('#input_fields_wrap_edit div').length;
+        var numberOfAddedPhotos = $('#input_fields_wrap_edit_gallery div').length;
         if(numberOfAddedPhotos === 0){
-            $('#input_fields_wrap_edit_label').css({"display":"none"});
-            $('#input_fields_wrap_edit').css({"display":"none"});
+            $('#input_fields_wrap_edit_gallery_label').css({"display":"none"});
+            $('#input_fields_wrap_edit_gallery').css({"display":"none"});
         }
 });
 
-function preview_image_edit_gallery(inputFile, event) { 
-        inputID = inputFile.getAttribute('id');
-           
+function preview_image_edit_gallery(inputFile, event) {
+    
+        var inputID = inputFile.getAttribute('id');   
         image = document.getElementById('preview-img-edit-gallery-'+inputID);
-        image.src = URL.createObjectURL(event.target.files[0]);
 
+    // validation if photo and photo size
+    var isValid = checkValidationForEditGalleryImage(event.target.files[0]);
+    
+    if(isValid === null){
+        //remove addPostFile file field
+            $("input#"+inputID).css({"display":"none"});
+        // add src to image
+            image.src = URL.createObjectURL(event.target.files[0]);
+        //show image
+            $("#preview-img-edit-gallery-"+inputID).css({"display":"block"});
+        //disply 'X' button - remove img 
+            $("#preview-img-edit-gallery-label-"+inputID).css({"display":"block"});
+        //remove default background from post-gallery
+            $("#preview-img-edit-gallery-"+inputID).parent('div').css({"background":"none"});
+
+    }else{
+        //show error modal
+            $("#error-post-modal").css({"display":"block"});
+        //insert error-information
+            $("#error-input-file").html("You can not add this file to gallery.");
+        //insert error-description
+            $("#error-description-input-file span").html(isValid); 
+        //remove file from input
+            $("input#"+inputID).val(null);
         
-        $("#preview-img-edit-gallery-"+inputID).css({"display":"block"});
-        $("#preview-img-edit-gallery-label-"+inputID).css({"display":"block"});
-        
-        //remove default background from galleryPost-gallery
-        $("#preview-img-edit-gallery-"+inputID).parent('div').css({"background-image":"none"});
-        //hide input field
-        $("input#"+inputID).css({"display":"none"});
-        //change galleryPost-gallery background on transparent
-        var post_gallery = $("#preview-img-edit-gallery-"+inputID).parent('div');
-            post_gallery.css({"background":"none"});
+    }
         
 
+}
+
+function checkValidationForEditGalleryImage(file){
+    
+    var isValid = null;
+    var fileType = file["type"];
+    
+    //validation for file type;
+    var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+    if ($.inArray(fileType, validImageTypes) < 0) {
+        return isValid = 'Allowed file extensions: jpg, jpeg, png, gif';
+    }
+    
+    //validation for file size max. 4MB
+    var fileSize =  file["size"];
+    //alert ("File size: " + fileSize);
+    
+    if(fileSize > 4000000){
+        return isValid = 'File size must be less than 4MB.';
+    }
+    
+    
+    return isValid;
+    
 }
 
 //close modal
