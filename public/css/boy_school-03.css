@@ -26423,6 +26423,150 @@ label.error {
             top: 25px;
         }
     }
+    
+   
+.cms-option.enrolment{
+    top: 30px;
+    right: -5px;
+}
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.enrolment{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.enrolment{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.enrolment{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.enrolment{
+            top: 30px;
+            right: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.enrolment{
+            width: 130px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.enrolment{
+            width: 130px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.enrolment{
+            width: 120px;
+            right: -5px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.enrolment{
+            width: 120px;
+            right: -5px;
+            top: 30px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.enrolment{
+            width: 150px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.enrolment{
+            width: 150px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.enrolment{
+            width: 150px;
+            right: -55px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.enrolment{
+            width: 135px;
+            right: -35px;
+            top: 20px;
+            text-align: center;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.enrolment{
+            width: 135px;
+            right: -45px;
+            top: 20px;
+            text-align: center
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.enrolment{
+            width: 80px;
+            right: -35px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.enrolment{
+            position: absolute;
+            width: 115px;
+            right: -10px;
+            top: 25px;
+            text-align: center;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.enrolment{
+            position: absolute;
+            width: 80px;
+            right: -10px;
+            top: 25px;
+            text-align: center;
+        }
+    }
 
 .cms-option.parents-information{
     position: absolute;
@@ -27495,7 +27639,123 @@ label.error {
             top: -25px;
         }
     }
-    
+
+.cms-option.enrolment a img{
+    right: 195px;
+    top: -5px;
+}    
+       /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .cms-option.enrolment a img{
+            right: 195px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .cms-option.enrolment a img{
+            right: 195px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .cms-option.enrolment a img{
+            right: 195px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .cms-option.enrolment a img{
+            right: 195px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .cms-option.enrolment a img{
+            right: 135px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1101px) and (max-width: 1200px) {
+        .cms-option.enrolment a img{
+            right: 135px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1100px) {
+        .cms-option.enrolment a img{
+            right: 120px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .cms-option.enrolment a img{
+            right: 50px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .cms-option.enrolment a img{
+            right: 155px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .cms-option.enrolment a img{
+            right: 155px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .cms-option.enrolment a img{
+            right: 155px;
+            top: 5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .cms-option.enrolment a img{
+            right: 140px;
+            top: 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .cms-option.enrolment a img{
+            right: 140px;
+            top: 5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .cms-option.enrolment a img{
+            right: 30px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .cms-option.enrolment a img{
+            right: 45px;
+            top: -25px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .cms-option.enrolment a img{
+            right: 30px;
+            top: -25px;
+        }
+    }    
     
 .cms-option.parents-assoc a img{
     right: 225px;

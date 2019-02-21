@@ -135,6 +135,12 @@ class User {
     * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
     */
      protected $schoolLifeList;
+     
+     /**
+    * @ORM\OneToMany(targetEntity="\Parents\Entity\Enrolment", mappedBy="author")
+    * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
+    */
+     protected $enrolmentList;
     
     /**
      * Constructor.
@@ -151,6 +157,7 @@ class User {
         $this->bookList = new ArrayCollection();
         $this->bookListAuthor = new ArrayCollection();
         $this->schoolLifeList = new ArrayCollection();
+        $this->enrolmentList = new ArrayCollection();
     }
     
       
@@ -185,98 +192,7 @@ class User {
     public function setEmail($email) {
         $this->email = $email;
     }
-    
-//    /**
-//     * Returns title.
-//     * @return string     
-//     */
-//    public function getTitle() {
-//        return $this->title;
-//    } 
-//    
-//    /**
-//     * Returns title string.
-//     * @return string     
-//     */
-//    public function getTitleString() {
-//        $titleString = '';
-//        if($this->title == 1){
-//            $titleString = 'Mr.';
-//        }
-//        if($this->title == 2){
-//            $titleString = 'Mrs.';
-//        }
-//        if($this->title == 3){
-//            $titleString = 'Ms.';
-//        }
-//        return $titleString;
-//    }
-//
-//    /**
-//     * Sets title.
-//     * @param string $title
-//     */
-//    public function setTitle($title) {
-//        $this->title = $title;
-//    }
-//    
-//    /**
-//     * Returns first name.
-//     * @return string     
-//     */
-//    public function getFirstName() {
-//        return $this->firstName;
-//    }       
-//
-//    /**
-//     * Sets first name.
-//     * @param string $firstName
-//     */
-//    public function setFirstName($firstName) {
-//        $this->firstName = $firstName;
-//    }
-//    
-//    /**
-//     * Returns last name.
-//     * @return string     
-//     */
-//    public function getLastName() {
-//        return $this->lastName;
-//    }       
-//
-//    /**
-//     * Sets last name.
-//     * @param string $lastName
-//     */
-//    public function setLastName($lastName) {
-//        $this->lastName = $lastName;
-//    }
-//    
-//    /**
-//     * Returns full name.
-//     * @return string     
-//     */
-//    public function getFullName() {
-//       $fullName = $this->getTitleString() .' '. $this->firstName .' '. $this->lastName;
-//        return $fullName;
-//    }       
-//
-//    /**
-//     * Sets full name.
-//     * @param string $fullName
-//     */
-//    public function setFullName($fullName) {
-//        $this->fullName = $fullName;
-//    }
-//    
-//    /**
-//     * Returns title + last name.
-//     * @return string     
-//     */
-//    public function getTitleLastName() {
-//       $titleLastName = $this->getTitleString() .' '. $this->lastName;
-//        return $titleLastName;
-//    }       
+          
 
     /**
      * Returns status.
@@ -807,6 +723,41 @@ class User {
      */
     public function addSchoolLifeToList($schoolLife) {
       $this->schoolLifeList[] = $schoolLife;
+    }
+    
+    
+    /**
+    * Returns enrolment list for this user.
+    * @return array
+    */
+    public function getEnrolmentList() {
+      return $this->enrolmentList;
+    }
+    
+    /**
+     * Returns the string of assigned as enrolment id.
+     */
+    public function getEnrolmentListAsString(){
+        $enrolmentList = '';
+        
+        $count = count($this->enrolmentList);
+        $i = 0;
+        foreach ($this->enrolmentList as $enrolment) {
+            $enrolmentList .= $enrolment->getId();
+            if ($i<$count-1)
+                $enrolmentList .= ', ';
+            $i++;
+        }
+        
+        return $enrolmentList;
+    }
+    
+    /**
+     * Adds a new enrolment to enrolmentList in this user.
+     * @param $enrolment
+     */
+    public function addEnrolmentToList($enrolment) {
+      $this->enrolmentList[] = $enrolment;
     }
     
     

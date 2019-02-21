@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList'];
+            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList'];
+        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList'];
     }
 
     /**
@@ -725,6 +725,39 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSchoolLifeToList', [$schoolLife]);
 
         return parent::addSchoolLifeToList($schoolLife);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEnrolmentList()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnrolmentList', []);
+
+        return parent::getEnrolmentList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEnrolmentListAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnrolmentListAsString', []);
+
+        return parent::getEnrolmentListAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addEnrolmentToList($enrolment)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnrolmentToList', [$enrolment]);
+
+        return parent::addEnrolmentToList($enrolment);
     }
 
     /**

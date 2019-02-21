@@ -9,6 +9,7 @@ use Parents\Entity\BookList;
 use Parents\Entity\Book;
 use Parents\Entity\Policy;
 use Parents\Entity\Stationary;
+use Parents\Entity\Enrolment;
 use Ourteam\Entity\Teacher;
 use User\Entity\User;
 use User\Entity\Season;
@@ -91,6 +92,16 @@ class ParentsManager{
                      ->findAll();
         
         return $policiesList;
+    }
+    
+    
+    public function getEnrolments(){
+        
+        $enrolment = $this->entityManager->getRepository(Enrolment::class)
+                     ->findAll();
+        
+        return $enrolment;
+        
     }
 
 
@@ -962,6 +973,7 @@ class ParentsManager{
         
     }
     
+
     public function getPolicy($policyID){
         
         

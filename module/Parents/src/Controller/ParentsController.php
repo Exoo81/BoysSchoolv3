@@ -37,6 +37,7 @@ class ParentsController extends AbstractActionController{
         $parentsAssoc = $this->parentsManager->getParentsAssoc();
         $parentsAssocTeam = $this->parentsManager->getParentsAssocTeam();
         $booksList = $this->parentsManager->getBooksListSeason();
+        $enrolment = $this->parentsManager->getEnrolments();
         //$policies = $this->parentsManager->getPolicies();
         
         return new ViewModel([
@@ -45,6 +46,7 @@ class ParentsController extends AbstractActionController{
             'parentsAssoc' => $parentsAssoc,
             'parentsAssocTeam' => $parentsAssocTeam,
             'booksList' => $booksList,
+            '$enrolment' => $enrolment,
             //'policies' => $policies
         ]);
         

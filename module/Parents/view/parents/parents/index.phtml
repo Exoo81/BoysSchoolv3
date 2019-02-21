@@ -180,12 +180,28 @@ $this->headTitle($this->headTitle.' '.$current_season);
 		</div>
             </div>
             
+            
+            
+            
             <div class="enrolment-box">
                 <div class="title red">School enrolment</div>
+                <?php 
+                    if ($this->access('enrolment.manage')) {
+                        echo '<div class="cms-option enrolment left">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-enrolment-modal">';
+                                echo '<img src="img/icons/icon-settings.png"><span>Manage enrolment form</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+
+                ?>
                 <ul>
                     <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
                 </ul>
             </div>
+            
+            
+            
             
             <div class="policies-box">
                 <div class="title burgundy">Policies</div>
@@ -432,6 +448,16 @@ $this->headTitle($this->headTitle.' '.$current_season);
             
             <div class="enrolment-box">
                 <div class="title red">School enrolment</div>
+                <?php 
+                    if ($this->access('enrolment.manage')) {
+                        echo '<div class="cms-option enrolment left">';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-enrolment-modal">';
+                                echo '<img src="img/icons/icon-settings.png"><span>Manage enrolment form</span>';
+                            echo '</a>';
+                        echo '</div>';
+                    }
+
+                ?>
                 <ul>
                     <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
                 </ul>
@@ -1619,6 +1645,94 @@ $this->headTitle($this->headTitle.' '.$current_season);
 </div>
 <!-- end Book List Modal -->
 
+<!-- Manage Enrolment Modal -->
+<div class="modal" id="manage-enrolment-modal">
+<!--  <div class="modal-sandbox"></div>-->
+  <div class="modal-box sm">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Manage Enrolment Forms</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            <div class="btn-modal-box our-team-add">
+                <button class="modal-trigger-add-newsletter btn-max btn-red reversed" data-modal="add-newsletter-modal" data-text="Add enrolment document">
+                    <span><i class="fa fa-plus"></i>Add enrolment document</span>
+                </button>
+            </div>
+            <hr class="burgundy" />
+            
+            
+<!--            <div class="table-header">List of newletters</div>-->
+           
+            <?php 
+            
+            
+//                foreach($this->newsletters as $newslettersMonth){
+                       
+//                    $monthName = $newslettersMonth['month'];
+                            
+//                    echo '<div class="newsletter-title">'.$monthName.'</div>';
+                            
+//                    $newsletters = $newslettersMonth['newsletters'];
+                            
+//                    foreach($newsletters as $newsletter){
+                                
+//                        echo '<div class="small-table no-border">';
+//                            echo '<div class="small-table-row ">';
+  //                              echo '<div class="small-table-cell icon-cell">';
+    //                                echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
+      //                          echo '</div>';
+        //                        echo '<div class="small-table-cell long-title">';
+          //                          echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
+            //                            echo '<span>'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';                                          
+              //                      echo '</a>';
+                //                echo '</div>';
+//
+  //                              echo '<div class="small-table-cell remove">';
+    //                                if ($this->access('newsletter.delete')) {
+      //                                  echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'" data-date="'.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'">';
+        //                                    echo '<button class="btn-admin">';
+          //                                      echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+            //                                echo '</button>';
+              //                              echo '<span class="tooltiptext remove">Remove</span>';
+                //                        echo '</a>';
+                  //                  }                               
+                    //            echo '</div>';
+//
+  //                          echo '</div>';
+    //                    echo '</div>';
+    //                }
+                        
+    //            }
+
+            ?>
+            
+            <hr class="burgundy" />
+            
+          
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Manage Newsletter Modal -->
+
 
 <!-- Show Show Policy Modal -->
 <div class="modal" id="show-policy-modal-origin">
@@ -1693,7 +1807,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
 
 
-<!-- Add Policies Modal -->
+<!-- Add Policie Modal -->
 <div class="modal" id="add-policy-modal">
 <!--    <div class="modal-sandbox"></div>-->
     <div class="modal-box lg">
