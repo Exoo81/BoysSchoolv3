@@ -54,6 +54,8 @@ return [
                 // Give access to "editBookList", "deleteBookList"  authorized users only.
                 // access to the action with the option of using the defined permission in the index.phtml (parents) file and in the ParentsController
                     ['actions' => ['editbooklist', 'deletebooklist'], 'allow' => '@'],
+                // Give access to "addEnrolment", "deleteEnrolment" actions to ADMIN only.
+                    ['actions' => ['addenrolment', 'deleteenrolment'], 'allow' => '+enrolment.manage'],
                 // Give access to "addPolicy", "editPolicy", "deletePolicy" actions to ADMIN only.
                     ['actions' => ['addpolicy', 'editpolicy', 'deletepolicy'], 'allow' => '+policies.manage'],
             ],

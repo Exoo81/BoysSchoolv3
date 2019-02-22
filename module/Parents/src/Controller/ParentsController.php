@@ -46,7 +46,7 @@ class ParentsController extends AbstractActionController{
             'parentsAssoc' => $parentsAssoc,
             'parentsAssocTeam' => $parentsAssocTeam,
             'booksList' => $booksList,
-            '$enrolment' => $enrolment,
+            'enrolment' => $enrolment,
             //'policies' => $policies
         ]);
         

@@ -1667,61 +1667,45 @@ $this->headTitle($this->headTitle.' '.$current_season);
     
         <div class="modal-text">
             <div class="btn-modal-box our-team-add">
-                <button class="modal-trigger-add-newsletter btn-max btn-red reversed" data-modal="add-newsletter-modal" data-text="Add enrolment document">
+                <button class="modal-trigger-add-enrolment btn-max btn-red reversed" data-modal="add-enrolment-modal" data-authorID="<?= $this->currentUser()->getId() ?>" data-text="Add enrolment document">
                     <span><i class="fa fa-plus"></i>Add enrolment document</span>
                 </button>
             </div>
-            <hr class="burgundy" />
-            
-            
-<!--            <div class="table-header">List of newletters</div>-->
-           
+
             <?php 
-            
-            
-//                foreach($this->newsletters as $newslettersMonth){
-                       
-//                    $monthName = $newslettersMonth['month'];
-                            
-//                    echo '<div class="newsletter-title">'.$monthName.'</div>';
-                            
-//                    $newsletters = $newslettersMonth['newsletters'];
-                            
-//                    foreach($newsletters as $newsletter){
-                                
-//                        echo '<div class="small-table no-border">';
-//                            echo '<div class="small-table-row ">';
-  //                              echo '<div class="small-table-cell icon-cell">';
-    //                                echo '<img class="newsletter-download" src="img/icons/icon-download.png" >';
-      //                          echo '</div>';
-        //                        echo '<div class="small-table-cell long-title">';
-          //                          echo '<a target="_blank" class="bs purpure" href="upload/newsletters/'.$current_season.'/'.$this->escapeHtml($newsletter->getDocName()).'">';
-            //                            echo '<span>'.$newsletter->getTitle().' '.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'</span>';                                          
-              //                      echo '</a>';
-                //                echo '</div>';
-//
-  //                              echo '<div class="small-table-cell remove">';
-    //                                if ($this->access('newsletter.delete')) {
-      //                                  echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$newsletter->getId().'" data-title="'.$newsletter->getTitle().'" data-date="'.date('jS F Y',strtotime($newsletter->getDateNewsletter())).'">';
-        //                                    echo '<button class="btn-admin">';
-          //                                      echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
-            //                                echo '</button>';
-              //                              echo '<span class="tooltiptext remove">Remove</span>';
-                //                        echo '</a>';
-                  //                  }                               
-                    //            echo '</div>';
-//
-  //                          echo '</div>';
-    //                    echo '</div>';
-    //                }
-                        
-    //            }
+                if(!empty($this->enrolment)){
+                    echo '<hr class="burgundy" />';
+                    foreach($this->enrolment as $enrolment){
+                        echo '<div class="small-table no-border">';
+                                echo '<div class="small-table-row ">';
+                                    echo '<div class="small-table-cell icon-cell">';
+                                        echo '<img class="newsletter-download" src="img/icons/icon-form.png" >';
+                                    echo '</div>';
+                                    echo '<div class="small-table-cell long-title">';
+                                        echo '<a target="_blank" class="bs red" href="upload/parents/enrolment/'.$this->escapeHtml($enrolment->getDocName()).'">';
+                                            echo '<span>'.$enrolment->getTitle().'</span>';                                          
+                                        echo '</a>';
+                                    echo '</div>';
+
+                                    echo '<div class="small-table-cell remove">';
+                                        if ($this->access('enrolment.manage')) {
+                                            echo '<a href="#" class="modal-trigger-delete-newsletter tooltip" data-modal="delete-newsletter-modal" data-id="'.$enrolment->getId().'" data-title="'.$enrolment->getTitle().'" data-date="'.date('jS F Y',strtotime($enrolment->getDatePublished())).'">';
+                                                echo '<button class="btn-admin">';
+                                                    echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                                echo '</button>';
+                                                echo '<span class="tooltiptext remove">Remove</span>';
+                                            echo '</a>';
+                                        }                               
+                                    echo '</div>';
+
+                                echo '</div>';
+                            echo '</div>'; 
+                    }
+                    echo '<hr class="burgundy" />';
+                }
 
             ?>
-            
-            <hr class="burgundy" />
-            
-          
+  
         </div>      
         <div class="btn-modal-box">
             <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
@@ -1731,7 +1715,58 @@ $this->headTitle($this->headTitle.' '.$current_season);
     </div> 
   </div>
 </div>
-<!-- end Manage Newsletter Modal -->
+<!-- end Manage Enrolment Modal -->
+
+<!-- Add Enrolment Modal -->
+<div class="modal" id="add-enrolment-modal">
+<!--    <div class="modal-sandbox"></div>-->
+    <div class="modal-box sm">
+        <div class="modal-header">
+            <div class="close-modal">
+                <div class="close-modal-inner">
+	    	<label>close</label>
+                </div>
+            </div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-form.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Add Enrolment</span>
+      	</div>
+        </div>
+        
+        
+        <div class="modal-body">
+            
+            <div class="modal-text">
+                <label class='response-msg'></label>
+                <div class="loader"></div>
+                <form id="addEnrolmentForm" class="cms" enctype="multipart/form-data">
+                    
+                    <input type="hidden" id="addEnrolmentAuthorID" name="addEnrolmentAuthorID" required>
+                    
+                    <div class='width-100'>
+                        <label for="addEnrolmentTitle">Title of the enrolment form:</label>
+                        <input type="text" id="addEnrolmentTitle" name="addEnrolmentTitle" required>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label id="addEnrolmentLabel" for="addEnrolmentFile">Choose file:</label>
+                        <input type="file" id="addEnrolmentFile" name="addEnrolmentFile" required>
+                    </div>
+
+                    <div class="btn-modal-box">
+                        <button type="submit" class="modal-btn btn-blue medium left" data-text="Add form"><span>Add form</span></button>
+                        <button type="button" class="modal-btn btn-red medium close-btn right" data-text="Discard"><span>Discard</span></button>
+                    </div>
+		</form>
+                
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- end add Enrolment Modal -->
 
 
 <!-- Show Show Policy Modal -->
@@ -1999,6 +2034,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/bookList-add.js" type="text/javaScript"></script>
 <script src="js/bookList-edit.js" type="text/javaScript"></script>
 <script src="js/bookList-delete.js" type="text/javaScript"></script>
+<script src="js/enrolment-add.js" type="text/javaScript"></script>
 <script src="js/policy-add.js" type="text/javaScript"></script>
 <script src="js/policy-edit.js" type="text/javaScript"></script>
 <script src="js/policy-delete.js" type="text/javaScript"></script>
