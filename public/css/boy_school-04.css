@@ -4827,7 +4827,8 @@ section.admin .admin-box{
 
 .parents-info-box .no-content,
 .book-list-box .no-content,
-.policies-box .no-content{
+.policies-box .no-content,
+.enrolment-box .no-content{
     padding: 5% 20%;
     min-height: 0;
 }
@@ -4835,7 +4836,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 5% 20%;
         }
     }
@@ -4843,7 +4845,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 5% 20%;
         }
     }
@@ -4851,7 +4854,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
            padding: 5% 30%;
         }
     }
@@ -4859,7 +4863,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 5% 30%;
         }
     }
@@ -4867,7 +4872,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 5% 30%;
         }
     }
@@ -4875,7 +4881,8 @@ section.admin .admin-box{
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 5% 10%;
         }
     }
@@ -4883,7 +4890,8 @@ section.admin .admin-box{
     @media screen and (min-width: 801px) and (max-width: 1000px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 0px 10%;
         }
     }
@@ -4891,7 +4899,8 @@ section.admin .admin-box{
     @media screen and (min-width: 721px) and (max-width: 800px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20%;
         }
     }
@@ -4899,7 +4908,8 @@ section.admin .admin-box{
     @media screen and (min-width: 701px) and (max-width: 720px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20%;
         }
     }
@@ -4907,7 +4917,8 @@ section.admin .admin-box{
     @media screen and (min-width: 601px) and (max-width: 700px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20%;
         }
     }
@@ -4915,7 +4926,8 @@ section.admin .admin-box{
     @media screen and (min-width: 551px) and (max-width: 600px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20%;
         }
     }
@@ -4923,7 +4935,8 @@ section.admin .admin-box{
     @media screen and (min-width: 480px) and (max-width: 550px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20%;
         }
     }
@@ -4931,7 +4944,8 @@ section.admin .admin-box{
     @media screen and (min-width: 371px) and (max-width: 479px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20px;
         }
     }
@@ -4939,7 +4953,8 @@ section.admin .admin-box{
     @media screen and (min-width: 341px) and (max-width: 370px)  {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20px;
         }
     }
@@ -4947,7 +4962,8 @@ section.admin .admin-box{
     @media screen and (max-width: 340px) {
         .parents-info-box .no-content,
         .book-list-box .no-content,
-        .policies-box .no-content{
+        .policies-box .no-content,
+        .enrolment-box .no-content{
             padding: 20px 20px;
         }
     }
@@ -5155,6 +5171,7 @@ section.admin .admin-box{
 
 /** end common table **/
 
+.enrolment-box .no-content img,
 .policies-box .no-content img,
 .book-list-box .no-content img,
 .parents-info-box .no-content img,
@@ -5170,6 +5187,7 @@ section.admin .admin-box{
 }
     /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5184,6 +5202,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5198,6 +5217,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5212,6 +5232,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5226,6 +5247,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5240,6 +5262,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5255,6 +5278,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5270,6 +5294,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5285,6 +5310,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5300,6 +5326,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 601px) and (max-width: 700px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5314,6 +5341,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 551px) and (max-width: 600px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5328,6 +5356,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 550px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5342,6 +5371,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5356,6 +5386,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5370,6 +5401,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
+        .enrolment-box .no-content img,
         .policies-box .no-content img,
         .book-list-box .no-content img,
         .parents-info-box .no-content img,
@@ -5398,6 +5430,7 @@ section.admin .admin-box{
     transform: rotate(1deg);
 }
 
+.enrolment-box .no-content span,
 .policies-box .no-content span,
 .book-list-box .no-content span,
 .parents-info-box .no-content span,
@@ -5425,6 +5458,7 @@ section.admin .admin-box{
 
 /** Breakpoint **/
     @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5439,6 +5473,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5453,6 +5488,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5467,6 +5503,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5481,6 +5518,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5495,6 +5533,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5509,6 +5548,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5523,6 +5563,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 721px) and (max-width: 800px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5537,6 +5578,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 701px) and (max-width: 720px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5551,6 +5593,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 601px) and (max-width: 700px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5566,6 +5609,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 551px) and (max-width: 600px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5581,6 +5625,7 @@ section.admin .admin-box{
     }
     /** Breakpoint **/
     @media screen and (min-width: 480px) and (max-width: 550px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5596,6 +5641,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 371px) and (max-width: 479px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5611,6 +5657,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
@@ -5626,6 +5673,7 @@ section.admin .admin-box{
     }
     /* Breakpoint */
     @media screen and (max-width: 340px) {
+        .enrolment-box .no-content span,
         .policies-box .no-content span,
         .book-list-box .no-content span,
         .parents-info-box .no-content span,
