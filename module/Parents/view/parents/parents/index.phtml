@@ -195,8 +195,22 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     }
 
                 ?>
+
                 <ul>
-                    <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
+                    <?php
+                        if(!empty($this->enrolment)){
+                            foreach($this->enrolment as $enrolment){
+                                if($enrolment->getDocName() != null){
+                                    echo '<li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/'.$enrolment->getDocName().'" class="bs red"><span>'.$enrolment->getTitle().'</span></a></li>';
+                                }
+                            }
+                        }else{
+                            echo '<div class="no-content">';
+                                echo '<img src="img/icons/icon-update-soon-1.png"/>';
+                                echo '<span>will come soon ...</span>';        
+                            echo '</div>';
+                        }
+                    ?>
                 </ul>
             </div>
             
@@ -457,8 +471,22 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         echo '</div>';
                     }
                 ?>
+
                 <ul>
-                    <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
+                    <?php
+                        if(!empty($this->enrolment)){
+                            foreach($this->enrolment as $enrolment){
+                                if($enrolment->getDocName() != null){
+                                    echo '<li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/'.$enrolment->getDocName().'" class="bs red"><span>'.$enrolment->getTitle().'</span></a></li>';
+                                }
+                            }
+                        }else{
+                            echo '<div class="no-content">';
+                                echo '<img src="img/icons/icon-update-soon-1.png"/>';
+                                echo '<span>will come soon ...</span>';        
+                            echo '</div>';
+                        }
+                    ?>
                 </ul>
             </div>
 
@@ -1685,7 +1713,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                         echo '<div class="small-table no-border">';
                                 echo '<div class="small-table-row ">';
                                     echo '<div class="small-table-cell icon-cell">';
-                                        echo '<img class="newsletter-download" src="img/icons/icon-form.png" >';
+                                        echo '<img class="pa-arrow" src="img/icons/icon-form.png" >';
                                     echo '</div>';
                                     echo '<div class="small-table-cell long-title">';
                                         echo '<a target="_blank" class="bs red" href="upload/parents/enrolment/'.$this->escapeHtml($enrolment->getDocName()).'">';
