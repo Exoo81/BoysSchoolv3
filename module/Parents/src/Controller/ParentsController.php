@@ -1047,7 +1047,7 @@ class ParentsController extends AbstractActionController{
 //            $dataResponse['responseMsg'] = 'do add enrolment (1)';
             
             //add enrolment
-            $dataResponse = $this->parentsManager->addEnrolment($dataForm);
+            $dataResponse = $this->parentsManager->saveEnrolment($dataForm);
 
         }else{
             //return error
@@ -1091,6 +1091,65 @@ class ParentsController extends AbstractActionController{
         
         return $view;
 
+    }
+    
+    public function deleteenrolmentAction(){
+        
+        //get POST data
+        $id =  $this->params()->fromPost('id', 0);
+            
+        /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('enrolment.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do delete enrolment (1)';
+            
+            //delete enrolment
+            $dataResponse = $this->parentsManager->deleteEnrolment($id);
+            
+        }else{
+            //return error
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+        
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view; 
     }
     
     public function getpolicyAction(){

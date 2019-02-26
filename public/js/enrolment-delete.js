@@ -1,29 +1,30 @@
 /* 
- * Delete Newsletter
+ * Delete Enrolment
  */
 
 //open modal with form
-$(".modal-trigger-delete-newsletter").click(function(e){
+$(".modal-trigger-delete-enrolment").click(function(e){
+    
     e.preventDefault();
-    //close manage newsletter modal
-    $("#manage-newsletter-modal").css({"display":"none"});
+    //close manage enrolment modal
+    $("#manage-enrolment-modal").css({"display":"none"});
+    
     
     dataModal = $(this).attr("data-modal");
-    var newsletterId = $(this).data("id");
-    var newsletterTitle = $(this).data("title");
-    var newsletterDate = $(this).data("date");
+    var enrolmentId = $(this).data("id");
+    var enrolmentTitle = $(this).data("title");
     
     //clear msg label
     $(".response-msg").html('');
     
     //insert data
-    $("#deleteNewsletterID").val(newsletterId);
-    $("#confirmation-question-newsletter span").html("<br />\""+newsletterTitle+" "+ newsletterDate + "\"");
+    $("#deleteEnrolmentID").val(enrolmentId);
+    $("#confirmation-question-enrolment span").html("<br />\""+enrolmentTitle);
     
     //display confirmation question
-    $("#confirmation-question-newsletter").css({"display":"block"});
+    $("#confirmation-question-enrolment").css({"display":"block"});
     //display form
-    $("#deleteNewsletterForm").css({"display":"block"});
+    $("#deleteEnrolmentForm").css({"display":"block"});
     
     //display modal
     $("#" + dataModal).css({"display":"block"});
@@ -32,7 +33,7 @@ $(".modal-trigger-delete-newsletter").click(function(e){
 });
 
 
-$("#deleteNewsletterForm").validate({
+$("#deleteEnrolmentForm").validate({
     rules: {
         deleteNewsletterID: {
             required: true
@@ -40,18 +41,19 @@ $("#deleteNewsletterForm").validate({
     },
             
     submitHandler: function() {
-        
+     
     //hidde confirmation question
-    $("#confirmation-question-newsletter").css({"display":"none"});
+    $("#confirmation-question-enrolment").css({"display":"none"});
     //hidde form
-    $("#deleteNewsletterForm").css({"display":"none"});       
+    $("#deleteEnrolmentForm").css({"display":"none"});
     //show laoder
     $(".loader").css({"display":"block"});
     
-    var id = $("#deleteNewsletterID").val();
+    
+    var id = $("#deleteEnrolmentID").val();
     
     $.ajax({
-        url:'application/deletenewsletter',
+        url:'parents/deleteenrolment',
         type:'POST',
         data:{id:id},
         dataType: 'JSON', 
@@ -60,7 +62,7 @@ $("#deleteNewsletterForm").validate({
 //            console.log(data);
             if(data.success === true){
                 //refresh page  
-                  location.reload();
+                location.reload();
             }else{
                 //hidde laoder
                     $(".loader").css({"display":"none"});

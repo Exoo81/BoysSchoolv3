@@ -973,7 +973,7 @@ class ParentsManager{
         
     }
     
-        public function addEnrolment($formData){
+    public function saveEnrolment($formData){
         
         //create new Enrolment
         $enrolemnt = new Enrolment();
@@ -1055,6 +1055,43 @@ class ParentsManager{
         return $dataResponse;
          
     }
+    
+    public function deleteEnrolment($id){
+         
+         //find enrolment with id
+        $enrolment = $this->entityManager->getRepository(Enrolment::class)
+                ->find($id);
+        
+        if($enrolment == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Enrolment form NOT found. This form can\'t be deleted.';
+            
+            return $dataResponse;
+        }
+        
+        //initial - prepare the path
+        //path to delete doc
+        $path_to_delete_doc = './public/upload/parents/enrolment/';
+        
+        //target
+        $target_file_doc  = $path_to_delete_doc . $enrolment->getDocName();
+        
+        //remove doc if exist
+        if(file_exists($target_file_doc)){
+            unlink ($target_file_doc);
+        }
+        
+        //remove from DB
+        $this->entityManager->remove($enrolment);
+        $this->entityManager->flush();
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Deleting enrolment form completed.';
+        
+        return $dataResponse;
+        
+     }
     
 
     public function getPolicy($policyID){
