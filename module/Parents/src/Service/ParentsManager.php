@@ -973,6 +973,89 @@ class ParentsManager{
         
     }
     
+        public function addEnrolment($formData){
+        
+        //create new Enrolment
+        $enrolemnt = new Enrolment();
+        
+        // json_decode to array regular fields
+        $formFieldsArray = $this->decodeJSONdata($formData);
+        
+         //save enrolment other data
+        $enrolemnt->setTitle($formFieldsArray['title']);
+
+        //save current date
+        $current_date = date('Y-m-d H:i:s');
+        $enrolemnt->setDatePublished($current_date);
+        
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formFieldsArray['authorID']);
+        
+        //save author
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author.';
+            return $dataResponse;
+        }
+        
+        $enrolemnt->setAuthor($author);
+        
+        
+        // save doc file if exist
+        if(isset($_FILES['addEnrolmentDoc'])){
+            
+            //path to save
+            $path_to_save_doc = './public/upload/parents/enrolment/';
+            
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_doc)) {
+                mkdir($path_to_save_doc, 0777, true);
+            }
+            
+            //$target
+            $target_file_doc = $path_to_save_doc . basename($_FILES["addEnrolmentDoc"]["name"]);
+            
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_doc)) {
+                //save on server
+                move_uploaded_file($_FILES["addEnrolmentDoc"]["tmp_name"], $target_file_doc);
+            }else{
+                $dataResponse['success'] = false;
+                $dataResponse['responseMsg'] =  'Sorry, this file has already been used in another enrolment document. Use a different file or change the name of this file before attaching it.';
+        
+                return $dataResponse;
+            }
+            
+            // add to entity field
+            $enrolemnt->setDocName($_FILES["addEnrolmentDoc"]["name"]);
+
+            
+        }else{
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'ERROR: Problem with attached file.';
+        
+            return $dataResponse;
+        }
+        
+        /*
+         * Save in db (file have to be attached
+         */
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($enrolemnt); 
+            
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        //return success
+        $dataResponse['success'] = true;
+        $dataResponse['responseMsg'] =  'Enrolment document saved.';
+
+        
+        return $dataResponse;
+         
+    }
+    
 
     public function getPolicy($policyID){
         

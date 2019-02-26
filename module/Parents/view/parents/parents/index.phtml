@@ -456,7 +456,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</a>';
                         echo '</div>';
                     }
-
                 ?>
                 <ul>
                     <li><img src="img/icons/icon-form.png"><a target="_blank" href="upload/parents/enrolment/ENROLMENT-FORM-2018-2019.doc" class="bs red"><span>Enrolment Form</span></a></li>
@@ -1666,11 +1665,18 @@ $this->headTitle($this->headTitle.' '.$current_season);
     <div class="modal-body">
     
         <div class="modal-text">
-            <div class="btn-modal-box our-team-add">
-                <button class="modal-trigger-add-enrolment btn-max btn-red reversed" data-modal="add-enrolment-modal" data-authorID="<?= $this->currentUser()->getId() ?>" data-text="Add enrolment document">
-                    <span><i class="fa fa-plus"></i>Add enrolment document</span>
-                </button>
-            </div>
+            
+            <?php
+                if ($this->access('event.edit')) { 
+                    echo '<div class="btn-modal-box our-team-add">';
+                        echo '<button class="modal-trigger-add-enrolment btn-max btn-red reversed" data-modal="add-enrolment-modal" data-authorID="'.$this->currentUser()->getId().'" data-text="Add enrolment document">';
+                            echo '<span><i class="fa fa-plus"></i>Add enrolment document</span>';
+                        echo '</button>';
+                    echo '</div>';
+                }
+            
+                    
+            ?>
 
             <?php 
                 if(!empty($this->enrolment)){
@@ -1755,7 +1761,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     </div>
 
                     <div class="btn-modal-box">
-                        <button type="submit" class="modal-btn btn-blue medium left" data-text="Add form"><span>Add form</span></button>
+                        <button type="submit" class="modal-btn btn-blue medium left" data-text="Save"><span>Save</span></button>
                         <button type="button" class="modal-btn btn-red medium close-btn right" data-text="Discard"><span>Discard</span></button>
                     </div>
 		</form>

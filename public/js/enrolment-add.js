@@ -19,7 +19,7 @@ $(".modal-trigger-add-enrolment").click(function(e){
     dataModal = $(this).attr("data-modal");
     var authorID = $(this).attr("data-authorID");
     
-    console.log('Authot ID: '+ authorID);
+//    console.log('Authot ID: '+ authorID);
     
     //clear msg label
     $(".response-msg").html('');
@@ -69,15 +69,18 @@ $("#addEnrolmentForm").validate({
         $(".response-msg").html('');
     
     var title = $("#addEnrolmentTitle").val();
+    var authorID = $("#addEnrolmentAuthorID").val();
     var addEnrolmentDoc = document.querySelector('#addEnrolmentFile').files[0]; 
 
-    console.log(title);
-    console.log(addEnrolmentDoc);
+//    console.log('-------=== ADD ENROLMENT - POST DATA === ---------');
+//    console.log('Title: ' + title);
+//    console.log('Author id: ' + authorID);
+//    console.log('Enrolment doc: ' + addEnrolmentDoc);
     
     var formData = new FormData();
     
     var objArr = [];
-    objArr.push({"title":title});
+    objArr.push({"title":title, "authorID":authorID});
     
     formData.append('objArr', JSON.stringify(objArr));
 
@@ -91,10 +94,10 @@ $("#addEnrolmentForm").validate({
         contentType: false,
         data: formData,
         success: function(data){
-            console.log(data);
+//            console.log(data);
             if(data.success === true){
                 //refresh page
-                //location.reload();
+                location.reload();
             }else{
                 //hidde laoder
                     $(".loader").css({"display":"none"});

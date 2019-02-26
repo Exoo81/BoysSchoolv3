@@ -1032,6 +1032,67 @@ class ParentsController extends AbstractActionController{
         
     }
     
+    public function addenrolmentAction(){
+        
+        $dataForm = $this->params()->fromPost();
+         
+          
+        /*
+         * check permmision
+         */
+        //Access check
+        if($this->access('enrolment.manage')){
+            
+//            $dataResponse['success'] = false;                
+//            $dataResponse['responseMsg'] = 'do add enrolment (1)';
+            
+            //add enrolment
+            $dataResponse = $this->parentsManager->addEnrolment($dataForm);
+
+        }else{
+            //return error
+//            $dataResponse['success'] = false;
+//            $dataResponse['responseMsg'] = 'User does not have permission (1)';
+                
+            // get request object
+            $request = $this->getRequest();
+
+            // if request is HTTP (check if json)
+            if ($request->isXmlHttpRequest()) { 
+
+                $jsonData = $dataResponse; 
+                $view = new JsonModel($jsonData); 
+                $view->setTerminal(true);  
+
+            } else { 
+                $view = new ViewModel(); 
+            }
+
+            return $view;
+        }
+        /*
+         * end permision check
+         */
+        
+            
+        // get request object
+        $request = $this->getRequest();
+        
+        // if request is HTTP (check if json)
+        if ($request->isXmlHttpRequest()) { 
+            
+            $jsonData = $dataResponse; 
+            $view = new JsonModel($jsonData); 
+            $view->setTerminal(true);  
+            
+        } else { 
+            $view = new ViewModel(); 
+        }
+        
+        return $view;
+
+    }
+    
     public function getpolicyAction(){
         
         $dataResponse['success'] = false;

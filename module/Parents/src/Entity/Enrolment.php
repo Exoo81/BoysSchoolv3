@@ -116,7 +116,7 @@ class Enrolment {
      */
     public function setAuthor($user) {
       $this->author = $user;
-      $user->addNewsToList($this);
+      $user->addEnrolmentToList($this);
     }
     
 }
