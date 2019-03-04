@@ -1947,8 +1947,22 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     <label for="addPolicyTitle">Title:</label>
                     <input type="text" id="addPolicyTitle" name="addPolicyTitle">
                     
-                    <label for="addPolicyContent">Policy (text):</label>
-                    <textarea id="addPolicyContent" name="addPolicyContent" rows="20"></textarea>
+                    <div class="width-100">
+                        <label id="addPolicySelectLabel">Select type of policy:</label>
+                        <select id="addPolicySelect" name="addPolicySelect" class="dropdown">
+                            <option value="0">--- SELECT ---</option>
+                            <option value="1">Document (file)</option>
+                            <option value="2">HTTP (modal)</option>
+                        </select>
+                    </div>
+                    
+                    <div class='width-100'>
+                        <label id="addPolicyDocLabel">Add policy as document:</label>
+                        <input type="file" id="addPolicyDoc" name="addPolicyDoc">
+                    </div>
+                    
+                    <label id='addPolicyContentLabel'>Policy (text):</label>
+                    <textarea id="addPolicyContent" name="addPolicyContent"></textarea>
 
                     <div class="btn-modal-box">
                         <button type="submit" class="modal-btn btn-blue left" data-text="Add policy"><span>Add policy</span></button>
@@ -2099,7 +2113,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 
 <script src="js/summernote/summernote-options.js" type="text/javaScript"></script>
 
-<script src="js/parentsInformation-add.js" type="text/javaScript"></script>
+<script src="js/parentsInformation-add-01.js" type="text/javaScript"></script>
 <script src="js/parentsInformation-edit.js" type="text/javaScript"></script>
 <script src="js/parentsInformation-delete.js" type="text/javaScript"></script>
 <script src="js/parentsAssoc-add-member.js" type="text/javaScript"></script>
@@ -2113,7 +2127,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/bookList-delete.js" type="text/javaScript"></script>
 <script src="js/enrolment-add.js" type="text/javaScript"></script>
 <script src="js/enrolment-delete.js" type="text/javaScript"></script>
-<script src="js/policy-add.js" type="text/javaScript"></script>
+<script src="js/policy-add-01.js" type="text/javaScript"></script>
 <script src="js/policy-edit.js" type="text/javaScript"></script>
 <script src="js/policy-delete.js" type="text/javaScript"></script>
 <script src="js/create-account-passer.js" type="text/javaScript"></script>

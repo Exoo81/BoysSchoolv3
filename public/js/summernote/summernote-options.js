@@ -97,19 +97,20 @@ $('#editOtherInformation').summernote({
 });
 
 $('#addPolicyContent').summernote({
-        toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-                ['insert',['table', 'picture']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['link', ['linkDialogShow', 'unlink']],
-                ['misc', ['codeview']]
-        ],
-      height: 400,
-      dialogsInBody: true
+// definition of this summernote editor defined in policy-add-XX.js
+//        toolbar: [
+//                // [groupName, [list of button]]
+//                ['style', ['bold', 'italic', 'underline', 'clear']],
+//                ['font', ['strikethrough', 'superscript', 'subscript']],
+//                ['fontsize', ['fontsize']],
+//                ['insert',['table', 'picture']],
+//                ['para', ['ul', 'ol', 'paragraph']],
+//                ['height', ['height']],
+//                ['link', ['linkDialogShow', 'unlink']],
+//                ['misc', ['codeview']]
+//        ],
+//      height: 400,
+//      dialogsInBody: true
 });
 
 
