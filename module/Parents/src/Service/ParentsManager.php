@@ -1124,13 +1124,65 @@ class ParentsManager{
         
         
         $policy = new Policy();
+        
+        // json_decode to array regular fields
+        $formFieldsArray = $this->decodeJSONdata($formData);
 
         
-        $policy->setTitle($formData['policyTitle']);
-        $policy->setContent($formData['policyContent']);
+        $policy->setTitle($formFieldsArray['policyTitle']);
+        $policy->setContent($formFieldsArray['policyContent']);
         
         $current_date = date('Y-m-d H:i:s');
         $policy->setDatePublished($current_date);
+        
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formFieldsArray['policyAuthor']);
+        
+        //save author
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author.';
+            return $dataResponse;
+        }
+        $policy->setAuthor($author);
+        
+        if(isset($_FILES['addPolicyDoc'])){
+//          $dataResponse['success'] = true;
+//          $dataResponse['addPolicyDoc'] =  $_FILES["addPolicyDoc"]['name'];
+                    
+            /*
+            * Save on server
+            */
+
+            //path to save
+            $path_to_save_doc = './public/upload/parents/policy/';
+
+            //check if dir exist else - create
+            if(!is_dir($path_to_save_doc)) {
+                mkdir($path_to_save_doc, 0777, true);
+            }
+                    
+            //$target
+            $target_file_doc = $path_to_save_doc . basename($_FILES["addPolicyDoc"]["name"]);
+                    
+            // Check if file already exists
+            // if not exist
+            if (!file_exists($target_file_doc)) {
+                //save on server
+                move_uploaded_file($_FILES["addPolicyDoc"]["tmp_name"], $target_file_doc);
+            }else{
+                //return error info
+                $dataResponse['success'] = false;
+                $dataResponse['responseMsg'] =  'Error. Sorry, this file already exist. Use a different file or change the name of this file before attaching it.';
+            }
+                    
+            /*
+            * Save in db
+            */
+            $policy->setDocName($_FILES["addPolicyDoc"]["name"]); 
+       
+        }
+    
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($policy); 

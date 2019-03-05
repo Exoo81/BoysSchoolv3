@@ -31,6 +31,12 @@ class Policy {
      */
     protected $datePublished;
     
+    /**
+    * @ORM\ManyToOne(targetEntity="\User\Entity\User", inversedBy="policyList")
+    * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+    */
+    protected $author;
+    
     
     /**
      * Returns policy ID.
@@ -94,7 +100,24 @@ class Policy {
      */
     public function setDatePublished($datePublished) {
         $this->datePublished = $datePublished;
-    } 
+    }
+    
+    /*
+    * Returns associated user.
+    * @return \User\Entity\User
+    */
+    public function getAuthor() {
+      return $this->author;
+    }
+    
+    /**
+     * Sets associated user.
+     * @param \User\Entity\User $user
+     */
+    public function setAuthor($user) {
+      $this->author = $user;
+      $user->addPolicyToList($this);
+    }
     
     
     public function jsonSerialize(){

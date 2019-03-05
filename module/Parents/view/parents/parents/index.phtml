@@ -222,7 +222,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <?php 
                     if ($this->access('policies.manage')) {
                         echo '<div class="cms-option policies left">';
-                            echo '<a href="#" class="bs modal-trigger-add-policy" data-modal="add-policy-modal">';
+                            echo '<a href="#" class="bs modal-trigger-add-policy" data-modal="add-policy-modal" data-authorID="'.$this->currentUser()->getId().'">';
                                 echo '<img src="img/icons/icon-add.png"><span>Add new policy</span>';
                             echo '</a>';
                         echo '</div>';
@@ -1963,6 +1963,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <label id='addPolicyContentLabel'>Policy (text):</label>
                     <textarea id="addPolicyContent" name="addPolicyContent"></textarea>
+                    
+                    <input type="hidden" id="addPolicyAuthorID" name="addPolicyAuthorID" required/>
 
                     <div class="btn-modal-box">
                         <button type="submit" class="modal-btn btn-blue left" data-text="Add policy"><span>Add policy</span></button>

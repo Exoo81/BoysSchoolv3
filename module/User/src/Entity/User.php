@@ -141,6 +141,12 @@ class User {
     * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
     */
      protected $enrolmentList;
+     
+      /**
+    * @ORM\OneToMany(targetEntity="\Parents\Entity\Policy", mappedBy="author")
+    * @ORM\JoinColumn(name="id", referencedColumnName="author_id")
+    */
+     protected $policyList;
     
     /**
      * Constructor.
@@ -158,6 +164,7 @@ class User {
         $this->bookListAuthor = new ArrayCollection();
         $this->schoolLifeList = new ArrayCollection();
         $this->enrolmentList = new ArrayCollection();
+        $this->policyList = new ArrayCollection();
     }
     
       
@@ -758,6 +765,40 @@ class User {
      */
     public function addEnrolmentToList($enrolment) {
       $this->enrolmentList[] = $enrolment;
+    }
+    
+    /**
+    * Returns policy list for this user.
+    * @return array
+    */
+    public function getPolicyList() {
+      return $this->policyList;
+    }
+    
+    /**
+     * Returns the string of assigned as policy id.
+     */
+    public function getPolicyListAsString(){
+        $policyList = '';
+        
+        $count = count($this->policyList);
+        $i = 0;
+        foreach ($this->policyList as $policy) {
+            $policyList .= $policy->getId();
+            if ($i<$count-1)
+                $policyList .= ', ';
+            $i++;
+        }
+        
+        return $policyList;
+    }
+    
+    /**
+     * Adds a new policy to policyList in this user.
+     * @param $policy
+     */
+    public function addPolicyToList($policy) {
+      $this->policyList[] = $policy;
     }
     
     

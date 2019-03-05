@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList'];
+            return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList', 'policyList'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList'];
+        return ['__isInitialized__', 'id', 'email', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'ourTeamMember', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'newsList', 'eventsList', 'teacherBlogs', 'learningSupportBlogs', 'postsList', 'galleriesList', 'parentsInformationList', 'bookList', 'bookListAuthor', 'schoolLifeList', 'enrolmentList', 'policyList'];
     }
 
     /**
@@ -758,6 +758,39 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnrolmentToList', [$enrolment]);
 
         return parent::addEnrolmentToList($enrolment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPolicyList()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPolicyList', []);
+
+        return parent::getPolicyList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPolicyListAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPolicyListAsString', []);
+
+        return parent::getPolicyListAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addPolicyToList($policy)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPolicyToList', [$policy]);
+
+        return parent::addPolicyToList($policy);
     }
 
     /**

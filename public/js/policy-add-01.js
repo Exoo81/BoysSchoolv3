@@ -20,7 +20,7 @@ $(".modal-trigger-add-policy").click(function(e){
     
     //clear msg label
     $(".response-msg").html('');
-    
+    $("#addPolicyDoc-error").css({"display":"none"});
     
     //reset form
     document.getElementById("addPolicyForm").reset();
@@ -31,8 +31,13 @@ $(".modal-trigger-add-policy").click(function(e){
        
     // get data
     dataModal = $(this).attr("data-modal");
+    var authorID = $(this).attr("data-authorID");
 
-    //console.log('--------- '+ dataModal +'--------------');
+    console.log('--------- ADD POLICY DATA --------------');
+    console.log('Author ID: ' + authorID);
+    
+    //insert data to form
+    $('#addPolicyAuthorID').val(authorID);
 
     //display form
     $("#addPolicyForm").css({"display":"block"});
@@ -52,13 +57,21 @@ $("#addPolicyForm").validate({
     
      
     rules: {
+        addPolicyAuthorID:{
+            required: true, 
+        },
         addPolicyTitle: {
             required: true,
             maxlength: 100
         },
         addPolicySelect:{
             valueNotEquals: "0"
-        }
+        },
+        addPolicyDoc: {
+            required: function(){
+                return $("#addPolicySelect").val() === "1";
+            }
+        },
     },
     
     messages:{
@@ -77,10 +90,8 @@ $("#addPolicyForm").validate({
     
         
     //substitute of validate policy content (summernote)
-    
-    if($('#addPolicyContent').summernote('isEmpty')){
-        $(".response-msg").html("You must add some policy text"); 
-        
+    if($("#addPolicySelect").val() === "2" && $('#addPolicyContent').summernote('isEmpty')){
+        $(".response-msg").html("You must add some policy text");    
     }else{
         
         //show laoder
@@ -92,25 +103,46 @@ $("#addPolicyForm").validate({
         
         var policyTitle = $('#addPolicyTitle').val();
         var policyContent = $('#addPolicyContent').val();
+        var policyAuthor = $('#addPolicyAuthorID').val();
+        var policyDoc = document.querySelector('#addPolicyDoc').files[0];
+        
+        if($("#addPolicySelect").val() === "1"){
+            var policyContent = null;
+        }
+        if($("#addPolicySelect").val() === "2"){
+            var policyDoc = null;
+        }
 
+        console.log('---=== Policy Form DATA posted ===---');
+        console.log('Policy title : '+ policyTitle);
+        console.log('Policy content : '+ policyContent);
+        console.log('Policy author : '+ policyAuthor);
+        console.log('Policy doc : '+ policyDoc);
+        console.log('---================================---');
+        
+        var formData = new FormData();
+        
+        var objArr = [];
+        objArr.push({policyTitle:policyTitle, 
+                    policyContent:policyContent,
+                    policyAuthor:policyAuthor
+                });
 
-
-//        console.log('---=== Policy Form DATA posted ===---');
-//        console.log('Policy title : '+ policyTitle);
-//        console.log('Policy content : '+ policyContent);
-//        console.log('---================================---');
+        formData.append('objArr', JSON.stringify(objArr));
+    
+        formData.append('policyDoc', policyDoc);
 
         $.ajax({
             url: 'parents/addpolicy',
             type: 'POST',
-            data:{policyTitle:policyTitle, policyContent:policyContent},
-            dataType: 'JSON', 
-            async: true ,
+            processData: false,
+            contentType: false,
+            data: formData,
             success: function(data){
                 console.log(data);
                 if(data.success === true){
                     //refresh page
-                    location.reload();
+                    //location.reload();
 
                 }else{
                     //hidde laoder
@@ -129,6 +161,11 @@ $("#addPolicyForm").validate({
 
 
 $("#addPolicySelect").change(function() {
+    
+    //clear errors
+    $(".response-msg").html('');
+    $("#addPolicyDoc-error").css({"display":"none"});
+    
     var val = $(this).val();
     if(val === "1") {
         

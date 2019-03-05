@@ -55,7 +55,7 @@ $(".modal-trigger-add-parents-information").click(function(e){
 $("#addParentsInformationForm").validate({
     rules: {
         addParentsInformation_authorID:{
-            required: true, 
+            required: true 
         },
         addParentsInformationTitle: {
             required: true,

@@ -1186,8 +1186,8 @@ class ParentsController extends AbstractActionController{
         $dataResponse['success'] = false;
         $dataResponse['responseMsg'] = 'ERROR - Policy can not be added.';
         
-        // get parametr from POST 
-        $policyForm = $this->params()->fromPost();
+        // get data POST 
+        $formData = $this->params()->fromPost();
         
         /*
          * check permmision
@@ -1199,7 +1199,7 @@ class ParentsController extends AbstractActionController{
 //            $dataResponse['responseMsg'] = 'do (1)';
             
             // add new policy
-            $dataResponse = $this->parentsManager->savePolicy($policyForm);
+            $dataResponse = $this->parentsManager->savePolicy($formData);
             
         }else{
             //return error
