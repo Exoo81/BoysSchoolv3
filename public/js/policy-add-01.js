@@ -3,9 +3,9 @@
  */
 
 ////additionam method for select - Value must not equal arg. 0 - --select-- 
-//$.validator.addMethod("valueNotEquals", function(value, element, arg){
-//  return arg !== value;
-// }, "Value must not equal arg.");
+$.validator.addMethod("valueNotEquals", function(value, element, arg){
+  return arg !== value;
+ }, "Value must not equal arg.");
 
 // add the rule select type of information
  $.validator.addMethod("valueNotEquals", function(value, element, arg){
@@ -70,7 +70,9 @@ $("#addPolicyForm").validate({
         addPolicyDoc: {
             required: function(){
                 return $("#addPolicySelect").val() === "1";
-            }
+            },
+            extension: "pdf|docx|doc",
+            filesize: 4000000           // 4MB
         },
     },
     
@@ -81,6 +83,10 @@ $("#addPolicyForm").validate({
         addPolicySelect:{
             valueNotEquals: "Please select type of policy (file or modal)"
         },
+        addPolicyDoc:{
+            extension: "Allowed file extensions: pdf, docx, doc",
+            filesize: "File size must be less than 4MB"
+        }
     },
     
     
@@ -142,7 +148,7 @@ $("#addPolicyForm").validate({
                 console.log(data);
                 if(data.success === true){
                     //refresh page
-                    //location.reload();
+                    location.reload();
 
                 }else{
                     //hidde laoder

@@ -31,6 +31,11 @@ class Policy {
      */
     protected $datePublished;
     
+    /** 
+    * @ORM\Column(name="doc_name")  
+    */
+    protected $docName;
+    
     /**
     * @ORM\ManyToOne(targetEntity="\User\Entity\User", inversedBy="policyList")
     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
@@ -101,6 +106,22 @@ class Policy {
     public function setDatePublished($datePublished) {
         $this->datePublished = $datePublished;
     }
+    
+    /**
+     * Returns Policy docName.
+     * @return string
+     */
+    public function getDocName() {
+        return $this->docName;
+    }
+
+    /**
+     * Sets Policy docName. 
+     * @param string $docName    
+     */
+    public function setDocName($docName) {
+        $this->docName = $docName;
+    } 
     
     /*
     * Returns associated user.

@@ -1146,16 +1146,21 @@ class ParentsManager{
         }
         $policy->setAuthor($author);
         
-        if(isset($_FILES['addPolicyDoc'])){
+        // Add the entity to the entity manager.
+        $this->entityManager->persist($policy);       
+        // Apply changes to database.
+        $this->entityManager->flush();
+        
+        if(isset($_FILES['policyDoc'])){
 //          $dataResponse['success'] = true;
-//          $dataResponse['addPolicyDoc'] =  $_FILES["addPolicyDoc"]['name'];
+//          $dataResponse['addPolicyDoc'] =  $_FILES["policyDoc"]['name'];
                     
             /*
             * Save on server
             */
 
             //path to save
-            $path_to_save_doc = './public/upload/parents/policy/';
+            $path_to_save_doc = './public/upload/parents/policy/'.$policy->getId().'/';
 
             //check if dir exist else - create
             if(!is_dir($path_to_save_doc)) {
@@ -1163,13 +1168,13 @@ class ParentsManager{
             }
                     
             //$target
-            $target_file_doc = $path_to_save_doc . basename($_FILES["addPolicyDoc"]["name"]);
+            $target_file_doc = $path_to_save_doc . basename($_FILES["policyDoc"]["name"]);
                     
             // Check if file already exists
             // if not exist
             if (!file_exists($target_file_doc)) {
                 //save on server
-                move_uploaded_file($_FILES["addPolicyDoc"]["tmp_name"], $target_file_doc);
+                move_uploaded_file($_FILES["policyDoc"]["tmp_name"], $target_file_doc);
             }else{
                 //return error info
                 $dataResponse['success'] = false;
@@ -1179,7 +1184,7 @@ class ParentsManager{
             /*
             * Save in db
             */
-            $policy->setDocName($_FILES["addPolicyDoc"]["name"]); 
+            $policy->setDocName($_FILES["policyDoc"]["name"]); 
        
         }
     

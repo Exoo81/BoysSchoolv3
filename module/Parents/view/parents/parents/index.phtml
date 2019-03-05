@@ -242,13 +242,19 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 if ($this->access('policies.manage')){
                                      $access  = 1; 
                                 }
+                                
                                 echo '<li>';
                                     echo '<img src="img/icons/icon-arrow-right-fat.png">';
-                                    echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
-                                        echo '<span>'.$policy->getTitle().'</span>';
-                                    echo '</a>';
-                                echo  '</li>';
-                                
+                                    if($policy->getDocName() == null){
+                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                            echo '<span>'.$policy->getTitle().'</span>';
+                                        echo '</a>';
+                                    }else{
+                                        echo '<a target="_blank" href="upload/parents/policy/'.$policy->getId().'/'.$policy->getDocName().'" class="bs burgundy">';
+                                            echo '<span>'.$policy->getTitle().'</span>';
+                                        echo '</a>';
+                                    }
+                                echo  '</li>';                                
                             }
                         }else{
                             echo '<div class="no-content">';
@@ -294,9 +300,15 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 }
                                 echo '<li>';
                                     echo '<img src="img/icons/icon-arrow-right-fat.png">';
-                                    echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
-                                        echo '<span>'.$policy->getTitle().'</span>';
-                                    echo '</a>';
+                                    if($policy->getDocName() == null){
+                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                            echo '<span>'.$policy->getTitle().'</span>';
+                                        echo '</a>';
+                                    }else{
+                                        echo '<a target="_blank" href="upload/parents/policy/'.$policy->getId().'/'.$policy->getDocName().'" class="bs burgundy">';
+                                            echo '<span>'.$policy->getTitle().'</span>';
+                                        echo '</a>';
+                                    }
                                 echo  '</li>';
                                 
                             }

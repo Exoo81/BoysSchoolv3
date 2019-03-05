@@ -28,7 +28,7 @@
         <link rel="stylesheet" type="text/css" href="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
         
         <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/logo.png'])
-            ->prependStylesheet($this->basePath('css/boy_school-04.css'))
+            ->prependStylesheet($this->basePath('css/boy_school-05.css'))
             ->prependStylesheet($this->basePath('css/jquery-ui.css'))
             ->prependStylesheet($this->basePath('css/animate.css'))
         ?>
@@ -171,9 +171,16 @@
                                 <?php
                                     foreach($this->currentPolicies() as $policy){
                                         echo '<li>';
-                                            echo '<a href="#" class="modal-trigger-show-policy bs grey small" data-modal="show-policy-modal" data-policyID="'.$policy->getId().'">';
-                                                echo '<span>'.$policy->getTitle().'</span>';
-                                            echo '</a>';
+                                            if($policy->getDocName() == null){
+                                                echo '<a href="#" class="modal-trigger-show-policy bs grey small" data-modal="show-policy-modal" data-policyID="'.$policy->getId().'">';
+                                                    echo '<span>'.$policy->getTitle().'</span>';
+                                                echo '</a>';
+
+                                            }else{
+                                                echo '<a target="_blank" href="upload/parents/policy/'.$policy->getId().'/'.$policy->getDocName().'" class="bs grey small">';
+                                                    echo '<span>'.$policy->getTitle().'</span>';
+                                                echo '</a>';
+                                            }
                                         echo '</li>';
                                     } 
                                 ?>

@@ -21369,6 +21369,20 @@ img.end-tl{
         padding: initial;
 }
 
+.modal-text#policyContentOrigin table.table.table-bordered ,
+.modal-text#policyContent table.table.table-bordered{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-text#policyContentOrigin table.table.table-bordered th ,
+.modal-text#policyContentOrigin table.table.table-bordered td ,
+.modal-text#policyContent table.table.table-bordered th,
+.modal-text#policyContent table.table.table-bordered td{
+    padding: 5px 3px;
+    border: 1px solid #561818;
+}
+
 .modal-body .modal-text form#addOurTeamForm {
     padding: 0; 
 } 
