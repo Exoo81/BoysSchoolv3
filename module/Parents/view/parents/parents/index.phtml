@@ -222,8 +222,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <?php 
                     if ($this->access('policies.manage')) {
                         echo '<div class="cms-option policies left">';
-                            echo '<a href="#" class="bs modal-trigger-add-policy" data-modal="add-policy-modal" data-authorID="'.$this->currentUser()->getId().'">';
-                                echo '<img src="img/icons/icon-add.png"><span>Add new policy</span>';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-policy-modal">';
+                                echo '<img src="img/icons/icon-settings.png"><span>Manage policies</span>';
                             echo '</a>';
                         echo '</div>';
                     }
@@ -263,7 +263,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                             echo '</div>';
                         }
                     ?>
-
                 </ul>
             </div>
         
@@ -278,8 +277,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 <?php 
                     if ($this->access('policies.manage')) {
                         echo '<div class="cms-option policies left">';
-                            echo '<a href="#" class="bs modal-trigger-add-policy" data-modal="add-policy-modal">';
-                                echo '<img src="img/icons/icon-add.png"><span>Add new policy</span>';
+                            echo '<a href="#" class="bs modal-trigger" data-modal="manage-policy-modal">';
+                                echo '<img src="img/icons/icon-settings.png"><span>Manage policies</span>';
                             echo '</a>';
                         echo '</div>';
                     }
@@ -1707,7 +1706,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
         <div class="modal-text">
             
             <?php
-                if ($this->access('event.edit')) { 
+                if ($this->access('enrolment.manage')) { 
                     echo '<div class="btn-modal-box our-team-add">';
                         echo '<button class="modal-trigger-add-enrolment btn-max btn-red reversed" data-modal="add-enrolment-modal" data-authorID="'.$this->currentUser()->getId().'" data-text="Add enrolment document">';
                             echo '<span><i class="fa fa-plus"></i>Add enrolment document</span>';
@@ -1857,8 +1856,118 @@ $this->headTitle($this->headTitle.' '.$current_season);
 </div>
 <!-- end delete enrolment Modal -->
 
+<!-- Manage Policy Modal -->
+<div class="modal" id="manage-policy-modal">
+  <div class="modal-box sm">
+  
+    <div class="modal-header">
+      	<div class="close-modal">
+	    <div class="close-modal-inner">
+	    	<label>close</label>
+            </div>
+      	</div>
+      	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
+      	<!-- original version -->
+      	<div class="modal-title">
+      		<span>Manage Policies</span>
+      	</div>
+    </div>
+ 
+    <div class="modal-body">
+    
+        <div class="modal-text">
+            
+            <?php
+                if ($this->access('policies.manage')) { 
+                    echo '<div class="btn-modal-box our-team-add">';
+                        echo '<button class="modal-trigger-add-policy btn-max btn-burgundy reversed" data-modal="add-policy-modal" data-authorID="'.$this->currentUser()->getId().'" data-text="Add new policy">';
+                            echo '<span><i class="fa fa-plus"></i>Add new policy</span>';
+                        echo '</button>';
+                    echo '</div>';
+                }
+            
+                    
+            ?>
 
-<!-- Show Show Policy Modal -->
+            <?php 
+                if(!empty($this->currentPolicies())){
+                    echo '<hr class="burgundy" />';
+                    foreach($this->currentPolicies() as $policy){
+                        echo '<div class="small-table no-border">';
+                                echo '<div class="small-table-row ">';
+                                    if($policy->getDocName() == null){
+                                        echo '<div class="small-table-cell icon-cell">';
+                                            echo '<img class="pa-arrow" src="img/icons/icon-html-file.png" >';
+                                        echo '</div>';
+                                    }else{
+                                        echo '<div class="small-table-cell icon-cell">';
+                                            echo '<img class="pa-arrow" src="img/icons/icon-pdf-file.png" >';
+                                        echo '</div>';
+                                    }
+                                    echo '<div class="small-table-cell long-title">';
+                                        if($policy->getDocName() == null){
+                                            /*
+                                            * checking only if access to this policies 
+                                            * after verification normal access is implemented in modal show-policy-modal 
+                                            */
+                                            $access = 0;
+                                            if ($this->access('policies.manage')){
+                                                 $access  = 1; 
+                                            }
+                                            echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                                echo '<span>'.$policy->getTitle().'</span>';
+                                            echo '</a>';                                            
+                                        }else{
+                                            echo '<a target="_blank" class="bs burgundy" href="upload/parents/policy/'.$policy->getId().'/'.$policy->getDocName().'">';
+                                                echo '<span>'.$policy->getTitle().'</span>';                                          
+                                            echo '</a>';
+                                        }
+                                    echo '</div>';
+                                    
+                                    echo '<div class="small-table-cell edit">';
+                                        if ($this->access('policies.manage')) {
+                                            if($policy->getDocName() == null){
+                                                echo '<a href="#" class="modal-trigger-edit-policy tooltip" data-modal="edit-policy-modal" data-policyID="'.$policy->getId().'">';
+                                                    echo '<button class="btn-admin">';
+                                                        echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
+                                                    echo '</button>';
+                                                    echo '<span class="tooltiptext edit">Edit</span>';
+                                                echo '</a>';
+                                            }
+                                        }                               
+                                    echo '</div>';
+
+                                    echo '<div class="small-table-cell remove">';
+                                        if ($this->access('policies.manage')) {
+                                            echo '<a href="#" class="modal-trigger-delete-policy tooltip" data-modal="delete-policy-modal" data-policyID="'.$policy->getId().'" data-title="'.$policy->getTitle().'">';
+                                                echo '<button class="btn-admin">';
+                                                    echo '<img class="icon-list" src="img/icons/icon-bin-red.png" >';
+                                                echo '</button>';
+                                                echo '<span class="tooltiptext remove">Remove</span>';
+                                            echo '</a>';
+                                        }                               
+                                    echo '</div>';
+
+                                echo '</div>';
+                            echo '</div>'; 
+                    }
+                    echo '<hr class="burgundy" />';
+                }
+
+            ?>
+  
+        </div>      
+        <div class="btn-modal-box">
+            <button type="button" class="modal-btn small btn-burgundy close-btn" data-text="Close"><span>Close</span></button>
+        </div> 
+	
+	
+    </div> 
+  </div>
+</div>
+<!-- end Manage Policy Modal -->
+
+<!-- Show Policy Modal -->
 <div class="modal" id="show-policy-modal-origin">
 <!--  <div class="modal-sandbox"></div>-->
   <div class="modal-box lg">
@@ -2068,7 +2177,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             <div class="modal-text">
                 <label class='response-msg'></label>
                 <div class="loader"></div>
-                <div class='confirmation-question' id='confirmation-question-policy'>You really want to delete <span></span></div>
+                <div class='confirmation-question' id='confirmation-question-policy'>You really want to delete policy<span></span></div>
                 <form id="deletePolicyForm" class="cms" enctype="multipart/form-data">
                     <input type="hidden" id="deletePolicyID" name="deletePolicyID" required>
                     <div class="btn-modal-box">
@@ -2143,7 +2252,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/enrolment-delete.js" type="text/javaScript"></script>
 <script src="js/policy-add-01.js" type="text/javaScript"></script>
 <script src="js/policy-edit.js" type="text/javaScript"></script>
-<script src="js/policy-delete.js" type="text/javaScript"></script>
+<script src="js/policy-delete-01.js" type="text/javaScript"></script>
 <script src="js/create-account-passer.js" type="text/javaScript"></script>
 
 

@@ -8,6 +8,9 @@ $(".modal-trigger-show-policy").click(function(e){
     
     e.preventDefault();
     
+    //close Manage Policy Modal
+    $("#manage-policy-modal").css({"display":"none"});
+    
     //show laoder
     $(".loader").css({"display":"block"});
     //clear msg label
@@ -93,10 +96,10 @@ $(".modal-trigger-show-policy").click(function(e){
                  */
                 if(access){
                     $('.admin-option').css({"display":"inline-block"});
-                    var editElement = $("a.modal-trigger-edit-policy");
+                    var editElement = $(".admin-option a.modal-trigger-edit-policy");
                         editElement.attr('data-policyID', data.policy.id);
                         
-                    var deleteElement = $( "a.modal-trigger-delete-policy" );
+                    var deleteElement = $(".admin-option a.modal-trigger-delete-policy" );
                         deleteElement.attr('data-policyID', data.policy.id);
                         deleteElement.attr('data-title', data.policy.title);
                 }

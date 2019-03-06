@@ -18,6 +18,9 @@ $(".modal-trigger-add-policy").click(function(e){
     
     e.preventDefault();
     
+    //close Manage Policy Modal
+    $("#manage-policy-modal").css({"display":"none"});
+    
     //clear msg label
     $(".response-msg").html('');
     $("#addPolicyDoc-error").css({"display":"none"});
@@ -72,7 +75,7 @@ $("#addPolicyForm").validate({
                 return $("#addPolicySelect").val() === "1";
             },
             extension: "pdf|docx|doc",
-            filesize: 4000000           // 4MB
+            filesize: 8000000           // 8MB
         },
     },
     
@@ -85,7 +88,7 @@ $("#addPolicyForm").validate({
         },
         addPolicyDoc:{
             extension: "Allowed file extensions: pdf, docx, doc",
-            filesize: "File size must be less than 4MB"
+            filesize: "File size must be less than 8MB"
         }
     },
     

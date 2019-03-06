@@ -9,14 +9,16 @@ $(".modal-trigger-delete-policy").click(function(e){
     
     //close book-list-show-info modal
     $("#show-policy-modal-origin").css({"display":"none"});
+    //close Manage Policy Modal
+    $("#manage-policy-modal").css({"display":"none"});
 
     dataModal = $(this).attr("data-modal");
     var policyID = $(this).attr("data-policyID");
     var policyTitle = $(this).attr("data-title");
 
 //        console.log('---=== GET Policy DATA TO DELETE ===---');
-//        console.log('policy ID: ' + policyID);
-//        console.log('policy title: ' + policyTitle);
+        console.log('policy ID: ' + policyID);
+        console.log('policy title: ' + policyTitle);
        
     //clear msg label
     $(".response-msg").html('');

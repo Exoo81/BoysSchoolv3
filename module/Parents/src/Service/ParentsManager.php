@@ -1247,6 +1247,21 @@ class ParentsManager{
             $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find policy to delete.';
             return $dataResponse;
         }
+        
+        //delete policy as file 
+        if($policy->getDocName() !== null){
+            //initial - prepare the path
+            //path to delete doc
+            $path_to_delete_doc = './public/upload/parents/policy/'.$policy->getId().'/';
+
+            //target
+            $target_file_doc  = $path_to_delete_doc . $policy->getDocName();
+
+            //remove doc if exist
+            if(file_exists($target_file_doc)){
+                unlink ($target_file_doc);
+            }
+        }
    
         //remove from DB
         $this->entityManager->remove($policy);
