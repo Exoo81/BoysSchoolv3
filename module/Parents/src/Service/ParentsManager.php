@@ -1221,6 +1221,16 @@ class ParentsManager{
         $current_date = date('Y-m-d H:i:s');
         $policy->setDatePublished($current_date);
         
+        $author = $this->entityManager->getRepository(User::class)
+                ->find($formData['authorID']);
+        //save author
+        if($author == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find author.';
+            return $dataResponse;
+        }
+        $policy->setAuthor($author);
+        
         // Add the entity to the entity manager.
         $this->entityManager->persist($policy); 
             

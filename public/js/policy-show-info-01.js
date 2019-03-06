@@ -29,7 +29,7 @@ $(".modal-trigger-show-policy").click(function(e){
    
     dataModal = $(this).attr("data-modal");
     var policyID = $(this).attr("data-policyID");
-//    var authorID = $(this).attr("data-authorID");
+    var authorID = $(this).attr("data-authorID");
     
     var access = $(this).data("access") === 1 ? true : false; ;
     
@@ -38,6 +38,7 @@ $(".modal-trigger-show-policy").click(function(e){
     
 //    console.log('======== Policies =======');
 //    console.log('policy ID: ' + policyID);
+//    console.log('author ID: ' + authorID);
 //    console.log('origin: ' + origin);
 //    console.log('access: '+ access);
     
@@ -54,7 +55,7 @@ $(".modal-trigger-show-policy").click(function(e){
         dataType: 'JSON', 
         async: true ,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data.success === true){
                
                 /*
@@ -98,6 +99,7 @@ $(".modal-trigger-show-policy").click(function(e){
                     $('.admin-option').css({"display":"inline-block"});
                     var editElement = $(".admin-option a.modal-trigger-edit-policy");
                         editElement.attr('data-policyID', data.policy.id);
+                        editElement.attr('data-authorID', authorID);
                         
                     var deleteElement = $(".admin-option a.modal-trigger-delete-policy" );
                         deleteElement.attr('data-policyID', data.policy.id);

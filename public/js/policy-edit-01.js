@@ -7,6 +7,9 @@ $(".modal-trigger-edit-policy").click(function(e){
     
     e.preventDefault();
     
+    //close Manage Policy Modal
+    $("#manage-policy-modal").css({"display":"none"});
+    
     //close book-list-show-info modal
     $("#show-policy-modal-origin").css({"display":"none"});
     
@@ -28,13 +31,16 @@ $(".modal-trigger-edit-policy").click(function(e){
 
     dataModal = $(this).attr("data-modal");
     var policyID = $(this).attr("data-policyID");
+    var authorID = $(this).attr("data-authorID");
    
 //    console.log('========Edit policy =======');
 //    console.log('policy ID: ' + policyID);
+//    console.log('author ID: ' + authorID);
 
     
-    //insert bookListID to form
+    //insert to form
     $('#editPolicyID').val(policyID);
+    $('#editPolicyAuthorID').val(authorID);
 
     //display modal
     $("#" + dataModal).css({"display":"block"});
@@ -79,6 +85,9 @@ $("#editPolicyForm").validate({
         editPolicyID:{
             required: true
         },
+        editPolicyAuthorID:{
+            required: true
+        },
         editPolicyTitle: {
             required: true,
             maxlength: 100
@@ -104,20 +113,19 @@ $("#editPolicyForm").validate({
     var policyID = $("#editPolicyID").val();
     var policyTitle = $("#editPolicyTitle").val();
     var policyContent = $('#editPolicyContent').val();
-    
-
-    
-    
+    var authorID = $('#editPolicyAuthorID').val();
+     
 //    console.log('---=== Policy edit Form DATA posted ===---');
 //    console.log('policy ID: '+ policyID);
 //    console.log('policy Title: '+ policyTitle);
 //    console.log('policy Content: ' + policyContent);
+//    console.log('policy author id: ' + authorID);
 //    console.log('---================================---');
    
     $.ajax({
         url: 'parents/editpolicy',
         type: 'POST',
-        data:{policyID:policyID, policyTitle:policyTitle, policyContent:policyContent},
+        data:{policyID:policyID, policyTitle:policyTitle, policyContent:policyContent, authorID:authorID},
         dataType: 'JSON', 
         async: true ,
         success: function(data){

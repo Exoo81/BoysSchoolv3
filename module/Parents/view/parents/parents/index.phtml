@@ -239,14 +239,16 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 * after verification normal access is implemented in modal show-policy-modal 
                                 */
                                 $access = 0;
+                                $authorID = null;
                                 if ($this->access('policies.manage')){
-                                     $access  = 1; 
+                                     $access  = 1;
+                                     $authorID = $this->currentUser()->getId();
                                 }
                                 
                                 echo '<li>';
                                     echo '<img src="img/icons/icon-arrow-right-fat.png">';
                                     if($policy->getDocName() == null){
-                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1" data-authorID="'.$authorID.'">';
                                             echo '<span>'.$policy->getTitle().'</span>';
                                         echo '</a>';
                                     }else{
@@ -294,13 +296,15 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 * after verification normal access is implemented in modal show-policy-modal 
                                 */
                                 $access = 0;
+                                $authorID = null;
                                 if ($this->access('policies.manage')){
-                                     $access  = 1; 
+                                     $access  = 1;
+                                     $authorID = $this->currentUser()->getId();
                                 }
                                 echo '<li>';
                                     echo '<img src="img/icons/icon-arrow-right-fat.png">';
                                     if($policy->getDocName() == null){
-                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                        echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1" data-authorID="'.$authorID.'">';
                                             echo '<span>'.$policy->getTitle().'</span>';
                                         echo '</a>';
                                     }else{
@@ -1911,10 +1915,12 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                             * after verification normal access is implemented in modal show-policy-modal 
                                             */
                                             $access = 0;
+                                            $authorID = null;
                                             if ($this->access('policies.manage')){
                                                  $access  = 1; 
+                                                 $authorID = $this->currentUser()->getId();
                                             }
-                                            echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1">';
+                                            echo '<a href="#" class="bs modal-trigger-show-policy" data-modal="show-policy-modal-origin" data-policyID="'.$policy->getId().'" data-access="'.$access.'" data-origin="1" data-authorId="'.$authorID.'">';
                                                 echo '<span>'.$policy->getTitle().'</span>';
                                             echo '</a>';                                            
                                         }else{
@@ -1927,7 +1933,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                     echo '<div class="small-table-cell edit">';
                                         if ($this->access('policies.manage')) {
                                             if($policy->getDocName() == null){
-                                                echo '<a href="#" class="modal-trigger-edit-policy tooltip" data-modal="edit-policy-modal" data-policyID="'.$policy->getId().'">';
+                                                echo '<a href="#" class="modal-trigger-edit-policy tooltip" data-modal="edit-policy-modal" data-policyID="'.$policy->getId().'" data-authorID="'.$this->currentUser()->getId().'">';
                                                     echo '<button class="btn-admin">';
                                                         echo '<img class="icon-list" src="img/icons/icon-edit-blue.png" >';
                                                     echo '</button>';
@@ -2136,7 +2142,8 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <label for="editPolicyContent">Edit policy (text):</label>
                     <textarea id="editPolicyContent" name="editPolicyContent" rows="20"></textarea>
-
+                    
+                    <input type="hidden" id="editPolicyAuthorID" name="editPolicyAuthorID" required/>
                     
                     <div class="btn-modal-box">
                         <button type="submit" class="modal-btn btn-blue left" data-text="Save"><span>Save</span></button>
@@ -2251,7 +2258,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/enrolment-add.js" type="text/javaScript"></script>
 <script src="js/enrolment-delete.js" type="text/javaScript"></script>
 <script src="js/policy-add-01.js" type="text/javaScript"></script>
-<script src="js/policy-edit.js" type="text/javaScript"></script>
+<script src="js/policy-edit-01.js" type="text/javaScript"></script>
 <script src="js/policy-delete-01.js" type="text/javaScript"></script>
 <script src="js/create-account-passer.js" type="text/javaScript"></script>
 

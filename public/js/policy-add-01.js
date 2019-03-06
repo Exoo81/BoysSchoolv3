@@ -36,8 +36,8 @@ $(".modal-trigger-add-policy").click(function(e){
     dataModal = $(this).attr("data-modal");
     var authorID = $(this).attr("data-authorID");
 
-    console.log('--------- ADD POLICY DATA --------------');
-    console.log('Author ID: ' + authorID);
+//    console.log('--------- ADD POLICY DATA --------------');
+//    console.log('Author ID: ' + authorID);
     
     //insert data to form
     $('#addPolicyAuthorID').val(authorID);
@@ -122,12 +122,12 @@ $("#addPolicyForm").validate({
             var policyDoc = null;
         }
 
-        console.log('---=== Policy Form DATA posted ===---');
-        console.log('Policy title : '+ policyTitle);
-        console.log('Policy content : '+ policyContent);
-        console.log('Policy author : '+ policyAuthor);
-        console.log('Policy doc : '+ policyDoc);
-        console.log('---================================---');
+//        console.log('---=== Policy Form DATA posted ===---');
+//        console.log('Policy title : '+ policyTitle);
+//        console.log('Policy content : '+ policyContent);
+//        console.log('Policy author : '+ policyAuthor);
+//        console.log('Policy doc : '+ policyDoc);
+//        console.log('---================================---');
         
         var formData = new FormData();
         
@@ -148,7 +148,7 @@ $("#addPolicyForm").validate({
             contentType: false,
             data: formData,
             success: function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.success === true){
                     //refresh page
                     location.reload();
