@@ -49,7 +49,7 @@ class NewsManager{
     
     
     public function getCurrentNewsBlog(){
-        
+              
         $newsBlog = $this->entityManager->getRepository(NewsBlog::class)
                      ->findOneBySeason($this->currentSeason);
         

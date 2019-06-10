@@ -6,17 +6,10 @@
 namespace Application\Controller;
 
 
-use Application\Entity\News;
 use Application\Entity\WelcomeMsg;
-use Application\Entity\AboutUs;
-use Application\Entity\Newsletter;
-use Application\Entity\Subscription;
-use Application\Entity\SchoolEvent;
 use Application\Entity\OurAwards;
-
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-
 use Zend\View\Model\JsonModel;
 
 

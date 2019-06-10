@@ -207,6 +207,14 @@ class GalleryBlogManager{
                 
                 
                 if(isset($_FILES['addGalleryVideo'])){
+                    
+                    /*
+                     * calling compression function
+                     * $this->testVideoCompression();
+                     */
+                    
+                    
+                    
 //                    $dataResponse['success'] = true;
 //                    $dataResponse['addGalleryVideo'] =  $_FILES["addGalleryVideo"]['name'];
                     
@@ -804,6 +812,72 @@ class GalleryBlogManager{
     
         
     }
+    
+/** 
+ * compression function .... not tested yet
+ * 
+ *    private function testVideoCompression(){
+        $ffmpeg = \FFMpeg\FFMpeg::create(array(
+                                            'ffmpeg.binaries'  => 'C:/ffmpeg/bin/ffmpeg.exe', // in cloudways server path /usr/bin/ffmpeg
+                                            'ffprobe.binaries' => 'C:/ffmpeg/bin/ffprobe.exe', // in cloudways server path /usr/bin/ffprobe
+                                            'timeout'          => 3600, // The timeout for the underlying process
+                                            'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+                                        ));
+        
+        $video = $ffmpeg->open('C:/Users/Exoo/Desktop/outlook temp/test/video/1.mp4');
+        
+        //$width = $video->getFFProbe()->streams[0]->width;
+//        
+//        
+//        
+//        // if Landscape else Portrait
+//        if($width > $heigth){
+//            if($width > 860){
+//                $newWidth = 860;
+//                $newHeigth = ($heigth*$newWidth)/$width; 
+//            }else{
+//                $newWidth = $width;
+//                $newHeigth = $heigth;
+//            }
+//                
+//        }else{
+//            if($heigth > 860){
+//                $newHeigth = 860 ;
+//                $newWidth = ($width*$newHeigth)/$heigth;
+//            }else{
+//                $newWidth = $width;
+//                $newHeigth = $heigth;
+//            }
+//        }
+        
+        
+        //$video
+                //->filters()
+                //->resize(new \FFMpeg\Coordinate\Dimension(860, 620))
+                //->synchronize();
+        $video
+            ->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(10))
+            ->save('C:/Users/Exoo/Desktop/outlook temp/test/video/frame.jpg');
+        
+        //$format = new \FFMpeg\Format\Video\X264();
+        //$format->setAudioCodec("libmp3lame");
+        
+         
+        $format = new \FFMpeg\Format\Video\X264( 'libmp3lame', 'libx264' );
+        //$format->setAdditionalParameters( [ '-crf', '10' ] );
+        //$format->setAdditionalParameters( [ '-ss', '60' ] );
+        //$format->setAdditionalParameters( [ '-t', '60' ] );
+        
+        $video
+            ->save($format, 'C:/Users/Exoo/Desktop/outlook temp/test/video/export22.mp4');
+          //  ->save(new \FFMpeg\Format\Video\Ogg(), 'C:/Users/Exoo/Desktop/outlook temp/test/video/export-ogg.ogv');
+          //  ->save(new \FFMpeg\Format\Video\WMV3(), 'C:/Users/Exoo/Desktop/outlook temp/test/video/export-wmv3.wmv3');
+          // ->save(new \FFMpeg\Format\Video\WMV(), 'C:/Users/Exoo/Desktop/outlook temp/test/video/export-wmv.wmv');
+          //  ->save(new \FFMpeg\Format\Video\WebM(), 'C:/Users/Exoo/Desktop/outlook temp/test/video/export-webm.webm');
+    }
+ * 
+ * 
+ */
     
     
     
