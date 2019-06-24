@@ -808,6 +808,7 @@ class GalleryBlogManager{
             
             imagedestroy($image);
             imagedestroy($truecolor);
+            
         }
     
         
