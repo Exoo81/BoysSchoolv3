@@ -13484,7 +13484,8 @@ button.btn-contact-form{
 
 /****/
 
-.parents-info-box .title-sm{
+.parents-info-box .title-sm,
+.book-list-box .title-sm{
     display: inline-block;
     padding-top: 3%;
 }

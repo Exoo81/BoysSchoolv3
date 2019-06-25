@@ -77,15 +77,62 @@ class ParentsManager{
         return $parentsAssoc;
     }
     
-    public function getBooksListSeason() {
+    public function getBooksListCurrentSeason() {
         
         $booksListSeason = $this->entityManager->getRepository(BookList::class)
-                     ->findBySeason($this->currentSeason->getId(),['level'=>'ASC']);
+                     ->findBySeasonName($this->currentSeason->getSeasonName(),['level'=>'ASC']);
         
         return $booksListSeason;
         
     }
     
+    public function getBooksListNextSeason() {
+        
+       
+        $nextSeason = $this->getNextSeason();
+        
+         if($nextSeason != null){
+            $booksListNextSeason = $this->entityManager->getRepository(BookList::class)
+                     ->findBySeasonName($nextSeason->getSeasonName(),['level'=>'ASC']);
+        }else{
+            //return error info
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Error next season book list. Contact with admin.';
+        
+            return $dataResponse;
+        }
+
+        return $booksListNextSeason;
+        
+    }
+    
+    private function getNextSeason(){
+        
+        $nextSeason = $this->entityManager->getRepository(Season::class)
+                     ->findOneBy(['status' => 'NEXT']);
+        
+         if($nextSeason == null){
+            //return error info
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] =  'Error next season. Contact with admin.';
+        
+            return $dataResponse;
+        }else{
+            
+        }
+
+        return $nextSeason;
+        
+    }
+
+
+    public function getNextSeasonName(){
+        
+        return $this->getNextSeason()->getSeasonName();
+
+    }
+
+
     public function getPolicies(){
         
         $policiesList = $this->entityManager->getRepository(Policy::class)
@@ -596,14 +643,14 @@ class ParentsManager{
         }
         
         //find assoc. teacher
-        $season = $this->entityManager->getRepository(Season::class)
-                        ->find($bookList->getSeason());
+//        $season = $this->entityManager->getRepository(Season::class)
+//                        ->find($bookList->getSeason());
         
-        if($season == null){
-            $dataResponse['success'] = false;
-            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find season for this book list.';
-            return $dataResponse;
-        }
+//        if($season == null){
+//            $dataResponse['success'] = false;
+//            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find season for this book list.';
+//            return $dataResponse;
+//        }
         
         //get listOfBooks
         $listOfBooks = $bookList->getListOfBooks();
@@ -638,8 +685,8 @@ class ParentsManager{
         $teacherJSON = $teacher->jsonSerialize();
         $dataResponse['teacherInfo'] = $teacherJSON;
         
-        $seasonJSON = $season->jsonSerialize();
-        $dataResponse['seasonInfo'] = $seasonJSON;
+//        $seasonJSON = $season->jsonSerialize();
+//        $dataResponse['seasonInfo'] = $seasonJSON;
         
         //return success
         $dataResponse['success'] = true;

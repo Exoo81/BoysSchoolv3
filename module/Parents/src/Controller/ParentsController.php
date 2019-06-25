@@ -36,7 +36,9 @@ class ParentsController extends AbstractActionController{
         $parentsInformation = $this->parentsManager->getAllParentsInformation();
         $parentsAssoc = $this->parentsManager->getParentsAssoc();
         $parentsAssocTeam = $this->parentsManager->getParentsAssocTeam();
-        $booksList = $this->parentsManager->getBooksListSeason();
+        $booksList = $this->parentsManager->getBooksListCurrentSeason();
+        $booksListNext = $this->parentsManager->getBooksListNextSeason();
+        $nextSeasonName = $this->parentsManager->getNextSeasonName();
         $enrolment = $this->parentsManager->getEnrolments();
         //$policies = $this->parentsManager->getPolicies();
         
@@ -46,6 +48,8 @@ class ParentsController extends AbstractActionController{
             'parentsAssoc' => $parentsAssoc,
             'parentsAssocTeam' => $parentsAssocTeam,
             'booksList' => $booksList,
+            'booksListNext' => $booksListNext,
+            'nextSeasonName' => $nextSeasonName,
             'enrolment' => $enrolment,
             //'policies' => $policies
         ]);

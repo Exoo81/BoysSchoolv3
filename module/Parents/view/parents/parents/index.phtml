@@ -66,7 +66,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
              
              
             <div class="book-list-box">
-                <div class="title blue">Booklist <?=$current_season ?></div>
+                <div class="title blue">Booklist</div>
                 <?php 
                     if ($this->access('bookList.add')) {
                         echo '<div class="cms-option book-list">';
@@ -79,7 +79,35 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 ?>
                 <ul>
                     <?php
+                    
+                    if(!empty($this->booksListNext)){
+                        echo '<div class="title-sm">Books for the next ('.$this->nextSeasonName.') school year</div>';
+                        echo '<hr class="blue">';
+                        foreach($this->booksListNext as $bookList){
+                            /*
+                             * checking only if access to this bookList 
+                             * after verification normal access is implemented in modal show-book-list-modal 
+                             */
+                            $access = 0;
+                            $author = null;
+                            if ($this->access('bookList.manage') || 
+                                $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
+                                 $access  = 1; 
+                                 $author = $this->currentUser()->getId();
+                            }
+                            
+                            echo '<li>';
+                                echo '<img src="img/icons/icon-list.png">';
+                                echo '<a href="#" class="bs blue modal-trigger-show-book-list" data-modal="show-book-list-modal" data-bookListID="'.$bookList->getId().'" data-authorID="'.$author.'" data-access="'.$access.'">';
+                                    echo '<span>'.$bookList->getLevelAsString().' Booklist - '.$bookList->getTeacher()->getOurTeamMember()->getTitleLastName().'</span>';
+                                echo '</a>';
+                            echo '</li>';
+                        }
+                    }
+                    
                     if(!empty($this->booksList)){
+                        echo '<div class="title-sm">Books for the current ('.$current_season.') school year</div>';
+                        echo '<hr class="blue">';
                         foreach($this->booksList as $bookList){
                             /*
                              * checking only if access to this bookList 
@@ -100,11 +128,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 echo '</a>';
                             echo '</li>';
                         }
-                    }else{
-                        echo '<div class="no-content ">';
-                                echo '<img src="img/icons/icon-trumpet.png"/>';
-                                echo '<span>will come soon ...</span>';
-                        echo '</div>';    
                     }
                     ?>
                 </ul>
@@ -431,7 +454,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
             
             
             <div class="book-list-box">
-                <div class="title blue">Booklist <?=$current_season ?></div>
+                <div class="title blue">Booklist</div>
                 <?php 
                     if ($this->access('bookList.add')) {
                         echo '<div class="cms-option book-list">';
@@ -444,7 +467,33 @@ $this->headTitle($this->headTitle.' '.$current_season);
                 ?>
                 <ul>
                     <?php
+                    if(!empty($this->booksListNext)){
+                        echo '<div class="title-sm">Books for the next ('.$this->nextSeasonName.') school year</div>';
+                        echo '<hr class="blue">';
+                        foreach($this->booksListNext as $bookList){
+                            /*
+                             * checking only if access to this bookList 
+                             * after verification normal access is implemented in modal show-book-list-modal 
+                             */
+                            $access = 0;
+                            $author = null;
+                            if ($this->access('bookList.manage') || 
+                                $this->access('bookList.own.manage', ['user'=>$bookList->getTeacher()])){
+                                 $access  = 1; 
+                                 $author = $this->currentUser()->getId();
+                            }
+                            
+                            echo '<li>';
+                                echo '<img src="img/icons/icon-list.png">';
+                                echo '<a href="#" class="bs blue modal-trigger-show-book-list" data-modal="show-book-list-modal" data-bookListID="'.$bookList->getId().'" data-authorID="'.$author.'" data-access="'.$access.'">';
+                                    echo '<span>'.$bookList->getLevelAsString().' Booklist - '.$bookList->getTeacher()->getOurTeamMember()->getTitleLastName().'</span>';
+                                echo '</a>';
+                            echo '</li>';
+                        }
+                    }
                     if(!empty($this->booksList)){
+                        echo '<div class="title-sm">Books for the current ('.$current_season.') school year</div>';
+                        echo '<hr class="blue">';
                         foreach($this->booksList as $bookList){
                             /*
                              * checking only if access to this bookList 
@@ -465,11 +514,6 @@ $this->headTitle($this->headTitle.' '.$current_season);
                                 echo '</a>';
                             echo '</li>';
                         }
-                    }else{
-                        echo '<div class="no-content">';
-                                echo '<img src="img/icons/icon-trumpet.png"/>';
-                                echo '<span>will come soon ...</span>';
-                        echo '</div>';    
                     }
                     ?>
                 </ul>
@@ -2249,7 +2293,7 @@ $this->headTitle($this->headTitle.' '.$current_season);
 <script src="js/parentsAssoc-activate-member.js" type="text/javaScript"></script>
 <script src="js/parentsAssoc-edit-meeting.js" type="text/javaScript"></script>
 <script src="js/date-picker.js" type="text/javaScript"></script>
-<script src="js/book-list-show-info.js" type="text/javaScript"></script>
+<script src="js/book-list-show-info-01.js" type="text/javaScript"></script>
 <script src="js/bookList-add.js" type="text/javaScript"></script>
 <script src="js/bookList-edit.js" type="text/javaScript"></script>
 <script src="js/bookList-delete.js" type="text/javaScript"></script>
