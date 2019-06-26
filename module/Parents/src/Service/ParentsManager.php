@@ -712,6 +712,7 @@ class ParentsManager{
         
         $dataResponse['classLevel'] = $this->getLevelTitleList();
         $dataResponse['teachers'] = $this->getAllTeachersList();
+        $dataResponse['seasons'] = $this->getSeasonsList();
         
         //return success
         $dataResponse['success'] = true;
@@ -761,7 +762,16 @@ class ParentsManager{
         }       
         $bookList->setAuthor($author);
         
-        $bookList->setSeason($this->currentSeason);
+        //set season
+        $season = $this->entityManager->getRepository(Season::class)
+                        ->find($formFieldsArray['seasonID']);
+        
+        if($season == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find season for this book list.';
+            return $dataResponse;
+        }
+        $bookList->setSeason($season);
         
 
         // Add the entity to the entity manager.
@@ -1328,7 +1338,16 @@ class ParentsManager{
         
     }
 
+    //return list of seasons
+    private function getSeasonsList(){
 
+        $seasonsList = array();
+        $seasonsList[0] = '---select school year ---';
+        $seasonsList[$this->currentSeason->getId()] = $this->currentSeason->getSeasonName().' (current)';
+        $seasonsList[$this->getNextSeason()->getId()] = $this->getNextSeason()->getSeasonName().' (next)';
+
+        return $seasonsList;
+    }
     
     // return title for each level
     private function getLevelTitleList() {

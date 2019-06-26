@@ -22,6 +22,7 @@ $(".modal-trigger-add-book-list").click(function(e){
     $("#addBookListForm").css({"display":"none"});
     
     //clear all select fields
+        $('#addBookListSeason').empty();
         $('#addBookListLevel').empty();
         $('#addBookListTeacher').empty();
     
@@ -86,6 +87,11 @@ $(".modal-trigger-add-book-list").click(function(e){
             console.log(data);
             if(data.success === true){
                 
+                //insert options for school year
+                $.each(data.seasons, function (key, value){
+                    $('#addBookListSeason').append($('<option></option>').attr('value', key).text(value));
+                });
+                
                 //insert options for classLevel
                 $.each(data.classLevel, function (key, value){
                     $('#addBookListLevel').append($('<option></option>').attr('value', key).text(value));
@@ -127,6 +133,10 @@ $("#addBookListForm").validate({
     
     
     rules: {
+        addBookListSeason: {
+            required: true,
+            valueNotEquals: "0"
+        },
         addBookListLevel: {
             required: true,
             valueNotEquals: "0"
@@ -156,6 +166,9 @@ $("#addBookListForm").validate({
         }
     },
     messages:{
+        addBookListSeason: { 
+            valueNotEquals: "Please select school year" 
+        },
         addBookListLevel: { 
             valueNotEquals: "Please select class level" 
         },
@@ -214,6 +227,7 @@ $("#addBookListForm").validate({
                 $(".response-msg").html('');
 
             var authorID = $("#addBookList_authorID").val();
+            var seasonID = $('#addBookListSeason').val();
             var classLevel = $('#addBookListLevel').val();
             var teacherID = $('#addBookListTeacher').val();
             var additionalMonies = null;
@@ -246,16 +260,17 @@ $("#addBookListForm").validate({
             var stationaryListSize = $('#stationary tr').length;
 
 
-        //    console.log('---=== Book list Form DATA posted ===---');
-        //    console.log('Book list size : '+ booksListSize);
-        //    console.log('Stationary list size : '+ stationaryListSize);
-        //    console.log('additional Monies: ' + additionalMonies);
-        //    console.log('uniform: ' + uniform);
-        //    console.log('other Information: ' + otherInformation);
-        //    console.log('author ID: '+ authorID);
-        //    console.log('class Level: '+ classLevel);
-        //    console.log('teacher ID: '+ teacherID);
-        //    console.log('---================================---');
+//            console.log('---=== Book list Form DATA posted ===---');
+//            console.log('Book list size : '+ booksListSize);
+//            console.log('Stationary list size : '+ stationaryListSize);
+//            console.log('additional Monies: ' + additionalMonies);
+//            console.log('uniform: ' + uniform);
+//            console.log('other Information: ' + otherInformation);
+//            console.log('author ID: '+ authorID);
+//            console.log('season: '+ seasonID);
+//            console.log('class Level: '+ classLevel);
+//            console.log('teacher ID: '+ teacherID);
+//            console.log('---================================---');
 
 
 
@@ -266,6 +281,7 @@ $("#addBookListForm").validate({
                          uniform:uniform, 
                          otherInformation:otherInformation, 
                          authorID:authorID,
+                         seasonID:seasonID,
                          classLevel:classLevel,
                          teacherID:teacherID
                      });
