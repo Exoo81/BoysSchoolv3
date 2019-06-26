@@ -80,7 +80,7 @@ class ParentsManager{
     public function getBooksListCurrentSeason() {
         
         $booksListSeason = $this->entityManager->getRepository(BookList::class)
-                     ->findBySeasonName($this->currentSeason->getSeasonName(),['level'=>'ASC']);
+                     ->findBySeason($this->currentSeason,['level'=>'ASC']);
         
         return $booksListSeason;
         
@@ -93,7 +93,7 @@ class ParentsManager{
         
          if($nextSeason != null){
             $booksListNextSeason = $this->entityManager->getRepository(BookList::class)
-                     ->findBySeasonName($nextSeason->getSeasonName(),['level'=>'ASC']);
+                     ->findBySeason($nextSeason, ['level'=>'ASC']);
         }else{
             //return error info
             $dataResponse['success'] = false;
@@ -117,12 +117,8 @@ class ParentsManager{
             $dataResponse['responseMsg'] =  'Error next season. Contact with admin.';
         
             return $dataResponse;
-        }else{
-            
         }
-
         return $nextSeason;
-        
     }
 
 
@@ -641,16 +637,16 @@ class ParentsManager{
             $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find teacher for this book list.';
             return $dataResponse;
         }
-        
+   
         //find assoc. teacher
-//        $season = $this->entityManager->getRepository(Season::class)
-//                        ->find($bookList->getSeason());
+        $season = $this->entityManager->getRepository(Season::class)
+                        ->find($bookList->getSeason());
         
-//        if($season == null){
-//            $dataResponse['success'] = false;
-//            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find season for this book list.';
-//            return $dataResponse;
-//        }
+        if($season == null){
+            $dataResponse['success'] = false;
+            $dataResponse['responseMsg'] = 'ERROR - We couldn\'t find season for this book list.';
+            return $dataResponse;
+        }
         
         //get listOfBooks
         $listOfBooks = $bookList->getListOfBooks();
@@ -685,8 +681,8 @@ class ParentsManager{
         $teacherJSON = $teacher->jsonSerialize();
         $dataResponse['teacherInfo'] = $teacherJSON;
         
-//        $seasonJSON = $season->jsonSerialize();
-//        $dataResponse['seasonInfo'] = $seasonJSON;
+        $seasonJSON = $season->jsonSerialize();
+        $dataResponse['seasonInfo'] = $seasonJSON;
         
         //return success
         $dataResponse['success'] = true;

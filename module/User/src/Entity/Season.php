@@ -67,11 +67,11 @@ class Season{
     */
      protected $classPostsList;
      
-//     /**
-//    * @ORM\OneToMany(targetEntity="\Parents\Entity\BookList", mappedBy="season")
-//    * @ORM\JoinColumn(name="id", referencedColumnName="season_id")
-//    */
-//     protected $bookList;
+     /**
+    * @ORM\OneToMany(targetEntity="\Parents\Entity\BookList", mappedBy="season")
+    * @ORM\JoinColumn(name="id", referencedColumnName="season_id")
+    */
+     protected $bookList;
      
      /**
    * Constructor.
@@ -82,7 +82,7 @@ class Season{
         $this->newslettersList = new ArrayCollection();
         $this->classBlogsList = new ArrayCollection();
         $this->classPostsList = new ArrayCollection();
-//        $this->bookList = new ArrayCollection();
+        $this->bookList = new ArrayCollection();
     }
     
     
@@ -348,39 +348,39 @@ class Season{
     }
     
     
-//    /**
-//    * Returns bookList for this user.
-//    * @return array
-//    */
-//    public function getBookList() {
-//      return $this->bookList;
-//    }
-//    
-//    /**
-//     * Returns the string of assigned as bookList id.
-//     */
-//    public function getBookListAsString(){
-//        $bookList = '';
-//        
-//        $count = count($this->bookList);
-//        $i = 0;
-//        foreach ($this->bookList as $bookListObj) {
-//            $bookList .= $bookListObj->getId();
-//            if ($i<$count-1)
-//                $bookList .= ', ';
-//            $i++;
-//        }
-//        
-//        return $bookList;
-//    }
-//    
-//    /**
-//     * Adds a new bookListObj to bookList in this user.
-//     * @param $bookList
-//     */
-//    public function addBookListToList($bookList) {
-//      $this->bookList[] = $bookList;
-//    }
+    /**
+    * Returns bookList for this user.
+    * @return array
+    */
+    public function getBookList() {
+      return $this->bookList;
+    }
+    
+    /**
+     * Returns the string of assigned as bookList id.
+     */
+    public function getBookListAsString(){
+        $bookList = '';
+        
+        $count = count($this->bookList);
+        $i = 0;
+        foreach ($this->bookList as $bookListObj) {
+            $bookList .= $bookListObj->getId();
+            if ($i<$count-1)
+                $bookList .= ', ';
+            $i++;
+        }
+        
+        return $bookList;
+    }
+    
+    /**
+     * Adds a new bookListObj to bookList in this user.
+     * @param $bookList
+     */
+    public function addBookListToList($bookList) {
+      $this->bookList[] = $bookList;
+    }
     
     
     
@@ -388,7 +388,7 @@ class Season{
         return 
         [
             'id'   => $this->getId(),
-            //'season_name' => $this->getSeasonName(),
+            'season_name' => $this->getSeasonName(),
             'start_year' => $this->getStartYear(),
             'end_year' => $this->getEndYear(),
         ];

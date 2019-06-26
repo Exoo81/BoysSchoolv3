@@ -1499,15 +1499,26 @@ $this->headTitle($this->headTitle.' '.$current_season);
                     
                     <input type="hidden" id="addBookList_authorID" name="addBookList_authorID" required/>
                     
-                    <div class='width-35-left'>
-                        <label id="addBookListLevelLabel">Choose class level:</label>
-                        <select id="addBookListLevel" name="addBookListLevel" class="dropdown"></select>
-                    </div>
                     
-                    <div class='width-60-right'>
-                        <label id="addBookListTeacherLabel">Choose teacher:</label>
-                        <select id="addBookListTeacher" name="addBookListTeacher" class="dropdown"></select>
-                    </div>
+                        <div class='width-35-left'>
+                            <label id="addBookListSeasonLabel">Select the school year</label>
+                            <select id="addBookListSeason" name="addBookListSeason" class="dropdown"></select>
+                        </div>
+
+                        <div class='width-60-right'>
+                            <label id="addBookListLevelLabel">Choose class level:</label>
+                            <select id="addBookListLevel" name="addBookListLevel" class="dropdown"></select>
+                        </div>
+                    
+                    
+                        <div class='width-100'> 
+                        <div class='width-65-left'>
+                            <label id="addBookListTeacherLabel">Choose teacher:</label>
+                            <select id="addBookListTeacher" name="addBookListTeacher" class="dropdown"></select>
+                        </div>
+                        </div>
+                    
+                        
  
                     <div class='width-100'>     
                         <label class='centered' id='input_fields_wrap_book_label'>List of books</label>

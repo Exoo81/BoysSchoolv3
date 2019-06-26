@@ -69,7 +69,7 @@ $(".modal-trigger-show-book-list").click(function(e){
                  * insert title
                  */
                 $('#showBookListTitle').html(data.bookListInfo.level + " Book List - " + data.teacherInfo.full_name );
-                $('#bookListSeason').html('School year: ' + data.bookListInfo.season_name);
+                $('#bookListSeason').html('School year: ' + data.seasonInfo.season_name);
                 
                 /*
                  * insert attributes to admin options

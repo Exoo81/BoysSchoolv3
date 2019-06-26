@@ -54,16 +54,16 @@ class BookList {
     */
     protected $author;
     
-//    /** 
-//    * @ORM\ManyToOne(targetEntity="\User\Entity\Season", inversedBy="bookList")
-//    * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
-//    */
-//    protected $season;
-    
     /** 
-     * @ORM\Column(name="season_name")  
-     */
-    protected $seasonName;
+    * @ORM\ManyToOne(targetEntity="\User\Entity\Season", inversedBy="bookList")
+    * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
+    */
+    protected $season;
+    
+//    /** 
+//     * @ORM\Column(name="season_name")  
+//     */
+//    protected $seasonName;
 
 
 
@@ -248,39 +248,39 @@ class BookList {
     }
     
     
-    /**
-     * Returns bookList's seasonName .     
-     * @return string
-     */
-    public function getSeasonName() {
-        return $this->seasonName;
-    }
-
-    /**
-     * Sets bookList's seasonName.     
-     * @param string seasonName
-     */
-    public function setSeasonName($seasonName) {
-        $this->seasonName = $seasonName;
-    }
-    
-    
-//    /*
-//    * Returns associated season.
-//    * @return \User\Entity\Season
-//    */
-//    public function getSeason() {
-//      return $this->season;
-//    }
-//    
 //    /**
-//     * Sets associated season.
-//     * @param \User\Entity\Season $season
+//     * Returns bookList's seasonName .     
+//     * @return string
 //     */
-//    public function setSeason($season) {
-//      $this->season = $season;
-//      $season->addBookListToList($this);
+//    public function getSeasonName() {
+//        return $this->seasonName;
 //    }
+//
+//    /**
+//     * Sets bookList's seasonName.     
+//     * @param string seasonName
+//     */
+//    public function setSeasonName($seasonName) {
+//        $this->seasonName = $seasonName;
+//    }
+    
+    
+    /*
+    * Returns associated season.
+    * @return \User\Entity\Season
+    */
+    public function getSeason() {
+      return $this->season;
+    }
+    
+    /**
+     * Sets associated season.
+     * @param \User\Entity\Season $season
+     */
+    public function setSeason($season) {
+      $this->season = $season;
+      $season->addBookListToList($this);
+    }
     
 
     /**
@@ -360,7 +360,7 @@ class BookList {
             'id'   => $this->getId(),
             'level' => $this->getLevelAsString(),
             'date_created' => $this->getDateCreated(),
-            'season_name' => $this->getSeasonName(),
+            'season_name' => $this->getSeason()->getSeasonName(),
             'additional_monies_info' => $this->getAdditionalMoniesInfo(),
             'uniform_info' => $this->getUniformInfo(),
             'other_info' => $this->getOtherInfo()
