@@ -361,7 +361,7 @@ $("#addBookListForm").validate({
                     contentType: false,
                     data: formData,
                     success: function(data){
-                        console.log(data);
+                        //console.log(data);
                         if(data.success === true){
                             location.reload();
                         }else{

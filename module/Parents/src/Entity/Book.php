@@ -108,10 +108,6 @@ class Book {
         $this->publisher = $publisher;
     }
     
-    
-    
-    
-    
      /*
     * Returns associated bookList.
     * @return \Parents\Entity\BookList
