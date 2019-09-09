@@ -32,5 +32,6 @@ return [
     'Contact',
     'Ourteam',
     'Schoollife',
+    'Archive',
     'School',
 ];

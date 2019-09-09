@@ -52,7 +52,9 @@
             "Contact\\": "module/Contact/src/",
             "Schoollife\\": "module/Schoollife/src/",
             "Ourteam\\": "module/Ourteam/src/",
+            "Archive\\": "module/Archive/src/",
             "School\\": "module/School/src/"
+            
         }
     },
     "autoload-dev": {

@@ -3646,7 +3646,8 @@ ul.file-list .admin-option img.icon-list{
 #container section.school-life-blog,
 #container section.gallery,
 #container section.our-team,
-#container section.parents{
+#container section.parents,
+#container section.archive{
 	display: inline-block;
 	width: 100%;
 	background-color: #ecf0f1;
@@ -3665,7 +3666,8 @@ section.classes .header,
 section.school-life .header,
 section.gallery .header,
 section.our-team .header,
-section.parents .header{
+section.parents .header,
+section.archive .header{
 	position: relative;
 	width: 100%;
         height: 200px;
@@ -5180,7 +5182,8 @@ section.admin .admin-box{
 .school-life .no-content img,
 .class-blog .no-content img,
 .news-box .no-content img,
-.newsletters-list .no-content img{
+.newsletters-list .no-content img,
+.archive-box .no-content img{
     display: block;
     margin: 0 auto;
     padding-bottom: 5%;    
@@ -5196,7 +5199,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5211,7 +5215,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5226,7 +5231,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
            width: 60%;
         }
     }
@@ -5241,7 +5247,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 60%;
         }
     }
@@ -5256,7 +5263,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 80px;
         }
     }
@@ -5272,7 +5280,8 @@ section.admin .admin-box{
         .class-blog .no-content img,
         .news-box .no-content img,
         .newsletters-list .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5288,7 +5297,8 @@ section.admin .admin-box{
         .class-blog .no-content img,
         .news-box .no-content img,
         .newsletters-list .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5304,7 +5314,8 @@ section.admin .admin-box{
         .class-blog .no-content img,
         .news-box .no-content img,
         .newsletters-list .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5320,7 +5331,8 @@ section.admin .admin-box{
         .class-blog .no-content img,
         .news-box .no-content img,
         .newsletters-list .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             
         }
     }
@@ -5335,7 +5347,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 100px;
         }
     }
@@ -5350,7 +5363,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 100px;
         }
     }
@@ -5365,7 +5379,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 100px;
         }
     }
@@ -5380,7 +5395,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 100px;
         }
     }
@@ -5395,7 +5411,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 100px;
         }
     }
@@ -5410,7 +5427,8 @@ section.admin .admin-box{
         .school-life .no-content img,
         .class-blog .no-content img,
         .news-box .no-content img,
-        .newsletters-list .no-content img{
+        .newsletters-list .no-content img,
+        .archive-box .no-content img{
             width: 80px;
         }
     }
@@ -5439,7 +5457,8 @@ section.admin .admin-box{
 .school-life .no-content span,
 .class-blog .no-content span,
 .school-news .no-content span,
-.newsletters-list .no-content span{
+.newsletters-list .no-content span,
+.archive-box .no-content span{
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -5467,7 +5486,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5482,7 +5502,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5497,7 +5518,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
            font-size: 1.5em
         }
     }
@@ -5512,7 +5534,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.5em
         }
     }
@@ -5527,7 +5550,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.5em
         }
     }
@@ -5542,7 +5566,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5557,7 +5582,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5572,7 +5598,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5587,7 +5614,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             
         }
     }
@@ -5602,7 +5630,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.7em;
             border-width: 3px 1px 1px 3px;
         }
@@ -5618,7 +5647,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.7em;
             border-width: 3px 1px 1px 3px;
         }
@@ -5634,7 +5664,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.7em;
             border-width: 3px 1px 1px 3px;
         }
@@ -5650,7 +5681,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.5em;
             border-width: 3px 1px 1px 3px;
         }
@@ -5666,7 +5698,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.5em;
             border-width: 3px 1px 1px 3px;
         }
@@ -5682,7 +5715,8 @@ section.admin .admin-box{
         .school-life .no-content span,
         .class-blog .no-content span,
         .school-news .no-content span,
-        .newsletters-list .no-content span{
+        .newsletters-list .no-content span,
+        .archive-box .no-content span{
             font-size: 1.3em;
             border-width: 3px 1px 1px 3px;
         }
@@ -6171,31 +6205,6 @@ video{
         }
     }
 
-/* Archive */
-.archive .title{
-	position: relative;
-	padding-left: 60px;
-	border-left: 0px solid;
-}
-
-.archive .title img{
-	position: absolute;
-	width: 50px;
-	left: 5px;
-	top: -5px;
-}
-/*	@media screen and (max-width:1366px){
-		.archive .title img{
-			width: 40px;
-			left: 15px;
-		}
-	}*/
-
-.archive .seasons-btn-box{
-	padding: 1% 0;
-	/* border: 1px solid red */
-}
-/* end Archive */
 
 
 /**** end COMMON ****/
@@ -14125,9 +14134,8 @@ button.btn-contact-form{
 
 
 section.our-team .header{
-	background-color: #561818;
-	background-image: url('../img/bg-burgundy.png');
-	
+    background-color: #561818;
+    background-image: url('../img/bg-burgundy.png');	
 }
 
 /*section.our-team .header-title{
@@ -18919,14 +18927,420 @@ img.end-tl{
 
 /****** end PAGE CLASS-BLOG, CLASS-BLOG, SCHOOL-LIFE ******/
 
+/******* ARCHIVE PAGES ******************/
+
+section.archive .header{
+    background-color: #561818;
+    background-image: url('../img/bg-burgundy.png');	
+}
+
+section.archive .header .color-cubes{
+    width: 100%;
+}
+
+section.archive .header .header-title{
+    padding: 3% 35% 0 0;
+}
+
+section.archive .archive-box{
+	position: relative;
+	display: table;
+	width: 100%;
+	padding-top: 120px;
+	
+	/* border: 1px solid red; */
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        section.archive .archive-box{
+            padding-top: 100px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        section.archive .archive-box{
+            padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        section.archive .archive-box{
+           padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        section.archive .archive-box{
+            padding-top: 100px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        section.archive .archive-box{
+            padding-top: 100px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 300px) and (max-width: 1200px) {
+        section.archive .archive-box{
+            display: none;
+        }
+    }
+    
+.main-page .archive{
+    display: inline-block;
+    float: left;
+    width: 80%;
+    margin: 2% 0 0 10%;
+}
+    
+.archive-box .no-content{
+    padding: 0 30% 5% 30%;
+    min-height: 0;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .archive-box .no-content{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .archive-box .no-content{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .archive-box .no-content{
+           padding: 0 40% 5% 40%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .archive-box .no-content{
+            padding: 0 40% 5% 40%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .archive-box .no-content{
+            padding: 0 40% 5% 40%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .archive-box .no-content{
+            padding: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .archive-box .no-content{
+            padding: 0 20%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .archive-box .no-content{
+            padding: 0 20%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .archive-box .no-content{
+            padding: 0 10%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .archive-box .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .archive-box .no-content{
+            padding: 0 10%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .archive-box .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .archive-box .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .archive-box .no-content{
+            padding: 0 20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .archive-box .no-content{
+            padding: 0 20px;
+        }
+    }
+
+.archive .title{
+	position: relative;
+	padding-left: 60px;
+	border-left: 0px solid;
+}
+
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1100px) {
+        .archive .title{
+            font-size: 1.8em; 
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 371px) and (max-width: 600px) {
+        .archive .title{
+            font-size: 1.8em; 
+        }
+    }
+    
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .archive .title{
+            font-size: 1.6em;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .archive .title{
+            font-size: 1.6em; 
+        }
+    }
+
+.archive .title img{
+	position: absolute;
+	width: 45px;
+	left: 5px;
+	top: -5px;
+}
+    
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .archive .title img{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .archive .title img{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .archive .title img{
+           
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .archive .title img{
+            width: 40px;
+            left: 5px;
+            top: -5px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .archive .title img{
+            width: 35px;
+            left: 10px;
+            top: 0px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .archive .title img{
+            width: 35px;
+            left: 10px;
+            top: 0px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .archive .title img{
+            width: 35px;
+            left: 10px;
+            top: 0px;
+        }
+    }
+
+.archive .seasons-btn-box{
+	padding: 10px 0;
+	/* border: 1px solid red */
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        .archive .seasons-btn-box{
+           padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .archive .seasons-btn-box{
+            padding: 10px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .archive .seasons-btn-box{
+            padding: 15px 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .archive .seasons-btn-box{
+            padding: 15px 0;
+        }
+    }
 
 
 
-
-
-
-
-
+/******** end ARCHIVE PAGES *************/
 
 
 /****** SECTION footer ******/

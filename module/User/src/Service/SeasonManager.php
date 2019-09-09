@@ -41,5 +41,19 @@ class SeasonManager{
         
         return $currentSeason;
     }
+    
+    public function getListOfCompletedSeasons(){
+        
+        $archiveSeasons = $this->entityManager->getRepository(Season::class)
+                        ->findByStatus('COMPLETED', ['startYear'=>'ASC']);     
+        return $archiveSeasons;
+    }
+    
+    public function getArchiveSeason($seasonID){
+        
+        $season = $this->entityManager->getRepository(Season::class)
+                        ->find($seasonID);    
+        return $season;
+    }
 }
 

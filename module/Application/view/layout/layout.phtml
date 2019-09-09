@@ -28,7 +28,7 @@
         <link rel="stylesheet" type="text/css" href="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
         
         <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/logo.png'])
-            ->prependStylesheet($this->basePath('css/boy_school-06.css'))
+            ->prependStylesheet($this->basePath('css/boy_school-07.css'))
             ->prependStylesheet($this->basePath('css/jquery-ui.css'))
             ->prependStylesheet($this->basePath('css/animate.css'))
         ?>
@@ -101,7 +101,18 @@
                                             if ($this->identity() == null) {
 
                                             }else{
-
+//                                                if($this->seasonIsActive == 0){
+//                                                    echo '<div>zmien sezon</div>';
+//                                                    echo "<script>
+//                                                            $(document).ready(function () {
+//                                                                $( '#about-us-footer').show(); tu skonczylem !!!!!!!
+//                                                            });
+//                                                        </script>";
+//                                                }else{
+//                                                    echo '<div>nie zmieniaj sezonu</div>';
+//                                                }
+                                                
+                                                
                                                 echo '<div class="layout-welcome-msg">Welcome '.$this->currentUser()->getOurTeamMember()->getTitleLastName().'</div>';
 
                                                 echo '<div class="logout-button-wrapper">';

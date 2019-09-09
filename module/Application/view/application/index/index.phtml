@@ -311,7 +311,7 @@ $aboutUs = $this->layout()->aboutUs;
                 ['route' => 'application', 'action' => 'index']
             ) ?>
 
-        </div>
+        </div> 
     </div>
     
     
@@ -482,6 +482,17 @@ $aboutUs = $this->layout()->aboutUs;
     
     </div>
     
+    <div class="archive">
+        <hr class="burgundy">
+        <div class="title"><img src="img/icons/icon-archive.png"/>News archive</div>
+        <div class="seasons-btn-box">
+            <?php 
+                foreach ($this->archiveSeasons  as $archiveSeason) :
+                    
+                    echo '<a href="'.$this->url('archive', ['action'=>'index', 'id'=>$archiveSeason->getId()]).'"><button type="button" class="btn-archive btn-burgundy" data-text="'.$archiveSeason->getSeasonName().'"><span>'.$archiveSeason->getSeasonName().'</span></button></a>';
+                endforeach;?>
+        </div>         
+    </div>
     <!-- end OUR AWARDS -->
 </section>
 

@@ -67,9 +67,15 @@ class IndexController extends AbstractActionController{
      */
     private $ourAwardsManager;
     
+    /**
+     * Season manager.
+     * @var Season\Service\SeasonManager 
+     */
+    private $seasonManager;
+    
     // Add this constructor:
     public function __construct($newsManager, $welcomeMsgManager, $aboutUsManager, $newsletterManager,
-                        $subscriptionManager, $eventManager, $entityManager, $ourAwardsManager){
+                        $subscriptionManager, $eventManager, $entityManager, $ourAwardsManager, $seasonManager){
         
         $this->entityManager = $entityManager;
         
@@ -80,6 +86,7 @@ class IndexController extends AbstractActionController{
         $this->subscriptionManager = $subscriptionManager;
         $this->eventManager = $eventManager;
         $this->ourAwardsManager = $ourAwardsManager;
+        $this->seasonManager = $seasonManager;
         
     }
     
@@ -105,6 +112,8 @@ class IndexController extends AbstractActionController{
         
         $ourAwards = $this->entityManager->getRepository(OurAwards::class)
                 ->findBy([], ['datePublished'=>'ASC']);
+        
+        $archiveSeasons = $this->seasonManager->getListOfCompletedSeasons();
 
         // Set the current page to what has been passed in query string,
         // Pagination
@@ -120,7 +129,8 @@ class IndexController extends AbstractActionController{
 //            'aboutUs' => $aboutUs,
             'newsletters' => $newsletters,
             'ourAwards' => $ourAwards,
-            'blog' => $newsBlog
+            'blog' => $newsBlog,
+            'archiveSeasons' => $archiveSeasons
              ]);
     }
     

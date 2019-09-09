@@ -68,7 +68,7 @@ return [
 //                    'user'     => 'root',
 //                    'password' => '',
 //                    'dbname'   => 'oranmoreboysnsdb',
-//                    'port' => '3307',
+//                    'port' => '3306',
 //                ]
 //            ],            
 //        ],        

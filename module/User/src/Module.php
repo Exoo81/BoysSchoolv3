@@ -11,6 +11,8 @@ use User\Service\AuthManager;
 use User\Service\SeasonManager;
 use Application\Service\AboutUsManager;
 
+use User\Entity\Season;
+
 class Module implements ConfigProviderInterface{
     
     
@@ -39,11 +41,14 @@ class Module implements ConfigProviderInterface{
          */
         $seasonManager = $event->getApplication()->getServiceManager()->get(SeasonManager::class); 
         //get Object CurrentSeason
-        $currentSeason = $seasonManager->getCurrentSeason();     
+        $currentSeason = $seasonManager->getCurrentSeason();
+//        $currentSeasonActiveted = $this->chceckIfCurentSeasonIsActive($currentSeason);
         
         // get viewModel layout
         $viewModel = $event->getViewModel();
         $viewModel->setVariable('currenSeason', $currentSeason);
+//        $viewModel->setVariable('seasonIsActive', $currentSeasonActiveted);
+        
         
         /*
          * Add vsr aboutUs to layout (for all pages)
@@ -104,4 +109,26 @@ class Module implements ConfigProviderInterface{
         }
         
     }
+    
+//    private function chceckIfCurentSeasonIsActive(Season $currentSeason){
+//        
+//        $endYear = $currentSeason->getEndYear();
+//        $currentYear = date('Y');
+//        $currentMonth = date('m');
+//        
+//        if($endYear > $currentYear){
+//            return 1;     
+//        }
+//        if($endYear == $currentYear){
+//            //chceck if month bigger then 7
+//            if($currentMonth > 7){
+//                return 0;
+//            }else{
+//                return 1;
+//            }
+//        }
+//        if($endYear < $currentYear){
+//            return 0;     
+//        }
+//    }
 }

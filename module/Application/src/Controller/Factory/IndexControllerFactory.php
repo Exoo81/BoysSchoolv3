@@ -11,6 +11,7 @@ use Application\Service\NewsletterManager;
 use Application\Service\SubscriptionManager;
 use Application\Service\SchoolEventManager;
 use Application\Service\OurAwardsManager;
+use User\Service\SeasonManager;
 
 /**
  * This is the factory for IndexController. Its purpose is to instantiate the
@@ -28,10 +29,12 @@ class IndexControllerFactory implements FactoryInterface{
         $subscriptionManager = $container->get(SubscriptionManager::class);
         $eventManager = $container->get(SchoolEventManager::class);
         $ourAwardsManager = $container->get(OurAwardsManager::class);
+        $seasonManager = $container->get(SeasonManager::class);
         
         // Instantiate the controller and inject dependencies
         return new IndexController($newsManager, $welcomeMsgManager, $aboutUsManager, $newsletterManager,
-                                        $subscriptionManager, $eventManager, $entityManager, $ourAwardsManager);
+                                        $subscriptionManager, $eventManager, $entityManager, $ourAwardsManager,
+                                        $seasonManager);
     }
 }
 
