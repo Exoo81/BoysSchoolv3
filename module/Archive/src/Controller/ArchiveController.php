@@ -75,7 +75,40 @@ class ArchiveController extends AbstractActionController{
         
     }
 
-    public function addAction(){
+    public function galleryAction(){
+        
+        $headTitle = "Gallery archive";
+        
+        //get id user from route
+        $seasonID = (int)$this->params()->fromRoute('id', -1);
+        if ($seasonID<1) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        $season = $this->seasonManager->getArchiveSeason($seasonID);
+        
+        if ($season === null) {
+            $this->getResponse()->setStatusCode(404);
+            return;
+        }
+        
+        // Grab the paginator from the NewsTable:
+        $archiveGalleries = $this->archiveManager->getAllGalleriesCompletedSeason(true, $season);
+        
+        if($archiveGalleries != null){
+            // Set the current page to what has been passed in query string,
+            // Pagination
+            $page = (int) $this->params()->fromQuery('page', 1);
+            $page = ($page < 1) ? 1 : $page;
+            $archiveGalleries->setCurrentPageNumber($page);
+        }
+        
+        return new ViewModel([
+            'headTitle' => $headTitle,
+            'season' => $season,
+            'archiveGalleries' => $archiveGalleries
+        ]);
         
     }
 

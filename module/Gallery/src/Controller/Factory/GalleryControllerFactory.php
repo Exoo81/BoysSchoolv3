@@ -18,9 +18,10 @@ class GalleryControllerFactory implements FactoryInterface{
         
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $galleryBlogManager = $container->get(GalleryBlogManager::class);
+        $seasonManager = $container->get(SeasonManager::class);
         
         // Instantiate the controller and inject dependencies
-        return new GalleryController($entityManager, $galleryBlogManager);
+        return new GalleryController($entityManager, $galleryBlogManager, $seasonManager);
     }
 }
 

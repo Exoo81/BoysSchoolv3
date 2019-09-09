@@ -11,6 +11,7 @@ use Zend\Db\ResultSet\ResultSet;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
+use Gallery\Entity\GalleryPost;
 
 
 /**
@@ -82,6 +83,52 @@ class ArchiveManager{
            
             return $queryBuilder->getQuery();
         
+        
+    }
+    
+    public function getAllGalleriesCompletedSeason($paginated=false, $season){
+        if ($paginated) {
+            return $this->fetchPaginatedGalleryResults($season);
+        }
+        
+        return $this->entityManager->getRepository(GalleryPost::class)
+                     ->findBy(['datePublished'=>'DESC']);
+    }
+    
+    private function fetchPaginatedGalleryResults($season){
+        
+        // Get all post as query
+        $galleryPostList = $this->getAllGalleryQuery($season);
+        
+        if($galleryPostList->getResult() == null){
+            return null;
+        }
+     
+        $adapter = new DoctrineAdapter(new ORMPaginator($galleryPostList, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(6);
+        
+        return $paginator;
+    }
+    
+    private function getAllGalleryQuery($season){
+        
+       $queryBuilder = $this->entityManager->createQueryBuilder();
+       
+            $queryBuilder->select('post')
+                ->from(GalleryPost::class, 'post')
+                  ->innerJoin('post.season', 'season')  
+                
+                ->andWhere('post.postGallery is not empty')
+                ->orWhere('post.videoName IS NOT NULL')
+                    
+                ->andWhere('season.id = :seasonID')
+                ->setParameter('seasonID', $season->getId())
+
+                ->orderBy('post.datePublished', 'DESC');
+
+            
+            return $queryBuilder->getQuery();
         
     }
     

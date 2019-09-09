@@ -20,11 +20,18 @@ class GalleryController extends AbstractActionController{
     private $galleryBlogManager;
     
     /**
+     * Season manager.
+     * @var Season\Service\SeasonManager 
+     */
+    private $seasonManager;
+    
+    /**
      * Constructor. 
      */
-    public function __construct($entityManager, $galleryBlogManager){
+    public function __construct($entityManager, $galleryBlogManager, $seasonManager){
         $this->entityManager = $entityManager;
         $this->galleryBlogManager = $galleryBlogManager; 
+        $this->seasonManager = $seasonManager;
     }
     
     public function indexAction(){
@@ -36,6 +43,8 @@ class GalleryController extends AbstractActionController{
             $this->getResponse()->setStatusCode(404);
             return;
         }
+        
+        $archiveSeasons = $this->seasonManager->getListOfCompletedSeasons();
         
         // Grab the paginator from the post for blog:
         $paginator = $this->galleryBlogManager->getGalleriesFromSeason(true);
@@ -56,7 +65,7 @@ class GalleryController extends AbstractActionController{
             'headTitle' => $headTitle,
             'galleryList' => $paginator,
             'colorList' => $colorList,
-            
+            'archiveSeasons' => $archiveSeasons
         ]);
         
     }

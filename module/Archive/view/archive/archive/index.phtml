@@ -2,8 +2,6 @@
 /*
  *  Archive - index
  */
-//$current_season = $this->layout()->currenSeason->getSeasonName();
-//$this->headTitle($this->title.' '.$current_season);
 
 $this->headTitle($this->headTitle);
 ?>
@@ -22,9 +20,6 @@ $this->headTitle($this->headTitle);
         </div>
     </div>
     <?php
-//    foreach($this->paginator  as $archiveNews){
-//        echo '<div>'.$archiveNews->getTitle().'</div>';
-//    }
 
         if (empty($this->paginator)) {
             echo '<div class="archive-box">';

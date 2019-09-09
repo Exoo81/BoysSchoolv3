@@ -19425,7 +19425,8 @@ section.archive .main-col .archive-box.empty{
         }
     }
     
-.main-page .archive{
+.main-page .archive,
+.gallery .archive{
     display: inline-block;
     float: left;
     width: 80%;
@@ -19776,7 +19777,9 @@ section.archive .main-col .archive-box.empty{
         }
     }
 
-
+.archive .seasons-btn-box a{
+     text-decoration: none;   
+}
 
 /******** end ARCHIVE PAGES *************/
 

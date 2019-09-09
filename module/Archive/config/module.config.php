@@ -24,6 +24,21 @@ return [
                     ],
                 ],
             ],
+            
+            'archiveGallery' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/archive/gallery[/:id]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\ArchiveController::class,
+                        'action'     => 'gallery',
+                    ],
+                ],
+            ],
         ],
     ],
 
@@ -41,6 +56,7 @@ return [
             Controller\ArchiveController::class => [
                 // Give access to "index"
                     ['actions' => ['index'], 'allow' => '*'], 
+                    ['actions' => ['gallery'], 'allow' => '*'],
             ],
         ]
     ],

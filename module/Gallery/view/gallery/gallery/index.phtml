@@ -637,18 +637,17 @@ $this->headTitle($this->headTitle.' '.$current_season);
           ?>
         <?php } ?>
     
-<!--TODO    <div class="archive">
-	<hr class="burgundy">
-	<div class="title"><img src="resources/img/icons/icon-archive.png"/>Archive</div>
-							
-	<div class="seasons-btn-box">
-            <button type="button" class="btn-archive btn-burgundy" data-text="2016/2017"><span>2016/2017</span></button>
-            <button type="button" class="btn-archive btn-burgundy" data-text="2015/2016"><span>2015/2016</span></button>
-            <button type="button" class="btn-archive btn-burgundy" data-text="2014/2015"><span>2014/2015</span></button>
-            <button type="button" class="btn-archive btn-burgundy" data-text="2013/2014"><span>2013/2014</span></button>
-            <button type="button" class="btn-archive btn-burgundy" data-text="2012/2013"><span>2012/2013</span></button>
-	</div>
-    </div>-->
+<div class="archive">
+    <hr class="burgundy">
+    <div class="title"><img src="img/icons/icon-archive.png"/>Gallery archive</div>
+    <div class="seasons-btn-box">
+        <?php 
+            foreach ($this->archiveSeasons  as $archiveSeason) :
+                echo '<a href="'.$this->url('archive', ['action'=>'gallery', 'id'=>$archiveSeason->getId()]).'"><button type="button" class="btn-archive btn-burgundy" data-text="'.$archiveSeason->getSeasonName().'"><span>'.$archiveSeason->getSeasonName().'</span></button></a>';
+            endforeach;
+        ?>
+    </div>         
+</div>
     
 </section>
 

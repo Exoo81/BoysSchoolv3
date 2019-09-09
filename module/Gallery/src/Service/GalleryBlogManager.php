@@ -77,30 +77,9 @@ class GalleryBlogManager{
         if($galleryPostList->getResult() == null){
             return null;
         }
-        
      
-//        foreach($galleryPostList as $post){
-//            
-//            if($post->getType() === 'CLASS_POST'){
-//                //find all pic witch id post
-//                $gallery = $this->entityManager->getRepository(PostImage::class)
-//                    ->findBy(array('post' => $post->getId()));
-//                
-//                if($gallery !=null){
-//                    $post->addPostGallery($gallery);
-//                }else{
-//                    $this->entityManager->detach($post[0]);
-//                    
-//                }    
-//            }
-//
-//        }
-        
-        
-        
         $adapter = new DoctrineAdapter(new ORMPaginator($galleryPostList, false));
         $paginator = new Paginator($adapter);
-
         $paginator->setDefaultItemCountPerPage(6);
         
         return $paginator;
