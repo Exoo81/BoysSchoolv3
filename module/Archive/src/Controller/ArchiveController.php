@@ -58,11 +58,14 @@ class ArchiveController extends AbstractActionController{
         
         // Grab the paginator from the NewsTable:
         $paginator = $this->archiveManager->getAllPostFromCompletedSeason(true, $season);
-        // Set the current page to what has been passed in query string,
-        // Pagination
-        $page = (int) $this->params()->fromQuery('page', 1);
-        $page = ($page < 1) ? 1 : $page;
-        $paginator->setCurrentPageNumber($page);
+        
+        if($paginator != null){
+            // Set the current page to what has been passed in query string,
+            // Pagination
+            $page = (int) $this->params()->fromQuery('page', 1);
+            $page = ($page < 1) ? 1 : $page;
+            $paginator->setCurrentPageNumber($page);
+        }
         
         return new ViewModel([
             'headTitle' => $headTitle,

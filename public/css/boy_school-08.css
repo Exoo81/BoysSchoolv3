@@ -3683,7 +3683,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 180px;
         }
     }
@@ -3697,7 +3698,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 160px;
         }
     }
@@ -3712,7 +3714,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 150px;
         }
     }
@@ -3727,7 +3730,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 130px;
         }
     }
@@ -3741,7 +3745,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 160px
         }
     }
@@ -3756,7 +3761,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 150px
         }
     }
@@ -3770,7 +3776,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
              height: 140px;
         }
     }
@@ -3784,7 +3791,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 120px;
         }
     }
@@ -3798,7 +3806,8 @@ section.archive .header{
         section.school-life .header,
         section.gallery .header,
         section.our-team .header,
-        section.parents .header{
+        section.parents .header,
+        section.archive .header{
             height: 100px
         }
     }
@@ -18941,6 +18950,96 @@ section.archive .header .color-cubes{
 section.archive .header .header-title{
     padding: 3% 35% 0 0;
 }
+   /** Breakpoint **/
+    @media screen and (min-width: 1651px) and (max-width: 1800px) {
+        section.archive .header .header-title{
+            padding: 3% 35% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1581px) and (max-width: 1650px) {
+        section.archive .header .header-title{
+            padding: 3% 35% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1401px) and (max-width: 1580px) {
+        section.archive .header .header-title{
+           padding: 3% 35% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1301px) and (max-width: 1400px) {
+        section.archive .header .header-title{
+            padding: 3% 30% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 1201px) and (max-width: 1300px) {
+        section.archive .header .header-title{
+            padding: 3% 30% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        section.archive .header .header-title{
+            padding: 3% 30% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        section.archive .header .header-title{
+            padding: 3% 25% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.archive .header .header-title{
+            padding: 3% 25% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.archive .header .header-title{
+            padding: 3% 20% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.archive .header .header-title{
+            padding: 3% 20% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.archive .header .header-title{
+            padding: 3% 15% 0 0;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.archive .header .header-title{
+            padding: 3% 10% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.archive .header .header-title{
+            padding: 3% 10% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.archive .header .header-title{
+            padding: 3% 5% 0 0;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        section.archive .header .header-title{
+            padding: 3% 5% 0 0;
+        }
+    }
 
 section.archive .archive-box{
 	position: relative;
@@ -18984,6 +19083,345 @@ section.archive .archive-box{
     @media screen and (min-width: 300px) and (max-width: 1200px) {
         section.archive .archive-box{
             display: none;
+        }
+    }
+    
+section.archive .main-col{
+    display: none;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        section.archive .main-col{
+            display: block;
+            width: 80%;
+            margin: 0 10%;
+            padding-top: 40px
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        section.archive .main-col{
+            display: block;
+            width: 80%;
+            margin: 0 10%;
+            padding-top: 40px
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.archive .main-col{
+            display: block;
+            width: 90%;
+            margin: 0 5%;
+            padding-top: 40px
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.archive .main-col{
+            display: block;
+            width: 90%;
+            margin: 0 5%;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.archive .main-col{
+            display: block;
+            width: 90%;
+            margin: 0 5%;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.archive .main-col{
+            display: block;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.archive .main-col{
+            display: block;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.archive .main-col{
+            display: block;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.archive .main-col{
+            display: block;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        section.archive .main-col{
+            display: block;
+        }
+    }
+    
+section.archive .main-col .archive-box{
+    display: block;
+    padding: 10% 0;
+    border-left: 2px solid #561818;
+    border-radius: 5% 4% 97% 5%/94% 94% 3% 95%;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1021px) and (max-width: 1200px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1020px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        section.archive .main-col .archive-box{
+            
+        }
+    }
+
+section.archive .main-col .archive-box.empty{
+    border : 0
+}
+
+
+.main-col .archive-box img.start-tl{
+    width: 40px;
+    top: -20px;
+    left: -15px;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1200px) {
+        .main-col .archive-box img.start-tl{
+                left: 0;
+        }
+    }
+    
+.main-col .archive-box span#ourTeam{
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    font-family: 'Reenie Beanie', 'Arial', cursive;
+    font-size: 3em;
+    color: #561818;
+}
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .main-col .archive-box span#ourTeam{
+            left: 50px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .main-col .archive-box span#ourTeam{
+            left: 50px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .main-col .archive-box span#ourTeam{
+            
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.8em;
+            top: -30px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.8em;
+            top: -30px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.4em;
+            top: -20px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.4em;
+            top: -20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.4em;
+            top: -20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.4em;
+            top: -20px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .main-col .archive-box span#ourTeam{
+            font-size: 2.4em;
+            top: -20px;
+        }
+    }
+    
+.main-col .archive-box img.end-tl{
+    width: 40px;
+    left: -15px;
+    bottom: -10px;
+}
+
+.main-col .archive-box .blog-content{
+    width: 80%;
+    margin-left: 30%;
+}
+
+    /** Breakpoint **/
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+        .main-col .archive-box .blog-content{
+            width: 60%;
+            margin-left: 40%;
+            margin-bottom: 10%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+        .main-col .archive-box .blog-content{
+            width: 65%;
+            margin-left: 35%;
+            margin-bottom: 10%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 721px) and (max-width: 800px) {
+        .main-col .archive-box .blog-content{
+            width: 65%;
+            margin-left: 35%;
+            margin-bottom: 10%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 701px) and (max-width: 720px) {
+        .main-col .archive-box .blog-content{
+            width: 60%;
+            margin-left: 40%;
+            margin-bottom: 10%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 601px) and (max-width: 700px) {
+        .main-col .archive-box .blog-content{
+            width: 60%;
+            margin-left: 42%;
+            margin-bottom: 10%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 551px) and (max-width: 600px) {
+        .main-col .archive-box .blog-content{
+            width: 90%;
+            margin-left: 10%;
+            margin-bottom: 40%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /** Breakpoint **/
+    @media screen and (min-width: 480px) and (max-width: 550px) {
+        .main-col .archive-box .blog-content{
+            width: 90%;
+            margin-left: 10%;
+            margin-bottom: 40%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 371px) and (max-width: 479px) {
+        .main-col .archive-box .blog-content{
+            width: 90%;
+            margin-left: 10%;
+            margin-bottom: 40%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (min-width: 341px) and (max-width: 370px)  {
+        .main-col .archive-box .blog-content{
+            width: 90%;
+            margin-left: 10%;
+            margin-bottom: 40%;
+            border-width: 3px 2px 2px 3px;
+        }
+    }
+    /* Breakpoint */
+    @media screen and (max-width: 340px) {
+        .main-col .archive-box .blog-content{
+            width: 90%;
+            margin-left: 10%;
+            margin-bottom: 40%;
+            border-width: 3px 2px 2px 3px;
         }
     }
     

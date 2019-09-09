@@ -58,12 +58,14 @@ class ArchiveManager{
         
         // Get all news as query
         $news = $this->getAllNewsQuery($season);
+        
+        if($news->getResult() == null){
+            return null;
+        }
 
         $adapter = new DoctrineAdapter(new ORMPaginator($news, false));
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(6);        
-        
-        
         return $paginator;
     }
     

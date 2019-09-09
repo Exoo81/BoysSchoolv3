@@ -279,6 +279,129 @@ $this->headTitle($this->headTitle);
                 
             echo '</div>';
         }
+        
+        
+        
+        /** mobile version **/
+                echo '<div class="main-col">';
+                
+                    if(empty($this->paginator)){
+                        echo '<div class="archive-box empty">';
+                            echo '<div class="no-content">';
+                                echo '<img src="/../img/icons/icon-robot.png"/>';
+                                echo '<span>There are no published posts yet.</span>';
+                            echo '</div>'; 
+                        echo '</div>';
+                    }else{
+                        echo '<div class="archive-box">';
+                            echo '<img class="start-tl" src="/../img/icons/icon-circle.png">';
+                            echo '<span id="ourTeam">Our posts</span>';
+                            echo '<img class="end-tl" src="/../img/icons/icon-circle.png">';
+
+                            foreach($this->paginator  as $post){
+                                echo '<div class="blog-content">';
+                                    //$post = $this->paginator->getItem($countPost);
+                                    $type = null;
+                                    $reflect = new ReflectionClass($post);
+                                    if($reflect->getShortName() === 'NewsPost'){
+                                        $type = 'news';
+                                    }
+                                    if($reflect->getShortName() === 'GalleryPost'){
+                                        $type = 'gallery';
+                                    } 
+                                    if($reflect->getShortName() === 'ClassPost'){
+                                        $type = 'classes';
+                                    }
+                                    
+                                    if($type === 'news'){
+                                        if($post->getPhotoName() !== null){
+                                            echo '<img class="left" src="/../upload/school-news/'.$this->season->getSeasonName().'/'.$post->getId().'/'.$post->getPhotoName().'">';  
+                                        }
+                                        echo '<div class="blog-title">'.$post->getTitle().'</div>';
+                                        echo '<hr class="burgundy">';
+                                        echo '<div class="blog-text">';
+                                            echo '<p>'.$post->getContent().'</p>';
+                                        echo '</div>';
+                                        if($post->getDocName() !== null){
+                                            echo '<div class="blog-link">';
+                                                echo '<img class="icon-list" src="/../img/icons/icon-download.png">';
+                                                echo '<a target="_blank" class="bs burgundy" href="/../upload/school-news/'.$this->season->getSeasonName().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                                    echo '<span class="">see attached file</span>';
+                                                echo '</a>';    
+                                            echo '</div>';
+                                        }
+                                        echo '<div class="blog-date">';
+                                            echo '<img src="/../img/icons/icon-calendar.png">';
+                                            echo '<span>'.date('d F Y',strtotime($post->getDatePublished())).'</span>';
+                                            echo '<img class="blog-poiter" src="/../img/icons/icon-arrow-right.png">';
+                                        echo '</div>';
+                                    }
+                                    if($type === 'gallery' || $type === 'classes'){
+                                        $postGallery = $post->getPostGallery();
+                                        if (sizeof($postGallery) > 0) {
+                                            echo '<div class="gallery">';
+                                                for($i = 0; $i < sizeof($postGallery); $i++){
+                                                    if($i == 0){
+                                                        echo '<div class="first-photo">';
+                                                            echo '<a class="lightbox" href="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                                echo '<img src="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                            echo '</a>';
+                                                        echo '</div>';
+                                                    }else{
+                                                        echo '<div class="hidden">';
+                                                            echo '<a class="lightbox" href="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'"> ';
+                                                                echo '<img src="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/'.$postGallery[$i]->getPhotoName().'" alt="">';
+                                                            echo '</a>';
+                                                        echo '</div>';
+                                                    }
+                                                }     
+                                            echo '</div>';
+    
+                                            if($post->getVideoName() !== null){
+                                                echo '<div class="blog-link">';                                          
+                                                    echo '<img src="/../img/icons/icon-video.png">';
+                                                    $video_link = '/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName();
+                                                    echo '<a class="bs burgundy modal-trigger-show-video" data-modal="show-video-modal" data-video="'.$video_link.'" data-title="'.$post->getTitle().'">';
+                                                        echo '<span class="">see also video</span>';
+                                                    echo '</a>';     
+                                                echo '</div>';
+                                            }
+                                        }else{
+                                            if($post->getVideoName() !== null){
+                                                echo '<video controls>';
+                                                    echo '<source src="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/video/'.$post->getVideoName().'" type="video/mp4">';       
+                                                echo '</video>';
+                                            }
+                                        }
+                                        echo '<div class="blog-title">'.$post->getTitle().'</div>';
+                                        echo '<hr class="burgundy">';
+                                        echo '<div class="blog-text">'
+                                                .'<p>'.$post->getContent().'</p>';
+                                        echo '</div>';
+                                        if($type === 'classes'){
+                                            if($post->getDocName() !== null){
+                                                echo '<div class="blog-link">';
+                                                    echo '<img src="/../img/icons/icon-download.png">';
+                                                    echo '<a target="_blank" class="bs burgundy" href="/../upload/'.$type.'/'.$this->season->getSeasonName().'/'.$post->getBlog()->getId().'/'.$post->getId().'/doc/'.$post->getDocName().'">';
+                                                        echo '<span class="">see attached file</span>';
+                                                    echo '</a>';    
+                                                echo '</div>';
+                                            }
+                                        }
+                                        echo '<div class="blog-date">';
+                                            echo '<img src="/../img/icons/icon-calendar.png">';
+                                            echo '<span>'.date('d F Y',strtotime($post->getDatePublished())).'</span>';
+                                            echo '<img class="blog-poiter" src="/../img/icons/icon-arrow-right.png">';
+                                        echo '</div>';
+                                    }
+                                        
+
+                                echo '</div>';
+                            }
+                        echo '</div>';
+                    }
+                echo '</div>';
+            /** end mobile version **/
     ?>
     
     <?php if($this->paginator != null){ ?>
