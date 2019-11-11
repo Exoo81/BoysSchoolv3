@@ -103,7 +103,7 @@ $aboutUs = $this->layout()->aboutUs;
                                     }
                                     $left_right_adjust++;
                                 }
-                                echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - News</div>';
+                                echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).'</div>';
                                 echo '<hr class="blue">';
                                 echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
                                 echo '<p>'.$this->escapeHtml($news->getContent()).'</p>';
@@ -179,10 +179,10 @@ $aboutUs = $this->layout()->aboutUs;
                                     
                                 }
                                 if($type === 'gallery'){
-                                    echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - Gallery</div>';
+                                    echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).'</div>';
                                 }
                                 if($type === 'classes'){
-                                    echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).' - Class Blog</div>';
+                                    echo '<div class="news-title">'.$this->escapeHtml($news->getTitle()).'</div>';
                                 }
                                 echo '<hr class="blue">';
                                 echo '<div class="news-date"><img src="img/icons/icon-calendar.png">'.date('d F Y',strtotime($news->getDatePublished())) .'</div>';
