@@ -80,13 +80,13 @@ $("#addGalleryForm").validate({
         addGalleryFile: {
             required: false,
             extension: "jpg|jpeg|png|gif",
-            filesize: 4000000           // 4MB
+            filesize: 6000000           // 6MB
         }   
     },
     messages:{
         addGalleryFile:{
             extension: "Allowed file extensions: jpg, jpeg, png, gif",
-            filesize: "File size must be<br> less than 4MB"
+            filesize: "File size must be<br> less than 6MB"
         },
         addGalleryVideo:{
             accept: "Allowed only video file.",
@@ -308,12 +308,12 @@ function checkValidationForAddGalleryImage(file){
         return isValid = 'Allowed file extensions: jpg, jpeg, png, gif';
     }
     
-    //validation for file size max. 4MB
+    //validation for file size max. 6MB
     var fileSize =  file["size"];
     //alert ("File size: " + fileSize);
     
-    if(fileSize > 4000000){
-        return isValid = 'File size must be less than 4MB';
+    if(fileSize > 6000000){
+        return isValid = 'File size must be less than 6MB';
     }
     
     
