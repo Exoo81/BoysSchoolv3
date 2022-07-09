@@ -481,13 +481,13 @@ $this->headTitle($this->headTitle);
             
             
             <div class="learning-support-box">
-                <div class="title purpure">Learning support</div>
+                <div class="title purpure">Special Educational Teachers</div>
                 <?php 
                     if ($this->access('ourteam.manage')) {
                         echo '<div class="cms-option learning-support">';
                             echo '<a href="#" class="bs modal-trigger" data-modal="manage-learning_support-modal">';
                                 echo '<img src="img/icons/icon-settings.png">';
-                                echo '<span>Manage the list of learning support members</span>';
+                                echo '<span>Manage the list of special educational teachers members</span>';
                             echo '</a>';
                         echo '</div>';
                     }     
@@ -1035,7 +1035,7 @@ $this->headTitle($this->headTitle);
       	<div class="circle-img-wrapper"><img class="events" src="img/icons/icon-settings.png" alt="" /></div>
       	<!-- original version -->
       	<div class="modal-title">
-      		<span>Our team - Learning Support</span>
+      		<span>Our team - Special Educational Teachers</span>
       	</div>
     </div>
  
@@ -1044,13 +1044,13 @@ $this->headTitle($this->headTitle);
         <div class="modal-text">
             <div class="btn-modal-box our-team-add">
                 <button class="modal-trigger-add-our-team btn-max btn-purpure reversed" data-modal="add-our-team" data-role="learning_support" data-text="Add member of learning support">
-                    <span><i class="fa fa-plus"></i>Add member of learning support</span>
+                    <span><i class="fa fa-plus"></i>Add member of Special Educational Teachers</span>
                 </button>
             </div>
             <hr class="burgundy" />
             
             
-            <div class="table-header">Members of learning support</div>
+            <div class="table-header">Members of Special Educational Teachers</div>
             <div class="small-table">    
                 <?php 
                     foreach($this->learningSupportList as $member){
